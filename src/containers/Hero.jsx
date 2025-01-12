@@ -17,7 +17,7 @@ function Hero() {
                         height="300"
                     />
                     <h1 id="heroTitle" className="hero__title" data-aos="fade-up">
-                        Jeferson Reis Almeida CASDASDSA
+                        Jeferson Reis Almeida
                     </h1>
                     <p className="hero__subtitle" data-aos="fade-up" data-aos-delay="200">
                         Desenvolvedor Full-Stack | Designer Gráfico | Técnico em
