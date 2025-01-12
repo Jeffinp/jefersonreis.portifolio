@@ -1,0 +1,561 @@
+/* ===================================================================
+ *                      ESTILOS GERAIS
+ * ===================================================================
+ */
+
+.section__title {
+    font-size: var(--resume-font-size-title);
+    text-align: center;
+    font-weight: var(--resume-font-weight-extrabold);
+    margin-bottom: var(--resume-spacing-xl);
+    background: linear-gradient(45deg, var(--resume-primary-color), var(--resume-accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.section__title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, var(--resume-primary-color), var(--resume-secondary-color));
+    border-radius: var(--resume-border-radius-full);
+    margin: var(--resume-spacing-md) auto 0;
+    transition: width var(--resume-transition-normal);
+}
+
+.section__title:hover::after {
+    width: 120px;
+}
+
+.section__subtitle {
+    font-size: 1rem;
+    color: var(--resume-secondary-color);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* ===================================================================
+ *                           FILTROS (Portfolio)
+ * ===================================================================
+ */
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-button {
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--resume-border-color);
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: var(--resume-border-radius-full);
+    font-family: var(--resume-font-family-base);
+    font-size: 1rem;
+    color: var(--resume-text-color);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.filter-button.active,
+.filter-button:hover {
+    background-color: var(--resume-primary-color);
+    color: #fff;
+    border-color: var(--resume-primary-color);
+}
+
+/* ===================================================================
+ *                        CARDS DE EXPERTISE
+ * ===================================================================
+ */
+
+.expertises__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.expertises__card {
+    background-color: var(--resume-card-background);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 5px var(--resume-shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.expertises__card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px var(--resume-shadow-md);
+}
+
+.expertises__icon-container {
+    background-color: var(--resume-primary-color);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.expertises__icon {
+    font-size: 2.2rem;
+    color: var(--resume-text-color);
+}
+
+.expertises__title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--resume-text-color);
+}
+
+.expertises__description {
+    font-size: 1rem;
+    color: var(--resume-text-color-secondary);
+    line-height: 1.5;
+}
+
+/* ===================================================================
+ *                            GERAL SECTION
+ * ===================================================================
+ */
+
+.projects {
+    padding: var(--resume-spacing-xxl) 0;
+    background: var(--resume-background-color);
+}
+
+.project-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ===================================================================
+ *                            CARROSSEL (Portfolio)
+ * ===================================================================
+ */
+
+.carousel,
+.project-image {
+    position: relative;
+    overflow: hidden
+}
+
+.project-title,
+.projects .section__title {
+    font-family: var(--resume-font-family-base)
+}
+
+.next,
+.project-label {
+    right: var(--resume-spacing-md)
+}
+
+
+.project-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto
+}
+
+.carousel {
+    max-width: 100%;
+    border-radius: var(--resume-border-radius-lg);
+    box-shadow: var(--resume-shadow-md);
+    border: 1px solid rgba(var(--resume-primary-color-rgb), .2)
+}
+
+.project-info,
+.project-label {
+    box-shadow: var(--resume-shadow-sm)
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform .5s cubic-bezier(.25, .1, .25, 1);
+    cursor: grab
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity var(--resume-transition-normal), transform var(--resume-transition-normal);
+    padding: var(--resume-spacing-md);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===================================================================
+ *                           ESTILOS DOS ITENS
+ * ===================================================================
+ */
+
+.carousel-item {
+    min-width: 100%;
+    /* Para mobile, sempre 100% */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: var(--resume-spacing-md);
+}
+
+/* Estilos para os itens que não são da categoria "web" */
+.carousel-item:not([data-category="web"]) {
+    min-width: 100%;
+    /* Para mobile */
+}
+
+/* Media query para tablets */
+@media (min-width: 768px) {
+    .carousel-item:not([data-category="web"]) {
+        min-width: 50%;
+        /* 2 itens por vez em tablets */
+    }
+}
+
+/* Media query para desktop */
+@media (min-width: 1024px) {
+    .carousel-item {
+        min-width: 50%;
+        /* 2 itens por vez para web em desktop */
+    }
+
+    .carousel-item:not([data-category="web"]) {
+        min-width: 33.3333%;
+        /* 3 itens por vez para design e modelagem em desktop */
+    }
+}
+
+.project-image,
+.art-carousel__item {
+    background-color: var(--resume-card-background);
+    border-radius: var(--resume-border-radius-lg);
+    padding: var(--resume-spacing-md);
+    box-shadow: var(--resume-shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: var(--resume-spacing-lg);
+}
+
+.project-image:hover,
+.art-carousel__item:hover,
+.carousel-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px var(--resume-shadow-md);
+}
+
+/* Estilo para a imagem dentro de project-image */
+.project-image img {
+    width: 100%;
+    height: auto; /* Mantém a proporção da imagem */
+    display: block;
+    border-radius: var(--resume-border-radius-lg); /* Arredonda as bordas da imagem */
+    object-fit: cover; /* Garante que a imagem cubra o espaço disponível */
+    transition: transform var(--resume-transition-normal); /* Suaviza a transição no hover */
+}
+
+.carousel-item:hover .project-image img {
+    transform: scale(1.05); /* Efeito de zoom no hover */
+}
+
+/* Estilo para a imagem dentro de art-carousel__item */
+.art-carousel__item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centraliza a imagem */
+    border-radius: var(--resume-border-radius-lg); /* Arredonda as bordas da imagem */
+}
+
+.carousel-item[data-category="design"] .project-image,
+.carousel-item[data-category="modelagem"] .project-image,
+.carousel-item[data-category="motion"] .project-image{
+    height: auto;/* Altura automática para design e modelagem */
+}
+
+.carousel-item[data-category="design"] .project-image img,
+.carousel-item[data-category="modelagem"] .project-image img,
+.carousel-item[data-category="motion"] .project-image img {
+    width: 100%; /* Ocupa 100% do container pai */
+    height: auto; /* Mantém a proporção */
+    object-fit: contain; /* Garante que a imagem se ajuste ao container mantendo a proporção */
+}
+
+
+/* ===================================================================
+ *                        INFORMAÇÕES DO PROJETO
+ * ===================================================================
+ */
+
+.project-info {
+    padding: var(--resume-spacing-md);
+    background-color: var(--resume-card-background);
+    border-radius: var(--resume-border-radius-lg);
+    margin-top: var(--resume-spacing-md);
+    box-shadow: var(--resume-shadow-sm);
+}
+
+.project-title {
+    font-family: var(--resume-font-family-base);
+    margin-top: 0;
+    font-size: var(--resume-font-size-section-title);
+    color: var(--resume-text-color);
+    margin-bottom: var(--resume-spacing-xs);
+    font-weight: var(--resume-font-weight-bold);
+}
+
+.project-description {
+    font-size: var(--resume-font-size-base);
+    margin: 0 0 var(--resume-spacing-md);
+    line-height: var(--resume-line-height-base);
+    color: var(--resume-text-color-secondary);
+    font-family: var(--resume-font-family-base);
+}
+
+.project-link {
+    display: inline-block;
+    padding: var(--resume-spacing-sm) var(--resume-spacing-lg);
+    background-color: var(--resume-primary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: var(--resume-border-radius-full);
+    font-weight: var(--resume-font-weight-semibold);
+    transition: background-color var(--resume-transition-normal);
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    font-family: var(--resume-font-family-base);
+    font-size: var(--resume-font-size-base);
+}
+
+.project-link:hover {
+    background-color: var(--resume-hover-color);
+}
+
+/* ===================================================================
+ *                           BOTÕES DO CARROSSEL
+ * ===================================================================
+ */
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--resume-secondary-color);
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color var(--resume-transition-normal), transform var(--resume-transition-normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.carousel-button:hover {
+    background-color: var(--resume-hover-color);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-button.prev {
+    left: var(--resume-spacing-md);
+}
+
+.carousel-button.next {
+    right: var(--resume-spacing-md);
+}
+
+/* ===================================================================
+ *                                 FIGCAPTION
+ * ===================================================================
+ */
+
+.carousel-item figcaption {
+    font-size: 0.9rem;
+    color: var(--resume-text-color-secondary);
+    margin-top: 0.5rem;
+    line-height: var(--resume-line-height-base);
+    font-family: var(--resume-font-family-base);
+    background-color: var(--resume-card-background);
+    border-radius: var(--resume-border-radius-lg);
+    padding: var(--resume-spacing-md);
+    box-shadow: var(--resume-shadow-sm);
+}
+
+/* ===================================================================
+ *                              PROJETO LABEL
+ * ===================================================================
+ */
+
+.project-label {
+    position: absolute;
+    top: var(--resume-spacing-md);
+    padding: var(--resume-spacing-xs) var(--resume-spacing-md);
+    border-radius: var(--resume-border-radius-full);
+    font-size: var(--resume-font-size-base);
+    font-weight: var(--resume-font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+    transition: transform var(--resume-transition-normal);
+}
+
+.project-label--contracted {
+    background-color: rgba(var(--resume-success-color-rgb), 0.85);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.project-label--personal {
+    background-color: rgba(var(--resume-info-color-rgb), 0.85);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.carousel-item:hover .project-label {
+    transform: translateY(-3px);
+}
+
+/* ===================================================================
+ *                             MEDIA QUERIES
+ * ===================================================================
+ */
+
+@media (max-width: 768px) {
+    .projects {
+        padding: var(--resume-spacing-lg) 0; /* Reduzido o padding */
+    }
+
+    .projects .section__title {
+        font-size: var(--resume-font-size-section-title);
+        margin-bottom: var(--resume-spacing-lg);
+    }
+
+    .project-image {
+        height: 200px;
+    }
+
+    .project-info {
+        padding: var(--resume-spacing-md);
+    }
+
+    .project-title {
+        font-size: var(--resume-font-size-item-title);
+    }
+
+    .project-description,
+    .project-link {
+        font-size: var(--resume-font-size-base);
+    }
+
+    .project-description {
+        margin-bottom: var(--resume-spacing-sm);
+    }
+
+    .project-link {
+        padding: var(--resume-spacing-xs) var(--resume-spacing-md);
+    }
+
+    .carousel-button {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    .carousel-button.prev {
+        left: var(--resume-spacing-xs);
+    }
+
+    .carousel-button.next {
+        right: var(--resume-spacing-xs);
+    }
+
+    .art-carousel__item figcaption {
+        font-size: 0.8rem; /* Reduzido o tamanho da fonte */
+    }
+
+    .expertises__card {
+        padding: 1.5rem; /* Reduzido o padding */
+    }
+
+    .expertises__icon-container {
+        width: 50px; /* Reduzido o tamanho */
+        height: 50px; /* Reduzido o tamanho */
+        margin-bottom: 1rem;
+    }
+
+    .expertises__icon {
+        font-size: 2rem; /* Reduzido o tamanho do ícone */
+    }
+
+    .expertises__title {
+        font-size: 1.2rem; /* Reduzido o tamanho do título */
+    }
+
+    .expertises__description {
+        font-size: 0.9rem; /* Reduzido o tamanho da descrição */
+    }
+}
+
+@media (max-width: 480px) {
+    .project-label {
+        font-size: 0.7rem;
+        top: var(--resume-spacing-xs);
+        right: var(--resume-spacing-xs);
+        padding: var(--resume-spacing-xs);
+    }
+
+    .carousel-button {
+        width: 25px;
+        height: 25px;
+        font-size: 0.8rem;
+    }
+
+    .carousel-button.prev {
+        left: 0;
+    }
+
+    .carousel-button.next {
+        right: 0;
+    }
+
+    .art-carousel__item figcaption {
+        font-size: 0.8rem; /* Reduzido o tamanho da fonte */
+    }
+
+    .expertises__card {
+        padding: 1rem; /* Mais redução no padding */
+    }
+
+    .expertises__icon-container {
+        width: 40px; /* Mais redução no tamanho */
+        height: 40px; /* Mais redução no tamanho */
+        margin-bottom: 0.8rem;
+    }
+
+    .expertises__icon {
+        font-size: 1.8rem; /* Mais redução no tamanho do ícone */
+    }
+
+    .expertises__title {
+        font-size: 1.1rem; /* Mais redução no tamanho do título */
+    }
+
+    .expertises__description {
+        font-size: 0.8rem; /* Mais redução no tamanho da descrição */
+    }
+}
