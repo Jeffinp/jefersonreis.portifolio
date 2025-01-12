@@ -13,7 +13,6 @@ import Footer from './components/Footer.jsx';
 import ScrollToTopBtn from './components/ScrollToTopBtn.jsx';
 import ParticlesComponent from './components/ParticlesComponent.jsx';
 import Atuacao from './containers/atuacao.jsx';
-import { Analytics } from "@vercel/analytics/react"
 
 import './styles/import.css';
 
