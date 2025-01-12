@@ -1,23 +1,23 @@
 .button--primary,
 .resume__title {
     text-transform: uppercase;
-    position: relative
+    position: relative;
 }
 
 .button--primary:hover,
 .resume__content {
-    box-shadow: var(--resume-shadow-md, 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06))
+    box-shadow: var(--resume-shadow-md, 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06));
 }
 
 .resume {
     padding: var(--resume-spacing-xl, 40px) 0;
-    background-color: var(--resume-background-color, #f3f4f6)
+    background-color: var(--resume-background-color, #f3f4f6);
 }
 
 .container_resume {
     max-width: 800px;
     margin: 0 auto;
-    padding: 0 var(--resume-spacing-lg, 20px)
+    padding: 0 var(--resume-spacing-lg, 20px);
 }
 
 .resume__title {
@@ -28,7 +28,7 @@
     background: linear-gradient(45deg, var(--resume-primary-color, #2563eb), var(--resume-accent-color, #eab308));
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent
+    -webkit-text-fill-color: transparent;
 }
 
 .resume__title::after {
@@ -39,32 +39,32 @@
     background: linear-gradient(to right, var(--resume-primary-color, #2563eb), var(--resume-secondary-color, #60a5fa));
     border-radius: var(--resume-border-radius-full, 9999px);
     margin: var(--resume-spacing-md, 15px) auto 0;
-    transition: width var(--resume-transition-normal, .3s ease)
+    transition: width var(--resume-transition-normal, .3s ease);
 }
 
 .resume__title:hover::after {
-    width: 120px
+    width: 120px;
 }
 
 .resume__content {
     background-color: var(--resume-card-background, #fff);
     border-radius: var(--resume-border-radius-lg, .5rem);
     overflow: hidden;
-    padding: var(--resume-spacing-xl, 30px)
+    padding: var(--resume-spacing-xl, 30px);
 }
 
 .resume__section {
     padding: var(--resume-spacing-lg, 20px) 0;
-    display: none
+    display: none;
 }
 
 .resume__content.expanded .resume__section,
 .resume__section.resume__highlights {
-    display: block
+    display: block;
 }
 
 .resume__section:not(:last-child) {
-    border-bottom: 1px solid var(--resume-border-color, #e5e7eb)
+    border-bottom: 1px solid var(--resume-border-color, #e5e7eb);
 }
 
 .resume__section-title {
@@ -74,95 +74,118 @@
     margin-bottom: var(--resume-spacing-md, 15px);
     color: var(--resume-text-color, #4b5563);
     font-family: var(--resume-font-family-base, 'Nunito Sans');
-    text-transform: uppercase
+    text-transform: uppercase;
 }
 
 .resume__section-list {
     list-style: none;
-    padding: 0
+    padding: 0;
 }
 
 .resume__section-item {
     margin-bottom: var(--resume-spacing-md, 15px);
-    color: var(--resume-text-color)
+    color: var(--resume-text-color);
 }
+
+/* Defina o estado inicial para esconder o conteúdo */
+.resume__expandable-content {
+    display: none;
+    /* Inicialmente oculto */
+    max-height: 0;
+    /* Garante que o conteúdo não ocupe espaço */
+    overflow: hidden;
+    /* Esconde qualquer conteúdo que ultrapasse os limites */
+    transition: max-height 0.3s ease-in-out;
+    /* Suaviza a animação */
+}
+
+/* Classe expandida para tornar o conteúdo visível */
+.resume__expandable-content.expanded {
+    display: block;
+    /* Torna o conteúdo visível */
+    max-height: 1000px;
+    /* Ajuste o valor conforme o conteúdo; se for variável, use algo como 100% ou calc() */
+    overflow: visible;
+    /* Garante que o conteúdo dentro do elemento seja visível */
+}
+
 
 .resume__section-item-title {
     font-size: var(--resume-font-size-item-title, 1.1rem);
     margin-bottom: var(--resume-spacing-xs, 5px);
     color: var(--resume-text-color, #4b5563);
     font-weight: var(--resume-font-weight-bold, 700);
-    font-family: var(--resume-font-family-base, 'Nunito Sans')
+    font-family: var(--resume-font-family-base, 'Nunito Sans');
 }
 
 .resume__highlights-item,
 .resume__section-item-details {
     font-family: var(--resume-font-family-base, 'Nunito Sans');
     font-size: var(--resume-font-size-base, .9rem);
-    color: var(--resume-text-color-secondary, #6b7280)
+    color: var(--resume-text-color-secondary, #6b7280);
 }
 
 .button--primary,
 .resume__see-more {
-    font-weight: var(--resume-font-weight-semibold, 600)
+    font-weight: var(--resume-font-weight-semibold, 600);
 }
 
 .resume__section-item-details {
     line-height: var(--resume-line-height-base, 1.6);
     margin-left: var(--resume-spacing-lg, 20px);
-    list-style-type: disc
+    list-style-type: disc;
 }
 
 .resume__section-item-details li::marker {
-    color: var(--resume-primary-color, #2563eb)
+    color: var(--resume-primary-color, #2563eb);
 }
 
 .resume__highlights {
     padding: var(--resume-spacing-lg, 20px) 0;
-    background-color: transparent
+    background-color: transparent;
 }
 
 .resume__highlights-list {
     list-style: none;
-    padding: 0
+    padding: 0;
 }
 
 .resume__highlights-item {
     line-height: 1.8;
     display: flex;
     align-items: center;
-    margin-bottom: var(--resume-spacing-sm, 10px)
+    margin-bottom: var(--resume-spacing-sm, 10px);
 }
 
 .resume__contact-link,
 .resume__highlights-item::before,
 .resume__see-more {
-    color: var(--resume-primary-color, #2563eb)
+    color: var(--resume-primary-color, #2563eb);
 }
 
 .resume__highlights-item::before {
     content: '•';
     font-size: 1.5em;
-    margin-right: var(--resume-spacing-sm, 10px)
+    margin-right: var(--resume-spacing-sm, 10px);
 }
 
 .resume__contact-link:hover,
 .resume__see-more:hover {
-    color: var(--resume-hover-color, #1d4ed8)
+    color: var(--resume-hover-color, #1d4ed8);
 }
 
 .resume__contact-link {
     text-decoration: none;
-    transition: color var(--resume-transition-normal, .3s ease)
+    transition: color var(--resume-transition-normal, .3s ease);
 }
 
 .resume__contact-link:hover {
-    text-decoration: underline
+    text-decoration: underline;
 }
 
 .resume__see-more-container {
     padding: var(--resume-spacing-lg, 20px) 0;
-    text-align: center
+    text-align: center;
 }
 
 .resume__see-more {
@@ -174,35 +197,35 @@
     background: 0 0;
     font-size: var(--resume-font-size-base, 1rem);
     font-family: var(--resume-font-family-base, 'Nunito Sans');
-    padding: 0
+    padding: 0;
 }
 
 .button--primary,
 .resume__cta-text {
     font-family: var(--resume-font-family-base, 'Nunito Sans');
-    font-size: var(--resume-font-size-base, .9rem)
+    font-size: var(--resume-font-size-base, .9rem);
 }
 
 .resume__see-more .iconify {
     margin-left: var(--resume-spacing-xs, 5px);
     transition: transform var(--resume-transition-normal, .3s ease);
-    font-size: 1.2em
+    font-size: 1.2em;
 }
 
 .resume__content.expanded .resume__see-more .iconify {
-    transform: rotate(180deg)
+    transform: rotate(180deg);
 }
 
 .resume__cta {
     border-top: 1px solid var(--resume-border-color, #e5e7eb);
     padding: var(--resume-spacing-lg, 20px) 0;
-    text-align: center
+    text-align: center;
 }
 
 .resume__cta-text {
     margin-bottom: var(--resume-spacing-md, 15px);
     text-align: center;
-    color: var(--resume-text-color-secondary, #6b7280)
+    color: var(--resume-text-color-secondary, #6b7280);
 }
 
 .button--primary {
@@ -216,7 +239,7 @@
     letter-spacing: .5px;
     box-shadow: var(--resume-shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, .05));
     border: none;
-    overflow: hidden
+    overflow: hidden;
 }
 
 .button--primary::after {
@@ -231,82 +254,82 @@
     transform: translate(-50%, -50%) scale(0);
     border-radius: 50%;
     pointer-events: none;
-    opacity: 0
+    opacity: 0;
 }
 
 .button--primary:hover::after {
     transform: translate(-50%, -50%) scale(1);
-    opacity: 1
+    opacity: 1;
 }
 
 .button--primary:hover {
     background-color: var(--resume-hover-color, #1d4ed8);
-    transform: translateY(-2px)
+    transform: translateY(-2px);
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
     .resume {
-        padding: var(--resume-spacing-lg, 20px) 0
+        padding: var(--resume-spacing-lg, 20px) 0;
     }
 
     .container_resume {
-        padding: 0 var(--resume-spacing-md, 15px)
+        padding: 0 var(--resume-spacing-md, 15px);
     }
 
     .resume__title {
         font-size: var(--resume-font-size-section-title, 1.3rem);
-        margin-bottom: var(--resume-spacing-lg, 20px)
+        margin-bottom: var(--resume-spacing-lg, 20px);
     }
 
     .resume__cta-text,
     .resume__section-title {
-        margin-bottom: var(--resume-spacing-md, 15px)
+        margin-bottom: var(--resume-spacing-md, 15px);
     }
 
     .resume__content {
-        padding: var(--resume-spacing-md, 15px)
+        padding: var(--resume-spacing-md, 15px);
     }
 
     .resume__cta,
     .resume__section,
     .resume__see-more-container {
-        padding: var(--resume-spacing-md, 15px) 0
+        padding: var(--resume-spacing-md, 15px) 0;
     }
 
     .resume__section-title {
         font-size: var(--resume-font-size-item-title, 1.1rem);
-        margin-top: var(--resume-spacing-xs, 5px)
+        margin-top: var(--resume-spacing-xs, 5px);
     }
 
     .button--primary,
     .resume__cta-text,
     .resume__section-item-details {
-        font-size: var(--resume-font-size-base, .9rem)
+        font-size: var(--resume-font-size-base, .9rem);
     }
 
     .button--primary {
-        padding: var(--resume-spacing-sm, 10px) var(--resume-spacing-md, 15px)
+        padding: var(--resume-spacing-sm, 10px) var(--resume-spacing-md, 15px);
     }
 
     .resume__section-item-details {
-        margin-left: var(--resume-spacing-md, 15px)
+        margin-left: var(--resume-spacing-md, 15px);
     }
 }
 
-@media (max-width:480px) {
+@media (max-width: 480px) {
     .resume__title {
-        font-size: var(--resume-font-size-section-title, 1.3rem)
+        font-size: var(--resume-font-size-section-title, 1.3rem);
     }
 
     .resume__content {
-        padding: var(--resume-spacing-sm, 10px)
+        padding: var(--resume-spacing-sm, 10px);
     }
 
     .resume__section-title {
-        margin-top: var(--resume-spacing-xs, 5px)
+        margin-top: var(--resume-spacing-xs, 5px);
     }
 
     .resume__highlights-item::before {
-        margin-right: var(--resume-spacing-xs, 5px)
+        margin-right: var(--resume-spacing-xs, 5px);
     }
 }
