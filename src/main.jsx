@@ -17,38 +17,39 @@ import Atuacao from './containers/atuacao.jsx';
 import './styles/import.css';
 
 const App = () => {
-    const [darkMode, setDarkMode] = useState(false);
+    const [darkMode, setDarkMode] = useState(() => {
+        try {
+            const storedMode = localStorage.getItem('darkMode');
+            if (storedMode === 'enabled') {
+                return true;
+            } else if (storedMode === 'disabled') {
+                return false;
+            }
+            // Verifica a preferência do sistema se não houver nada no localStorage
+            return window.matchMedia('(prefers-color-scheme: dark)').matches;
+        } catch (error) {
+            console.error("Erro ao acessar localStorage:", error);
+            return false; // Valor padrão em caso de erro
+        }
+    });
 
     useEffect(() => {
-        // Verifica se o usuário já tem preferência salva no localStorage
-        const savedMode = localStorage.getItem('darkMode');
-        
-        if (savedMode === null) {
-            // Se não tiver preferência salva, aplica o modo escuro por padrão
-            setDarkMode(true);
-            document.body.classList.add('dark-mode');
-        } else {
-            // Se houver preferência salva, aplica conforme
-            setDarkMode(savedMode === 'enabled');
+        try {
+            localStorage.setItem('darkMode', darkMode ? 'enabled' : 'disabled');
+        } catch (error) {
+            console.error("Erro ao salvar no localStorage:", error);
         }
-    }, []);
 
-    useEffect(() => {
-        // Atualiza o modo no localStorage
-        localStorage.setItem('darkMode', darkMode ? 'enabled' : 'disabled');
-        // Altera a classe do body para aplicar as variáveis CSS
-        if (darkMode) {
-            document.body.classList.add('dark-mode');
-        } else {
-            document.body.classList.remove('dark-mode');
-        }
+        // Altera a classe do body para aplicar as variáveis CSS (melhoria aqui)
+        document.body.classList.toggle('dark-mode', darkMode);
+
     }, [darkMode]);
 
-    const toggleDarkMode = () => setDarkMode((prevMode) => !prevMode);
+    const toggleDarkMode = () => setDarkMode(prevMode => !prevMode);
 
     return (
-        <div>
-            <ParticlesComponent /> {/* Fundo de partículas */}
+        <div className="app-container"> {/* Adicione um container para aplicar estilos globais */}
+            <ParticlesComponent />
             <div className="content-wrapper">
                 <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
                 <Hero />
