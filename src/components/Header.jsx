@@ -1,26 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import '../styles/Header.css';
 
 function Header({ toggleDarkMode, darkMode }) {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+        document.body.style.overflow = menuOpen ? '' : 'hidden'; // Bloqueia/desbloqueia o scroll
+    };
+
+    const closeMenu = () => {
+        setMenuOpen(false);
+        document.body.style.overflow = ''; // Libera o scroll
+    };
+
     return (
         <header role="banner" className="header">
             <div className="container header__container">
                 <a href="#" className="header__logo" aria-label="Logo de Jeferson Reis">JR</a>
 
-                <button className="header__menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="header-nav">
+                <button 
+                    className={`header__menu-toggle ${menuOpen ? 'active' : ''}`} 
+                    aria-label="Abrir menu" 
+                    aria-expanded={menuOpen ? 'true' : 'false'} 
+                    onClick={toggleMenu}
+                >
                     <span className="header__menu-icon"></span>
                 </button>
 
-                <nav id="header-nav" className="header__nav" aria-label="Navegação principal">
+                <nav id="header-nav" className={`header__nav ${menuOpen ? 'open' : ''}`} aria-label="Navegação principal">
                     <ul className="header__nav-list">
-                        <li className="header__nav-item"><a href="#home" className="header__nav-link">Início</a></li>
-                        <li className="header__nav-item"><a href="#about" className="header__nav-link">Sobre</a></li>
-                        <li className="header__nav-item"><a href="#atuacao" className="header__nav-link">Áreas de Atuação</a></li>
-                        <li className="header__nav-item"><a href="#skills" className="header__nav-link">Habilidades</a></li>
-                        <li className="header__nav-item"><a href="#portfolio" className="header__nav-link">Portfólio</a></li>
-                        <li className="header__nav-item"><a href="#resume" className="header__nav-link">Currículo</a></li>
-                        <li className="header__nav-item"><a href="#contact" className="header__nav-link">Contato</a></li>
+                        <li className="header__nav-item"><a href="#home" className="header__nav-link" onClick={closeMenu}>Início</a></li>
+                        <li className="header__nav-item"><a href="#about" className="header__nav-link" onClick={closeMenu}>Sobre</a></li>
+                        <li className="header__nav-item"><a href="#atuacao" className="header__nav-link" onClick={closeMenu}>Áreas de Atuação</a></li>
+                        <li className="header__nav-item"><a href="#skills" className="header__nav-link" onClick={closeMenu}>Habilidades</a></li>
+                        <li className="header__nav-item"><a href="#portfolio" className="header__nav-link" onClick={closeMenu}>Portfólio</a></li>
+                        <li className="header__nav-item"><a href="#resume" className="header__nav-link" onClick={closeMenu}>Currículo</a></li>
+                        <li className="header__nav-item"><a href="#contact" className="header__nav-link" onClick={closeMenu}>Contato</a></li>
                     </ul>
                 </nav>
 
