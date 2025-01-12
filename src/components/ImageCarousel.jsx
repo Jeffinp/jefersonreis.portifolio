@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import '../styles/Projects.css'; // Importe o CSS do Projects, pois ele tem os estilos do carrossel
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import '../styles/Projects.css';
 
 const ImageCarousel = ({ options = {} }) => {
     const { transitionDuration = 500, autoAdvanceInterval = 4000, touchSensitivity = 100 } = options;
