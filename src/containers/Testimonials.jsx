@@ -13,7 +13,7 @@ const Testimonials = () => {
             content: '"O investimento no desenvolvimento do meu site valeu cada centavo! O design profissional e a otimização para conversões aumentaram muito as vendas dos meus cursos, sem a necessidade de grandes gastos com anúncios. Além disso, o serviço foi ágil e eficiente. Recomendo fortemente!"',
             author: 'Ricardo Dias',
             title: 'Professor de Artes e Fundador',
-            image: '/src/assets/image/RicardoDias.webp',
+            image: '/assets/images/RicardoDias.webp',
         },
         {
             rating: 5,
