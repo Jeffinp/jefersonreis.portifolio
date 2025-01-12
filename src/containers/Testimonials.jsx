@@ -74,11 +74,12 @@ const Testimonials = () => {
                         height="80"
                     />
                 )}
-                <h4 className="testimonial-author__name">
+                <h3 className="testimonial-author__name">
                     <strong>{testimonial.author}</strong>
-                </h4>
+                </h3>
                 <p className="testimonial-author__title">{testimonial.title}</p>
             </div>
+
         </div>
     ));
 
