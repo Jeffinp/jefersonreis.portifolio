@@ -11,9 +11,9 @@ import Testimonials from './containers/Testimonials.jsx';
 import Contact from './containers/Contact.jsx';
 import Footer from './components/Footer.jsx';
 import ScrollToTopBtn from './components/ScrollToTopBtn.jsx';
-import ParticlesComponent from './components/ParticlesComponent.jsx';
 import Atuacao from './containers/atuacao.jsx';
-import { Analytics } from "@vercel/analytics/react"
+
+import { Analytics } from "@vercel/analytics/react";
 
 import './styles/import.css';
 
@@ -26,11 +26,10 @@ const App = () => {
             } else if (storedMode === 'disabled') {
                 return false;
             }
-            // Verifica a preferência do sistema se não houver nada no localStorage
             return window.matchMedia('(prefers-color-scheme: dark)').matches;
         } catch (error) {
             console.error("Erro ao acessar localStorage:", error);
-            return false; // Valor padrão em caso de erro
+            return false;
         }
     });
 
@@ -41,16 +40,13 @@ const App = () => {
             console.error("Erro ao salvar no localStorage:", error);
         }
 
-        // Altera a classe do body para aplicar as variáveis CSS (melhoria aqui)
         document.body.classList.toggle('dark-mode', darkMode);
-
     }, [darkMode]);
 
     const toggleDarkMode = () => setDarkMode(prevMode => !prevMode);
 
     return (
-        <div className="app-container"> {/* Adicione um container para aplicar estilos globais */}
-            <ParticlesComponent />
+        <div className="app-container">
             <div className="content-wrapper">
                 <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
                 <Hero />
