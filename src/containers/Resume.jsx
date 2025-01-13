@@ -153,7 +153,7 @@ function Resume() {
                     {/* Seção de download do CV */}
                     <div className="resume__cta">
                         <p className="resume__cta-text">Para mais detalhes, baixe meu currículo completo:</p>
-                        <a href="/public/Jeferson currículo.pdf" download className="button button--primary">
+                        <a href="/assets/pdf/Jeferson_currículo.pdf" download className="button button--primary">
                             Baixar CV Completo
                         </a>
                     </div>
