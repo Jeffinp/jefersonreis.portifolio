@@ -19,28 +19,6 @@ Este site foi criado com tecnologias robustas e modernas:
 - **React**: Para a construção de interfaces de usuário reativas e componentes reutilizáveis.
 - **Git**: Para controle de versão e colaboração no desenvolvimento.
 - **Design Responsivo**: Para uma experiência de usuário consistente em diferentes dispositivos.
-  
----
-
-## 📂 **Seções do Site**
-
-### 1. **Sobre Mim**
-Um resumo detalhado sobre minha trajetória profissional, interesses e objetivos.
-
-### 2. **Habilidades**
-Um painel interativo com as principais tecnologias e competências que domino, incluindo front-end, back-end e design.
-
-### 3. **Projetos**
-Uma galeria visual com os meus principais projetos. Cada projeto inclui uma breve descrição, tecnologias usadas e links para repositórios ou demonstrações ao vivo.
-
-### 4. **Certificados**
-Seção onde exibo meus certificados de cursos e formações concluídas.
-
-### 5. **Timeline**
-Uma linha do tempo animada que apresenta minha evolução profissional e acadêmica de forma cronológica.
-
-### 6. **Contato**
-Uma área dedicada para facilitar a comunicação, com links para redes sociais, e-mail e WhatsApp.
 
 ---
 
