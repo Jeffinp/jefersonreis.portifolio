@@ -5,11 +5,13 @@ import '../styles/Header.css';
 function Header({ toggleDarkMode, darkMode }) {
     const [menuOpen, setMenuOpen] = useState(false);
 
+    // Função para alternar o estado do menu
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
         document.body.style.overflow = menuOpen ? '' : 'hidden'; // Bloqueia/desbloqueia o scroll
     };
 
+    // Função para fechar o menu e liberar o scroll
     const closeMenu = () => {
         setMenuOpen(false);
         document.body.style.overflow = ''; // Libera o scroll
