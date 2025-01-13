@@ -528,7 +528,7 @@ const ImageCarousel = ({ options = {} }) => {
 
                 <div className="carousel-item" data-category="modelagem">
                     <figure className="project-image">
-                        <img src="/assets/images/Artes/Bratailsnave.webp" alt="Bratails na Nave Espacial" loading="lazy" width="500" height="300" />
+                        <img src="/assets/images/Artes/BratailsNave.webp" alt="Bratails na Nave Espacial" loading="lazy" width="500" height="300" />
                         <figcaption>Bratails explorando o espaço em uma modelagem 3D feita no Blender. </figcaption>
                     </figure>
                 </div>
