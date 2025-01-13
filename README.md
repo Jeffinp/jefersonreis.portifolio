@@ -16,9 +16,10 @@ Este site foi criado com tecnologias robustas e modernas:
 
 - **HTML5** e **CSS3**: Para a estrutura e estilização do site.
 - **JavaScript**: Para funcionalidade e interatividade.
+- **React**: Para a construção de interfaces de usuário reativas e componentes reutilizáveis.
 - **Git**: Para controle de versão e colaboração no desenvolvimento.
 - **Design Responsivo**: Para uma experiência de usuário consistente em diferentes dispositivos.
-
+  
 ---
 
 ## 📂 **Seções do Site**
