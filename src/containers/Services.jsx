@@ -86,7 +86,7 @@ function Services() {
             </div>
 
             <div class="services__download">
-                <a href="/assets/pdf/Orçamento_de_Serviços.pdf" download class="services__download-btn">
+                <a href="./Orçamento_de_Serviços.pdf" download class="services__download-btn">
                     <span class="iconify" data-icon="line-md:file-download-filled"></span>
                     Baixe o Catálogo Completo de Serviços
                 </a>
