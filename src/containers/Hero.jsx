@@ -1,95 +1,55 @@
 import React, { useEffect } from "react";
 import "../styles/Hero.css";
 
-const particlesConfig = {
-    particles: {
-        number: {
-            value: 40,
-            density: { enable: true, value_area: 800 },
-        },
-        color: { value: "#ffffff" },
-        shape: {
-            type: ["circle", "star", "hexagon", "diamond"],
-            stroke: { width: 0, color: "#000000" },
-            polygon: { nb_sides: 6 },
-            custom: [
-                {
-                    // Estrelas
-                    draw: (context, color, radius) => {
-                        const angle = (2 * Math.PI) / 5;
-                        context.beginPath();
-                        for (let i = 0; i < 5; i++) {
-                            context.lineTo(
-                                radius * Math.cos(i * angle - Math.PI / 2),
-                                radius * Math.sin(i * angle - Math.PI / 2)
-                            );
-                        }
-                        context.closePath();
-                        context.fillStyle = color;
-                        context.fill();
-                    },
-                },
-                {
-                    // Diamantes
-                    draw: (context, color, radius) => {
-                        context.beginPath();
-                        context.moveTo(0, -radius);
-                        context.lineTo(radius, 0);
-                        context.lineTo(0, radius);
-                        context.lineTo(-radius, 0);
-                        context.closePath();
-                        context.fillStyle = color;
-                        context.fill();
-                    },
-                },
-            ],
-        },
-        opacity: {
-            value: 0.5,
-            anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false },
-        },
-        size: {
-            value: 4,
-            random: true,
-            anim: { enable: true, speed: 40, size_min: 0.1, sync: false },
-        },
-        line_linked: {
-            enable: true,
-            distance: 150,
-            color: "#ffffff",
-            opacity: 0.4,
-            width: 1,
-        },
-        move: {
-            enable: true,
-            speed: 2,
-            attract: { rotateX: 600, rotateY: 1200 },
-            direction: "none",
-            random: false,
-            straight: false,
-            out_mode: "out",
-            bounce: false,
-        },
-    },
-    interactivity: {
-        detect_on: "window",
-        events: {
-            onhover: { enable: true, mode: "repulse" },
-            onclick: { enable: true, mode: "push" },
-            resize: true,
-        },
-        modes: {
-            repulse: { distance: 100, duration: 0.4 },
-            push: { particles_nb: 4 },
-        },
-    },
-    retina_detect: true,
-};
-
 function Hero() {
     useEffect(() => {
         try {
-            window.particlesJS("particles-js", particlesConfig);
+            window.particlesJS("particles-js", {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: "#ffffff" },
+                    shape: { type: "circle" },
+                    opacity: {
+                        value: 0.5,
+                        random: false,
+                        animation: { enable: true, speed: 1, opacity_min: 0.1 }
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                        animation: { enable: true, speed: 2, size_min: 0.1 }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#ffffff",
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: "none",
+                        random: false,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false,
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: true, mode: "repulse" },
+                        onclick: { enable: true, mode: "push" },
+                        resize: true
+                    },
+                    modes: {
+                        repulse: { distance: 100, duration: 0.4 },
+                        push: { particles_nb: 4 }
+                    }
+                },
+                retina_detect: true
+            });
         } catch (error) {
             console.error("Erro ao inicializar o particles.js:", error);
         }
@@ -100,36 +60,30 @@ function Hero() {
             <div id="particles-js" className="particles-wrapper" aria-hidden="true"></div>
             <div className="hero__container">
                 <div className="hero__content">
-                    <img
-                        src="/assets/images/Linkedin-foto.webp"
-                        alt="Foto de Jeferson Reis, desenvolvedor web full-stack"
-                        className="hero__profile-pic"
-                        loading="eager"
-                        width="300"
-                        height="300"
-                    />
-                    <h1 id="heroTitle" className="hero__title" data-aos="fade-up">
+                    <div className="hero__profile-wrapper">
+                        <img
+                            src="/assets/images/Linkedin-foto.webp"
+                            alt="Foto de Jeferson Reis, desenvolvedor web full-stack"
+                            className="hero__profile-pic"
+                            loading="eager"
+                            width="300"
+                            height="300"
+                        />
+                    </div>
+                    <h1 id="heroTitle" className="hero__title">
                         Jeferson Reis Almeida
                     </h1>
-                    <p className="hero__subtitle" data-aos="fade-up" data-aos-delay="200">
+                    <p className="hero__subtitle">
                         Desenvolvedor Full-Stack | Designer Gráfico | Técnico em Informática |{" "}
                         <strong>Transformando Ideias em Realidade</strong> ✨
                     </p>
-                    <div className="hero__cta-buttons" data-aos="fade-up" data-aos-delay="400">
-                        <a href="#portfolio" className="button hero__cta" aria-label="Ver Meus Projetos">
-                            <span
-                                className="iconify"
-                                data-icon="akar-icons:arrow-right"
-                                aria-hidden="true"
-                            ></span>
+                    <div className="hero__cta-buttons">
+                        <a href="#portfolio" className="hero__button">
+                            <span className="hero__button-icon">→</span>
                             Ver Meus Projetos
                         </a>
-                        <a href="#contact" className="button button--secondary hero__cta" aria-label="Entrar em Contato">
-                            <span
-                                className="iconify"
-                                data-icon="mdi:email-outline"
-                                aria-hidden="true"
-                            ></span>
+                        <a href="#contact" className="hero__button hero__button--outline">
+                            <span className="hero__button-icon">✉</span>
                             Entrar em Contato
                         </a>
                     </div>

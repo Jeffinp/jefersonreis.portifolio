@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
-import '../styles/Header.css';
 
 function Header({ toggleDarkMode, darkMode }) {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -16,6 +15,15 @@ function Header({ toggleDarkMode, darkMode }) {
         setMenuOpen(false);
         document.body.style.overflow = ''; // Libera o scroll
     };
+
+    // Alterar o tema com base no estado darkMode
+    useEffect(() => {
+        if (darkMode) {
+            document.documentElement.classList.add('dark'); // Ativa o modo escuro
+        } else {
+            document.documentElement.classList.remove('dark'); // Desativa o modo escuro
+        }
+    }, [darkMode]);
 
     return (
         <header role="banner" className="header">
@@ -46,10 +54,24 @@ function Header({ toggleDarkMode, darkMode }) {
                 <div className="header__actions">
                     <div className="language-switch">
                         <a href="index.html" data-lang="pt" aria-label="Português" className="language-switch__link">
-                            <img src="https://img.icons8.com/?size=100&id=Mf5IDKBchhlr&format=png&color=000000" alt="Português" className="language-switch__icon" width="25" height="25" />PT
+                            <img 
+                                src="https://img.icons8.com/?size=100&id=Mf5IDKBchhlr&format=png&color=000000" 
+                                alt="Português" 
+                                className="language-switch__icon" 
+                                width="25" 
+                                height="25" 
+                            />
+                            PT
                         </a>
                         <a href="index-en.html" data-lang="en" aria-label="English" className="language-switch__link">
-                            <img src="https://img.icons8.com/?size=100&id=15532&format=png&color=000000" alt="Inglês" className="language-switch__icon" width="25" height="25" />EN
+                            <img 
+                                src="https://img.icons8.com/?size=100&id=15532&format=png&color=000000" 
+                                alt="Inglês" 
+                                className="language-switch__icon" 
+                                width="25" 
+                                height="25" 
+                            />
+                            EN
                         </a>
                     </div>
                     <button onClick={toggleDarkMode} className="header__dark-mode-toggle" aria-label="Alternar modo escuro">

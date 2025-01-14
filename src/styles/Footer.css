@@ -1,150 +1,149 @@
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    /* added line */
-    border: 0;
-}
-
 .footer {
-    background-color: var(--resume-background-color-light, #e5e7eb);
-    padding: var(--resume-spacing-xl, 30px) 0;
-    /* Espaçamento com variável */
-    font-family: var(--resume-font-family-base, 'Nunito Sans');
-    /* Sombra mais suave e sutil, com spread radius */
-    box-shadow: 0px -2px 8px 0px rgba(0, 0, 0, 0.08);
-    border-top: 1px solid var(--resume-border-color, #e5e7eb);
-    /* Adiciona borda superior */
+    position: relative;
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    color: white;
+    padding: 4rem 0 1rem;
+    overflow: hidden;
 }
 
-.footer::before {
-    content: none;
+.footer__wave {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.footer__wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 50px;
+}
+
+.footer__wave-shape {
+    fill: #ffffff;
 }
 
 .footer__container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--resume-spacing-lg, 20px);
+    padding: 0 2rem;
 }
 
 .footer__content {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--resume-spacing-xl, 30px);
-    margin-bottom: var(--resume-spacing-xl, 30px);
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 3rem;
 }
 
 .footer__logo {
-    /* Adicionado para melhor organização */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* Centraliza o conteúdo verticalmente */
+    flex: 1;
+    min-width: 300px;
+}
+
+.footer__logo-text {
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
 .footer__logo-link {
-    font-size: var(--resume-font-size-title, 1.8rem);
-    margin-bottom: var(--resume-spacing-xs, 5px);
+    color: white;
     text-decoration: none;
-    color: var(--resume-text-color, #1f2937);
-    transition: color var(--resume-transition-normal, 0.3s ease);
+    transition: color 0.3s ease;
 }
 
-.footer__logo-link:hover {
-    color: var(--resume-primary-color, #2563eb);
+.footer__logo-highlight {
+    color: #4a90e2;
+    font-weight: bold;
 }
 
 .footer__logo-subtitle {
-    font-size: var(--resume-font-size-base, 0.9rem);
-    color: var(--resume-text-color-secondary, #4b5563);
-}
-
-.footer__social-title {
-    font-size: var(--resume-font-size-section-title, 1.3rem);
-    margin-bottom: var(--resume-spacing-md, 15px);
-    color: var(--resume-text-color, #1f2937);
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: 0.9rem;
 }
 
 .footer__social {
-    /* Novo seletor para o container pai */
-    display: flex;
-    flex-direction: column;
-    /* Alinha verticalmente em telas menores */
-    align-items: center;
-    /* Centraliza horizontalmente em telas menores */
-    gap: var(--resume-spacing-md, 15px);
-    /* Espaçamento entre o título e a lista */
+    flex: 0 0 auto;
+}
+
+.footer__social-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #4a90e2;
 }
 
 .footer__social-list {
+    display: flex;
+    gap: 1rem;
     list-style: none;
     padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    /* Centraliza os ícones */
-    gap: var(--resume-spacing-lg, 20px);
-    /* Espaçamento entre os ícones */
 }
 
 .footer__social-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background-color: var(--resume-card-background, #fff);
-    /* Usando variável */
-    box-shadow: var(--resume-shadow-sm);
-    /* Usando variável para sombra mais consistente */
-    transition: background-color var(--resume-transition-normal, 0.3s ease), transform var(--resume-transition-normal, 0.3s ease);
-    color: var(--resume-text-color-secondary, #4b5563);
-    /* Cor consistente com o subtítulo */
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 .footer__social-link:hover {
-    background-color: var(--resume-primary-color, #2563eb);
     transform: translateY(-3px);
-    color: white;
 }
 
-.footer__social-link .iconify {
-    font-size: 1.8rem;
-    transition: color var(--resume-transition-normal, 0.3s ease);
-    /* Transição na cor do ícone */
+.footer__social-link.linkedin:hover {
+    background: #0077b5;
+    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.4);
+}
+
+.footer__social-link.github:hover {
+    background: #333;
+    box-shadow: 0 5px 15px rgba(51, 51, 51, 0.4);
+}
+
+.footer__social-link.instagram:hover {
+    background: #e4405f;
+    box-shadow: 0 5px 15px rgba(228, 64, 95, 0.4);
+}
+
+.footer__social-link.whatsapp:hover {
+    background: #25D366;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
 }
 
 .footer__bottom {
-    padding-top: var(--resume-spacing-lg, 20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
     text-align: center;
-    font-size: var(--resume-font-size-base, 0.9rem);
-    color: var(--resume-text-color-secondary, #4b5563);
-    border-top: 1px solid var(--resume-border-color, #e5e7eb);
-    /* Usando variável */
 }
 
-/* Media Query para telas maiores */
-@media (min-width: 769px) {
+.footer__copy {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
     .footer__content {
-        grid-template-columns: repeat(2, 1fr);
-        text-align: left;
+        flex-direction: column;
+        text-align: center;
     }
 
-    .footer__logo {
-        text-align: left;
-        align-items: flex-start;
-        /* Alinha o conteúdo ao topo em telas maiores */
+    .footer__social {
+        width: 100%;
     }
 
     .footer__social-list {
-        justify-content: flex-end;
-
+        justify-content: center;
     }
 }

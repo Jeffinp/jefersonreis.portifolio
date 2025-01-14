@@ -1,76 +1,87 @@
 import React from "react";
-import "../styles/Expertise.css"; // Importe o CSS para este componente
+import { Code2, Palette, Brain, Laptop } from "lucide-react";
 
-function Atuacao() {
+const Atuacao = () => {
+    const atuacaoItems = [
+        {
+            title: "Desenvolvedor Full-Stack",
+            icon: <Code2 className="w-8 h-8 md:w-12 md:h-12" />,
+            description: "Criação de sites, e-commerces, landing pages e sistemas web com foco em performance, segurança e experiência do usuário (UX/UI)."
+        },
+        {
+            title: "Designer Gráfico",
+            icon: <Palette className="w-8 h-8 md:w-12 md:h-12" />,
+            description: "Desenvolvimento de logotipos, banners, materiais gráficos e identidade visual, unindo criatividade e técnicas modernas de design."
+        },
+        {
+            title: "Desenvolvimento Web",
+            icon: <Brain className="w-8 h-8 md:w-12 md:h-12" />,
+            description: "Especializado em React e Node.js para criar soluções web inovadoras, sempre priorizando a experiência do usuário (UX) e as melhores práticas de desenvolvimento."
+        },
+        {
+            title: "Suporte Técnico",
+            icon: <Laptop className="w-8 h-8 md:w-12 md:h-12" />,
+            description: "Manutenção de computadores, otimização de sistemas e consultoria de TI para garantir o bom desempenho das empresas e indivíduos."
+        }
+    ];
+
     return (
-        <section id="atuacao" class="atuacao section" aria-labelledby="atuacaoTitle">
-            <div class="container">
-                <h2 id="atuacaoTitle" class="section__title">Áreas de Atuação</h2>
-                <p class="section__subtitle">Conheça minhas principais áreas de expertise e como posso ajudar seu projeto a decolar.</p>
-                <div class="atuacao__grid">
-                    <div class="atuacao__card">
-                        <div class="atuacao__icone-container">
-                            <span class="iconify atuacao__icone" data-icon="bi:code-slash"></span>
-                        </div>
-                        <div class="atuacao__conteudo">
-                            <h3 class="atuacao__titulo">Desenvolvimento Web Full-Stack</h3>
-                            <p class="atuacao__descricao">Criação de sites, e-commerces, landing pages e sistemas web com foco em performance, segurança e experiência do usuário (UX/UI). Domínio de tecnologias como React, Node.js, HTML, CSS e JavaScript.</p>
-                        </div>
-                    </div>
+        <section className="relative py-20 bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
+            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-10 dark:opacity-100" />
 
-                    <div class="atuacao__card">
-                        <div class="atuacao__icone-container">
-                            <span class="iconify atuacao__icone" data-icon="fa-solid:pencil-ruler"></span>
-                        </div>
-                        <div class="atuacao__conteudo">
-                            <h3 class="atuacao__titulo">Design Gráfico & Identidade Visual</h3>
-                            <p class="atuacao__descricao">Desenvolvimento de logotipos, banners, materiais para redes sociais e toda a identidade visual da sua marca. Domínio de ferramentas como Adobe Photoshop, Illustrator e CorelDRAW.</p>
-                        </div>
-                    </div>
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white mb-4 transition-colors duration-300">
+                        Áreas de Atuação
+                    </h2>
+                    <p className="text-lg text-slate-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
+                        Conheça minhas principais áreas de expertise e como posso ajudar seu projeto a decolar.
+                    </p>
+                </div>
 
-                    <div class="atuacao__card">
-                        <div class="atuacao__icone-container">
-                            <span class="iconify atuacao__icone" data-icon="akar-icons:video"></span>
-                        </div>
-                        <div class="atuacao__conteudo">
-                            <h3 class="atuacao__titulo">Edição de Vídeo e Motion</h3>
-                            <p class="atuacao__descricao">Edição de vídeos com motion graphics, corte, montagem, correção de cor e legendagem. Utilizo Premiere Pro, After Effects, Filmora e outras ferramentas para atender a diversas necessidades, como vídeos para YouTube, redes sociais, eventos, vinhetas e animações de logo.</p>
-                        </div>
-                    </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {atuacaoItems.map((item, index) => (
+                        <div
+                            key={index}
+                            className="relative group p-8 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-xl 
+                                     border border-slate-200 dark:border-slate-700 
+                                     hover:border-slate-300 dark:hover:border-slate-600 
+                                     transition-all duration-300 
+                                     hover:shadow-lg dark:hover:shadow-slate-700/50"
+                        >
+                            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 
+                                          dark:from-blue-500/10 dark:to-purple-500/10 
+                                          rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                    <div class="atuacao__card">
-                        <div class="atuacao__icone-container">
-                            <span class="iconify atuacao__icone" data-icon="bx:cube-alt"></span>
-                        </div>
-                        <div class="atuacao__conteudo">
-                            <h3 class="atuacao__titulo">Modelagem 3D e Visualização</h3>
-                            <p class="atuacao__descricao">Criação de modelos e ambientes 3D detalhados, renderizações fotorrealistas, animações e assets otimizados para AR/VR. Projetos prontos para impressão 3D e visualização profissional.</p>
-                        </div>
-                    </div>
+                            <div className="relative flex flex-col items-center">
+                                <div className="mb-6 p-4 rounded-full 
+                                            bg-gradient-to-r from-blue-500/10 to-purple-500/10 
+                                            dark:from-blue-500/20 dark:to-purple-500/20 
+                                            text-blue-600 dark:text-blue-400 
+                                            group-hover:text-blue-500 dark:group-hover:text-blue-300 
+                                            transition-colors duration-300">
+                                    {item.icon}
+                                </div>
 
-                    <div class="atuacao__card">
-                        <div class="atuacao__icone-container">
-                            <span class="iconify atuacao__icone" data-icon="fa-solid:laptop-code"></span>
-                        </div>
-                        <div class="atuacao__conteudo">
-                            <h3 class="atuacao__titulo">Suporte Técnico & Soluções em TI</h3>
-                            <p class="atuacao__descricao">Manutenção de computadores, formatação, otimização de sistemas, recuperação de dados, consultoria em informática e suporte técnico especializado.</p>
-                        </div>
-                    </div>
+                                <h3 className="text-xl font-semibold text-slate-800 dark:text-white mb-4 transition-colors duration-300">
+                                    {item.title}
+                                </h3>
 
-                    <div class="atuacao__card">
-                        <div class="atuacao__icone-container">
-                            <span class="iconify atuacao__icone" data-icon="fa-solid:chart-line"></span>
+                                <p className="text-slate-600 dark:text-gray-400 text-center leading-relaxed transition-colors duration-300">
+                                    {item.description}
+                                </p>
+                            </div>
+
+                            <div className="absolute bottom-0 left-0 right-0 h-[2px] 
+                                        bg-gradient-to-r from-blue-500 to-purple-500 
+                                        transform scale-x-0 group-hover:scale-x-100 
+                                        transition-transform duration-300" />
                         </div>
-                        <div class="atuacao__conteudo">
-                            <h3 class="atuacao__titulo">Produtividade & Automação de Processos</h3>
-                            <p class="atuacao__descricao">Desenvolvimento de planilhas avançadas, automatização de tarefas, organização de documentos e implementação de soluções para aumentar a eficiência e produtividade do seu negócio, com uso de ferramentas de automação e integração de IA.</p>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </section>
     );
-}
+};
 
 export default Atuacao;

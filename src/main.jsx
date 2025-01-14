@@ -12,10 +12,10 @@ import Contact from './containers/Contact.jsx';
 import Footer from './components/Footer.jsx';
 import ScrollToTopBtn from './components/ScrollToTopBtn.jsx';
 import Atuacao from './containers/atuacao.jsx';
+import './styles/import.css';
+import './styles/Style.css';
 
 import { Analytics } from "@vercel/analytics/react";
-
-import './styles/import.css';
 
 const App = () => {
     const [darkMode, setDarkMode] = useState(() => {
