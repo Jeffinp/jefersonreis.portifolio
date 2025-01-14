@@ -13,7 +13,6 @@ import Footer from './components/Footer.jsx';
 import ScrollToTopBtn from './components/ScrollToTopBtn.jsx';
 import Atuacao from './containers/atuacao.jsx';
 import './styles/import.css';
-import './styles/Style.css';
 
 import { Analytics } from "@vercel/analytics/react";
 
@@ -52,7 +51,7 @@ const App = () => {
                 <Hero />
                 <About />
                 <Atuacao />
-                <Skills />
+                <Skills/>
                 <Services />
                 <Resume />
                 <Projects />
