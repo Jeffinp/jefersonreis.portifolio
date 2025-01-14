@@ -14,13 +14,14 @@ const particlesConfig = {
             polygon: { nb_sides: 6 },
             custom: [
                 {
-                    // estrelas
+                    // Estrelas
                     draw: (context, color, radius) => {
+                        const angle = (2 * Math.PI) / 5;
                         context.beginPath();
                         for (let i = 0; i < 5; i++) {
                             context.lineTo(
-                                radius * Math.cos((i * 4 * Math.PI) / 5 - Math.PI / 2),
-                                radius * Math.sin((i * 4 * Math.PI) / 5 - Math.PI / 2)
+                                radius * Math.cos(i * angle - Math.PI / 2),
+                                radius * Math.sin(i * angle - Math.PI / 2)
                             );
                         }
                         context.closePath();
@@ -63,7 +64,11 @@ const particlesConfig = {
             enable: true,
             speed: 2,
             attract: { rotateX: 600, rotateY: 1200 },
-            ...(['direction', 'random', 'straight', 'out_mode', 'bounce'].reduce((acc, prop) => ({ ...acc, [prop]: false }), {})),
+            direction: "none",
+            random: false,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
         },
     },
     interactivity: {
@@ -83,12 +88,16 @@ const particlesConfig = {
 
 function Hero() {
     useEffect(() => {
-        window.particlesJS("particles-js", particlesConfig);
+        try {
+            window.particlesJS("particles-js", particlesConfig);
+        } catch (error) {
+            console.error("Erro ao inicializar o particles.js:", error);
+        }
     }, []);
 
     return (
         <section id="home" className="hero" aria-labelledby="heroTitle">
-            <div id="particles-js" className="particles-wrapper"></div>
+            <div id="particles-js" className="particles-wrapper" aria-hidden="true"></div>
             <div className="hero__container">
                 <div className="hero__content">
                     <img
@@ -107,7 +116,7 @@ function Hero() {
                         <strong>Transformando Ideias em Realidade</strong> ✨
                     </p>
                     <div className="hero__cta-buttons" data-aos="fade-up" data-aos-delay="400">
-                        <a href="#portfolio" className="button hero__cta">
+                        <a href="#portfolio" className="button hero__cta" aria-label="Ver Meus Projetos">
                             <span
                                 className="iconify"
                                 data-icon="akar-icons:arrow-right"
@@ -115,7 +124,7 @@ function Hero() {
                             ></span>
                             Ver Meus Projetos
                         </a>
-                        <a href="#contact" className="button button--secondary hero__cta">
+                        <a href="#contact" className="button button--secondary hero__cta" aria-label="Entrar em Contato">
                             <span
                                 className="iconify"
                                 data-icon="mdi:email-outline"
