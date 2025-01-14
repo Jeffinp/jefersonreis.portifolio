@@ -290,7 +290,7 @@ const ImageCarousel = ({ options = {} }) => {
                     <div className="project-info">
                         <h3 className="project-title"><strong>Curso de Desenho Online</strong></h3>
                         <p className="project-description">Site desenvolvido para um professor de desenho, utilizando <strong>HTML, CSS e JavaScript</strong>. Foco em <strong>experiência de usuário intuitiva</strong> e design <strong>responsivo</strong>, promovendo seus cursos de forma eficaz.</p>
-                        <a href="https://www.desenhosricardodias.com.br/" className="project-link" target="_blank" rel="noopener noreferrer">Ver Projeto</a>
+                        <a href="https://www.desenhosricardodias.com.br/" className="project-link" target="_blank" rel="noopener noreferrer">Ver site</a>
                     </div>
                 </div>
 
@@ -302,7 +302,19 @@ const ImageCarousel = ({ options = {} }) => {
                     <div className="project-info">
                         <h3 className="project-title"><strong>Seca e Define - Programa de Emagrecimento</strong></h3>
                         <p className="project-description">Site criado para divulgar um <strong>programa de emagrecimento online</strong>. Design <strong>moderno e intuitivo</strong>, com foco em <strong>depoimentos</strong> e informações relevantes para <strong>impulsionar as vendas</strong>.</p>
-                        <a href="https://secaedefine.vercel.app" className="project-link" target="_blank" rel="noopener noreferrer">Conhecer o Programa</a>
+                        <a href="https://secaedefine.vercel.app" className="project-link" target="_blank" rel="noopener noreferrer">Conhecer o site</a>
+                    </div>
+                </div>
+
+                <div className="carousel-item" data-category="web">
+                    <figure className="project-image">
+                        <img src="/assets/images/Screenshot_1051.webp" alt="Layout do site Seca e Define, com foco na apresentação do programa." loading="lazy" width="500" height="300" />
+                        <figcaption className="project-label project-label--contracted">Projeto Contratado</figcaption>
+                    </figure>
+                    <div className="project-info">
+                        <h3 className="project-title"><strong>Gerenciador de Arquivos Automatizado</strong></h3>
+                        <p className="project-description">O <strong>Organizador de Arquivos</strong> é um aplicativo <strong>de desktop</strong>, desenvolvido por mim, que utiliza <strong>Python</strong> e <strong>Electron</strong> para facilitar a <strong>organização de arquivos</strong> baseados em suas extensões. Ele é capaz de <strong>categorizar arquivos automaticamente</strong> em subpastas específicas (Imagens, Documentos, Músicas, Vídeos, Compactados, e Executáveis) e possui uma interface gráfica <strong>intuitiva e amigável</strong> que permite aos usuários selecionar diretórios e manter tudo organizado de maneira eficiente.</p>
+                        <a href="https://drive.google.com/drive/folders/1xQ-bAaj1QNShVqQTnPIQf7DcdmCDc1pm?usp=sharing" className="project-link" target="_blank" rel="noopener noreferrer">Conheça o gerenciador</a>
                     </div>
                 </div>
 
@@ -316,7 +328,7 @@ const ImageCarousel = ({ options = {} }) => {
                         <p className="project-description">
                             <strong>Chatbot em Python</strong> que auxilia no <strong>aprendizado da linguagem</strong>. Utiliza o modelo <strong>rufimelo/bert-large-portuguese-cased-sts</strong> para entender perguntas e fornecer <strong>respostas detalhadas</strong> sobre diversos tópicos, desde o <strong>básico</strong> até o <strong>avançado</strong>.
                         </p>
-                        <a href="https://github.com/Jeffinp/ProjetoPython" className="project-link" target="_blank" rel="noopener noreferrer">Veja o Projeto do Game</a>
+                        <a href="https://github.com/Jeffinp/ProjetoPython" className="project-link" target="_blank" rel="noopener noreferrer">Veja o ChatBot</a>
                     </div>
                 </div>
 
