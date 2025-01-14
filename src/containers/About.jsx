@@ -3,7 +3,7 @@ import { User, Palette } from "lucide-react";
 
 const SobreMim = () => {
     return (
-        <section className="relative py-20 bg-white dark:bg-slate-900">
+        <section id="about" className="relative py-20 bg-white dark:bg-slate-900">
             {/* Linha azul clara no topo */}
             <div className="absolute inset-x-0 top-0 h-1 bg-blue-400 dark:bg-blue-500" />
 

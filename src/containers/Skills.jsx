@@ -125,7 +125,7 @@ const Skills = () => {
     );
 
     return (
-        <section id="skills-section" className="py-16 bg-gray-50 dark:bg-gray-900">
+        <section id="skills" className="py-16 bg-gray-50 dark:bg-gray-900">
             <div className="max-w-6xl mx-auto px-4">
                 <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-200 mb-12 transform transition-all duration-500 ease-out"
                     style={{
