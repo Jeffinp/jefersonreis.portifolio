@@ -82,6 +82,7 @@ const Testimonials = () => {
 
         const handleTouchStart = (e) => {
             touchStartX = e.touches[0].clientX;
+            stopAutoplay();
         };
 
         const handleTouchEnd = (e) => {
@@ -93,6 +94,8 @@ const Testimonials = () => {
                 if (diff > 0) moveToNextSlide();
                 else moveToPrevSlide();
             }
+
+            startAutoplay();
         };
 
         updateSlidePosition();
@@ -112,49 +115,89 @@ const Testimonials = () => {
 
     return (
         <section id="depoimentos" className="py-16 bg-background dark:bg-gray-800 transition-colors duration-300">
-            <div className="max-w-6xl mx-auto px-4">
-                <h2 className="text-3xl font-bold text-center mb-12 text-text dark:text-gray-100 transition-colors duration-300">Depoimentos</h2>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                        Depoimentos
+                    </h2>
+                    <p className="text-lg text-gray-600 dark:text-gray-300">
+                        O que nossos clientes dizem sobre nossos serviços
+                    </p>
+                </div>
 
                 <div className="relative overflow-hidden">
                     <div ref={trackRef} className="flex transition-transform duration-500 ease-in-out">
                         {testimonials.map((testimonial, index) => (
                             <div key={index} className="w-full flex-shrink-0 px-4">
-                                <div className="bg-card dark:bg-gray-700 rounded-xl shadow-lg p-8 transition-colors duration-300">
-                                    <div className="flex mb-4">
-                                        {[...Array(testimonial.rating)].map((_, i) => (
-                                            <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                                        ))}
-                                    </div>
+                                <article className="group relative bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full">
+                                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                    <div className="relative m-[1px] bg-white dark:bg-gray-800 rounded-[11px] p-8 h-full">
+                                        <div className="flex mb-4">
+                                            {[...Array(testimonial.rating)].map((_, i) => (
+                                                <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                                            ))}
+                                        </div>
 
-                                    <p className="text-text dark:text-gray-300 text-lg mb-6 italic transition-colors duration-300">{testimonial.content}</p>
+                                        <p className="text-gray-600 dark:text-gray-300 text-lg mb-6 italic">
+                                            {testimonial.content}
+                                        </p>
 
-                                    <div className="flex items-center">
-                                        {testimonial.image && (
-                                            <img src={testimonial.image} alt={`Foto de ${testimonial.author}`} className="w-16 h-16 rounded-full object-cover mr-4" loading="lazy" />
-                                        )}
-                                        <div>
-                                            <h3 className="font-bold text-text dark:text-gray-100 transition-colors duration-300">{testimonial.author}</h3>
-                                            <p className="text-text-secondary dark:text-gray-400 transition-colors duration-300">{testimonial.title}</p>
+                                        <div className="flex items-center mt-6">
+                                            {testimonial.image && (
+                                                <div className="mr-4">
+                                                    <img 
+                                                        src={testimonial.image} 
+                                                        alt={`Foto de ${testimonial.author}`} 
+                                                        className="w-16 h-16 rounded-full object-cover ring-2 ring-blue-500 group-hover:ring-purple-500 transition-all duration-300" 
+                                                        loading="lazy" 
+                                                    />
+                                                </div>
+                                            )}
+                                            <div>
+                                                <h3 className="font-bold text-gray-900 dark:text-white">
+                                                    {testimonial.author}
+                                                </h3>
+                                                <p className="text-gray-600 dark:text-gray-400">
+                                                    {testimonial.title}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </article>
                             </div>
                         ))}
                     </div>
 
                     <div className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-4 mt-8">
-                        <button onClick={moveToPrevSlide} className="p-2 rounded-full bg-card dark:bg-gray-600 shadow-lg hover:bg-hover dark:hover:bg-gray-500 transition-colors duration-300" aria-label="Previous testimonial">
-                            <ChevronLeft className="w-6 h-6 text-text dark:text-gray-300 transition-colors duration-300" />
+                        <button 
+                            onClick={moveToPrevSlide} 
+                            className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 group"
+                            aria-label="Previous testimonial"
+                        >
+                            <ChevronLeft className="w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300" />
                         </button>
 
                         <div className="flex gap-2">
                             {testimonials.map((_, index) => (
-                                <button key={index} onClick={() => goToSlide(index)} className={`w-3 h-3 rounded-full transition-colors duration-300 ${index === activeSlideIndex ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-500 hover:bg-gray-400 dark:hover:bg-gray-400'}`} aria-label={`Go to testimonial ${index + 1}`} />
+                                <button
+                                    key={index}
+                                    onClick={() => goToSlide(index)}
+                                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                                        index === activeSlideIndex
+                                            ? 'bg-gradient-to-r from-blue-500 to-purple-500 scale-125'
+                                            : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+                                    }`}
+                                    aria-label={`Go to testimonial ${index + 1}`}
+                                />
                             ))}
                         </div>
 
-                        <button onClick={moveToNextSlide} className="p-2 rounded-full bg-card dark:bg-gray-600 shadow-lg hover:bg-hover dark:hover:bg-gray-500 transition-colors duration-300" aria-label="Next testimonial">
-                            <ChevronRight className="w-6 h-6 text-text dark:text-gray-300 transition-colors duration-300" />
+                        <button 
+                            onClick={moveToNextSlide} 
+                            className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 group"
+                            aria-label="Next testimonial"
+                        >
+                            <ChevronRight className="w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300" />
                         </button>
                     </div>
                 </div>
