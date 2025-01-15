@@ -4,9 +4,11 @@ import { ChevronDown, ChevronUp, Download } from "lucide-react";
 const Resume = () => {
     const [expanded, setExpanded] = useState(false);
 
-    const handleToggle = () => {
-        setExpanded(!expanded);
-    };
+    const Card = ({ children, className = "" }) => (
+        <div className={`bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 ${className}`}>
+            {children}
+        </div>
+    );
 
     return (
         <section id="resume" className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
@@ -21,8 +23,7 @@ const Resume = () => {
                 </div>
 
                 <div className="space-y-8">
-                    {/* Destaques */}
-                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
+                    <Card>
                         <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Destaques</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             {[
@@ -37,10 +38,9 @@ const Resume = () => {
                                 </div>
                             ))}
                         </div>
-                    </div>
+                    </Card>
 
-                    {/* Experiência Profissional */}
-                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
+                    <Card>
                         <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Experiência Profissional</h3>
                         <div className="space-y-6">
                             <div className="border-l-4 border-blue-500 pl-4">
@@ -52,12 +52,10 @@ const Resume = () => {
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </Card>
 
-                    {/* Conteúdo Expandível */}
                     <div className={`space-y-8 transition-all duration-300 ${expanded ? 'block' : 'hidden'}`}>
-                        {/* Habilidades Técnicas */}
-                        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
+                        <Card>
                             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Habilidades Técnicas</h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 <div className="space-y-2">
@@ -73,10 +71,9 @@ const Resume = () => {
                                     <p className="text-gray-600 dark:text-gray-300">HTML, CSS, WordPress, Bootstrap, Tailwind CSS</p>
                                 </div>
                             </div>
-                        </div>
+                        </Card>
 
-                        {/* Soft Skills */}
-                        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
+                        <Card>
                             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Soft Skills</h3>
                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                                 {[
@@ -93,14 +90,13 @@ const Resume = () => {
                                     </div>
                                 ))}
                             </div>
-                        </div>
+                        </Card>
                     </div>
 
-                    {/* Botão Ver Mais */}
                     <div className="text-center mt-8">
                         <button
-                            onClick={handleToggle}
-                            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300"
+                            onClick={() => setExpanded(!expanded)}
+                            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl"
                         >
                             {expanded ? (
                                 <>
@@ -114,7 +110,6 @@ const Resume = () => {
                         </button>
                     </div>
 
-                    {/* Download CV */}
                     <div className="text-center mt-16">
                         <a
                             href="./Jeferson_currículo.pdf"
