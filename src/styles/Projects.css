@@ -130,7 +130,7 @@
 
 .projects {
     padding: var(--resume-spacing-xxl) 0;
-    background: #1e2836;
+    background: var(--resume-background-color);
 }
 
 .project-container {

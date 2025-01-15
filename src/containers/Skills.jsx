@@ -5,6 +5,10 @@ const Skills = () => {
     const [openSection, setOpenSection] = useState(null);
     const [isVisible, setIsVisible] = useState(false);
 
+    const toggleSection = (sectionId) => {
+        setOpenSection(openSection === sectionId ? null : sectionId);
+    };
+
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -25,10 +29,6 @@ const Skills = () => {
             }
         };
     }, []);
-
-    const toggleSection = (sectionId) => {
-        setOpenSection(prevSection => prevSection === sectionId ? null : sectionId);
-    };
 
     const frontendSkills = [
         { name: 'HTML', percentage: 100 },
@@ -64,19 +64,19 @@ const Skills = () => {
 
     const SkillBar = ({ name, percentage, delay }) => (
         <div className="mb-4 transform translate-y-0 opacity-100 transition-all duration-500 ease-in-out"
-             style={{ 
-                 transitionDelay: `${delay}ms`,
-                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                 opacity: isVisible ? 1 : 0 
-             }}>
-            <div className="flex justify-between mb-1">
+            style={{
+                transitionDelay: `${delay}ms`,
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                opacity: isVisible ? 1 : 0
+            }}>
+            <div className="flex justify-between mb-2">
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{name}</span>
                 <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{percentage}%</span>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+            <div className="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
                 <div
-                    className="bg-blue-600 h-2.5 rounded-full transition-all duration-1000 ease-out"
-                    style={{ 
+                    className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-1000 ease-out"
+                    style={{
                         width: isVisible ? `${percentage}%` : '0%',
                         transitionDelay: `${delay + 200}ms`
                     }}
@@ -86,56 +86,50 @@ const Skills = () => {
     );
 
     const SkillSection = ({ title, icon, skills, id }) => (
-        <div className="bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-800 dark:shadow-lg transform transition-all duration-500 ease-in-out hover:scale-[1.02]">
-            <button
-                onClick={() => toggleSection(id)}
-                className="w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 transition-all duration-300 dark:bg-gradient-to-r dark:from-blue-800 dark:to-blue-900 dark:hover:from-blue-900 dark:hover:to-blue-700"
-            >
-                <div className="flex items-center gap-4">
-                    <span className="text-2xl transform transition-transform duration-300 hover:scale-110">{icon}</span>
-                    <div>
-                        <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">{title}</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Mais de 4 anos de experiência</p>
+        <div className="group relative bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="relative m-[1px] bg-white dark:bg-gray-800 rounded-[11px]">
+                <button
+                    onClick={() => toggleSection(id)}
+                    className="w-full px-6 py-4 flex items-center justify-between"
+                >
+                    <div className="flex items-center gap-4">
+                        <span className="text-2xl transform transition-transform duration-300 group-hover:scale-110">{icon}</span>
+                        <div>
+                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Mais de 4 anos de experiência</p>
+                        </div>
                     </div>
-                </div>
-                <div className="transform transition-transform duration-300">
-                    {openSection === id ? (
-                        <ChevronUp className="w-5 h-5 text-gray-600 dark:text-gray-200" />
-                    ) : (
-                        <ChevronDown className="w-5 h-5 text-gray-600 dark:text-gray-200" />
-                    )}
-                </div>
-            </button>
-            <div 
-                className={`transition-all duration-500 ease-in-out overflow-hidden ${
-                    openSection === id ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
-                }`}
-            >
-                <div className="px-6 py-4">
-                    {skills.map((skill, index) => (
-                        <SkillBar 
-                            key={index} 
-                            {...skill} 
-                            delay={index * 100}
-                        />
-                    ))}
+                    <div className="text-gray-600 dark:text-gray-400 transition-transform duration-300">
+                        {openSection === id ? <ChevronUp /> : <ChevronDown />}
+                    </div>
+                </button>
+                <div className={`transition-all duration-500 ease-in-out overflow-hidden ${openSection === id ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <div className="px-6 py-4 border-t border-gray-100 dark:border-gray-700">
+                        {skills.map((skill, index) => (
+                            <SkillBar key={index} {...skill} delay={index * 100} />
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
     );
 
     return (
-        <section id="skills-section" className="py-16 bg-gray-50 dark:bg-gray-900">
-            <div className="max-w-6xl mx-auto px-4">
-                <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-200 mb-12 transform transition-all duration-500 ease-out"
-                    style={{
-                        transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                        opacity: isVisible ? 1 : 0
-                    }}>
-                    Minhas Habilidades e Competências
-                </h2>
+        <section id="skills-section" className="relative py-20 bg-gradient-to-b from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] dark:opacity-20 opacity-5" />
 
-                <div className="grid gap-6 mb-12">
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                        Minhas Habilidades e Competências
+                    </h2>
+                    <p className="text-lg text-gray-600 dark:text-gray-300">
+                        Expertise técnica e habilidades interpessoais para entregar resultados excepcionais
+                    </p>
+                </div>
+
+                <div className="grid gap-6 mb-16">
                     <SkillSection
                         title="Desenvolvimento Frontend"
                         icon="🎨"
@@ -157,27 +151,25 @@ const Skills = () => {
                 </div>
 
                 <div className="mt-16">
-                    <h3 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200 mb-8">
+                    <h3 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">
                         Soft Skills
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {softSkills.map((skill, index) => (
                             <div
                                 key={index}
-                                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300 dark:bg-gray-800 dark:text-gray-200 dark:shadow-lg transform hover:scale-105"
-                                style={{
-                                    transitionDelay: `${index * 100}ms`,
-                                    transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.95)',
-                                    opacity: isVisible ? 1 : 0
-                                }}
+                                className="group relative bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
                             >
-                                <span className="text-3xl mb-4 block transform transition-transform duration-300 hover:scale-110">{skill.icon}</span>
-                                <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
-                                    {skill.title}
-                                </h4>
-                                <p className="text-gray-600 text-sm dark:text-gray-400">
-                                    {skill.description}
-                                </p>
+                                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <div className="relative m-[1px] bg-white dark:bg-gray-800 rounded-[11px] p-6 h-full">
+                                    <span className="text-3xl mb-4 block transform transition-transform duration-300 group-hover:scale-110">{skill.icon}</span>
+                                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                                        {skill.title}
+                                    </h4>
+                                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                                        {skill.description}
+                                    </p>
+                                </div>
                             </div>
                         ))}
                     </div>

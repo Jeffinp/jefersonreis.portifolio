@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 *,
 body,
 html {
@@ -18,7 +17,7 @@ html {
     --resume-accent-color-rgb: 249, 115, 22;
     --resume-text-color: #1F2937; /* Cinza escuro */
     --resume-text-color-secondary: #4B5563; /* Cinza médio */
-    --resume-background-color: #F3F4F6; /* Fundo claro suave */
+    --resume-background-color: #fbfbfd;
     --resume-background-color-light: #E5E7EB; /* Cinza claro */
     --resume-card-background: #FFFFFF; /* Branco */
     --resume-hover-color: #2563EB; /* Azul mais intenso */
@@ -70,7 +69,7 @@ body.dark-mode {
     --resume-accent-color-rgb: 249, 115, 22;
     --resume-text-color: #D1D5DB; /* Cinza claro */
     --resume-text-color-secondary: #9CA3AF; /* Cinza médio */
-    --resume-background-color: #0c111b; /* Fundo escuro */
+    --resume-background-color: #1e2836; /* Fundo escuro */
     --resume-background-color-light: #1F2937; /* Cinza escuro */
     --resume-card-background: #2D3748; /* Fundo de card escuro */
     --resume-hover-color: #3B82F6; /* Azul mais claro */
