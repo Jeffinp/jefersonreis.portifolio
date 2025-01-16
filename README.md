@@ -50,26 +50,17 @@ cd jefersonreis.github.io
 
 3. Abra o arquivo index.html em seu navegador.
 
-
-
-
 ---
 
-📬 Contato
+## 📬 **Contato**
 
 Sinta-se à vontade para entrar em contato comigo:
 
-Email: jefersonreisalmeida8356@gmail.com
-
-LinkedIn: Perfil no LinkedIn
-
-GitHub: Perfil no GitHub
-
-Instagram: Perfil no Instagram
-
-WhatsApp: Enviar Mensagem
-
-
+- **Email**: [jefersonreisalmeida8356@gmail.com](mailto:jefersonreisalmeida8356@gmail.com)
+- **LinkedIn**: [Perfil no LinkedIn](https://www.linkedin.com/in/jeferson-reis-877a942b7/)
+- **GitHub**: [Perfil no GitHub](https://github.com/Jeffinp)
+- **Instagram**: [Perfil no Instagram](https://www.instagram.com/jeffinx___/)
+- **WhatsApp**: [Enviar Mensagem](https://wa.me/qr/KW2XXA46XAXNH1)
 
 ---
 
