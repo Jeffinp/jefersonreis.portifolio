@@ -64,14 +64,14 @@ Sinta-se à vontade para entrar em contato comigo:
 
 ---
 
-📝 Licença
+## 📝 Licença
 
 Este projeto está sob a licença MIT, permitindo uso, modificação e distribuição livre, desde que a devida atribuição seja feita.
 
 
 ---
 
-📈 Status do Projeto
+## 📈 Status do Projeto
 
 Este portfólio está em constante desenvolvimento, com atualizações regulares para refletir novos projetos, habilidades e melhorias no design.
 
