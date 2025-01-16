@@ -18,7 +18,7 @@ const Contact = () => {
     ];
 
     return (
-        <section id="contact" className="py-16 bg-background dark:bg-gray-800 transition-colors duration-300">
+        <section id="contact" className="relative py-20 bg-white dark:bg-slate-900">
             <div className="max-w-6xl mx-auto px-4">
                 <h2 className="text-3xl font-bold text-center mb-12 text-text dark:text-gray-100 transition-colors duration-300">Contato</h2>
 

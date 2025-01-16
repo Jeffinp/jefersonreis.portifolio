@@ -116,7 +116,7 @@ const Skills = () => {
     );
 
     return (
-        <section id="skills-section" className="relative py-20 bg-gradient-to-b from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        <section id="skills-section" className="relative py-20 bg-white dark:bg-slate-900">
             <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] dark:opacity-20 opacity-5" />
 
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
