@@ -301,7 +301,7 @@ const projects = [
         title: 'Teste de Modelagem',
         description: 'Um teste de modelagem 3D de personagem.'
     },
-    
+
     {
         category: 'design',
         image: '/assets/images/Artes/Versões.webp',
@@ -461,16 +461,18 @@ const ProjectCarousel = () => {
                                         <p className="mb-4 text-gray-600 dark:text-gray-300">
                                             {project.description}
                                         </p>
-                                        {project.link && (
-                                            <a
-                                                href={project.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl"
-                                            >
-                                                Ver Projeto
-                                            </a>
-                                        )}
+                                        <div className="flex gap-2 flex-wrap">
+                                            {project.link && (
+                                                <a
+                                                    href={project.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+                                                >
+                                                    Ver Projeto
+                                                </a>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -492,9 +494,21 @@ const ProjectCarousel = () => {
                         &gt;
                     </button>
                 </div>
+
+                <div className="text-center mt-8">
+                    <a
+                        href="https://drive.google.com/drive/folders/1kNUbhpuYBDRTLjD66vBwfSweugiabAIE?usp=drive_link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    >
+                        Ver em Qualidade Máxima! Em até 4K!
+                    </a>
+                </div>
             </div>
         </section>
     );
+
 };
 
 export default ProjectCarousel;
