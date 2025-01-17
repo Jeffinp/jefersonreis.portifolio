@@ -55,7 +55,7 @@ function Header({ toggleDarkMode, darkMode }) {
                     <div className="language-switch">
                         <a href="index.html" data-lang="pt" aria-label="Português" className="language-switch__link">
                             <img 
-                                src="https://img.icons8.com/?size=100&id=Mf5IDKBchhlr&format=png&color=000000" 
+                                src="assets\images\icon\brazil.svg"
                                 alt="Português" 
                                 className="language-switch__icon" 
                                 width="25" 
@@ -65,7 +65,7 @@ function Header({ toggleDarkMode, darkMode }) {
                         </a>
                         <a href="index-en.html" data-lang="en" aria-label="English" className="language-switch__link">
                             <img 
-                                src="https://img.icons8.com/?size=100&id=15532&format=png&color=000000" 
+                                src="assets\images\icon\eua.svg"
                                 alt="Inglês" 
                                 className="language-switch__icon" 
                                 width="25" 

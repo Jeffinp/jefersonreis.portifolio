@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1.9 1.0" width="1900" height="1000">
+  
+  <!-- Fundo da bandeira -->
+  <rect width="1.9" height="1.0" fill="#B22234"/>
+  
+  <!-- Faixas vermelhas -->
+  <g fill="#ffffff">
+    <rect width="1.9" height="0.0769" y="0.0769"/>
+    <rect width="1.9" height="0.0769" y="0.2308"/>
+    <rect width="1.9" height="0.0769" y="0.3846"/>
+    <rect width="1.9" height="0.0769" y="0.5385"/>
+    <rect width="1.9" height="0.0769" y="0.6923"/>
+    <rect width="1.9" height="0.0769" y="0.8462"/>
+  </g>
+  
+  <!-- Seção azul -->
+  <rect width="0.76" height="0.5385" fill="#0033A0"/>
+  
+  <!-- Estrelas -->
+  <g fill="#ffffff">
+    <!-- Primeira linha de estrelas -->
+    <circle cx="0.076" cy="0.076" r="0.019"/>
+    <circle cx="0.152" cy="0.076" r="0.019"/>
+    <circle cx="0.228" cy="0.076" r="0.019"/>
+    <circle cx="0.304" cy="0.076" r="0.019"/>
+    <circle cx="0.38" cy="0.076" r="0.019"/>
+    <circle cx="0.456" cy="0.076" r="0.019"/>
+    <circle cx="0.532" cy="0.076" r="0.019"/>
+    
+    <!-- Segunda linha de estrelas -->
+    <circle cx="0.114" cy="0.152" r="0.019"/>
+    <circle cx="0.19" cy="0.152" r="0.019"/>
+    <circle cx="0.266" cy="0.152" r="0.019"/>
+    <circle cx="0.342" cy="0.152" r="0.019"/>
+    <circle cx="0.418" cy="0.152" r="0.019"/>
+    <circle cx="0.494" cy="0.152" r="0.019"/>
+    
+    <!-- Terceira linha de estrelas -->
+    <circle cx="0.076" cy="0.228" r="0.019"/>
+    <circle cx="0.152" cy="0.228" r="0.019"/>
+    <circle cx="0.228" cy="0.228" r="0.019"/>
+    <circle cx="0.304" cy="0.228" r="0.019"/>
+    <circle cx="0.38" cy="0.228" r="0.019"/>
+    
+    <!-- Quarta linha de estrelas -->
+    <circle cx="0.114" cy="0.304" r="0.019"/>
+    <circle cx="0.19" cy="0.304" r="0.019"/>
+    <circle cx="0.266" cy="0.304" r="0.019"/>
+    <circle cx="0.342" cy="0.304" r="0.019"/>
+    
+    <!-- Quinta linha de estrelas -->
+    <circle cx="0.076" cy="0.38" r="0.019"/>
+    <circle cx="0.152" cy="0.38" r="0.019"/>
+    <circle cx="0.228" cy="0.38" r="0.019"/>
+    <circle cx="0.304" cy="0.38" r="0.019"/>
+    
+    <!-- Sexta linha de estrelas -->
+    <circle cx="0.114" cy="0.456" r="0.019"/>
+    <circle cx="0.19" cy="0.456" r="0.019"/>
+    <circle cx="0.266" cy="0.456" r="0.019"/>
+    
+    <!-- Sétima linha de estrelas -->
+    <circle cx="0.076" cy="0.532" r="0.019"/>
+    <circle cx="0.152" cy="0.532" r="0.019"/>
+    <circle cx="0.228" cy="0.532" r="0.019"/>
+  </g>
+</svg>
