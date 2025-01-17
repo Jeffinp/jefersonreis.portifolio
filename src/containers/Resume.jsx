@@ -124,7 +124,7 @@ const Resume = () => {
                         </p>
                     </div>
                 </div>
-            </div>div
+            </div>
         </section>
     );
 };

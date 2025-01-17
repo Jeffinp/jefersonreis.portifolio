@@ -1,29 +1,41 @@
 import React from "react";
-import { Code2, Palette, Brain, Laptop } from "lucide-react";
+import { Code2, Palette, Brain, Laptop, FileText, Box, Camera, Cpu } from "lucide-react";
 
 const Atuacao = () => {
     const atuacaoItems = [
         {
-            title: "Desenvolvedor Full-Stack",
+            title: "Desenvolvimento Web Imersivo",
             icon: <Code2 className="w-8 h-8 md:w-12 md:h-12" />,
-            description: "Criação de sites, e-commerces, landing pages e sistemas web com foco em performance, segurança e experiência do usuário (UX/UI)."
+            description: "Criação de Landing Pages, Sites Institucionais e E-commerces otimizados para SEO, com foco em responsividade e conversão."
         },
         {
-            title: "Designer Gráfico",
+            title: "Design & Identidade Visual",
             icon: <Palette className="w-8 h-8 md:w-12 md:h-12" />,
-            description: "Desenvolvimento de logotipos, banners, materiais gráficos e identidade visual, unindo criatividade e técnicas modernas de design."
+            description: "Desenvolvimento de logotipos, identidades visuais, manipulação de imagens e materiais gráficos para fortalecer a sua marca."
         },
         {
-            title: "Desenvolvimento Web",
-            icon: <Brain className="w-8 h-8 md:w-12 md:h-12" />,
-            description: "Especializado em React e Node.js para criar soluções web inovadoras, sempre priorizando a experiência do usuário (UX) e as melhores práticas de desenvolvimento."
+            title: "Documentação Profissional",
+            icon: <FileText className="w-8 h-8 md:w-12 md:h-12" />,
+            description: "Criação de apresentações, propostas, planilhas, currículos, relatórios e documentos de controle financeiro, com formatação impecável."
+        },
+        {
+            title: "Modelagem 3D & Visualização",
+            icon: <Box className="w-8 h-8 md:w-12 md:h-12" />,
+            description: "Modelagem 3D, animações, renderizações fotorrealistas e assets para AR/VR e impressão 3D."
         },
         {
             title: "Suporte Técnico",
-            icon: <Laptop className="w-8 h-8 md:w-12 md:h-12" />,
-            description: "Manutenção de computadores, otimização de sistemas e consultoria de TI para garantir o bom desempenho das empresas e indivíduos."
+            icon: <Cpu className="w-8 h-8 md:w-12 md:h-12" />,
+            description: "Manutenção de sistemas, recuperação de dados e otimização de dispositivos com atendimento remoto ou presencial."
+        },
+        {
+            title: "Edição e Motion Graphics",
+            icon: <Camera className="w-8 h-8 md:w-12 md:h-12" />,
+            description: "Edição de vídeos e animações profissionais com After Effects, Premiere Pro e Filmora para YouTube, redes sociais e outros formatos."
         }
     ];
+    
+    
 
     return (
         <section id="atuacao"className="relative py-20 bg-white dark:bg-slate-900">

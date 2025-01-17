@@ -10,13 +10,13 @@ const Contact = () => {
             linkText: '+55 71 9 8439-3235',
         },
         {
-            icon: <Mail className="w-6 h-6 text-primary fill-current" />,
+            icon: <img src="assets\images\icon\mail-heart-svgrepo-com.svg" alt="Email" className="w-8 h-8" />,
             title: 'Envie um email para me contar sobre sua ideia!',
             link: 'mailto:jefersonreisalmeida8356@gmail.com',
             linkText: 'jefersonreisalmeida8356@gmail.com',
         },
     ];
-
+    
     return (
         <section id="contact" className="relative py-20 bg-white dark:bg-slate-900">
             <div className="max-w-6xl mx-auto px-4">

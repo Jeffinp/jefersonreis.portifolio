@@ -153,7 +153,8 @@ const projects = [
         category: 'design',
         image: '/assets/images/Artes/hamburguer.webp',
         title: 'Design de Hambúrguer',
-        description: 'Design apetitoso de hambúrguer criado para uma hamburgueria local.'
+        description: 'Design apetitoso de hambúrguer criado para uma hamburgueria local.',
+        type: 'contracted'
     },
     {
         category: 'design',
@@ -166,13 +167,15 @@ const projects = [
         category: 'design',
         image: '/assets/images/Artes/PizzalDoSul.webp',
         title: 'Design de Pizza',
-        description: 'Design de pizza criado especialmente para a pizzaria de um cliente.'
+        description: 'Design de pizza criado especialmente para a pizzaria de um cliente.',
+        type: 'contracted'
     },
     {
         category: 'design',
         image: '/assets/images/Artes/PizzaInsta.webp',
         title: 'Imagem Promocional de Pizza',
-        description: 'Imagem promocional de pizza, perfeita para bombar as redes sociais!'
+        description: 'Imagem promocional de pizza, perfeita para bombar as redes sociais!',
+        type: 'contracted'
     },
     {
         category: 'design',
@@ -240,7 +243,8 @@ const projects = [
         category: 'design',
         image: '/assets/images/Artes/ArteVicente.webp',
         title: 'Capa Musical Vicente',
-        description: 'Capa de música criada especialmente para o artista Vicente.'
+        description: 'Capa de música criada especialmente para o artista Vicente.',
+        type: 'contracted'
     },
     {
         category: 'design',
@@ -511,6 +515,7 @@ const ProjectCarousel = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+                        aria-label="Ver todos os projetos em alta resolução no Google Drive"
                     >
                         Ver em Qualidade Máxima! Em até 4K!
                     </a>
