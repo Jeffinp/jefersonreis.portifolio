@@ -23,7 +23,7 @@ const projects = [
         title: 'Gerenciador de Arquivos Automatizado',
         description: 'O Organizador de Arquivos é um aplicativo de desktop, desenvolvido por mim, que utiliza Python e Electron para facilitar a organização de arquivos baseados em suas extensões.',
         link: 'https://drive.google.com/drive/folders/1xQ-bAaj1QNShVqQTnPIQf7DcdmCDc1pm?usp=sharing',
-        type: 'contracted'
+        type: 'personal'
     },
     {
         category: 'web',
@@ -113,25 +113,29 @@ const projects = [
         category: 'design',
         image: '/assets/images/Artes/Azete.webp',
         title: 'Design de Marca Azeite',
-        description: 'Criei este design de marca para azeite no Photoshop.'
+        description: 'Criei este design de marca para azeite no Photoshop.',
+        type: 'contracted'
     },
     {
         category: 'design',
         image: '/assets/images/Artes/BandeiraEstilosaBrasil.webp',
         title: 'Bandeira Estilizada do Brasil',
-        description: 'Uma versão estilizada da nossa bandeira, com um toque de cristais, feita sob encomenda.'
+        description: 'Uma versão estilizada da nossa bandeira, com um toque de cristais, feita sob encomenda.',
+        type: 'contracted'
     },
     {
         category: 'design',
         image: '/assets/images/Artes/DesignComputador.webp',
         title: 'Design de Gabinete Gamer',
-        description: 'Um design de gabinete gamer personalizado para um cliente apaixonado por jogos!'
+        description: 'Um design de gabinete gamer personalizado para um cliente apaixonado por jogos!',
+        type: 'contracted'
     },
     {
         category: 'design',
         image: '/assets/images/Artes/Estampa.webp',
         title: 'Estampa de Camisa Ambiental',
-        description: 'Estampa de camisa para o dia do meio ambiente, um projeto escolar que adorei desenvolver.'
+        description: 'Estampa de camisa para o dia do meio ambiente, um projeto escolar que gostei muito em desenvolver.',
+        type: 'contracted'
     },
     {
         category: 'design',
@@ -155,7 +159,8 @@ const projects = [
         category: 'design',
         image: '/assets/images/Artes/Alastor.webp',
         title: 'Desenho em Caderno',
-        description: 'Um desenho feito à mão no caderno e colorido digitalmente.'
+        description: 'Um desenho feito à mão no caderno e colorido digitalmente.',
+        type: 'contracted'
     },
     {
         category: 'design',
@@ -191,7 +196,8 @@ const projects = [
         category: 'modelagem',
         image: '/assets/images/Artes/BratailsNave.webp',
         title: 'Bratails na Nave Espacial',
-        description: 'Bratails explorando o espaço em uma modelagem 3D feita no Blender.'
+        description: 'Bratails explorando o espaço em uma modelagem 3D feita no Blender.',
+        type: 'contracted'
     },
     {
         category: 'design',
@@ -209,7 +215,8 @@ const projects = [
         category: 'design',
         image: '/assets/images/Artes/TFK.webp',
         title: 'Brasões dos Quatro Reinos',
-        description: 'Quatro brasões com design heráldico, representando reinos distintos.'
+        description: 'Quatro brasões com design heráldico, representando reinos distintos.',
+        type: 'contracted'
     },
     {
         category: 'design',
@@ -269,7 +276,8 @@ const projects = [
         category: 'design',
         image: '/assets/images/Artes/ClickTeamLogo.webp',
         title: 'Logo CLICKTEAM',
-        description: 'O logo da CLICKTEAM, com um design moderno e minimalista.'
+        description: 'O logo da CLICKTEAM, com um design moderno e minimalista.',
+        type: 'contracted'
     },
     {
         category: 'modelagem',
@@ -293,7 +301,8 @@ const projects = [
         category: 'design',
         image: '/assets/images/Artes/ProtScreabiny.webp',
         title: 'Protótipo Screaviny',
-        description: 'Protótipo do personagem Screaviny para um projeto de jogo.'
+        description: 'Protótipo do personagem Screaviny para um projeto de jogo.',
+        type: 'contracted'
     },
     {
         category: 'modelagem',
@@ -306,7 +315,8 @@ const projects = [
         category: 'design',
         image: '/assets/images/Artes/Versões.webp',
         title: 'Ícones Discord',
-        description: 'Quatro versões de um ícone para um servidor do Discord.'
+        description: 'Quatro versões de um ícone para um servidor do Discord.',
+        type: 'contracted'
     }
 ];
 
@@ -403,7 +413,7 @@ const ProjectCarousel = () => {
     }, [currentIndex, isHovering, isTransitioning, nextSlide, showSlide, updateVisibleItems, visibleItems.length]);
 
     return (
-        <section className="relative py-20 bg-white dark:bg-slate-900">
+        <section id="portfolio" className="relative py-20 bg-white dark:bg-slate-900">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">

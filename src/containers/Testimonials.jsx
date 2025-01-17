@@ -121,7 +121,7 @@ const Testimonials = () => {
                         Depoimentos
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300">
-                        O que nossos clientes dizem sobre nossos serviços
+                        Depoimentos de Clientes Satisfeitos
                     </p>
                 </div>
 
