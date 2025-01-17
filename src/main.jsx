@@ -14,17 +14,18 @@ import ScrollToTopBtn from './components/ScrollToTopBtn.jsx';
 import Atuacao from './containers/atuacao.jsx';
 import './styles/import.css';
 
-import { Analytics } from "@vercel/analytics/react";
-
 const App = () => {
+    // Usando o estado para controlar o tema escuro
     const [darkMode, setDarkMode] = useState(() => {
         try {
+            // Verifico se o modo escuro está salvo no localStorage
             const storedMode = localStorage.getItem('darkMode');
             if (storedMode === 'enabled') {
                 return true;
             } else if (storedMode === 'disabled') {
                 return false;
             }
+            // Se não estiver salvo, verifico a preferência do usuário
             return window.matchMedia('(prefers-color-scheme: dark)').matches;
         } catch (error) {
             console.error("Erro ao acessar localStorage:", error);
@@ -32,6 +33,7 @@ const App = () => {
         }
     });
 
+    // UseEffect para salvar a configuração do tema no localStorage
     useEffect(() => {
         try {
             localStorage.setItem('darkMode', darkMode ? 'enabled' : 'disabled');
@@ -39,19 +41,22 @@ const App = () => {
             console.error("Erro ao salvar no localStorage:", error);
         }
 
+        // classe 'dark-mode' no body para trocar o tema
         document.body.classList.toggle('dark-mode', darkMode);
     }, [darkMode]);
 
+    // Função para alternar o modo escuro
     const toggleDarkMode = () => setDarkMode(prevMode => !prevMode);
 
     return (
         <div className="app-container">
             <div className="content-wrapper">
+                {/* função de alternar o modo escuro para o Header */}
                 <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
                 <Hero />
                 <About />
                 <Atuacao />
-                <Skills/>
+                <Skills />
                 <Services />
                 <Resume />
                 <Projects />
@@ -64,8 +69,10 @@ const App = () => {
     );
 };
 
+// Crio o root para renderizar o app
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+// renderizar o componente App dentro de StrictMode para detectar problemas
 root.render(
     <React.StrictMode>
         <App />

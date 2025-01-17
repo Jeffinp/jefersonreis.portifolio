@@ -3,6 +3,8 @@ import { Linkedin, Github, Instagram, MessageCircle } from 'lucide-react';
 import { FaDiscord } from 'react-icons/fa';
 
 const Footer = () => {
+    
+    //icones
     const socialLinks = [
         {
             icon: <Linkedin className="transition-all duration-300 group-hover:text-blue-500 dark:group-hover:text-blue-400" aria-label="LinkedIn" />,
