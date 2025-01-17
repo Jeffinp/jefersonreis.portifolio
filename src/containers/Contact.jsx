@@ -1,5 +1,5 @@
 import React from 'react';
-import { PhoneCall, Mail } from 'lucide-react';
+import { PhoneCall } from 'lucide-react';
 
 const Contact = () => {
     const contactInfo = [
