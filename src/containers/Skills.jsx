@@ -46,13 +46,18 @@ const Skills = () => {
     ];
 
     const toolsSkills = [
-        { name: 'MySQL', percentage: 90 },
+        { name: 'After Effects', percentage: 90 },
         { name: 'Bootstrap', percentage: 80 },
-        { name: 'UX Design', percentage: 100 },
-        { name: 'Figma', percentage: 100 },
-        { name: 'Photoshop', percentage: 85 },
-        { name: 'Illustrator', percentage: 90 },
+        { name: 'Canva', percentage: 90 },
         { name: 'CorelDRAW', percentage: 95 },
+        { name: 'Figma', percentage: 100 },
+        { name: 'Filmora', percentage: 85 },
+        { name: 'Illustrator', percentage: 90 },
+        { name: 'MySQL', percentage: 90 },
+        { name: 'Pacote office', percentage: 100 },
+        { name: 'Photoshop', percentage: 85 },
+        { name: 'Premiere', percentage: 80 },
+        { name: 'UX Design', percentage: 100 },
     ];
 
     const softSkills = [
