@@ -1,58 +1,78 @@
 import React from "react";
-import { Code2, Palette, Brain, Laptop, FileText, Box, Camera, Cpu } from "lucide-react";
+import { useTranslation } from 'react-i18next';
+import { Code2, Palette, FileText, Box, Camera, Cpu } from "lucide-react";
 
-const Atuacao = () => {
-    const atuacaoItems = [
+const ExpertiseAreas = () => {
+    const { t } = useTranslation();
+
+    const expertiseItems = [
         {
-            title: "Desenvolvimento Web Imersivo",
+            title: "Immersive Web Development",
             icon: <Code2 className="w-8 h-8 md:w-12 md:h-12" />,
-            description: "Criação de Landing Pages, Sites Institucionais e E-commerces otimizados para SEO, com foco em responsividade e conversão."
+            description: "Creation of Landing Pages, Corporate Websites, and E-commerce platforms optimized for SEO, focusing on responsiveness and conversion."
         },
         {
-            title: "Design & Identidade Visual",
+            title: "Design & Visual Identity",
             icon: <Palette className="w-8 h-8 md:w-12 md:h-12" />,
-            description: "Desenvolvimento de logotipos, identidades visuais, manipulação de imagens e materiais gráficos para fortalecer a sua marca."
+            description: "Development of logos, visual identities, image manipulation, and graphic materials to strengthen your brand."
         },
         {
-            title: "Documentação Profissional",
+            title: "Professional Documentation",
             icon: <FileText className="w-8 h-8 md:w-12 md:h-12" />,
-            description: "Criação de apresentações, propostas, planilhas, currículos, relatórios e documentos de controle financeiro, com formatação impecável."
+            description: "Creation of presentations, proposals, spreadsheets, resumes, reports, and financial control documents with impeccable formatting."
         },
         {
-            title: "Modelagem 3D & Visualização",
+            title: "3D Modeling & Visualization",
             icon: <Box className="w-8 h-8 md:w-12 md:h-12" />,
-            description: "Modelagem 3D, animações, renderizações fotorrealistas e assets para AR/VR e impressão 3D."
+            description: "3D modeling, animations, photorealistic renderings, and assets for AR/VR and 3D printing."
         },
         {
-            title: "Suporte Técnico",
+            title: "Technical Support",
             icon: <Cpu className="w-8 h-8 md:w-12 md:h-12" />,
-            description: "Manutenção de sistemas, recuperação de dados e otimização de dispositivos com atendimento remoto ou presencial."
+            description: "System maintenance, data recovery, and device optimization with remote or on-site support."
         },
         {
-            title: "Edição e Motion Graphics",
+            title: "Editing and Motion Graphics",
             icon: <Camera className="w-8 h-8 md:w-12 md:h-12" />,
-            description: "Edição de vídeos e animações profissionais com After Effects, Premiere Pro e Filmora para YouTube, redes sociais e outros formatos."
+            description: "Professional video editing and animations using After Effects, Premiere Pro, and Filmora for YouTube, social media, and other formats."
         }
     ];
-    
-    
+
+    // Add these translations to your i18n configuration
+    const i18nAdditions = {
+        en: {
+            translation: {
+                expertise: {
+                    title: 'Areas of Expertise',
+                    subtitle: 'Discover my main areas of expertise and how I can help your project take off.',
+                    items: expertiseItems.reduce((acc, item, index) => ({
+                        ...acc,
+                        [`item${index}`]: {
+                            title: item.title,
+                            description: item.description
+                        }
+                    }), {})
+                }
+            }
+        }
+    };
 
     return (
-        <section id="atuacao"className="relative py-20 bg-white dark:bg-slate-900">
+        <section id="expertise" className="relative py-20 bg-white dark:bg-slate-900">
             <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] dark:opacity-20 opacity-5" />
 
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                        Áreas de Atuação
+                        {t('expertise.title')}
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                        Conheça minhas principais áreas de expertise e como posso ajudar seu projeto a decolar.
+                        {t('expertise.subtitle')}
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {atuacaoItems.map((item, index) => (
+                    {expertiseItems.map((item, index) => (
                         <div
                             key={index}
                             className="group relative bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
@@ -68,11 +88,11 @@ const Atuacao = () => {
                                     </div>
 
                                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 text-center">
-                                        {item.title}
+                                        {t(`expertise.items.item${index}.title`)}
                                     </h3>
 
                                     <p className="text-gray-600 dark:text-gray-300 text-center leading-relaxed">
-                                        {item.description}
+                                        {t(`expertise.items.item${index}.description`)}
                                     </p>
                                 </div>
                             </div>
@@ -84,4 +104,4 @@ const Atuacao = () => {
     );
 };
 
-export default Atuacao;
+export default ExpertiseAreas;

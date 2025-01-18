@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Skills = () => {
+    const { t } = useTranslation();
     const [openSection, setOpenSection] = useState(null);
     const [isVisible, setIsVisible] = useState(false);
 
@@ -54,7 +56,7 @@ const Skills = () => {
         { name: 'Filmora', percentage: 85 },
         { name: 'Illustrator', percentage: 90 },
         { name: 'MySQL', percentage: 90 },
-        { name: 'Pacote office', percentage: 100 },
+        { name: 'Office Suite', percentage: 100 },
         { name: 'Photoshop', percentage: 85 },
         { name: 'Premiere', percentage: 80 },
         { name: 'UX Design', percentage: 100 },
@@ -101,8 +103,12 @@ const Skills = () => {
                     <div className="flex items-center gap-4">
                         <span className="text-2xl transform transition-transform duration-300 group-hover:scale-110">{icon}</span>
                         <div>
-                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">Mais de 4 anos de experiência</p>
+                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                                {t(`skills.sections.${id}.title`)}
+                            </h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">
+                                {t(`skills.sections.${id}.experience`)}
+                            </p>
                         </div>
                     </div>
                     <div className="text-gray-600 dark:text-gray-400 transition-transform duration-300">
@@ -127,28 +133,28 @@ const Skills = () => {
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                        Minhas Habilidades e Competências
+                        {t('skills.title')}
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300">
-                        Expertise técnica e habilidades interpessoais para entregar resultados excepcionais
+                        {t('skills.subtitle')}
                     </p>
                 </div>
 
                 <div className="grid gap-6 mb-16">
                     <SkillSection
-                        title="Desenvolvimento Frontend"
+                        title={t('skills.sections.frontend.title')}
                         icon="🎨"
                         skills={frontendSkills}
                         id="frontend"
                     />
                     <SkillSection
-                        title="Desenvolvimento Backend"
+                        title={t('skills.sections.backend.title')}
                         icon="⚙️"
                         skills={backendSkills}
                         id="backend"
                     />
                     <SkillSection
-                        title="Ferramentas & Outras Habilidades"
+                        title={t('skills.sections.tools.title')}
                         icon="🛠️"
                         skills={toolsSkills}
                         id="tools"
@@ -157,17 +163,19 @@ const Skills = () => {
 
                 <div className="mt-16">
                     <h3 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">
-                        Soft Skills
+                        {t('skills.softSkills.title')}
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {softSkills.map((skill, index) => (
+                        {Object.entries(t('skills.softSkills.items', { returnObjects: true })).map(([key, skill], index) => (
                             <div
-                                key={index}
+                                key={key}
                                 className="group relative bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 <div className="relative m-[1px] bg-white dark:bg-gray-800 rounded-[11px] p-6 h-full">
-                                    <span className="text-3xl mb-4 block transform transition-transform duration-300 group-hover:scale-110">{skill.icon}</span>
+                                    <span className="text-3xl mb-4 block transform transition-transform duration-300 group-hover:scale-110">
+                                        {['👥', '🤝', '💡', '⏱️'][index]}
+                                    </span>
                                     <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                                         {skill.title}
                                     </h4>

@@ -7,29 +7,29 @@ html {
     margin: 0;
     padding: 0
 }
-
 :root {
+
     /* Cores - Modo Claro */
-    --resume-primary-color: #1D4ED8; /* Azul vibrante */
+    --resume-primary-color: #1D4ED8;
     --resume-primary-color-rgb: 29, 78, 216;
-    --resume-secondary-color: #10B981; /* Verde vibrante */
-    --resume-accent-color: #F97316; /* Laranja (complementar ao azul) */
+    --resume-secondary-color: #10B981;
+    --resume-accent-color: #F97316;
     --resume-accent-color-rgb: 249, 115, 22;
-    --resume-text-color: #1F2937; /* Cinza escuro */
-    --resume-text-color-secondary: #4B5563; /* Cinza médio */
+    --resume-text-color: #1F2937;
+    --resume-text-color-secondary: #4B5563;
     --resume-background-color: #fbfbfd;
-    --resume-background-color-light: #E5E7EB; /* Cinza claro */
-    --resume-card-background: #FFFFFF; /* Branco */
-    --resume-hover-color: #2563EB; /* Azul mais intenso */
-    --resume-active-color: #1E40AF; /* Azul mais escuro */
-    --resume-focus-color: #3B82F6; /* Azul claro */
-    --resume-success-color: #10B981; /* Verde suave */
+    --resume-background-color-light: #E5E7EB;
+    --resume-card-background: #FFFFFF;
+    --resume-hover-color: #2563EB;
+    --resume-active-color: #1E40AF;
+    --resume-focus-color: #3B82F6;
+    --resume-success-color: #10B981;
     --resume-success-color-rgb: 16, 185, 129;
-    --resume-warning-color: #F59E0B; /* Amarelo quente */
-    --resume-error-color: #EF4444; /* Vermelho vibrante */
-    --resume-info-color: #60A5FA; /* Azul suave */
-    --resume-border-color: #E5E7EB; /* Cinza claro */
-    --resume-border-color-light: #D1D5DB; /* Cinza mais claro */
+    --resume-warning-color: #F59E0B;
+    --resume-error-color: #EF4444;
+    --resume-info-color: #60A5FA;
+    --resume-border-color: #E5E7EB;
+    --resume-border-color-light: #D1D5DB;
     --resume-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --resume-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --resume-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -62,31 +62,32 @@ html {
 
 /* Variáveis para o Modo Escuro */
 body.dark-mode {
-    --resume-primary-color: #2563EB; /* Azul vibrante */
+    --resume-primary-color: #2563EB;
     --resume-primary-color-rgb: 37, 99, 235;
-    --resume-secondary-color: #10B981; /* Verde vibrante */
-    --resume-accent-color: #F97316; /* Laranja vibrante */
+    --resume-secondary-color: #10B981; 
+    --resume-accent-color: #F97316;
     --resume-accent-color-rgb: 249, 115, 22;
-    --resume-text-color: #D1D5DB; /* Cinza claro */
-    --resume-text-color-secondary: #9CA3AF; /* Cinza médio */
-    --resume-background-color: #1e2836; /* Fundo escuro */
-    --resume-background-color-light: #1F2937; /* Cinza escuro */
-    --resume-card-background: #2D3748; /* Fundo de card escuro */
-    --resume-hover-color: #3B82F6; /* Azul mais claro */
-    --resume-active-color: #1E40AF; /* Azul escuro */
-    --resume-focus-color: #3B82F6; /* Azul claro */
-    --resume-success-color: #10B981; /* Verde suave */
+    --resume-text-color: #D1D5DB; 
+    --resume-text-color-secondary: #9CA3AF;
+    --resume-background-color: #1e2836;
+    --resume-background-color-light: #1F2937;
+    --resume-card-background: #2D3748;
+    --resume-hover-color: #3B82F6;
+    --resume-active-color: #1E40AF;
+    --resume-focus-color: #3B82F6;
+    --resume-success-color: #10B981;
     --resume-success-color-rgb: 16, 185, 129;
-    --resume-warning-color: #F59E0B; /* Amarelo quente */
-    --resume-error-color: #EF4444; /* Vermelho vibrante */
-    --resume-info-color: #60A5FA; /* Azul suave */
-    --resume-border-color: #374151; /* Cinza escuro */
-    --resume-border-color-light: #4B5563; /* Cinza médio */
+    --resume-warning-color: #F59E0B;
+    --resume-error-color: #EF4444;
+    --resume-info-color: #60A5FA;
+    --resume-border-color: #374151;
+    --resume-border-color-light: #4B5563;
     --resume-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
     --resume-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.18);
     --resume-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
     --resume-background-color-rgb: 17, 24, 39;
 }
+
 
 * {
     box-sizing: border-box

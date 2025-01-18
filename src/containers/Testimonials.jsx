@@ -1,57 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
 const Testimonials = () => {
+    const { t } = useTranslation();
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);
     const trackRef = useRef(null);
     const autoplayInterval = useRef(null);
     const autoplayDelay = 5000;
 
-    const testimonials = [
-        {
-            rating: 5,
-            content: '"O investimento no desenvolvimento do meu site valeu cada centavo! O design profissional e a otimização para conversões aumentaram muito as vendas dos meus cursos, sem a necessidade de grandes gastos com anúncios. Além disso, o serviço foi ágil e eficiente. Recomendo fortemente!"',
-            author: 'Ricardo Dias',
-            title: 'Professor de Artes e Fundador',
-            image: '/assets/images/RicardoDias.webp',
-        },
-        {
-            rating: 5,
-            content: '"Como Diretora de Tecnologia da School Vision, posso afirmar que o trabalho do Jeferson foi essencial para modernizar nossa plataforma. A solução que ele desenvolveu nos permitiu otimizar processos internos e oferecer uma melhor experiência para nossos alunos."',
-            author: 'Camila Oliveira',
-            title: 'Diretora de Tecnologia da School Vision',
-        },
-        {
-            rating: 5,
-            content: '"A criação do meu site pelo Jeferson foi um divisor de águas para o meu negócio. Antes, eu tinha dificuldades em alcançar novos clientes online. Agora, com um site moderno e funcional, minha presença digital se fortaleceu e as vendas aumentaram consideravelmente."',
-            author: 'Lucas Oliveira',
-            title: 'Proprietário, Barbearia Estilo Urbano',
-        },
-        {
-            rating: 5,
-            content: '"O Jeferson demonstrou um profissionalismo incrível durante todo o processo de desenvolvimento do meu site. Ele foi atencioso às minhas necessidades, entregou o projeto dentro do prazo e superou minhas expectativas com um resultado final impecável."',
-            author: 'Ana Silva',
-            title: 'Proprietária, Loja de Roupas Femininas',
-        },
-        {
-            rating: 5,
-            content: '"Precisávamos de uma solução personalizada para nossa empresa e o Jeferson entregou exatamente o que precisávamos. O sistema que ele desenvolveu é intuitivo, eficiente e tem nos ajudado a otimizar nossos processos de gestão."',
-            author: 'João Pereira',
-            title: 'Gerente de Projetos, Empresa de Consultoria',
-        },
-        {
-            rating: 5,
-            content: '"Recomendo o Jeferson sem hesitação! Ele é um profissional dedicado, talentoso e com um profundo conhecimento em desenvolvimento web. O site que ele criou para minha empresa é moderno, responsivo e atende perfeitamente às minhas necessidades."',
-            author: 'Mariana Costa',
-            title: 'Empreendedora Digital',
-        },
-        {
-            rating: 5,
-            content: '"O Jeferson me ajudou a transformar minha ideia em realidade. Ele criou um site incrível para o meu novo negócio, com um design moderno e funcionalidades que me permitem interagir melhor com meus clientes. Estou muito satisfeita com o resultado!"',
-            author: 'Fernanda Rodrigues',
-            title: 'Fundadora, Marca de Acessórios',
-        },
-    ];
+    const testimonials = t('testimonials.testimonialsList', { returnObjects: true });
 
     const goToSlide = (index) => setActiveSlideIndex(index);
     const moveToNextSlide = () => setActiveSlideIndex((prev) => (prev + 1) % testimonials.length);
@@ -111,17 +69,17 @@ const Testimonials = () => {
             track.removeEventListener('touchend', handleTouchEnd);
             window.removeEventListener('resize', updateSlidePosition);
         };
-    }, [activeSlideIndex]);
+    }, [activeSlideIndex, testimonials.length]);
 
     return (
-        <section id="depoimentos" className="relative py-20 bg-white dark:bg-slate-900">
+        <section id="testimonials" className="relative py-20 bg-white dark:bg-slate-900">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                        Depoimentos
+                        {t('testimonials.title')}
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300">
-                        Depoimentos de Clientes Satisfeitos
+                        {t('testimonials.subtitle')}
                     </p>
                 </div>
 
@@ -147,7 +105,7 @@ const Testimonials = () => {
                                                 <div className="mr-4">
                                                     <img 
                                                         src={testimonial.image} 
-                                                        alt={`Foto de ${testimonial.author}`} 
+                                                        alt={t('testimonials.imageAlt', { name: testimonial.author })}
                                                         className="w-16 h-16 rounded-full object-cover ring-2 ring-blue-500 group-hover:ring-purple-500 transition-all duration-300" 
                                                         loading="lazy" 
                                                     />
@@ -172,7 +130,7 @@ const Testimonials = () => {
                         <button 
                             onClick={moveToPrevSlide} 
                             className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 group"
-                            aria-label="Previous testimonial"
+                            aria-label={t('testimonials.accessibility.prevButton')}
                         >
                             <ChevronLeft className="w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300" />
                         </button>
@@ -187,7 +145,7 @@ const Testimonials = () => {
                                             ? 'bg-gradient-to-r from-blue-500 to-purple-500 scale-125'
                                             : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
                                     }`}
-                                    aria-label={`Go to testimonial ${index + 1}`}
+                                    aria-label={t('testimonials.accessibility.goToSlide', { number: index + 1 })}
                                 />
                             ))}
                         </div>
@@ -195,7 +153,7 @@ const Testimonials = () => {
                         <button 
                             onClick={moveToNextSlide} 
                             className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 group"
-                            aria-label="Next testimonial"
+                            aria-label={t('testimonials.accessibility.nextButton')}
                         >
                             <ChevronRight className="w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300" />
                         </button>

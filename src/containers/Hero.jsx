@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 import "../styles/Hero.css";
 
 function Hero() {
+    const { t } = useTranslation();
+
     useEffect(() => {
         try {
             window.particlesJS("particles-js", {
@@ -63,7 +66,7 @@ function Hero() {
                     <div className="hero__profile-wrapper">
                         <img
                             src="/assets/images/Linkedin-foto.webp"
-                            alt="Foto de Jeferson Reis, desenvolvedor web full-stack"
+                            alt={t('hero.profileAlt')}
                             className="hero__profile-pic"
                             loading="eager"
                             width="300"
@@ -71,20 +74,20 @@ function Hero() {
                         />
                     </div>
                     <h1 id="heroTitle" className="hero__title">
-                        Jeferson Reis Almeida
+                        {t('hero.title')}
                     </h1>
                     <p className="hero__subtitle">
-                        Desenvolvedor Full-Stack | Designer Gráfico | Técnico em Informática |{" "}
-                        <strong>Transformando Ideias em Realidade</strong> ✨
+                        {t('hero.subtitle')}
+                        <strong>{t('hero.transforming')}</strong> ✨
                     </p>
                     <div className="hero__cta-buttons">
                         <a href="#portfolio" className="hero__button">
                             <span className="hero__button-icon">→</span>
-                            Ver Meus Projetos
+                            {t('hero.buttons.viewProjects')}
                         </a>
                         <a href="#contact" className="hero__button hero__button--outline">
                             <span className="hero__button-icon">✉</span>
-                            Entrar em Contato
+                            {t('hero.buttons.contact')}
                         </a>
                     </div>
                 </div>

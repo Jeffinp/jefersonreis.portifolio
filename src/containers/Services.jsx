@@ -1,37 +1,40 @@
 import React from "react";
 import { Globe, Palette, FileText, Box, Laptop, Video, Download } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 const Services = () => {
+    const { t } = useTranslation();
+
     const services = [
         {
             icon: <Globe className="w-8 h-8" />,
-            title: "Desenvolvimento Web Imersivo",
-            description: "Crio experiências web únicas! Landing Pages que convertem, Sites Institucionais que contam sua história, E-commerces dinâmicos e Blogs envolventes. Design personalizado, responsividade e SEO para o topo das buscas!"
+            title: "services.items.web.title",
+            description: "services.items.web.description"
         },
         {
             icon: <Palette className="w-8 h-8" />,
-            title: "Design & Identidade Visual Memorável",
-            description: "Desenvolvo logotipos marcantes e identidades visuais completas. Crio artes para redes sociais, banners, flyers e outros materiais publicitários que fortalecem sua marca e conectam você com seus clientes."
+            title: "services.items.design.title",
+            description: "services.items.design.description"
         },
         {
             icon: <FileText className="w-8 h-8" />,
-            title: "Documentação Profissional Impecável",
-            description: "Transformo suas ideias em documentos profissionais e impactantes. Apresentações que impressionam, documentos empresariais claros, planilhas avançadas, currículos que destacam talentos e trabalhos acadêmicos com formatação ABNT impecável."
+            title: "services.items.documentation.title",
+            description: "services.items.documentation.description"
         },
         {
             icon: <Box className="w-8 h-8" />,
-            title: "Modelagem 3D & Visualização Imersiva",
-            description: "Dou vida aos seus projetos com modelagem 3D de alta qualidade! Modelos e ambientes 3D detalhados, renderizações fotorrealistas, animações e assets otimizados para AR/VR. Projetos prontos para impressão 3D e visualização profissional."
+            title: "services.items.modeling.title",
+            description: "services.items.modeling.description"
         },
         {
             icon: <Laptop className="w-8 h-8" />,
-            title: "Suporte Técnico Eficiente",
-            description: "Suporte técnico completo para seus equipamentos: formatação, otimização, limpeza, recuperação de dados e manutenção preventiva. Atendimento remoto ou presencial, com agilidade e profissionalismo."
+            title: "services.items.support.title",
+            description: "services.items.support.description"
         },
         {
             icon: <Video className="w-8 h-8" />,
-            title: "Edição e Motion Graphics Profissional",
-            description: "Vídeos dinâmicos e envolventes! Corte, montagem, correção de cor, efeitos, legendagem, motion graphics e animações (com After Effects). Uso Premiere Pro, After Effects, Filmora e outras ferramentas top. Perfeito para YouTube, redes sociais, vídeos institucionais, eventos, vinhetas, animações de logo!"
+            title: "services.items.video.title",
+            description: "services.items.video.description"
         }
     ];
 
@@ -40,10 +43,10 @@ const Services = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                        Meus Serviços
+                        {t('services.title')}
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300">
-                        Soluções profissionais personalizadas para dar vida às suas ideias!
+                        {t('services.subtitle')}
                     </p>
                 </div>
 
@@ -58,10 +61,10 @@ const Services = () => {
                                     </div>
                                 </div>
                                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                                    {service.title}
+                                    {t(service.title)}
                                 </h3>
                                 <p className="text-gray-600 dark:text-gray-300">
-                                    {service.description}
+                                    {t(service.description)}
                                 </p>
                             </div>
                         </article>
@@ -70,15 +73,15 @@ const Services = () => {
 
                 <div className="mt-16 text-center">
                     <a
-                        href="./Orçamento_de_Serviços.pdf"
+                        href="./Services_Catalog.pdf"
                         download
                         className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl"
                     >
                         <Download className="w-5 h-5 mr-2" />
-                        Baixe o Catálogo Completo de Serviços
+                        {t('services.downloadButton')}
                     </a>
                     <p className="mt-4 text-gray-600 dark:text-gray-300">
-                        Descubra todos os detalhes e valores em meu catálogo!
+                        {t('services.downloadDescription')}
                     </p>
                 </div>
             </div>
