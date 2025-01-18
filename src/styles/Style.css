@@ -7,8 +7,8 @@ html {
     margin: 0;
     padding: 0
 }
-:root {
 
+:root {
     /* Cores - Modo Claro */
     --resume-primary-color: #1D4ED8;
     --resume-primary-color-rgb: 29, 78, 216;
