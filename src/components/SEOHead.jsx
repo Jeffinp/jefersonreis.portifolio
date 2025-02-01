@@ -13,7 +13,7 @@ const SEOHead = () => {
             ogDescription: "Jeferson Reis Portfolio: Full-Stack Developer, Graphic Designer and IT Technician. Innovative web projects, impactful design, IT solutions and process automation.",
             imageAlt: "Photo of Jeferson Reis - Full-Stack Developer, Graphic Designer and IT Technician"
         },
-        'pt-BR': {
+        'pt': {
             title: "Jeferson Reis - Desenvolvedor Full-Stack, Designer & Técnico em Informática | Portfólio",
             description: "Jeferson Reis: Desenvolvedor Full-Stack, Designer Gráfico e Técnico em Informática. Especialista em React, Node.js, UX/UI, criação de logotipos, identidade visual, manutenção de computadores e automação de processos. Freelancer em Camaçari, Bahia. Veja meu portfólio e entre em contato!",
             keywords: "desenvolvedor full-stack, freelancer, react, node.js, javascript, html, css, design gráfico, ux design, ui design, web development, portfólio, camaçari, bahia, projetos web, front-end, back-end, informática, manutenção de computadores, suporte técnico, pacote office, word, excel, powerpoint, automação de processos, identidade visual, logotipo, edição de vídeo, motion graphics, modelagem 3d",
