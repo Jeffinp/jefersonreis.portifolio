@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
+import { HelmetProvider } from 'react-helmet-async';
 import Header from "./components/Header.jsx";
 import Hero from "./containers/Hero.jsx";
 import About from "./containers/About.jsx";
@@ -14,6 +15,7 @@ import ScrollToTopBtn from "./components/ScrollToTopBtn.jsx";
 import Atuacao from "./containers/atuacao.jsx";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
+import SEOHead from './components/SEOHead';
 import "./styles/import.css";
 
 const App = () => {
@@ -46,6 +48,7 @@ const App = () => {
 
     return (
         <div className="app-container">
+            <SEOHead />
             <div className="content-wrapper">
                 <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
                 <Hero />
@@ -68,8 +71,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
     <React.StrictMode>
-        <I18nextProvider i18n={i18n}>
-            <App />
-        </I18nextProvider>
+        <HelmetProvider>
+            <I18nextProvider i18n={i18n}>
+                <App />
+            </I18nextProvider>
+        </HelmetProvider>
     </React.StrictMode>
 );
