@@ -111,6 +111,10 @@ const resources = {
                     viewHighRes: "Ver em Qualidade Máxima! Em até 4K!"
                 },
                 projects: {
+                    flyserv:{
+                        title: "FlyServ Drones",
+                        description: "Desenvolvi o front-end e back-end do site FlyServ Drones, criando a estrutura, mecânica e experiência do usuário para garantir um desempenho otimizado e uma navegação intuitiva."
+                    },                    
                     onlineDrawingCourse: {
                         title: "Curso de Desenho Online",
                         description: "Site desenvolvido para um professor de desenho, utilizando HTML, CSS e JavaScript. Foco em experiência de usuário intuitiva e design responsivo."
@@ -582,6 +586,10 @@ const resources = {
                     viewHighRes: "View in High Resolution! Up to 4K!"
                 },
                 projects: {
+                    flyserv:{
+                        title: "FlyServ Drones",
+                        description: "I developed the front-end and back-end of the FlyServ  Drones website, building its structure, mechanics, and user experience to ensure optimized performance and intuitive navigation."
+                    },                    
                     onlineDrawingCourse: {
                         title: "Online Drawing Course",
                         description: "Website developed for a drawing teacher using HTML, CSS, and JavaScript. Focus on intuitive user experience and responsive design."

@@ -21,6 +21,14 @@ const PortfolioSection = () => {
     const projects = [
         {
             category: "web",
+            image: "/assets/images/flyserv.webp",
+            titleKey: "portfolio.projects.flyserv.title",
+            descriptionKey: "portfolio.projects.flyserv.description",
+            link: "https://flyservdrones.com.br/",
+            type: "contracted",
+        },
+        {
+            category: "web",
             image: "/assets/images/Screenshot_987.webp",
             titleKey: "portfolio.projects.onlineDrawingCourse.title",
             descriptionKey: "portfolio.projects.onlineDrawingCourse.description",
