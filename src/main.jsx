@@ -1,4 +1,5 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
+// App.jsx otimizado
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { HelmetProvider } from 'react-helmet-async';
 import { I18nextProvider } from "react-i18next";
@@ -6,43 +7,34 @@ import i18n from "./i18n";
 import SEOHead from "./components/SEOHead";
 import "./styles/import.css";
 
-// Lazy Loading para otimizar carregamento
-const Header = lazy(() => import("./components/Header.jsx"));
-const Hero = lazy(() => import("./containers/Hero.jsx"));
-const About = lazy(() => import("./containers/About.jsx"));
-const Skills = lazy(() => import("./containers/Skills.jsx"));
-const Services = lazy(() => import("./containers/Services.jsx"));
-const Resume = lazy(() => import("./containers/Resume.jsx"));
-const PortfolioSection = lazy(() => import("./containers/Projects.jsx"));
-const Testimonials = lazy(() => import("./containers/Testimonials.jsx"));
-const Contact = lazy(() => import("./containers/Contact.jsx"));
-const Footer = lazy(() => import("./components/Footer.jsx"));
-const ScrollToTopBtn = lazy(() => import("./components/ScrollToTopBtn.jsx"));
-const Atuacao = lazy(() => import("./containers/atuacao.jsx"));
+// Componentes com dynamic import e prefetch
+const Header = React.lazy(() => import(/* webpackPrefetch: true */ "./components/Header.jsx"));
+const Hero = React.lazy(() => import(/* webpackPrefetch: true */ "./containers/Hero.jsx"));
+const About = React.lazy(() => import(/* webpackPrefetch: true */ "./containers/About.jsx"));
 
+// Componentes carregados sob demanda sem prefetch
+const Skills = React.lazy(() => import("./containers/Skills.jsx"));
+const Services = React.lazy(() => import("./containers/Services.jsx"));
+const Resume = React.lazy(() => import("./containers/Resume.jsx"));
+const PortfolioSection = React.lazy(() => import("./containers/Projects.jsx"));
+const Testimonials = React.lazy(() => import("./containers/Testimonials.jsx"));
+const Contact = React.lazy(() => import("./containers/Contact.jsx"));
+const Footer = React.lazy(() => import("./components/Footer.jsx"));
+const ScrollToTopBtn = React.lazy(() => import("./components/ScrollToTopBtn.jsx"));
+const Atuacao = React.lazy(() => import("./containers/atuacao.jsx"));
+
+// Componente de loading otimizado
 const LoadingScreen = () => (
-    <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        fontSize: '1.5rem',
-        fontWeight: 'bold',
-        color: '#333'
-    }}>
-        Carregando...
-    </div>
+    <div className="loading-screen">Carregando...</div>
 );
 
 const App = () => {
     const [darkMode, setDarkMode] = useState(() => {
         try {
-            const storedMode = localStorage.getItem("darkMode");
-            if (storedMode === "enabled") return true;
-            if (storedMode === "disabled") return false;
-            return window.matchMedia("(prefers-color-scheme: dark)").matches;
-        } catch (error) {
-            console.error("Erro ao acessar localStorage:", error);
+            return localStorage.getItem("darkMode") === "enabled" ||
+                (localStorage.getItem("darkMode") === null &&
+                    window.matchMedia("(prefers-color-scheme: dark)").matches);
+        } catch {
             return false;
         }
     });
@@ -50,20 +42,18 @@ const App = () => {
     useEffect(() => {
         try {
             localStorage.setItem("darkMode", darkMode ? "enabled" : "disabled");
+            document.body.classList.toggle("dark-mode", darkMode);
         } catch (error) {
-            console.error("Erro ao salvar no localStorage:", error);
+            console.error("localStorage error:", error);
         }
-        document.body.classList.toggle("dark-mode", darkMode);
     }, [darkMode]);
-
-    const toggleDarkMode = () => setDarkMode((prevMode) => !prevMode);
 
     return (
         <div className="app-container">
             <SEOHead />
-            <div className="content-wrapper">
-                <Suspense fallback={<LoadingScreen />}>
-                    <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+            <React.Suspense fallback={<LoadingScreen />}>
+                <Header toggleDarkMode={() => setDarkMode(prev => !prev)} darkMode={darkMode} />
+                <div className="content-wrapper">
                     <Hero />
                     <About />
                     <Atuacao />
@@ -75,15 +65,13 @@ const App = () => {
                     <Contact />
                     <Footer />
                     <ScrollToTopBtn />
-                </Suspense>
-            </div>
+                </div>
+            </React.Suspense>
         </div>
     );
 };
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(
+ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <HelmetProvider>
             <I18nextProvider i18n={i18n}>
