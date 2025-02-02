@@ -605,6 +605,18 @@ const ParticleSystem = () => {
 const Hero = () => {
     const { t } = useTranslation();
 
+    useEffect(() => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.href = '/assets/images/Linkedin-foto.webp';
+        link.as = 'image';
+        document.head.appendChild(link);
+
+        return () => {
+            document.head.removeChild(link);
+        };
+    }, []);
+
     return (
         <HeroSection id="home" aria-labelledby="heroTitle">
             <ParticleSystem />
