@@ -28,8 +28,8 @@ const LoadingScreen = () => (
 const App = () => {
     const [darkMode, setDarkMode] = useState(() => {
         try {
-            return localStorage.getItem("darkMode") === "enabled" || 
-                   (localStorage.getItem("darkMode") === null && 
+            return localStorage.getItem("darkMode") === "enabled" ||
+                (localStorage.getItem("darkMode") === null &&
                     window.matchMedia("(prefers-color-scheme: dark)").matches);
         } catch {
             return false;
