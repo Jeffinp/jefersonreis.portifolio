@@ -2,32 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import { useTranslation } from 'react-i18next';
 
-// Objeto com as traduções
-const translations = {
-    pt: {
-        menu: {
-            home: 'Início',
-            about: 'Sobre',
-            areas: 'Áreas de Atuação',
-            skills: 'Habilidades',
-            portfolio: 'Portfólio',
-            resume: 'Currículo',
-            contact: 'Contato'
-        }
-    },
-    en: {
-        menu: {
-            home: 'Home',
-            about: 'About',
-            areas: 'Areas of Expertise',
-            skills: 'Skills',
-            portfolio: 'Portfolio',
-            resume: 'Resume',
-            contact: 'Contact'
-        }
-    }
-};
-
 function Header({ toggleDarkMode, darkMode }) {
     const [menuOpen, setMenuOpen] = useState(false);
     const { i18n, t } = useTranslation();
