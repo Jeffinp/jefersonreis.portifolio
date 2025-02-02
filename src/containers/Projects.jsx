@@ -418,7 +418,7 @@ const PortfolioSection = () => {
                 if (!isHovering && !isTransitioning) {
                     nextSlide();
                 }
-            }, 4000);
+            }, 8000); //tempo em que leva para o slide passar automaticamente
         };
 
         handleResize();
