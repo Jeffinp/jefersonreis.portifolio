@@ -17,24 +17,10 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          // Separar bibliotecas principais
+          // Agrupando por funcionalidade ao invés de arquivos específicos
           'react-vendor': ['react', 'react-dom'],
           'i18n-vendor': ['react-i18next', 'i18next'],
-          'ui-components': [
-            './components/Header.jsx',
-            './components/Footer.jsx',
-            './components/ScrollToTopBtn.jsx'
-          ],
-          'main-containers': [
-            './containers/Hero.jsx',
-            './containers/About.jsx',
-            './containers/Skills.jsx'
-          ],
-          'secondary-containers': [
-            './containers/Services.jsx',
-            './containers/Resume.jsx',
-            './containers/Projects.jsx'
-          ]
+          'helmet': ['react-helmet-async']
         },
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash][extname]'

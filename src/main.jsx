@@ -1,5 +1,5 @@
-// App.jsx otimizado
-import React, { useState, useEffect } from "react";
+// App.jsx
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { HelmetProvider } from 'react-helmet-async';
 import { I18nextProvider } from "react-i18next";
@@ -7,23 +7,20 @@ import i18n from "./i18n";
 import SEOHead from "./components/SEOHead";
 import "./styles/import.css";
 
-// Componentes com dynamic import e prefetch
-const Header = React.lazy(() => import(/* webpackPrefetch: true */ "./components/Header.jsx"));
-const Hero = React.lazy(() => import(/* webpackPrefetch: true */ "./containers/Hero.jsx"));
-const About = React.lazy(() => import(/* webpackPrefetch: true */ "./containers/About.jsx"));
+// Lazy loading com comentários de prefetch
+const Header = lazy(() => import(/* @vite-ignore */"./components/Header.jsx"));
+const Hero = lazy(() => import(/* @vite-ignore */"./containers/Hero.jsx"));
+const About = lazy(() => import(/* @vite-ignore */"./containers/About.jsx"));
+const Skills = lazy(() => import(/* @vite-ignore */"./containers/Skills.jsx"));
+const Services = lazy(() => import(/* @vite-ignore */"./containers/Services.jsx"));
+const Resume = lazy(() => import(/* @vite-ignore */"./containers/Resume.jsx"));
+const PortfolioSection = lazy(() => import(/* @vite-ignore */"./containers/Projects.jsx"));
+const Testimonials = lazy(() => import(/* @vite-ignore */"./containers/Testimonials.jsx"));
+const Contact = lazy(() => import(/* @vite-ignore */"./containers/Contact.jsx"));
+const Footer = lazy(() => import(/* @vite-ignore */"./components/Footer.jsx"));
+const ScrollToTopBtn = lazy(() => import(/* @vite-ignore */"./components/ScrollToTopBtn.jsx"));
+const Atuacao = lazy(() => import(/* @vite-ignore */"./containers/atuacao.jsx"));
 
-// Componentes carregados sob demanda sem prefetch
-const Skills = React.lazy(() => import("./containers/Skills.jsx"));
-const Services = React.lazy(() => import("./containers/Services.jsx"));
-const Resume = React.lazy(() => import("./containers/Resume.jsx"));
-const PortfolioSection = React.lazy(() => import("./containers/Projects.jsx"));
-const Testimonials = React.lazy(() => import("./containers/Testimonials.jsx"));
-const Contact = React.lazy(() => import("./containers/Contact.jsx"));
-const Footer = React.lazy(() => import("./components/Footer.jsx"));
-const ScrollToTopBtn = React.lazy(() => import("./components/ScrollToTopBtn.jsx"));
-const Atuacao = React.lazy(() => import("./containers/atuacao.jsx"));
-
-// Componente de loading otimizado
 const LoadingScreen = () => (
     <div className="loading-screen">Carregando...</div>
 );
@@ -31,8 +28,8 @@ const LoadingScreen = () => (
 const App = () => {
     const [darkMode, setDarkMode] = useState(() => {
         try {
-            return localStorage.getItem("darkMode") === "enabled" ||
-                (localStorage.getItem("darkMode") === null &&
+            return localStorage.getItem("darkMode") === "enabled" || 
+                   (localStorage.getItem("darkMode") === null && 
                     window.matchMedia("(prefers-color-scheme: dark)").matches);
         } catch {
             return false;
@@ -51,7 +48,7 @@ const App = () => {
     return (
         <div className="app-container">
             <SEOHead />
-            <React.Suspense fallback={<LoadingScreen />}>
+            <Suspense fallback={<LoadingScreen />}>
                 <Header toggleDarkMode={() => setDarkMode(prev => !prev)} darkMode={darkMode} />
                 <div className="content-wrapper">
                     <Hero />
@@ -66,7 +63,7 @@ const App = () => {
                     <Footer />
                     <ScrollToTopBtn />
                 </div>
-            </React.Suspense>
+            </Suspense>
         </div>
     );
 };
