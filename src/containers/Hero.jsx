@@ -3,14 +3,14 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 const HeroSection = styled.section`
-position: relative;
-width: 100%;
-min-height: 100vh;
-display: flex;
-align-items: center;
-justify-content: center;
-overflow: hidden;
-background-color: #000;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #000;
 
 &::before {
     content: '';
@@ -55,28 +55,28 @@ background-color: #000;
 `;
 
 const HeroContainer = styled.div`
-position: relative;
-z-index: 10;
-max-width: 1200px;
-width: 100%;
-padding: 0 20px;
-margin: 0 auto;
-text-align: center;
-color: white;
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
 `;
 
 const ProfileWrapper = styled.div`
-position: relative;
-width: 300px;
-height: 300px;
-margin: 0 auto 2rem;
-border-radius: 50%;
-overflow: hidden;
-border: 4px solid rgba(255, 255, 255, 0.15);
-box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-background: rgba(255, 255, 255, 0.05);
-backdrop-filter: blur(8px);
-transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);  
 
 &:hover {
     transform: translateY(-5px) scale(1.02);
