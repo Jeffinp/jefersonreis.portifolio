@@ -59,8 +59,6 @@ const ExpertiseAreas = () => {
 
     return (
         <section id="atuacao" className="relative py-20 bg-white dark:bg-slate-900">
-            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] dark:opacity-20 opacity-5" />
-
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -81,7 +79,7 @@ const ExpertiseAreas = () => {
                             <div className="relative m-[1px] bg-white dark:bg-gray-800 rounded-[11px] p-8 h-full">
                                 <div className="flex flex-col items-center">
                                     <div className="mb-6 p-4 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 
-                                                transition-transform duration-300 group-hover:scale-110">
+                                        transition-transform duration-300 group-hover:scale-110">
                                         <div className="text-blue-600 dark:text-blue-400">
                                             {item.icon}
                                         </div>
