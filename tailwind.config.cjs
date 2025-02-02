@@ -36,11 +36,25 @@ module.exports = {
       },
       animation: {
         'fill-skill-bar': 'fill-skill-bar 1s ease-in-out forwards',
+        'slowZoom': 'slowZoom 30s ease-in-out infinite alternate',
+        'titleGlow': 'titleGlow 3s ease-in-out infinite alternate',
       },
       keyframes: {
         'fill-skill-bar': {
           '0%': { width: '0%' },
           '100%': { width: 'var(--skill-percentage)' },
+        },
+        'slowZoom': {
+          '0%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(1.1)' },
+        },
+        'titleGlow': {
+          'from': {
+            textShadow: '0 0 2px rgba(var(--resume-primary-color-rgb), 0.3)',
+          },
+          'to': {
+            textShadow: '0 0 10px rgba(var(--resume-primary-color-rgb), 0.6)',
+          },
         },
       },
     },
