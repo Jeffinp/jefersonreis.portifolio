@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 *,
 body,
 html {
@@ -64,10 +65,10 @@ html {
 body.dark-mode {
     --resume-primary-color: #2563EB;
     --resume-primary-color-rgb: 37, 99, 235;
-    --resume-secondary-color: #10B981; 
+    --resume-secondary-color: #10B981;
     --resume-accent-color: #F97316;
     --resume-accent-color-rgb: 249, 115, 22;
-    --resume-text-color: #D1D5DB; 
+    --resume-text-color: #D1D5DB;
     --resume-text-color-secondary: #9CA3AF;
     --resume-background-color: #1e2836;
     --resume-background-color-light: #1F2937;
