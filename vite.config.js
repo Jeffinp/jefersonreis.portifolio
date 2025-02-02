@@ -16,11 +16,28 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Agrupando por funcionalidade ao invés de arquivos específicos
-          'react-vendor': ['react', 'react-dom'],
-          'i18n-vendor': ['react-i18next', 'i18next'],
-          'helmet': ['react-helmet-async']
+        manualChunks(id) {
+          // Agrupa os pacotes React
+          if (id.includes('node_modules/react/') || 
+              id.includes('node_modules/react-dom/')) {
+            return 'react-vendor';
+          }
+          
+          // Agrupa os pacotes de i18n
+          if (id.includes('node_modules/react-i18next/') || 
+              id.includes('node_modules/i18next/')) {
+            return 'i18n-vendor';
+          }
+
+          // Agrupa o react-helmet-async
+          if (id.includes('node_modules/react-helmet-async/')) {
+            return 'helmet-vendor';
+          }
+
+          // Deixa o restante ser gerenciado pelo splitVendorChunkPlugin
+          if (id.includes('node_modules/')) {
+            return 'vendor';
+          }
         },
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash][extname]'
