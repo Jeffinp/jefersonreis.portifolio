@@ -1,32 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { HelmetProvider } from 'react-helmet-async';
-import Header from "./components/Header.jsx";
-import Hero from "./containers/Hero.jsx";
-import About from "./containers/About.jsx";
-import Skills from "./containers/Skills.jsx";
-import Services from "./containers/Services.jsx";
-import Resume from "./containers/Resume.jsx";
-import PortfolioSection from "./containers/Projects.jsx";
-import Testimonials from "./containers/Testimonials.jsx";
-import Contact from "./containers/Contact.jsx";
-import Footer from "./components/Footer.jsx";
-import ScrollToTopBtn from "./components/ScrollToTopBtn.jsx";
-import Atuacao from "./containers/atuacao.jsx";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
-import SEOHead from './components/SEOHead';
+import SEOHead from "./components/SEOHead";
 import "./styles/import.css";
+
+// Lazy Loading para otimizar carregamento
+const Header = lazy(() => import("./components/Header.jsx"));
+const Hero = lazy(() => import("./containers/Hero.jsx"));
+const About = lazy(() => import("./containers/About.jsx"));
+const Skills = lazy(() => import("./containers/Skills.jsx"));
+const Services = lazy(() => import("./containers/Services.jsx"));
+const Resume = lazy(() => import("./containers/Resume.jsx"));
+const PortfolioSection = lazy(() => import("./containers/Projects.jsx"));
+const Testimonials = lazy(() => import("./containers/Testimonials.jsx"));
+const Contact = lazy(() => import("./containers/Contact.jsx"));
+const Footer = lazy(() => import("./components/Footer.jsx"));
+const ScrollToTopBtn = lazy(() => import("./components/ScrollToTopBtn.jsx"));
+const Atuacao = lazy(() => import("./containers/atuacao.jsx"));
+
+const LoadingScreen = () => (
+    <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
+        color: '#333'
+    }}>
+        Carregando...
+    </div>
+);
 
 const App = () => {
     const [darkMode, setDarkMode] = useState(() => {
         try {
             const storedMode = localStorage.getItem("darkMode");
-            if (storedMode === "enabled") {
-                return true;
-            } else if (storedMode === "disabled") {
-                return false;
-            }
+            if (storedMode === "enabled") return true;
+            if (storedMode === "disabled") return false;
             return window.matchMedia("(prefers-color-scheme: dark)").matches;
         } catch (error) {
             console.error("Erro ao acessar localStorage:", error);
@@ -40,7 +53,6 @@ const App = () => {
         } catch (error) {
             console.error("Erro ao salvar no localStorage:", error);
         }
-
         document.body.classList.toggle("dark-mode", darkMode);
     }, [darkMode]);
 
@@ -50,18 +62,20 @@ const App = () => {
         <div className="app-container">
             <SEOHead />
             <div className="content-wrapper">
-                <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
-                <Hero />
-                <About />
-                <Atuacao />
-                <Skills />
-                <Services />
-                <Resume />
-                <PortfolioSection />
-                <Testimonials />
-                <Contact />
-                <Footer />
-                <ScrollToTopBtn />
+                <Suspense fallback={<LoadingScreen />}>
+                    <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+                    <Hero />
+                    <About />
+                    <Atuacao />
+                    <Skills />
+                    <Services />
+                    <Resume />
+                    <PortfolioSection />
+                    <Testimonials />
+                    <Contact />
+                    <Footer />
+                    <ScrollToTopBtn />
+                </Suspense>
             </div>
         </div>
     );
