@@ -126,16 +126,18 @@ const Title = styled.h1`
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    transform: translateZ(0); // Force GPU acceleration
+    will-change: transform; // Hint for browser optimization
     animation: titleGlow 3s ease-in-out infinite alternate;
 
-@keyframes titleGlow {
-    from {
-    filter: drop-shadow(0 0 2px rgba(179, 224, 255, 0.3));
+    @keyframes titleGlow {
+        from {
+            text-shadow: 0 0 2px rgba(179, 224, 255, 0.3);
+        }
+        to {
+            text-shadow: 0 0 10px rgba(179, 224, 255, 0.6);
+        }
     }
-    to {
-    filter: drop-shadow(0 0 10px rgba(179, 224, 255, 0.6));
-    }
-}
 `;
 
 const Subtitle = styled.p`
