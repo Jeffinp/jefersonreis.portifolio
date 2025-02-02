@@ -116,16 +116,17 @@ ${ProfileWrapper}:hover & {
 `;
 
 const Title = styled.h1`
-font-size: clamp(2.5rem, 5vw, 3.5rem);
-font-weight: 800;
-margin-bottom: 1rem;
-line-height: 1.2;
-letter-spacing: -0.02em;
-text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-background: linear-gradient(135deg, #ffffff 0%, #b3e0ff 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-animation: titleGlow 3s ease-in-out infinite alternate;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #ffffff 0%, #b3e0ff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleGlow 3s ease-in-out infinite alternate;
 
 @keyframes titleGlow {
     from {
