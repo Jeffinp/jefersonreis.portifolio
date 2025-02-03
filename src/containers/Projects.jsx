@@ -258,7 +258,7 @@ const PortfolioSection = () => {
             technologies: ["Blender", "3D Modeling", "Sci-Fi Design"]
         },
         {
-            category: "design",
+            category: "modelagem",
             image: "/assets/images/Artes/Asgemeas2.webp",
             titleKey: "portfolio.projects.twinSwords.title",
             descriptionKey: "portfolio.projects.twinSwords.description",
@@ -397,11 +397,6 @@ const PortfolioSection = () => {
         }
     ];
 
-    // Add this filtering logic
-    const filteredProjects = projects.filter(
-        (project) => activeFilter === "all" || project.category === activeFilter
-    );
-
     const filterItems = useCallback((category) => {
         setActiveFilter(category);
         if (trackRef.current) {
@@ -508,6 +503,7 @@ const PortfolioSection = () => {
                         {t("portfolio.subtitle")}
                     </p>
                 </div>
+
                 <div className="flex flex-wrap justify-center gap-2 mb-8">
                     {Object.entries(
                         t("portfolio.categories", { returnObjects: true })
@@ -525,13 +521,14 @@ const PortfolioSection = () => {
                         </button>
                     ))}
                 </div>
+
                 <div className="relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg">
                     <div
                         ref={trackRef}
                         className="flex transition-transform duration-500 ease-out"
                         style={{ touchAction: "pan-y pinch-zoom" }}
                     >
-                        {filteredProjects.map((project, index) => (
+                        {projects.map((project, index) => (
                             <div
                                 key={index}
                                 data-category={project.category}
@@ -583,6 +580,7 @@ const PortfolioSection = () => {
                             </div>
                         ))}
                     </div>
+
                     <button
                         onClick={prevSlide}
                         className="absolute left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300"
@@ -598,6 +596,7 @@ const PortfolioSection = () => {
                         &gt;
                     </button>
                 </div>
+
                 <div className="text-center mt-8">
                     <a
                         href="https://drive.google.com/drive/folders/1kNUbhpuYBDRTLjD66vBwfSweugiabAIE?usp=drive_link"
@@ -612,5 +611,4 @@ const PortfolioSection = () => {
         </section>
     );
 };
-
 export default PortfolioSection;
