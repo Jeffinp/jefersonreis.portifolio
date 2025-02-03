@@ -309,7 +309,7 @@ const PortfolioSection = () => {
             technologies: ["Album Cover Design", "Graphic Design", "Digital Art"]
         },
         {
-            category: "design",
+            category: "modelagem",
             image: "/assets/images/Artes/AsGemeas.webp",
             titleKey: "portfolio.projects.twinSwordsVariation.title",
             descriptionKey: "portfolio.projects.twinSwordsVariation.description",

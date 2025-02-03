@@ -103,7 +103,7 @@ const resources = {
                     web: "Web",
                     design: "Design",
                     motion: "Motion",
-                    modelagem: "Modelagem"
+                    modelagem: "Modelagem 3D"
 
                 },
                 projectLabels: {
@@ -581,7 +581,7 @@ const resources = {
                     web: "Web",
                     design: "Design",
                     motion: "Motion",
-                    modeling: "Modeling"
+                    modeling: "3D Modeling"
                 },
                 projectLabels: {
                     contracted: "Contracted",
