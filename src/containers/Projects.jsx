@@ -26,6 +26,7 @@ const PortfolioSection = () => {
             descriptionKey: "portfolio.projects.flyserv.description",
             link: "https://flyservdrones.com.br/",
             type: "contracted",
+            technologies: ["HTML", "CSS", "JavaScript"]
         },
         {
             category: "web",
@@ -34,6 +35,7 @@ const PortfolioSection = () => {
             descriptionKey: "portfolio.projects.onlineDrawingCourse.description",
             link: "https://www.desenhosricardodias.com.br/",
             type: "contracted",
+            technologies: ["HTML", "CSS", "JavaScript"]
         },
         {
             category: "web",
@@ -42,6 +44,7 @@ const PortfolioSection = () => {
             descriptionKey: "portfolio.projects.weightLossProgram.description",
             link: "https://secaedefine.vercel.app",
             type: "contracted",
+            technologies: ["HTML", "CSS", "JavaScript"]
         },
         {
             category: "web",
@@ -50,6 +53,7 @@ const PortfolioSection = () => {
             descriptionKey: "portfolio.projects.fileManager.description",
             link: "https://github.com/Jeffinp/file_organizer",
             type: "personal",
+            technologies: ["Python", "File Management","HTML", "CSS", "JavaScript"]
         },
         {
             category: "web",
@@ -58,6 +62,7 @@ const PortfolioSection = () => {
             descriptionKey: "portfolio.projects.pythonChatbot.description",
             link: "https://github.com/Jeffinp/ProjetoPython",
             type: "personal",
+            technologies: ["Python", "Machine Learning", "Natural Language Processing"]
         },
         {
             category: "web",
@@ -66,6 +71,7 @@ const PortfolioSection = () => {
             descriptionKey: "portfolio.projects.platformGame.description",
             link: "https://plataforma-chatgpt-main.vercel.app/",
             type: "personal",
+            technologies: ["JavaScript", "HTML", "CSS", "Game Development"]
         },
         {
             category: "web",
@@ -74,6 +80,7 @@ const PortfolioSection = () => {
             descriptionKey: "portfolio.projects.interactiveMenu.description",
             link: "https://menu-interativo.vercel.app/",
             type: "personal",
+            technologies: ["JavaScript", "HTML", "CSS", "UI/UX Design"]
         },
         {
             category: "web",
@@ -82,6 +89,7 @@ const PortfolioSection = () => {
             descriptionKey: "portfolio.projects.christmasGift.description",
             link: "https://aterrsagemresponsiva.netlify.app/",
             type: "personal",
+            technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"]
         },
         {
             category: "web",
@@ -90,6 +98,7 @@ const PortfolioSection = () => {
             descriptionKey: "portfolio.projects.justlyTraining.description",
             link: "https://justly.netlify.app/",
             type: "personal",
+            technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"]
         },
         {
             category: "web",
@@ -98,6 +107,7 @@ const PortfolioSection = () => {
             descriptionKey: "portfolio.projects.personalPortfolio.description",
             link: "https://jefersonreis-github-io.vercel.app/index.html",
             type: "personal",
+            technologies: ["HTML", "CSS", "JavaScript", "Portfolio Design", "React", "Tailwind CSS"]
         },
         {
             category: "web",
@@ -106,6 +116,7 @@ const PortfolioSection = () => {
             descriptionKey: "portfolio.projects.bookmarkManager.description",
             link: "https://bookmarkproject12.netlify.app/",
             type: "personal",
+            technologies: ["HTML", "CSS", "JavaScript"]
         },
         {
             category: "web",
@@ -114,6 +125,7 @@ const PortfolioSection = () => {
             descriptionKey: "portfolio.projects.acsendoflex.description",
             link: "https://ascendotraining.netlify.app/",
             type: "personal",
+            technologies: ["HTML", "CSS", "JavaScript", "Landing Page"]
         },
         {
             category: "web",
@@ -122,18 +134,21 @@ const PortfolioSection = () => {
             descriptionKey: "portfolio.projects.zomatoLanding.description",
             link: "https://zomato.com",
             type: "personal",
+            technologies: ["HTML", "CSS", "Landing Page Design"]
         },
         {
             category: "design",
             image: "/assets/images/Artes/DuplaDoTerror.webp",
             titleKey: "portfolio.projects.terrorDuo.title",
             descriptionKey: "portfolio.projects.terrorDuo.description",
+            technologies: ["Adobe Photoshop","Clip Studio", "Illustration"]
         },
         {
             category: "motion",
             image: "/assets/images/Artes/BratailsAnim.gif",
             titleKey: "portfolio.projects.bratailsAnimated.title",
             descriptionKey: "portfolio.projects.bratailsAnimated.description",
+            technologies: ["Clip Studio", "Motion Graphics", "2D Animation"]
         },
         {
             category: "design",
@@ -141,6 +156,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.oliveBrandDesign.title",
             descriptionKey: "portfolio.projects.oliveBrandDesign.description",
             type: "contracted",
+            technologies: ["Adobe Photoshop", "Branding", "Product Design"]
         },
         {
             category: "design",
@@ -148,6 +164,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.stylizedFlag.title",
             descriptionKey: "portfolio.projects.stylizedFlag.description",
             type: "contracted",
+            technologies: ["Clip Studio", "Digital Art", "Illustration"]
         },
         {
             category: "design",
@@ -155,6 +172,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.gamerCase.title",
             descriptionKey: "portfolio.projects.gamerCase.description",
             type: "contracted",
+            technologies: ["Adobe Photoshop", "Product Design", "Graphic Design"]
         },
         {
             category: "design",
@@ -162,18 +180,21 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.environmentShirt.title",
             descriptionKey: "portfolio.projects.environmentShirt.description",
             type: "contracted",
+            technologies: ["Adobe Photoshop", "Graphic Design"]
         },
         {
             category: "design",
             image: "/assets/images/Artes/ParasitaCaderno.webp",
             titleKey: "portfolio.projects.parasiteNotebook.title",
             descriptionKey: "portfolio.projects.parasiteNotebook.description",
+            technologies: ["Illustration"]
         },
         {
             category: "design",
             image: "/assets/images/Artes/giratina.webp",
             titleKey: "portfolio.projects.giratinaArt.title",
             descriptionKey: "portfolio.projects.giratinaArt.description",
+            technologies: ["Illustration", "Adobe Photoshop"]
         },
         {
             category: "design",
@@ -181,6 +202,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.burgerDesign.title",
             descriptionKey: "portfolio.projects.burgerDesign.description",
             type: "contracted",
+            technologies: ["Adobe Photoshop", "Food Design"]
         },
         {
             category: "design",
@@ -188,6 +210,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.notebookDrawing.title",
             descriptionKey: "portfolio.projects.notebookDrawing.description",
             type: "contracted",
+            technologies: ["Illustration", "Character Design"]
         },
         {
             category: "design",
@@ -195,6 +218,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.pizzaDesign.title",
             descriptionKey: "portfolio.projects.pizzaDesign.description",
             type: "contracted",
+            technologies: ["Adobe Photoshop", "Food Marketing", "Graphic Design"]
         },
         {
             category: "design",
@@ -202,24 +226,28 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.pizzaPromo.title",
             descriptionKey: "portfolio.projects.pizzaPromo.description",
             type: "contracted",
+            technologies: ["Social Media Design", "Adobe Photoshop", "Promotional Design"]
         },
         {
             category: "design",
             image: "/assets/images/Artes/ProtNave.webp",
             titleKey: "portfolio.projects.spaceshipPrototype.title",
             descriptionKey: "portfolio.projects.spaceshipPrototype.description",
+            technologies: ["Concept Art", "Digital Illustration", "Sci-Fi Design"]
         },
         {
             category: "design",
             image: "/assets/images/Artes/Bryan360.webp",
             titleKey: "portfolio.projects.bratails360.title",
             descriptionKey: "portfolio.projects.bratails360.description",
+            technologies: ["Character Design", "Digital Art", "Illustration"]
         },
         {
             category: "design",
             image: "/assets/images/Artes/BryanSorrindo.webp",
             titleKey: "portfolio.projects.bratailsSmiling.title",
             descriptionKey: "portfolio.projects.bratailsSmiling.description",
+            technologies: ["Character Illustration", "Digital Art", "Portraiture"]
         },
         {
             category: "modelagem",
@@ -227,18 +255,21 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.bratailsSpaceship.title",
             descriptionKey: "portfolio.projects.bratailsSpaceship.description",
             type: "contracted",
+            technologies: ["Blender", "3D Modeling", "Sci-Fi Design"]
         },
         {
             category: "design",
             image: "/assets/images/Artes/Asgemeas2.webp",
             titleKey: "portfolio.projects.twinSwords.title",
             descriptionKey: "portfolio.projects.twinSwords.description",
+            technologies: ["Digital Art", "Swords Design", "Illustration"]
         },
         {
             category: "design",
             image: "/assets/images/Artes/Angel.webp",
             titleKey: "portfolio.projects.angelSymbols.title",
             descriptionKey: "portfolio.projects.angelSymbols.description",
+            technologies: ["Symbolism", "Digital Illustration", "Graphic Design"]
         },
         {
             category: "design",
@@ -246,24 +277,28 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.fourKingdoms.title",
             descriptionKey: "portfolio.projects.fourKingdoms.description",
             type: "contracted",
+            technologies: ["Concept Art", "Illustration", "Digital Painting"]
         },
         {
             category: "design",
             image: "/assets/images/Artes/FurryQueMataFurry.webp",
             titleKey: "portfolio.projects.berserkInspired.title",
             descriptionKey: "portfolio.projects.berserkInspired.description",
+            technologies: ["Digital Art", "Graphic anime Style", "Illustration"]
         },
         {
             category: "design",
             image: "/assets/images/Artes/Annie.webp",
             titleKey: "portfolio.projects.anniePortrait.title",
             descriptionKey: "portfolio.projects.anniePortrait.description",
+            technologies: ["Character Portrait", "Digital Painting", "Illustration"]
         },
         {
             category: "modelagem",
             image: "/assets/images/Artes/Cubos.webp",
             titleKey: "portfolio.projects.renderTest.title",
             descriptionKey: "portfolio.projects.renderTest.description",
+            technologies: ["Blender", "3D Rendering", "Geometric Design"]
         },
         {
             category: "design",
@@ -271,36 +306,42 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.vicenteCover.title",
             descriptionKey: "portfolio.projects.vicenteCover.description",
             type: "contracted",
+            technologies: ["Album Cover Design", "Graphic Design", "Digital Art"]
         },
         {
             category: "design",
             image: "/assets/images/Artes/AsGemeas.webp",
             titleKey: "portfolio.projects.twinSwordsVariation.title",
             descriptionKey: "portfolio.projects.twinSwordsVariation.description",
+            technologies: ["Digital Art", "Illustration", "Character Design"]
         },
         {
             category: "modelagem",
             image: "/assets/images/Artes/Asteroide.webp",
             titleKey: "portfolio.projects.asteroid3d.title",
             descriptionKey: "portfolio.projects.asteroid3d.description",
+            technologies: ["Blender", "3D Modeling", "Space Design"]
         },
         {
             category: "design",
             image: "/assets/images/Artes/BryanComFoice.webp",
             titleKey: "portfolio.projects.bratailsScythe.title",
             descriptionKey: "portfolio.projects.bratailsScythe.description",
+            technologies: ["Character Design", "Digital Art", "Weapon Illustration"]
         },
         {
             category: "design",
             image: "/assets/images/Artes/Bryanoao.webp",
             titleKey: "portfolio.projects.bratailsSurprised.title",
             descriptionKey: "portfolio.projects.bratailsSurprised.description",
+            technologies: ["Character Illustration", "Digital Art", "Emotion Portrayal"]
         },
         {
             category: "modelagem",
             image: "/assets/images/Artes/CapitaoAmerica.webp",
             titleKey: "portfolio.projects.captainShield.title",
             descriptionKey: "portfolio.projects.captainShield.description",
+            technologies: ["3D Modeling", "Blender", "Prop Design"]
         },
         {
             category: "design",
@@ -308,24 +349,28 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.clickteamLogo.title",
             descriptionKey: "portfolio.projects.clickteamLogo.description",
             type: "contracted",
+            technologies: ["Logo Design", "Branding", "Adobe Photoshop"]
         },
         {
             category: "modelagem",
             image: "/assets/images/Artes/cycles.webp",
             titleKey: "portfolio.projects.donut3d.title",
             descriptionKey: "portfolio.projects.donut3d.description",
+            technologies: ["Blender", "3D Rendering", "Texturing"]
         },
         {
             category: "design",
             image: "/assets/images/Artes/forma1.webp",
             titleKey: "portfolio.projects.bossConcept.title",
             descriptionKey: "portfolio.projects.bossConcept.description",
+            technologies: ["Concept Art", "Digital Illustration", "Character Design"]
         },
         {
             category: "modelagem",
             image: "/assets/images/Artes/cranio.webp",
             titleKey: "portfolio.projects.skull3d.title",
             descriptionKey: "portfolio.projects.skull3d.description",
+            technologies: ["Blender", "3D Modeling", "Anatomical Alien Rendering"]
         },
         {
             category: "design",
@@ -333,12 +378,14 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.screavinyPrototype.title",
             descriptionKey: "portfolio.projects.screavinyPrototype.description",
             type: "contracted",
+            technologies: ["Concept Design", "Digital Art", "Character Prototype"]
         },
         {
             category: "modelagem",
             image: "/assets/images/Artes/untitled.webp",
             titleKey: "portfolio.projects.modelingTest.title",
             descriptionKey: "portfolio.projects.modelingTest.description",
+            technologies: ["3D Modeling", "Blender", "Rendering Test"]
         },
         {
             category: "design",
@@ -346,8 +393,14 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.discordIcons.title",
             descriptionKey: "portfolio.projects.discordIcons.description",
             type: "contracted",
-        },
+            technologies: ["Icon Design", "Digital Art", "Branding"]
+        }
     ];
+
+    // Add this filtering logic
+    const filteredProjects = projects.filter(
+        (project) => activeFilter === "all" || project.category === activeFilter
+    );
 
     const filterItems = useCallback((category) => {
         setActiveFilter(category);
@@ -374,6 +427,7 @@ const PortfolioSection = () => {
         setVisibleItems(updatedVisibleItems);
     }, []);
 
+
     const showSlide = useCallback(
         (index) => {
             if (visibleItems.length === 0 || isTransitioning) return;
@@ -389,6 +443,7 @@ const PortfolioSection = () => {
         },
         [visibleItems.length, isTransitioning]
     );
+
 
     const nextSlide = useCallback(() => {
         if (!isTransitioning) {
@@ -418,7 +473,7 @@ const PortfolioSection = () => {
                 if (!isHovering && !isTransitioning) {
                     nextSlide();
                 }
-            }, 8000); //tempo em que leva para o slide passar automaticamente
+            }, 8000);
         };
 
         handleResize();
@@ -453,7 +508,6 @@ const PortfolioSection = () => {
                         {t("portfolio.subtitle")}
                     </p>
                 </div>
-
                 <div className="flex flex-wrap justify-center gap-2 mb-8">
                     {Object.entries(
                         t("portfolio.categories", { returnObjects: true })
@@ -471,14 +525,13 @@ const PortfolioSection = () => {
                         </button>
                     ))}
                 </div>
-
                 <div className="relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg">
                     <div
                         ref={trackRef}
                         className="flex transition-transform duration-500 ease-out"
                         style={{ touchAction: "pan-y pinch-zoom" }}
                     >
-                        {projects.map((project, index) => (
+                        {filteredProjects.map((project, index) => (
                             <div
                                 key={index}
                                 data-category={project.category}
@@ -505,6 +558,16 @@ const PortfolioSection = () => {
                                         <p className="mb-4 text-gray-600 dark:text-gray-300">
                                             {t(project.descriptionKey)}
                                         </p>
+                                        <div className="flex flex-wrap gap-2 mb-4">
+                                            {project.technologies && project.technologies.map((tech, techIndex) => (
+                                                <span
+                                                    key={techIndex}
+                                                    className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm"
+                                                >
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
                                         {project.link && (
                                             <a
                                                 href={project.link}
@@ -520,7 +583,6 @@ const PortfolioSection = () => {
                             </div>
                         ))}
                     </div>
-
                     <button
                         onClick={prevSlide}
                         className="absolute left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300"
@@ -536,7 +598,6 @@ const PortfolioSection = () => {
                         &gt;
                     </button>
                 </div>
-
                 <div className="text-center mt-8">
                     <a
                         href="https://drive.google.com/drive/folders/1kNUbhpuYBDRTLjD66vBwfSweugiabAIE?usp=drive_link"

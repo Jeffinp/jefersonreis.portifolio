@@ -2,6 +2,8 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 const resources = {
+
+    // IDIOMAS EM PORTUGUÊS
     pt: {
         translation: {
             menu: {
@@ -102,6 +104,7 @@ const resources = {
                     design: "Design",
                     motion: "Motion",
                     modelagem: "Modelagem"
+
                 },
                 projectLabels: {
                     contracted: "Contratado",
@@ -303,7 +306,7 @@ const resources = {
                         title: "Ícones Discord",
                         description: "Quatro versões de um ícone para um servidor do Discord."
                     }
-                }
+                },
             },
             footer: {
                 occupation: 'Desenvolvedor Web Full Stack | Designer Gráfico | Técnico em Informática',
@@ -477,6 +480,8 @@ const resources = {
         }
 
     },
+
+    // IDIOMAS EM INGLÊS
     en: {
         translation: {
             menu: {
