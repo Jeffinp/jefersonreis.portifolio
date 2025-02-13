@@ -6,8 +6,8 @@ import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
 import SEOHead from "./components/SEOHead";
 import "./styles/import.css";
-import WhatsAppFloatBtn from "./components/WhatsAppFloatBtn.jsx/index.js"; 
-import DiscordFloatBtn from "./components/DiscordFloatBtn.jsx/index.js"; 
+import WhatsAppFloatBtn from "./components/WhatsAppFloatBtn.jsx"; 
+import DiscordFloatBtn from "./components/DiscordFloatBtn.jsx"; 
 
 // Lazy loading com comentários de prefetch
 const Header = lazy(() => import(/* @vite-ignore */"./components/Header.jsx"));
