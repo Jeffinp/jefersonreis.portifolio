@@ -5,7 +5,7 @@ import React from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 
 const WhatsAppFloatBtn = () => {
-    const whatsappLink = "https://wa.me/qr/KW2XXA46XAXNH1"; // URL do WhatsApp do Footer
+    const whatsappLink = "https://wa.me/qr/KW2XXA46XAXNH1";
 
     return (
         <a
@@ -16,7 +16,7 @@ const WhatsAppFloatBtn = () => {
             aria-label="WhatsApp"
             style={{
                 position: 'fixed',
-                bottom: '90px', // Ajustado para ficar acima do ScrollToTopBtn se ambos estiverem no bottom-right
+                bottom: '102px',
                 right: '20px',
                 backgroundColor: '#25D366', // Cor do WhatsApp
                 color: '#fff',

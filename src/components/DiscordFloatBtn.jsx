@@ -14,7 +14,7 @@ const DiscordFloatBtn = () => {
             aria-label="Discord"
             style={{
                 position: 'fixed',
-                bottom: '160px', // Ajustado para ficar acima do WhatsAppFloatBtn e ScrollToTopBtn
+                bottom: '165px',
                 right: '20px',
                 backgroundColor: '#5865F2', // Cor do Discord
                 color: '#fff',
