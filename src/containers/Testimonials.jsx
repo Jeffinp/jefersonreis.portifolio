@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import React, { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 const Testimonials = () => {
     const { t } = useTranslation();
@@ -9,11 +9,17 @@ const Testimonials = () => {
     const autoplayInterval = useRef(null);
     const autoplayDelay = 5000;
 
-    const testimonials = t('testimonials.testimonialsList', { returnObjects: true });
+    const testimonials = t("testimonials.testimonialsList", {
+        returnObjects: true,
+    });
 
     const goToSlide = (index) => setActiveSlideIndex(index);
-    const moveToNextSlide = () => setActiveSlideIndex((prev) => (prev + 1) % testimonials.length);
-    const moveToPrevSlide = () => setActiveSlideIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    const moveToNextSlide = () =>
+        setActiveSlideIndex((prev) => (prev + 1) % testimonials.length);
+    const moveToPrevSlide = () =>
+        setActiveSlideIndex(
+            (prev) => (prev - 1 + testimonials.length) % testimonials.length
+        );
 
     useEffect(() => {
         const track = trackRef.current;
@@ -59,32 +65,38 @@ const Testimonials = () => {
         updateSlidePosition();
         startAutoplay();
 
-        track.addEventListener('touchstart', handleTouchStart, { passive: true });
-        track.addEventListener('touchend', handleTouchEnd, { passive: true });
-        window.addEventListener('resize', updateSlidePosition);
+        track.addEventListener("touchstart", handleTouchStart, { passive: true });
+        track.addEventListener("touchend", handleTouchEnd, { passive: true });
+        window.addEventListener("resize", updateSlidePosition);
 
         return () => {
             stopAutoplay();
-            track.removeEventListener('touchstart', handleTouchStart);
-            track.removeEventListener('touchend', handleTouchEnd);
-            window.removeEventListener('resize', updateSlidePosition);
+            track.removeEventListener("touchstart", handleTouchStart);
+            track.removeEventListener("touchend", handleTouchEnd);
+            window.removeEventListener("resize", updateSlidePosition);
         };
     }, [activeSlideIndex, testimonials.length]);
 
     return (
-        <section id="testimonials" className="relative py-20 bg-white dark:bg-slate-900">
+        <section
+            id="testimonials"
+            className="relative py-20 bg-white dark:bg-slate-900"
+        >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                        {t('testimonials.title')}
+                        {t("testimonials.title")}
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300">
-                        {t('testimonials.subtitle')}
+                        {t("testimonials.subtitle")}
                     </p>
                 </div>
 
                 <div className="relative overflow-hidden">
-                    <div ref={trackRef} className="flex transition-transform duration-500 ease-in-out">
+                    <div
+                        ref={trackRef}
+                        className="flex transition-transform duration-500 ease-in-out"
+                    >
                         {testimonials.map((testimonial, index) => (
                             <div key={index} className="w-full flex-shrink-0 px-4">
                                 <article className="group relative bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full">
@@ -92,7 +104,10 @@ const Testimonials = () => {
                                     <div className="relative m-[1px] bg-white dark:bg-gray-800 rounded-[11px] p-8 h-full">
                                         <div className="flex mb-4">
                                             {[...Array(testimonial.rating)].map((_, i) => (
-                                                <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                                                <Star
+                                                    key={i}
+                                                    className="w-5 h-5 text-yellow-400 fill-current"
+                                                />
                                             ))}
                                         </div>
 
@@ -103,11 +118,13 @@ const Testimonials = () => {
                                         <div className="flex items-center mt-6">
                                             {testimonial.image && (
                                                 <div className="mr-4">
-                                                    <img 
-                                                        src={testimonial.image} 
-                                                        alt={t('testimonials.imageAlt', { name: testimonial.author })}
-                                                        className="w-16 h-16 rounded-full object-cover ring-2 ring-blue-500 group-hover:ring-purple-500 transition-all duration-300" 
-                                                        loading="lazy" 
+                                                    <img
+                                                        src={testimonial.image}
+                                                        alt={t("testimonials.imageAlt", {
+                                                            name: testimonial.author,
+                                                        })}
+                                                        className="w-16 h-16 rounded-full object-cover ring-2 ring-blue-500 group-hover:ring-purple-500 transition-all duration-300"
+                                                        loading="lazy"
                                                     />
                                                 </div>
                                             )}
@@ -127,10 +144,10 @@ const Testimonials = () => {
                     </div>
 
                     <div className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-4 mt-8">
-                        <button 
-                            onClick={moveToPrevSlide} 
+                        <button
+                            onClick={moveToPrevSlide}
                             className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 group"
-                            aria-label={t('testimonials.accessibility.prevButton')}
+                            aria-label={t("testimonials.accessibility.prevButton")}
                         >
                             <ChevronLeft className="w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300" />
                         </button>
@@ -140,20 +157,21 @@ const Testimonials = () => {
                                 <button
                                     key={index}
                                     onClick={() => goToSlide(index)}
-                                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                                        index === activeSlideIndex
-                                            ? 'bg-gradient-to-r from-blue-500 to-purple-500 scale-125'
-                                            : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
-                                    }`}
-                                    aria-label={t('testimonials.accessibility.goToSlide', { number: index + 1 })}
+                                    className={`w-3 h-3 rounded-full transition-all duration-300 ${index === activeSlideIndex
+                                            ? "bg-gradient-to-r from-blue-500 to-purple-500 scale-125"
+                                            : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+                                        }`}
+                                    aria-label={t("testimonials.accessibility.goToSlide", {
+                                        number: index + 1,
+                                    })}
                                 />
                             ))}
                         </div>
 
-                        <button 
-                            onClick={moveToNextSlide} 
+                        <button
+                            onClick={moveToNextSlide}
                             className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 group"
-                            aria-label={t('testimonials.accessibility.nextButton')}
+                            aria-label={t("testimonials.accessibility.nextButton")}
                         >
                             <ChevronRight className="w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300" />
                         </button>

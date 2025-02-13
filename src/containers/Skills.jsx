@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import React, { useState, useEffect } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Skills = () => {
     const { t } = useTranslation();
@@ -12,15 +12,18 @@ const Skills = () => {
     };
 
     useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
-            });
-        }, { threshold: 0.1 });
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setIsVisible(true);
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
 
-        const skillsSection = document.querySelector('#skills-section');
+        const skillsSection = document.querySelector("#skills-section");
         if (skillsSection) {
             observer.observe(skillsSection);
         }
@@ -33,59 +36,84 @@ const Skills = () => {
     }, []);
 
     const frontendSkills = [
-        { name: 'HTML', percentage: 100 },
-        { name: 'CSS', percentage: 100 },
-        { name: 'JavaScript', percentage: 100 },
-        { name: 'React', percentage: 95 },
-        { name: 'Vue.js', percentage: 85 },
-        { name: 'Angular', percentage: 90 },
+        { name: "HTML", percentage: 100 },
+        { name: "CSS", percentage: 100 },
+        { name: "JavaScript", percentage: 100 },
+        { name: "React", percentage: 95 },
+        { name: "Vue.js", percentage: 85 },
+        { name: "Angular", percentage: 90 },
     ];
 
     const backendSkills = [
-        { name: 'PHP', percentage: 85 },
-        { name: 'Node.js', percentage: 90 },
-        { name: 'Python', percentage: 95 },
+        { name: "PHP", percentage: 85 },
+        { name: "Node.js", percentage: 90 },
+        { name: "Python", percentage: 95 },
     ];
 
     const toolsSkills = [
-        { name: 'After Effects', percentage: 90 },
-        { name: 'Bootstrap', percentage: 80 },
-        { name: 'Canva', percentage: 90 },
-        { name: 'CorelDRAW', percentage: 95 },
-        { name: 'Figma', percentage: 100 },
-        { name: 'Filmora', percentage: 85 },
-        { name: 'Illustrator', percentage: 90 },
-        { name: 'MySQL', percentage: 90 },
-        { name: 'Office Suite', percentage: 100 },
-        { name: 'Photoshop', percentage: 85 },
-        { name: 'Premiere', percentage: 80 },
-        { name: 'UX Design', percentage: 100 },
+        { name: "After Effects", percentage: 90 },
+        { name: "Bootstrap", percentage: 80 },
+        { name: "Canva", percentage: 90 },
+        { name: "CorelDRAW", percentage: 95 },
+        { name: "Figma", percentage: 100 },
+        { name: "Filmora", percentage: 85 },
+        { name: "Illustrator", percentage: 90 },
+        { name: "MySQL", percentage: 90 },
+        { name: "Office Suite", percentage: 100 },
+        { name: "Photoshop", percentage: 85 },
+        { name: "Premiere", percentage: 80 },
+        { name: "UX Design", percentage: 100 },
     ];
 
     const softSkills = [
-        { icon: "👥", title: "Comunicação Eficaz", description: "Comunico ideias de forma clara, concisa e adaptável a diferentes públicos." },
-        { icon: "🤝", title: "Colaboração e Trabalho em Equipe", description: "Contribuo ativamente para um ambiente de equipe positivo e produtivo." },
-        { icon: "💡", title: "Resolução Criativa de Problemas", description: "Abordo desafios com uma mentalidade analítica e criativa." },
-        { icon: "⏱️", title: "Gestão de Tempo", description: "Priorizo tarefas e defino metas realistas com foco em resultados." },
+        {
+            icon: "👥",
+            title: "Comunicação Eficaz",
+            description:
+                "Comunico ideias de forma clara, concisa e adaptável a diferentes públicos.",
+        },
+        {
+            icon: "🤝",
+            title: "Colaboração e Trabalho em Equipe",
+            description:
+                "Contribuo ativamente para um ambiente de equipe positivo e produtivo.",
+        },
+        {
+            icon: "💡",
+            title: "Resolução Criativa de Problemas",
+            description: "Abordo desafios com uma mentalidade analítica e criativa.",
+        },
+        {
+            icon: "⏱️",
+            title: "Gestão de Tempo",
+            description:
+                "Priorizo tarefas e defino metas realistas com foco em resultados.",
+        },
     ];
 
     const SkillBar = ({ name, percentage, delay }) => (
-        <div className="mb-4 transform translate-y-0 opacity-100 transition-all duration-500 ease-in-out"
+        <div
+            className="mb-4 transform translate-y-0 opacity-100 transition-all duration-500 ease-in-out"
             style={{
                 transitionDelay: `${delay}ms`,
-                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                opacity: isVisible ? 1 : 0
-            }}>
+                transform: isVisible ? "translateY(0)" : "translateY(20px)",
+                opacity: isVisible ? 1 : 0,
+            }}
+        >
             <div className="flex justify-between mb-2">
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{name}</span>
-                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{percentage}%</span>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    {name}
+                </span>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                    {percentage}%
+                </span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
                 <div
                     className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-1000 ease-out"
                     style={{
-                        width: isVisible ? `${percentage}%` : '0%',
-                        transitionDelay: `${delay + 200}ms`
+                        width: isVisible ? `${percentage}%` : "0%",
+                        transitionDelay: `${delay + 200}ms`,
                     }}
                 />
             </div>
@@ -101,7 +129,9 @@ const Skills = () => {
                     className="w-full px-6 py-4 flex items-center justify-between"
                 >
                     <div className="flex items-center gap-4">
-                        <span className="text-2xl transform transition-transform duration-300 group-hover:scale-110">{icon}</span>
+                        <span className="text-2xl transform transition-transform duration-300 group-hover:scale-110">
+                            {icon}
+                        </span>
                         <div>
                             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                                 {t(`skills.sections.${id}.title`)}
@@ -115,7 +145,12 @@ const Skills = () => {
                         {openSection === id ? <ChevronUp /> : <ChevronDown />}
                     </div>
                 </button>
-                <div className={`transition-all duration-500 ease-in-out overflow-hidden ${openSection === id ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                <div
+                    className={`transition-all duration-500 ease-in-out overflow-hidden ${openSection === id
+                            ? "max-h-[1000px] opacity-100"
+                            : "max-h-0 opacity-0"
+                        }`}
+                >
                     <div className="px-6 py-4 border-t border-gray-100 dark:border-gray-700">
                         {skills.map((skill, index) => (
                             <SkillBar key={index} {...skill} delay={index * 100} />
@@ -127,33 +162,36 @@ const Skills = () => {
     );
 
     return (
-        <section id="skills-section" className="relative py-20 bg-white dark:bg-slate-900">
+        <section
+            id="skills-section"
+            className="relative py-20 bg-white dark:bg-slate-900"
+        >
             <div id="skills" className="absolute inset-0 dark:opacity-20 opacity-5" />
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                        {t('skills.title')}
+                        {t("skills.title")}
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300">
-                        {t('skills.subtitle')}
+                        {t("skills.subtitle")}
                     </p>
                 </div>
 
                 <div className="grid gap-6 mb-16">
                     <SkillSection
-                        title={t('skills.sections.frontend.title')}
+                        title={t("skills.sections.frontend.title")}
                         icon="🎨"
                         skills={frontendSkills}
                         id="frontend"
                     />
                     <SkillSection
-                        title={t('skills.sections.backend.title')}
+                        title={t("skills.sections.backend.title")}
                         icon="⚙️"
                         skills={backendSkills}
                         id="backend"
                     />
                     <SkillSection
-                        title={t('skills.sections.tools.title')}
+                        title={t("skills.sections.tools.title")}
                         icon="🛠️"
                         skills={toolsSkills}
                         id="tools"
@@ -162,10 +200,12 @@ const Skills = () => {
 
                 <div className="mt-16">
                     <h3 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">
-                        {t('skills.softSkills.title')}
+                        {t("skills.softSkills.title")}
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {Object.entries(t('skills.softSkills.items', { returnObjects: true })).map(([key, skill], index) => (
+                        {Object.entries(
+                            t("skills.softSkills.items", { returnObjects: true })
+                        ).map(([key, skill], index) => (
                             <div
                                 key={key}
                                 className="group relative bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
@@ -173,7 +213,7 @@ const Skills = () => {
                                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 <div className="relative m-[1px] bg-white dark:bg-gray-800 rounded-[11px] p-6 h-full">
                                     <span className="text-3xl mb-4 block transform transition-transform duration-300 group-hover:scale-110">
-                                        {['👥', '🤝', '💡', '⏱️'][index]}
+                                        {["👥", "🤝", "💡", "⏱️"][index]}
                                     </span>
                                     <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                                         {skill.title}
