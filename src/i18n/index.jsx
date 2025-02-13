@@ -1,8 +1,8 @@
+// i18n.js
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 const resources = {
-
     // IDIOMAS EM PORTUGUÊS
     pt: {
         translation: {
@@ -117,7 +117,7 @@ const resources = {
                     flyserv:{
                         title: "FlyServ Drones",
                         description: "Desenvolvi o front-end e back-end do site FlyServ Drones, criando a estrutura, mecânica e experiência do usuário para garantir um desempenho otimizado e uma navegação intuitiva."
-                    },                    
+                    },
                     onlineDrawingCourse: {
                         title: "Curso de Desenho Online",
                         description: "Site desenvolvido para um professor de desenho, utilizando HTML, CSS e JavaScript. Foco em experiência de usuário intuitiva e design responsivo."
@@ -476,7 +476,13 @@ const resources = {
                 title: "Contato",
                 callMe: "Me ligue para iniciar seu projeto!",
                 emailMe: "Envie um email para me contar sobre sua ideia!"
+            },
+            // -------------- ADICIONANDO AS TRADUÇÕES PARA OS BOTÕES FLUTUANTES AQUI --------
+            floatButtons: {
+                whatsapp: 'Fale conosco no WhatsApp',
+                discord: 'Junte-se a nós no Discord'
             }
+            // ------------------------------------------------------------------------------
         }
 
     },
@@ -547,73 +553,73 @@ const resources = {
                 items: {
                     web: {
                         title: "Immersive Web Development",
-                        description: "I create unique web experiences! Converting Landing Pages, Corporate Websites that tell your story, dynamic E-commerce platforms, and engaging Blogs. Custom design, responsiveness, and SEO to reach the top of search results!"
+                        description: "I create unique web experiences! Landing Pages that convert, Corporate Websites that tell your story, dynamic E-commerce sites, and engaging Blogs. Custom design, responsiveness, and SEO to reach the top of searches!"
                     },
                     design: {
-                        title: "Design & Memorable Visual Identity",
-                        description: "I develop striking logos and complete visual identities. I create artwork for social media, banners, flyers, and other advertising materials that strengthen your brand and connect you with your customers."
+                        title: "Memorable Design & Visual Identity",
+                        description: "I develop striking logos and complete visual identities. I create arts for social media, banners, flyers, and other advertising materials that strengthen your brand and connect you with your clients."
                     },
                     documentation: {
                         title: "Impeccable Professional Documentation",
-                        description: "I transform your ideas into professional and impactful documents. Impressive presentations, clear business documents, advanced spreadsheets, resumes that highlight talents, and academic papers with flawless formatting."
+                        description: "I transform your ideas into professional and impactful documents. Presentations that impress, clear business documents, advanced spreadsheets, resumes that highlight talents, and academic papers with impeccable formatting."
                     },
                     modeling: {
-                        title: "3D Modeling & Immersive Visualization",
-                        description: "I bring your projects to life with high-quality 3D modeling! Detailed 3D models and environments, photorealistic renderings, animations, and optimized assets for AR/VR. Projects ready for 3D printing and professional visualization."
+                        title: "Immersive 3D Modeling & Visualization",
+                        description: "I bring your projects to life with high-quality 3D modeling! Detailed 3D models and environments, photorealistic renderings, animations, and assets optimized for AR/VR. Projects ready for 3D printing and professional visualization."
                     },
                     support: {
                         title: "Efficient Technical Support",
-                        description: "Complete technical support for your equipment: formatting, optimization, cleaning, data recovery, and preventive maintenance. Remote or on-site service, with agility and professionalism."
+                        description: "Comprehensive technical support for your equipment: formatting, optimization, cleaning, data recovery, and preventive maintenance. Remote or on-site service, with agility and professionalism."
                     },
                     video: {
                         title: "Professional Editing and Motion Graphics",
                         description: "Dynamic and engaging videos! Cutting, editing, color correction, effects, subtitling, motion graphics, and animations (with After Effects). I use Premiere Pro, After Effects, Filmora, and other top tools. Perfect for YouTube, social media, corporate videos, events, vignettes, logo animations!"
                     }
                 },
-                downloadButton: "Download Complete Services Catalog",
-                downloadDescription: "Discover all the details and pricing in my catalog!"
+                downloadButton: "Download the Complete Services Catalog",
+                downloadDescription: "Discover all the details and values in my catalog!"
             },
             portfolio: {
                 title: "My Portfolio",
-                subtitle: "Projects and works showcasing my skills",
+                subtitle: "Projects and works that demonstrate my skills",
                 categories: {
                     all: "All",
                     web: "Web",
                     design: "Design",
                     motion: "Motion",
-                    modeling: "3D Modeling"
+                    modelagem: "3D Modeling"
                 },
                 projectLabels: {
                     contracted: "Contracted",
                     viewProject: "View Project",
                     prevProject: "Previous Project",
                     nextProject: "Next Project",
-                    viewHighRes: "View in High Resolution! Up to 4K!"
+                    viewHighRes: "View in Maximum Quality! Up to 4K!"
                 },
                 projects: {
                     flyserv:{
                         title: "FlyServ Drones",
-                        description: "I developed the front-end and back-end of the FlyServ  Drones website, building its structure, mechanics, and user experience to ensure optimized performance and intuitive navigation."
-                    },                    
+                        description: "I developed the front-end and back-end of the FlyServ Drones website, creating the structure, mechanics, and user experience to ensure optimized performance and intuitive navigation."
+                    },
                     onlineDrawingCourse: {
                         title: "Online Drawing Course",
-                        description: "Website developed for a drawing teacher using HTML, CSS, and JavaScript. Focus on intuitive user experience and responsive design."
+                        description: "Website developed for a drawing teacher, using HTML, CSS, and JavaScript. Focus on intuitive user experience and responsive design."
                     },
                     weightLossProgram: {
-                        title: "Slim & Define - Weight Loss Program",
+                        title: "Seca e Define - Weight Loss Program",
                         description: "Website created to promote an online weight loss program. Modern and intuitive design, focusing on testimonials and relevant information to boost sales."
                     },
                     fileManager: {
                         title: "Automated File Manager",
-                        description: "The File Organizer is a desktop application I developed that uses Python and Electron to facilitate file organization based on their extensions."
+                        description: "File Organizer is a desktop application, developed by me, that uses Python and Electron to facilitate the organization of files based on their extensions."
                     },
                     pythonChatbot: {
                         title: "Python Chatbot",
-                        description: "Python chatbot that assists in learning the language. Uses the rufimelo/bert-large-portuguese-cased-sts model to understand questions and provide detailed answers."
+                        description: "Chatbot in Python that assists in learning the language. It uses the rufimelo/bert-large-portuguese-cased-sts model to understand questions and provide detailed answers."
                     },
                     platformGame: {
                         title: "Online Platform Game",
-                        description: "Enhanced version of a GitHub project by Guilherme Silveira. Developed with HTML, CSS, and JavaScript, focusing on UX/UI and responsiveness."
+                        description: "Improved version of a GitHub project by Guilherme Silveira. Developed with HTML, CSS, and JavaScript, focusing on UX/UI and responsiveness."
                     },
                     interactiveMenu: {
                         title: "Interactive Menu",
@@ -621,51 +627,51 @@ const resources = {
                     },
                     christmasGift: {
                         title: "Digital Christmas Gift",
-                        description: "Website created with HTML, CSS, and JavaScript for sending virtual gifts. Simple and user-friendly interface."
+                        description: "Website created with HTML, CSS, and JavaScript for sending virtual gifts. Simple and friendly interface."
                     },
                     justlyTraining: {
                         title: "Justly - Front-End Training",
-                        description: "Project developed with HTML and CSS to enhance front-end development skills."
+                        description: "Project developed with HTML and CSS to improve front-end development skills."
                     },
                     personalPortfolio: {
                         title: "My Personal Portfolio",
-                        description: "My online space to showcase projects, skills, and technologies. Developed with a focus on responsiveness and performance."
+                        description: "My online space to present projects, skills, and technologies. Developed with a focus on responsiveness and performance."
                     },
                     bookmarkManager: {
                         title: "Bookmark Project - Bookmark Manager",
                         description: "Simple and practical bookmark manager, created with HTML, CSS, and JavaScript."
                     },
                     acsendoflex: {
-                        title: "Acsendoflex - Assessment Software",
-                        description: "Website to promote a performance assessment software. Clean and professional design."
+                        title: "Acsendoflex - Evaluation Software",
+                        description: "Website to promote performance evaluation software. Clean and professional design."
                     },
                     zomatoLanding: {
-                        title: "Zomato Landing Page (Reimagined)",
-                        description: "Recreation of Zomato's landing page using HTML, CSS, and JavaScript. Responsive version with attractive design."
+                        title: "Zomato Landing Page (Reimagining)",
+                        description: "Recreation of the Zomato landing page with HTML, CSS, and JavaScript. Responsive version with attractive design."
                     },
                     terrorDuo: {
-                        title: "The Terror Duo",
-                        description: "Meet Bryan and his 'Parasite' in a detailed digital drawing!"
+                        title: "Terror Duo",
+                        description: "Meet Bryan and his 'Parasite' in a digital drawing full of details!"
                     },
                     bratailsAnimated: {
-                        title: "Animated Bratails",
-                        description: "A short animation of my character Bryan, lovingly made in Clip Studio."
+                        title: "Bratails Animated",
+                        description: "A short animation of my character Bryan, made with care in Clip Studio."
                     },
                     oliveBrandDesign: {
-                        title: "Olive Oil Brand Design",
-                        description: "I created this olive oil brand design in Photoshop."
+                        title: "Olive Brand Design",
+                        description: "I created this brand design for olive oil in Photoshop."
                     },
                     stylizedFlag: {
-                        title: "Stylized Brazilian Flag",
-                        description: "A stylized version of our flag, with a crystal touch, made to order."
+                        title: "Stylized Flag of Brazil",
+                        description: "A stylized version of our flag, with a touch of crystals, made to order."
                     },
                     gamerCase: {
-                        title: "Gaming PC Case Design",
-                        description: "A custom gaming PC case design for a client passionate about gaming!"
+                        title: "Gamer Case Design",
+                        description: "A custom gamer case design for a client passionate about games!"
                     },
                     environmentShirt: {
-                        title: "Environmental T-Shirt Design",
-                        description: "T-shirt design for Environment Day, a school project that I really enjoyed developing."
+                        title: "Environmental Shirt Print",
+                        description: "Shirt print for Environment Day, a school project that I really enjoyed developing."
                     },
                     parasiteNotebook: {
                         title: "The Parasite in the Notebook",
@@ -673,15 +679,15 @@ const resources = {
                     },
                     giratinaArt: {
                         title: "Giratina Digital Art",
-                        description: "A digital artwork of the legendary Pokémon Giratina."
+                        description: "A digital art of the legendary Pokémon Giratina."
                     },
                     burgerDesign: {
                         title: "Burger Design",
                         description: "Appetizing burger design created for a local burger joint."
                     },
                     notebookDrawing: {
-                        title: "Notebook Drawing",
-                        description: "A hand-drawn sketch in a notebook, digitally colored."
+                        title: "Drawing in Notebook",
+                        description: "A drawing made by hand in a notebook and digitally colored."
                     },
                     pizzaDesign: {
                         title: "Pizza Design",
@@ -689,19 +695,19 @@ const resources = {
                     },
                     pizzaPromo: {
                         title: "Pizza Promotional Image",
-                        description: "Promotional pizza image, perfect for boosting social media presence!"
+                        description: "Promotional pizza image, perfect for boosting social media!"
                     },
                     spaceshipPrototype: {
                         title: "Spaceship Prototype",
                         description: "A spaceship prototype with a futuristic and stylish design!"
                     },
                     bratails360: {
-                        title: "Bratails in 360 Degrees",
-                        description: "A complete 360-degree view of my character Bratails/Bryan."
+                        title: "Bratails in 360 degrees",
+                        description: "A complete view of my character Bratails/Bryan in 360 degrees."
                     },
                     bratailsSmiling: {
                         title: "Bratails Smiling",
-                        description: "Check out Bratails giving a contagious smile!"
+                        description: "Look at Bratails giving a contagious smile!"
                     },
                     bratailsSpaceship: {
                         title: "Bratails in the Spaceship",
@@ -709,27 +715,27 @@ const resources = {
                     },
                     twinSwords: {
                         title: "Twin Swords",
-                        description: "Two twin swords with ornate details in blue and red, an impressive symmetrical design."
+                        description: "Two twin swords with ornate blue and red details, an impressive symmetrical design."
                     },
                     angelSymbols: {
                         title: "ANGEL Symbols",
-                        description: "Circular symbols that evoke the beauty of angel wings."
+                        description: "Circular symbols that evoke the beauty of an angel's wings."
                     },
                     fourKingdoms: {
-                        title: "Four Kingdoms' Coats of Arms",
-                        description: "Four heraldic coats of arms representing distinct kingdoms."
+                        title: "Coats of Arms of the Four Kingdoms",
+                        description: "Four coats of arms with heraldic design, representing distinct kingdoms."
                     },
                     berserkInspired: {
-                        title: "Berserk-Inspired Illustration",
-                        description: "A digital illustration strongly inspired by the Berserk universe."
+                        title: "Berserk Inspired Illustration",
+                        description: "A digital illustration with a strong inspiration from the universe of Berserk."
                     },
                     anniePortrait: {
-                        title: "Annie's Portrait",
+                        title: "Annie Portrait",
                         description: "A digital portrait of Annie, focusing on the expressive details of her face."
                     },
                     renderTest: {
-                        title: "Render Test",
-                        description: "A test render with cubes and a sphere, exploring different textures."
+                        title: "Rendering Test",
+                        description: "A rendering test with cubes and a sphere, exploring different textures."
                     },
                     vicenteCover: {
                         title: "Vicente Music Cover",
@@ -752,8 +758,8 @@ const resources = {
                         description: "Bratails with a surprised expression!"
                     },
                     captainShield: {
-                        title: "Captain America's Shield",
-                        description: "3D modeling of Captain America's iconic shield."
+                        title: "Captain America Shield",
+                        description: "3D modeling of the iconic Captain America shield."
                     },
                     clickteamLogo: {
                         title: "CLICKTEAM Logo",
@@ -773,7 +779,7 @@ const resources = {
                     },
                     screavinyPrototype: {
                         title: "Screaviny Prototype",
-                        description: "Prototype of the Screaviny character for a game project."
+                        description: "Screaviny character prototype for a game project."
                     },
                     modelingTest: {
                         title: "Modeling Test",
@@ -783,18 +789,18 @@ const resources = {
                         title: "Discord Icons",
                         description: "Four versions of an icon for a Discord server."
                     }
-                }
+                },
             },
             footer: {
                 occupation: 'Full Stack Web Developer | Graphic Designer | IT Technician',
-                connect: 'Connect with me',
+                connect: 'Connect',
                 copyright: '© {{year}} Jeferson Reis. All rights reserved.',
                 social: {
-                    linkedin: "Jeferson Reis Almeida's LinkedIn",
-                    github: "Jeferson Reis Almeida's GitHub",
-                    instagram: "Jeferson Reis Almeida's Instagram",
-                    whatsapp: "Jeferson Reis Almeida's WhatsApp",
-                    discord: "Jeferson Reis Almeida's Discord"
+                    linkedin: 'Jeferson Reis Almeida LinkedIn',
+                    github: 'Jeferson Reis Almeida GitHub',
+                    instagram: 'Jeferson Reis Almeida Instagram',
+                    whatsapp: 'Jeferson Reis Almeida WhatsApp',
+                    discord: 'Jeferson Reis Almeida Discord'
                 }
             },
             skills: {
@@ -803,23 +809,23 @@ const resources = {
                 sections: {
                     frontend: {
                         title: "Frontend Development",
-                        experience: "Over 4 years of experience"
+                        experience: "4+ Years of Experience"
                     },
                     backend: {
                         title: "Backend Development",
-                        experience: "Over 4 years of experience"
+                        experience: "4+ Years of Experience"
                     },
                     tools: {
                         title: "Tools & Other Skills",
-                        experience: "Over 4 years of experience"
+                        experience: "4+ Years of Experience"
                     }
                 },
                 softSkills: {
-                    title: "Soft Skills",
+                    title: "Interpersonal Skills",
                     items: {
                         communication: {
                             title: "Effective Communication",
-                            description: "Communicate ideas clearly, concisely, and adaptably to different audiences."
+                            description: "Communicate ideas clearly, concisely, and adaptably for different audiences."
                         },
                         teamwork: {
                             title: "Collaboration & Teamwork",
@@ -841,10 +847,10 @@ const resources = {
                 subtitle: "Experience and skills that make a difference",
                 highlights: "Highlights",
                 highlightItems: [
-                    "Full-Stack Developer with +4 years of experience",
+                    "Full-Stack Developer with 4+ years of experience",
                     "React and Node.js Specialist",
                     "Graphic Designer",
-                    "IT Experience",
+                    "IT Expertise",
                     "Management Knowledge"
                 ],
                 experience: {
@@ -853,7 +859,7 @@ const resources = {
                         title: "Freelance Web Developer",
                         period: "2024 – Present",
                         responsibilities: [
-                            "Creating intuitive and responsive websites for businesses and entrepreneurs.",
+                            "Creation of intuitive and responsive websites for companies and entrepreneurs.",
                             "Development of an online course platform, increasing sales by 90% through conversion-focused design and user experience."
                         ]
                     }
@@ -876,10 +882,10 @@ const resources = {
                     }
                 },
                 softSkills: {
-                    title: "Soft Skills",
+                    title: "Interpersonal Skills",
                     items: [
                         "Teamwork",
-                        "Problem solving",
+                        "Problem-solving",
                         "Effective communication",
                         "Creativity",
                         "Proactivity",
@@ -890,55 +896,55 @@ const resources = {
                 buttons: {
                     showMore: "Show More",
                     showLess: "Show Less",
-                    downloadCV: "Download Complete CV"
+                    downloadCV: "Download Full CV"
                 },
-                downloadDescription: "For more details, download my complete resume"
+                downloadDescription: "For more details, download my full resume"
             },
             testimonials: {
                 title: "Testimonials",
-                subtitle: "Feedback from Satisfied Clients",
+                subtitle: "Testimonials from Satisfied Clients",
                 imageAlt: "Photo of {{name}}",
                 testimonialsList: [
                     {
                         rating: 5,
-                        content: '"The investment in developing my website was worth every penny! The professional design and conversion optimization greatly increased my course sales without the need for heavy advertising spending. Plus, the service was agile and efficient. I strongly recommend it!"',
+                        content: '"The investment in developing my website was worth every penny! The professional design and optimization for conversions greatly increased sales of my courses, without the need for large advertising expenses. In addition, the service was agile and efficient. I highly recommend it!"',
                         author: "Ricardo Dias",
-                        title: "Art Teacher and Founder",
+                        title: "Arts Teacher and Founder",
                         image: "/assets/images/RicardoDias.webp"
                     },
                     {
                         rating: 5,
-                        content: '"As Technology Director at School Vision, I can affirm that Jeferson\'s work was essential in modernizing our platform. The solution he developed allowed us to optimize internal processes and offer a better experience for our students."',
+                        content: '"As Technology Director at School Vision, I can say that Jeferson\'s work was essential to modernize our platform. The solution he developed allowed us to optimize internal processes and offer a better experience for our students."',
                         author: "Camila Oliveira",
                         title: "Technology Director at School Vision"
                     },
                     {
                         rating: 5,
-                        content: '"Having Jeferson create my website was a game-changer for my business. Before, I struggled to reach new clients online. Now, with a modern and functional website, my digital presence has strengthened and sales have increased considerably."',
+                        content: '"The creation of my website by Jeferson was a turning point for my business. Before, I had difficulty reaching new customers online. Now, with a modern and functional website, my digital presence has strengthened and sales have increased considerably."',
                         author: "Lucas Oliveira",
                         title: "Owner, Urban Style Barbershop"
                     },
                     {
                         rating: 5,
-                        content: '"Jeferson demonstrated incredible professionalism throughout the website development process. He was attentive to my needs, delivered the project on time, and exceeded my expectations with an impeccable final result."',
+                        content: '"Jeferson demonstrated incredible professionalism throughout the entire website development process. He was attentive to my needs, delivered the project on time, and exceeded my expectations with an impeccable final result."',
                         author: "Ana Silva",
-                        title: "Owner, Women\'s Clothing Store"
+                        title: "Owner, Women's Clothing Store"
                     },
                     {
                         rating: 5,
-                        content: '"We needed a customized solution for our company, and Jeferson delivered exactly what we needed. The system he developed is intuitive, efficient, and has helped us optimize our management processes."',
+                        content: '"We needed a customized solution for our company and Jeferson delivered exactly what we needed. The system he developed is intuitive, efficient, and has helped us optimize our management processes."',
                         author: "João Pereira",
-                        title: "Project Manager, Consulting Firm"
+                        title: "Project Manager, Consulting Company"
                     },
                     {
                         rating: 5,
-                        content: '"I recommend Jeferson without hesitation! He is a dedicated, talented professional with deep knowledge in web development. The website he created for my company is modern, responsive, and perfectly meets my needs."',
+                        content: '"I recommend Jeferson without hesitation! He is a dedicated, talented professional with a deep knowledge of web development. The website he created for my company is modern, responsive, and perfectly meets my needs."',
                         author: "Mariana Costa",
                         title: "Digital Entrepreneur"
                     },
                     {
                         rating: 5,
-                        content: '"Jeferson helped me transform my idea into reality. He created an amazing website for my new business, with a modern design and features that allow me to better interact with my customers. I\'m very satisfied with the result!"',
+                        content: '"Jeferson helped me turn my idea into reality. He created an amazing website for my new business, with a modern design and functionalities that allow me to interact better with my customers. I am very satisfied with the result!"',
                         author: "Fernanda Rodrigues",
                         title: "Founder, Accessories Brand"
                     }
@@ -954,19 +960,24 @@ const resources = {
                 callMe: "Call me to start your project!",
                 emailMe: "Send me an email to tell me about your idea!"
             },
+            // -------------- ADICIONANDO AS TRADUÇÕES PARA OS BOTÕES FLUTUANTES AQUI --------
+            floatButtons: {
+                whatsapp: 'Talk to us on WhatsApp',
+                discord: 'Join us on Discord'
+            }
+            // ------------------------------------------------------------------------------
         }
     }
-}
+};
 
 
 i18n
-    .use(initReactI18next)
+    .use(initReactI18next) // passa o i18n para react-i18next.
     .init({
         resources,
-        lng: 'pt', // default language
-        fallbackLng: 'pt',
+        lng: 'pt', // idioma padrão
         interpolation: {
-            escapeValue: false
+            escapeValue: false // não escape para caracteres HTML (< in JSX).
         }
     });
 
