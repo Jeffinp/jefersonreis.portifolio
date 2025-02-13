@@ -6,6 +6,8 @@ import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
 import SEOHead from "./components/SEOHead";
 import "./styles/import.css";
+import WhatsAppFloatBtn from "./components/WhatsAppFloatBtn.jsx/index.js"; 
+import DiscordFloatBtn from "./components/DiscordFloatBtn.jsx/index.js"; 
 
 // Lazy loading com comentários de prefetch
 const Header = lazy(() => import(/* @vite-ignore */"./components/Header.jsx"));
@@ -22,58 +24,60 @@ const ScrollToTopBtn = lazy(() => import(/* @vite-ignore */"./components/ScrollT
 const Atuacao = lazy(() => import(/* @vite-ignore */"./containers/atuacao.jsx"));
 
 const LoadingScreen = () => (
-    <div className="loading-screen">Carregando...</div>
+    <div className="loading-screen">Carregando...</div>
 );
 
 const App = () => {
-    const [darkMode, setDarkMode] = useState(() => {
-        try {
-            return localStorage.getItem("darkMode") === "enabled" ||
-                (localStorage.getItem("darkMode") === null &&
-                    window.matchMedia("(prefers-color-scheme: dark)").matches);
-        } catch {
-            return false;
-        }
-    });
+    const [darkMode, setDarkMode] = useState(() => {
+        try {
+            return localStorage.getItem("darkMode") === "enabled" ||
+                (localStorage.getItem("darkMode") === null &&
+                    window.matchMedia("(prefers-color-scheme: dark)").matches);
+        } catch {
+            return false;
+        }
+    });
 
-    useEffect(() => {
-        try {
-            localStorage.setItem("darkMode", darkMode ? "enabled" : "disabled");
-            document.body.classList.toggle("dark-mode", darkMode);
-        } catch (error) {
-            console.error("localStorage error:", error);
-        }
-    }, [darkMode]);
+    useEffect(() => {
+        try {
+            localStorage.setItem("darkMode", darkMode ? "enabled" : "disabled");
+            document.body.classList.toggle("dark-mode", darkMode);
+        } catch (error) {
+            console.error("localStorage error:", error);
+        }
+    }, [darkMode]);
 
-    return (
-        <div className="app-container">
-            <SEOHead />
-            <Suspense fallback={<LoadingScreen />}>
-                <Header toggleDarkMode={() => setDarkMode(prev => !prev)} darkMode={darkMode} />
-                <div className="content-wrapper">
-                    <Hero />
-                    <About />
-                    <Atuacao />
-                    <Skills />
-                    <Services />
-                    <Resume />
-                    <PortfolioSection />
-                    <Testimonials />
-                    <Contact />
-                    <Footer />
-                    <ScrollToTopBtn />
-                </div>
-            </Suspense>
-        </div>
-    );
+    return (
+        <div className="app-container">
+            <SEOHead />
+            <Suspense fallback={<LoadingScreen />}>
+                <Header toggleDarkMode={() => setDarkMode(prev => !prev)} darkMode={darkMode} />
+                <div className="content-wrapper">
+                    <Hero />
+                    <About />
+                    <Atuacao />
+                    <Skills />
+                    <Services />
+                    <Resume />
+                    <PortfolioSection />
+                    <Testimonials />
+                    <Contact />
+                </div>
+                <WhatsAppFloatBtn /> 
+                <DiscordFloatBtn /> 
+                <ScrollToTopBtn />
+                <Footer />
+            </Suspense>
+        </div>
+    );
 };
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
-        <HelmetProvider>
-            <I18nextProvider i18n={i18n}>
-                <App />
-            </I18nextProvider>
-        </HelmetProvider>
-    </React.StrictMode>
+    <React.StrictMode>
+        <HelmetProvider>
+            <I18nextProvider i18n={i18n}>
+                <App />
+            </I18nextProvider>
+        </HelmetProvider>
+    </React.StrictMode>
 );
