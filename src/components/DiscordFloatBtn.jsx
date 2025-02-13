@@ -10,7 +10,7 @@ const DiscordFloatBtn = () => {
             href={discordLink}
             target="_blank"
             rel="noopener noreferrer"
-            title="Junte-se a nós no Discord"
+            title="Junte-se a mim no Discord"
             aria-label="Discord"
             style={{
                 position: 'fixed',

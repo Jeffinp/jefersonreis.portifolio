@@ -12,7 +12,7 @@ const WhatsAppFloatBtn = () => {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            title="Fale conosco no WhatsApp"
+            title="Fale comigo no WhatsApp"
             aria-label="WhatsApp"
             style={{
                 position: 'fixed',
