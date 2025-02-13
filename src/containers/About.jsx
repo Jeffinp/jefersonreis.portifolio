@@ -12,10 +12,10 @@ const AboutMe = () => {
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-4">
-                        {t('about.title')}
+                        {t("about.title")}
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                        {t('about.intro')}
+                        {t("about.intro")}
                     </p>
                 </div>
 
@@ -25,9 +25,11 @@ const AboutMe = () => {
                             <div className="mb-6 p-4 rounded-full bg-blue-400 dark:bg-blue-500 text-white group-hover:text-blue-300 dark:group-hover:text-blue-400 transition-colors duration-300">
                                 <User className="w-8 h-8 md:w-12 md:h-12" />
                             </div>
-                            <h3 className="text-xl font-semibold text-black dark:text-white mb-4">{t('about.name')}</h3>
+                            <h3 className="text-xl font-semibold text-black dark:text-white mb-4">
+                                {t("about.name")}
+                            </h3>
                             <p className="text-gray-600 dark:text-gray-400 text-center leading-relaxed">
-                                {t('about.devDescription')}
+                                {t("about.devDescription")}
                             </p>
                         </div>
                         <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-blue-500 dark:bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
@@ -38,9 +40,11 @@ const AboutMe = () => {
                             <div className="mb-6 p-4 rounded-full bg-green-400 dark:bg-green-500 text-white group-hover:text-green-300 dark:group-hover:text-green-400 transition-colors duration-300">
                                 <Palette className="w-8 h-8 md:w-12 md:h-12" />
                             </div>
-                            <h3 className="text-xl font-semibold text-black dark:text-white mb-4">{t('about.designTitle')}</h3>
+                            <h3 className="text-xl font-semibold text-black dark:text-white mb-4">
+                                {t("about.designTitle")}
+                            </h3>
                             <p className="text-gray-600 dark:text-gray-400 text-center leading-relaxed">
-                                {t('about.designDescription')}
+                                {t("about.designDescription")}
                             </p>
                         </div>
                         <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-green-500 dark:bg-green-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
