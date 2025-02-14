@@ -1051,18 +1051,19 @@ const resources = {
                     {
                         rating: 5,
                         content:
-                            '"The investment in developing my website was worth every penny! The professional design and optimization for conversions greatly increased sales of my courses, without the need for large advertising expenses. In addition, the service was agile and efficient. I highly recommend it!"',
-                        author: "Ricardo Dias",
-                        title: "Arts Teacher and Founder",
-                        image: "/assets/images/RicardoDias.webp",
+                            '"Investing in our website’s development transformed FlyServ Drones. With a modern, optimized design, we boosted the demand for our drone services without the need for heavy spending on ads. The service was prompt and efficient. I highly recommend it!"',
+                        author: "FlyServ Drones",
+                        title: "Drone Service Company",
+                        image: "/assets/images/icon-flyserv.png",
                     },
                     {
                         rating: 5,
                         content:
-                            '"As Technology Director at School Vision, I can say that Jeferson\'s work was essential to modernize our platform. The solution he developed allowed us to optimize internal processes and offer a better experience for our students."',
-                        author: "Camila Oliveira",
-                        title: "Technology Director at School Vision",
-                    },
+                            '"Developing my website was crucial to expanding the reach of my art courses. With an elegant design and a focus on conversion, sales grew significantly without requiring large investments in advertising. The service was fast and exceeded expectations. I highly recommend it!"',
+                        author: "Ricardo Dias",
+                        title: "Art Teacher and Founder",
+                        image: "/assets/images/RicardoDias.webp",
+                    },                    
                     {
                         rating: 5,
                         content:
