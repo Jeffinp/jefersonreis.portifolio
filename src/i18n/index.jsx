@@ -490,7 +490,15 @@ const resources = {
                     {
                         rating: 5,
                         content:
-                            '"O investimento no desenvolvimento do meu site valeu cada centavo! O design profissional e a otimização para conversões aumentaram muito as vendas dos meus cursos, sem a necessidade de grandes gastos com anúncios. Além disso, o serviço foi ágil e eficiente. Recomendo fortemente!"',
+                            '"O investimento no desenvolvimento do nosso site transformou a FlyServ Drones. Com um design moderno e otimizado, aumentamos a demanda pelos nossos serviços com drones sem precisar de grandes gastos com anúncios. O atendimento foi rápido e eficiente. Recomendo fortemente!"',
+                        author: "FlyServ Drones",
+                        title: "Empresa de serviços com Drones",
+                        image: "/assets/images/icon-flyserv.png",
+                    },
+                    {
+                        rating: 5,
+                        content:
+                            '"Desenvolver meu site foi crucial para ampliar o alcance dos meus cursos de arte. Com um design elegante e foco na conversão, as vendas cresceram expressivamente, sem a necessidade de altos investimentos em publicidade. O serviço foi rápido e superou as expectativas. Recomendo!"',
                         author: "Ricardo Dias",
                         title: "Professor de Artes e Fundador",
                         image: "/assets/images/RicardoDias.webp",
