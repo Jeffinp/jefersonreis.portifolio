@@ -486,7 +486,7 @@ const PortfolioSection = () => {
                 if (!isHovering && !isTransitioning) {
                     nextSlide();
                 }
-            }, 15000);
+            }, 25000);
         };
 
         handleResize();

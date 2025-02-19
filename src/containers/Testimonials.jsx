@@ -8,7 +8,7 @@ const Testimonials = () => {
     const [isHovering, setIsHovering] = useState(false);
     const trackRef = useRef(null);
     const autoplayInterval = useRef(null);
-    const autoplayDelay = 5000;
+    const autoplayDelay = 25000;
 
     const testimonials = t("testimonials.testimonialsList", {
         returnObjects: true,
