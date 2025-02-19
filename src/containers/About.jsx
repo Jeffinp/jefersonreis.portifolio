@@ -17,7 +17,7 @@ const AboutMe = () => {
     const { t } = useTranslation();
 
     return (
-        <section id="about" className="relative py-24 bg-gradient-to-b from-white to-blue-50 dark:from-slate-900 dark:to-slate-900">
+        <section id="about" className="relative py-24 bg-gradient-to-b from-white to-blue-50 dark:from-slate-900/55 dark:to-slate-900/55">
             <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-400 to-green-400 dark:from-blue-500 dark:to-green-500" />
 
             {/* Background decoration */}

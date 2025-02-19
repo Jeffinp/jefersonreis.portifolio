@@ -147,7 +147,7 @@ const Skills = () => {
     return (
         <section
             id="skills-section"
-            className="relative py-24 bg-gradient-to-b from-white to-gray-50 dark:from-slate-900 dark:to-slate-900"
+            className="relative py-24 bg-gradient-to-b from-white to-gray-50 dark:from-slate-900/55 dark:to-slate-900/55"
         >
             {/* Background Decorations */}
             <div id="skills" className="absolute inset-0 overflow-hidden pointer-events-none">
