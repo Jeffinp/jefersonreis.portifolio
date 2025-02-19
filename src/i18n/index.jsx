@@ -370,6 +370,7 @@ const resources = {
             footer: {
                 occupation:
                     "Desenvolvedor Web Full Stack | Designer Gráfico | Técnico em Informática",
+                quickLinks: "Links Rápidos",
                 connect: "Conecte-se",
                 copyright: "© {{year}} Jeferson Reis. Todos os direitos reservados.",
                 social: {
@@ -931,6 +932,7 @@ const resources = {
             footer: {
                 occupation:
                     "Full Stack Web Developer | Graphic Designer | IT Technician",
+                quickLinks: "Quick Links",
                 connect: "Connect",
                 copyright: "© {{year}} Jeferson Reis. All rights reserved.",
                 social: {
@@ -1063,7 +1065,7 @@ const resources = {
                         author: "Ricardo Dias",
                         title: "Art Teacher and Founder",
                         image: "/assets/images/RicardoDias.webp",
-                    },                    
+                    },
                     {
                         rating: 5,
                         content:

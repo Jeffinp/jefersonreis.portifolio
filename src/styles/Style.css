@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 *,
 body,
 html {
@@ -103,4 +104,95 @@ html {
     transition: var(--transition);
     width: 100%;
     overflow-X: hidden
+}
+
+
+
+@keyframes float-1 {
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(10px) scale(1);
+    }
+
+    50% {
+        transform: translateY(-20px) translateX(-10px) scale(1.05);
+    }
+}
+
+@keyframes float-2 {
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(-10px) scale(1);
+    }
+
+    50% {
+        transform: translateY(20px) translateX(10px) scale(0.95);
+    }
+}
+
+@keyframes jump {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes pulse-ring {
+    0% {
+        opacity: 1;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.animate-float-1 {
+    animation: float-1 8s ease-in-out infinite;
+}
+
+.animate-float-2 {
+    animation: float-2 8s ease-in-out infinite;
+}
+
+.animate-jump {
+    animation: jump 1s ease-in-out infinite;
+}
+
+.animate-bounce {
+    animation: bounce 1.5s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+    animation: pulse-ring 1.5s ease-out infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.animate-blink {
+    animation: blink 1s step-end infinite;
 }

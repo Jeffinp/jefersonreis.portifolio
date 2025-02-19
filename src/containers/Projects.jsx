@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 
 const PortfolioSection = () => {
     const { t } = useTranslation();
@@ -507,28 +508,29 @@ const PortfolioSection = () => {
     ]);
 
     return (
-        <section
-            id="portfolio"
-            className="relative py-20 bg-white dark:bg-slate-900"
-        >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        <section className="relative py-24 bg-gradient-to-b from-white to-gray-50 dark:from-slate-900 dark:to-slate-900">
+            {/* Background Decorations */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-0 left-1/4 w-64 h-64 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl opacity-30" />
+                <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-100 dark:bg-purple-900/20 rounded-full blur-3xl opacity-30" />
+            </div>
+
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-20">
+                    <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-6">
                         {t("portfolio.title")}
                     </h2>
-                    <p className="text-lg text-gray-600 dark:text-gray-300">
+                    <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
                         {t("portfolio.subtitle")}
                     </p>
                 </div>
 
-                <div className="flex flex-wrap justify-center gap-2 mb-8">
-                    {Object.entries(
-                        t("portfolio.categories", { returnObjects: true })
-                    ).map(([key, value]) => (
+                <div className="flex flex-wrap justify-center gap-4 mb-12">
+                    {Object.entries(t("portfolio.categories", { returnObjects: true })).map(([key, value]) => (
                         <button
                             key={key}
                             onClick={() => filterItems(key)}
-                            className={`px-6 py-3 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl
+                            className={`group px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1
                                 ${activeFilter === key
                                     ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600"
                                     : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
@@ -539,11 +541,13 @@ const PortfolioSection = () => {
                     ))}
                 </div>
 
-                <div className="relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg">
+                <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl">
                     <div
                         ref={trackRef}
                         className="flex transition-transform duration-500 ease-out"
                         style={{ touchAction: "pan-y pinch-zoom" }}
+                        onMouseEnter={() => setIsHovering(true)}
+                        onMouseLeave={() => setIsHovering(false)}
                     >
                         {projects.map((project, index) => (
                             <div
@@ -551,49 +555,50 @@ const PortfolioSection = () => {
                                 data-category={project.category}
                                 className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4"
                             >
-                                <div className="rounded-xl overflow-hidden shadow-md bg-white dark:bg-gray-800">
-                                    <div className="relative pb-[60%]">
+                                <div className="group relative rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transform transition-all duration-300 hover:scale-105">
+                                    <div className="relative pb-[60%] overflow-hidden">
                                         <img
                                             src={project.image}
                                             alt={t(project.titleKey)}
-                                            className="absolute w-full h-full object-cover"
+                                            className="absolute w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
                                             loading="lazy"
                                         />
                                         {project.type === "contracted" && (
-                                            <span className="absolute top-2 right-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-1 rounded-full text-sm">
+                                            <span className="absolute top-4 right-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-2 rounded-full text-sm font-medium shadow-lg">
                                                 {t("portfolio.projectLabels.contracted")}
                                             </span>
                                         )}
                                     </div>
-                                    <div className="p-6">
-                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                                    <div className="p-8">
+                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 group-hover:bg-clip-text transition-all duration-300">
                                             {t(project.titleKey)}
                                         </h3>
-                                        <p className="mb-4 text-gray-600 dark:text-gray-300">
+                                        <p className="mb-6 text-gray-600 dark:text-gray-300">
                                             {t(project.descriptionKey)}
                                         </p>
-                                        <div className="flex flex-wrap gap-2 mb-4">
-                                            {project.technologies &&
-                                                project.technologies.map((tech, techIndex) => (
-                                                    <span
-                                                        key={techIndex}
-                                                        className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm"
-                                                    >
-                                                        {tech}
-                                                    </span>
-                                                ))}
+                                        <div className="flex flex-wrap gap-2 mb-6">
+                                            {project.technologies?.map((tech, techIndex) => (
+                                                <span
+                                                    key={techIndex}
+                                                    className="px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-gray-700 dark:text-gray-300 rounded-full text-sm transform transition-transform duration-300 hover:scale-105"
+                                                >
+                                                    {tech}
+                                                </span>
+                                            ))}
                                         </div>
                                         {project.link && (
                                             <a
                                                 href={project.link}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+                                                className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                                             >
                                                 {t("portfolio.projectLabels.viewProject")}
+                                                <ExternalLink className="ml-2 w-5 h-5 transform group-hover:scale-110 transition-transform duration-300" />
                                             </a>
                                         )}
                                     </div>
+                                    <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-all duration-500" />
                                 </div>
                             </div>
                         ))}
@@ -601,28 +606,29 @@ const PortfolioSection = () => {
 
                     <button
                         onClick={prevSlide}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-110"
                         aria-label={t("portfolio.projectLabels.prevProject")}
                     >
-                        &lt;
+                        <ChevronLeft className="w-6 h-6" />
                     </button>
                     <button
                         onClick={nextSlide}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-110"
                         aria-label={t("portfolio.projectLabels.nextProject")}
                     >
-                        &gt;
+                        <ChevronRight className="w-6 h-6" />
                     </button>
                 </div>
 
-                <div className="text-center mt-8">
+                <div className="text-center mt-20">
                     <a
                         href="https://drive.google.com/drive/folders/1kNUbhpuYBDRTLjD66vBwfSweugiabAIE?usp=drive_link"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+                        className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                     >
                         {t("portfolio.projectLabels.viewHighRes")}
+                        <ExternalLink className="ml-2 w-5 h-5 transform group-hover:scale-110 transition-transform duration-300" />
                     </a>
                 </div>
             </div>

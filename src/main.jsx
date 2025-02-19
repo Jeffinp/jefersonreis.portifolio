@@ -9,7 +9,7 @@ import "./styles/import.css";
 import WhatsAppFloatBtn from "./components/WhatsAppFloatBtn.jsx"; 
 import DiscordFloatBtn from "./components/DiscordFloatBtn.jsx"; 
 
-// Lazy loading com comentários de prefetch
+// Lazy loading dos componentes (evita carregar tudo de uma vez)
 const Header = lazy(() => import(/* @vite-ignore */"./components/Header.jsx"));
 const Hero = lazy(() => import(/* @vite-ignore */"./containers/Hero.jsx"));
 const About = lazy(() => import(/* @vite-ignore */"./containers/About.jsx"));
@@ -23,11 +23,13 @@ const Footer = lazy(() => import(/* @vite-ignore */"./components/Footer.jsx"));
 const ScrollToTopBtn = lazy(() => import(/* @vite-ignore */"./components/ScrollToTopBtn.jsx"));
 const Atuacao = lazy(() => import(/* @vite-ignore */"./containers/atuacao.jsx"));
 
+// Tela de carregamento enquanto os componentes são carregados
 const LoadingScreen = () => (
     <div className="loading-screen">Carregando...</div>
 );
 
 const App = () => {
+    // Pega o tema salvo ou usa a preferência do sistema
     const [darkMode, setDarkMode] = useState(() => {
         try {
             return localStorage.getItem("darkMode") === "enabled" ||
@@ -38,6 +40,7 @@ const App = () => {
         }
     });
 
+    // Salva a escolha do usuário no localStorage e aplica a classe no body
     useEffect(() => {
         try {
             localStorage.setItem("darkMode", darkMode ? "enabled" : "disabled");
@@ -72,6 +75,7 @@ const App = () => {
     );
 };
 
+// Renderiza o app na raiz do HTML
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <HelmetProvider>

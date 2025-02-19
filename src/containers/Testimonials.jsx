@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 const Testimonials = () => {
     const { t } = useTranslation();
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+    const [isHovering, setIsHovering] = useState(false);
     const trackRef = useRef(null);
     const autoplayInterval = useRef(null);
     const autoplayDelay = 5000;
@@ -31,7 +32,7 @@ const Testimonials = () => {
         };
 
         const startAutoplay = () => {
-            if (autoplayInterval.current) return;
+            if (autoplayInterval.current || isHovering) return;
             autoplayInterval.current = setInterval(moveToNextSlide, autoplayDelay);
         };
 
@@ -75,33 +76,37 @@ const Testimonials = () => {
             track.removeEventListener("touchend", handleTouchEnd);
             window.removeEventListener("resize", updateSlidePosition);
         };
-    }, [activeSlideIndex, testimonials.length]);
+    }, [activeSlideIndex, testimonials.length, isHovering]);
 
     return (
-        <section
-            id="testimonials"
-            className="relative py-20 bg-white dark:bg-slate-900"
-        >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        <section className="relative py-24 bg-gradient-to-b from-white to-gray-50 dark:from-slate-900 dark:to-slate-900">
+            {/* Background Decorations */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-0 left-1/4 w-64 h-64 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl opacity-30" />
+                <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-100 dark:bg-purple-900/20 rounded-full blur-3xl opacity-30" />
+            </div>
+
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-20">
+                    <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-6">
                         {t("testimonials.title")}
                     </h2>
-                    <p className="text-lg text-gray-600 dark:text-gray-300">
+                    <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
                         {t("testimonials.subtitle")}
                     </p>
                 </div>
 
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl">
                     <div
                         ref={trackRef}
-                        className="flex transition-transform duration-500 ease-in-out"
+                        className="flex transition-transform duration-500 ease-out"
+                        onMouseEnter={() => setIsHovering(true)}
+                        onMouseLeave={() => setIsHovering(false)}
                     >
                         {testimonials.map((testimonial, index) => (
-                            <div key={index} className="w-full flex-shrink-0 px-4">
-                                <article className="group relative bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full">
-                                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                    <div className="relative m-[1px] bg-white dark:bg-gray-800 rounded-[11px] p-8 h-full">
+                            <div key={index} className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
+                                <div className="group relative h-full rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transform transition-all duration-300 hover:scale-105">
+                                    <div className="p-8">
                                         <div className="flex mb-4">
                                             {[...Array(testimonial.rating)].map((_, i) => (
                                                 <Star
@@ -129,7 +134,7 @@ const Testimonials = () => {
                                                 </div>
                                             )}
                                             <div>
-                                                <h3 className="font-bold text-gray-900 dark:text-white">
+                                                <h3 className="font-bold text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 group-hover:bg-clip-text transition-all duration-300">
                                                     {testimonial.author}
                                                 </h3>
                                                 <p className="text-gray-600 dark:text-gray-400">
@@ -138,44 +143,27 @@ const Testimonials = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </article>
+                                    <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                                </div>
                             </div>
                         ))}
                     </div>
 
-                    <div className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-4 mt-8">
-                        <button
-                            onClick={moveToPrevSlide}
-                            className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 group"
-                            aria-label={t("testimonials.accessibility.prevButton")}
-                        >
-                            <ChevronLeft className="w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300" />
-                        </button>
+                    <button
+                        onClick={moveToPrevSlide}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-110"
+                        aria-label={t("testimonials.accessibility.prevButton")}
+                    >
+                        <ChevronLeft className="w-6 h-6" />
+                    </button>
 
-                        <div className="flex gap-2">
-                            {testimonials.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => goToSlide(index)}
-                                    className={`w-3 h-3 rounded-full transition-all duration-300 ${index === activeSlideIndex
-                                            ? "bg-gradient-to-r from-blue-500 to-purple-500 scale-125"
-                                            : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
-                                        }`}
-                                    aria-label={t("testimonials.accessibility.goToSlide", {
-                                        number: index + 1,
-                                    })}
-                                />
-                            ))}
-                        </div>
-
-                        <button
-                            onClick={moveToNextSlide}
-                            className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 group"
-                            aria-label={t("testimonials.accessibility.nextButton")}
-                        >
-                            <ChevronRight className="w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300" />
-                        </button>
-                    </div>
+                    <button
+                        onClick={moveToNextSlide}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-110"
+                        aria-label={t("testimonials.accessibility.nextButton")}
+                    >
+                        <ChevronRight className="w-6 h-6" />
+                    </button>
                 </div>
             </div>
         </section>
