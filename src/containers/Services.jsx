@@ -54,7 +54,7 @@ const Services = () => {
     ];
 
     return (
-        <section className="relative py-24 bg-gradient-to-b from-white to-gray-50 dark:from-slate-900 dark:to-slate-900">
+        <section id="areas" className="relative py-24 bg-gradient-to-b from-white to-gray-50 dark:from-slate-900 dark:to-slate-900">
             {/* Background Decorations */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-0 left-1/4 w-64 h-64 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl opacity-30" />
@@ -94,11 +94,6 @@ const Services = () => {
                                         {t(service.description)}
                                     </p>
 
-                                    <button className="flex items-center text-gray-500 dark:text-gray-400 hover:text-blue-500 
-                                        dark:hover:text-blue-400 font-medium transition-colors duration-300 mt-auto">
-                                        Learn more
-                                        <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
-                                    </button>
                                 </div>
                             </div>
 

@@ -2,6 +2,17 @@ import React from "react";
 import { User, Palette, ChevronRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+// Função para rolar até a seção de áreas
+const scrollToAreas = () => {
+    const areasSection = document.getElementById('areas');
+    if (areasSection) {
+        areasSection.scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+};
+
+
 const AboutMe = () => {
     const { t } = useTranslation();
 
@@ -37,7 +48,7 @@ const AboutMe = () => {
                                 </div>
 
                                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-300">
-                                    {t("about.devTitle")}
+                                    {t("about.title")}
                                 </h3>
 
                                 <p className="text-gray-600 dark:text-gray-300 text-center leading-relaxed mb-6">
@@ -46,6 +57,7 @@ const AboutMe = () => {
 
                                 <button
                                     type="button"
+                                    onClick={scrollToAreas} // Adicione esta linha
                                     className="flex items-center text-blue-500 dark:text-blue-400 font-medium group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors duration-300"
                                     aria-label={t("about.learnMore")}
                                 >
@@ -75,7 +87,8 @@ const AboutMe = () => {
 
                                 <button
                                     type="button"
-                                    className="flex items-center text-green-500 dark:text-green-400 font-medium group-hover:text-green-600 dark:group-hover:text-green-300 transition-colors duration-300"
+                                    onClick={scrollToAreas} // Adicione esta linha
+                                    className="flex items-center text-blue-500 dark:text-blue-400 font-medium group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors duration-300"
                                     aria-label={t("about.learnMore")}
                                 >
                                     {t("about.learnMore")} <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />

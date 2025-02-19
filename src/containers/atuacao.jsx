@@ -2,6 +2,17 @@ import React from "react";
 import { useTranslation } from 'react-i18next';
 import { Code2, Palette, FileText, Box, Camera, Cpu, ArrowRight } from "lucide-react";
 
+// Função para rolar até a seção de áreas
+const scrollToAreas = () => {
+    const areasSection = document.getElementById('areas');
+    if (areasSection) {
+        areasSection.scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+};
+
+
 const ExpertiseAreas = () => {
     const { t } = useTranslation();
 
@@ -85,9 +96,12 @@ const ExpertiseAreas = () => {
                                         {t(`expertise.items.item${index}.description`)}
                                     </p>
 
-                                    <button className="flex items-center text-gray-500 dark:text-gray-400 hover:text-blue-500 
-                                        dark:hover:text-blue-400 font-medium transition-colors duration-300">
-                                        Learn more
+                                    <button
+                                        onClick={scrollToAreas}
+                                        className="flex items-center text-gray-500 dark:text-gray-400 hover:text-blue-500 
+                                    dark:hover:text-blue-400 font-medium transition-colors duration-300"
+                                    >
+                                        {t('expertise.learnMore')}
                                         <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
                                     </button>
                                 </div>

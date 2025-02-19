@@ -36,11 +36,14 @@ const resources = {
                 designTitle: "Design Gráfico",
                 designDescription:
                     "Combinando criatividade e técnicas modernas de design, crio identidades visuais únicas, como logotipos, banners e materiais gráficos, para atender às necessidades de cada cliente.",
+                learnMore: "Veja mais"
+
             },
             expertise: {
                 title: "Áreas de Atuação",
                 subtitle:
                     "Conheça minhas principais áreas de expertise e como posso ajudar seu projeto a decolar.",
+                learnMore: "Saiba mais",
                 items: {
                     item0: {
                         title: "Desenvolvimento Web Imersivo",
@@ -557,6 +560,12 @@ const resources = {
                 title: "Contato",
                 callMe: "Me ligue para iniciar seu projeto!",
                 emailMe: "Envie um email para me contar sobre sua ideia!",
+                phone: "+55 71 9 8439-3235",
+                email: "jefersonreisalmeida8356@gmail.com",
+                ariaWhatsapp: "Abrir conversa no WhatsApp",
+                ariaEmail: "Enviar email",
+                copyEmail: "Copiar email para área de transferência",
+                emailCopied: "Email copiado com sucesso!"
             },
             // -------------- ADICIONANDO AS TRADUÇÕES PARA OS BOTÕES FLUTUANTES AQUI --------
             floatButtons: {
@@ -599,11 +608,13 @@ const resources = {
                 designTitle: "Graphic Design",
                 designDescription:
                     "Combining creativity with modern design techniques, I create unique visual identities, including logos, banners, and graphic materials, tailored to meet each client's needs.",
+                learnMore: "Learn More"
             },
             expertise: {
                 title: "Areas of Expertise",
                 subtitle:
                     "Discover my main areas of expertise and how I can help your project take off.",
+                learnMore: "Learn more",
                 items: {
                     item0: {
                         title: "Immersive Web Development",
@@ -1111,7 +1122,13 @@ const resources = {
             contact: {
                 title: "Contact",
                 callMe: "Call me to start your project!",
-                emailMe: "Send me an email to tell me about your idea!",
+                emailMe: "Email me to share your idea!",
+                phone: "+55 71 9 8439-3235",
+                email: "jefersonreisalmeida8356@gmail.com",
+                ariaWhatsapp: "Open WhatsApp conversation",
+                ariaEmail: "Send email",
+                copyEmail: "Copy email to clipboard",
+                emailCopied: "Email copied successfully!"
             },
             // -------------- ADICIONANDO AS TRADUÇÕES PARA OS BOTÕES FLUTUANTES AQUI --------
             floatButtons: {
