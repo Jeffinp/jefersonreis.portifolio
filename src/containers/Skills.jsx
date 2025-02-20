@@ -40,28 +40,26 @@ const Skills = () => {
         { name: "CSS", percentage: 100 },
         { name: "JavaScript", percentage: 100 },
         { name: "React", percentage: 95 },
-        { name: "Vue.js", percentage: 85 },
-        { name: "Angular", percentage: 90 },
     ];
 
     const backendSkills = [
         { name: "PHP", percentage: 85 },
         { name: "Node.js", percentage: 90 },
         { name: "Python", percentage: 95 },
+        { name: "C#", percentage: 20}
     ];
 
     const toolsSkills = [
         { name: "After Effects", percentage: 90 },
-        { name: "Bootstrap", percentage: 80 },
+        { name: "Bootstrap", percentage: 90 },
         { name: "Canva", percentage: 90 },
-        { name: "CorelDRAW", percentage: 95 },
-        { name: "Figma", percentage: 100 },
-        { name: "Filmora", percentage: 85 },
+        { name: "Figma", percentage: 80 },
+        { name: "Filmora", percentage: 90 },
         { name: "Illustrator", percentage: 90 },
         { name: "MySQL", percentage: 90 },
-        { name: "Office Suite", percentage: 100 },
-        { name: "Photoshop", percentage: 85 },
-        { name: "Premiere", percentage: 80 },
+        { name: "Pacotes Office", percentage: 100 },
+        { name: "Photoshop", percentage: 95 },
+        { name: "Premiere", percentage: 95 },
         { name: "UX Design", percentage: 100 },
     ];
 
