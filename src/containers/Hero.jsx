@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Mail, Sparkles } from 'lucide-react';
+import { ArrowRight, Mail, Sparkles, ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
@@ -19,83 +19,82 @@ const Hero = () => {
     }, []);
 
     return (
-        <section id="home" className="relative min-h-screen bg-gradient-to-b from-white/95 to-gray-50/95 dark:from-slate-900/95 dark:to-slate-800/95">
-            {/* Imagem de fundo com parallax */}
-            <div
-                className="fixed inset-0 z-0 bg-gray-900/20 dark:bg-slate-900/60"
-                aria-hidden="true"
-            >
+        <section id="home" className="relative min-h-screen overflow-hidden">
+            {/* Improved background with subtle animation */}
+            <div className="fixed inset-0 z-0">
+                <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-gray-50/95 to-white/95 dark:from-slate-900/95 dark:via-slate-800/95 dark:to-slate-900/95" />
                 <img
                     src="/assets/images/nebula-space-blue-12k-2v.webp"
                     alt="Background pattern"
-                    className="absolute inset-0 w-full h-full object-cover opacity-20 dark:opacity-10 mix-blend-multiply"
+                    className="absolute inset-0 w-full h-full object-cover opacity-20 dark:opacity-10 mix-blend-multiply transform scale-105 animate-subtle-float"
                     loading="eager"
                     decoding="async"
                 />
+                <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,0.02)_25%,rgba(68,68,68,0.02)_50%,transparent_50%,transparent_75%,rgba(68,68,68,0.02)_75%)] bg-[length:20px_20px] animate-subtle-move" />
             </div>
 
-            {/* Elementos dinâmicos de fundo */}
+            {/* Animated gradient orbs */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-0 right-1/4 w-64 h-64 bg-blue-100/30 dark:bg-blue-900/20 rounded-full blur-3xl opacity-30 animate-float-1" />
-                <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-purple-100/30 dark:bg-purple-900/20 rounded-full blur-3xl opacity-30 animate-float-2" />
-
-                {/* Padrão de grade animado */}
-                <div className="absolute inset-0 opacity-5 dark:opacity-10 bg-[size:40px_40px] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)]" />
+                <div className="absolute top-1/4 -right-32 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-float-slow" />
+                <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-gradient-to-tr from-purple-400/20 to-blue-400/20 rounded-full blur-3xl animate-float-slow-reverse" />
             </div>
 
-            {/* Conteúdo principal */}
-            <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col items-center justify-center">
-
-                {/* Container da imagem do perfil */}
-                <div className="group relative mb-8">
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="relative w-48 h-48 rounded-full overflow-hidden border-4 border-white/80 dark:border-gray-700/80 shadow-xl group-hover:shadow-blue-500/25 dark:group-hover:shadow-purple-500/25 transition-all duration-500 backdrop-blur-sm">
+            {/* Main content */}
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col items-center justify-center">
+                {/* Profile image with enhanced animations */}
+                <div className="group relative mb-12 transition-transform duration-700 hover:scale-105">
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-xl opacity-0 group-hover:opacity-20 transition-all duration-700" />
+                    <div className="relative w-48 h-48 rounded-full overflow-hidden border-4 border-white/90 dark:border-gray-700/90 shadow-2xl transition-all duration-700">
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 group-hover:opacity-100 opacity-0 transition-opacity duration-700" />
                         <img
                             src="/assets/images/Linkedin-foto.webp"
                             alt={t('hero.profileAlt')}
-                            className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             loading="eager"
                             decoding="async"
                             width="192"
                             height="192"
                         />
-                        <div className="absolute top-0 right-0 p-2">
-                            <Sparkles className="w-6 h-6 text-yellow-400/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        </div>
+                        <Sparkles className="absolute top-2 right-2 w-6 h-6 text-yellow-400 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:rotate-12" />
                     </div>
                 </div>
 
-                {/* Título e subtítulo */}
-                <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-6 text-center px-4">
-                    {t('hero.title')}
+                {/* Enhanced typography */}
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-8 transition-all duration-700">
+                    <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+                        {t('hero.title')}
+                    </span>
                 </h1>
 
-                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl text-center mb-12 px-4">
+                <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl text-center mb-16 leading-relaxed">
                     {t('hero.subtitle')}
-                    <span className="font-semibold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mx-2">
-                        {t('hero.transforming')}
+                    <span className="relative inline-block mx-2 group">
+                        <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-blue-400/30 to-purple-400/30 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                        <span className="relative font-semibold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+                            {t('hero.transforming')}
+                        </span>
                     </span>
                     ✨
                 </p>
 
-                {/* Botões de ação */}
-                <div className="flex flex-wrap gap-6 justify-center">
+                {/* Enhanced action buttons */}
+                <div className="flex flex-wrap gap-8 justify-center">
                     <button
-                        className="group relative bg-white/80 dark:bg-gray-800/80 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 px-8 py-4 backdrop-blur-sm"
                         onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="group relative overflow-hidden rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-[2px] transition-all duration-500 hover:shadow-[0_0_2rem_-0.5rem_rgb(147,51,234)]"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
-                        <span className="relative flex items-center text-gray-900 dark:text-white font-semibold group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 group-hover:bg-clip-text transition-all duration-300">
-                            <ArrowRight className="mr-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-                            {t('hero.buttons.viewProjects')}
-                        </span>
+                        <div className="relative bg-white dark:bg-gray-900 rounded-full px-8 py-4">
+                            <span className="relative flex items-center text-gray-900 dark:text-white font-semibold group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 group-hover:bg-clip-text transition-all duration-300">
+                                <ArrowRight className="mr-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+                                {t('hero.buttons.viewProjects')}
+                            </span>
+                        </div>
                     </button>
 
                     <button
-                        className="group relative bg-white/80 dark:bg-gray-800/80 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 px-8 py-4 backdrop-blur-sm"
                         onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="group relative overflow-hidden rounded-full bg-white dark:bg-gray-800 px-8 py-4 transition-all duration-500 hover:shadow-lg"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
                         <span className="relative flex items-center text-gray-900 dark:text-white font-semibold group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 group-hover:bg-clip-text transition-all duration-300">
                             <Mail className="mr-2 w-5 h-5 transition-transform group-hover:scale-110" />
                             {t('hero.buttons.contact')}
@@ -104,41 +103,16 @@ const Hero = () => {
                 </div>
             </div>
 
-            {/* Indicador de scroll melhorado */}
+            {/* Improved scroll indicator */}
             <div
-                className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20 cursor-pointer transition-opacity duration-500 hover:opacity-100"
-                style={{ opacity: 1 - (scrollProgress / 100) }}
+                className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20 transition-all duration-500"
+                style={{ opacity: 1 - (scrollProgress / 50) }}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
-                <div className="relative flex flex-col items-center">
-                    <div className={`relative w-8 h-12 transition-transform duration-300 ${isHovered ? 'translate-y-2' : ''}`}>
-                        <div className="absolute inset-0 border-2 border-gray-300/80 dark:border-gray-600/80 rounded-full" />
-
-                        <svg
-                            className="absolute -inset-2 text-blue-500/80 dark:text-purple-400/80 transform -rotate-90"
-                            viewBox="0 0 100 100"
-                        >
-                            <circle
-                                cx="50"
-                                cy="50"
-                                r="45"
-                                stroke="currentColor"
-                                strokeWidth="4"
-                                fill="transparent"
-                                strokeDasharray="283"
-                                strokeDashoffset={283 * (1 - scrollProgress / 100)}
-                            />
-                        </svg>
-
-                        <div className="absolute top-1 left-1/2 -translate-x-1/2">
-                            <div className={`w-2 h-2 bg-blue-500/80 dark:bg-purple-400/80 rounded-full ${isHovered ? 'animate-jump' : 'animate-bounce'
-                                }`} />
-                        </div>
-                    </div>
-
-                    <div className={`absolute -inset-4 bg-blue-500/10 dark:bg-purple-400/10 rounded-full ${isHovered ? 'animate-pulse-ring' : ''
-                        }`} />
+                <div className="relative group cursor-pointer">
+                    <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <ChevronDown className={`w-8 h-8 text-gray-600 dark:text-gray-300 transition-transform duration-500 ${isHovered ? 'translate-y-2' : 'animate-bounce'}`} />
                 </div>
             </div>
         </section>
