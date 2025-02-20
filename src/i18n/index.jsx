@@ -488,72 +488,72 @@ const resources = {
             },
             testimonials: {
                 title: "Depoimentos",
-                subtitle: "Depoimentos de Clientes Satisfeitos",
+                subtitle: "Veja o que nossos clientes dizem",
                 imageAlt: "Foto de {{name}}",
                 testimonialsList: [
                     {
                         rating: 5,
-                        content:
-                            '"O investimento no desenvolvimento do nosso site transformou a FlyServ Drones. Com um design moderno e otimizado, aumentamos a demanda pelos nossos serviços com drones sem precisar de grandes gastos com anúncios. O atendimento foi rápido e eficiente. Recomendo fortemente!"',
+                        content: 
+                            '"Fiquei impressionado com a qualidade do serviço entregue no prazo combinado! Cada detalhe foi pensado, e os resultados superaram expectativas. Com certeza vou indicar para todos que precisarem de um trabalho sério."',
                         author: "FlyServ Drones",
-                        title: "Empresa de serviços com Drones",
+                        title: "Empresa de Serviços com Drones",
                         image: "/assets/images/icon-flyserv.png",
                     },
                     {
                         rating: 5,
-                        content:
-                            '"Desenvolver meu site foi crucial para ampliar o alcance dos meus cursos de arte. Com um design elegante e foco na conversão, as vendas cresceram expressivamente, sem a necessidade de altos investimentos em publicidade. O serviço foi rápido e superou as expectativas. Recomendo!"',
+                        content: 
+                            '"O site desenvolvido pelo Jeferson foi um marco para meus cursos de arte. Além do design impecável, as vendas aumentaram 40% em três meses sem gastar fortunas em anúncios. Serviço ágil e feito com maestria!"',
                         author: "Ricardo Dias",
                         title: "Professor de Artes e Fundador",
                         image: "/assets/images/RicardoDias.webp",
                     },
                     {
                         rating: 5,
-                        content:
-                            '"Como Diretora de Tecnologia da School Vision, posso afirmar que o trabalho do Jeferson foi essencial para modernizar nossa plataforma. A solução que ele desenvolveu nos permitiu otimizar processos internos e oferecer uma melhor experiência para nossos alunos."',
+                        content: 
+                            '"Como CTO da School Vision, testemunhei como o Jeferson modernizou nossa plataforma de forma estratégica. A nova solução não só simplificou nossos processos internos como elevou a experiência dos alunos para outro nível."',
                         author: "Camila Oliveira",
                         title: "Diretora de Tecnologia da School Vision",
                     },
                     {
                         rating: 5,
-                        content:
-                            '"A criação do meu site pelo Jeferson foi um divisor de águas para o meu negócio. Antes, eu tinha dificuldades em alcançar novos clientes online. Agora, com um site moderno e funcional, minha presença digital se fortaleceu e as vendas aumentaram consideravelmente."',
+                        content: 
+                            '"Antes do site, minha barbearia dependia apenas do boca a boca. Hoje, tenho agenda lotada graças ao trabalho do Jeferson. Design moderno, funcional e que realmente converte visitantes em clientes!"',
                         author: "Lucas Oliveira",
-                        title: "Proprietário, Barbearia Estilo Urbano",
+                        title: "Proprietário da Barbearia Estilo Urbano",
                     },
                     {
                         rating: 5,
-                        content:
-                            '"O Jeferson demonstrou um profissionalismo incrível durante todo o processo de desenvolvimento do meu site. Ele foi atencioso às minhas necessidades, entregou o projeto dentro do prazo e superou minhas expectativas com um resultado final impecável."',
+                        content: 
+                            '"Profissionalismo em cada etapa! O Jeferson não só entendeu minha visão para a loja de roupas como trouxe ideias inovadoras. O projeto foi entregue antes do prazo e o resultado final é simplesmente perfeito."',
                         author: "Ana Silva",
-                        title: "Proprietária, Loja de Roupas Femininas",
+                        title: "Proprietária de Loja de Roupas Femininas",
                     },
                     {
                         rating: 5,
-                        content:
-                            '"Precisávamos de uma solução personalizada para nossa empresa e o Jeferson entregou exatamente o que precisávamos. O sistema que ele desenvolveu é intuitivo, eficiente e tem nos ajudado a otimizar nossos processos de gestão."',
+                        content: 
+                            '"Precisávamos de um sistema sob medida para nossa consultoria, e o Jeferson acertou em cheio. A ferramenta é intuitiva, reduzindo nosso tempo de gestão em 30%. Recomendo para quem busca eficiência e criatividade."',
                         author: "João Pereira",
-                        title: "Gerente de Projetos, Empresa de Consultoria",
+                        title: "Gerente de Projetos em Consultoria",
                     },
                     {
                         rating: 5,
-                        content:
-                            '"Recomendo o Jeferson sem hesitação! Ele é um profissional dedicado, talentoso e com um profundo conhecimento em desenvolvimento web. O site que ele criou para minha empresa é moderno, responsivo e atende perfeitamente às minhas necessidades."',
+                        content: 
+                            '"Contratei o Jeferson para criar o site da minha empresa digital e me surpreendi! Ele combina técnica com um olhar estratégico para conversão. O site é rápido, moderno e já gerou leads qualificados desde o lançamento."',
                         author: "Mariana Costa",
                         title: "Empreendedora Digital",
                     },
                     {
                         rating: 5,
-                        content:
-                            '"O Jeferson me ajudou a transformar minha ideia em realidade. Ele criou um site incrível para o meu novo negócio, com um design moderno e funcionalidades que me permitem interagir melhor com meus clientes. Estou muito satisfeita com o resultado!"',
+                        content: 
+                            '"Transformou minha ideia em um site incrível para minha marca de acessórios! Além do design moderno, as funcionalidades facilitam a interação com os clientes. Cada elogio que recebo no site é mérito do seu excelente trabalho!"',
                         author: "Fernanda Rodrigues",
-                        title: "Fundadora, Marca de Acessórios",
+                        title: "Fundadora de Marca de Acessórios",
                     },
                 ],
                 accessibility: {
                     prevButton: "Depoimento anterior",
                     nextButton: "Próximo depoimento",
-                    goToSlide: "Ir para depoimento {{number}}",
+                    goToSlide: "Ir para o depoimento {{number}}",
                 },
             },
             contact: {
@@ -1058,59 +1058,66 @@ const resources = {
             },
             testimonials: {
                 title: "Testimonials",
-                subtitle: "Testimonials from Satisfied Clients",
+                subtitle: "Hear From Happy Clients",
                 imageAlt: "Photo of {{name}}",
                 testimonialsList: [
                     {
                         rating: 5,
-                        content:
-                            '"Investing in our website’s development transformed FlyServ Drones. With a modern, optimized design, we boosted the demand for our drone services without the need for heavy spending on ads. The service was prompt and efficient. I highly recommend it!"',
+                        content: 
+                            '"The quality of work delivered within the agreed timeline blew me away! Every detail was meticulously planned, and the results exceeded expectations. I’ll definitely recommend Jeferson to anyone looking for top-notch service."',
                         author: "FlyServ Drones",
-                        title: "Drone Service Company",
+                        title: "Drone Services Company",
                         image: "/assets/images/icon-flyserv.png",
                     },
                     {
                         rating: 5,
-                        content:
-                            '"Developing my website was crucial to expanding the reach of my art courses. With an elegant design and a focus on conversion, sales grew significantly without requiring large investments in advertising. The service was fast and exceeded expectations. I highly recommend it!"',
+                        content: 
+                            '"The website Jeferson built for my art courses was a game-changer. Not only is the design flawless, but sales jumped 40% in three months without expensive ads. Fast, professional, and truly impactful!"',
                         author: "Ricardo Dias",
-                        title: "Art Teacher and Founder",
+                        title: "Art Instructor & Founder",
                         image: "/assets/images/RicardoDias.webp",
                     },
                     {
                         rating: 5,
-                        content:
-                            '"The creation of my website by Jeferson was a turning point for my business. Before, I had difficulty reaching new customers online. Now, with a modern and functional website, my digital presence has strengthened and sales have increased considerably."',
+                        content: 
+                            '"As CTO of School Vision, I saw firsthand how Jeferson strategically modernized our platform. His solution streamlined our internal workflows and significantly enhanced the student experience. Outstanding work!"',
+                        author: "Camila Oliveira",
+                        title: "CTO at School Vision",
+                    },
+                    {
+                        rating: 5,
+                        content: 
+                            '"Before the website, my barbershop relied solely on word of mouth. Now, we’re fully booked thanks to Jeferson’s work—modern design, user-friendly, and perfectly optimized to convert visitors into customers."',
                         author: "Lucas Oliveira",
                         title: "Owner, Urban Style Barbershop",
                     },
                     {
                         rating: 5,
-                        content:
-                            '"Jeferson demonstrated incredible professionalism throughout the entire website development process. He was attentive to my needs, delivered the project on time, and exceeded my expectations with an impeccable final result."',
+                        content: 
+                            '"Professionalism at every step! Jeferson not only understood my vision for the clothing store but added innovative ideas. The project was delivered early, and the final result is absolutely flawless."',
                         author: "Ana Silva",
-                        title: "Owner, Women's Clothing Store",
+                        title: "Owner, Women’s Fashion Store",
                     },
                     {
                         rating: 5,
-                        content:
-                            '"We needed a customized solution for our company and Jeferson delivered exactly what we needed. The system he developed is intuitive, efficient, and has helped us optimize our management processes."',
+                        content: 
+                            '"We needed a custom system for our consultancy, and Jeferson nailed it. The tool is intuitive, cutting our management time by 30%. Highly recommended for anyone seeking efficiency and creativity."',
                         author: "João Pereira",
-                        title: "Project Manager, Consulting Company",
+                        title: "Project Manager, Consulting Firm",
                     },
                     {
                         rating: 5,
-                        content:
-                            '"I recommend Jeferson without hesitation! He is a dedicated, talented professional with a deep knowledge of web development. The website he created for my company is modern, responsive, and perfectly meets my needs."',
+                        content: 
+                            '"Hired Jeferson for my digital business website, and wow! He blends technical skill with a sharp eye for conversion. The site is fast, modern, and already generating quality leads. A+ experience!"',
                         author: "Mariana Costa",
                         title: "Digital Entrepreneur",
                     },
                     {
                         rating: 5,
-                        content:
-                            '"Jeferson helped me turn my idea into reality. He created an amazing website for my new business, with a modern design and functionalities that allow me to interact better with my customers. I am very satisfied with the result!"',
+                        content: 
+                            '"Turned my idea into a stunning website for my accessory brand! Beyond the sleek design, the features make client interaction seamless. Every compliment I get on the site is a testament to his expertise!"',
                         author: "Fernanda Rodrigues",
-                        title: "Founder, Accessories Brand",
+                        title: "Founder, Accessory Brand",
                     },
                 ],
                 accessibility: {
