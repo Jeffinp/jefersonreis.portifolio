@@ -106,6 +106,65 @@ html {
     overflow-X: hidden
 }
 
+/* Estilizando a barra de rolagem com as cores do tema resume */
+
+/* Para navegadores WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: var(--resume-background-color-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--resume-primary-color);
+    border-radius: var(--resume-border-radius-full);
+    border: 2px solid var(--resume-background-color-light);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--resume-hover-color);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: var(--resume-active-color);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--resume-background-color-light);
+    border-radius: var(--resume-border-radius-full);
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+/* Para Firefox (estilização mais limitada) */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--resume-primary-color) var(--resume-background-color-light);
+}
+
+/* Se você quiser um polegar um pouco mais destacado no Firefox (opcional) */
+/* html {
+        scrollbar-color: var(--resume-hover-color) var(--resume-background-color-light); !* thumb-color track-color *!
+      } */
+
+/* Para navegadores mais antigos que podem suportar cores de rolagem padrão (mais raro hoje em dia) */
+::-ms-scrollbar-face-color {
+    color: var(--resume-primary-color);
+}
+
+::-ms-scrollbar-track-color {
+    color: var(--resume-background-color-light);
+}
+
+::-ms-scrollbar-arrow-color {
+    color: var(--resume-text-color);
+}
 
 
 @keyframes float-1 {
@@ -189,8 +248,15 @@ html {
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 .animate-blink {

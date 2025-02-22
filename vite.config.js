@@ -2,6 +2,7 @@
 
 import { defineConfig } from 'vite';
 
+
 export default defineConfig({
   build: {
     minify: 'terser', // Minificação agressiva com Terser para reduzir o tamanho final do JS

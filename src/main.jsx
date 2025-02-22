@@ -32,7 +32,7 @@ const LoadingScreen = () => (
                 className="animate-spin rounded-full h-14 w-14 border-4 border-transparent border-t-purple-500 dark:border-t-purple-400"
                 style={{
                     backgroundImage: `url('/assets/images/icon/favicon-96x96.png')`,
-                    backgroundSize: 'contain', // Ajusta o tamanho da imagem para caber dentro do spinner
+                    backgroundSize: 'contain',
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center'
                 }}
