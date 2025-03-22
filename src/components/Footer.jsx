@@ -1,8 +1,44 @@
-import React from "react";
-import { Linkedin, Github, Instagram, MessageCircle, ArrowUp } from "lucide-react";
+import React, { useEffect, useRef } from "react";
+import { Linkedin, Github, Instagram, MessageCircle } from "lucide-react";
 import { FaDiscord } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
+
+// Componente para animações de entrada
+const AnimatedSection = ({ children, delay = 0, className = "" }) => {
+    const controls = useAnimation();
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: true, threshold: 0.2 });
+
+    useEffect(() => {
+        if (inView) {
+            controls.start("visible");
+        }
+    }, [controls, inView]);
+
+    return (
+        <motion.div
+            ref={ref}
+            initial="hidden"
+            animate={controls}
+            variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                        duration: 0.6,
+                        delay,
+                        ease: [0.22, 1, 0.36, 1]
+                    }
+                }
+            }}
+            className={className}
+        >
+            {children}
+        </motion.div>
+    );
+};
 
 const Footer = () => {
     const { t } = useTranslation();
@@ -14,7 +50,7 @@ const Footer = () => {
             title: t("footer.social.linkedin"),
             label: "LinkedIn",
             hoverColor: "hover:text-blue-500 dark:hover:text-blue-400",
-            bgColor: "bg-blue-100 dark:bg-blue-900/20"
+            delay: 0.1
         },
         {
             icon: <Github className="w-6 h-6" />,
@@ -22,7 +58,7 @@ const Footer = () => {
             title: t("footer.social.github"),
             label: "GitHub",
             hoverColor: "hover:text-gray-900 dark:hover:text-gray-100",
-            bgColor: "bg-gray-100 dark:bg-gray-800"
+            delay: 0.2
         },
         {
             icon: <Instagram className="w-6 h-6" />,
@@ -30,7 +66,7 @@ const Footer = () => {
             title: t("footer.social.instagram"),
             label: "Instagram",
             hoverColor: "hover:text-pink-600 dark:hover:text-pink-400",
-            bgColor: "bg-pink-100 dark:bg-pink-900/20"
+            delay: 0.3
         },
         {
             icon: <MessageCircle className="w-6 h-6" />,
@@ -38,7 +74,7 @@ const Footer = () => {
             title: t("footer.social.whatsapp"),
             label: "WhatsApp",
             hoverColor: "hover:text-green-600 dark:hover:text-green-400",
-            bgColor: "bg-green-100 dark:bg-green-900/20"
+            delay: 0.4
         },
         {
             icon: <FaDiscord className="w-6 h-6" />,
@@ -46,97 +82,103 @@ const Footer = () => {
             title: t("footer.social.discord"),
             label: "Discord",
             hoverColor: "hover:text-blue-600 dark:hover:text-blue-400",
-            bgColor: "bg-indigo-100 dark:bg-indigo-900/20"
+            delay: 0.5
         },
     ];
 
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    };
+    const menuItems = [
+        { key: 'home', delay: 0.2 },
+        { key: 'about', delay: 0.3 },
+        { key: 'portfolio', delay: 0.4 },
+        { key: 'contact', delay: 0.5 }
+    ];
 
     return (
-        <footer className="relative bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-slate-900 border-t border-gray-200 dark:border-gray-800">
-            {/* Animated Background */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-50">
-                <div className="absolute top-0 left-1/4 w-64 h-64 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl opacity-30 animate-float-1" />
-                <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-100 dark:bg-purple-900/20 rounded-full blur-3xl opacity-30 animate-float-2" />
-                <div className="absolute inset-0 bg-[size:40px_40px] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] opacity-10 dark:opacity-20" />
+        <footer className="relative overflow-hidden bg-gradient-to-b from-white to-blue-50/70 dark:from-slate-900/60 dark:to-slate-900/60 border-t border-gray-200 dark:border-gray-800">
+            {/* Background decorative elements */}
+            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-500 dark:to-purple-500" />
+
+            <div aria-hidden="true" className="absolute -z-10 inset-0 overflow-hidden pointer-events-none select-none">
+                <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl opacity-50 animate-blob animation-delay-2000" />
+                <div className="absolute top-20 left-1/4 w-64 h-64 bg-purple-100 dark:bg-purple-900/20 rounded-full blur-3xl opacity-40 animate-blob animation-delay-4000" />
+                <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-100/80 dark:bg-blue-900/20 rounded-full blur-3xl opacity-50 animate-blob animation-delay-1000" />
+
+                {/* Subtle grid pattern overlay */}
+                <div className="absolute inset-0 bg-grid-pattern opacity-[0.015] dark:opacity-[0.03]" />
             </div>
 
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12">
                     {/* Brand Section */}
-                    <div className="space-y-6">
-                        <motion.h2
-                            whileHover={{ scale: 1.05 }}
-                            className="text-3xl font-bold inline-block"
-                        >
-                            <a href="#" className="group transition-colors duration-300">
-                                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                                    {"<"}Jeferson Reis{"/>"}
-                                </span>
-                                <span className="ml-2 inline-block w-2 h-6 bg-blue-600 animate-blink" />
-                            </a>
-                        </motion.h2>
-                        <p className="text-gray-600 dark:text-gray-400 max-w-md leading-relaxed">
+                    <AnimatedSection className="space-y-6">
+                        <div className="group perspective">
+                            <div className="relative transform-gpu hover:-rotate-y-2 hover:scale-[1.02] transition-all duration-300">
+                                <h2 className="text-3xl font-bold">
+                                    <a href="#" className="group">
+                                        <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+                                            {"<"}Jeferson Reis{"/>"}
+                                        </span>
+                                        <span className="ml-2 inline-block w-2 h-6 bg-gradient-to-r from-blue-500 to-purple-500 animate-blink" />
+                                    </a>
+                                </h2>
+                                <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            </div>
+                        </div>
+                        <p className="text-gray-600 dark:text-gray-300 max-w-md leading-relaxed">
                             {t("footer.occupation")}
                         </p>
-                    </div>
+                    </AnimatedSection>
 
                     {/* Quick Links */}
-                    <div className="space-y-6">
-                        <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    <AnimatedSection delay={0.1} className="space-y-6">
+                        <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
                             {t("footer.quickLinks")}
                         </h3>
                         <nav className="grid grid-cols-2 gap-4">
-                            {['home', 'about', 'portfolio', 'contact'].map((item) => (
-                                <motion.a
-                                    key={item}
-                                    href={`#${item}`}
-                                    whileHover={{ x: 5 }}
-                                    className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
-                                >
-                                    {t(`menu.${item}`)}
-                                </motion.a>
+                            {menuItems.map((item) => (
+                                <AnimatedSection key={item.key} delay={item.delay}>
+                                    <a
+                                        href={`#${item.key}`}
+                                        className="relative text-gray-600 dark:text-gray-300 transition-all duration-300 hover:translate-x-1 hover:text-blue-600 dark:hover:text-blue-400"
+                                    >
+                                        <span className="absolute -bottom-px left-0 w-0 h-px bg-gradient-to-r from-blue-500 to-purple-500 hover:w-full transition-all duration-300"></span>
+                                        {t(`menu.${item.key}`)}
+                                    </a>
+                                </AnimatedSection>
                             ))}
                         </nav>
-                    </div>
+                    </AnimatedSection>
 
                     {/* Social Connections */}
-                    <div className="space-y-6">
-                        <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                    <AnimatedSection delay={0.2} className="space-y-6">
+                        <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
                             {t("footer.connect")}
                         </h3>
                         <div className="flex flex-wrap gap-4">
                             {socialLinks.map((link, index) => (
-                                <motion.a
+                                <a
                                     key={index}
                                     href={link.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title={link.title}
-                                    whileHover={{ y: -5 }}
-                                    whileTap={{ scale: 0.9 }}
-                                    className={`p-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ${link.bgColor} ${link.hoverColor}`}
+                                    className={`p-3 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-110 ${link.hoverColor}`}
+                                    aria-label={link.label}
                                 >
                                     {link.icon}
                                     <span className="sr-only">{link.label}</span>
-                                </motion.a>
+                                </a>
                             ))}
                         </div>
-                    </div>
+                    </AnimatedSection>
                 </div>
 
                 {/* Copyright */}
-                <div className="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col items-center justify-center gap-4">
-                    <p className="text-gray-600 dark:text-gray-400 text-center">
+                <AnimatedSection delay={0.3} className="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col items-center justify-center gap-4">
+                    <p className="text-gray-600 dark:text-gray-300 text-center">
                         {t("footer.copyright", { year: new Date().getFullYear() })}
                     </p>
-                </div>
-
+                </AnimatedSection>
             </div>
         </footer>
     );
