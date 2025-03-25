@@ -35,7 +35,7 @@ const resources = {
                     "Sou um desenvolvedor full-stack com experiência em criação de soluções web inovadoras. Tenho um forte conhecimento em React e Node.js, focando sempre na performance e na experiência do usuário (UX/UI).",
                 designTitle: "Design Gráfico",
                 designDescription:
-                    "Combinando criatividade e técnicas modernas de design, crio identidades visuais únicas, como logotipos, banners e materiais gráficos, para atender às necessidades de cada cliente.",
+                    "Combinando criatividade e técnicas modernas de design, crio identidades visuais únicas, como logotipos, banners e materiais gráficos, personalizados para cada cliente.",
                 learnMore: "Veja mais"
 
             },
@@ -95,7 +95,7 @@ const resources = {
                     documentation: {
                         title: "Documentação Profissional Impecável",
                         description:
-                            "Transformo suas ideias em documentos profissionais e impactantes. Apresentações que impressionam, documentos empresariais claros, planilhas avançadas, currículos que destacam talentos e trabalhos acadêmicos com formatação ABNT impecável.",
+                            "Transformo suas ideias em documentos profissionais e impactantes. Apresentações que impressionam, documentos empresariais claros, planilhas avançadas, currículos que destacam talentos e trabalhos acadêmicos com formatação impecável.",
                     },
                     modeling: {
                         title: "Modelagem 3D & Visualização Imersiva",
@@ -110,7 +110,7 @@ const resources = {
                     video: {
                         title: "Edição e Motion Graphics Profissional",
                         description:
-                            "Vídeos dinâmicos e envolventes! Corte, montagem, correção de cor, efeitos, legendagem, motion graphics e animações (com After Effects). Uso Premiere Pro, After Effects, Filmora e outras ferramentas top. Perfeito para YouTube, redes sociais, vídeos institucionais, eventos, vinhetas, animações de logo!",
+                            "Vídeos dinâmicos e envolventes! Corte, montagem, correção de cor, efeitos, legendagem, motion graphics e animações. Utilizo Premiere Pro, After Effects, Filmora e outras ferramentas profissionais. Ideal para YouTube, redes sociais, vídeos institucionais, eventos, vinhetas e animações de logo!",
                     },
                 },
                 downloadButton: "Baixe o Catálogo Completo de Serviços",
@@ -153,7 +153,7 @@ const resources = {
                     fileManager: {
                         title: "Gerenciador de Arquivos Automatizado",
                         description:
-                            "O Organizador de Arquivos é um aplicativo de desktop, desenvolvido por mim, que utiliza Python e Electron para facilitar a organização de arquivos baseados em suas extensões.",
+                            "Um aplicativo de desktop que desenvolvi utilizando Python e Electron para organizar automaticamente arquivos com base nas suas extensões.",
                     },
                     pythonChatbot: {
                         title: "Python Chatbot",
@@ -215,9 +215,9 @@ const resources = {
                         description: "Criei este design de marca para azeite no Photoshop.",
                     },
                     stylizedFlag: {
-                        title: "Bandeira Estilizada do Brasil",
+                        title: "Bandeira Brasileira Estilizada",
                         description:
-                            "Uma versão estilizada da nossa bandeira, com um toque de cristais, feita sob encomenda.",
+                            "Uma versão artística da bandeira nacional, com efeitos de cristais, desenvolvida sob medida.",
                     },
                     gamerCase: {
                         title: "Design de Gabinete Gamer",
@@ -230,9 +230,9 @@ const resources = {
                             "Estampa de camisa para o dia do meio ambiente, um projeto escolar que gostei muito em desenvolver.",
                     },
                     parasiteNotebook: {
-                        title: "O Parasita no Caderno",
+                        title: "Parasita no Caderno",
                         description:
-                            "O parasita do meu personagem, desenhado no papel e finalizado digitalmente com cores vibrantes.",
+                            "Um desenho do parasita do meu personagem, feito à mão e finalizado digitalmente com cores vibrantes.",
                     },
                     giratinaArt: {
                         title: "Giratina Digital Art",
@@ -488,63 +488,63 @@ const resources = {
             },
             testimonials: {
                 title: "Depoimentos",
-                subtitle: "Veja o que nossos clientes dizem",
+                subtitle: "O que nossos clientes dizem",
                 imageAlt: "Foto de {{name}}",
                 testimonialsList: [
                     {
                         rating: 5,
-                        content: 
-                            '"Fiquei impressionado com a qualidade do serviço entregue no prazo combinado! Cada detalhe foi pensado, e os resultados superaram expectativas. Com certeza vou indicar para todos que precisarem de um trabalho sério."',
+                        content:
+                            '"Fiquei impressionado com a qualidade do trabalho entregue no prazo! Cada detalhe foi cuidadosamente pensado, e os resultados superaram todas as expectativas. Com certeza vou recomendar para todos que buscam um serviço de excelência."',
                         author: "FlyServ Drones",
                         title: "Empresa de Serviços com Drones",
                         image: "/assets/images/icon-flyserv.png",
                     },
                     {
                         rating: 5,
-                        content: 
-                            '"O site desenvolvido pelo Jeferson foi um marco para meus cursos de arte. Além do design impecável, as vendas aumentaram 40% em três meses sem gastar fortunas em anúncios. Serviço ágil e feito com maestria!"',
+                        content:
+                            '"O site desenvolvido pelo Jeferson revolucionou meus cursos de arte. Além do design impecável, as vendas aumentaram 40% em apenas três meses sem investimento pesado em anúncios. Trabalho ágil e executado com maestria!"',
                         author: "Ricardo Dias",
                         title: "Professor de Artes e Fundador",
                         image: "/assets/images/RicardoDias.webp",
                     },
                     {
                         rating: 5,
-                        content: 
+                        content:
                             '"Como CTO da School Vision, testemunhei como o Jeferson modernizou nossa plataforma de forma estratégica. A nova solução não só simplificou nossos processos internos como elevou a experiência dos alunos para outro nível."',
                         author: "Camila Oliveira",
                         title: "Diretora de Tecnologia da School Vision",
                     },
                     {
                         rating: 5,
-                        content: 
+                        content:
                             '"Antes do site, minha barbearia dependia apenas do boca a boca. Hoje, tenho agenda lotada graças ao trabalho do Jeferson. Design moderno, funcional e que realmente converte visitantes em clientes!"',
                         author: "Lucas Oliveira",
                         title: "Proprietário da Barbearia Estilo Urbano",
                     },
                     {
                         rating: 5,
-                        content: 
+                        content:
                             '"Profissionalismo em cada etapa! O Jeferson não só entendeu minha visão para a loja de roupas como trouxe ideias inovadoras. O projeto foi entregue antes do prazo e o resultado final é simplesmente perfeito."',
                         author: "Ana Silva",
                         title: "Proprietária de Loja de Roupas Femininas",
                     },
                     {
                         rating: 5,
-                        content: 
+                        content:
                             '"Precisávamos de um sistema sob medida para nossa consultoria, e o Jeferson acertou em cheio. A ferramenta é intuitiva, reduzindo nosso tempo de gestão em 30%. Recomendo para quem busca eficiência e criatividade."',
                         author: "João Pereira",
                         title: "Gerente de Projetos em Consultoria",
                     },
                     {
                         rating: 5,
-                        content: 
+                        content:
                             '"Contratei o Jeferson para criar o site da minha empresa digital e me surpreendi! Ele combina técnica com um olhar estratégico para conversão. O site é rápido, moderno e já gerou leads qualificados desde o lançamento."',
                         author: "Mariana Costa",
                         title: "Empreendedora Digital",
                     },
                     {
                         rating: 5,
-                        content: 
+                        content:
                             '"Transformou minha ideia em um site incrível para minha marca de acessórios! Além do design moderno, as funcionalidades facilitam a interação com os clientes. Cada elogio que recebo no site é mérito do seu excelente trabalho!"',
                         author: "Fernanda Rodrigues",
                         title: "Fundadora de Marca de Acessórios",
@@ -570,9 +570,9 @@ const resources = {
             // -------------- ADICIONANDO AS TRADUÇÕES PARA OS BOTÕES FLUTUANTES AQUI --------
             floatButtons: {
                 whatsapp: "Fale comigo no WhatsApp",
-                discord: "Junte-se a mim no Discord",
+                discord: "Junte-se ao meu Discord",
             },
-            // ------------------------------------------------------------------------------
+            // ------------------------------------------------------------------------------ 
         },
     },
 
@@ -591,7 +591,7 @@ const resources = {
             hero: {
                 title: "Jeferson Reis Almeida",
                 subtitle: "Full-Stack Developer | Graphic Designer | IT Technician | ",
-                transforming: "Turning Ideas into Reality",
+                transforming: "Bringing Ideas to Life",
                 profileAlt: "Photo of Jeferson Reis, full-stack web developer",
                 buttons: {
                     viewProjects: "View My Projects",
@@ -601,25 +601,25 @@ const resources = {
             about: {
                 title: "About Me",
                 intro:
-                    "Hello, I'm Jeferson Reis, passionate about technology, design, and programming. Over the years, I've developed skills as a full-stack developer, graphic designer, and IT technician. I'm always seeking new challenges to create innovative and customized solutions, combining technology and creativity.",
+                    "Hello, I'm Jeferson Reis, passionate about technology, design, and programming. Over the years, I've honed my skills as a full-stack developer, graphic designer, and IT technician. I'm constantly seeking new challenges to craft innovative and customized solutions that blend technology with creativity.",
                 name: "Jeferson Reis",
                 devDescription:
-                    "I'm a full-stack developer experienced in creating innovative web solutions. I have strong expertise in React and Node.js, always focusing on performance and user experience (UX/UI).",
+                    "I'm a full-stack developer specialized in creating innovative web solutions. With strong expertise in React and Node.js, I consistently focus on performance optimization and exceptional user experience (UX/UI).",
                 designTitle: "Graphic Design",
                 designDescription:
-                    "Combining creativity with modern design techniques, I create unique visual identities, including logos, banners, and graphic materials, tailored to meet each client's needs.",
+                    "By merging creativity with cutting-edge design techniques, I craft distinctive visual identities, including logos, banners, and graphic materials tailored specifically to each client's unique needs.",
                 learnMore: "Learn More"
             },
             expertise: {
                 title: "Areas of Expertise",
                 subtitle:
-                    "Discover my main areas of expertise and how I can help your project take off.",
+                    "Discover my core expertise areas and how they can elevate your project to new heights.",
                 learnMore: "Learn more",
                 items: {
                     item0: {
                         title: "Immersive Web Development",
                         description:
-                            "Creation of Landing Pages, Corporate Websites, and E-commerce platforms optimized for SEO, focusing on responsiveness and conversion.",
+                            "Development of SEO-optimized Landing Pages, Corporate Websites, and E-commerce platforms with a focus on responsive design and conversion optimization.",
                     },
                     item1: {
                         title: "Design & Visual Identity",
@@ -634,7 +634,7 @@ const resources = {
                     item3: {
                         title: "3D Modeling & Visualization",
                         description:
-                            "3D modeling, animations, photorealistic renderings, and assets for AR/VR and 3D printing.",
+                            "Professional 3D modeling, animations, photorealistic renderings, and optimized assets for AR/VR applications and 3D printing.",
                     },
                     item4: {
                         title: "Technical Support",
@@ -651,12 +651,12 @@ const resources = {
             services: {
                 title: "My Services",
                 subtitle:
-                    "Customized professional solutions to bring your ideas to life!",
+                    "Tailored professional solutions that bring your vision to life!",
                 items: {
                     web: {
                         title: "Immersive Web Development",
                         description:
-                            "I create unique web experiences! Landing Pages that convert, Corporate Websites that tell your story, dynamic E-commerce sites, and engaging Blogs. Custom design, responsiveness, and SEO to reach the top of searches!",
+                            "I craft exceptional web experiences! From high-converting Landing Pages and storytelling Corporate Websites to dynamic E-commerce platforms and engaging Blogs. Custom design, responsive layouts, and SEO optimization to boost your search rankings!",
                     },
                     design: {
                         title: "Memorable Design & Visual Identity",
@@ -666,7 +666,7 @@ const resources = {
                     documentation: {
                         title: "Impeccable Professional Documentation",
                         description:
-                            "I transform your ideas into professional and impactful documents. Presentations that impress, clear business documents, advanced spreadsheets, resumes that highlight talents, and academic papers with impeccable formatting.",
+                            "I transform your concepts into professional, high-impact documents. From compelling presentations and clear business documents to advanced spreadsheets, attention-grabbing resumes, and meticulously formatted academic papers.",
                     },
                     modeling: {
                         title: "Immersive 3D Modeling & Visualization",
@@ -681,12 +681,12 @@ const resources = {
                     video: {
                         title: "Professional Editing and Motion Graphics",
                         description:
-                            "Dynamic and engaging videos! Cutting, editing, color correction, effects, subtitling, motion graphics, and animations (with After Effects). I use Premiere Pro, After Effects, Filmora, and other top tools. Perfect for YouTube, social media, corporate videos, events, vignettes, logo animations!",
+                            "Dynamic and engaging video content! Expert cutting, editing, color grading, effects, subtitling, motion graphics, and animations. I leverage industry-standard tools including Premiere Pro, After Effects, and Filmora. Perfect for YouTube, social media, corporate videos, events, vignettes, and logo animations!",
                     },
                 },
-                downloadButton: "Download the Complete Services Catalog",
+                downloadButton: "Download Complete Service Catalog",
                 downloadDescription:
-                    "Discover all the details and values in my catalog!",
+                    "Explore all details and pricing in my comprehensive catalog!",
             },
             portfolio: {
                 title: "My Portfolio",
@@ -724,7 +724,7 @@ const resources = {
                     fileManager: {
                         title: "Automated File Manager",
                         description:
-                            "File Organizer is a desktop application, developed by me, that uses Python and Electron to facilitate the organization of files based on their extensions.",
+                            "A desktop application I developed using Python and Electron that automatically organizes files based on their extensions for improved workflow efficiency.",
                     },
                     pythonChatbot: {
                         title: "Python Chatbot",
@@ -787,9 +787,9 @@ const resources = {
                             "I created this brand design for olive oil in Photoshop.",
                     },
                     stylizedFlag: {
-                        title: "Stylized Flag of Brazil",
+                        title: "Stylized Brazilian Flag",
                         description:
-                            "A stylized version of our flag, with a touch of crystals, made to order.",
+                            "An artistic interpretation of Brazil's national flag, featuring crystal effects, custom-designed for a client.",
                     },
                     gamerCase: {
                         title: "Gamer Case Design",
@@ -802,9 +802,9 @@ const resources = {
                             "Shirt print for Environment Day, a school project that I really enjoyed developing.",
                     },
                     parasiteNotebook: {
-                        title: "The Parasite in the Notebook",
+                        title: "Notebook Parasite Drawing",
                         description:
-                            "My character's parasite, drawn on paper and digitally finished with vibrant colors.",
+                            "A hand-drawn sketch of my character's parasite, digitally finished with vibrant colors and dynamic effects.",
                     },
                     giratinaArt: {
                         title: "Giratina Digital Art",
@@ -1058,63 +1058,63 @@ const resources = {
             },
             testimonials: {
                 title: "Testimonials",
-                subtitle: "Hear From Happy Clients",
+                subtitle: "What Our Clients Say",
                 imageAlt: "Photo of {{name}}",
                 testimonialsList: [
                     {
                         rating: 5,
-                        content: 
-                            '"The quality of work delivered within the agreed timeline blew me away! Every detail was meticulously planned, and the results exceeded expectations. I’ll definitely recommend Jeferson to anyone looking for top-notch service."',
+                        content:
+                            '"I was blown away by the quality delivered right on schedule! Every detail was meticulously crafted, and the results far exceeded my expectations. I\'ll definitely be recommending this service to anyone seeking excellence."',
                         author: "FlyServ Drones",
                         title: "Drone Services Company",
                         image: "/assets/images/icon-flyserv.png",
                     },
                     {
                         rating: 5,
-                        content: 
-                            '"The website Jeferson built for my art courses was a game-changer. Not only is the design flawless, but sales jumped 40% in three months without expensive ads. Fast, professional, and truly impactful!"',
+                        content:
+                            '"The website Jeferson created completely transformed my art courses. Beyond its flawless design, we saw a 40% sales increase in just three months without heavy ad spending. Fast turnaround and executed with true expertise!"',
                         author: "Ricardo Dias",
                         title: "Art Instructor & Founder",
                         image: "/assets/images/RicardoDias.webp",
                     },
                     {
                         rating: 5,
-                        content: 
+                        content:
                             '"As CTO of School Vision, I saw firsthand how Jeferson strategically modernized our platform. His solution streamlined our internal workflows and significantly enhanced the student experience. Outstanding work!"',
                         author: "Camila Oliveira",
                         title: "CTO at School Vision",
                     },
                     {
                         rating: 5,
-                        content: 
+                        content:
                             '"Before the website, my barbershop relied solely on word of mouth. Now, we’re fully booked thanks to Jeferson’s work—modern design, user-friendly, and perfectly optimized to convert visitors into customers."',
                         author: "Lucas Oliveira",
                         title: "Owner, Urban Style Barbershop",
                     },
                     {
                         rating: 5,
-                        content: 
+                        content:
                             '"Professionalism at every step! Jeferson not only understood my vision for the clothing store but added innovative ideas. The project was delivered early, and the final result is absolutely flawless."',
                         author: "Ana Silva",
                         title: "Owner, Women’s Fashion Store",
                     },
                     {
                         rating: 5,
-                        content: 
+                        content:
                             '"We needed a custom system for our consultancy, and Jeferson nailed it. The tool is intuitive, cutting our management time by 30%. Highly recommended for anyone seeking efficiency and creativity."',
                         author: "João Pereira",
                         title: "Project Manager, Consulting Firm",
                     },
                     {
                         rating: 5,
-                        content: 
+                        content:
                             '"Hired Jeferson for my digital business website, and wow! He blends technical skill with a sharp eye for conversion. The site is fast, modern, and already generating quality leads. A+ experience!"',
                         author: "Mariana Costa",
                         title: "Digital Entrepreneur",
                     },
                     {
                         rating: 5,
-                        content: 
+                        content:
                             '"Turned my idea into a stunning website for my accessory brand! Beyond the sleek design, the features make client interaction seamless. Every compliment I get on the site is a testament to his expertise!"',
                         author: "Fernanda Rodrigues",
                         title: "Founder, Accessory Brand",
@@ -1135,14 +1135,14 @@ const resources = {
                 ariaWhatsapp: "Open WhatsApp conversation",
                 ariaEmail: "Send email",
                 copyEmail: "Copy email to clipboard",
-                emailCopied: "Email copied successfully!"
+                emailCopied: "Email successfully copied!"
             },
             // -------------- ADICIONANDO AS TRADUÇÕES PARA OS BOTÕES FLUTUANTES AQUI --------
             floatButtons: {
-                whatsapp: "Talk to me on WhatsApp",
-                discord: "Join my Discord",
+                whatsapp: "Chat with me on WhatsApp",
+                discord: "Join my Discord server",
             },
-            // ------------------------------------------------------------------------------
+            // ------------------------------------------------------------------------------ 
         },
     },
 };
