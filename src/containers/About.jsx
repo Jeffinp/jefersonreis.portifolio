@@ -124,6 +124,16 @@ const FeatureCard = React.memo(({
     // Gradiente baseado nas cores fornecidas
     const gradientStyle = `from-${colorFrom}-400 to-${colorTo}-500 dark:from-${colorFrom}-500 dark:to-${colorTo}-600`;
 
+    // Mapear as cores para as classes corretas do botão
+    const buttonColorClasses = {
+        blue: "text-blue-500 dark:text-blue-400 group-hover:text-blue-600 dark:group-hover:text-blue-300",
+        green: "text-green-500 dark:text-green-400 group-hover:text-green-600 dark:group-hover:text-green-300",
+        purple: "text-purple-500 dark:text-purple-400 group-hover:text-purple-600 dark:group-hover:text-purple-300"
+    };
+
+    // Usar a classe correspondente ou fallback para azul
+    const buttonColorClass = buttonColorClasses[colorFrom] || buttonColorClasses.blue;
+
     return (
         <AnimatedSection
             delay={delay}
@@ -164,7 +174,7 @@ const FeatureCard = React.memo(({
                     <button
                         type="button"
                         onClick={onClick}
-                        className={`flex items-center text-${colorFrom}-500 dark:text-${colorFrom}-400 font-medium group-hover:text-${colorFrom}-600 dark:group-hover:text-${colorFrom}-300 transition-colors duration-300 mt-auto`}
+                        className={`flex items-center ${buttonColorClass} font-medium transition-colors duration-300 mt-auto`}
                         aria-label={ariaLabel || actionText}
                     >
                         {actionText}
