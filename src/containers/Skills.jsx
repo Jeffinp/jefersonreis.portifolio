@@ -82,6 +82,8 @@ const Skills = () => {
         { name: "React", percentage: 95 },
         { name: "TailwindCSS", percentage: 95 },
         { name: "Bootstrap", percentage: 90 },
+        { name: "Three.js", percentage: 95 },
+        { name: "GSAP", percentage: 90 },
     ];
 
     // Backend skills
