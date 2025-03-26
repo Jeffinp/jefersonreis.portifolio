@@ -508,7 +508,10 @@ const PortfolioSection = () => {
     ]);
 
     return (
-        <section id="portfolio" className="relative py-24 bg-gradient-to-b from-white to-gray-50 dark:from-slate-900/55 dark:to-slate-900/55">
+        <section
+            id="portfolio"
+            className="relative py-24 bg-gradient-to-b from-white to-gray-50 dark:from-slate-900/55 dark:to-slate-900/55"
+        >
             {/* Background Decorations */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-0 left-1/4 w-64 h-64 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl opacity-30" />
@@ -525,12 +528,14 @@ const PortfolioSection = () => {
                     </p>
                 </div>
 
-                <div className="flex flex-wrap justify-center gap-4 mb-12">
-                    {Object.entries(t("portfolio.categories", { returnObjects: true })).map(([key, value]) => (
+                <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12">
+                    {Object.entries(
+                        t("portfolio.categories", { returnObjects: true })
+                    ).map(([key, value]) => (
                         <button
                             key={key}
                             onClick={() => filterItems(key)}
-                            className={`group px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1
+                            className={`group px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full font-medium transition-all duration-300 text-sm md:text-base shadow-md hover:shadow-lg transform hover:-translate-y-1
                                 ${activeFilter === key
                                     ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600"
                                     : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
@@ -564,23 +569,23 @@ const PortfolioSection = () => {
                                             loading="lazy"
                                         />
                                         {project.type === "contracted" && (
-                                            <span className="absolute top-4 right-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-2 rounded-full text-sm font-medium shadow-lg">
+                                            <span className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-3 sm:px-6 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium shadow-lg">
                                                 {t("portfolio.projectLabels.contracted")}
                                             </span>
                                         )}
                                     </div>
-                                    <div className="p-8">
-                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 group-hover:bg-clip-text transition-all duration-300">
+                                    <div className="p-4 sm:p-6 md:p-8">
+                                        <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 group-hover:bg-clip-text transition-all duration-300">
                                             {t(project.titleKey)}
                                         </h3>
-                                        <p className="mb-6 text-gray-600 dark:text-gray-300">
+                                        <p className="mb-4 sm:mb-6 text-gray-600 dark:text-gray-300 text-sm sm:text-base">
                                             {t(project.descriptionKey)}
                                         </p>
-                                        <div className="flex flex-wrap gap-2 mb-6">
+                                        <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-6">
                                             {project.technologies?.map((tech, techIndex) => (
                                                 <span
                                                     key={techIndex}
-                                                    className="px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-gray-700 dark:text-gray-300 rounded-full text-sm transform transition-transform duration-300 hover:scale-105"
+                                                    className="px-2 sm:px-4 py-1 sm:py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-gray-700 dark:text-gray-300 rounded-full text-xs sm:text-sm transform transition-transform duration-300 hover:scale-105"
                                                 >
                                                     {tech}
                                                 </span>
@@ -591,10 +596,10 @@ const PortfolioSection = () => {
                                                 href={project.link}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                                                className="group inline-flex items-center px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm md:text-base font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
                                             >
                                                 {t("portfolio.projectLabels.viewProject")}
-                                                <ExternalLink className="ml-2 w-5 h-5 transform group-hover:scale-110 transition-transform duration-300" />
+                                                <ExternalLink className="ml-2 w-4 h-4 md:w-5 md:h-5 transform group-hover:scale-110 transition-transform duration-300" />
                                             </a>
                                         )}
                                     </div>
@@ -606,17 +611,17 @@ const PortfolioSection = () => {
 
                     <button
                         onClick={prevSlide}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-110"
+                        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 md:p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-110 z-10"
                         aria-label={t("portfolio.projectLabels.prevProject")}
                     >
-                        <ChevronLeft className="w-6 h-6" />
+                        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                     </button>
                     <button
                         onClick={nextSlide}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-110"
+                        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 md:p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-110 z-10"
                         aria-label={t("portfolio.projectLabels.nextProject")}
                     >
-                        <ChevronRight className="w-6 h-6" />
+                        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                     </button>
                 </div>
 
@@ -625,10 +630,10 @@ const PortfolioSection = () => {
                         href="https://drive.google.com/drive/folders/1kNUbhpuYBDRTLjD66vBwfSweugiabAIE?usp=drive_link"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                        className="group inline-flex items-center px-5 sm:px-6 md:px-8 py-3 sm:py-3 md:py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm md:text-base font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
                     >
                         {t("portfolio.projectLabels.viewHighRes")}
-                        <ExternalLink className="ml-2 w-5 h-5 transform group-hover:scale-110 transition-transform duration-300" />
+                        <ExternalLink className="ml-2 w-4 h-4 md:w-5 md:h-5 transform group-hover:scale-110 transition-transform duration-300" />
                     </a>
                 </div>
             </div>

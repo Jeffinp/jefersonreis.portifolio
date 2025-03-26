@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronDown, ChevronUp, Sparkles } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion";
 
 // Componente para animações de entrada
 const AnimatedSection = ({ children, delay = 0, className = "" }) => {
@@ -43,6 +43,8 @@ const Skills = () => {
     const { t } = useTranslation();
     const [openSection, setOpenSection] = useState(null);
     const [isVisible, setIsVisible] = useState(false);
+    const [hoveredStat, setHoveredStat] = useState(null);
+    const skillsRef = useRef(null);
 
     const toggleSection = (sectionId) => {
         setOpenSection(openSection === sectionId ? null : sectionId);
@@ -100,94 +102,307 @@ const Skills = () => {
         { name: "UX Design", percentage: 100 },
     ];
 
+    // Variantes para animações
+    const cardVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+        hover: {
+            scale: 1.02,
+            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+            transition: { duration: 0.3, ease: "easeInOut" }
+        },
+        tap: { scale: 0.98, transition: { duration: 0.1 } }
+    };
+
+    const iconVariants = {
+        hidden: { rotate: 0, scale: 1 },
+        hover: { rotate: [0, -10, 10, 0], scale: 1.2, transition: { duration: 0.5 } },
+        expanded: {
+            rotate: openSection ? 90 : 0,
+            scale: openSection ? 1.1 : 1,
+            transition: { duration: 0.4, ease: "anticipate" }
+        },
+        tap: { scale: 0.9, transition: { duration: 0.1 } }
+    };
+
+    const contentVariants = {
+        hidden: { opacity: 0, height: 0 },
+        visible: {
+            opacity: 1,
+            height: "auto",
+            transition: {
+                height: { duration: 0.4, ease: "easeInOut" },
+                opacity: { duration: 0.3, delay: 0.1 }
+            }
+        },
+        exit: {
+            opacity: 0,
+            height: 0,
+            transition: {
+                height: { duration: 0.3, ease: "easeInOut" },
+                opacity: { duration: 0.2 }
+            }
+        }
+    };
+
     const SkillBar = ({ name, percentage, delay }) => (
-        <div
-            className="mb-6 transform translate-y-0 opacity-100 transition-all duration-500 ease-out"
-            style={{
-                transitionDelay: `${delay}ms`,
-                transform: isVisible ? "translateY(0)" : "translateY(20px)",
+        <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{
                 opacity: isVisible ? 1 : 0,
+                y: isVisible ? 0 : 15
             }}
+            transition={{
+                duration: 0.5,
+                delay: isVisible ? delay * 0.1 : 0,
+                ease: "easeOut"
+            }}
+            className="mb-6"
         >
             <div className="flex justify-between mb-2">
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     {name}
                 </span>
-                <div className="flex items-center gap-1">
-                    <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                <motion.div
+                    className="flex items-center gap-1"
+                    whileHover={{ scale: 1.05 }}
+                >
+                    <motion.span
+                        className="text-sm font-medium text-gray-500 dark:text-gray-400"
+                        animate={{
+                            color: percentage === 100 ? "#FBBF24" : "#6B7280",
+                            transition: { duration: 0.3 }
+                        }}
+                    >
                         {percentage}%
-                    </span>
+                    </motion.span>
                     {percentage === 100 && (
-                        <Sparkles className="w-4 h-4 text-yellow-400" />
+                        <motion.div
+                            initial={{ rotate: 0 }}
+                            animate={{ rotate: 10 }}
+                            transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                repeatType: "reverse"
+                            }}
+                        >
+                            <Sparkles className="w-4 h-4 text-yellow-400" />
+                        </motion.div>
                     )}
-                </div>
+                </motion.div>
             </div>
-            <div className="relative w-full bg-gray-100 dark:bg-gray-700 rounded-full h-3">
-                <div
-                    className="absolute top-0 left-0 h-full rounded-full transition-all duration-1000 ease-out bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 group-hover:from-blue-400 group-hover:to-purple-400"
-                    style={{
-                        width: isVisible ? `${percentage}%` : "0%",
-                        transitionDelay: `${delay + 200}ms`,
+            <div className="relative w-full bg-gray-100 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
+                <motion.div
+                    className="absolute top-0 left-0 h-full rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500"
+                    initial={{ width: 0 }}
+                    animate={{
+                        width: isVisible ? `${percentage}%` : "0%"
+                    }}
+                    transition={{
+                        duration: 1,
+                        delay: isVisible ? 0.2 + delay * 0.1 : 0,
+                        ease: "easeOut"
                     }}
                 >
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
+                    <motion.div
+                        className="absolute inset-0 bg-white/20"
+                        initial={{ opacity: 0, x: -100 }}
+                        animate={{
+                            opacity: isVisible ? [0, 1, 0] : 0,
+                            x: isVisible ? [-100, 100, 300] : -100
+                        }}
+                        transition={{
+                            duration: 2,
+                            delay: isVisible ? 0.5 + delay * 0.1 : 0,
+                            ease: "easeInOut",
+                            repeat: Infinity,
+                            repeatDelay: 3
+                        }}
+                    />
+                </motion.div>
             </div>
-        </div>
+        </motion.div>
     );
 
-    const SkillSection = ({ title, icon, skills, id }) => (
-        <div className="group relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-slate-700 shadow-lg hover:shadow-xl transition-all duration-500 transform-gpu hover:-rotate-y-1 hover:scale-[1.01]">
-            <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-blue-50/30 dark:from-slate-700/0 dark:to-blue-900/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    const SkillSection = ({ title, icon, skills, id }) => {
+        const isExpanded = openSection === id;
+        const contentRef = useRef(null);
 
-            <div className="relative">
-                <button
-                    onClick={() => toggleSection(id)}
-                    className="w-full px-8 py-6 flex items-center justify-between"
-                >
-                    <div className="flex items-center gap-6">
-                        <span className="text-3xl transform transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12">
-                            {icon}
-                        </span>
-                        <div>
-                            <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-transparent 
-                                group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 
-                                group-hover:bg-clip-text transition-all duration-300">
-                                {t(`skills.sections.${id}.title`)}
-                            </h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">
-                                {t(`skills.sections.${id}.experience`)}
-                            </p>
+        return (
+            <motion.div
+                className="group relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-slate-700 shadow-lg"
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
+                whileHover="hover"
+                whileTap="tap"
+            >
+                <motion.div
+                    className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    whileHover={{ scaleX: 1, opacity: 1 }}
+                    transition={{ duration: 0.4 }}
+                />
+                <motion.div
+                    className="absolute inset-0 bg-gradient-to-br from-white/0 to-blue-50/30 dark:from-slate-700/0 dark:to-blue-900/20 rounded-2xl"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                />
+
+                <div className="relative">
+                    <button
+                        onClick={() => toggleSection(id)}
+                        className="w-full px-8 py-6 flex items-center justify-between"
+                    >
+                        <div className="flex items-center gap-6">
+                            <motion.span
+                                className="text-3xl transform origin-center"
+                                variants={iconVariants}
+                                animate={isExpanded ? "expanded" : ""}
+                                whileHover="hover"
+                                whileTap="tap"
+                            >
+                                {icon}
+                            </motion.span>
+                            <div>
+                                <motion.h3
+                                    className="text-xl font-bold text-gray-900 dark:text-white"
+                                    animate={{
+                                        background: isExpanded ?
+                                            "linear-gradient(to right, #3B82F6, #8B5CF6)" : "none",
+                                        backgroundClip: isExpanded ? "text" : "border-box",
+                                        WebkitBackgroundClip: isExpanded ? "text" : "text",
+                                        WebkitTextFillColor: isExpanded ? "transparent" : "inherit",
+                                        transition: { duration: 0.3 }
+                                    }}
+                                >
+                                    {t(`skills.sections.${id}.title`)}
+                                </motion.h3>
+                                <p className="text-sm text-gray-600 dark:text-gray-400">
+                                    {t(`skills.sections.${id}.experience`)}
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="text-gray-400 dark:text-gray-500 transition-transform duration-300 group-hover:text-blue-500">
-                        {openSection === id ? <ChevronUp /> : <ChevronDown />}
-                    </div>
-                </button>
-                <div
-                    className={`transition-all duration-500 ease-in-out overflow-hidden ${openSection === id
-                        ? "max-h-[1000px] opacity-100"
-                        : "max-h-0 opacity-0"
-                        }`}
-                >
-                    <div className="px-8 py-6 border-t border-gray-100 dark:border-gray-700">
-                        {skills.map((skill, index) => (
-                            <SkillBar key={index} {...skill} delay={index * 100} />
-                        ))}
-                    </div>
+                        <motion.div
+                            className="text-gray-400 dark:text-gray-500"
+                            animate={{
+                                color: isExpanded ? "#3B82F6" : "#9CA3AF",
+                                rotate: isExpanded ? 180 : 0
+                            }}
+                            transition={{ duration: 0.4 }}
+                        >
+                            {openSection === id ? <ChevronUp /> : <ChevronDown />}
+                        </motion.div>
+                    </button>
+
+                    <AnimatePresence>
+                        {isExpanded && (
+                            <motion.div
+                                key={`content-${id}`}
+                                ref={contentRef}
+                                variants={contentVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="exit"
+                            >
+                                <div className="px-8 py-6 border-t border-gray-100 dark:border-gray-700">
+                                    {skills.map((skill, index) => (
+                                        <SkillBar
+                                            key={index}
+                                            {...skill}
+                                            delay={index}
+                                        />
+                                    ))}
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
-            </div>
-        </div>
-    );
+            </motion.div>
+        );
+    };
+
+    // Stats que são mostrados como ícones de emoji
+    const StatItem = ({ index, skill }) => {
+        const isHovered = hoveredStat === index;
+        const emoji = ["👥", "🤝", "💡", "⏱️"][index];
+
+        return (
+            <AnimatedSection key={index} delay={0.4 + index * 0.1} className="group">
+                <motion.div
+                    className="relative h-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-slate-700 shadow-lg"
+                    whileHover={{
+                        scale: 1.03,
+                        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    onHoverStart={() => setHoveredStat(index)}
+                    onHoverEnd={() => setHoveredStat(null)}
+                >
+                    <motion.div
+                        className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"
+                        initial={{ scaleX: 0, opacity: 0 }}
+                        animate={{ scaleX: isHovered ? 1 : 0, opacity: isHovered ? 1 : 0 }}
+                        transition={{ duration: 0.4 }}
+                    />
+
+                    <div className="relative p-8 h-full">
+                        <motion.span
+                            className="text-4xl mb-6 block"
+                            initial={{ scale: 1, rotate: 0 }}
+                            animate={{
+                                scale: isHovered ? 1.2 : 1,
+                                rotate: isHovered ? 5 : 0,
+                                y: isHovered ? -5 : 0
+                            }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 300,
+                                damping: 10
+                            }}
+                        >
+                            {emoji}
+                        </motion.span>
+
+                        <motion.h4
+                            className="text-lg font-bold text-gray-900 dark:text-white mb-4"
+                            animate={{
+                                background: isHovered ?
+                                    "linear-gradient(to right, #3B82F6, #8B5CF6)" : "none",
+                                backgroundClip: isHovered ? "text" : "border-box",
+                                WebkitBackgroundClip: isHovered ? "text" : "text",
+                                WebkitTextFillColor: isHovered ? "transparent" : "inherit",
+                                scale: isHovered ? 1.02 : 1
+                            }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            {skill.title}
+                        </motion.h4>
+
+                        <motion.p
+                            className="text-gray-600 dark:text-gray-300"
+                            animate={{
+                                opacity: isHovered ? 1 : 0.8,
+                                y: isHovered ? 0 : 5
+                            }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            {skill.description}
+                        </motion.p>
+                    </div>
+                </motion.div>
+            </AnimatedSection>
+        );
+    };
 
     return (
         <section
             id="skills-section"
+            ref={skillsRef}
             className="relative py-24 overflow-hidden bg-gradient-to-b from-white to-blue-50/70 dark:from-slate-900/60 dark:to-slate-900/60"
         >
-
-
+            {/* Background decorative elements */}
             <div id="skills" aria-hidden="true" className="absolute -z-10 inset-0 overflow-hidden pointer-events-none select-none">
                 <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl opacity-50 animate-blob animation-delay-2000" />
                 <div className="absolute top-20 left-1/4 w-64 h-64 bg-purple-100 dark:bg-purple-900/20 rounded-full blur-3xl opacity-40 animate-blob animation-delay-4000" />
@@ -214,7 +429,16 @@ const Skills = () => {
                     </p>
                 </AnimatedSection>
 
-                <div className="grid gap-6 mb-20">
+                <motion.div
+                    className="grid gap-6 mb-20"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                        duration: 0.6,
+                        staggerChildren: 0.1,
+                        ease: "easeOut"
+                    }}
+                >
                     <SkillSection
                         title={t("skills.sections.frontend.title")}
                         icon="🎨"
@@ -233,38 +457,30 @@ const Skills = () => {
                         skills={toolsSkills}
                         id="tools"
                     />
-                </div>
+                </motion.div>
 
                 <div className="mt-20">
                     <AnimatedSection delay={0.3}>
-                        <h3 className="text-3xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 
-                            dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-12">
+                        <motion.h3
+                            className="text-3xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 
+                                dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-12"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                        >
                             {t("skills.softSkills.title")}
-                        </h3>
+                        </motion.h3>
                     </AnimatedSection>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {Object.entries(
                             t("skills.softSkills.items", { returnObjects: true })
                         ).map(([key, skill], index) => (
-                            <AnimatedSection key={key} delay={0.4 + index * 0.1} className="group perspective">
-                                <div className="relative h-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-slate-700 shadow-lg hover:shadow-xl transition-all duration-300 transform-gpu hover:-rotate-y-2 hover:scale-[1.02]">
-                                    <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                    <div className="relative p-8 h-full">
-                                        <span className="text-4xl mb-6 block transform transition-transform duration-300 
-                                            group-hover:scale-125 group-hover:rotate-12">
-                                            {["👥", "🤝", "💡", "⏱️"][index]}
-                                        </span>
-                                        <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4 group-hover:text-transparent 
-                                            group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 
-                                            group-hover:bg-clip-text transition-all duration-300">
-                                            {skill.title}
-                                        </h4>
-                                        <p className="text-gray-600 dark:text-gray-300">
-                                            {skill.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            </AnimatedSection>
+                            <StatItem
+                                key={key}
+                                index={index}
+                                skill={skill}
+                            />
                         ))}
                     </div>
                 </div>
