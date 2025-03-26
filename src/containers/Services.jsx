@@ -100,19 +100,19 @@ const Services = () => {
 
     // Variantes de animação para os cartões
     const cardVariants = {
-        initial: { 
+        initial: {
             scale: 1,
             boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
         },
-        hover: { 
-            scale: 1.03, 
+        hover: {
+            scale: 1.03,
             boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
         },
         expanded: {
             scale: 1.05,
             boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
         },
-        tap: { 
+        tap: {
             scale: 0.98,
             transition: { duration: 0.1 }
         }
@@ -121,9 +121,9 @@ const Services = () => {
     // Variantes para ícones
     const iconVariants = {
         initial: { rotate: 0, scale: 1 },
-        hover: { 
+        hover: {
             rotate: 10, // Modificado: apenas um valor em vez de [0, -10, 0, 10, 0]
-            scale: 1.2, 
+            scale: 1.2,
             transition: { duration: 0.5, type: "tween" } // Adicionado type: "tween"
         },
         expanded: { rotate: 0, scale: 1.3, transition: { duration: 0.3 } }
@@ -139,8 +139,8 @@ const Services = () => {
     // Variantes para o botão de download
     const downloadButtonVariants = {
         initial: { scale: 1, y: 0 },
-        hover: { 
-            scale: 1.05, 
+        hover: {
+            scale: 1.05,
             y: -5,
             boxShadow: "0 15px 30px -10px rgba(79, 70, 229, 0.4)",
             transition: { duration: 0.3, ease: "easeOut" }
@@ -200,28 +200,28 @@ const Services = () => {
                                     whileHover="hover"
                                     animate={cardState}
                                     whileTap="tap"
-                                    transition={{ 
-                                        type: "spring", 
-                                        stiffness: 300, 
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 300,
                                         damping: 20,
                                         duration: 0.4
                                     }}
                                 >
-                                    <motion.div 
+                                    <motion.div
                                         className="absolute inset-x-0 -bottom-px h-1"
                                         initial={{ scaleX: 0 }}
                                         whileHover={{ scaleX: 1 }}
                                         transition={{ duration: 0.4 }}
-                                        style={{ 
+                                        style={{
                                             background: "linear-gradient(to right, transparent, rgb(59, 130, 246), transparent)",
                                             originX: 0.5
                                         }}
                                     />
-                                    
+
                                     <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-blue-50/30 dark:from-slate-700/0 dark:to-blue-900/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                                     {/* Decorative elements */}
-                                    <motion.div 
+                                    <motion.div
                                         className="absolute -right-3 -top-3 w-24 h-24 bg-gradient-to-br from-blue-100/20 to-purple-100/20 dark:from-blue-900/10 dark:to-purple-900/10 rounded-full blur-2xl"
                                         initial={{ opacity: 0 }}
                                         whileHover={{ opacity: 0.7 }}
@@ -231,7 +231,7 @@ const Services = () => {
 
                                     <div className="p-8">
                                         <div className="flex flex-col h-full">
-                                            <motion.div 
+                                            <motion.div
                                                 className={`mb-8 p-6 rounded-2xl bg-gradient-to-br ${service.gradient} text-white shadow-lg w-fit`}
                                                 variants={iconVariants}
                                                 transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -239,9 +239,9 @@ const Services = () => {
                                                 {service.icon}
                                             </motion.div>
 
-                                            <motion.h3 
+                                            <motion.h3
                                                 className={`text-xl font-bold text-gray-900 dark:text-white mb-4 bg-clip-text transition-all duration-300 ${isExpanded ? 'text-transparent bg-gradient-to-r from-blue-500 to-purple-500' : ''}`}
-                                                animate={{ 
+                                                animate={{
                                                     scale: isExpanded ? 1.05 : 1,
                                                     transition: { duration: 0.3, ease: "easeOut" }
                                                 }}
@@ -250,7 +250,7 @@ const Services = () => {
                                             </motion.h3>
 
                                             <AnimatePresence>
-                                                <motion.p 
+                                                <motion.p
                                                     className="text-gray-600 dark:text-gray-300 mb-6 flex-grow"
                                                     variants={descriptionVariants}
                                                     initial="initial"
@@ -270,7 +270,7 @@ const Services = () => {
                                                     exit={{ opacity: 0, y: 20 }}
                                                     transition={{ duration: 0.3, delay: 0.1 }}
                                                 >
-                                                    <button 
+                                                    <button
                                                         className="flex items-center text-blue-500 font-medium hover:text-blue-600"
                                                         onClick={(e) => {
                                                             e.stopPropagation();
@@ -281,10 +281,10 @@ const Services = () => {
                                                         <motion.span
                                                             initial={{ x: 0 }}
                                                             animate={{ x: 5 }} // Modificado: apenas um valor final
-                                                            transition={{ 
-                                                                duration: 1, 
-                                                                repeat: Infinity, 
-                                                                repeatType: "reverse" 
+                                                            transition={{
+                                                                duration: 1,
+                                                                repeat: Infinity,
+                                                                repeatType: "reverse"
                                                             }}
                                                         >
                                                             <ArrowRight className="w-4 h-4 ml-2" />
@@ -301,7 +301,7 @@ const Services = () => {
                 </div>
 
                 <AnimatedSection delay={0.7} className="mt-20 text-center">
-                    <motion.button 
+                    <motion.button
                         className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 
                                   text-white rounded-full font-medium shadow-lg"
                         variants={downloadButtonVariants}
@@ -312,11 +312,11 @@ const Services = () => {
                         onHoverEnd={() => setIsDownloadHovered(false)}
                     >
                         <motion.div
-                            animate={{ 
+                            animate={{
                                 y: isDownloadHovered ? -2 : 0 // Modificado: apenas dois valores
                             }}
-                            transition={{ 
-                                duration: 0.5, 
+                            transition={{
+                                duration: 0.5,
                                 repeat: isDownloadHovered ? Infinity : 0,
                                 repeatType: "reverse"
                             }}
@@ -327,7 +327,7 @@ const Services = () => {
                         <span className="text-lg">{t("services.downloadButton")}</span>
                     </motion.button>
 
-                    <motion.p 
+                    <motion.p
                         className="mt-6 text-gray-600 dark:text-gray-300 max-w-xl mx-auto"
                         initial={{ opacity: 0.8 }}
                         animate={{ opacity: isDownloadHovered ? 1 : 0.8 }}
