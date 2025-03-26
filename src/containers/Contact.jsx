@@ -54,7 +54,7 @@ const Contact = () => {
 
     const contactInfo = [
         {
-            icon: <PhoneCall className="w-6 h-6" aria-hidden="true" />,
+            icon: <PhoneCall className="w-6 h-6 text-blue-500 dark:text-blue-400 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors duration-300" aria-hidden="true" />,
             title: t('contact.callMe'),
             link: 'https://wa.me/qr/KW2XXA46XAXNH1',
             linkText: t('contact.phone'),
@@ -62,13 +62,13 @@ const Contact = () => {
             delay: 0.1
         },
         {
-            icon: <Mail className="w-6 h-6" aria-hidden="true" />,
+            icon: <Mail className="w-6 h-6 text-purple-500 dark:text-purple-400 group-hover:text-purple-600 dark:group-hover:text-purple-300 transition-colors duration-300" aria-hidden="true" />,
             title: t('contact.emailMe'),
             link: 'mailto:jefersonreisalmeida8356@gmail.com',
             linkText: t('contact.email'),
             ariaLabel: t('contact.ariaEmail'),
             extraAction: {
-                icon: <ClipboardCheck className="w-4 h-4 ml-2" />,
+                icon: <ClipboardCheck className="w-4 h-4 ml-2 text-gray-500 hover:text-purple-500 dark:text-gray-400 dark:hover:text-purple-400 transition-colors duration-300" />,
                 label: t('contact.copyEmail'),
                 action: handleCopyEmail
             },
