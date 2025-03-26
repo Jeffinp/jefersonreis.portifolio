@@ -3,6 +3,7 @@ import { Linkedin, Github, Instagram, MessageCircle } from "lucide-react";
 import { FaDiscord } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { motion, useAnimation, useInView } from "framer-motion";
+import SectionBackground from "./SectionBackground";
 
 // Componente para animações de entrada
 const AnimatedSection = ({ children, delay = 0, className = "" }) => {
@@ -98,14 +99,7 @@ const Footer = () => {
             {/* Background decorative elements */}
             <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-500 dark:to-purple-500" />
 
-            <div aria-hidden="true" className="absolute -z-10 inset-0 overflow-hidden pointer-events-none select-none">
-                <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl opacity-50 animate-blob animation-delay-2000" />
-                <div className="absolute top-20 left-1/4 w-64 h-64 bg-purple-100 dark:bg-purple-900/20 rounded-full blur-3xl opacity-40 animate-blob animation-delay-4000" />
-                <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-100/80 dark:bg-blue-900/20 rounded-full blur-3xl opacity-50 animate-blob animation-delay-1000" />
-
-                {/* Subtle grid pattern overlay */}
-                <div className="absolute inset-0 bg-grid-pattern opacity-[0.015] dark:opacity-[0.03]" />
-            </div>
+            <SectionBackground wave={false} />
 
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12">
