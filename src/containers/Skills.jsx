@@ -179,8 +179,12 @@ const Skills = () => {
                     {percentage === 100 && (
                         <motion.div
                             initial={{ rotate: 0 }}
-                            animate={{ rotate: [0, 10, -10, 0] }}
-                            transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                            animate={{ rotate: 10 }}
+                            transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                repeatType: "reverse"
+                            }}
                         >
                             <Sparkles className="w-4 h-4 text-yellow-400" />
                         </motion.div>
@@ -349,7 +353,7 @@ const Skills = () => {
                             initial={{ scale: 1, rotate: 0 }}
                             animate={{
                                 scale: isHovered ? 1.2 : 1,
-                                rotate: isHovered ? [0, -5, 5, 0] : 0,
+                                rotate: isHovered ? 5 : 0,
                                 y: isHovered ? -5 : 0
                             }}
                             transition={{

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
     Globe,
     Palette,
@@ -10,7 +10,7 @@ import {
     ArrowRight
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion";
 
 // Componente para animações de entrada
 const AnimatedSection = ({ children, delay = 0, className = "" }) => {
@@ -50,6 +50,8 @@ const AnimatedSection = ({ children, delay = 0, className = "" }) => {
 
 const Services = () => {
     const { t } = useTranslation();
+    const [expandedCard, setExpandedCard] = useState(null);
+    const [isDownloadHovered, setIsDownloadHovered] = useState(false);
 
     const services = [
         {
@@ -96,9 +98,67 @@ const Services = () => {
         },
     ];
 
+    // Variantes de animação para os cartões
+    const cardVariants = {
+        initial: { 
+            scale: 1,
+            boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
+        },
+        hover: { 
+            scale: 1.03, 
+            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+        },
+        expanded: {
+            scale: 1.05,
+            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+        },
+        tap: { 
+            scale: 0.98,
+            transition: { duration: 0.1 }
+        }
+    };
+
+    // Variantes para ícones
+    const iconVariants = {
+        initial: { rotate: 0, scale: 1 },
+        hover: { 
+            rotate: 10, // Modificado: apenas um valor em vez de [0, -10, 0, 10, 0]
+            scale: 1.2, 
+            transition: { duration: 0.5, type: "tween" } // Adicionado type: "tween"
+        },
+        expanded: { rotate: 0, scale: 1.3, transition: { duration: 0.3 } }
+    };
+
+    // Variantes para texto de descrição
+    const descriptionVariants = {
+        initial: { opacity: 0.8, y: 0 },
+        hover: { opacity: 1, y: 0 },
+        expanded: { opacity: 1, y: 0 }
+    };
+
+    // Variantes para o botão de download
+    const downloadButtonVariants = {
+        initial: { scale: 1, y: 0 },
+        hover: { 
+            scale: 1.05, 
+            y: -5,
+            boxShadow: "0 15px 30px -10px rgba(79, 70, 229, 0.4)",
+            transition: { duration: 0.3, ease: "easeOut" }
+        },
+        tap: { scale: 0.98, y: 0, transition: { duration: 0.1 } }
+    };
+
+    const handleCardClick = (index) => {
+        if (expandedCard === index) {
+            setExpandedCard(null);
+        } else {
+            setExpandedCard(index);
+        }
+    };
+
     return (
         <section id="areas" className="relative py-24 overflow-hidden bg-gradient-to-b from-white to-blue-50/70 dark:from-slate-900/60 dark:to-slate-900/60">
-
+            {/* Background decorative elements */}
             <div aria-hidden="true" className="absolute -z-10 inset-0 overflow-hidden pointer-events-none select-none">
                 <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl opacity-50 animate-blob animation-delay-2000" />
                 <div className="absolute top-20 left-1/4 w-64 h-64 bg-purple-100 dark:bg-purple-900/20 rounded-full blur-3xl opacity-40 animate-blob animation-delay-4000" />
@@ -128,50 +188,153 @@ const Services = () => {
                     {services.map((service, index) => {
                         if (!service) return null;
 
+                        const isExpanded = expandedCard === index;
+                        const cardState = isExpanded ? "expanded" : "initial";
+
                         return (
-                            <AnimatedSection key={index} delay={service.delay} className="group perspective">
-                                <div className="relative h-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-slate-700 shadow-lg hover:shadow-xl transition-all duration-300 transform-gpu hover:-rotate-y-2 hover:scale-[1.02]">
-                                    <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <AnimatedSection key={index} delay={service.delay} className="perspective">
+                                <motion.div
+                                    className="relative h-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-slate-700 overflow-hidden"
+                                    variants={cardVariants}
+                                    initial="initial"
+                                    whileHover="hover"
+                                    animate={cardState}
+                                    whileTap="tap"
+                                    transition={{ 
+                                        type: "spring", 
+                                        stiffness: 300, 
+                                        damping: 20,
+                                        duration: 0.4
+                                    }}
+                                >
+                                    <motion.div 
+                                        className="absolute inset-x-0 -bottom-px h-1"
+                                        initial={{ scaleX: 0 }}
+                                        whileHover={{ scaleX: 1 }}
+                                        transition={{ duration: 0.4 }}
+                                        style={{ 
+                                            background: "linear-gradient(to right, transparent, rgb(59, 130, 246), transparent)",
+                                            originX: 0.5
+                                        }}
+                                    />
+                                    
                                     <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-blue-50/30 dark:from-slate-700/0 dark:to-blue-900/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                                     {/* Decorative elements */}
-                                    <div className="absolute -right-3 -top-3 w-24 h-24 bg-gradient-to-br from-blue-100/20 to-purple-100/20 dark:from-blue-900/10 dark:to-purple-900/10 rounded-full blur-2xl opacity-0 group-hover:opacity-70 transition-all duration-500" />
+                                    <motion.div 
+                                        className="absolute -right-3 -top-3 w-24 h-24 bg-gradient-to-br from-blue-100/20 to-purple-100/20 dark:from-blue-900/10 dark:to-purple-900/10 rounded-full blur-2xl"
+                                        initial={{ opacity: 0 }}
+                                        whileHover={{ opacity: 0.7 }}
+                                        animate={{ opacity: isExpanded ? 0.7 : 0 }}
+                                        transition={{ duration: 0.5 }}
+                                    />
 
                                     <div className="p-8">
                                         <div className="flex flex-col h-full">
-                                            <div className={`mb-8 p-6 rounded-2xl bg-gradient-to-br ${service.gradient} text-white 
-                                                shadow-lg transform group-hover:scale-110 ${index % 2 === 0 ? 'group-hover:rotate-3' : 'group-hover:-rotate-3'} transition-transform duration-300 w-fit`}>
+                                            <motion.div 
+                                                className={`mb-8 p-6 rounded-2xl bg-gradient-to-br ${service.gradient} text-white shadow-lg w-fit`}
+                                                variants={iconVariants}
+                                                transition={{ duration: 0.4, ease: "easeInOut" }}
+                                            >
                                                 {service.icon}
-                                            </div>
+                                            </motion.div>
 
-                                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-transparent 
-                                                group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 
-                                                group-hover:bg-clip-text transition-all duration-300">
+                                            <motion.h3 
+                                                className={`text-xl font-bold text-gray-900 dark:text-white mb-4 bg-clip-text transition-all duration-300 ${isExpanded ? 'text-transparent bg-gradient-to-r from-blue-500 to-purple-500' : ''}`}
+                                                animate={{ 
+                                                    scale: isExpanded ? 1.05 : 1,
+                                                    transition: { duration: 0.3, ease: "easeOut" }
+                                                }}
+                                            >
                                                 {t(service.title)}
-                                            </h3>
+                                            </motion.h3>
 
-                                            <p className="text-gray-600 dark:text-gray-300 mb-6 flex-grow">
-                                                {t(service.description)}
-                                            </p>
+                                            <AnimatePresence>
+                                                <motion.p 
+                                                    className="text-gray-600 dark:text-gray-300 mb-6 flex-grow"
+                                                    variants={descriptionVariants}
+                                                    initial="initial"
+                                                    animate={cardState}
+                                                    layout
+                                                    transition={{ duration: 0.4, ease: "easeOut" }}
+                                                >
+                                                    {t(service.description)}
+                                                </motion.p>
+                                            </AnimatePresence>
+
+                                            {isExpanded && (
+                                                <motion.div
+                                                    className="flex justify-end"
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    exit={{ opacity: 0, y: 20 }}
+                                                    transition={{ duration: 0.3, delay: 0.1 }}
+                                                >
+                                                    <button 
+                                                        className="flex items-center text-blue-500 font-medium hover:text-blue-600"
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            // Aqui você pode adicionar uma ação de "saiba mais"
+                                                        }}
+                                                    >
+                                                        Saiba mais
+                                                        <motion.span
+                                                            initial={{ x: 0 }}
+                                                            animate={{ x: 5 }} // Modificado: apenas um valor final
+                                                            transition={{ 
+                                                                duration: 1, 
+                                                                repeat: Infinity, 
+                                                                repeatType: "reverse" 
+                                                            }}
+                                                        >
+                                                            <ArrowRight className="w-4 h-4 ml-2" />
+                                                        </motion.span>
+                                                    </button>
+                                                </motion.div>
+                                            )}
                                         </div>
                                     </div>
-                                </div>
+                                </motion.div>
                             </AnimatedSection>
                         );
                     })}
                 </div>
 
                 <AnimatedSection delay={0.7} className="mt-20 text-center">
-                    <button className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 
-                            text-white rounded-full font-medium hover:from-blue-600 hover:to-purple-600 transition-all 
-                            duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                        <Download className="w-5 h-5 mr-3 transform group-hover:scale-110 transition-transform duration-300" />
+                    <motion.button 
+                        className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 
+                                  text-white rounded-full font-medium shadow-lg"
+                        variants={downloadButtonVariants}
+                        initial="initial"
+                        whileHover="hover"
+                        whileTap="tap"
+                        onHoverStart={() => setIsDownloadHovered(true)}
+                        onHoverEnd={() => setIsDownloadHovered(false)}
+                    >
+                        <motion.div
+                            animate={{ 
+                                y: isDownloadHovered ? -2 : 0 // Modificado: apenas dois valores
+                            }}
+                            transition={{ 
+                                duration: 0.5, 
+                                repeat: isDownloadHovered ? Infinity : 0,
+                                repeatType: "reverse"
+                            }}
+                            className="mr-3"
+                        >
+                            <Download className="w-5 h-5" />
+                        </motion.div>
                         <span className="text-lg">{t("services.downloadButton")}</span>
-                    </button>
+                    </motion.button>
 
-                    <p className="mt-6 text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
+                    <motion.p 
+                        className="mt-6 text-gray-600 dark:text-gray-300 max-w-xl mx-auto"
+                        initial={{ opacity: 0.8 }}
+                        animate={{ opacity: isDownloadHovered ? 1 : 0.8 }}
+                        transition={{ duration: 0.3 }}
+                    >
                         {t("services.downloadDescription")}
-                    </p>
+                    </motion.p>
                 </AnimatedSection>
             </div>
         </section>
