@@ -46,43 +46,43 @@ const Footer = () => {
 
     const socialLinks = [
         {
-            icon: <Linkedin className="w-6 h-6" />,
+            icon: <Linkedin className="w-6 h-6 text-blue-600 dark:text-blue-400" />,
             href: "https://www.linkedin.com/in/jeferson-reis-877a942b7/",
             title: t("footer.social.linkedin"),
             label: "LinkedIn",
-            hoverColor: "hover:text-blue-500 dark:hover:text-blue-400",
+            hoverColor: "hover:bg-blue-500 hover:text-white dark:hover:bg-blue-600",
             delay: 0.1
         },
         {
-            icon: <Github className="w-6 h-6" />,
+            icon: <Github className="w-6 h-6 text-gray-800 dark:text-gray-200" />,
             href: "https://github.com/Jeffinp",
             title: t("footer.social.github"),
             label: "GitHub",
-            hoverColor: "hover:text-gray-900 dark:hover:text-gray-100",
+            hoverColor: "hover:bg-gray-800 hover:text-white dark:hover:bg-gray-700",
             delay: 0.2
         },
         {
-            icon: <Instagram className="w-6 h-6" />,
+            icon: <Instagram className="w-6 h-6 text-pink-600 dark:text-pink-400" />,
             href: "https://www.instagram.com/jeffinx___/",
             title: t("footer.social.instagram"),
             label: "Instagram",
-            hoverColor: "hover:text-pink-600 dark:hover:text-pink-400",
+            hoverColor: "hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 hover:text-white",
             delay: 0.3
         },
         {
-            icon: <MessageCircle className="w-6 h-6" />,
+            icon: <MessageCircle className="w-6 h-6 text-green-600 dark:text-green-400" />,
             href: "https://wa.me/qr/KW2XXA46XAXNH1",
             title: t("footer.social.whatsapp"),
             label: "WhatsApp",
-            hoverColor: "hover:text-green-600 dark:hover:text-green-400",
+            hoverColor: "hover:bg-green-500 hover:text-white dark:hover:bg-green-600",
             delay: 0.4
         },
         {
-            icon: <FaDiscord className="w-6 h-6" />,
+            icon: <FaDiscord className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />,
             href: "https://discord.com/users/563186981962776577",
             title: t("footer.social.discord"),
             label: "Discord",
-            hoverColor: "hover:text-blue-600 dark:hover:text-blue-400",
+            hoverColor: "hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-700",
             delay: 0.5
         },
     ];
@@ -150,18 +150,24 @@ const Footer = () => {
                         </h3>
                         <div className="flex flex-wrap gap-4">
                             {socialLinks.map((link, index) => (
-                                <a
+                                <motion.a
                                     key={index}
                                     href={link.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title={link.title}
-                                    className={`p-3 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-110 ${link.hoverColor}`}
+                                    className={`p-3 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-md transition-all duration-300 transform ${link.hoverColor}`}
                                     aria-label={link.label}
+                                    whileHover={{
+                                        scale: 1.1,
+                                        y: -3,
+                                        boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
+                                    }}
+                                    whileTap={{ scale: 0.95 }}
                                 >
                                     {link.icon}
                                     <span className="sr-only">{link.label}</span>
-                                </a>
+                                </motion.a>
                             ))}
                         </div>
                     </AnimatedSection>
@@ -169,9 +175,22 @@ const Footer = () => {
 
                 {/* Copyright */}
                 <AnimatedSection delay={0.3} className="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col items-center justify-center gap-4">
-                    <p className="text-gray-600 dark:text-gray-300 text-center">
+                    <motion.p
+                        className="text-gray-600 dark:text-gray-300 text-center"
+                        whileHover={{
+                            color: "#3B82F6",
+                            transition: { duration: 0.3 }
+                        }}
+                    >
                         {t("footer.copyright", { year: new Date().getFullYear() })}
-                    </p>
+                    </motion.p>
+
+                    <motion.div
+                        className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: "4rem" }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                    />
                 </AnimatedSection>
             </div>
         </footer>
