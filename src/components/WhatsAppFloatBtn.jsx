@@ -2,40 +2,29 @@
 import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 const WhatsAppFloatBtn = () => {
     const { t } = useTranslation();
     const whatsappLink = "https://wa.me/qr/KW2XXA46XAXNH1";
 
     return (
-        <a
+        <motion.a
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
             title={t("floatButtons.whatsapp")}
             aria-label={t("floatButtons.whatsapp")}
-            style={{
-                position: "fixed",
-                bottom: "102px",
-                right: "20px",
-                backgroundColor: "#25D366",
-                color: "#fff",
-                border: "none",
-                borderRadius: "50%",
-                padding: "15px",
-                cursor: "pointer",
-                zIndex: 1000,
-                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
-                transition: "all 0.3s ease-in-out",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+            className="fixed z-50 bottom-16 right-5 p-3 md:p-4 rounded-full 
+                     bg-[#25D366] text-white shadow-lg flex items-center justify-center"
+            whileHover={{
+                scale: 1.1,
+                boxShadow: "0 10px 25px -5px rgba(37, 211, 102, 0.4)"
             }}
-            onMouseEnter={(e) => (e.target.style.transform = "scale(1.1)")}
-            onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
+            whileTap={{ scale: 0.95 }}
         >
-            <FaWhatsapp size={24} color="#fff" />
-        </a>
+            <FaWhatsapp className="w-5 h-5 md:w-6 md:h-6" />
+        </motion.a>
     );
 };
 

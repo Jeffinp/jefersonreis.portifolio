@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 
 const PortfolioSection = () => {
     const { t } = useTranslation();
@@ -21,6 +21,14 @@ const PortfolioSection = () => {
     const autoAdvanceTimer = useRef(null);
     const trackRef = useRef(null);
     const itemWidth = useRef(0);
+
+    // Valores para animação fluida
+    const dragX = useMotionValue(0);
+    const dragXProgress = useTransform(dragX, [-300, 300], [-1, 1]);
+    const dragOpacity = useTransform(dragXProgress, [-1, 0, 1], [0.5, 1, 0.5]);
+
+    // Referência para a máscara que contém o carrossel
+    const carouselWrapperRef = useRef(null);
 
     const projects = [
         {
@@ -506,21 +514,75 @@ const PortfolioSection = () => {
             if (visibleItems.length === 0 || isTransitioning) return;
 
             preventScroll();
+            setIsTransitioning(true);
 
             const newIndex =
                 ((index % visibleItems.length) + visibleItems.length) %
                 visibleItems.length;
 
+            // Determinar a direção da animação (para esquerda ou direita)
+            const goingRight = newIndex > currentIndex;
+
+            // Atualizar o estado com o novo índice
             setCurrentIndex(newIndex);
 
+            // Calcular o deslocamento
             const offset = -newIndex * itemWidth.current;
             currentTranslate.current = offset;
 
+            // Animar com spring para transição suave
             if (trackRef.current) {
+                // Aplicar transformação com efeito de profundidade
                 trackRef.current.style.transform = `translateX(${offset}px)`;
+
+                // Aplicar efeito parallax sutil nos itens
+                const items = Array.from(trackRef.current.children);
+                items.forEach((item, idx) => {
+                    const isTarget = idx === newIndex;
+                    const isBefore = idx < newIndex;
+                    const isAfter = idx > newIndex;
+
+                    // Aplicar estilos de transição para cada item
+                    const card = item.querySelector('.group');
+                    if (card) {
+                        // Reset de estilos
+                        card.style.transition = 'all 300ms cubic-bezier(0.22, 1, 0.36, 1)';
+
+                        if (isTarget) {
+                            // Item atual - zoom suave para frente
+                            card.style.transform = 'scale(1.02)';
+                            card.style.zIndex = '10';
+                            card.style.opacity = '1';
+                        } else if (isBefore) {
+                            // Itens anteriores - deslizam mais rápido
+                            card.style.transform = goingRight ? 'scale(0.97) translateX(-5%)' : 'scale(0.99)';
+                            card.style.zIndex = '1';
+                            card.style.opacity = '0.8';
+                        } else if (isAfter) {
+                            // Itens posteriores - deslizam mais lento
+                            card.style.transform = !goingRight ? 'scale(0.97) translateX(5%)' : 'scale(0.99)';
+                            card.style.zIndex = '1';
+                            card.style.opacity = '0.8';
+                        }
+
+                        // Restaurar após a transição
+                        setTimeout(() => {
+                            if (card) {
+                                card.style.transform = '';
+                                card.style.zIndex = '';
+                                card.style.opacity = '';
+                            }
+                        }, 350);
+                    }
+                });
             }
+
+            // Finalizar a transição após um breve delay
+            setTimeout(() => {
+                setIsTransitioning(false);
+            }, 350); // Pouco mais que a duração da animação para garantir que termine
         },
-        [visibleItems.length, isTransitioning, preventScroll]
+        [currentIndex, visibleItems.length, preventScroll]
     );
 
     const nextSlide = useCallback(() => {
@@ -620,9 +682,17 @@ const PortfolioSection = () => {
         setIsDragging(true);
         startPos.current = e.touches[0].clientX;
         prevTranslate.current = currentTranslate.current;
+        dragX.set(0); // Reset da posição de drag
+
+        // Configurar estilo para feedback imediato 
+        if (trackRef.current) {
+            trackRef.current.style.transition = 'none';
+            // Adicionar cursor de arrasto
+            document.body.style.cursor = 'grabbing';
+        }
 
         cancelAnimationFrame(animationId.current);
-    }, [isTransitioning]);
+    }, [isTransitioning, dragX]);
 
     const handleTouchMove = useCallback((e) => {
         if (!isDragging) return;
@@ -630,42 +700,105 @@ const PortfolioSection = () => {
         const currentPosition = e.touches[0].clientX;
         const diff = currentPosition - startPos.current;
 
+        // Atualizar o valor de dragX para animações reativas
+        dragX.set(diff);
+
         // Adicionar resistência nos limites
         const maxTranslate = 0;
         const minTranslate = -(visibleItems.length - 1) * itemWidth.current;
 
         let newTranslate = prevTranslate.current + diff;
 
+        // Resistência progressiva nos extremos
         if (newTranslate > maxTranslate) {
-            newTranslate = maxTranslate + (newTranslate - maxTranslate) * 0.2;
+            const overscroll = newTranslate - maxTranslate;
+            newTranslate = maxTranslate + overscroll * 0.2;
         } else if (newTranslate < minTranslate) {
-            newTranslate = minTranslate + (newTranslate - minTranslate) * 0.2;
+            const overscroll = minTranslate - newTranslate;
+            newTranslate = minTranslate - overscroll * 0.2;
         }
 
         currentTranslate.current = newTranslate;
 
+        // Aplicar transformação com efeito parallax sutil
         if (trackRef.current) {
             trackRef.current.style.transform = `translateX(${newTranslate}px)`;
+
+            // Aplicar efeito de parallax nos itens
+            const items = Array.from(trackRef.current.children);
+            const swipingRight = diff > 0;
+            const swipingLeft = diff < 0;
+
+            items.forEach((item, idx) => {
+                const card = item.querySelector('.group');
+                if (card) {
+                    const scaleValue = 1 - Math.abs(diff) * 0.0002; // Efeito sutil de escala
+                    const translateFactor = diff * 0.02; // Movimento parallax
+
+                    // Efeito de profundidade baseado na posição e direção
+                    if (idx === currentIndex) {
+                        // Item atual
+                        card.style.transform = `scale(${scaleValue}) translateX(${translateFactor}px)`;
+                    } else if (idx < currentIndex) {
+                        // Itens anteriores - movimento mais intenso
+                        card.style.transform = `scale(${scaleValue - 0.01}) translateX(${translateFactor * 1.2}px)`;
+                    } else {
+                        // Itens posteriores - movimento menos intenso
+                        card.style.transform = `scale(${scaleValue - 0.01}) translateX(${translateFactor * 0.8}px)`;
+                    }
+                }
+            });
         }
-    }, [isDragging, visibleItems.length]);
+    }, [isDragging, visibleItems.length, currentIndex, dragX]);
 
     const handleTouchEnd = useCallback(() => {
         if (!isDragging) return;
 
+        // Restaurar cursor
+        document.body.style.cursor = '';
+
+        // Determinar o snap baseado na velocidade e distância
+        const movedBy = currentTranslate.current - prevTranslate.current;
+        const swipeFraction = Math.abs(movedBy) / itemWidth.current;
+        const swipeThreshold = 0.2; // 20% do slide
+        const swipeBoost = 1 + Math.min(swipeFraction * 2, 0.5); // Boost baseado na velocidade
+
         setIsDragging(false);
 
-        const movedBy = currentTranslate.current - prevTranslate.current;
-
-        // Determinar direção do deslize
-        if (movedBy < -50 && currentIndex < visibleItems.length - 1) {
+        // Aplicar snap com animação aprimorada
+        if (movedBy < -itemWidth.current * swipeThreshold) {
+            // Swipe para a esquerda - avança
             showSlide(currentIndex + 1);
-        } else if (movedBy > 50 && currentIndex > 0) {
+        } else if (movedBy > itemWidth.current * swipeThreshold) {
+            // Swipe para a direita - retrocede
             showSlide(currentIndex - 1);
         } else {
-            // Voltar à posição original se movimento pequeno
-            showSlide(currentIndex);
+            // Retornar à posição do slide atual com animação suave
+            if (trackRef.current) {
+                trackRef.current.style.transition = 'transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1)';
+                trackRef.current.style.transform = `translateX(${currentTranslate.current}px)`;
+
+                // Resetar quaisquer transformações aplicadas aos cartões
+                const items = Array.from(trackRef.current.children);
+                items.forEach(item => {
+                    const card = item.querySelector('.group');
+                    if (card) {
+                        card.style.transition = 'transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1)';
+                        card.style.transform = '';
+                    }
+                });
+
+                setTimeout(() => {
+                    if (trackRef.current) {
+                        trackRef.current.style.transition = 'transform 500ms ease-out';
+                    }
+                }, 300);
+            }
         }
-    }, [currentIndex, isDragging, showSlide, visibleItems.length]);
+
+        // Resetar o valor de dragX
+        dragX.set(0);
+    }, [currentIndex, isDragging, showSlide, dragX]);
 
     return (
         <section
@@ -719,12 +852,17 @@ const PortfolioSection = () => {
                 </motion.div>
 
                 <div
-                    className="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl"
+                    ref={carouselWrapperRef}
+                    className="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl perspective-800"
+                    style={{ perspective: "1000px" }}
                 >
                     <div
                         ref={trackRef}
-                        className="flex transition-transform duration-500 ease-out"
-                        style={{ touchAction: "pan-y pinch-zoom" }}
+                        className="flex will-change-transform"
+                        style={{
+                            touchAction: "pan-y pinch-zoom",
+                            transition: "transform 500ms cubic-bezier(0.25, 1, 0.5, 1)"
+                        }}
                         onMouseEnter={() => setIsHovering(true)}
                         onMouseLeave={() => setIsHovering(false)}
                         onTouchStart={handleTouchStart}
@@ -741,26 +879,75 @@ const PortfolioSection = () => {
                                     className="group relative rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 h-full flex flex-col"
                                     whileHover={{
                                         scale: 1.03,
-                                        transition: { duration: 0.3 }
+                                        y: -5,
+                                        transition: {
+                                            type: "spring",
+                                            stiffness: 300,
+                                            damping: 15,
+                                            mass: 0.8
+                                        }
                                     }}
+                                    initial={{ boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)" }}
+                                    animate={{ boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+                                    whileTap={{ scale: 0.98, boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)" }}
                                 >
                                     <div className="relative pb-[60%] overflow-hidden">
-                                        <img
+                                        <motion.img
                                             src={project.image}
                                             alt={t(project.titleKey)}
-                                            className="absolute w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+                                            className="absolute w-full h-full object-cover"
                                             loading="lazy"
+                                            initial={{ scale: 1 }}
+                                            whileHover={{
+                                                scale: 1.1,
+                                                transition: {
+                                                    duration: 0.5,
+                                                    ease: [0.25, 1, 0.5, 1]
+                                                }
+                                            }}
                                         />
                                         {project.type === "contracted" && (
-                                            <div className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-3 sm:px-6 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium shadow-lg">
+                                            <motion.div
+                                                className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-3 sm:px-6 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium shadow-lg"
+                                                initial={{ opacity: 0, y: -10 }}
+                                                animate={{
+                                                    opacity: 1,
+                                                    y: 0,
+                                                    transition: {
+                                                        delay: 0.1,
+                                                        duration: 0.3,
+                                                        ease: "easeOut"
+                                                    }
+                                                }}
+                                            >
                                                 {t("portfolio.projectLabels.contracted")}
-                                            </div>
+                                            </motion.div>
                                         )}
+
+                                        {/* Gradiente sobreposto com efeito de profundidade */}
+                                        <motion.div
+                                            className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100"
+                                            initial={{ opacity: 0 }}
+                                            whileHover={{ opacity: 1 }}
+                                            transition={{ duration: 0.3 }}
+                                        />
                                     </div>
                                     <div className="p-4 sm:p-6 md:p-8 flex flex-col flex-grow">
-                                        <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 group-hover:bg-clip-text transition-all duration-300">
+                                        <motion.h3
+                                            className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-4"
+                                            initial={{ backgroundPosition: "100% 0%" }}
+                                            whileHover={{
+                                                backgroundImage: "linear-gradient(90deg, #3B82F6, #8B5CF6)",
+                                                backgroundClip: "text",
+                                                backgroundSize: "200%",
+                                                backgroundPosition: "0% 0%",
+                                                WebkitBackgroundClip: "text",
+                                                WebkitTextFillColor: "transparent",
+                                                transition: { duration: 0.5, ease: "easeOut" }
+                                            }}
+                                        >
                                             {t(project.titleKey)}
-                                        </h3>
+                                        </motion.h3>
                                         <p className="mb-4 sm:mb-6 text-gray-600 dark:text-gray-300 text-sm sm:text-base flex-grow">
                                             {t(project.descriptionKey)}
                                         </p>
@@ -769,7 +956,25 @@ const PortfolioSection = () => {
                                                 <motion.span
                                                     key={techIndex}
                                                     className="px-2 sm:px-4 py-1 sm:py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-gray-700 dark:text-gray-300 rounded-full text-xs sm:text-sm"
-                                                    whileHover={{ scale: 1.05 }}
+                                                    whileHover={{
+                                                        scale: 1.05,
+                                                        backgroundColor: "rgba(59, 130, 246, 0.15)",
+                                                        transition: {
+                                                            type: "spring",
+                                                            stiffness: 400,
+                                                            damping: 10
+                                                        }
+                                                    }}
+                                                    initial={{ opacity: 0, y: 10 }}
+                                                    animate={{
+                                                        opacity: 1,
+                                                        y: 0,
+                                                        transition: {
+                                                            delay: 0.1 + techIndex * 0.05,
+                                                            duration: 0.3,
+                                                            ease: "easeOut"
+                                                        }
+                                                    }}
                                                 >
                                                     {tech}
                                                 </motion.span>
@@ -780,13 +985,50 @@ const PortfolioSection = () => {
                                                 href={project.link}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="group inline-flex items-center px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm md:text-base font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-md hover:shadow-lg"
-                                                whileHover={{ y: -3 }}
-                                                whileTap={{ scale: 0.95 }}
+                                                className="group inline-flex items-center px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm md:text-base font-medium overflow-hidden relative"
+                                                whileHover={{
+                                                    y: -3,
+                                                    boxShadow: "0 10px 15px -3px rgba(59, 130, 246, 0.3)",
+                                                    transition: {
+                                                        type: "spring",
+                                                        stiffness: 400,
+                                                        damping: 10
+                                                    }
+                                                }}
+                                                whileTap={{ scale: 0.98, y: 0 }}
+                                                initial={{ scale: 1 }}
                                             >
-                                                {t("portfolio.projectLabels.viewProject")}
-                                                <motion.span className="ml-2 inline-block">
-                                                    <ExternalLink className="w-4 h-4 md:w-5 md:h-5 transform group-hover:scale-110 transition-transform duration-300" />
+                                                {/* Efeito de brilho ao passar o mouse */}
+                                                <motion.div
+                                                    className="absolute inset-0 w-full h-full bg-white/20"
+                                                    initial={{ x: '-100%', skewX: '-15deg' }}
+                                                    whileHover={{
+                                                        x: '200%',
+                                                        transition: {
+                                                            repeat: Infinity,
+                                                            repeatType: "loop",
+                                                            duration: 1.5,
+                                                            ease: "easeInOut",
+                                                            repeatDelay: 0.5
+                                                        }
+                                                    }}
+                                                />
+
+                                                <span className="relative z-10">{t("portfolio.projectLabels.viewProject")}</span>
+                                                <motion.span
+                                                    className="relative z-10 ml-2 inline-block"
+                                                    initial={{ x: 0 }}
+                                                    whileHover={{
+                                                        x: 3,
+                                                        transition: {
+                                                            repeat: Infinity,
+                                                            repeatType: "reverse",
+                                                            duration: 0.3,
+                                                            ease: "easeOut"
+                                                        }
+                                                    }}
+                                                >
+                                                    <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
                                                 </motion.span>
                                             </motion.a>
                                         )}
@@ -802,24 +1044,94 @@ const PortfolioSection = () => {
                         ))}
                     </div>
 
+                    {/* Botões de navegação aprimorados */}
                     <motion.button
                         onClick={prevSlide}
-                        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 md:p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-110 z-10"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
+                        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 md:p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md z-10"
+                        whileHover={{
+                            scale: 1.1,
+                            boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)",
+                            from: "#4F46E5",
+                            to: "#9333EA"
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                        initial={{ opacity: 0.8, scale: 0.95 }}
+                        animate={{
+                            opacity: isTransitioning ? 0.6 : 1,
+                            scale: isTransitioning ? 0.9 : 1,
+                            transition: { duration: 0.2 }
+                        }}
                         aria-label={t("portfolio.projectLabels.prevProject")}
+                        disabled={isTransitioning}
                     >
                         <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+
+                        {/* Efeito de onda circular ao clicar */}
+                        <motion.div
+                            className="absolute inset-0 rounded-full bg-white/20"
+                            initial={{ scale: 0, opacity: 0 }}
+                            whileTap={{
+                                scale: 2,
+                                opacity: [0, 0.5, 0],
+                                transition: { duration: 0.5 }
+                            }}
+                            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                        />
                     </motion.button>
+
                     <motion.button
                         onClick={nextSlide}
-                        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 md:p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-110 z-10"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
+                        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 md:p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md z-10"
+                        whileHover={{
+                            scale: 1.1,
+                            boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)",
+                            from: "#4F46E5",
+                            to: "#9333EA"
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                        initial={{ opacity: 0.8, scale: 0.95 }}
+                        animate={{
+                            opacity: isTransitioning ? 0.6 : 1,
+                            scale: isTransitioning ? 0.9 : 1,
+                            transition: { duration: 0.2 }
+                        }}
                         aria-label={t("portfolio.projectLabels.nextProject")}
+                        disabled={isTransitioning}
                     >
                         <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+
+                        {/* Efeito de onda circular ao clicar */}
+                        <motion.div
+                            className="absolute inset-0 rounded-full bg-white/20"
+                            initial={{ scale: 0, opacity: 0 }}
+                            whileTap={{
+                                scale: 2,
+                                opacity: [0, 0.5, 0],
+                                transition: { duration: 0.5 }
+                            }}
+                            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                        />
                     </motion.button>
+
+                    {/* Indicador de progresso */}
+                    <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+                        {Array.from({ length: Math.ceil(visibleItems.length / 1) }).map((_, index) => (
+                            <motion.button
+                                key={index}
+                                onClick={() => showSlide(index)}
+                                className="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 focus:outline-none"
+                                initial={{ scale: 0.8 }}
+                                animate={{
+                                    scale: currentIndex === index ? 1.2 : 0.8,
+                                    backgroundColor: currentIndex === index ? '#3B82F6' : '',
+                                    transition: { duration: 0.3 }
+                                }}
+                                whileHover={{ scale: 1.5 }}
+                                whileTap={{ scale: 0.9 }}
+                                aria-label={`Ir para slide ${index + 1}`}
+                            />
+                        ))}
+                    </div>
                 </div>
 
                 <motion.div

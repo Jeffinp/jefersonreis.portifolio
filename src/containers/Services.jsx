@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Globe, Palette, FileText, Box, Laptop, Video, ArrowRight } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa"; // Adicionando o ícone do WhatsApp
+import { FaWhatsapp } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion";
 
