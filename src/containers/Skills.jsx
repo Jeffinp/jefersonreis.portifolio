@@ -62,7 +62,7 @@ const Skills = () => {
             { threshold: 0.1 }
         );
 
-        const skillsSection = document.querySelector("#skills-section");
+        const skillsSection = document.querySelector("#skills"); // Modificado de "#skills-section" para "#skills"
         if (skillsSection) {
             observer.observe(skillsSection);
         }
@@ -407,7 +407,7 @@ const Skills = () => {
 
     return (
         <section
-            id="skills-section"
+            id="skills"
             ref={skillsRef}
             className="relative py-24 overflow-hidden bg-gradient-to-b from-white to-blue-50/70 dark:from-slate-900/60 dark:to-slate-900/60"
         >
