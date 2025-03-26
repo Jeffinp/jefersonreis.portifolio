@@ -74,32 +74,39 @@ const Skills = () => {
         };
     }, []);
 
+    // Frontend skills
     const frontendSkills = [
         { name: "HTML", percentage: 100 },
         { name: "CSS", percentage: 100 },
         { name: "JavaScript", percentage: 100 },
         { name: "React", percentage: 95 },
-    ];
-
-    const backendSkills = [
-        { name: "PHP", percentage: 85 },
-        { name: "Node.js", percentage: 90 },
-        { name: "Python", percentage: 95 },
-        { name: "C#", percentage: 20 }
-    ];
-
-    const toolsSkills = [
-        { name: "After Effects", percentage: 90 },
+        { name: "TailwindCSS", percentage: 95 },
         { name: "Bootstrap", percentage: 90 },
-        { name: "Canva", percentage: 90 },
-        { name: "Figma", percentage: 80 },
-        { name: "Filmora", percentage: 90 },
-        { name: "Illustrator", percentage: 90 },
+    ];
+
+    // Backend skills
+    const backendSkills = [
+        { name: "Node.js", percentage: 95 },
+        { name: "TypeScript", percentage: 95 },
+        { name: "Python", percentage: 95 },
+        { name: "PHP", percentage: 85 },
+        { name: "C#", percentage: 80 },
+        { name: "C++", percentage: 70 },
+        { name: "SQL", percentage: 90 },
         { name: "MySQL", percentage: 90 },
+    ];
+
+    // Tools and design skills
+    const toolsSkills = [
+        { name: "UX Design", percentage: 100 },
         { name: "Pacotes Office", percentage: 100 },
         { name: "Photoshop", percentage: 95 },
         { name: "Premiere", percentage: 95 },
-        { name: "UX Design", percentage: 100 },
+        { name: "After Effects", percentage: 90 },
+        { name: "Illustrator", percentage: 90 },
+        { name: "Filmora", percentage: 90 },
+        { name: "Canva", percentage: 90 },
+        { name: "Figma", percentage: 80 },
     ];
 
     // Variantes para animações

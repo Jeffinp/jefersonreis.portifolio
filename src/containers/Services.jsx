@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Globe, Palette, FileText, Box, Laptop, Video, Download, ArrowRight } from "lucide-react";
+import { Globe, Palette, FileText, Box, Laptop, Video, ArrowRight } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa"; // Adicionando o ícone do WhatsApp
 import { useTranslation } from "react-i18next";
 import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion";
 
@@ -42,7 +43,7 @@ const AnimatedSection = ({ children, delay = 0, className = "" }) => {
 const Services = () => {
     const { t } = useTranslation();
     const [expandedCard, setExpandedCard] = useState(null);
-    const [isDownloadHovered, setIsDownloadHovered] = useState(false);
+    const [isWhatsAppHovered, setIsWhatsAppHovered] = useState(false);
 
     const services = [
         {
@@ -127,13 +128,13 @@ const Services = () => {
         expanded: { opacity: 1, y: 0 }
     };
 
-    // Variantes para o botão de download
-    const downloadButtonVariants = {
+    // Variantes para o botão do WhatsApp
+    const whatsAppButtonVariants = {
         initial: { scale: 1, y: 0 },
         hover: {
             scale: 1.05,
             y: -5,
-            boxShadow: "0 15px 30px -10px rgba(79, 70, 229, 0.4)",
+            boxShadow: "0 15px 30px -10px rgba(37, 211, 102, 0.4)",
             transition: { duration: 0.3, ease: "easeOut" }
         },
         tap: { scale: 0.98, y: 0, transition: { duration: 0.1 } }
@@ -149,7 +150,7 @@ const Services = () => {
 
     return (
         <section id="areas" className="relative py-24 overflow-hidden bg-gradient-to-b from-white to-blue-50/70 dark:from-slate-900/60 dark:to-slate-900/60">
-            
+
 
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <AnimatedSection className="text-center mb-20">
@@ -278,39 +279,42 @@ const Services = () => {
                 </div>
 
                 <AnimatedSection delay={0.7} className="mt-20 text-center">
-                    <motion.button
-                        className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 
+                    <motion.a
+                        href="https://wa.me/qr/KW2XXA46XAXNH1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 
                                   text-white rounded-full font-medium shadow-lg"
-                        variants={downloadButtonVariants}
+                        variants={whatsAppButtonVariants}
                         initial="initial"
                         whileHover="hover"
                         whileTap="tap"
-                        onHoverStart={() => setIsDownloadHovered(true)}
-                        onHoverEnd={() => setIsDownloadHovered(false)}
+                        onHoverStart={() => setIsWhatsAppHovered(true)}
+                        onHoverEnd={() => setIsWhatsAppHovered(false)}
                     >
                         <motion.div
                             animate={{
-                                y: isDownloadHovered ? -2 : 0 // Modificado: apenas dois valores
+                                y: isWhatsAppHovered ? -2 : 0
                             }}
                             transition={{
                                 duration: 0.5,
-                                repeat: isDownloadHovered ? Infinity : 0,
+                                repeat: isWhatsAppHovered ? Infinity : 0,
                                 repeatType: "reverse"
                             }}
                             className="mr-3"
                         >
-                            <Download className="w-5 h-5" />
+                            <FaWhatsapp className="w-5 h-5" />
                         </motion.div>
-                        <span className="text-lg">{t("services.downloadButton")}</span>
-                    </motion.button>
+                        <span className="text-lg">Fale comigo no WhatsApp</span>
+                    </motion.a>
 
                     <motion.p
                         className="mt-6 text-gray-600 dark:text-gray-300 max-w-xl mx-auto"
                         initial={{ opacity: 0.8 }}
-                        animate={{ opacity: isDownloadHovered ? 1 : 0.8 }}
+                        animate={{ opacity: isWhatsAppHovered ? 1 : 0.8 }}
                         transition={{ duration: 0.3 }}
                     >
-                        {t("services.downloadDescription")}
+                        Tem interesse em contratar algum dos meus serviços? Entre em contato agora!
                     </motion.p>
                 </AnimatedSection>
             </div>
