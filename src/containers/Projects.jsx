@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion"; // Adicionando Framer Motion
+import { motion, AnimatePresence } from "framer-motion";
 
 const PortfolioSection = () => {
     const { t } = useTranslation();
