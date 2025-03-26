@@ -339,7 +339,7 @@ const Hero = () => {
             </motion.div>
 
             {/* Estilos CSS otimizados para mobile */}
-            <style jsx>{`
+            <style>{`
                 .perspective-3d {
                     perspective: 1000px;
                 }
