@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion"; // Adicionando Framer Motion
 
 const PortfolioSection = () => {
     const { t } = useTranslation();
@@ -10,6 +11,8 @@ const PortfolioSection = () => {
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [visibleItems, setVisibleItems] = useState([]);
     const [activeFilter, setActiveFilter] = useState("all");
+    // Adicionando estado para controlar rolagem durante transições
+    const [preventScrollReset, setPreventScrollReset] = useState(false);
 
     const startPos = useRef(0);
     const currentTranslate = useRef(0);
@@ -417,8 +420,58 @@ const PortfolioSection = () => {
         },
     ];
 
+    // Função otimizada para prevenir rolagem indesejada
+    const preventScroll = useCallback(() => {
+        if (isTransitioning) return;
+
+        // Salvar a posição atual de scroll
+        const scrollPosition = window.scrollY;
+        setIsTransitioning(true);
+        setPreventScrollReset(true);
+
+        // Restaurar posição de scroll se mudar
+        const handleScroll = () => {
+            if (preventScrollReset) {
+                window.scrollTo(0, scrollPosition);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Limpar após a transição
+        setTimeout(() => {
+            setIsTransitioning(false);
+            setPreventScrollReset(false);
+            window.removeEventListener('scroll', handleScroll);
+        }, 500); // Corresponde à duração da transição
+    }, [isTransitioning, preventScrollReset]);
+
+    // Definindo updateVisibleItems primeiro, antes de ser usada em filterItems
+    const updateVisibleItems = useCallback(() => {
+        if (!trackRef.current) return;
+
+        const items = Array.from(trackRef.current.children);
+        const updatedVisibleItems = items.filter(
+            (item) =>
+                item.style.display !== "none" &&
+                window.getComputedStyle(item).display !== "none"
+        );
+
+        setVisibleItems(updatedVisibleItems);
+
+        // Ajustar largura dos itens após filtrar
+        if (updatedVisibleItems.length > 0) {
+            itemWidth.current = updatedVisibleItems[0].offsetWidth;
+        }
+    }, []);
+
     const filterItems = useCallback((category) => {
+        if (isTransitioning) return;
+
+        // Prevenir rolagem durante a filtragem
+        preventScroll();
         setActiveFilter(category);
+
         if (trackRef.current) {
             const items = Array.from(trackRef.current.children);
             items.forEach((item) => {
@@ -426,36 +479,48 @@ const PortfolioSection = () => {
                     category === "all" || item.dataset.category === category;
                 item.style.display = shouldShow ? "flex" : "none";
             });
-            setCurrentIndex(0);
-            updateVisibleItems();
-        }
-    }, []);
 
-    const updateVisibleItems = useCallback(() => {
-        if (!trackRef.current) return;
-        const items = Array.from(trackRef.current.children);
-        const updatedVisibleItems = items.filter(
-            (item) =>
-                item.style.display !== "none" &&
-                window.getComputedStyle(item).display !== "none"
-        );
-        setVisibleItems(updatedVisibleItems);
-    }, []);
+            // Resetar índice de forma controlada
+            setCurrentIndex(0);
+            currentTranslate.current = 0;
+
+            // Atualizar a transformação sem animação primeiro
+            trackRef.current.style.transition = 'none';
+            trackRef.current.style.transform = 'translateX(0)';
+
+            // Forçar reflow antes de reativar transições
+            trackRef.current.offsetHeight;
+
+            // Restaurar transições após o DOM ser atualizado
+            setTimeout(() => {
+                if (trackRef.current) {
+                    trackRef.current.style.transition = 'transform 500ms ease-out';
+                    updateVisibleItems();
+                }
+            }, 50);
+        }
+    }, [isTransitioning, preventScroll, updateVisibleItems]);
 
     const showSlide = useCallback(
         (index) => {
             if (visibleItems.length === 0 || isTransitioning) return;
+
+            preventScroll();
+
             const newIndex =
                 ((index % visibleItems.length) + visibleItems.length) %
                 visibleItems.length;
+
             setCurrentIndex(newIndex);
+
             const offset = -newIndex * itemWidth.current;
             currentTranslate.current = offset;
+
             if (trackRef.current) {
                 trackRef.current.style.transform = `translateX(${offset}px)`;
             }
         },
-        [visibleItems.length, isTransitioning]
+        [visibleItems.length, isTransitioning, preventScroll]
     );
 
     const nextSlide = useCallback(() => {
@@ -470,42 +535,137 @@ const PortfolioSection = () => {
         }
     }, [currentIndex, isTransitioning, showSlide]);
 
+    // Otimizar gestão de autoAvance para evitar animações repetidas
     useEffect(() => {
+        let isComponentMounted = true;
+
         const handleResize = () => {
-            if (!trackRef.current) return;
+            if (!trackRef.current || !isComponentMounted) return;
+
+            // Cancelar animações em andamento
+            cancelAnimationFrame(animationId.current);
+            clearInterval(autoAdvanceTimer.current);
+
+            // Recalcular com debounce
             updateVisibleItems();
+
             if (visibleItems.length > 0) {
+                // Cálculo mais preciso da largura
                 itemWidth.current = visibleItems[0].offsetWidth;
-                showSlide(currentIndex);
+
+                // Atualizar posição sem animação para evitar saltos
+                trackRef.current.style.transition = 'none';
+                const offset = -currentIndex * itemWidth.current;
+                currentTranslate.current = offset;
+                trackRef.current.style.transform = `translateX(${offset}px)`;
+
+                // Restaurar transição suave após atualização
+                setTimeout(() => {
+                    if (trackRef.current && isComponentMounted) {
+                        trackRef.current.style.transition = 'transform 500ms ease-out';
+                    }
+                }, 50);
             }
+
+            // Reiniciar auto-avanço
+            startAutoAdvance();
         };
 
         const startAutoAdvance = () => {
             clearInterval(autoAdvanceTimer.current);
-            autoAdvanceTimer.current = setInterval(() => {
-                if (!isHovering && !isTransitioning) {
-                    nextSlide();
-                }
-            }, 25000);
+
+            // Só ativar auto-avanço se necessário
+            if (visibleItems.length > 1) {
+                autoAdvanceTimer.current = setInterval(() => {
+                    if (!isHovering && !isTransitioning && isComponentMounted) {
+                        nextSlide();
+                    }
+                }, 25000);
+            }
         };
 
+        // Inicialização
         handleResize();
-        startAutoAdvance();
 
-        window.addEventListener("resize", handleResize);
+        // Debounce para o resize
+        let resizeTimer;
+        const debouncedResize = () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(handleResize, 250);
+        };
+
+        window.addEventListener("resize", debouncedResize);
+
+        // Limpeza completa
         return () => {
-            window.removeEventListener("resize", handleResize);
+            isComponentMounted = false;
+            clearTimeout(resizeTimer);
             clearInterval(autoAdvanceTimer.current);
+            cancelAnimationFrame(animationId.current);
+            window.removeEventListener("resize", debouncedResize);
         };
     }, [
         currentIndex,
         isHovering,
         isTransitioning,
         nextSlide,
-        showSlide,
         updateVisibleItems,
         visibleItems.length,
     ]);
+
+    // Adicionar suporte a gestos de toque
+    const handleTouchStart = useCallback((e) => {
+        if (isTransitioning) return;
+
+        setIsDragging(true);
+        startPos.current = e.touches[0].clientX;
+        prevTranslate.current = currentTranslate.current;
+
+        cancelAnimationFrame(animationId.current);
+    }, [isTransitioning]);
+
+    const handleTouchMove = useCallback((e) => {
+        if (!isDragging) return;
+
+        const currentPosition = e.touches[0].clientX;
+        const diff = currentPosition - startPos.current;
+
+        // Adicionar resistência nos limites
+        const maxTranslate = 0;
+        const minTranslate = -(visibleItems.length - 1) * itemWidth.current;
+
+        let newTranslate = prevTranslate.current + diff;
+
+        if (newTranslate > maxTranslate) {
+            newTranslate = maxTranslate + (newTranslate - maxTranslate) * 0.2;
+        } else if (newTranslate < minTranslate) {
+            newTranslate = minTranslate + (newTranslate - minTranslate) * 0.2;
+        }
+
+        currentTranslate.current = newTranslate;
+
+        if (trackRef.current) {
+            trackRef.current.style.transform = `translateX(${newTranslate}px)`;
+        }
+    }, [isDragging, visibleItems.length]);
+
+    const handleTouchEnd = useCallback(() => {
+        if (!isDragging) return;
+
+        setIsDragging(false);
+
+        const movedBy = currentTranslate.current - prevTranslate.current;
+
+        // Determinar direção do deslize
+        if (movedBy < -50 && currentIndex < visibleItems.length - 1) {
+            showSlide(currentIndex + 1);
+        } else if (movedBy > 50 && currentIndex > 0) {
+            showSlide(currentIndex - 1);
+        } else {
+            // Voltar à posição original se movimento pequeno
+            showSlide(currentIndex);
+        }
+    }, [currentIndex, isDragging, showSlide, visibleItems.length]);
 
     return (
         <section
@@ -519,20 +679,30 @@ const PortfolioSection = () => {
             </div>
 
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-20">
+                <motion.div
+                    className="text-center mb-20"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                >
                     <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-6">
                         {t("portfolio.title")}
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
                         {t("portfolio.subtitle")}
                     </p>
-                </div>
+                </motion.div>
 
-                <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12">
+                <motion.div
+                    className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                >
                     {Object.entries(
                         t("portfolio.categories", { returnObjects: true })
-                    ).map(([key, value]) => (
-                        <button
+                    ).map(([key, value], index) => (
+                        <motion.button
                             key={key}
                             onClick={() => filterItems(key)}
                             className={`group px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full font-medium transition-all duration-300 text-sm md:text-base shadow-md hover:shadow-lg transform hover:-translate-y-1
@@ -540,19 +710,26 @@ const PortfolioSection = () => {
                                     ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600"
                                     : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
                                 }`}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
                         >
                             {value}
-                        </button>
+                        </motion.button>
                     ))}
-                </div>
+                </motion.div>
 
-                <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl">
+                <div
+                    className="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl"
+                >
                     <div
                         ref={trackRef}
                         className="flex transition-transform duration-500 ease-out"
                         style={{ touchAction: "pan-y pinch-zoom" }}
                         onMouseEnter={() => setIsHovering(true)}
                         onMouseLeave={() => setIsHovering(false)}
+                        onTouchStart={handleTouchStart}
+                        onTouchMove={handleTouchMove}
+                        onTouchEnd={handleTouchEnd}
                     >
                         {projects.map((project, index) => (
                             <div
@@ -560,7 +737,13 @@ const PortfolioSection = () => {
                                 data-category={project.category}
                                 className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4"
                             >
-                                <div className="group relative rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 transform transition-all duration-300 hover:scale-105">
+                                <motion.div
+                                    className="group relative rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 h-full flex flex-col"
+                                    whileHover={{
+                                        scale: 1.03,
+                                        transition: { duration: 0.3 }
+                                    }}
+                                >
                                     <div className="relative pb-[60%] overflow-hidden">
                                         <img
                                             src={project.image}
@@ -569,75 +752,109 @@ const PortfolioSection = () => {
                                             loading="lazy"
                                         />
                                         {project.type === "contracted" && (
-                                            <span className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-3 sm:px-6 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium shadow-lg">
+                                            <div className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-3 sm:px-6 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium shadow-lg">
                                                 {t("portfolio.projectLabels.contracted")}
-                                            </span>
+                                            </div>
                                         )}
                                     </div>
-                                    <div className="p-4 sm:p-6 md:p-8">
+                                    <div className="p-4 sm:p-6 md:p-8 flex flex-col flex-grow">
                                         <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 group-hover:bg-clip-text transition-all duration-300">
                                             {t(project.titleKey)}
                                         </h3>
-                                        <p className="mb-4 sm:mb-6 text-gray-600 dark:text-gray-300 text-sm sm:text-base">
+                                        <p className="mb-4 sm:mb-6 text-gray-600 dark:text-gray-300 text-sm sm:text-base flex-grow">
                                             {t(project.descriptionKey)}
                                         </p>
                                         <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-6">
                                             {project.technologies?.map((tech, techIndex) => (
-                                                <span
+                                                <motion.span
                                                     key={techIndex}
-                                                    className="px-2 sm:px-4 py-1 sm:py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-gray-700 dark:text-gray-300 rounded-full text-xs sm:text-sm transform transition-transform duration-300 hover:scale-105"
+                                                    className="px-2 sm:px-4 py-1 sm:py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-gray-700 dark:text-gray-300 rounded-full text-xs sm:text-sm"
+                                                    whileHover={{ scale: 1.05 }}
                                                 >
                                                     {tech}
-                                                </span>
+                                                </motion.span>
                                             ))}
                                         </div>
                                         {project.link && (
-                                            <a
+                                            <motion.a
                                                 href={project.link}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="group inline-flex items-center px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm md:text-base font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
+                                                className="group inline-flex items-center px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm md:text-base font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-md hover:shadow-lg"
+                                                whileHover={{ y: -3 }}
+                                                whileTap={{ scale: 0.95 }}
                                             >
                                                 {t("portfolio.projectLabels.viewProject")}
-                                                <ExternalLink className="ml-2 w-4 h-4 md:w-5 md:h-5 transform group-hover:scale-110 transition-transform duration-300" />
-                                            </a>
+                                                <motion.span className="ml-2 inline-block">
+                                                    <ExternalLink className="w-4 h-4 md:w-5 md:h-5 transform group-hover:scale-110 transition-transform duration-300" />
+                                                </motion.span>
+                                            </motion.a>
                                         )}
                                     </div>
-                                    <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                                </div>
+                                    <motion.div
+                                        className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-blue-500 to-purple-500"
+                                        initial={{ scaleX: 0, opacity: 0 }}
+                                        whileHover={{ scaleX: 1, opacity: 1 }}
+                                        transition={{ duration: 0.4 }}
+                                    />
+                                </motion.div>
                             </div>
                         ))}
                     </div>
 
-                    <button
+                    <motion.button
                         onClick={prevSlide}
                         className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 md:p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-110 z-10"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
                         aria-label={t("portfolio.projectLabels.prevProject")}
                     >
                         <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-                    </button>
-                    <button
+                    </motion.button>
+                    <motion.button
                         onClick={nextSlide}
                         className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 md:p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-110 z-10"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
                         aria-label={t("portfolio.projectLabels.nextProject")}
                     >
                         <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-                    </button>
+                    </motion.button>
                 </div>
 
-                <div className="text-center mt-20">
-                    <a
+                <motion.div
+                    className="text-center mt-20"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                    <motion.a
                         href="https://drive.google.com/drive/folders/1kNUbhpuYBDRTLjD66vBwfSweugiabAIE?usp=drive_link"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group inline-flex items-center px-5 sm:px-6 md:px-8 py-3 sm:py-3 md:py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm md:text-base font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                     >
                         {t("portfolio.projectLabels.viewHighRes")}
-                        <ExternalLink className="ml-2 w-4 h-4 md:w-5 md:h-5 transform group-hover:scale-110 transition-transform duration-300" />
-                    </a>
-                </div>
+                        <motion.span
+                            className="ml-2"
+                            animate={{ x: [0, 3, 0] }}
+                            transition={{
+                                duration: 1.5,
+                                repeat: Infinity,
+                                repeatType: "loop",
+                                ease: "easeInOut",
+                                repeatDelay: 1
+                            }}
+                        >
+                            <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
+                        </motion.span>
+                    </motion.a>
+                </motion.div>
             </div>
         </section>
     );
 };
+
 export default PortfolioSection;
