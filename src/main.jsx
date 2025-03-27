@@ -21,7 +21,6 @@ const Testimonials = lazy(() => import(/* @vite-ignore */"./containers/Testimoni
 const Contact = lazy(() => import(/* @vite-ignore */"./containers/Contact.jsx"));
 const Footer = lazy(() => import(/* @vite-ignore */"./components/Footer.jsx"));
 const ScrollToTopBtn = lazy(() => import(/* @vite-ignore */"./components/ScrollToTopBtn.jsx"));
-const Atuacao = lazy(() => import(/* @vite-ignore */"./containers/atuacao.jsx"));
 
 // Tela de carregamento enquanto os componentes são carregados
 
@@ -41,6 +40,35 @@ const LoadingScreen = () => (
         <p className="text-xl font-semibold text-gray-700 dark:text-gray-300 opacity-90 transition-colors duration-300">Carregando Portfólio...</p>
     </div>
 );
+
+// Adicionar estilos para resolver o problema de transição entre seções
+const sectionStyles = `
+  .section-container {
+    position: relative;
+  }
+  
+  /* Remove overflow hidden das seções para permitir que os elementos decorativos fluam */
+  #about, #skills, #services, #resume, #portfolio, #testimonials, #contact {
+    overflow: visible !important;
+  }
+  
+  /* Cria overlap entre seções para transição suave */
+  .overlap-section {
+    margin-top: -60px;
+    padding-top: 80px;
+  }
+  
+  /* Ajusta o z-index para controlar sobreposições */
+  .z-lower { z-index: 1; }
+  .z-higher { z-index: 2; }
+  
+  /* Aumenta o tamanho das bolhas nos limites das seções */
+  .section-boundary-bubble {
+    height: 800px !important;
+    width: 800px !important;
+    opacity: 0.1;
+  }
+`;
 
 const App = () => {
     // Pega o tema salvo ou usa a preferência do sistema
@@ -67,17 +95,39 @@ const App = () => {
     return (
         <div className="app-container">
             <SEOHead />
+            {/* Injetar estilos para corrigir as transições */}
+            <style>{sectionStyles}</style>
+
             <Suspense fallback={<LoadingScreen />}>
                 <Header toggleDarkMode={() => setDarkMode(prev => !prev)} darkMode={darkMode} />
                 <div className="content-wrapper">
                     <Hero />
-                    <About />
-                    <Atuacao />
-                    <Skills />
-                    <Services />
-                    <Resume />
-                    <PortfolioSection />
-                    <Testimonials />
+
+                    {/* Container para About/Skills com transição suave */}
+                    <div className="section-container">
+                        <About />
+                        <div className="overlap-section">
+                            <Skills />
+                        </div>
+                    </div>
+
+                    {/* Container para Services/Resume com transição suave */}
+                    <div className="section-container">
+                        <Services />
+                        <div className="overlap-section">
+                            <Resume />
+                        </div>
+                    </div>
+
+                    {/* Container para Portfolio/Testimonials com transição suave */}
+                    <div className="section-container">
+                        <PortfolioSection />
+                        <div className="overlap-section">
+                            <Testimonials />
+                        </div>
+                    </div>
+
+                    {/* Última seção */}
                     <Contact />
                 </div>
                 <WhatsAppFloatBtn />

@@ -31,13 +31,17 @@ const resources = {
                 intro:
                     "Olá, sou Jeferson Reis, um apaixonado por tecnologia, design e programação. Ao longo dos anos, desenvolvi habilidades como desenvolvedor full-stack, designer gráfico e técnico em informática. Estou sempre em busca de novos desafios para criar soluções inovadoras e personalizadas, combinando tecnologia e criatividade.",
                 name: "Jeferson Reis",
+                devTitle: "Desenvolvimento Frontend",
                 devDescription:
                     "Sou um desenvolvedor full-stack com experiência em criação de soluções web inovadoras. Tenho um forte conhecimento em React e Node.js, focando sempre na performance e na experiência do usuário (UX/UI).",
                 designTitle: "Design Gráfico",
                 designDescription:
                     "Combinando criatividade e técnicas modernas de design, crio identidades visuais únicas, como logotipos, banners e materiais gráficos, personalizados para cada cliente.",
+                backendTitle: "Desenvolvimento Backend",
+                backendDescription: "Especializado em APIs robustas, bancos de dados SQL e NoSQL, e infraestrutura escalável. Crio soluções eficientes com foco em segurança e performance para aplicações de diferentes tamanhos.",
+                architectureTitle: "Arquitetura de Software",
+                architectureDescription: "Planejamento e implementação de arquiteturas escaláveis e resilientes, aplicando padrões de design e práticas modernas para garantir código limpo, manutenível e de alto desempenho.",
                 learnMore: "Veja mais"
-
             },
             expertise: {
                 title: "Áreas de Atuação",
@@ -603,11 +607,16 @@ const resources = {
                 intro:
                     "Hello, I'm Jeferson Reis, passionate about technology, design, and programming. Over the years, I've honed my skills as a full-stack developer, graphic designer, and IT technician. I'm constantly seeking new challenges to craft innovative and customized solutions that blend technology with creativity.",
                 name: "Jeferson Reis",
+                devTitle: "Frontend Development",
                 devDescription:
                     "I'm a full-stack developer specialized in creating innovative web solutions. With strong expertise in React and Node.js, I consistently focus on performance optimization and exceptional user experience (UX/UI).",
                 designTitle: "Graphic Design",
                 designDescription:
                     "By merging creativity with cutting-edge design techniques, I craft distinctive visual identities, including logos, banners, and graphic materials tailored specifically to each client's unique needs.",
+                backendTitle: "Backend Development",
+                backendDescription: "Specialized in robust APIs, SQL and NoSQL databases, and scalable infrastructure. I create efficient solutions focused on security and performance for applications of various sizes.",
+                architectureTitle: "Software Architecture",
+                architectureDescription: "Planning and implementation of scalable and resilient architectures, applying design patterns and modern practices to ensure clean, maintainable, and high-performance code.",
                 learnMore: "Learn More"
             },
             expertise: {

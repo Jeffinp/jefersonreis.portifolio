@@ -3,11 +3,13 @@ import { ChevronDown, ChevronUp, Sparkles } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion";
 
-// Componente para animações de entrada
-const AnimatedSection = ({ children, delay = 0, className = "" }) => {
+/**
+ * Hook personalizado para gerenciar animações baseadas em visibilidade
+ */
+const useAnimatedVisibility = (threshold = 0.2, once = true) => {
     const controls = useAnimation();
     const ref = useRef(null);
-    const inView = useInView(ref, { once: true, threshold: 0.2 });
+    const inView = useInView(ref, { once, threshold });
 
     useEffect(() => {
         if (inView) {
@@ -15,23 +17,41 @@ const AnimatedSection = ({ children, delay = 0, className = "" }) => {
         }
     }, [controls, inView]);
 
+    return { ref, controls };
+};
+
+/**
+ * Componente de seção animada - Wrapper para elementos que animam na entrada
+ */
+const AnimatedSection = ({
+    children,
+    delay = 0,
+    className = "",
+    threshold = 0.2,
+    animation = "fadeUp"
+}) => {
+    const { ref, controls } = useAnimatedVisibility(threshold);
+
+    // Define as variantes de animação com base no tipo solicitado
+    const variants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                delay,
+                ease: [0.22, 1, 0.36, 1]
+            }
+        }
+    };
+
     return (
         <motion.div
             ref={ref}
             initial="hidden"
             animate={controls}
-            variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                        duration: 0.6,
-                        delay,
-                        ease: [0.22, 1, 0.36, 1]
-                    }
-                }
-            }}
+            variants={variants}
             className={className}
         >
             {children}
@@ -44,11 +64,52 @@ const Skills = () => {
     const [openSection, setOpenSection] = useState(null);
     const [isVisible, setIsVisible] = useState(false);
     const [hoveredStat, setHoveredStat] = useState(null);
-    const skillsRef = useRef(null);
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isMobile, setIsMobile] = useState(false);
+    const sectionRef = useRef(null);
 
     const toggleSection = (sectionId) => {
         setOpenSection(openSection === sectionId ? null : sectionId);
     };
+
+    // Detectar dispositivo móvel
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    // Efeito de paralaxe com mouse (apenas em desktop)
+    useEffect(() => {
+        if (isMobile) return;
+
+        const handleMouseMove = (e) => {
+            if (!sectionRef.current) return;
+            const rect = sectionRef.current.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            setMousePosition({
+                x: (x / rect.width) - 0.5,
+                y: (y / rect.height) - 0.5
+            });
+        };
+
+        const sectionElement = sectionRef.current;
+        if (sectionElement) {
+            sectionElement.addEventListener('mousemove', handleMouseMove);
+        }
+
+        return () => {
+            if (sectionElement) {
+                sectionElement.removeEventListener('mousemove', handleMouseMove);
+            }
+        };
+    }, [isMobile]);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -62,7 +123,7 @@ const Skills = () => {
             { threshold: 0.1 }
         );
 
-        const skillsSection = document.querySelector("#skills"); // Modificado de "#skills-section" para "#skills"
+        const skillsSection = document.querySelector("#skills");
         if (skillsSection) {
             observer.observe(skillsSection);
         }
@@ -237,54 +298,47 @@ const Skills = () => {
         const isExpanded = openSection === id;
         const contentRef = useRef(null);
 
+        // Transformação 3D baseada na posição do mouse
+        const transform = !isMobile ?
+            `perspective(1000px) rotateY(${mousePosition.x * 3}deg) rotateX(${mousePosition.y * -3}deg)` :
+            'none';
+
         return (
             <motion.div
-                className="group relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-slate-700 shadow-lg"
+                className="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-white/20 dark:border-slate-700/80 shadow-xl hover:shadow-2xl transition-all duration-500"
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible"
                 whileHover="hover"
                 whileTap="tap"
+                style={{ transform }}
             >
-                <motion.div
-                    className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"
-                    initial={{ scaleX: 0, opacity: 0 }}
-                    whileHover={{ scaleX: 1, opacity: 1 }}
-                    transition={{ duration: 0.4 }}
-                />
-                <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-white/0 to-blue-50/30 dark:from-slate-700/0 dark:to-blue-900/20 rounded-2xl"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                />
+                <div className="relative overflow-hidden">
+                    {/* Fundo com gradiente */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-blue-50/50 dark:from-slate-800/0 dark:to-blue-900/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                <div className="relative">
+                    {/* Elemento decorativo */}
+                    <div className="absolute -right-3 -top-3 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-purple-400/20 dark:from-blue-600/20 dark:to-purple-600/20 rounded-full blur-3xl opacity-0 group-hover:opacity-70 transition-all duration-500" />
+
                     <button
                         onClick={() => toggleSection(id)}
-                        className="w-full px-8 py-6 flex items-center justify-between"
+                        className="w-full px-8 py-6 flex items-center justify-between relative z-10"
                     >
                         <div className="flex items-center gap-6">
                             <motion.span
-                                className="text-3xl transform origin-center"
+                                className="text-3xl transform origin-center relative"
                                 variants={iconVariants}
                                 animate={isExpanded ? "expanded" : ""}
                                 whileHover="hover"
                                 whileTap="tap"
                             >
+                                {/* Resplandor do ícone */}
+                                <div className="absolute inset-0 bg-blue-500 opacity-0 group-hover:opacity-10 blur-md group-hover:animate-pulse-slow rounded-full"></div>
                                 {icon}
                             </motion.span>
                             <div>
                                 <motion.h3
-                                    className="text-xl font-bold text-gray-900 dark:text-white"
-                                    animate={{
-                                        background: isExpanded ?
-                                            "linear-gradient(to right, #3B82F6, #8B5CF6)" : "none",
-                                        backgroundClip: isExpanded ? "text" : "border-box",
-                                        WebkitBackgroundClip: isExpanded ? "text" : "text",
-                                        WebkitTextFillColor: isExpanded ? "transparent" : "inherit",
-                                        transition: { duration: 0.3 }
-                                    }}
+                                    className="text-xl font-bold text-gray-800 dark:text-gray-100 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300"
                                 >
                                     {t(`skills.sections.${id}.title`)}
                                 </motion.h3>
@@ -314,6 +368,7 @@ const Skills = () => {
                                 initial="hidden"
                                 animate="visible"
                                 exit="exit"
+                                className="relative z-10"
                             >
                                 <div className="px-8 py-6 border-t border-gray-100 dark:border-gray-700">
                                     {skills.map((skill, index) => (
@@ -337,28 +392,32 @@ const Skills = () => {
         const isHovered = hoveredStat === index;
         const emoji = ["👥", "🤝", "💡", "⏱️"][index];
 
+        // Transformação 3D baseada na posição do mouse
+        const transform = !isMobile ?
+            `perspective(1000px) rotateY(${mousePosition.x * 5}deg) rotateX(${mousePosition.y * -5}deg)` :
+            'none';
+
         return (
             <AnimatedSection key={index} delay={0.4 + index * 0.1} className="group">
                 <motion.div
-                    className="relative h-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-slate-700 shadow-lg"
+                    className="relative h-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-white/20 dark:border-slate-700/80 shadow-xl hover:shadow-2xl transition-all duration-500"
                     whileHover={{
                         scale: 1.03,
-                        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
                     }}
                     whileTap={{ scale: 0.98 }}
                     onHoverStart={() => setHoveredStat(index)}
                     onHoverEnd={() => setHoveredStat(null)}
+                    style={{ transform }}
                 >
-                    <motion.div
-                        className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"
-                        initial={{ scaleX: 0, opacity: 0 }}
-                        animate={{ scaleX: isHovered ? 1 : 0, opacity: isHovered ? 1 : 0 }}
-                        transition={{ duration: 0.4 }}
-                    />
+                    {/* Fundo com gradiente */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-blue-50/50 dark:from-slate-800/0 dark:to-blue-900/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                    <div className="relative p-8 h-full">
+                    {/* Elemento decorativo */}
+                    <div className="absolute -right-3 -top-3 w-24 h-24 bg-gradient-to-br from-blue-400/20 to-purple-400/20 dark:from-blue-600/20 dark:to-purple-600/20 rounded-full blur-3xl opacity-0 group-hover:opacity-70 transition-all duration-500" />
+
+                    <div className="relative p-8 h-full z-10">
                         <motion.span
-                            className="text-4xl mb-6 block"
+                            className="text-4xl mb-6 block relative"
                             initial={{ scale: 1, rotate: 0 }}
                             animate={{
                                 scale: isHovered ? 1.2 : 1,
@@ -371,20 +430,13 @@ const Skills = () => {
                                 damping: 10
                             }}
                         >
+                            {/* Resplandor do ícone */}
+                            <div className="absolute inset-0 bg-blue-500 opacity-0 group-hover:opacity-10 blur-md group-hover:animate-pulse-slow rounded-full"></div>
                             {emoji}
                         </motion.span>
 
                         <motion.h4
-                            className="text-lg font-bold text-gray-900 dark:text-white mb-4"
-                            animate={{
-                                background: isHovered ?
-                                    "linear-gradient(to right, #3B82F6, #8B5CF6)" : "none",
-                                backgroundClip: isHovered ? "text" : "border-box",
-                                WebkitBackgroundClip: isHovered ? "text" : "text",
-                                WebkitTextFillColor: isHovered ? "transparent" : "inherit",
-                                scale: isHovered ? 1.02 : 1
-                            }}
-                            transition={{ duration: 0.3 }}
+                            className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300"
                         >
                             {skill.title}
                         </motion.h4>
@@ -408,19 +460,110 @@ const Skills = () => {
     return (
         <section
             id="skills"
-            ref={skillsRef}
-            className="relative py-24 overflow-hidden bg-gradient-to-b from-white to-blue-50/70 dark:from-slate-900/60 dark:to-slate-900/60"
+            ref={sectionRef}
+            className="relative py-24 md:py-32"
+            aria-label="Minhas Habilidades"
         >
+            {/* Fundo dinâmico com gradiente e efeitos - Ajustado para combinar com About */}
+            <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 via-white to-gray-50 dark:from-blue-950/30 dark:via-slate-900/90 dark:to-slate-950 -z-10"></div>
+
+            {/* Grades e elementos decorativos */}
+            <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
+                style={{
+                    backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), 
+                                    linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
+                    backgroundSize: isMobile ? '40px 40px' : '80px 80px'
+                }}
+            />
+
+            {/* Formas decorativas flutuantes com movimento de paralaxe */}
+            <div className="absolute inset-0 overflow-visible pointer-events-none -z-10">
+                {/* Bolha decorativa adicional para conexão com Services - bolha inferior */}
+                <div className={`absolute rounded-full bg-cyan-500/10 dark:bg-cyan-500/15 blur-3xl section-boundary-bubble ${isMobile ? 'w-[400px] h-[400px] bottom-[-250px] right-[40%]' : 'w-[800px] h-[800px] bottom-[-500px] right-[35%] transform translate-x-[50%]'}`}
+                    style={{
+                        transform: isMobile ? 'none' : `translate(${mousePosition.x * -10}px, ${mousePosition.y * -10}px) translate(50%, 0)`
+                    }}
+                />
+
+                <div className={`absolute rounded-full bg-blue-500/10 dark:bg-blue-500/15 blur-3xl ${isMobile ? 'w-[300px] h-[300px] -top-[150px] -right-[150px]' : 'w-[600px] h-[600px] -top-[300px] -right-[300px]'}`}
+                    style={{
+                        transform: isMobile ? 'none' : `translate(${mousePosition.x * -30}px, ${mousePosition.y * -30}px)`
+                    }}
+                />
+                <div className={`absolute rounded-full bg-purple-500/10 dark:bg-purple-500/15 blur-3xl ${isMobile ? 'w-[250px] h-[250px] -bottom-[150px] -left-[100px]' : 'w-[500px] h-[500px] -bottom-[250px] -left-[250px]'}`}
+                    style={{
+                        transform: isMobile ? 'none' : `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)`
+                    }}
+                />
+                <div className={`absolute rounded-full bg-cyan-500/10 dark:bg-cyan-500/15 blur-3xl ${isMobile ? 'w-[200px] h-[200px] top-[30%] -left-[100px]' : 'w-[400px] h-[400px] top-[30%] -left-[200px]'}`}
+                    style={{
+                        transform: isMobile ? 'none' : `translate(${mousePosition.x * -15}px, ${mousePosition.y * -15}px)`
+                    }}
+                />
+
+                {/* Formas geométricas animadas */}
+                {!isMobile && (
+                    <>
+                        <div className="absolute top-20 left-[15%] w-10 h-10 border-2 border-blue-500/30 dark:border-blue-400/30 rounded-md animate-float-slow transform rotate-12"
+                            style={{
+                                transform: `rotate(12deg) translate(${mousePosition.x * 25}px, ${mousePosition.y * 25}px)`
+                            }}
+                        />
+                        <div className="absolute top-[40%] right-[20%] w-14 h-14 border-2 border-purple-500/30 dark:border-purple-400/30 rounded-full animate-float-reverse transform -rotate-12"
+                            style={{
+                                transform: `rotate(-12deg) translate(${mousePosition.x * 35}px, ${mousePosition.y * 35}px)`
+                            }}
+                        />
+                        <div className="absolute bottom-[30%] left-[25%] w-16 h-16 border-2 border-cyan-500/30 dark:border-cyan-400/30 rounded-lg animate-float transform rotate-45"
+                            style={{
+                                transform: `rotate(45deg) translate(${mousePosition.x * 20}px, ${mousePosition.y * 20}px)`
+                            }}
+                        />
+                        <div className="absolute top-[60%] right-[10%] w-12 h-12 border-2 border-yellow-500/30 dark:border-yellow-400/30 rounded-md animate-float-slow transform -rotate-12"
+                            style={{
+                                transform: `rotate(-12deg) translate(${mousePosition.x * 30}px, ${mousePosition.y * 30}px)`
+                            }}
+                        />
+                    </>
+                )}
+
+                {/* Formas simplificadas para mobile */}
+                {isMobile && (
+                    <>
+                        <div className="absolute top-20 right-10 w-8 h-8 border-2 border-blue-500/30 dark:border-blue-400/30 rounded-md animate-float-slow" />
+                        <div className="absolute bottom-40 left-10 w-10 h-10 border-2 border-purple-500/30 dark:border-purple-400/30 rounded-full animate-float" />
+                    </>
+                )}
+            </div>
 
             <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <AnimatedSection className="text-center mb-20">
-                    <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 
-                        dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-6 tracking-tight leading-tight">
-                        {t("skills.title")}
-                    </h2>
-                    <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                <AnimatedSection className="text-center mb-16 md:mb-20">
+                    <motion.div
+                        className="perspective-3d inline-block"
+                        animate={{
+                            rotateX: [0, 2, 0],
+                            rotateY: [0, -2, 0]
+                        }}
+                        transition={{
+                            duration: 6,
+                            ease: "easeInOut",
+                            repeat: Infinity,
+                            repeatType: "reverse"
+                        }}
+                    >
+                        <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 dark:from-blue-400 dark:via-purple-400 dark:to-cyan-400 bg-clip-text text-transparent mb-6 tracking-tight leading-tight">
+                            {t("skills.title")}
+                        </h2>
+                    </motion.div>
+
+                    <motion.p
+                        className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2, duration: 0.8 }}
+                    >
                         {t("skills.subtitle")}
-                    </p>
+                    </motion.p>
                 </AnimatedSection>
 
                 <motion.div
@@ -456,8 +599,7 @@ const Skills = () => {
                 <div className="mt-20">
                     <AnimatedSection delay={0.3}>
                         <motion.h3
-                            className="text-3xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 
-                                dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-12"
+                            className="text-3xl font-bold text-center bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 dark:from-blue-400 dark:via-purple-400 dark:to-cyan-400 bg-clip-text text-transparent mb-12"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
@@ -479,6 +621,61 @@ const Skills = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Estilos CSS para animações adicionais */}
+            <style>{`
+                @keyframes particle-1 {
+                    0%, 100% { transform: translate(0, 0); opacity: 1; }
+                    50% { transform: translate(-10px, -10px); opacity: 0; }
+                }
+                @keyframes particle-2 {
+                    0%, 100% { transform: translate(0, 0); opacity: 1; }
+                    50% { transform: translate(10px, -15px); opacity: 0; }
+                }
+                @keyframes particle-3 {
+                    0%, 100% { transform: translate(0, 0); opacity: 1; }
+                    50% { transform: translate(7px, 15px); opacity: 0; }
+                }
+                .animate-particle-1 {
+                    animation: particle-1 2s ease-in-out infinite;
+                }
+                .animate-particle-2 {
+                    animation: particle-2 2.5s ease-in-out infinite;
+                }
+                .animate-particle-3 {
+                    animation: particle-3 3s ease-in-out infinite;
+                }
+                .animate-pulse-slow {
+                    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+                }
+                .perspective {
+                    perspective: 1000px;
+                }
+                .perspective-3d {
+                    perspective: 1000px;
+                }
+                @keyframes float-reverse {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(10px); }
+                }
+                .animate-float-reverse {
+                    animation: float-reverse 5s ease-in-out infinite;
+                }
+                @keyframes float {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-10px); }
+                }
+                .animate-float {
+                    animation: float 4s ease-in-out infinite;
+                }
+                @keyframes float-slow {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-5px); }
+                }
+                .animate-float-slow {
+                    animation: float-slow 6s ease-in-out infinite;
+                }
+            `}</style>
         </section>
     );
 };

@@ -11,8 +11,9 @@ const PortfolioSection = () => {
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [visibleItems, setVisibleItems] = useState([]);
     const [activeFilter, setActiveFilter] = useState("all");
-    // Adicionando estado para controlar rolagem durante transições
     const [preventScrollReset, setPreventScrollReset] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
     const startPos = useRef(0);
     const currentTranslate = useRef(0);
@@ -21,6 +22,7 @@ const PortfolioSection = () => {
     const autoAdvanceTimer = useRef(null);
     const trackRef = useRef(null);
     const itemWidth = useRef(0);
+    const sectionRef = useRef(null);
 
     // Valores para animação fluida
     const dragX = useMotionValue(0);
@@ -800,15 +802,142 @@ const PortfolioSection = () => {
         dragX.set(0);
     }, [currentIndex, isDragging, showSlide, dragX]);
 
+    // Detectar dispositivo móvel
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    // Efeito de paralaxe com mouse (apenas em desktop)
+    useEffect(() => {
+        if (isMobile) return;
+
+        const handleMouseMove = (e) => {
+            if (!sectionRef.current) return;
+            const rect = sectionRef.current.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            setMousePosition({
+                x: (x / rect.width) - 0.5,
+                y: (y / rect.height) - 0.5
+            });
+        };
+
+        const sectionElement = sectionRef.current;
+        if (sectionElement) {
+            sectionElement.addEventListener('mousemove', handleMouseMove);
+        }
+
+        return () => {
+            if (sectionElement) {
+                sectionElement.removeEventListener('mousemove', handleMouseMove);
+            }
+        };
+    }, [isMobile]);
+
     return (
         <section
             id="portfolio"
-            className="relative py-24 bg-gradient-to-b from-white to-gray-50 dark:from-slate-900/55 dark:to-slate-900/55"
+            ref={sectionRef}
+            className="relative py-24"
+            aria-label="Meu Portfólio"
         >
+            {/* Fundo dinâmico com gradiente ajustado para melhor transição com Testimonials */}
+            <div className="absolute inset-0 bg-gradient-to-b from-purple-50/40 via-white to-blue-50/30 dark:from-purple-950/30 dark:via-slate-900/90 dark:to-blue-950/30 -z-10"></div>
+
             {/* Background Decorations */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-0 left-1/4 w-64 h-64 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl opacity-30" />
-                <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-100 dark:bg-purple-900/20 rounded-full blur-3xl opacity-30" />
+            <div className="absolute inset-0 overflow-visible pointer-events-none">
+                {/* Bolha decorativa para conexão com Resume - ajustada para tons compatíveis */}
+                <div className={`absolute rounded-full bg-purple-500/10 dark:bg-purple-500/15 blur-3xl section-boundary-bubble ${isMobile ? 'w-[400px] h-[400px] top-[-250px] left-[40%]' : 'w-[800px] h-[800px] top-[-500px] left-[35%] transform translate-x-[-50%]'}`}
+                    style={{
+                        transform: isMobile ? 'none' : `translate(${mousePosition.x * -10}px, ${mousePosition.y * -10}px) translate(-50%, 0)`
+                    }}
+                />
+
+                {/* Bolha decorativa para conexão com Testimonials - ajustada para tons compatíveis */}
+                <div className={`absolute rounded-full bg-blue-500/10 dark:bg-blue-500/15 blur-3xl section-boundary-bubble ${isMobile ? 'w-[400px] h-[400px] bottom-[-250px] right-[40%]' : 'w-[800px] h-[800px] bottom-[-500px] right-[35%] transform translate-x-[50%]'}`}
+                    style={{
+                        transform: isMobile ? 'none' : `translate(${mousePosition.x * -10}px, ${mousePosition.y * -10}px) translate(50%, 0)`
+                    }}
+                />
+
+                {/* Camada de grade */}
+                <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]"
+                    style={{
+                        backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), 
+                                         linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
+                        backgroundSize: isMobile ? '40px 40px' : '80px 80px'
+                    }}
+                />
+
+                {/* Camadas de esferas com efeito de profundidade */}
+                <div className={`absolute rounded-full bg-blue-500/5 dark:bg-blue-900/20 blur-3xl ${isMobile ? 'w-[300px] h-[300px] -top-[150px] -right-[150px]' : 'w-[600px] h-[600px] -top-[200px] -right-[200px]'}`}
+                    style={{
+                        transform: isMobile ? 'none' : `translate(${mousePosition.x * -40}px, ${mousePosition.y * -40}px)`
+                    }}
+                />
+                <div className={`absolute rounded-full bg-purple-500/5 dark:bg-purple-900/20 blur-3xl ${isMobile ? 'w-[250px] h-[250px] -bottom-[100px] -left-[125px]' : 'w-[500px] h-[500px] -bottom-[200px] -left-[250px]'}`}
+                    style={{
+                        transform: isMobile ? 'none' : `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)`
+                    }}
+                />
+
+                {/* Elementos geométricos flutuantes - menos em mobile */}
+                {!isMobile && (
+                    <>
+                        <div className="absolute top-40 left-[15%] w-8 h-8 border-2 border-blue-500/30 dark:border-blue-400/30 rounded-md animate-float-slow transform rotate-12"
+                            style={{
+                                transform: `rotate(12deg) translate(${mousePosition.x * 20}px, ${mousePosition.y * 20}px)`
+                            }}
+                        />
+                        <div className="absolute top-[60%] right-[10%] w-12 h-12 border-2 border-purple-500/30 dark:border-purple-400/30 rounded-full animate-float-reverse transform -rotate-12"
+                            style={{
+                                transform: `rotate(-12deg) translate(${mousePosition.x * 30}px, ${mousePosition.y * 30}px)`
+                            }}
+                        />
+                        <div className="absolute bottom-[30%] left-[25%] w-16 h-16 border-2 border-emerald-500/30 dark:border-emerald-400/30 rounded-lg animate-float transform rotate-45"
+                            style={{
+                                transform: `rotate(45deg) translate(${mousePosition.x * 25}px, ${mousePosition.y * 25}px)`
+                            }}
+                        />
+                    </>
+                )}
+
+                {/* Apenas alguns elementos leves em mobile */}
+                {isMobile && (
+                    <>
+                        <div className="absolute top-20 right-20 w-8 h-8 border-2 border-blue-500/30 dark:border-blue-400/30 rounded-md animate-float-slow" />
+                        <div className="absolute bottom-40 left-10 w-10 h-10 border-2 border-purple-500/30 dark:border-purple-400/30 rounded-full animate-float" />
+                    </>
+                )}
+
+                {/* Linhas conectoras dinâmicas - simplificadas em mobile */}
+                <svg className="absolute inset-0 w-full h-full z-0 opacity-20 dark:opacity-30" style={{ filter: 'blur(1px)', display: isMobile ? 'none' : 'block' }}>
+                    <line x1="10%" y1="30%" x2="30%" y2="10%" stroke="url(#blueGradient)" strokeWidth="1" />
+                    <line x1="70%" y1="20%" x2="90%" y2="40%" stroke="url(#purpleGradient)" strokeWidth="1" />
+                    <line x1="20%" y1="85%" x2="40%" y2="65%" stroke="url(#cyanGradient)" strokeWidth="1" />
+
+                    <defs>
+                        <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%">
+                            <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.6" />
+                            <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
+                        </linearGradient>
+                        <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%">
+                            <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.6" />
+                            <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0" />
+                        </linearGradient>
+                        <linearGradient id="cyanGradient" x1="0%" y1="0%" x2="100%">
+                            <stop offset="0%" stopColor="#06B6D4" stopOpacity="0.6" />
+                            <stop offset="100%" stopColor="#06B6D4" stopOpacity="0" />
+                        </linearGradient>
+                    </defs>
+                </svg>
             </div>
 
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -853,7 +982,7 @@ const PortfolioSection = () => {
 
                 <div
                     ref={carouselWrapperRef}
-                    className="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl perspective-800"
+                    className="relative overflow-hidden rounded-2xl bg-white/80 dark:bg-gray-800/60 backdrop-blur-sm shadow-xl perspective-800 border border-white/20 dark:border-white/5"
                     style={{ perspective: "1000px" }}
                 >
                     <div
@@ -876,7 +1005,7 @@ const PortfolioSection = () => {
                                 className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4"
                             >
                                 <motion.div
-                                    className="group relative rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 h-full flex flex-col"
+                                    className="group relative rounded-xl overflow-hidden shadow-lg bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm h-full flex flex-col border border-white/20 dark:border-white/5"
                                     whileHover={{
                                         scale: 1.03,
                                         y: -5,
@@ -887,6 +1016,10 @@ const PortfolioSection = () => {
                                             mass: 0.8
                                         }
                                     }}
+                                    style={{
+                                        transform: isMobile ? 'none' : `perspective(1000px) rotateY(${mousePosition.x * 5}deg) rotateX(${mousePosition.y * -5}deg)`,
+                                        transformStyle: 'preserve-3d'
+                                    }}
                                     initial={{ boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)" }}
                                     animate={{ boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
                                     whileTap={{ scale: 0.98, boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)" }}
@@ -895,9 +1028,12 @@ const PortfolioSection = () => {
                                         <motion.img
                                             src={project.image}
                                             alt={t(project.titleKey)}
-                                            className="absolute w-full h-full object-cover"
+                                            className="absolute w-full h-full object-cover transform-gpu"
                                             loading="lazy"
                                             initial={{ scale: 1 }}
+                                            style={{
+                                                transform: isMobile ? 'scale(1)' : `scale(1) translateZ(20px)`,
+                                            }}
                                             whileHover={{
                                                 scale: 1.1,
                                                 transition: {
@@ -908,7 +1044,10 @@ const PortfolioSection = () => {
                                         />
                                         {project.type === "contracted" && (
                                             <motion.div
-                                                className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-3 sm:px-6 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium shadow-lg"
+                                                className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-3 sm:px-6 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium shadow-lg transform-gpu"
+                                                style={{
+                                                    transform: isMobile ? 'none' : `translateZ(30px)`,
+                                                }}
                                                 initial={{ opacity: 0, y: -10 }}
                                                 animate={{
                                                     opacity: 1,
@@ -924,12 +1063,37 @@ const PortfolioSection = () => {
                                             </motion.div>
                                         )}
 
-                                        {/* Gradiente sobreposto com efeito de profundidade */}
+                                        {/* Gradiente sobreposto com efeito de profundidade 3D */}
                                         <motion.div
-                                            className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100"
+                                            className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transform-gpu"
+                                            style={{
+                                                transform: isMobile ? 'none' : `translateZ(10px)`,
+                                            }}
                                             initial={{ opacity: 0 }}
-                                            whileHover={{ opacity: 1 }}
-                                            transition={{ duration: 0.3 }}
+                                            whileHover={{
+                                                opacity: 1,
+                                                transition: {
+                                                    duration: 0.3,
+                                                    ease: "easeOut"
+                                                }
+                                            }}
+                                        />
+
+                                        {/* Borda brilhante animada na parte inferior */}
+                                        <motion.div
+                                            className="absolute bottom-0 inset-x-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 transform-gpu"
+                                            initial={{ scaleX: 0, opacity: 0 }}
+                                            whileHover={{
+                                                scaleX: 1,
+                                                opacity: 1,
+                                                transition: {
+                                                    duration: 0.4,
+                                                    ease: "easeOut"
+                                                }
+                                            }}
+                                            style={{
+                                                transformOrigin: 'left'
+                                            }}
                                         />
                                     </div>
                                     <div className="p-4 sm:p-6 md:p-8 flex flex-col flex-grow">
@@ -1033,12 +1197,6 @@ const PortfolioSection = () => {
                                             </motion.a>
                                         )}
                                     </div>
-                                    <motion.div
-                                        className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-blue-500 to-purple-500"
-                                        initial={{ scaleX: 0, opacity: 0 }}
-                                        whileHover={{ scaleX: 1, opacity: 1 }}
-                                        transition={{ duration: 0.4 }}
-                                    />
                                 </motion.div>
                             </div>
                         ))}
@@ -1165,6 +1323,38 @@ const PortfolioSection = () => {
                     </motion.a>
                 </motion.div>
             </div>
+
+            {/* Estilos CSS otimizados para desktop e mobile */}
+            <style>{`
+                .perspective-3d {
+                    perspective: 1000px;
+                }
+                @keyframes float {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-10px); }
+                }
+                .animate-float {
+                    animation: float 4s ease-in-out infinite;
+                }
+                @keyframes float-slow {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-8px); }
+                }
+                .animate-float-slow {
+                    animation: float-slow 6s ease-in-out infinite;
+                }
+                @keyframes float-reverse {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(8px); }
+                }
+                .animate-float-reverse {
+                    animation: float-reverse 5s ease-in-out infinite;
+                }
+                .transform-gpu {
+                    transform: translateZ(0);
+                    will-change: transform;
+                }
+            `}</style>
         </section>
     );
 };
