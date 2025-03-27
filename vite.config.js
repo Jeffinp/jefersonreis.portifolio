@@ -1,9 +1,20 @@
 //vite.config.js
 
 import { defineConfig } from 'vite';
-
+import { resolve } from 'path';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+  plugins: [
+    react(),
+    tailwindcss(),
+  ],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+    },
+  },
   build: {
     minify: 'terser', // Minificação agressiva com Terser para reduzir o tamanho final do JS
     rollupOptions: {
