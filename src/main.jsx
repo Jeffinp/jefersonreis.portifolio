@@ -1,48 +1,48 @@
 // App.jsx
-import React, { useState, useEffect, lazy, Suspense } from "react";
-import ReactDOM from "react-dom/client";
-import { HelmetProvider } from 'react-helmet-async';
-import { I18nextProvider } from "react-i18next";
-import i18n from "./i18n";
-import SEOHead from "./components/SEOHead";
+import React, { Suspense, lazy, useState, useEffect } from 'react';
+import ReactDOM from 'react-dom/client';
 import "./styles/import.css";
+import { HelmetProvider } from 'react-helmet-async';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n';
+import SEOHead from "./components/SEOHead";
 import WhatsAppFloatBtn from "./components/WhatsAppFloatBtn.jsx";
 import DiscordFloatBtn from "./components/DiscordFloatBtn.jsx";
 
-// Lazy loading dos componentes (evita carregar tudo de uma vez)
-const Header = lazy(() => import(/* @vite-ignore */"./components/Header.jsx"));
-const Hero = lazy(() => import(/* @vite-ignore */"./containers/Hero.jsx"));
-const About = lazy(() => import(/* @vite-ignore */"./containers/About.jsx"));
-const Skills = lazy(() => import(/* @vite-ignore */"./containers/Skills.jsx"));
-const Services = lazy(() => import(/* @vite-ignore */"./containers/Services.jsx"));
-const Resume = lazy(() => import(/* @vite-ignore */"./containers/Resume.jsx"));
-const PortfolioSection = lazy(() => import(/* @vite-ignore */"./containers/Projects.jsx"));
-const Testimonials = lazy(() => import(/* @vite-ignore */"./containers/Testimonials.jsx"));
-const Contact = lazy(() => import(/* @vite-ignore */"./containers/Contact.jsx"));
-const Footer = lazy(() => import(/* @vite-ignore */"./components/Footer.jsx"));
-const ScrollToTopBtn = lazy(() => import(/* @vite-ignore */"./components/ScrollToTopBtn.jsx"));
+// Importação comum apenas para componentes críticos de primeira renderização
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Loader from './components/Loader';
 
-// Tela de carregamento enquanto os componentes são carregados
-
-const LoadingScreen = () => (
-    <div className="fixed top-0 left-0 w-full h-full bg-gray-100 dark:bg-slate-800 flex flex-col justify-center items-center z-50 transition-colors duration-300">
-        <div className="flex items-center space-x-6 mb-8">
-            <div
-                className="animate-spin rounded-full h-14 w-14 border-4 border-transparent border-t-purple-500 dark:border-t-purple-400"
-                style={{
-                    backgroundImage: `url('/assets/images/icon/favicon-96x96.png')`,
-                    backgroundSize: 'contain',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'center'
-                }}
-            ></div>
-        </div>
-        <p className="text-xl font-semibold text-gray-700 dark:text-gray-300 opacity-90 transition-colors duration-300">Carregando Portfólio...</p>
-    </div>
-);
+// Lazy loading para componentes não críticos
+const Hero = lazy(() => import('./containers/Hero'));
+const About = lazy(() => import('./containers/About'));
+const Services = lazy(() => import('./containers/Services'));
+const Skills = lazy(() => import('./containers/Skills'));
+const Projects = lazy(() => import('./containers/Projects'));
+const Resume = lazy(() => import('./containers/Resume'));
+const Contact = lazy(() => import('./containers/Contact'));
+const ScrollToTopBtn = lazy(() => import('./components/ScrollToTopBtn'));
 
 // Adicionar estilos para resolver o problema de transição entre seções
 const sectionStyles = `
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  #root {
+    position: relative;
+    overflow: hidden;
+  }
+  
   .section-container {
     position: relative;
   }
@@ -71,81 +71,54 @@ const sectionStyles = `
 `;
 
 const App = () => {
-    // Pega o tema salvo ou usa a preferência do sistema
-    const [darkMode, setDarkMode] = useState(() => {
-        try {
-            return localStorage.getItem("darkMode") === "enabled" ||
-                (localStorage.getItem("darkMode") === null &&
-                    window.matchMedia("(prefers-color-scheme: dark)").matches);
-        } catch {
-            return false;
-        }
-    });
+    const [isLoading, setIsLoading] = useState(true);
 
-    // Salva a escolha do usuário no localStorage e aplica a classe no body
     useEffect(() => {
-        try {
-            localStorage.setItem("darkMode", darkMode ? "enabled" : "disabled");
-            document.body.classList.toggle("dark-mode", darkMode);
-        } catch (error) {
-            console.error("localStorage error:", error);
-        }
-    }, [darkMode]);
+        // Simula tempo de carregamento para garantir que os assets principais sejam carregados
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 1500);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (isLoading) {
+        return <Loader />;
+    }
 
     return (
-        <div className="app-container">
+        <>
             <SEOHead />
             {/* Injetar estilos para corrigir as transições */}
             <style>{sectionStyles}</style>
 
-            <Suspense fallback={<LoadingScreen />}>
-                <Header toggleDarkMode={() => setDarkMode(prev => !prev)} darkMode={darkMode} />
-                <div className="content-wrapper">
+            <Header />
+            <main className="relative w-full overflow-hidden">
+                <Suspense fallback={<Loader />}>
                     <Hero />
-
-                    {/* Container para About/Skills com transição suave */}
-                    <div className="section-container">
-                        <About />
-                        <div className="overlap-section">
-                            <Skills />
-                        </div>
-                    </div>
-
-                    {/* Container para Services/Resume com transição suave */}
-                    <div className="section-container">
-                        <Services />
-                        <div className="overlap-section">
-                            <Resume />
-                        </div>
-                    </div>
-
-                    {/* Container para Portfolio/Testimonials com transição suave */}
-                    <div className="section-container">
-                        <PortfolioSection />
-                        <div className="overlap-section">
-                            <Testimonials />
-                        </div>
-                    </div>
-
-                    {/* Última seção */}
+                    <About />
+                    <Services />
+                    <Skills />
+                    <Projects />
+                    <Resume />
                     <Contact />
-                </div>
-                <WhatsAppFloatBtn />
-                <DiscordFloatBtn />
-                <ScrollToTopBtn />
-                <Footer />
-            </Suspense>
-        </div>
+                    <ScrollToTopBtn />
+                </Suspense>
+            </main>
+            <WhatsAppFloatBtn />
+            <DiscordFloatBtn />
+            <Footer />
+        </>
     );
 };
 
 // Renderiza o app na raiz do HTML
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <HelmetProvider>
-            <I18nextProvider i18n={i18n}>
+        <I18nextProvider i18n={i18n}>
+            <HelmetProvider>
                 <App />
-            </I18nextProvider>
-        </HelmetProvider>
+            </HelmetProvider>
+        </I18nextProvider>
     </React.StrictMode>
 );
