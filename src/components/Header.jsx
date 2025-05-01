@@ -101,19 +101,19 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                         {/* Logo */}
                         <a
                             href="/"
-                            className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent"
+                            className="text-2xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent tracking-tight"
                             aria-label={t("header.logo_aria")}
                         >
                             JR
                         </a>
 
                         {/* Desktop Navigation */}
-                        <nav className="hidden md:flex items-center space-x-8">
+                        <nav className="hidden md:flex items-center space-x-16">
                             {['home', 'about', 'areas', 'skills', 'portfolio', 'resume', 'contact'].map((item) => (
                                 <a
                                     key={item}
                                     href={`#${item}`}
-                                    className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 dark:hover:from-blue-400 dark:hover:to-purple-400 hover:bg-clip-text transition-colors duration-300"
+                                    className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 dark:hover:from-blue-400 dark:hover:to-purple-400 hover:bg-clip-text transition-colors duration-300 px-1 py-0.5 rounded-md"
                                 >
                                     {t(`menu.${item}`)}
                                 </a>
@@ -209,13 +209,13 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                 >
                     <div className="flex flex-col h-full px-6 pt-6">
                         <nav className="flex-1">
-                            <ul className="space-y-6">
+                            <ul className="space-y-10">
                                 {['home', 'about', 'areas', 'skills', 'portfolio', 'resume', 'contact'].map((item) => (
                                     <li key={item}>
                                         <a
                                             href={`#${item}`}
                                             onClick={closeMenu}
-                                            className="block text-xl font-medium text-gray-900 dark:text-white hover:text-transparent hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 dark:hover:from-blue-400 dark:hover:to-purple-400 hover:bg-clip-text transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 py-2 -mx-2 px-2 rounded-md"
+                                            className="block text-xl font-medium text-gray-900 dark:text-white hover:text-transparent hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 dark:hover:from-blue-400 dark:hover:to-purple-400 hover:bg-clip-text transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 py-2 px-2 rounded-md"
                                         >
                                             {t(`menu.${item}`)}
                                         </a>
