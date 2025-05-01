@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { debounce } from '../utils';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Mail, ChevronDown, ExternalLink, Code, Palette, Cpu } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion, useAnimation } from 'framer-motion';
@@ -22,24 +23,24 @@ const Hero = () => {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    // Controle de scroll
+    // Controle de scroll com debounce
     useEffect(() => {
-        const handleScroll = () => {
+        const handleScroll = debounce(() => {
             if (!document.documentElement) return;
             const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (window.scrollY / windowHeight) * 100;
             setScrollProgress(scrolled);
-        };
+        }, 50);
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Efeito de paralaxe com mouse (apenas em desktop)
+    // Efeito de paralaxe com mouse (apenas em desktop, com debounce)
     useEffect(() => {
         if (isMobile) return;
 
-        const handleMouseMove = (e) => {
+        const handleMouseMove = debounce((e) => {
             if (!heroRef.current) return;
             const rect = heroRef.current.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -49,7 +50,7 @@ const Hero = () => {
                 x: (x / rect.width) - 0.5,
                 y: (y / rect.height) - 0.5
             });
-        };
+        }, 16); // ~60fps
 
         const heroElement = heroRef.current;
         if (heroElement) {
