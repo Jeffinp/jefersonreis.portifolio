@@ -1,52 +1,111 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+
+// Componente para item de navegação desktop
+const NavItem = ({ href, label, onClick }) => (
+    <a
+        href={href}
+        onClick={onClick}
+        className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 dark:hover:from-blue-400 dark:hover:to-purple-400 hover:bg-clip-text transition-colors duration-300 px-1 py-0.5 rounded-md"
+    >
+        {label}
+    </a>
+);
+
+// Componente para item de navegação mobile
+const MobileNavItem = ({ href, label, onClick }) => (
+    <li>
+        <a
+            href={href}
+            onClick={onClick}
+            className="block text-xl font-medium text-gray-900 dark:text-white hover:text-transparent hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 dark:hover:from-blue-400 dark:hover:to-purple-400 hover:bg-clip-text transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 py-2 px-2 rounded-md"
+        >
+            {label}
+        </a>
+    </li>
+);
+
+// Componente para seletor de idioma
+const LanguageButton = ({ language, currentLanguage, onClick, icon, label, ariaLabel }) => (
+    <button
+        onClick={onClick}
+        className={`flex items-center space-x-1 px-2 py-1 rounded-md transition-colors duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 ${currentLanguage === language
+                ? 'bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-600 dark:text-blue-400'
+                : 'text-gray-600 dark:text-gray-400'
+            }`}
+        aria-label={ariaLabel}
+    >
+        <img
+            src={icon}
+            alt={label}
+            className="w-5 h-5 rounded-sm"
+            loading="lazy"
+        />
+        <span>{language.toUpperCase()}</span>
+    </button>
+);
 
 const Header = ({ toggleDarkMode, darkMode }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
-    const [isScrollingDown, setIsScrollingDown] = useState(false);
-    const [lastScrollY, setLastScrollY] = useState(0);
+    const [prevScrollPos, setPrevScrollPos] = useState(0);
     const { i18n, t } = useTranslation();
     const mobileMenuRef = useRef(null);
     const menuButtonRef = useRef(null);
+    const headerRef = useRef(null);
 
-    // Controle do overflow do body
-    const bodyStyleOverflow = useCallback((isHidden) => {
-        document.body.classList.toggle('overflow-hidden', isHidden);
-    }, []);
-
-    // Toggle usando estado anterior para evitar race conditions
+    // Toggle menu com controle de overflow no body
     const toggleMenu = useCallback(() => {
         setMenuOpen(prev => {
             const newState = !prev;
-            bodyStyleOverflow(newState);
+            document.body.classList.toggle('overflow-hidden', newState);
             return newState;
         });
-    }, [bodyStyleOverflow]);
+    }, []);
 
-    // Fechamento completo do menu
+    // Fechar menu
     const closeMenu = useCallback(() => {
         setMenuOpen(false);
-        bodyStyleOverflow(false);
+        document.body.classList.remove('overflow-hidden');
         menuButtonRef.current?.focus();
-    }, [bodyStyleOverflow]);
+    }, []);
 
-    // Controle do tema dark
-    useEffect(() => {
-        document.documentElement.classList.toggle('dark', darkMode);
-    }, [darkMode]);
-
-    // Troca de idioma
+    // Mudar idioma
     const changeLanguage = useCallback((lng) => {
         i18n.changeLanguage(lng);
     }, [i18n]);
 
+    // Navegar e fechar menu (para itens de menu móvel)
+    const handleNavClick = useCallback((e) => {
+        if (menuOpen) {
+            e.preventDefault();
+            const href = e.currentTarget.getAttribute('href');
+            closeMenu();
+            setTimeout(() => {
+                document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        }
+    }, [menuOpen, closeMenu]);
+
+    // Lista de itens de navegação
+    const navItems = useMemo(() =>
+        ['home', 'about', 'areas', 'skills', 'portfolio', 'resume', 'contact'].map(item => ({
+            href: `#${item}`,
+            label: t(`menu.${item}`)
+        })),
+        [t]);
+
+    // Atualizar o tema quando o estado mudar
+    useEffect(() => {
+        document.documentElement.classList.toggle('dark', darkMode);
+    }, [darkMode]);
+
     // Detecta clique fora do menu mobile
     useEffect(() => {
+        if (!menuOpen) return;
+
         const handleClickOutside = (event) => {
-            if (!menuOpen) return;
-            
             const isMenuButton = menuButtonRef.current?.contains(event.target);
             const isInMenu = mobileMenuRef.current?.contains(event.target);
 
@@ -67,35 +126,49 @@ const Header = ({ toggleDarkMode, darkMode }) => {
     // Controle do scroll progressivo e direção
     useEffect(() => {
         const handleScroll = () => {
-            // Calcula progresso do scroll
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (window.scrollY / windowHeight) * 100;
-            setScrollProgress(scrolled);
+            // Evitar cálculos desnecessários se o menu estiver aberto
+            if (menuOpen) return;
 
-            // Detecta direção do scroll
             const currentScrollY = window.scrollY;
-            if (currentScrollY > lastScrollY && currentScrollY > 100 && !menuOpen) {
-                setIsScrollingDown(true);
-            } else if (currentScrollY < lastScrollY || currentScrollY <= 100) {
-                setIsScrollingDown(false);
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+            // Calcular progresso do scroll (evitando divisão por zero)
+            if (windowHeight > 0) {
+                setScrollProgress((currentScrollY / windowHeight) * 100);
             }
-            setLastScrollY(currentScrollY);
+
+            // Controlar a visibilidade do header baseado na direção do scroll
+            if (currentScrollY > prevScrollPos && currentScrollY > 100) {
+                // Rolando para baixo - esconder o header
+                if (headerRef.current) headerRef.current.style.top = '-100px';
+            } else {
+                // Rolando para cima ou no topo - mostrar o header
+                if (headerRef.current) headerRef.current.style.top = '0';
+            }
+
+            setPrevScrollPos(currentScrollY);
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [lastScrollY, menuOpen]);
+    }, [prevScrollPos, menuOpen]);
 
     return (
         <>
             {/* Barra de progresso do scroll */}
-            <div className="fixed top-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 z-50 transition-all duration-300"
+            <div
+                className="fixed top-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 z-50 transition-all duration-300"
                 style={{ width: `${scrollProgress}%` }}
+                role="progressbar"
+                aria-valuenow={Math.round(scrollProgress)}
+                aria-valuemin="0"
+                aria-valuemax="100"
             />
 
-            <header className={`fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-slate-900/80 shadow-lg dark:shadow-slate-800/20 backdrop-blur-sm transition-transform duration-300 ${
-                isScrollingDown ? '-translate-y-full' : 'translate-y-0'
-            }`}>
+            <header
+                ref={headerRef}
+                className="fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-slate-900/80 shadow-lg dark:shadow-slate-800/20 backdrop-blur-sm transition-all duration-300"
+            >
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-20">
                         {/* Logo */}
@@ -108,15 +181,14 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                         </a>
 
                         {/* Desktop Navigation */}
-                        <nav className="hidden md:flex items-center space-x-16">
-                            {['home', 'about', 'areas', 'skills', 'portfolio', 'resume', 'contact'].map((item) => (
-                                <a
-                                    key={item}
-                                    href={`#${item}`}
-                                    className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 dark:hover:from-blue-400 dark:hover:to-purple-400 hover:bg-clip-text transition-colors duration-300 px-1 py-0.5 rounded-md"
-                                >
-                                    {t(`menu.${item}`)}
-                                </a>
+                        <nav className="hidden md:flex items-center justify-center gap-8">
+                            {navItems.map((item) => (
+                                <NavItem
+                                    key={item.href}
+                                    href={item.href}
+                                    label={item.label}
+                                    onClick={handleNavClick}
+                                />
                             ))}
                         </nav>
 
@@ -124,38 +196,22 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                         <div className="flex items-center space-x-4">
                             {/* Language Switcher */}
                             <div className="flex items-center space-x-2 border-r border-gray-200 dark:border-gray-700 pr-4">
-                                <button
+                                <LanguageButton
+                                    language="pt"
+                                    currentLanguage={i18n.language}
                                     onClick={() => changeLanguage('pt')}
-                                    className={`flex items-center space-x-1 px-2 py-1 rounded-md transition-colors duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 ${
-                                        i18n.language === 'pt'
-                                            ? 'bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-600 dark:text-blue-400'
-                                            : 'text-gray-600 dark:text-gray-400'
-                                    }`}
-                                    aria-label={t("header.portuguese_language")}
-                                >
-                                    <img
-                                        src="/assets/images/icon/brazil.svg"
-                                        alt={t("header.portuguese")}
-                                        className="w-5 h-5 rounded-sm"
-                                    />
-                                    <span>PT</span>
-                                </button>
-                                <button
+                                    icon="/assets/images/icon/brazil.svg"
+                                    label={t("header.portuguese")}
+                                    ariaLabel={t("header.portuguese_language")}
+                                />
+                                <LanguageButton
+                                    language="en"
+                                    currentLanguage={i18n.language}
                                     onClick={() => changeLanguage('en')}
-                                    className={`flex items-center space-x-1 px-2 py-1 rounded-md transition-colors duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 ${
-                                        i18n.language === 'en'
-                                            ? 'bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-600 dark:text-blue-400'
-                                            : 'text-gray-600 dark:text-gray-400'
-                                    }`}
-                                    aria-label={t("header.english_language")}
-                                >
-                                    <img
-                                        src="/assets/images/icon/eua.svg"
-                                        alt={t("header.english")}
-                                        className="w-5 h-5 rounded-sm"
-                                    />
-                                    <span>EN</span>
-                                </button>
+                                    icon="/assets/images/icon/eua.svg"
+                                    label={t("header.english")}
+                                    ariaLabel={t("header.english_language")}
+                                />
                             </div>
 
                             {/* Dark Mode Toggle */}
@@ -163,11 +219,12 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                                 onClick={toggleDarkMode}
                                 className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
                                 aria-label={t("header.toggle_dark_mode")}
+                                aria-pressed={darkMode}
                             >
                                 {darkMode ? (
-                                    <Moon className="w-5 h-5 text-gray-600 dark:text-gray-400" />
-                                ) : (
                                     <Sun className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                                ) : (
+                                    <Moon className="w-5 h-5 text-gray-600 dark:text-gray-400" />
                                 )}
                             </button>
 
@@ -177,6 +234,7 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                                 className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
                                 onClick={toggleMenu}
                                 aria-expanded={menuOpen}
+                                aria-controls="mobile-menu"
                                 aria-label={t("header.navigation_menu")}
                             >
                                 {menuOpen ? (
@@ -200,26 +258,22 @@ const Header = ({ toggleDarkMode, darkMode }) => {
 
                 {/* Mobile Menu */}
                 <div
+                    id="mobile-menu"
                     ref={mobileMenuRef}
-                    className={`fixed top-20 right-0 w-64 h-[calc(100vh-5rem)] bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg z-30 transition-transform duration-300 ease-in-out ${
-                        menuOpen ? 'translate-x-0' : 'translate-x-full'
-                    } md:hidden`}
-                    aria-modal="true"
-                    role="dialog"
+                    className={`fixed top-20 right-0 w-64 h-[calc(100vh-5rem)] bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg z-30 transition-transform duration-300 ease-in-out ${menuOpen ? 'translate-x-0' : 'translate-x-full'
+                        } md:hidden`}
+                    aria-hidden={!menuOpen}
                 >
                     <div className="flex flex-col h-full px-6 pt-6">
                         <nav className="flex-1">
                             <ul className="space-y-10">
-                                {['home', 'about', 'areas', 'skills', 'portfolio', 'resume', 'contact'].map((item) => (
-                                    <li key={item}>
-                                        <a
-                                            href={`#${item}`}
-                                            onClick={closeMenu}
-                                            className="block text-xl font-medium text-gray-900 dark:text-white hover:text-transparent hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 dark:hover:from-blue-400 dark:hover:to-purple-400 hover:bg-clip-text transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 py-2 px-2 rounded-md"
-                                        >
-                                            {t(`menu.${item}`)}
-                                        </a>
-                                    </li>
+                                {navItems.map((item) => (
+                                    <MobileNavItem
+                                        key={item.href}
+                                        href={item.href}
+                                        label={item.label}
+                                        onClick={handleNavClick}
+                                    />
                                 ))}
                             </ul>
                         </nav>
@@ -230,4 +284,4 @@ const Header = ({ toggleDarkMode, darkMode }) => {
     );
 };
 
-export default Header;
+export default React.memo(Header);

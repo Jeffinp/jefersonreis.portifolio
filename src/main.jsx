@@ -72,6 +72,55 @@ const sectionStyles = `
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(true);
+    const [darkMode, setDarkMode] = useState(() => {
+        // Verificar o tema salvo no localStorage ao carregar
+        const savedTheme = localStorage.getItem('theme');
+
+        if (savedTheme) {
+            return savedTheme === 'dark';
+        }
+
+        // Usar preferência do sistema se não houver tema salvo
+        return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    });
+
+    // Inicialização do tema e configuração de observer para mudanças na preferência do sistema
+    useEffect(() => {
+        // Aplicar tema inicial
+        document.documentElement.classList.toggle('dark', darkMode);
+
+        // Configurar observer para mudanças de tema do sistema
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        const handleChange = (e) => {
+            // Só atualiza automaticamente se não houver preferência explícita salva
+            if (!localStorage.getItem('theme')) {
+                setDarkMode(e.matches);
+            }
+        };
+
+        // Adicionar listener (usando o método adequado conforme a compatibilidade do navegador)
+        if (mediaQuery.addEventListener) {
+            mediaQuery.addEventListener('change', handleChange);
+        } else {
+            // Fallback para navegadores mais antigos
+            mediaQuery.addListener(handleChange);
+        }
+
+        // Cleanup
+        return () => {
+            if (mediaQuery.removeEventListener) {
+                mediaQuery.removeEventListener('change', handleChange);
+            } else {
+                mediaQuery.removeListener(handleChange);
+            }
+        };
+    }, []);
+
+    // Atualizar localStorage quando o tema mudar
+    useEffect(() => {
+        localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark', darkMode);
+    }, [darkMode]);
 
     useEffect(() => {
         // Simula tempo de carregamento para garantir que os assets principais sejam carregados
@@ -92,7 +141,10 @@ const App = () => {
             {/* Injetar estilos para corrigir as transições */}
             <style>{sectionStyles}</style>
 
-            <Header />
+            <Header
+                darkMode={darkMode}
+                toggleDarkMode={() => setDarkMode(prev => !prev)}
+            />
             <main className="relative w-full overflow-hidden">
                 <Suspense fallback={<Loader />}>
                     <Hero />
