@@ -41,20 +41,57 @@ const resources = {
             },
             about: {
                 title: "Sobre Mim",
-                intro:
-                    "Olá, sou Jeferson Reis, um apaixonado por tecnologia, design e programação. Ao longo dos anos, desenvolvi habilidades como desenvolvedor full-stack, designer gráfico e técnico em informática. Estou sempre em busca de novos desafios para criar soluções inovadoras e personalizadas, combinando tecnologia e criatividade.",
-                name: "Jeferson Reis",
                 devTitle: "Desenvolvimento Full Stack",
-                devDescription:
-                    "Sou um desenvolvedor full-stack com experiência em criação de soluções web inovadoras. Tenho um forte conhecimento em React e Node.js, focando sempre na performance e na experiência do usuário (UX/UI).",
-                designTitle: "Design Gráfico",
-                designDescription:
-                    "Combinando criatividade e técnicas modernas de design, crio identidades visuais únicas, como logotipos, banners e materiais gráficos, personalizados para cada cliente.",
-                backendTitle: "Desenvolvimento Backend",
-                backendDescription: "Especializado em APIs robustas, bancos de dados SQL e NoSQL, e infraestrutura escalável. Crio soluções eficientes com foco em segurança e performance para aplicações de diferentes tamanhos.",
-                architectureTitle: "Arquitetura de Software",
-                architectureDescription: "Planejamento e implementação de arquiteturas escaláveis e resilientes, aplicando padrões de design e práticas modernas para garantir código limpo, manutenível e de alto desempenho.",
-                learnMore: "Veja mais"
+                paragraphs: {
+                    first: "Olá, sou Jeferson Reis, um apaixonado por tecnologia, design e programação. Ao longo dos anos, desenvolvi habilidades como desenvolvedor full-stack, designer gráfico e técnico em informática. Estou sempre em busca de novos desafios para criar soluções inovadoras e personalizadas, combinando tecnologia e criatividade.",
+                    second: "Tenho experiência em React e Node.js, com foco em performance e experiência do usuário (UX/UI). Além disso, sou especializado em design gráfico, criando identidades visuais únicas e materiais gráficos personalizados."
+                },
+                cta: {
+                    contact: "Entre em Contato",
+                    resume: "Baixar Currículo",
+                    resumeUrl: "/Jeferson_currículo.pdf"
+                },
+                stats: {
+                    title: "Minhas Estatísticas",
+                    experience: "Anos de Experiência",
+                    projects: "Projetos Completados",
+                    clients: "Clientes Satisfeitos",
+                    satisfaction: "Satisfação do Cliente"
+                },
+                expertise: {
+                    title: "Áreas de Expertise",
+                    frontend: "Desenvolvimento Frontend",
+                    backend: "Desenvolvimento Backend",
+                    design: "Design Gráfico",
+                    ux: "Experiência do Usuário"
+                },
+                services: {
+                    title: "Meus Serviços",
+                    subtitle: "Descubra como posso ajudar a transformar suas ideias em realidade."
+                },
+                cards: {
+                    webDev: {
+                        title: "Desenvolvimento Web",
+                        description: "Criação de sites responsivos e otimizados para SEO, com foco em performance e design atraente.",
+                        ariaLabel: "Saiba mais sobre Desenvolvimento Web"
+                    },
+                    design: {
+                        title: "Design Gráfico",
+                        description: "Criação de identidades visuais, logotipos e materiais gráficos personalizados.",
+                        ariaLabel: "Saiba mais sobre Design Gráfico"
+                    },
+                    backend: {
+                        title: "Desenvolvimento Backend",
+                        description: "Desenvolvimento de APIs robustas e soluções escaláveis para diferentes tipos de aplicações.",
+                        ariaLabel: "Saiba mais sobre Desenvolvimento Backend"
+                    },
+                    softSkills: {
+                        title: "Habilidades Interpessoais",
+                        description: "Comunicação eficaz, trabalho em equipe e resolução criativa de problemas.",
+                        ariaLabel: "Saiba mais sobre Habilidades Interpessoais"
+                    },
+                    action: "Saiba Mais"
+                }
             },
             expertise: {
                 title: "Áreas de Atuação",
@@ -409,6 +446,7 @@ const resources = {
                 title: "Minhas Habilidades e Competências",
                 subtitle:
                     "Expertise técnica e habilidades interpessoais para entregar resultados excepcionais",
+                description: "Conheça minhas principais habilidades técnicas e comportamentais desenvolvidas ao longo da carreira.",
                 sections: {
                     frontend: {
                         title: "Desenvolvimento Frontend",
@@ -634,9 +672,6 @@ const resources = {
             },
             about: {
                 title: "About Me",
-                intro:
-                    "Hello, I'm Jeferson Reis, passionate about technology, design, and programming. Over the years, I've honed my skills as a full-stack developer, graphic designer, and IT technician. I'm constantly seeking new challenges to craft innovative and customized solutions that blend technology with creativity.",
-                name: "Jeferson Reis",
                 devTitle: "Frontend Development",
                 devDescription:
                     "I'm a full-stack developer specialized in creating innovative web solutions. With strong expertise in React and Node.js, I consistently focus on performance optimization and exceptional user experience (UX/UI).",
@@ -1001,6 +1036,7 @@ const resources = {
                 title: "My Skills and Competencies",
                 subtitle:
                     "Technical expertise and interpersonal skills to deliver exceptional results",
+                description: "Discover my key technical and behavioral skills developed throughout my career.",
                 sections: {
                     frontend: {
                         title: "Frontend Development",

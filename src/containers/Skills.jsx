@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, memo, useCallback } from "react";
-import { ChevronDown, ChevronUp, Sparkles } from "lucide-react";
+import { ChevronDown, ChevronUp, Sparkles, Code, Terminal, Cpu } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion";
 import { debounce } from '../utils';
@@ -260,20 +260,20 @@ const getDesignSkills = (t) => [
 
 const getSoftSkills = (t) => [
     {
-        title: t('skills.soft.teamwork.title'),
-        description: t('skills.soft.teamwork.description'),
+        title: t('skills.softSkills.items.communication.title'),
+        description: t('skills.softSkills.items.communication.description'),
     },
     {
-        title: t('skills.soft.communication.title'),
-        description: t('skills.soft.communication.description'),
+        title: t('skills.softSkills.items.teamwork.title'),
+        description: t('skills.softSkills.items.teamwork.description'),
     },
     {
-        title: t('skills.soft.problemSolving.title'),
-        description: t('skills.soft.problemSolving.description'),
+        title: t('skills.softSkills.items.problemSolving.title'),
+        description: t('skills.softSkills.items.problemSolving.description'),
     },
     {
-        title: t('skills.soft.timeManagement.title'),
-        description: t('skills.soft.timeManagement.description'),
+        title: t('skills.softSkills.items.timeManagement.title'),
+        description: t('skills.softSkills.items.timeManagement.description'),
     },
 ];
 
@@ -305,10 +305,10 @@ const Skills = () => {
         const handleResize = debounce(() => {
             checkMobile();
         }, 250);
-        
+
         checkMobile();
         window.addEventListener('resize', handleResize);
-        
+
         const observer = new IntersectionObserver(
             ([entry]) => {
                 // Só definir como visível quando realmente estiver bem visível (50%)
@@ -336,7 +336,7 @@ const Skills = () => {
             const timer = setTimeout(() => {
                 setOpenSection('frontend');
             }, 500);
-            
+
             return () => clearTimeout(timer);
         }
     }, [isVisible, openSection]);
@@ -370,8 +370,8 @@ const Skills = () => {
                         <AnimatedSection delay={0.1}>
                             <SkillSection
                                 id="frontend"
-                                title={t('skills.sections.frontend')}
-                                icon="🌐"
+                                title={t('skills.sections.frontend.title')}
+                                icon={<Code className="text-blue-600 dark:text-blue-400" />}
                                 skills={frontendSkills}
                                 openSection={openSection}
                                 toggleSection={toggleSection}
@@ -382,8 +382,8 @@ const Skills = () => {
                         <AnimatedSection delay={0.2}>
                             <SkillSection
                                 id="backend"
-                                title={t('skills.sections.backend')}
-                                icon="⚙️"
+                                title={t('skills.sections.backend.title')}
+                                icon={<Terminal className="text-green-600 dark:text-green-400" />}
                                 skills={backendSkills}
                                 openSection={openSection}
                                 toggleSection={toggleSection}
@@ -394,8 +394,8 @@ const Skills = () => {
                         <AnimatedSection delay={0.3}>
                             <SkillSection
                                 id="design"
-                                title={t('skills.sections.design')}
-                                icon="🎨"
+                                title={t('skills.sections.tools.title')}
+                                icon={<Cpu className="text-purple-600 dark:text-purple-400" />}
                                 skills={designSkills}
                                 openSection={openSection}
                                 toggleSection={toggleSection}
@@ -407,7 +407,7 @@ const Skills = () => {
                     {/* Soft skills */}
                     <AnimatedSection delay={0.4} className="mb-8">
                         <h3 className="text-2xl font-bold text-center mb-8 text-gray-800 dark:text-gray-200">
-                            {t('skills.softSkillsTitle')}
+                            {t('skills.softSkills.title')}
                         </h3>
                     </AnimatedSection>
 
