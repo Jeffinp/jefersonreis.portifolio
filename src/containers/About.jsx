@@ -332,7 +332,7 @@ const AboutMe = () => {
                                         {t('about.title')}
                                     </h2>
                                     <h3 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                                        {t('about.subtitle')}
+                                        {t('about.devTitle')}
                                     </h3>
                                 </div>
                                 

@@ -44,7 +44,7 @@ const resources = {
                 intro:
                     "Olá, sou Jeferson Reis, um apaixonado por tecnologia, design e programação. Ao longo dos anos, desenvolvi habilidades como desenvolvedor full-stack, designer gráfico e técnico em informática. Estou sempre em busca de novos desafios para criar soluções inovadoras e personalizadas, combinando tecnologia e criatividade.",
                 name: "Jeferson Reis",
-                devTitle: "Desenvolvimento Frontend",
+                devTitle: "Desenvolvimento Full Stack",
                 devDescription:
                     "Sou um desenvolvedor full-stack com experiência em criação de soluções web inovadoras. Tenho um forte conhecimento em React e Node.js, focando sempre na performance e na experiência do usuário (UX/UI).",
                 designTitle: "Design Gráfico",
