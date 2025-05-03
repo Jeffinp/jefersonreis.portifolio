@@ -330,17 +330,6 @@ const Skills = () => {
         };
     }, [checkMobile]);
 
-    // Abrir a primeira seção após um breve atraso quando a seção se torna visível
-    useEffect(() => {
-        if (isVisible && !openSection) {
-            const timer = setTimeout(() => {
-                setOpenSection('frontend');
-            }, 500);
-
-            return () => clearTimeout(timer);
-        }
-    }, [isVisible, openSection]);
-
     return (
         <section
             id="skills"
