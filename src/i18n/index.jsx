@@ -15,6 +15,17 @@ const resources = {
                 resume: "Currículo",
                 contact: "Contato",
             },
+            header: {
+                logo_aria: "Jeferson Reis - Desenvolvedor Full Stack",
+                portuguese: "Português",
+                english: "Inglês",
+                portuguese_language: "Mudar para o idioma português",
+                english_language: "Mudar para o idioma inglês",
+                toggle_dark_mode: "Ativar modo escuro",
+                toggle_light_mode: "Ativar modo claro",
+                open_menu: "Abrir menu de navegação",
+                close_menu: "Fechar menu de navegação",
+            },
             hero: {
                 title: "Jeferson Reis Almeida",
                 subtitle:
@@ -25,6 +36,8 @@ const resources = {
                     viewProjects: "Ver Meus Projetos",
                     contact: "Entrar em Contato",
                 },
+                scrollDown: "Rolar para baixo",
+                scrollToAbout: "Rolar para a seção Sobre",
             },
             about: {
                 title: "Sobre Mim",
@@ -120,6 +133,10 @@ const resources = {
                 downloadButton: "Baixe o Catálogo Completo de Serviços",
                 downloadDescription:
                     "Descubra todos os detalhes e valores em meu catálogo!",
+                learnMore: "Saiba mais",
+                whatsappButton: "Falar pelo WhatsApp",
+                whatsappText: "Vamos conversar!",
+                ariaLabel: "Seção de Serviços",
             },
             portfolio: {
                 title: "Meu Portfólio",
@@ -592,6 +609,17 @@ const resources = {
                 resume: "Resume",
                 contact: "Contact",
             },
+            header: {
+                logo_aria: "Jeferson Reis - Full Stack Developer",
+                portuguese: "Portuguese",
+                english: "English",
+                portuguese_language: "Switch to Portuguese language",
+                english_language: "Switch to English language",
+                toggle_dark_mode: "Enable dark mode",
+                toggle_light_mode: "Enable light mode",
+                open_menu: "Open navigation menu",
+                close_menu: "Close navigation menu",
+            },
             hero: {
                 title: "Jeferson Reis Almeida",
                 subtitle: "Full-Stack Developer | Graphic Designer | IT Technician | ",
@@ -601,6 +629,8 @@ const resources = {
                     viewProjects: "View My Projects",
                     contact: "Get in Touch",
                 },
+                scrollDown: "Scroll Down",
+                scrollToAbout: "Scroll to About section",
             },
             about: {
                 title: "About Me",
@@ -696,6 +726,10 @@ const resources = {
                 downloadButton: "Download Complete Service Catalog",
                 downloadDescription:
                     "Explore all details and pricing in my comprehensive catalog!",
+                learnMore: "Learn more",
+                whatsappButton: "Chat with me on WhatsApp",
+                whatsappText: "Vamos conversar!",
+                ariaLabel: "Services Section",
             },
             portfolio: {
                 title: "My Portfolio",
@@ -1096,7 +1130,7 @@ const resources = {
                     {
                         rating: 5,
                         content:
-                            '"Before the website, my barbershop relied solely on word of mouth. Now, we’re fully booked thanks to Jeferson’s work—modern design, user-friendly, and perfectly optimized to convert visitors into customers."',
+                            '"Before the website, my barbershop relied solely on word of mouth. Now, we\'re fully booked thanks to Jeferson\'s work—modern design, user-friendly, and perfectly optimized to convert visitors into customers."',
                         author: "Lucas Oliveira",
                         title: "Owner, Urban Style Barbershop",
                     },
@@ -1105,7 +1139,7 @@ const resources = {
                         content:
                             '"Professionalism at every step! Jeferson not only understood my vision for the clothing store but added innovative ideas. The project was delivered early, and the final result is absolutely flawless."',
                         author: "Ana Silva",
-                        title: "Owner, Women’s Fashion Store",
+                        title: "Owner, Women\'s Fashion Store",
                     },
                     {
                         rating: 5,

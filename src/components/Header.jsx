@@ -218,7 +218,7 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                             <button
                                 onClick={toggleDarkMode}
                                 className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
-                                aria-label={t("header.toggle_dark_mode")}
+                                aria-label={darkMode ? t("header.toggle_light_mode") : t("header.toggle_dark_mode")}
                                 aria-pressed={darkMode}
                             >
                                 {darkMode ? (
@@ -235,7 +235,7 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                                 onClick={toggleMenu}
                                 aria-expanded={menuOpen}
                                 aria-controls="mobile-menu"
-                                aria-label={t("header.navigation_menu")}
+                                aria-label={menuOpen ? t("header.close_menu") : t("header.open_menu")}
                             >
                                 {menuOpen ? (
                                     <X className="w-6 h-6 text-gray-600 dark:text-gray-400" />

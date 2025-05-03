@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef, memo } from "react";
+import React, { useState, useEffect, useRef, memo, useCallback } from "react";
 import { ChevronDown, ChevronUp, Sparkles } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion";
+import { debounce } from '../utils';
 
 /**
  * Hook personalizado para gerenciar animações baseadas em visibilidade
@@ -113,7 +114,6 @@ SkillBar.displayName = 'SkillBar';
 // Componente memoizado para seções de skills
 const SkillSection = memo(({ title, icon, skills, id, openSection, toggleSection, isVisible }) => {
     const isExpanded = openSection === id;
-    const contentRef = useRef(null);
 
     const contentVariants = {
         hidden: { opacity: 0, height: 0 },
@@ -121,16 +121,16 @@ const SkillSection = memo(({ title, icon, skills, id, openSection, toggleSection
             opacity: 1,
             height: "auto",
             transition: {
-                height: { duration: 0.6, ease: "easeInOut" },
-                opacity: { duration: 0.5, delay: 0.1 }
+                height: { duration: 0.4, ease: "easeInOut" },
+                opacity: { duration: 0.3, delay: 0.1 }
             }
         },
         exit: {
             opacity: 0,
             height: 0,
             transition: {
-                height: { duration: 0.4, ease: "easeInOut" },
-                opacity: { duration: 0.3 }
+                height: { duration: 0.3, ease: "easeInOut" },
+                opacity: { duration: 0.2 }
             }
         }
     };
@@ -173,7 +173,6 @@ const SkillSection = memo(({ title, icon, skills, id, openSection, toggleSection
                     {isExpanded && (
                         <motion.div
                             key={`content-${id}`}
-                            ref={contentRef}
                             variants={contentVariants}
                             initial="hidden"
                             animate="visible"
@@ -206,7 +205,7 @@ const StatItem = memo(({ index, skill }) => {
     const emoji = ["👥", "🤝", "💡", "⏱️"][index];
 
     return (
-        <AnimatedSection key={index} delay={0.4 + index * 0.1} className="group">
+        <AnimatedSection key={index} delay={0.2 + index * 0.1} className="group">
             <div className="relative h-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-white/20 dark:border-slate-700/80 shadow-xl">
                 <div className="relative p-8 h-full z-10">
                     <span className="text-4xl mb-6 block">
@@ -228,6 +227,56 @@ const StatItem = memo(({ index, skill }) => {
 
 StatItem.displayName = 'StatItem';
 
+// Dados das habilidades memoizados
+const getFrontendSkills = (t) => [
+    { name: "HTML/CSS", percentage: 100 },
+    { name: "JavaScript/TypeScript", percentage: 95 },
+    { name: "React.js", percentage: 90 },
+    { name: "Next.js", percentage: 85 },
+    { name: "Vue.js", percentage: 75 },
+    { name: "Tailwind CSS", percentage: 95 },
+    { name: "Bootstrap", percentage: 90 },
+    { name: "Responsive Design", percentage: 95 },
+];
+
+const getBackendSkills = (t) => [
+    { name: "Node.js", percentage: 85 },
+    { name: "Express.js", percentage: 80 },
+    { name: "API Development", percentage: 85 },
+    { name: "Python", percentage: 80 },
+    { name: "Django", percentage: 65 },
+    { name: "MySQL/MongoDB", percentage: 75 },
+    { name: "Firebase", percentage: 70 },
+];
+
+const getDesignSkills = (t) => [
+    { name: "Adobe Photoshop", percentage: 95 },
+    { name: "Illustrator", percentage: 90 },
+    { name: "Figma", percentage: 85 },
+    { name: "UI/UX Design", percentage: 85 },
+    { name: "Blender", percentage: 70 },
+    { name: "Office Suite", percentage: 95 },
+];
+
+const getSoftSkills = (t) => [
+    {
+        title: t('skills.soft.teamwork.title'),
+        description: t('skills.soft.teamwork.description'),
+    },
+    {
+        title: t('skills.soft.communication.title'),
+        description: t('skills.soft.communication.description'),
+    },
+    {
+        title: t('skills.soft.problemSolving.title'),
+        description: t('skills.soft.problemSolving.description'),
+    },
+    {
+        title: t('skills.soft.timeManagement.title'),
+        description: t('skills.soft.timeManagement.description'),
+    },
+];
+
 const Skills = () => {
     const { t } = useTranslation();
     const [openSection, setOpenSection] = useState(null);
@@ -235,167 +284,136 @@ const Skills = () => {
     const [isMobile, setIsMobile] = useState(false);
     const sectionRef = useRef(null);
 
-    const toggleSection = (sectionId) => {
+    // Dados memoizados
+    const frontendSkills = React.useMemo(() => getFrontendSkills(t), [t]);
+    const backendSkills = React.useMemo(() => getBackendSkills(t), [t]);
+    const designSkills = React.useMemo(() => getDesignSkills(t), [t]);
+    const softSkills = React.useMemo(() => getSoftSkills(t), [t]);
+
+    // Handler memoizado para alternar seções
+    const toggleSection = useCallback((sectionId) => {
         setOpenSection(openSection === sectionId ? null : sectionId);
-    };
+    }, [openSection]);
 
-    // Detectar dispositivo móvel - uso de debounce para evitar múltiplas chamadas
+    // Detector de dispositivo móvel com debounce
+    const checkMobile = useCallback(() => {
+        setIsMobile(window.innerWidth < 768);
+    }, []);
+
+    // Inicialização e verificação de visibilidade
     useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-
-        let resizeTimer;
-        const handleResize = () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(checkMobile, 100);
-        };
-
+        const handleResize = debounce(() => {
+            checkMobile();
+        }, 250);
+        
         checkMobile();
         window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-            clearTimeout(resizeTimer);
-        };
-    }, []);
-
-    useEffect(() => {
+        
         const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setIsVisible(true);
-                        observer.disconnect(); // Desconecta depois de ativado uma vez
-                    }
-                });
+            ([entry]) => {
+                // Só definir como visível quando realmente estiver bem visível (50%)
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect();
+                }
             },
-            { threshold: 0.1 }
+            { threshold: 0.5 }
         );
 
-        const skillsSection = document.querySelector("#skills");
-        if (skillsSection) {
-            observer.observe(skillsSection);
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
         }
 
-        return () => observer.disconnect();
-    }, []);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            observer.disconnect();
+        };
+    }, [checkMobile]);
 
-    // Dados de habilidades - definidos fora do ciclo de renderização
-    const skillsData = {
-        frontend: [
-            { name: "HTML", percentage: 100 },
-            { name: "CSS", percentage: 100 },
-            { name: "JavaScript", percentage: 100 },
-            { name: "React", percentage: 95 },
-            { name: "TailwindCSS", percentage: 95 },
-            { name: "Bootstrap", percentage: 90 },
-            { name: "Three.js", percentage: 95 },
-            { name: "GSAP", percentage: 90 },
-        ],
-        backend: [
-            { name: "Node.js", percentage: 95 },
-            { name: "TypeScript", percentage: 95 },
-            { name: "Python", percentage: 95 },
-            { name: "PHP", percentage: 85 },
-            { name: "C#", percentage: 80 },
-            { name: "C++", percentage: 70 },
-            { name: "SQL", percentage: 90 },
-            { name: "MySQL", percentage: 90 },
-        ],
-        tools: [
-            { name: "UX Design", percentage: 100 },
-            { name: "Pacotes Office", percentage: 100 },
-            { name: "Photoshop", percentage: 95 },
-            { name: "Premiere", percentage: 95 },
-            { name: "After Effects", percentage: 90 },
-            { name: "Illustrator", percentage: 90 },
-            { name: "Filmora", percentage: 90 },
-            { name: "Canva", percentage: 90 },
-            { name: "Figma", percentage: 80 },
-        ]
-    };
+    // Abrir a primeira seção após um breve atraso quando a seção se torna visível
+    useEffect(() => {
+        if (isVisible && !openSection) {
+            const timer = setTimeout(() => {
+                setOpenSection('frontend');
+            }, 500);
+            
+            return () => clearTimeout(timer);
+        }
+    }, [isVisible, openSection]);
 
     return (
         <section
             id="skills"
             ref={sectionRef}
-            className="relative py-24 md:py-32"
-            aria-label="Minhas Habilidades"
+            className="relative py-16 md:py-24 bg-gradient-to-b from-white via-gray-50 to-white dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 overflow-hidden"
         >
-            {/* Fundo estático simples */}
-            <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 via-white to-gray-50 dark:from-blue-950/30 dark:via-slate-900/90 dark:to-slate-950 -z-10"></div>
+            {/* Elementos de fundo simplificados */}
+            <div className="absolute inset-0 overflow-hidden">
+                <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-3xl"></div>
+                <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-3xl"></div>
+            </div>
 
-            {/* Grades simplificadas */}
-            <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
-                style={{
-                    backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), 
-                                    linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
-                    backgroundSize: isMobile ? '40px 40px' : '80px 80px'
-                }}
-            />
+            <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-5xl mx-auto">
+                    {/* Cabeçalho da seção */}
+                    <AnimatedSection delay={0} className="text-center mb-16">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
+                            {t('skills.title')}
+                        </h2>
+                        <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                            {t('skills.description')}
+                        </p>
+                    </AnimatedSection>
 
-            <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <AnimatedSection className="text-center mb-16 md:mb-20">
-                    <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 dark:from-blue-400 dark:via-purple-400 dark:to-cyan-400 bg-clip-text text-transparent mb-6 tracking-tight leading-tight">
-                        {t("skills.title")}
-                    </h2>
+                    {/* Skills técnicas */}
+                    <div className="space-y-6 mb-16">
+                        <AnimatedSection delay={0.1}>
+                            <SkillSection
+                                id="frontend"
+                                title={t('skills.sections.frontend')}
+                                icon="🌐"
+                                skills={frontendSkills}
+                                openSection={openSection}
+                                toggleSection={toggleSection}
+                                isVisible={isVisible && openSection === "frontend"}
+                            />
+                        </AnimatedSection>
 
-                    <motion.p
-                        className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2, duration: 0.8 }}
-                    >
-                        {t("skills.subtitle")}
-                    </motion.p>
-                </AnimatedSection>
+                        <AnimatedSection delay={0.2}>
+                            <SkillSection
+                                id="backend"
+                                title={t('skills.sections.backend')}
+                                icon="⚙️"
+                                skills={backendSkills}
+                                openSection={openSection}
+                                toggleSection={toggleSection}
+                                isVisible={isVisible && openSection === "backend"}
+                            />
+                        </AnimatedSection>
 
-                <div className="grid gap-6 mb-20">
-                    <SkillSection
-                        title={t("skills.sections.frontend.title")}
-                        icon="🎨"
-                        skills={skillsData.frontend}
-                        id="frontend"
-                        openSection={openSection}
-                        toggleSection={toggleSection}
-                        isVisible={isVisible}
-                    />
-                    <SkillSection
-                        title={t("skills.sections.backend.title")}
-                        icon="⚙️"
-                        skills={skillsData.backend}
-                        id="backend"
-                        openSection={openSection}
-                        toggleSection={toggleSection}
-                        isVisible={isVisible}
-                    />
-                    <SkillSection
-                        title={t("skills.sections.tools.title")}
-                        icon="🛠️"
-                        skills={skillsData.tools}
-                        id="tools"
-                        openSection={openSection}
-                        toggleSection={toggleSection}
-                        isVisible={isVisible}
-                    />
-                </div>
+                        <AnimatedSection delay={0.3}>
+                            <SkillSection
+                                id="design"
+                                title={t('skills.sections.design')}
+                                icon="🎨"
+                                skills={designSkills}
+                                openSection={openSection}
+                                toggleSection={toggleSection}
+                                isVisible={isVisible && openSection === "design"}
+                            />
+                        </AnimatedSection>
+                    </div>
 
-                <div className="mt-20">
-                    <AnimatedSection delay={0.3}>
-                        <h3 className="text-3xl font-bold text-center bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 dark:from-blue-400 dark:via-purple-400 dark:to-cyan-400 bg-clip-text text-transparent mb-12">
-                            {t("skills.softSkills.title")}
+                    {/* Soft skills */}
+                    <AnimatedSection delay={0.4} className="mb-8">
+                        <h3 className="text-2xl font-bold text-center mb-8 text-gray-800 dark:text-gray-200">
+                            {t('skills.softSkillsTitle')}
                         </h3>
                     </AnimatedSection>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {Object.entries(
-                            t("skills.softSkills.items", { returnObjects: true })
-                        ).map(([key, skill], index) => (
-                            <StatItem
-                                key={key}
-                                index={index}
-                                skill={skill}
-                            />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {softSkills.map((skill, index) => (
+                            <StatItem key={index} index={index} skill={skill} />
                         ))}
                     </div>
                 </div>
