@@ -122,6 +122,7 @@ const PortfolioSection = () => {
     const [activeFilter, setActiveFilter] = useState("all");
     const [isMobile, setIsMobile] = useState(false);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isTransitioning, setIsTransitioning] = useState(false); // novo estado
 
     const trackRef = useRef(null);
     const itemWidth = useRef(0);
@@ -529,10 +530,11 @@ const PortfolioSection = () => {
 
     // Categorias memoizadas
     const categories = useMemo(() => [
-        { value: "all", label: t('portfolio.filters.all') },
-        { value: "web", label: t('portfolio.filters.web') },
-        { value: "design", label: t('portfolio.filters.design') },
-        { value: "motion", label: t('portfolio.filters.motion') },
+        { value: "all", label: t('portfolio.categories.all') },
+        { value: "web", label: t('portfolio.categories.web') },
+        { value: "design", label: t('portfolio.categories.design') },
+        { value: "motion", label: t('portfolio.categories.motion') },
+        { value: "modelagem", label: t('portfolio.categories.modelagem') },
     ], [t]);
 
     // Filtrar projetos baseado na categoria selecionada - memoizado
@@ -564,36 +566,36 @@ const PortfolioSection = () => {
     // Mover o carrossel - otimizado
     const moveCarousel = useCallback((newIndex) => {
         if (!trackRef.current) return;
-
-        // Garantir que o index fique dentro dos limites
+        setIsTransitioning(true); // inicia bloqueio
         const safeIndex = Math.max(0, Math.min(newIndex, totalItems - getItemsPerView()));
         setCurrentIndex(safeIndex);
-
-        // Animar o movimento
         const translateX = safeIndex * -itemWidth.current;
         trackRef.current.style.transform = `translateX(${translateX}px)`;
+        setTimeout(() => setIsTransitioning(false), 500); // libera após 500ms
     }, [totalItems, getItemsPerView]);
 
     // Handlers de navegação memoizados
     const goToPrevious = useCallback(() => {
+        if (isTransitioning) return;
         moveCarousel(currentIndex - 1);
-    }, [currentIndex, moveCarousel]);
+    }, [currentIndex, moveCarousel, isTransitioning]);
 
     const goToNext = useCallback(() => {
+        if (isTransitioning) return;
         moveCarousel(currentIndex + 1);
-    }, [currentIndex, moveCarousel]);
+    }, [currentIndex, moveCarousel, isTransitioning]);
 
     // Redimensionamento com debounce
     useEffect(() => {
         const handleResize = debounce(() => {
             checkMobile();
-            
+
             // Recalcular largura dos itens
             if (carouselWrapperRef.current) {
                 const totalWidth = carouselWrapperRef.current.offsetWidth;
                 const itemsPerView = getItemsPerView();
                 itemWidth.current = totalWidth / itemsPerView;
-                
+
                 // Atualizar posição do trackRef após redimensionamento
                 moveCarousel(currentIndex);
             }
@@ -611,7 +613,7 @@ const PortfolioSection = () => {
     useEffect(() => {
         // Atualizar items visíveis com base na filtragem
         setVisibleItems(filteredProjects);
-        
+
         // Resetar o carrossel para o início ao trocar o filtro
         setCurrentIndex(0);
         if (trackRef.current) {
@@ -659,15 +661,15 @@ const PortfolioSection = () => {
                         transition={{ duration: 0.7, delay: 0.1 }}
                         className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
                     >
-                        {t('portfolio.description')}
+                        {t('portfolio.subtitle')}
                     </motion.p>
                 </div>
 
                 {/* Navegação por categorias */}
-                <CategoryNav 
-                    categories={categories} 
-                    activeFilter={activeFilter} 
-                    setActiveFilter={setActiveFilter} 
+                <CategoryNav
+                    categories={categories}
+                    activeFilter={activeFilter}
+                    setActiveFilter={setActiveFilter}
                 />
 
                 {/* Carrossel */}
@@ -676,13 +678,13 @@ const PortfolioSection = () => {
                     <CarouselButton
                         direction="left"
                         onClick={goToPrevious}
-                        disabled={currentIndex === 0}
+                        disabled={currentIndex === 0 || isTransitioning}
                     />
 
                     <CarouselButton
                         direction="right"
                         onClick={goToNext}
-                        disabled={currentIndex >= totalItems - getItemsPerView()}
+                        disabled={currentIndex >= totalItems - getItemsPerView() || isTransitioning}
                     />
 
                     {/* Container do carrossel */}
@@ -715,11 +717,10 @@ const PortfolioSection = () => {
                         <button
                             key={index}
                             onClick={() => moveCarousel(index * getItemsPerView())}
-                            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                                index === Math.floor(currentIndex / getItemsPerView())
-                                    ? "bg-blue-600 w-5"
-                                    : "bg-gray-300 dark:bg-gray-700"
-                            }`}
+                            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === Math.floor(currentIndex / getItemsPerView())
+                                ? "bg-blue-600 w-5"
+                                : "bg-gray-300 dark:bg-gray-700"
+                                }`}
                             aria-label={`Go to page ${index + 1}`}
                         />
                     ))}

@@ -113,7 +113,7 @@ const Background = memo(({ isMobile, mousePosition }) => (
     <>
         {/* Fundo com gradiente */}
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50/40 via-white to-gray-50/40 dark:from-blue-950/30 dark:via-slate-900 dark:to-slate-950/40 -z-10"></div>
-        
+
         {/* Grade simplificada - estática para reduzir animações */}
         <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
             style={{
@@ -122,7 +122,7 @@ const Background = memo(({ isMobile, mousePosition }) => (
                 backgroundSize: isMobile ? '40px 40px' : '80px 80px'
             }}
         />
-        
+
         {/* Elementos decorativos - reduzidos e simplificados */}
         <div className="absolute inset-0 overflow-hidden -z-10">
             <div className="absolute rounded-full bg-blue-500/5 dark:bg-blue-500/10 blur-3xl w-[600px] h-[600px] -top-[300px] -right-[300px]" />
@@ -195,22 +195,6 @@ const FeatureCard = memo(({
 
 FeatureCard.displayName = 'FeatureCard';
 
-// Componente de ícone memoizado para melhorar performance
-const ProfileImage = memo(({ t }) => (
-    <div className="relative mx-auto max-w-sm md:mx-0">
-        <div className="relative aspect-square overflow-hidden rounded-2xl shadow-2xl border-4 border-white dark:border-gray-800">
-            <img
-                src="/assets/images/Linkedin-foto.webp"
-                alt={t('about.profileAlt')}
-                className="h-full w-full object-cover"
-                loading="eager"
-            />
-        </div>
-    </div>
-));
-
-ProfileImage.displayName = 'ProfileImage';
-
 const AboutMe = () => {
     const { t } = useTranslation();
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -235,7 +219,7 @@ const AboutMe = () => {
 
     // Efeito de paralaxe com mouse (apenas em desktop)
     useEffect(() => {
-        if (isMobile) return () => {};
+        if (isMobile) return () => { };
 
         const handleMouseMove = debounce((e) => {
             if (!sectionRef.current) return;
@@ -324,8 +308,6 @@ const AboutMe = () => {
                     {/* Área de perfil - lado esquerdo */}
                     <AnimatedSection delay={0} animation="fadeUp" className="order-2 md:order-1">
                         <div className="flex flex-col md:flex-row md:items-center gap-8">
-                            <ProfileImage t={t} />
-                            
                             <div className="space-y-6">
                                 <div>
                                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-600 dark:text-blue-400">
@@ -335,23 +317,23 @@ const AboutMe = () => {
                                         {t('about.devTitle')}
                                     </h3>
                                 </div>
-                                
+
                                 <div className="space-y-4 text-gray-600 dark:text-gray-300">
                                     <p>{t('about.paragraphs.first')}</p>
                                     <p>{t('about.paragraphs.second')}</p>
                                 </div>
 
-                                <div className="flex flex-wrap gap-2">
-                                    <a 
-                                        href="#contact" 
+                                <div className="flex flex-wrap gap-4 mt-6">
+                                    <a
+                                        href="#contact"
                                         className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-300"
                                     >
                                         {t('about.cta.contact')}
                                     </a>
-                                    <a 
-                                        href={t('about.cta.resumeUrl')} 
+                                    <a
+                                        href={t('about.cta.resumeUrl')}
                                         className="inline-flex items-center px-4 py-2 border border-blue-600 hover:border-blue-700 hover:bg-blue-50 dark:hover:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg transition-colors duration-300"
-                                        target="_blank" 
+                                        target="_blank"
                                         rel="noopener noreferrer"
                                     >
                                         {t('about.cta.resume')}
@@ -367,7 +349,7 @@ const AboutMe = () => {
                             <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800 dark:text-white">
                                 {t('about.stats.title')}
                             </h2>
-                            
+
                             <div className="grid grid-cols-2 gap-4">
                                 {[
                                     {
@@ -403,7 +385,7 @@ const AboutMe = () => {
                             <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800 dark:text-white">
                                 {t('about.expertise.title')}
                             </h2>
-                            
+
                             <div className="grid grid-cols-2 gap-4">
                                 {[
                                     {
