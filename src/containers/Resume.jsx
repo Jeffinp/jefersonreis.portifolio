@@ -355,9 +355,9 @@ const Resume = () => {
                         {/* Botão para expandir/contrair */}
                         <button
                             onClick={toggleExpanded}
-                            className="flex items-center justify-center w-full mt-4 py-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors duration-300"
+                            className="flex items-center justify-center w-full mt-4 py-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors duration-300 font-medium text-blue-600 dark:text-blue-400"
                         >
-                            <span className="mr-2 font-medium">
+                            <span className="mr-2">
                                 {expanded ? t('resume.buttons.showLess') : t('resume.buttons.showMore')}
                             </span>
                             {expanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}

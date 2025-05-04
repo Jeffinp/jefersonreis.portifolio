@@ -379,7 +379,7 @@ const AboutMe = () => {
                                             {
                                                 value: "99%",
                                                 label: t('about.stats.satisfaction'),
-                                                color: "orange"
+                                                color: "pink" // cor mais vibrante para combinar com o gradiente
                                             }
                                         ].map((stat, index) => (
                                             <div key={index} className={`bg-white/80 dark:bg-slate-800/80 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-md flex flex-col items-center`}>
@@ -413,10 +413,11 @@ const AboutMe = () => {
                                             {
                                                 icon: <Monitor size={20} />,
                                                 label: t('about.expertise.ux'),
-                                                color: "orange"
+                                                color: "pink",
+                                                bg: "bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 dark:from-pink-900/30 dark:via-purple-900/30 dark:to-blue-900/30"
                                             }
                                         ].map((item, index) => (
-                                            <div key={index} className={`flex items-center gap-2 p-3 rounded-lg bg-${item.color}-50 dark:bg-${item.color}-900/20 text-${item.color}-600 dark:text-${item.color}-400 justify-center md:justify-start`}>
+                                            <div key={index} className={`flex items-center gap-2 p-3 rounded-lg ${item.bg ? item.bg : `bg-${item.color}-50 dark:bg-${item.color}-900/20`} text-${item.color}-600 dark:text-${item.color}-400 justify-center md:justify-start`}>
                                                 {item.icon}
                                                 <span className="font-medium text-sm sm:text-base">{item.label}</span>
                                             </div>
@@ -487,7 +488,7 @@ const AboutMe = () => {
                                             {
                                                 value: "99%",
                                                 label: t('about.stats.satisfaction'),
-                                                color: "orange"
+                                                color: "pink" // cor mais vibrante para combinar com o gradiente
                                             }
                                         ].map((stat, index) => (
                                             <div key={index} className={`bg-white/80 dark:bg-slate-800/80 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-md flex flex-col items-center`}>
@@ -522,10 +523,11 @@ const AboutMe = () => {
                                             {
                                                 icon: <Monitor size={20} />,
                                                 label: t('about.expertise.ux'),
-                                                color: "orange"
+                                                color: "pink",
+                                                bg: "bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 dark:from-pink-900/30 dark:via-purple-900/30 dark:to-blue-900/30"
                                             }
                                         ].map((item, index) => (
-                                            <div key={index} className={`flex items-center gap-2 p-3 rounded-lg bg-${item.color}-50 dark:bg-${item.color}-900/20 text-${item.color}-600 dark:text-${item.color}-400 justify-center md:justify-start`}>
+                                            <div key={index} className={`flex items-center gap-2 p-3 rounded-lg ${item.bg ? item.bg : `bg-${item.color}-50 dark:bg-${item.color}-900/20`} text-${item.color}-600 dark:text-${item.color}-400 justify-center md:justify-start`}>
                                                 {item.icon}
                                                 <span className="font-medium text-sm sm:text-base">{item.label}</span>
                                             </div>
