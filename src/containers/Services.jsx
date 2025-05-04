@@ -195,9 +195,6 @@ ServiceCard3D.displayName = 'ServiceCard3D';
 // Componente memoizado para o fundo
 const Background = memo(({ isMobile, mousePosition }) => (
     <>
-        {/* Fundo simplificado */}
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-50/40 via-white to-purple-50/40 dark:from-blue-950/30 dark:via-slate-900/90 dark:to-indigo-950/30 -z-10"></div>
-        
         {/* Grades */}
         <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
             style={{
@@ -206,12 +203,13 @@ const Background = memo(({ isMobile, mousePosition }) => (
                 backgroundSize: isMobile ? '40px 40px' : '80px 80px'
             }}
         />
-        
+
         {/* Formas decorativas simplificadas */}
         <div className="absolute inset-0 overflow-hidden -z-10">
             <div className="absolute rounded-full bg-blue-500/5 dark:bg-blue-500/10 blur-3xl w-[600px] h-[600px] -top-[300px] -right-[300px]" />
             <div className="absolute rounded-full bg-purple-500/5 dark:bg-purple-500/10 blur-3xl w-[600px] h-[600px] -bottom-[300px] -left-[300px]" />
         </div>
+
     </>
 ));
 
@@ -274,7 +272,7 @@ const Services = () => {
 
     // Efeito de paralaxe com mouse otimizado
     useEffect(() => {
-        if (isMobile) return () => {};
+        if (isMobile) return () => { };
 
         const handleMouseMove = debounce((e) => {
             if (!sectionRef.current) return;
@@ -350,9 +348,17 @@ const Services = () => {
         <section
             ref={sectionRef}
             id="services"
-            className="relative py-16 md:py-24 overflow-hidden"
+            className="relative py-16 md:py-24 bg-transparent overflow-hidden"
             aria-label={t('services.ariaLabel')}
         >
+            {/* Fundo de quadrados alinhados igual ao padrão das outras seções */}
+            <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
+                style={{
+                    backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
+                    backgroundSize: isMobile ? '40px 40px' : '80px 80px'
+                }}
+            />
+
             {/* Fundo dinâmico - simplificado e memoizado */}
             <Background isMobile={isMobile} mousePosition={mousePosition} />
 
@@ -403,8 +409,6 @@ const Services = () => {
                 </AnimatedSection>
             </div>
 
-            {/* Botão flutuante do WhatsApp - memoizado */}
-            <WhatsAppButton t={t} isHovered={isWhatsAppHovered} />
         </section>
     );
 };

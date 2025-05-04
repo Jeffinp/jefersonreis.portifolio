@@ -68,16 +68,10 @@ const Background = memo(({ isMobile, mousePosition }) => (
             }}
         />
 
-        {/* Formas decorativas simplificadas */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-            {/* Bolhas principais */}
-            <div className="absolute rounded-full bg-indigo-500/10 dark:bg-indigo-500/15 blur-3xl w-[600px] h-[600px] -top-[300px] left-[35%] transform translate-x-[-50%]" />
-            <div className="absolute rounded-full bg-blue-500/10 dark:bg-blue-500/15 blur-3xl w-[400px] h-[400px] -bottom-[200px] -left-[200px]" />
-            
-            {/* Apenas algumas formas geométricas estáticas em desktop */}
-            {!isMobile && (
-                <div className="absolute top-20 left-[15%] w-10 h-10 border-2 border-yellow-500/30 dark:border-yellow-400/30 rounded-md animate-float-slow" />
-            )}
+        {/* Formas decorativas simplificadas - bolhas centralizadas */}
+        <div className="absolute inset-0 overflow-visible pointer-events-none -z-10">
+            <div className="absolute left-1/2 top-1/2 w-[700px] h-[700px] bg-indigo-500/10 dark:bg-indigo-500/15 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-blue-500/10 dark:bg-blue-500/15 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
         </div>
     </>
 ));
@@ -105,11 +99,11 @@ const TestimonialSlide = memo(({ testimonial, t, index, activeIndex, isMobile, m
     const isActive = index === activeIndex;
 
     return (
-        <div 
+        <div
             className="flex-shrink-0 w-full px-4 md:px-8"
             aria-hidden={!isActive}
         >
-            <div 
+            <div
                 className={`relative p-6 md:p-8 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-white/20 dark:border-slate-700/80 shadow-xl h-full max-w-3xl mx-auto
                             ${isActive ? 'ring-2 ring-blue-200 dark:ring-blue-900' : ''}`}
                 style={!isMobile && isActive ? {
@@ -117,7 +111,7 @@ const TestimonialSlide = memo(({ testimonial, t, index, activeIndex, isMobile, m
                 } : {}}
             >
                 <RatingStars rating={testimonial.rating} />
-                
+
                 <blockquote>
                     <p className="text-lg md:text-xl font-medium text-gray-700 dark:text-gray-300 mb-6">
                         {testimonial.content}
@@ -153,7 +147,7 @@ TestimonialSlide.displayName = 'TestimonialSlide';
 // Componente memoizado para botões de navegação
 const NavigationButton = memo(({ onClick, direction, disabled, ariaLabel }) => {
     const Icon = direction === 'prev' ? ChevronLeft : ChevronRight;
-    
+
     return (
         <button
             onClick={onClick}
@@ -185,9 +179,9 @@ const Testimonials = () => {
     const autoplayDelay = 5000; // Reduzido para 5 segundos para melhor experiência
 
     // Memoizando os testimonials
-    const testimonials = React.useMemo(() => 
+    const testimonials = React.useMemo(() =>
         t("testimonials.testimonialsList", { returnObjects: true })
-    , [t]);
+        , [t]);
 
     // Handlers memoizados
     const goToSlide = useCallback((index) => {
@@ -199,7 +193,7 @@ const Testimonials = () => {
     }, [testimonials.length]);
 
     const moveToPrevSlide = useCallback(() => {
-        setActiveSlideIndex((prev) => 
+        setActiveSlideIndex((prev) =>
             (prev - 1 + testimonials.length) % testimonials.length
         );
     }, [testimonials.length]);
@@ -221,7 +215,7 @@ const Testimonials = () => {
 
     // Efeito de paralaxe com mouse otimizado
     useEffect(() => {
-        if (isMobile) return () => {};
+        if (isMobile) return () => { };
 
         const handleMouseMove = debounce((e) => {
             if (!sectionRef.current) return;
@@ -296,7 +290,7 @@ const Testimonials = () => {
 
         // Event listeners com cleanup
         const handleResizeDebounced = debounce(updateSlidePosition, 250);
-        
+
         track.addEventListener("touchstart", handleTouchStart, { passive: true });
         track.addEventListener("touchend", handleTouchEnd, { passive: true });
         window.addEventListener("resize", handleResizeDebounced);
@@ -323,7 +317,7 @@ const Testimonials = () => {
 
             <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10">
                 <AnimatedSection className="text-center mb-12 md:mb-16">
-                    <h2 
+                    <h2
                         id="testimonials-heading"
                         className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400"
                     >
@@ -336,14 +330,14 @@ const Testimonials = () => {
 
                 <div className="relative max-w-5xl mx-auto">
                     {/* Botões de navegação memoizados */}
-                    <NavigationButton 
+                    <NavigationButton
                         onClick={moveToPrevSlide}
                         direction="prev"
                         disabled={false}
                         ariaLabel={t('testimonials.accessibility.prevButton')}
                     />
-                    
-                    <NavigationButton 
+
+                    <NavigationButton
                         onClick={moveToNextSlide}
                         direction="next"
                         disabled={false}
@@ -377,9 +371,8 @@ const Testimonials = () => {
                         {testimonials.map((_, index) => (
                             <button
                                 key={index}
-                                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                                    index === activeSlideIndex ? "bg-blue-600 w-5" : "bg-gray-300 dark:bg-gray-700"
-                                }`}
+                                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === activeSlideIndex ? "bg-blue-600 w-5" : "bg-gray-300 dark:bg-gray-700"
+                                    }`}
                                 aria-label={t('testimonials.accessibility.goToSlide', { number: index + 1 })}
                                 onClick={() => goToSlide(index)}
                             />

@@ -334,12 +334,19 @@ const Skills = () => {
         <section
             id="skills"
             ref={sectionRef}
-            className="relative py-16 md:py-24 bg-gradient-to-b from-white via-gray-50 to-white dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 overflow-hidden"
+            className="relative py-16 md:py-24 bg-transparent overflow-hidden"
         >
-            {/* Elementos de fundo simplificados */}
-            <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-3xl"></div>
-                <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-3xl"></div>
+            {/* Fundo de quadrados alinhados igual ao atuacao */}
+            <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
+                style={{
+                    backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
+                    backgroundSize: isMobile ? '40px 40px' : '80px 80px'
+                }}
+            />
+            {/* Bolhas centralizadas */}
+            <div className="absolute inset-0 overflow-visible -z-10 pointer-events-none">
+                <div className="absolute left-1/2 top-1/2 w-[700px] h-[700px] bg-blue-500/5 dark:bg-blue-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
+                <div className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
             </div>
 
             <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">

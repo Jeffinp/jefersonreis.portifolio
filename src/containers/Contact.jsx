@@ -56,7 +56,7 @@ AnimatedSection.displayName = 'AnimatedSection';
 // Componente memoizado para o cartão de contato
 const ContactCard = memo(({ item, index, isMobile, mousePosition, hoveredCard, setHoveredCard }) => {
     const isHovered = hoveredCard === index;
-    
+
     // Transformação 3D baseada na posição do mouse (simplificada)
     const transform = !isMobile ?
         `perspective(1000px) rotateY(${mousePosition.x * 5}deg) rotateX(${mousePosition.y * -5}deg)` :
@@ -87,7 +87,7 @@ const ContactCard = memo(({ item, index, isMobile, mousePosition, hoveredCard, s
                         rel={item.link.startsWith('http') ? 'noopener noreferrer' : undefined}
                     >
                         {item.linkText}
-                        
+
                         {item.extraAction && (
                             <button
                                 onClick={(e) => {
@@ -112,9 +112,6 @@ ContactCard.displayName = 'ContactCard';
 // Componente memoizado para o fundo
 const Background = memo(({ isMobile, mousePosition }) => (
     <>
-        {/* Fundo dinâmico com gradiente */}
-        <div className="absolute inset-0 bg-gradient-to-b from-purple-50/40 via-white to-blue-50/50 dark:from-indigo-950/30 dark:via-slate-900/90 dark:to-blue-950/30 -z-10"></div>
-
         {/* Grades */}
         <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
             style={{
@@ -124,19 +121,10 @@ const Background = memo(({ isMobile, mousePosition }) => (
             }}
         />
 
-        {/* Formas decorativas simplificadas */}
+        {/* Formas decorativas simplificadas - bolhas centralizadas */}
         <div className="absolute inset-0 overflow-visible pointer-events-none -z-10">
-            {/* Bolhas principais simplificadas */}
-            <div className="absolute rounded-full bg-indigo-500/10 dark:bg-indigo-500/15 blur-3xl w-[600px] h-[600px] -top-[300px] left-[35%] transform translate-x-[-50%]" />
-            <div className="absolute rounded-full bg-blue-500/10 dark:bg-blue-500/15 blur-3xl w-[400px] h-[400px] -bottom-[200px] -left-[200px]" />
-            
-            {/* Algumas formas geométricas estáticas */}
-            {!isMobile && (
-                <>
-                    <div className="absolute top-20 left-[15%] w-10 h-10 border-2 border-purple-500/30 dark:border-purple-400/30 rounded-md animate-float-slow" />
-                    <div className="absolute bottom-[30%] left-[25%] w-16 h-16 border-2 border-indigo-500/30 dark:border-indigo-400/30 rounded-lg animate-float" />
-                </>
-            )}
+            <div className="absolute left-1/2 top-1/2 w-[700px] h-[700px] bg-indigo-500/10 dark:bg-indigo-500/15 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-blue-500/10 dark:bg-blue-500/15 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
         </div>
     </>
 ));
@@ -177,7 +165,7 @@ const Contact = () => {
 
     // Efeito de paralaxe com mouse otimizado
     useEffect(() => {
-        if (isMobile) return () => {};
+        if (isMobile) return () => { };
 
         const handleMouseMove = debounce((e) => {
             if (!sectionRef.current) return;
@@ -236,9 +224,22 @@ const Contact = () => {
         <section
             ref={sectionRef}
             id="contact"
-            className="relative py-20 md:py-24"
+            className="relative py-20 md:py-24 bg-transparent overflow-hidden"
             aria-label="Contato"
         >
+            {/* Fundo de quadrados alinhados igual ao atuacao/skills/projects/resume */}
+            <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
+                style={{
+                    backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
+                    backgroundSize: isMobile ? '40px 40px' : '80px 80px'
+                }}
+            />
+            {/* Bolhas centralizadas */}
+            <div className="absolute inset-0 overflow-visible pointer-events-none -z-10">
+                <div className="absolute left-1/2 top-1/2 w-[700px] h-[700px] bg-indigo-500/10 dark:bg-indigo-500/15 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
+                <div className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-blue-500/10 dark:bg-blue-500/15 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
+            </div>
+
             {/* Fundo e elementos decorativos memoizados */}
             <Background isMobile={isMobile} mousePosition={mousePosition} />
 
@@ -254,7 +255,7 @@ const Contact = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                     {contactInfo.map((item, index) => (
-                        <ContactCard 
+                        <ContactCard
                             key={index}
                             item={item}
                             index={index}

@@ -63,7 +63,7 @@ const Background = memo(({ isMobile, mousePosition }) => (
     <>
         {/* Fundo simplificado */}
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 via-white to-blue-50/30 dark:from-blue-950/30 dark:via-slate-900 dark:to-blue-950/30 -z-10"></div>
-        
+
         {/* Grades */}
         <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
             style={{
@@ -72,16 +72,11 @@ const Background = memo(({ isMobile, mousePosition }) => (
                 backgroundSize: isMobile ? '40px 40px' : '80px 80px'
             }}
         />
-        
-        {/* Formas decorativas simplificadas */}
-        <div className="absolute inset-0 overflow-hidden -z-10">
-            <div className="absolute rounded-full bg-blue-500/5 dark:bg-blue-500/10 blur-3xl w-[600px] h-[600px] -top-[300px] -right-[300px]" />
-            <div className="absolute rounded-full bg-purple-500/5 dark:bg-purple-500/10 blur-3xl w-[600px] h-[600px] -bottom-[300px] -left-[300px]" />
-            
-            {/* Apenas alguns elementos geométricos em desktop para reduzir a carga */}
-            {!isMobile && (
-                <div className="absolute top-20 left-[10%] w-8 h-8 border-2 border-blue-500/30 dark:border-blue-400/30 rounded-md animate-float-slow" />
-            )}
+
+        {/* Formas decorativas simplificadas - bolhas centralizadas */}
+        <div className="absolute inset-0 overflow-visible -z-10 pointer-events-none">
+            <div className="absolute left-1/2 top-1/2 w-[700px] h-[700px] bg-blue-500/5 dark:bg-blue-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
         </div>
     </>
 ));
@@ -128,10 +123,10 @@ Card.displayName = 'Card';
 // Componente para a seção de destaques
 const Highlights = memo(({ t }) => {
     // Memoizando a lista de destaques
-    const highlightItems = React.useMemo(() => 
-        t('resume.highlightItems', { returnObjects: true }), 
-    [t]);
-    
+    const highlightItems = React.useMemo(() =>
+        t('resume.highlightItems', { returnObjects: true }),
+        [t]);
+
     return (
         <Card className="mb-8" delay={0.1} mousePosition={{ x: 0, y: 0 }} isMobile={true}>
             <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
@@ -154,7 +149,7 @@ const Experience = memo(({ t }) => (
         <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
             {t('resume.experience.title')}
         </h3>
-        
+
         <div className="mb-6">
             <div className="flex justify-between items-start mb-2">
                 <h4 className="text-xl font-semibold text-blue-600 dark:text-blue-400">
@@ -164,7 +159,7 @@ const Experience = memo(({ t }) => (
                     {t('resume.experience.freelancer.period')}
                 </span>
             </div>
-            
+
             <ul className="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300">
                 {t('resume.experience.freelancer.responsibilities', { returnObjects: true }).map((item, index) => (
                     <li key={index}>{item}</li>
@@ -182,7 +177,7 @@ const TechnicalSkills = memo(({ t }) => (
         <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
             {t('resume.technicalSkills.title')}
         </h3>
-        
+
         <div className="space-y-6">
             <div>
                 <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
@@ -192,7 +187,7 @@ const TechnicalSkills = memo(({ t }) => (
                     {t('resume.technicalSkills.categories.programming.skills')}
                 </p>
             </div>
-            
+
             <div>
                 <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
                     {t('resume.technicalSkills.categories.design.title')}
@@ -201,7 +196,7 @@ const TechnicalSkills = memo(({ t }) => (
                     {t('resume.technicalSkills.categories.design.skills')}
                 </p>
             </div>
-            
+
             <div>
                 <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
                     {t('resume.technicalSkills.categories.webDev.title')}
@@ -219,19 +214,19 @@ TechnicalSkills.displayName = 'TechnicalSkills';
 // Componente para habilidades interpessoais
 const SoftSkills = memo(({ t }) => {
     // Memoizando a lista de soft skills
-    const softSkillItems = React.useMemo(() => 
-        t('resume.softSkills.items', { returnObjects: true }), 
-    [t]);
-    
+    const softSkillItems = React.useMemo(() =>
+        t('resume.softSkills.items', { returnObjects: true }),
+        [t]);
+
     return (
         <Card className="mb-8" delay={0.4} mousePosition={{ x: 0, y: 0 }} isMobile={true}>
             <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
                 {t('resume.softSkills.title')}
             </h3>
-            
+
             <div className="flex flex-wrap gap-2">
                 {softSkillItems.map((skill, index) => (
-                    <span 
+                    <span
                         key={index}
                         className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm"
                     >
@@ -275,7 +270,7 @@ const Resume = () => {
 
     // Efeito de paralaxe com mouse otimizado
     useEffect(() => {
-        if (isMobile) return () => {};
+        if (isMobile) return () => { };
 
         const handleMouseMove = debounce((e) => {
             if (!sectionRef.current) return;
@@ -310,15 +305,25 @@ const Resume = () => {
         <section
             ref={sectionRef}
             id="resume"
-            className="relative py-16 md:py-24 overflow-hidden"
+            className="relative py-16 md:py-24 bg-transparent overflow-hidden"
             aria-labelledby="resume-heading"
         >
-            {/* Fundo simplificado e memoizado */}
-            <Background isMobile={isMobile} mousePosition={mousePosition} />
+            {/* Fundo de quadrados alinhados igual ao atuacao/skills/projects */}
+            <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
+                style={{
+                    backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
+                    backgroundSize: isMobile ? '40px 40px' : '80px 80px'
+                }}
+            />
+            {/* Bolhas centralizadas */}
+            <div className="absolute inset-0 overflow-visible -z-10 pointer-events-none">
+                <div className="absolute left-1/2 top-1/2 w-[700px] h-[700px] bg-blue-500/5 dark:bg-blue-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
+                <div className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
+            </div>
 
             <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10">
                 <AnimatedSection className="text-center mb-12 md:mb-16">
-                    <h2 
+                    <h2
                         id="resume-heading"
                         className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400"
                     >
@@ -334,7 +339,7 @@ const Resume = () => {
                         {/* Resumo principal */}
                         <Experience t={t} />
                         <TechnicalSkills t={t} />
-                        
+
                         {/* Conteúdo expandido */}
                         {expanded && (
                             <motion.div
@@ -346,7 +351,7 @@ const Resume = () => {
                                 <SoftSkills t={t} />
                             </motion.div>
                         )}
-                        
+
                         {/* Botão para expandir/contrair */}
                         <button
                             onClick={toggleExpanded}
@@ -358,11 +363,11 @@ const Resume = () => {
                             {expanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                         </button>
                     </div>
-                    
+
                     <div>
                         {/* Sidebar */}
                         <Highlights t={t} />
-                        
+
                         {/* Botão de download do CV */}
                         <AnimatedSection delay={0.5} className="text-center">
                             <a

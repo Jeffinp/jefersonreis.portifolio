@@ -141,6 +141,12 @@ const App = () => {
             {/* Injetar estilos para corrigir as transições */}
             <style>{sectionStyles}</style>
 
+            {/* Bolhas globais atravessando todas as seções */}
+            <div className="fixed inset-0 pointer-events-none -z-10" aria-hidden="true">
+                <div className="absolute left-1/2 top-1/2 w-[1200px] h-[1200px] bg-blue-500/10 dark:bg-blue-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
+                <div className="absolute left-1/2 top-1/2 w-[900px] h-[900px] bg-purple-500/10 dark:bg-purple-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
+            </div>
+
             <Header
                 darkMode={darkMode}
                 toggleDarkMode={() => setDarkMode(prev => !prev)}

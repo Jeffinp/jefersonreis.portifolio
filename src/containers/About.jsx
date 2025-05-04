@@ -123,10 +123,10 @@ const Background = memo(({ isMobile, mousePosition }) => (
             }}
         />
 
-        {/* Elementos decorativos - reduzidos e simplificados */}
-        <div className="absolute inset-0 overflow-hidden -z-10">
-            <div className="absolute rounded-full bg-blue-500/5 dark:bg-blue-500/10 blur-3xl w-[600px] h-[600px] -top-[300px] -right-[300px]" />
-            <div className="absolute rounded-full bg-purple-500/5 dark:bg-purple-500/10 blur-3xl w-[600px] h-[600px] -bottom-[300px] -left-[300px]" />
+        {/* Elementos decorativos - bolhas centralizadas */}
+        <div className="absolute inset-0 overflow-visible -z-10 pointer-events-none">
+            <div className="absolute left-1/2 top-1/2 w-[700px] h-[700px] bg-blue-500/5 dark:bg-blue-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
         </div>
     </>
 ));
@@ -297,11 +297,21 @@ const AboutMe = () => {
         <section
             ref={sectionRef}
             id="about"
-            className="relative py-16 md:py-24 overflow-hidden"
+            className="relative py-16 md:py-24 bg-transparent overflow-hidden"
             aria-label={t('about.ariaLabel')}
         >
-            {/* Fundo otimizado */}
-            <Background isMobile={isMobile} mousePosition={mousePosition} />
+            {/* Fundo de quadrados alinhados igual ao padrão das outras seções */}
+            <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
+                style={{
+                    backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
+                    backgroundSize: isMobile ? '40px 40px' : '80px 80px'
+                }}
+            />
+            {/* Bolhas centralizadas */}
+            <div className="absolute inset-0 overflow-visible -z-10 pointer-events-none">
+                <div className="absolute left-1/2 top-1/2 w-[700px] h-[700px] bg-blue-500/5 dark:bg-blue-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
+                <div className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
+            </div>
 
             <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
@@ -416,28 +426,6 @@ const AboutMe = () => {
                                 ))}
                             </div>
                         </AnimatedSection>
-                    </div>
-                </div>
-
-                {/* Serviços/Especialidades */}
-                <div className="mt-20">
-                    <AnimatedSection delay={0.3} className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
-                            {t('about.services.title')}
-                        </h2>
-                        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                            {t('about.services.subtitle')}
-                        </p>
-                    </AnimatedSection>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {features.map((feature, index) => (
-                            <FeatureCard
-                                key={index}
-                                index={index}
-                                {...feature}
-                            />
-                        ))}
                     </div>
                 </div>
             </div>

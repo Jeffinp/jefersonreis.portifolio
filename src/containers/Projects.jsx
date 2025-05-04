@@ -632,12 +632,19 @@ const PortfolioSection = () => {
         <section
             id="portfolio"
             ref={sectionRef}
-            className="relative py-16 md:py-24 bg-gradient-to-b from-gray-50 via-white to-blue-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950/30 overflow-hidden z-10"
+            className="relative py-16 md:py-24 bg-transparent overflow-hidden z-10"
         >
-            {/* Decoração de fundo simplificada */}
-            <div className="absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
-                <div className="absolute -top-10 -right-10 w-72 h-72 bg-blue-500/10 dark:bg-blue-500/20 rounded-full blur-3xl"></div>
-                <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-purple-500/10 dark:bg-purple-500/20 rounded-full blur-3xl"></div>
+            {/* Fundo de quadrados alinhados igual ao atuacao/skills */}
+            <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
+                style={{
+                    backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
+                    backgroundSize: isMobile ? '40px 40px' : '80px 80px'
+                }}
+            />
+            {/* Bolhas centralizadas */}
+            <div className="absolute inset-0 overflow-visible opacity-30 dark:opacity-20 pointer-events-none -z-10">
+                <div className="absolute left-1/2 top-1/2 w-[700px] h-[700px] bg-blue-500/10 dark:bg-blue-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
+                <div className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-purple-500/10 dark:bg-purple-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
             </div>
 
             {/* Container principal */}

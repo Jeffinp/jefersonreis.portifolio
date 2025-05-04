@@ -96,7 +96,7 @@ const Background = memo(({ isMobile, mousePosition }) => (
     <>
         {/* Fundo simplificado */}
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-blue-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950/30 -z-10"></div>
-        
+
         {/* Grades */}
         <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
             style={{
@@ -105,16 +105,11 @@ const Background = memo(({ isMobile, mousePosition }) => (
                 backgroundSize: isMobile ? '40px 40px' : '80px 80px'
             }}
         />
-        
-        {/* Formas decorativas simplificadas */}
-        <div className="absolute inset-0 overflow-hidden -z-10">
-            <div className="absolute rounded-full bg-blue-500/5 dark:bg-blue-500/10 blur-3xl w-[600px] h-[600px] -top-[300px] -right-[300px]" />
-            <div className="absolute rounded-full bg-purple-500/5 dark:bg-purple-500/10 blur-3xl w-[600px] h-[600px] -bottom-[300px] -left-[300px]" />
-            
-            {/* Apenas alguns elementos geométricos em desktop para reduzir a carga */}
-            {!isMobile && (
-                <div className="absolute top-20 left-[10%] w-8 h-8 border-2 border-blue-500/30 dark:border-blue-400/30 rounded-md animate-float-slow" />
-            )}
+
+        {/* Formas decorativas simplificadas - bolhas centralizadas */}
+        <div className="absolute inset-0 overflow-visible -z-10 pointer-events-none">
+            <div className="absolute left-1/2 top-1/2 w-[700px] h-[700px] bg-blue-500/5 dark:bg-blue-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
         </div>
     </>
 ));
@@ -214,7 +209,7 @@ const ExpertiseAreas = () => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isMobile, setIsMobile] = useState(false);
     const sectionRef = useRef(null);
-    
+
     // Detectar dispositivo móvel com callback memoizado
     const checkMobile = useCallback(() => {
         setIsMobile(window.innerWidth < 768);
@@ -232,7 +227,7 @@ const ExpertiseAreas = () => {
 
     // Efeito de paralaxe com mouse otimizado
     useEffect(() => {
-        if (isMobile) return () => {};
+        if (isMobile) return () => { };
 
         const handleMouseMove = debounce((e) => {
             if (!sectionRef.current) return;
@@ -314,7 +309,7 @@ const ExpertiseAreas = () => {
         <section
             ref={sectionRef}
             id="areas"
-            className="relative py-16 md:py-24 overflow-hidden"
+            className="relative py-16 md:py-24 bg-transparent overflow-hidden"
             aria-labelledby="expertise-heading"
         >
             {/* Fundo simplificado e memoizado */}
@@ -322,7 +317,7 @@ const ExpertiseAreas = () => {
 
             <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10">
                 <AnimatedSection className="text-center mb-12 md:mb-16">
-                    <h2 
+                    <h2
                         id="expertise-heading"
                         className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400"
                     >
