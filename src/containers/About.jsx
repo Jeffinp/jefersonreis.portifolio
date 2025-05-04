@@ -297,7 +297,7 @@ const AboutMe = () => {
         <section
             ref={sectionRef}
             id="about"
-            className="relative py-16 md:py-24 bg-transparent overflow-hidden"
+            className="relative py-12 md:py-24 bg-transparent overflow-hidden"
             aria-label={t('about.ariaLabel')}
         >
             {/* Fundo de quadrados alinhados igual ao padrão das outras seções */}
@@ -309,124 +309,232 @@ const AboutMe = () => {
             />
             {/* Bolhas centralizadas */}
             <div className="absolute inset-0 overflow-visible -z-10 pointer-events-none">
-                <div className="absolute left-1/2 top-1/2 w-[700px] h-[700px] bg-blue-500/5 dark:bg-blue-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
-                <div className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
+                <div className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-blue-500/10 dark:bg-blue-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
+                <div className="absolute left-1/2 top-1/2 w-[320px] h-[320px] bg-purple-500/10 dark:bg-purple-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
             </div>
 
             <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-                    {/* Área de perfil - lado esquerdo */}
-                    <AnimatedSection delay={0} animation="fadeUp" className="order-2 md:order-1">
-                        <div className="flex flex-col md:flex-row md:items-center gap-8">
-                            <div className="space-y-6">
-                                <div>
-                                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-600 dark:text-blue-400">
-                                        {t('about.title')}
+                <div className="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                    {/* MOBILE: Sobre Mim primeiro, depois estatísticas/skills */}
+                    {isMobile ? (
+                        <>
+                            {/* Sobre Mim */}
+                            <AnimatedSection delay={0} animation="fadeUp" className="w-full mb-10">
+                                <div className="flex flex-col gap-8 w-full">
+                                    <div className="space-y-6 w-full">
+                                        <div>
+                                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-blue-600 dark:text-blue-400 text-center">
+                                                {t('about.title')}
+                                            </h2>
+                                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center">
+                                                {t('about.devTitle')}
+                                            </h3>
+                                        </div>
+                                        <div className="space-y-4 text-gray-600 dark:text-gray-300 text-base sm:text-lg text-center">
+                                            <p>{t('about.paragraphs.first')}</p>
+                                            <p>{t('about.paragraphs.second')}</p>
+                                        </div>
+                                        <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center">
+                                            <a
+                                                href="#contact"
+                                                className="inline-flex items-center justify-center px-6 py-3 font-semibold rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-lg transition-colors duration-300 text-base gap-2"
+                                            >
+                                                {t('about.cta.contact')}
+                                            </a>
+                                            <a
+                                                href={t('about.cta.resumeUrl')}
+                                                className="inline-flex items-center justify-center px-6 py-3 font-semibold rounded-xl border border-blue-600 hover:border-blue-700 text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 dark:border-blue-500 dark:hover:border-blue-400 transition-colors duration-300 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm shadow-lg text-base gap-2"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                {t('about.cta.resume')}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </AnimatedSection>
+                            {/* Estatísticas e expertise */}
+                            <div className="w-full">
+                                <AnimatedSection delay={0.1} animation="fadeUp" className="mb-10 w-full">
+                                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-gray-800 dark:text-white text-center">
+                                        {t('about.stats.title')}
                                     </h2>
-                                    <h3 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                                        {t('about.devTitle')}
-                                    </h3>
-                                </div>
-
-                                <div className="space-y-4 text-gray-600 dark:text-gray-300">
-                                    <p>{t('about.paragraphs.first')}</p>
-                                    <p>{t('about.paragraphs.second')}</p>
-                                </div>
-
-                                <div className="flex flex-wrap gap-4 mt-6">
-                                    <a
-                                        href="#contact"
-                                        className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-300"
-                                    >
-                                        {t('about.cta.contact')}
-                                    </a>
-                                    <a
-                                        href={t('about.cta.resumeUrl')}
-                                        className="inline-flex items-center px-4 py-2 border border-blue-600 hover:border-blue-700 hover:bg-blue-50 dark:hover:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg transition-colors duration-300"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        {t('about.cta.resume')}
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </AnimatedSection>
-
-                    {/* Estatísticas e características - lado direito */}
-                    <div className="order-1 md:order-2">
-                        <AnimatedSection delay={0.1} animation="fadeUp" className="mb-10">
-                            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800 dark:text-white">
-                                {t('about.stats.title')}
-                            </h2>
-
-                            <div className="grid grid-cols-2 gap-4">
-                                {[
-                                    {
-                                        value: "3+",
-                                        label: t('about.stats.experience'),
-                                        color: "blue"
-                                    },
-                                    {
-                                        value: "30+",
-                                        label: t('about.stats.projects'),
-                                        color: "purple"
-                                    },
-                                    {
-                                        value: "15+",
-                                        label: t('about.stats.clients'),
-                                        color: "green"
-                                    },
-                                    {
-                                        value: "99%",
-                                        label: t('about.stats.satisfaction'),
-                                        color: "orange"
-                                    }
-                                ].map((stat, index) => (
-                                    <div key={index} className="bg-white/80 dark:bg-slate-800/80 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-md">
-                                        <p className={`text-3xl font-bold text-${stat.color}-600 dark:text-${stat.color}-400`}>{stat.value}</p>
-                                        <p className="text-sm text-gray-600 dark:text-gray-300">{stat.label}</p>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        {[
+                                            {
+                                                value: "3+",
+                                                label: t('about.stats.experience'),
+                                                color: "blue"
+                                            },
+                                            {
+                                                value: "30+",
+                                                label: t('about.stats.projects'),
+                                                color: "purple"
+                                            },
+                                            {
+                                                value: "15+",
+                                                label: t('about.stats.clients'),
+                                                color: "green"
+                                            },
+                                            {
+                                                value: "99%",
+                                                label: t('about.stats.satisfaction'),
+                                                color: "orange"
+                                            }
+                                        ].map((stat, index) => (
+                                            <div key={index} className={`bg-white/80 dark:bg-slate-800/80 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-md flex flex-col items-center`}>
+                                                <p className={`text-2xl sm:text-3xl font-bold text-${stat.color}-600 dark:text-${stat.color}-400`}>{stat.value}</p>
+                                                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 text-center">{stat.label}</p>
+                                            </div>
+                                        ))}
                                     </div>
-                                ))}
-                            </div>
-                        </AnimatedSection>
-
-                        <AnimatedSection delay={0.2} animation="fadeUp">
-                            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800 dark:text-white">
-                                {t('about.expertise.title')}
-                            </h2>
-
-                            <div className="grid grid-cols-2 gap-4">
-                                {[
-                                    {
-                                        icon: <Code size={24} />,
-                                        label: t('about.expertise.frontend'),
-                                        color: "blue"
-                                    },
-                                    {
-                                        icon: <Terminal size={24} />,
-                                        label: t('about.expertise.backend'),
-                                        color: "purple"
-                                    },
-                                    {
-                                        icon: <Palette size={24} />,
-                                        label: t('about.expertise.design'),
-                                        color: "green"
-                                    },
-                                    {
-                                        icon: <Monitor size={24} />,
-                                        label: t('about.expertise.ux'),
-                                        color: "orange"
-                                    }
-                                ].map((item, index) => (
-                                    <div key={index} className={`flex items-center gap-3 p-3 rounded-lg bg-${item.color}-50 dark:bg-${item.color}-900/20 text-${item.color}-600 dark:text-${item.color}-400`}>
-                                        {item.icon}
-                                        <span className="font-medium">{item.label}</span>
+                                </AnimatedSection>
+                                <AnimatedSection delay={0.2} animation="fadeUp">
+                                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-gray-800 dark:text-white text-center">
+                                        {t('about.expertise.title')}
+                                    </h2>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        {[
+                                            {
+                                                icon: <Code size={20} />,
+                                                label: t('about.expertise.frontend'),
+                                                color: "blue"
+                                            },
+                                            {
+                                                icon: <Terminal size={20} />,
+                                                label: t('about.expertise.backend'),
+                                                color: "purple"
+                                            },
+                                            {
+                                                icon: <Palette size={20} />,
+                                                label: t('about.expertise.design'),
+                                                color: "green"
+                                            },
+                                            {
+                                                icon: <Monitor size={20} />,
+                                                label: t('about.expertise.ux'),
+                                                color: "orange"
+                                            }
+                                        ].map((item, index) => (
+                                            <div key={index} className={`flex items-center gap-2 p-3 rounded-lg bg-${item.color}-50 dark:bg-${item.color}-900/20 text-${item.color}-600 dark:text-${item.color}-400 justify-center md:justify-start`}>
+                                                {item.icon}
+                                                <span className="font-medium text-sm sm:text-base">{item.label}</span>
+                                            </div>
+                                        ))}
                                     </div>
-                                ))}
+                                </AnimatedSection>
                             </div>
-                        </AnimatedSection>
-                    </div>
+                        </>
+                    ) : (
+                        // DESKTOP: mantém grid lado a lado
+                        <>
+                            <AnimatedSection delay={0} animation="fadeUp" className="order-2 md:order-1 w-full">
+                                <div className="flex flex-col md:flex-row md:items-center gap-8 w-full">
+                                    <div className="space-y-6 w-full">
+                                        <div>
+                                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-blue-600 dark:text-blue-400 text-center md:text-left">
+                                                {t('about.title')}
+                                            </h2>
+                                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center md:text-left">
+                                                {t('about.devTitle')}
+                                            </h3>
+                                        </div>
+                                        <div className="space-y-4 text-gray-600 dark:text-gray-300 text-base sm:text-lg text-center md:text-left">
+                                            <p>{t('about.paragraphs.first')}</p>
+                                            <p>{t('about.paragraphs.second')}</p>
+                                        </div>
+                                        <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center md:justify-start">
+                                            <a
+                                                href="#contact"
+                                                className="inline-flex items-center justify-center px-6 py-3 font-semibold rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-lg transition-colors duration-300 text-base gap-2"
+                                            >
+                                                {t('about.cta.contact')}
+                                            </a>
+                                            <a
+                                                href={t('about.cta.resumeUrl')}
+                                                className="inline-flex items-center justify-center px-6 py-3 font-semibold rounded-xl border border-blue-600 hover:border-blue-700 text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 dark:border-blue-500 dark:hover:border-blue-400 transition-colors duration-300 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm shadow-lg text-base gap-2"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                {t('about.cta.resume')}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </AnimatedSection>
+                            <div className="order-1 md:order-2 w-full">
+                                <AnimatedSection delay={0.1} animation="fadeUp" className="mb-10 w-full">
+                                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-gray-800 dark:text-white text-center md:text-left">
+                                        {t('about.stats.title')}
+                                    </h2>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        {[
+                                            {
+                                                value: "3+",
+                                                label: t('about.stats.experience'),
+                                                color: "blue"
+                                            },
+                                            {
+                                                value: "30+",
+                                                label: t('about.stats.projects'),
+                                                color: "purple"
+                                            },
+                                            {
+                                                value: "15+",
+                                                label: t('about.stats.clients'),
+                                                color: "green"
+                                            },
+                                            {
+                                                value: "99%",
+                                                label: t('about.stats.satisfaction'),
+                                                color: "orange"
+                                            }
+                                        ].map((stat, index) => (
+                                            <div key={index} className={`bg-white/80 dark:bg-slate-800/80 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-md flex flex-col items-center`}>
+                                                <p className={`text-2xl sm:text-3xl font-bold text-${stat.color}-600 dark:text-${stat.color}-400`}>{stat.value}</p>
+                                                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 text-center">{stat.label}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </AnimatedSection>
+
+                                <AnimatedSection delay={0.2} animation="fadeUp">
+                                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-gray-800 dark:text-white text-center md:text-left">
+                                        {t('about.expertise.title')}
+                                    </h2>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        {[
+                                            {
+                                                icon: <Code size={20} />,
+                                                label: t('about.expertise.frontend'),
+                                                color: "blue"
+                                            },
+                                            {
+                                                icon: <Terminal size={20} />,
+                                                label: t('about.expertise.backend'),
+                                                color: "purple"
+                                            },
+                                            {
+                                                icon: <Palette size={20} />,
+                                                label: t('about.expertise.design'),
+                                                color: "green"
+                                            },
+                                            {
+                                                icon: <Monitor size={20} />,
+                                                label: t('about.expertise.ux'),
+                                                color: "orange"
+                                            }
+                                        ].map((item, index) => (
+                                            <div key={index} className={`flex items-center gap-2 p-3 rounded-lg bg-${item.color}-50 dark:bg-${item.color}-900/20 text-${item.color}-600 dark:text-${item.color}-400 justify-center md:justify-start`}>
+                                                {item.icon}
+                                                <span className="font-medium text-sm sm:text-base">{item.label}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </AnimatedSection>
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
         </section>
