@@ -323,7 +323,7 @@ const AboutMe = () => {
                                 <div className="flex flex-col gap-8 w-full">
                                     <div className="space-y-6 w-full">
                                         <div>
-                                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-blue-600 dark:text-blue-400 text-center">
+                                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 text-center">
                                                 {t('about.title')}
                                             </h2>
                                             <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center">
@@ -432,7 +432,7 @@ const AboutMe = () => {
                                 <div className="flex flex-col md:flex-row md:items-center gap-8 w-full">
                                     <div className="space-y-6 w-full">
                                         <div>
-                                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-blue-600 dark:text-blue-400 text-center md:text-left">
+                                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 text-center md:text-left">
                                                 {t('about.title')}
                                             </h2>
                                             <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center md:text-left">

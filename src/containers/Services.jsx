@@ -203,13 +203,6 @@ const Background = memo(({ isMobile, mousePosition }) => (
                 backgroundSize: isMobile ? '40px 40px' : '80px 80px'
             }}
         />
-
-        {/* Formas decorativas simplificadas */}
-        <div className="absolute inset-0 overflow-hidden -z-10">
-            <div className="absolute rounded-full bg-blue-500/5 dark:bg-blue-500/10 blur-3xl w-[600px] h-[600px] -top-[300px] -right-[300px]" />
-            <div className="absolute rounded-full bg-purple-500/5 dark:bg-purple-500/10 blur-3xl w-[600px] h-[600px] -bottom-[300px] -left-[300px]" />
-        </div>
-
     </>
 ));
 
