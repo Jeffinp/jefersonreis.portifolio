@@ -74,6 +74,8 @@ const ProfileCard = memo(({ isMobile, mousePosition, t }) => (
                             src="/assets/images/Linkedin-foto.webp"
                             alt={t('hero.profileAlt')}
                             className="w-full h-full object-cover"
+                            width={240}
+                            height={240}
                             loading="eager"
                         />
                     </div>
@@ -176,7 +178,7 @@ const Hero = () => {
         <section
             ref={heroRef}
             id="hero"
-            className="relative min-h-screen flex items-center bg-transparent py-12 md:py-24 lg:py-32"
+            className="relative min-h-[600px] md:min-h-screen flex items-center bg-transparent py-12 md:py-24 lg:py-32"
             aria-label={t('hero.title')}
         >
             {/* Fundo 3D dinâmico - simplificado e memoizado */}
