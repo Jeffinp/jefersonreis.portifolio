@@ -109,22 +109,44 @@ const ServiceCard3D = memo(({
     actionText
 }) => {
     const Icon = icon;
-    const isEven = index % 2 === 0;
     const isExpanded = expanded === index;
-
-    // Extração segura das cores base do gradiente
-    let colorFrom = "blue";
-    let colorTo = "cyan";
-
-    if (gradient && typeof gradient === 'string') {
-        const parts = gradient.split(" ");
-        if (parts.length >= 2 && parts[1] && parts[1].startsWith("from-")) {
-            colorFrom = parts[1].replace("from-", "").split("-")[0];
+    
+    // Map de gradientes seguros para Tailwind
+    const gradientMap = {
+        "from-blue-500 to-cyan-500": {
+            gradientClass: "from-blue-500 to-cyan-500",
+            textColor: "text-blue-500 dark:text-blue-400",
+            hoverBg: "bg-blue-50 dark:bg-blue-900/20"
+        },
+        "from-purple-500 to-pink-500": {
+            gradientClass: "from-purple-500 to-pink-500",
+            textColor: "text-purple-500 dark:text-purple-400",
+            hoverBg: "bg-purple-50 dark:bg-purple-900/20"
+        },
+        "from-orange-500 to-red-500": {
+            gradientClass: "from-orange-500 to-red-500",
+            textColor: "text-orange-500 dark:text-orange-400",
+            hoverBg: "bg-orange-50 dark:bg-orange-900/20"
+        },
+        "from-green-500 to-teal-500": {
+            gradientClass: "from-green-500 to-teal-500",
+            textColor: "text-green-500 dark:text-green-400",
+            hoverBg: "bg-green-50 dark:bg-green-900/20"
+        },
+        "from-blue-500 to-indigo-500": {
+            gradientClass: "from-blue-500 to-indigo-500",
+            textColor: "text-blue-500 dark:text-blue-400",
+            hoverBg: "bg-blue-50 dark:bg-blue-900/20"
+        },
+        "from-red-500 to-purple-500": {
+            gradientClass: "from-red-500 to-purple-500",
+            textColor: "text-red-500 dark:text-red-400",
+            hoverBg: "bg-red-50 dark:bg-red-900/20"
         }
-        if (parts.length >= 3 && parts[2] && parts[2].startsWith("to-")) {
-            colorTo = parts[2].replace("to-", "").split("-")[0];
-        }
-    }
+    };
+
+    // Buscar o gradiente seguro para Tailwind
+    const safeGradient = gradientMap[gradient] || gradientMap["from-blue-500 to-cyan-500"];
 
     // Transformação 3D baseada na posição do mouse - simplificada para melhor performance
     const transform = !isMobile ?
@@ -134,7 +156,7 @@ const ServiceCard3D = memo(({
     return (
         <AnimatedSection
             delay={delay}
-            className="group h-full"
+            className="group h-full w-full"
             threshold={0.1}
         >
             <motion.div
@@ -144,44 +166,43 @@ const ServiceCard3D = memo(({
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
             >
-                <div className="relative h-full p-6 md:p-8 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-white/20 dark:border-slate-700/80 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                    {/* Efeito de borda inferior simplificado */}
-                    <div className="absolute inset-x-0 -bottom-px h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                    {/* Fundo simplificado */}
-                    <div className={`absolute inset-0 bg-gradient-to-br from-white/0 to-${colorFrom}-50/30 dark:from-slate-800/0 dark:to-${colorFrom}-900/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-
-                    <div className="relative flex flex-col items-center text-center h-full">
-                        {/* Ícone com gradiente - efeitos simplificados */}
-                        <div className={`relative mb-6 p-5 md:p-6 rounded-full bg-gradient-to-br ${gradient} text-white shadow-lg transition-transform duration-300 group-hover:scale-105 z-10`}>
-                            <Icon strokeWidth={1.5} className="w-8 h-8 md:w-10 md:h-10 relative z-10" aria-hidden="true" />
+                <div className="relative h-full rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md flex flex-col">
+                    {/* Borda de acento superior com gradiente */}
+                    <div className={`h-1 w-full bg-gradient-to-r ${safeGradient.gradientClass}`}></div>
+                    
+                    <div className="p-5 sm:p-6 lg:p-8 flex flex-col items-center text-center h-full">
+                        {/* Ícone com gradiente */}
+                        <div className={`mb-6 p-4 rounded-full bg-gradient-to-br ${safeGradient.gradientClass} text-white shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105`}>
+                            <Icon strokeWidth={1.5} className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" aria-hidden="true" />
                         </div>
 
                         {/* Título */}
-                        <h3 className="text-gray-800 dark:text-gray-100 text-xl md:text-2xl font-bold mb-4 transition-colors duration-300 z-10">
+                        <h3 className="text-xl sm:text-2xl font-bold mb-3 text-gray-800 dark:text-gray-100 transition-colors duration-300">
                             {title}
                         </h3>
 
                         {/* Descrição */}
-                        <motion.p
-                            className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-grow"
+                        <motion.div 
+                            className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed mb-6 flex-grow"
                             animate={{
-                                height: isExpanded ? 'auto' : '3.6rem',
-                                overflow: isExpanded ? 'visible' : 'hidden',
-                                textOverflow: isExpanded ? 'clip' : 'ellipsis'
+                                height: isExpanded ? 'auto' : '4.5rem',
+                                overflow: isExpanded ? 'visible' : 'hidden'
                             }}
                             transition={{ duration: 0.3 }}
                         >
-                            {description}
-                        </motion.p>
+                            <p className={isExpanded ? "" : "line-clamp-3"}>
+                                {description}
+                            </p>
+                        </motion.div>
 
-                        {/* Botão "Saiba mais" simplificado */}
+                        {/* Botão "Saiba mais" */}
                         <button
                             type="button"
-                            className={`flex items-center text-${colorFrom}-500 dark:text-${colorFrom}-400 font-medium hover:underline mt-auto`}
+                            className={`flex items-center ${safeGradient.textColor} font-medium mt-auto group`}
+                            aria-expanded={isExpanded}
                         >
-                            {actionText}
-                            <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" aria-hidden="true" />
+                            <span>{actionText}</span>
+                            <ChevronRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
                         </button>
                     </div>
                 </div>
@@ -193,17 +214,21 @@ const ServiceCard3D = memo(({
 ServiceCard3D.displayName = 'ServiceCard3D';
 
 // Componente memoizado para o fundo
-const Background = memo(({ isMobile, mousePosition }) => (
-    <>
-        {/* Grades */}
-        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
+const Background = memo(({ isMobile }) => (
+    <div className="absolute inset-0 -z-10">
+        {/* Grade de fundo responsiva */}
+        <div 
+            className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]"
             style={{
                 backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), 
                                linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
-                backgroundSize: isMobile ? '40px 40px' : '80px 80px'
+                backgroundSize: isMobile ? '2rem 2rem' : '5rem 5rem'
             }}
         />
-    </>
+        
+        {/* Elipse de destaque sutíl no fundo */}
+        <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-500/5 dark:to-purple-500/5 rounded-full blur-3xl" />
+    </div>
 ));
 
 Background.displayName = 'Background';
@@ -214,17 +239,17 @@ const WhatsAppButton = memo(({ t, isHovered }) => (
         href="https://wa.me/qr/KW2XXA46XAXNH1"
         target="_blank"
         rel="noopener noreferrer"
-        className="group fixed bottom-8 right-8 z-50 flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+        className="group fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3 px-4 sm:px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
         aria-label={t('services.whatsappButton')}
     >
-        <FaWhatsapp className="text-xl" />
+        <FaWhatsapp className="text-lg sm:text-xl" />
         <AnimatePresence>
             {isHovered && (
                 <motion.span
                     initial={{ width: 0, opacity: 0 }}
                     animate={{ width: 'auto', opacity: 1 }}
                     exit={{ width: 0, opacity: 0 }}
-                    className="font-medium whitespace-nowrap overflow-hidden"
+                    className="font-medium whitespace-nowrap overflow-hidden text-sm sm:text-base"
                 >
                     {t('services.whatsappText')}
                 </motion.span>
@@ -341,31 +366,25 @@ const Services = () => {
         <section
             ref={sectionRef}
             id="services"
-            className="relative py-16 md:py-24 bg-transparent overflow-hidden"
+            className="relative py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden"
             aria-label={t('services.ariaLabel')}
         >
-            {/* Fundo de quadrados alinhados igual ao padrão das outras seções */}
-            <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
-                style={{
-                    backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
-                    backgroundSize: isMobile ? '40px 40px' : '80px 80px'
-                }}
-            />
-
-            {/* Fundo dinâmico - simplificado e memoizado */}
-            <Background isMobile={isMobile} mousePosition={mousePosition} />
+            {/* Fundo dinâmico */}
+            <Background isMobile={isMobile} />
 
             <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10">
-                <AnimatedSection className="text-center mb-12 md:mb-16">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
+                {/* Cabeçalho da seção */}
+                <AnimatedSection className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
                         {t('services.title')}
                     </h2>
-                    <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300">
                         {t('services.subtitle')}
                     </p>
                 </AnimatedSection>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {/* Grid de serviços com layout responsivo */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
                     {serviceItems.map((service, index) => (
                         <ServiceCard3D
                             key={index}
@@ -384,7 +403,8 @@ const Services = () => {
                     ))}
                 </div>
 
-                <AnimatedSection delay={0.4} className="text-center mt-16">
+                {/* CTA da seção */}
+                <AnimatedSection delay={0.4} className="text-center mt-16 sm:mt-20">
                     <a
                         href="/assets/catalogo-jeffinp.pdf"
                         target="_blank"
@@ -394,14 +414,16 @@ const Services = () => {
                         onMouseLeave={() => setIsWhatsAppHovered(false)}
                     >
                         <FileText className="w-5 h-5" aria-hidden="true" />
-                        {t('services.downloadButton')}
+                        <span>{t('services.downloadButton')}</span>
                     </a>
-                    <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+                    <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 max-w-md mx-auto">
                         {t('services.downloadDescription')}
                     </p>
                 </AnimatedSection>
             </div>
 
+            {/* Botão do WhatsApp */}
+            <WhatsAppButton t={t} isHovered={isWhatsAppHovered} />
         </section>
     );
 };
