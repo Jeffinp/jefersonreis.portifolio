@@ -11,13 +11,13 @@ const useAnimatedVisibility = (threshold = 0.2, once = true) => {
     const controls = useAnimation();
     const ref = useRef(null);
     const inView = useInView(ref, { once, threshold });
-
+    
     useEffect(() => {
         if (inView) {
             controls.start("visible");
         }
     }, [controls, inView]);
-
+    
     return { ref, controls };
 };
 
@@ -32,7 +32,7 @@ const AnimatedSection = memo(({
     animation = "fadeUp"
 }) => {
     const { ref, controls } = useAnimatedVisibility(threshold);
-
+    
     // Define as variantes de animação com base no tipo solicitado
     const variants = {
         hidden: { opacity: 0, y: 30 },
@@ -46,7 +46,7 @@ const AnimatedSection = memo(({
             }
         }
     };
-
+    
     return (
         <motion.div
             ref={ref}
@@ -75,24 +75,24 @@ const SkillBar = memo(({ name, percentage, delay, isVisible }) => (
             delay: isVisible ? delay * 0.1 : 0,
             ease: "easeOut"
         }}
-        className="mb-6"
+        className="mb-4 sm:mb-5 lg:mb-6"
     >
-        <div className="flex justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+        <div className="flex justify-between mb-1 sm:mb-2">
+            <span className="text-xs sm:text-sm md:text-sm font-medium text-gray-700 dark:text-gray-300">
                 {name}
             </span>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-0.5 sm:gap-1">
                 <span
-                    className={`text-sm font-medium ${percentage === 100 ? "text-yellow-400" : "text-gray-500 dark:text-gray-400"}`}
+                    className={`text-xs sm:text-sm font-medium ${percentage === 100 ? "text-yellow-400" : "text-gray-500 dark:text-gray-400"}`}
                 >
                     {percentage}%
                 </span>
                 {percentage === 100 && (
-                    <Sparkles className="w-4 h-4 text-yellow-400" />
+                    <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400" />
                 )}
             </div>
         </div>
-        <div className="relative w-full bg-gray-100 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
+        <div className="relative w-full bg-gray-100 dark:bg-gray-700 rounded-full h-2 sm:h-2.5 md:h-3 overflow-hidden">
             <motion.div
                 className="absolute top-0 left-0 h-full rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500"
                 initial={{ width: 0 }}
@@ -114,7 +114,7 @@ SkillBar.displayName = 'SkillBar';
 // Componente memoizado para seções de skills
 const SkillSection = memo(({ title, icon, skills, id, openSection, toggleSection, isVisible }) => {
     const isExpanded = openSection === id;
-
+    
     const contentVariants = {
         hidden: { opacity: 0, height: 0 },
         visible: {
@@ -134,10 +134,10 @@ const SkillSection = memo(({ title, icon, skills, id, openSection, toggleSection
             }
         }
     };
-
+    
     return (
         <motion.div
-            className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-white/20 dark:border-slate-700/80 shadow-xl"
+            className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-lg sm:rounded-xl md:rounded-2xl border border-white/20 dark:border-slate-700/80 shadow-lg sm:shadow-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
@@ -145,17 +145,17 @@ const SkillSection = memo(({ title, icon, skills, id, openSection, toggleSection
             <div className="relative overflow-hidden">
                 <button
                     onClick={() => toggleSection(id)}
-                    className="w-full px-8 py-6 flex items-center justify-between relative z-10"
+                    className="w-full px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 flex items-center justify-between relative z-10"
                 >
-                    <div className="flex items-center gap-6">
-                        <span className="text-3xl">
+                    <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
+                        <span className="text-xl sm:text-2xl md:text-3xl">
                             {icon}
                         </span>
                         <div>
-                            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">
+                            <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800 dark:text-gray-100">
                                 {title}
                             </h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">
+                            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                                 {id === 'frontend' ? 'Frontend Development' :
                                     id === 'backend' ? 'Backend Development' :
                                         'Design Tools & Office'}
@@ -165,10 +165,9 @@ const SkillSection = memo(({ title, icon, skills, id, openSection, toggleSection
                     <div
                         className={`transition-transform duration-300 ${openSection === id ? "text-blue-500 rotate-180" : "text-gray-400 dark:text-gray-500"}`}
                     >
-                        <ChevronDown />
+                        <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
                 </button>
-
                 <AnimatePresence>
                     {isExpanded && (
                         <motion.div
@@ -179,7 +178,7 @@ const SkillSection = memo(({ title, icon, skills, id, openSection, toggleSection
                             exit="exit"
                             className="relative z-10"
                         >
-                            <div className="px-8 py-6 border-t border-gray-100 dark:border-gray-700">
+                            <div className="px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 border-t border-gray-100 dark:border-gray-700">
                                 {skills.map((skill, index) => (
                                     <SkillBar
                                         key={`${id}-${index}`}
@@ -203,20 +202,18 @@ SkillSection.displayName = 'SkillSection';
 // Componente memoizado para itens de estatísticas
 const StatItem = memo(({ index, skill }) => {
     const emoji = ["👥", "🤝", "💡", "⏱️"][index];
-
+    
     return (
         <AnimatedSection key={index} delay={0.2 + index * 0.1} className="group">
-            <div className="relative h-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-white/20 dark:border-slate-700/80 shadow-xl">
-                <div className="relative p-8 h-full z-10">
-                    <span className="text-4xl mb-6 block">
+            <div className="relative h-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-lg sm:rounded-xl md:rounded-2xl border border-white/20 dark:border-slate-700/80 shadow-md sm:shadow-lg md:shadow-xl">
+                <div className="relative p-4 sm:p-6 md:p-8 h-full z-10">
+                    <span className="text-2xl sm:text-3xl md:text-4xl mb-3 sm:mb-4 md:mb-6 block">
                         {emoji}
                     </span>
-
-                    <h4 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4">
+                    <h4 className="text-base sm:text-lg font-bold text-gray-800 dark:text-gray-100 mb-2 sm:mb-3 md:mb-4">
                         {skill.title}
                     </h4>
-
-                    <p className="text-gray-600 dark:text-gray-300">
+                    <p className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-300">
                         {skill.description}
                     </p>
                 </div>
@@ -283,32 +280,32 @@ const Skills = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const sectionRef = useRef(null);
-
+    
     // Dados memoizados
     const frontendSkills = React.useMemo(() => getFrontendSkills(t), [t]);
     const backendSkills = React.useMemo(() => getBackendSkills(t), [t]);
     const designSkills = React.useMemo(() => getDesignSkills(t), [t]);
     const softSkills = React.useMemo(() => getSoftSkills(t), [t]);
-
+    
     // Handler memoizado para alternar seções
     const toggleSection = useCallback((sectionId) => {
         setOpenSection(openSection === sectionId ? null : sectionId);
     }, [openSection]);
-
+    
     // Detector de dispositivo móvel com debounce
     const checkMobile = useCallback(() => {
         setIsMobile(window.innerWidth < 768);
     }, []);
-
+    
     // Inicialização e verificação de visibilidade
     useEffect(() => {
         const handleResize = debounce(() => {
             checkMobile();
         }, 250);
-
+        
         checkMobile();
         window.addEventListener('resize', handleResize);
-
+        
         const observer = new IntersectionObserver(
             ([entry]) => {
                 // Só definir como visível quando realmente estiver bem visível (50%)
@@ -319,50 +316,52 @@ const Skills = () => {
             },
             { threshold: 0.5 }
         );
-
+        
         if (sectionRef.current) {
             observer.observe(sectionRef.current);
         }
-
+        
         return () => {
             window.removeEventListener('resize', handleResize);
             observer.disconnect();
         };
     }, [checkMobile]);
-
+    
     return (
         <section
             id="skills"
             ref={sectionRef}
-            className="relative py-16 md:py-24 bg-transparent"
+            className="relative py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24 bg-transparent"
         >
             {/* Fundo de quadrados alinhados igual ao atuacao */}
             <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
                 style={{
                     backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
-                    backgroundSize: isMobile ? '40px 40px' : '80px 80px'
+                    backgroundSize: isMobile ? '20px 20px' : '40px 40px',
+                    backgroundSize: 'clamp(20px, 5vw, 80px) clamp(20px, 5vw, 80px)'
                 }}
             />
-            {/* Bolhas centralizadas */}
+            
+            {/* Bolhas centralizadas com tamanhos responsivos */}
             <div className="absolute inset-0 overflow-visible -z-10 pointer-events-none">
-                <div className="absolute left-1/2 top-1/2 w-[700px] h-[700px] bg-blue-500/5 dark:bg-blue-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
-                <div className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
+                <div className="absolute left-1/2 top-1/2 w-full max-w-screen-sm aspect-square bg-blue-500/5 dark:bg-blue-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
+                <div className="absolute left-1/2 top-1/2 w-3/4 max-w-screen-sm aspect-square bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
             </div>
-
+            
             <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="max-w-5xl mx-auto">
+                <div className="max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto">
                     {/* Cabeçalho da seção */}
-                    <AnimatedSection delay={0} className="text-center mb-16">
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
+                    <AnimatedSection delay={0} className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 md:mb-5 lg:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
                             {t('skills.title')}
                         </h2>
-                        <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                        <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-full sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto">
                             {t('skills.description')}
                         </p>
                     </AnimatedSection>
-
+                    
                     {/* Skills técnicas */}
-                    <div className="space-y-6 mb-16">
+                    <div className="space-y-3 sm:space-y-4 md:space-y-5 lg:space-y-6 mb-8 sm:mb-10 md:mb-12 lg:mb-16">
                         <AnimatedSection delay={0.1}>
                             <SkillSection
                                 id="frontend"
@@ -374,7 +373,7 @@ const Skills = () => {
                                 isVisible={isVisible && openSection === "frontend"}
                             />
                         </AnimatedSection>
-
+                        
                         <AnimatedSection delay={0.2}>
                             <SkillSection
                                 id="backend"
@@ -386,7 +385,7 @@ const Skills = () => {
                                 isVisible={isVisible && openSection === "backend"}
                             />
                         </AnimatedSection>
-
+                        
                         <AnimatedSection delay={0.3}>
                             <SkillSection
                                 id="design"
@@ -399,15 +398,15 @@ const Skills = () => {
                             />
                         </AnimatedSection>
                     </div>
-
+                    
                     {/* Soft skills */}
-                    <AnimatedSection delay={0.4} className="mb-8">
-                        <h3 className="text-2xl font-bold text-center mb-8 text-gray-800 dark:text-gray-200">
+                    <AnimatedSection delay={0.4} className="mb-4 sm:mb-6 md:mb-8">
+                        <h3 className="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-6 md:mb-8 text-gray-800 dark:text-gray-200">
                             {t('skills.softSkills.title')}
                         </h3>
                     </AnimatedSection>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
                         {softSkills.map((skill, index) => (
                             <StatItem key={index} index={index} skill={skill} />
                         ))}

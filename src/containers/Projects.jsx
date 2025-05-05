@@ -4,7 +4,7 @@ import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { debounce } from '../utils';
 
-// Componente memoizado para o botão de navegação do carrossel
+// Componente memoizado para o botão de navegação do carrossel - Melhorado para responsividade
 const CarouselButton = memo(({ direction, onClick, disabled }) => {
     const Icon = direction === 'left' ? ChevronLeft : ChevronRight;
     return (
@@ -12,28 +12,32 @@ const CarouselButton = memo(({ direction, onClick, disabled }) => {
             onClick={onClick}
             disabled={disabled}
             className={`absolute top-1/2 transform -translate-y-1/2 z-20
-                ${direction === 'left' ? 'left-2 md:left-4' : 'right-2 md:right-4'}
+                ${direction === 'left' 
+                    ? 'left-0 sm:left-1 md:left-2 lg:left-4' 
+                    : 'right-0 sm:right-1 md:right-2 lg:right-4'}
                 ${disabled ? 'opacity-30 cursor-not-allowed' : 'opacity-70 hover:opacity-100'}
-                bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full p-2 md:p-3
-                border border-gray-200 dark:border-gray-700 shadow-lg
-                transition-opacity duration-300`}
+                bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full 
+                p-1 sm:p-2 md:p-3
+                border border-gray-200 dark:border-gray-700 
+                shadow-md hover:shadow-lg
+                transition-all duration-300`}
             aria-label={direction === 'left' ? 'Previous project' : 'Next project'}
         >
-            <Icon className="w-5 h-5 md:w-6 md:h-6 text-gray-800 dark:text-gray-200" />
+            <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-gray-800 dark:text-gray-200" />
         </button>
     );
 });
 
 CarouselButton.displayName = 'CarouselButton';
 
-// Componente memoizado para o item do projeto
+// Componente memoizado para o item do projeto - Responsividade aprimorada
 const ProjectItem = memo(({ project, t, isMobile }) => {
     const { category, image, titleKey, descriptionKey, link, technologies = [] } = project;
 
     return (
-        <div className="flex-shrink-0 w-full sm:w-[340px] md:w-[380px] lg:w-[400px] p-2 sm:p-4">
-            <div className="h-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 transform transition duration-300 hover:shadow-xl dark:hover:shadow-2xl">
-                <div className="relative h-48 sm:h-56 md:h-60 overflow-hidden">
+        <div className="flex-shrink-0 w-full xs:w-[280px] sm:w-[320px] md:w-[340px] lg:w-[380px] xl:w-[400px] 2xl:w-[420px] p-1 xs:p-2 sm:p-3 md:p-4">
+            <div className="h-full bg-white dark:bg-gray-800 rounded-lg sm:rounded-xl shadow-md hover:shadow-lg lg:hover:shadow-xl dark:hover:shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-700 transform transition duration-300">
+                <div className="relative h-40 xs:h-44 sm:h-48 md:h-52 lg:h-56 xl:h-60 overflow-hidden">
                     <img
                         src={image}
                         alt={t(titleKey)}
@@ -41,32 +45,32 @@ const ProjectItem = memo(({ project, t, isMobile }) => {
                         loading="lazy"
                     />
                     {category && (
-                        <div className="absolute top-3 left-3 px-2 py-1 bg-blue-600/80 text-white text-xs rounded-md backdrop-blur-sm">
+                        <div className="absolute top-2 sm:top-3 left-2 sm:left-3 px-1.5 sm:px-2 py-0.5 sm:py-1 bg-blue-600/80 text-white text-xs rounded-md backdrop-blur-sm">
                             {category.charAt(0).toUpperCase() + category.slice(1)}
                         </div>
                     )}
                 </div>
 
-                <div className="p-4 md:p-6">
-                    <h3 className="text-lg md:text-xl font-bold mb-2 text-gray-900 dark:text-white">
+                <div className="p-3 sm:p-4 md:p-5 lg:p-6">
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 text-gray-900 dark:text-white">
                         {t(titleKey)}
                     </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-2 sm:mb-3 md:mb-4 line-clamp-2 sm:line-clamp-3">
                         {t(descriptionKey)}
                     </p>
 
-                    <div className="flex flex-wrap gap-2 mb-4">
-                        {technologies.slice(0, 3).map((tech, index) => (
+                    <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3 md:mb-4">
+                        {technologies.slice(0, isMobile ? 2 : 3).map((tech, index) => (
                             <span
                                 key={index}
-                                className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md"
+                                className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md"
                             >
                                 {tech}
                             </span>
                         ))}
-                        {technologies.length > 3 && (
-                            <span className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md">
-                                +{technologies.length - 3}
+                        {technologies.length > (isMobile ? 2 : 3) && (
+                            <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md">
+                                +{technologies.length - (isMobile ? 2 : 3)}
                             </span>
                         )}
                     </div>
@@ -76,10 +80,10 @@ const ProjectItem = memo(({ project, t, isMobile }) => {
                             href={link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+                            className="inline-flex items-center text-xs sm:text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
                         >
                             {t('portfolio.viewProject')}
-                            <ExternalLink className="ml-1 w-4 h-4" />
+                            <ExternalLink className="ml-1 w-3 h-3 sm:w-4 sm:h-4" />
                         </a>
                     )}
                 </div>
@@ -90,15 +94,15 @@ const ProjectItem = memo(({ project, t, isMobile }) => {
 
 ProjectItem.displayName = 'ProjectItem';
 
-// Componente memoizado para a navegação por categorias
+// Componente memoizado para a navegação por categorias - Aprimorado para responsividade
 const CategoryNav = memo(({ categories, activeFilter, setActiveFilter }) => {
     return (
-        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+        <div className="flex flex-wrap justify-center gap-1 xs:gap-1.5 sm:gap-2 md:gap-3 lg:gap-4 mb-6 sm:mb-8 md:mb-10 lg:mb-12">
             {categories.map((cat) => (
                 <button
                     key={cat.value}
                     onClick={() => setActiveFilter(cat.value)}
-                    className={`px-4 py-2 text-sm md:text-base rounded-full transition-colors duration-300 
+                    className={`px-2 xs:px-3 sm:px-4 py-1 sm:py-1.5 md:py-2 text-xs xs:text-sm md:text-base rounded-full transition-colors duration-300 
                         ${activeFilter === cat.value
                             ? 'bg-blue-600 text-white'
                             : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
@@ -121,16 +125,19 @@ const PortfolioSection = () => {
     const [visibleItems, setVisibleItems] = useState([]);
     const [activeFilter, setActiveFilter] = useState("all");
     const [isMobile, setIsMobile] = useState(false);
+    const [screenSize, setScreenSize] = useState('md');
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [isTransitioning, setIsTransitioning] = useState(false); // novo estado
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
     const trackRef = useRef(null);
     const itemWidth = useRef(0);
     const sectionRef = useRef(null);
     const carouselWrapperRef = useRef(null);
 
-    // Usar useMemo para os dados estáticos
+    // Projetos - mantido como está
     const projects = useMemo(() => [
+        /* Array de projetos - mantido como está no código original */
+        // Para não sobrecarregar o código, mantive o mesmo array de projetos
         {
             category: "web",
             image: "/assets/images/flyserv.webp",
@@ -526,9 +533,10 @@ const PortfolioSection = () => {
             type: "contracted",
             technologies: ["Icon Design", "Digital Art", "Branding"],
         },
+
     ], []);
 
-    // Categorias memoizadas
+    // Categorias memoizadas - mantido como está
     const categories = useMemo(() => [
         { value: "all", label: t('portfolio.categories.all') },
         { value: "web", label: t('portfolio.categories.web') },
@@ -537,7 +545,7 @@ const PortfolioSection = () => {
         { value: "modelagem", label: t('portfolio.categories.modelagem') },
     ], [t]);
 
-    // Filtrar projetos baseado na categoria selecionada - memoizado
+    // Filtrar projetos baseado na categoria selecionada - memoizado - mantido como está
     const filteredProjects = useMemo(() => {
         return activeFilter === "all"
             ? projects
@@ -547,34 +555,56 @@ const PortfolioSection = () => {
     // Número de itens no carrossel
     const totalItems = filteredProjects.length;
 
-    // Calcular quantos itens mostrar por slide com base no tamanho da tela
+    // Calcular quantos itens mostrar por slide com base no tamanho da tela - MELHORADO
     const getItemsPerView = useCallback(() => {
-        if (window.innerWidth < 640) {
+        if (window.innerWidth < 480) { // xs breakpoint
             return 1;
-        } else if (window.innerWidth < 1024) {
+        } else if (window.innerWidth < 640) { // sm breakpoint
+            return 1.2; // Mostra um item inteiro + parte do próximo
+        } else if (window.innerWidth < 768) { // md breakpoint
+            return 1.8; // Mostra quase dois itens completos
+        } else if (window.innerWidth < 1024) { // lg breakpoint
             return 2;
-        } else {
+        } else if (window.innerWidth < 1280) { // xl breakpoint
+            return 2.5; // Mostra 2 itens completos + parte do próximo
+        } else { // 2xl e maior
             return 3;
         }
     }, []);
 
-    // Detectar dispositivo móvel com callback otimizado
-    const checkMobile = useCallback(() => {
-        setIsMobile(window.innerWidth < 768);
+    // Detectar tamanho da tela com callback otimizado - MELHORADO
+    const checkScreenSize = useCallback(() => {
+        const width = window.innerWidth;
+        setIsMobile(width < 768);
+        
+        // Define o tamanho da tela atual para uso ao longo do componente
+        if (width < 480) {
+            setScreenSize('xs');
+        } else if (width < 640) {
+            setScreenSize('sm');
+        } else if (width < 768) {
+            setScreenSize('md');
+        } else if (width < 1024) {
+            setScreenSize('lg');
+        } else if (width < 1280) {
+            setScreenSize('xl');
+        } else {
+            setScreenSize('2xl');
+        }
     }, []);
 
-    // Mover o carrossel - otimizado
+    // Mover o carrossel - otimizado - mantido como está
     const moveCarousel = useCallback((newIndex) => {
         if (!trackRef.current) return;
-        setIsTransitioning(true); // inicia bloqueio
+        setIsTransitioning(true);
         const safeIndex = Math.max(0, Math.min(newIndex, totalItems - getItemsPerView()));
         setCurrentIndex(safeIndex);
         const translateX = safeIndex * -itemWidth.current;
         trackRef.current.style.transform = `translateX(${translateX}px)`;
-        setTimeout(() => setIsTransitioning(false), 500); // libera após 500ms
+        setTimeout(() => setIsTransitioning(false), 500);
     }, [totalItems, getItemsPerView]);
 
-    // Handlers de navegação memoizados
+    // Handlers de navegação memoizados - mantidos como estão
     const goToPrevious = useCallback(() => {
         if (isTransitioning) return;
         moveCarousel(currentIndex - 1);
@@ -585,10 +615,10 @@ const PortfolioSection = () => {
         moveCarousel(currentIndex + 1);
     }, [currentIndex, moveCarousel, isTransitioning]);
 
-    // Redimensionamento com debounce
+    // Redimensionamento com debounce - MELHORADO
     useEffect(() => {
         const handleResize = debounce(() => {
-            checkMobile();
+            checkScreenSize();
 
             // Recalcular largura dos itens
             if (carouselWrapperRef.current) {
@@ -599,7 +629,7 @@ const PortfolioSection = () => {
                 // Atualizar posição do trackRef após redimensionamento
                 moveCarousel(currentIndex);
             }
-        }, 250);
+        }, 200); // Reduzido para 200ms para melhor responsividade
 
         handleResize();
         window.addEventListener("resize", handleResize);
@@ -607,9 +637,9 @@ const PortfolioSection = () => {
         return () => {
             window.removeEventListener("resize", handleResize);
         };
-    }, [checkMobile, currentIndex, getItemsPerView, moveCarousel]);
+    }, [checkScreenSize, currentIndex, getItemsPerView, moveCarousel]);
 
-    // Inicialização e atualização do carrossel
+    // Inicialização e atualização do carrossel - mantido como está
     useEffect(() => {
         // Atualizar items visíveis com base na filtragem
         setVisibleItems(filteredProjects);
@@ -628,35 +658,90 @@ const PortfolioSection = () => {
         }
     }, [filteredProjects, getItemsPerView]);
 
+    // Implementação de arrastar (drag) para mobile - NOVO
+    const handleTouchStart = useCallback((e) => {
+        if (isTransitioning) return;
+        setIsDragging(true);
+        setMousePosition({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+    }, [isTransitioning]);
+
+    const handleTouchMove = useCallback((e) => {
+        if (!isDragging || isTransitioning) return;
+        
+        const deltaX = e.touches[0].clientX - mousePosition.x;
+        
+        if (Math.abs(deltaX) > 30) { // Limite mínimo para considerar como swipe
+            if (deltaX > 0) {
+                goToPrevious();
+            } else {
+                goToNext();
+            }
+            setIsDragging(false);
+        }
+    }, [isDragging, isTransitioning, mousePosition, goToPrevious, goToNext]);
+
+    const handleTouchEnd = useCallback(() => {
+        setIsDragging(false);
+    }, []);
+
     return (
         <section
             id="portfolio"
             ref={sectionRef}
-            className="relative py-16 md:py-24 bg-transparent z-10"
+            className="relative py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24 bg-transparent z-10"
         >
-            {/* Fundo de quadrados alinhados igual ao atuacao/skills */}
+            {/* Fundo de quadrados alinhados - MELHORADO para breakpoints */}
             <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
                 style={{
                     backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
-                    backgroundSize: isMobile ? '40px 40px' : '80px 80px'
+                    backgroundSize: screenSize === 'xs' ? '20px 20px' : 
+                                   screenSize === 'sm' ? '30px 30px' : 
+                                   screenSize === 'md' ? '40px 40px' : 
+                                   screenSize === 'lg' ? '60px 60px' : '80px 80px'
                 }}
             />
-            {/* Bolhas centralizadas */}
+            {/* Bolhas centralizadas - MELHORADO para responsividade */}
             <div className="absolute inset-0 overflow-visible opacity-30 dark:opacity-20 pointer-events-none -z-10">
-                <div className="absolute left-1/2 top-1/2 w-[700px] h-[700px] bg-blue-500/10 dark:bg-blue-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
-                <div className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-purple-500/10 dark:bg-purple-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
+                <div 
+                    className="absolute left-1/2 top-1/2 bg-blue-500/10 dark:bg-blue-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2"
+                    style={{
+                        width: screenSize === 'xs' ? '300px' : 
+                              screenSize === 'sm' ? '400px' : 
+                              screenSize === 'md' ? '500px' : 
+                              screenSize === 'lg' ? '600px' : '700px',
+                        height: screenSize === 'xs' ? '300px' : 
+                               screenSize === 'sm' ? '400px' : 
+                               screenSize === 'md' ? '500px' : 
+                               screenSize === 'lg' ? '600px' : '700px',
+                    }}
+                />
+                <div 
+                    className="absolute left-1/2 top-1/2 bg-purple-500/10 dark:bg-purple-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" 
+                    style={{ 
+                        zIndex: -1,
+                        width: screenSize === 'xs' ? '200px' : 
+                              screenSize === 'sm' ? '300px' : 
+                              screenSize === 'md' ? '350px' : 
+                              screenSize === 'lg' ? '400px' : '500px',
+                        height: screenSize === 'xs' ? '200px' : 
+                               screenSize === 'sm' ? '300px' : 
+                               screenSize === 'md' ? '350px' : 
+                               screenSize === 'lg' ? '400px' : '500px',
+                        transform: 'translate(-50%, -50%) scale(0.7)'
+                    }}
+                />
             </div>
 
             {/* Container principal */}
-            <div className="relative z-10 container mx-auto px-4">
-                {/* Cabeçalho da seção */}
-                <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+            <div className="relative z-10 container mx-auto px-3 sm:px-4 md:px-6">
+                {/* Cabeçalho da seção - MELHORADO para responsividade */}
+                <div className="text-center max-w-xs xs:max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.7 }}
-                        className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400"
+                        className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400"
                     >
                         {t('portfolio.title')}
                     </motion.h2>
@@ -666,22 +751,22 @@ const PortfolioSection = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.7, delay: 0.1 }}
-                        className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+                        className="text-sm xs:text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-xs xs:max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto"
                     >
                         {t('portfolio.subtitle')}
                     </motion.p>
                 </div>
 
-                {/* Navegação por categorias */}
+                {/* Navegação por categorias - Usando o componente melhorado */}
                 <CategoryNav
                     categories={categories}
                     activeFilter={activeFilter}
                     setActiveFilter={setActiveFilter}
                 />
 
-                {/* Carrossel */}
+                {/* Carrossel - MELHORADO para touch e responsividade */}
                 <div className="relative">
-                    {/* Botões de navegação do carrossel */}
+                    {/* Botões de navegação do carrossel - Usando o componente melhorado */}
                     <CarouselButton
                         direction="left"
                         onClick={goToPrevious}
@@ -694,18 +779,21 @@ const PortfolioSection = () => {
                         disabled={currentIndex >= totalItems - getItemsPerView() || isTransitioning}
                     />
 
-                    {/* Container do carrossel */}
+                    {/* Container do carrossel - MELHORADO para touch */}
                     <div
                         ref={carouselWrapperRef}
                         className="overflow-hidden relative mx-auto"
                         onMouseEnter={() => setIsHovering(true)}
                         onMouseLeave={() => setIsHovering(false)}
+                        onTouchStart={handleTouchStart}
+                        onTouchMove={handleTouchMove}
+                        onTouchEnd={handleTouchEnd}
                     >
                         <div
                             ref={trackRef}
                             className="flex transition-transform duration-500 ease-out"
                         >
-                            {/* Itens do carrossel */}
+                            {/* Itens do carrossel - Usando o componente melhorado */}
                             {filteredProjects.map((project, index) => (
                                 <ProjectItem
                                     key={`${project.category}-${index}`}
@@ -718,16 +806,17 @@ const PortfolioSection = () => {
                     </div>
                 </div>
 
-                {/* Paginação simplificada */}
-                <div className="flex justify-center mt-8 gap-2">
+                {/* Paginação simplificada - MELHORADO para responsividade */}
+                <div className="flex justify-center mt-4 sm:mt-6 lg:mt-8 gap-1 sm:gap-2">
                     {Array.from({ length: Math.ceil(totalItems / getItemsPerView()) }).map((_, index) => (
                         <button
                             key={index}
                             onClick={() => moveCarousel(index * getItemsPerView())}
-                            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === Math.floor(currentIndex / getItemsPerView())
-                                ? "bg-blue-600 w-5"
-                                : "bg-gray-300 dark:bg-gray-700"
-                                }`}
+                            className={`w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 ${
+                                index === Math.floor(currentIndex / getItemsPerView())
+                                    ? "bg-blue-600 w-3 sm:w-4 md:w-5"
+                                    : "bg-gray-300 dark:bg-gray-700"
+                            }`}
                             aria-label={`Go to page ${index + 1}`}
                         />
                     ))}

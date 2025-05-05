@@ -7,7 +7,7 @@ const NavItem = ({ href, label, onClick }) => (
     <a
         href={href}
         onClick={onClick}
-        className="text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 dark:hover:from-blue-400 dark:hover:to-purple-400 hover:bg-clip-text transition-colors duration-300 px-1 py-0.5 rounded-md"
+        className="text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 dark:hover:from-blue-400 dark:hover:to-purple-400 hover:bg-clip-text transition-colors duration-300 px-1 py-0.5 rounded-md"
     >
         {label}
     </a>
@@ -19,7 +19,7 @@ const MobileNavItem = ({ href, label, onClick }) => (
         <a
             href={href}
             onClick={onClick}
-            className="block text-xl font-medium text-gray-900 dark:text-white hover:text-transparent hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 dark:hover:from-blue-400 dark:hover:to-purple-400 hover:bg-clip-text transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 py-2 px-2 rounded-md"
+            className="block text-lg sm:text-xl font-medium text-gray-900 dark:text-white hover:text-transparent hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 dark:hover:from-blue-400 dark:hover:to-purple-400 hover:bg-clip-text transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 py-2 px-2 rounded-md"
         >
             {label}
         </a>
@@ -30,19 +30,20 @@ const MobileNavItem = ({ href, label, onClick }) => (
 const LanguageButton = ({ language, currentLanguage, onClick, icon, label, ariaLabel }) => (
     <button
         onClick={onClick}
-        className={`flex items-center space-x-1 px-2 py-1 rounded-md transition-colors duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 ${currentLanguage === language
-            ? 'bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-600 dark:text-blue-400'
-            : 'text-gray-600 dark:text-gray-400'
-            }`}
+        className={`flex items-center space-x-1 px-1 sm:px-2 py-1 rounded-md transition-colors duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 ${
+            currentLanguage === language
+                ? 'bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-600 dark:text-blue-400'
+                : 'text-gray-600 dark:text-gray-400'
+        }`}
         aria-label={ariaLabel}
     >
         <img
             src={icon}
             alt={label}
-            className="w-5 h-5 rounded-sm"
+            className="w-4 h-4 sm:w-5 sm:h-5 rounded-sm"
             loading="lazy"
         />
-        <span>{language.toUpperCase()}</span>
+        <span className="text-xs sm:text-sm">{language.toUpperCase()}</span>
     </button>
 );
 
@@ -138,12 +139,14 @@ const Header = ({ toggleDarkMode, darkMode }) => {
             }
             lastScrollY.current = currentScrollY;
         };
+
         const handleScrollProgress = () => {
             const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             if (windowHeight > 0) {
                 setScrollProgress((window.scrollY / windowHeight) * 100);
             }
         };
+
         window.addEventListener('scroll', handleScroll, { passive: true });
         window.addEventListener('scroll', handleScrollProgress, { passive: true });
         return () => {
@@ -156,30 +159,32 @@ const Header = ({ toggleDarkMode, darkMode }) => {
         <>
             {/* Barra de progresso do scroll */}
             <div
-                className="fixed top-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 z-50 transition-all duration-300"
+                className="fixed top-0 left-0 h-0.5 sm:h-1 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 z-50 transition-all duration-300"
                 style={{ width: `${scrollProgress}%` }}
                 role="progressbar"
                 aria-valuenow={Math.round(scrollProgress)}
                 aria-valuemin="0"
                 aria-valuemax="100"
             />
-
             <header
                 ref={headerRef}
-                className={`fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-slate-900/80 shadow-lg dark:shadow-slate-800/20 backdrop-blur-sm will-change-transform transition-transform duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
+                className={`fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-slate-900/80 shadow-lg dark:shadow-slate-800/20 backdrop-blur-sm will-change-transform transition-transform duration-300 ease-in-out ${
+                    isVisible ? 'translate-y-0' : '-translate-y-full'
+                }`}
             >
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center justify-between h-20">
+                <div className="max-w-full sm:max-w-6xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12">
+                    <div className="flex items-center justify-between h-16 sm:h-18 md:h-20">
                         {/* Logo */}
                         <a
                             href="/"
-                            className="text-2xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent tracking-tight"
+                            className="text-xl sm:text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent tracking-tight"
                             aria-label={t("header.logo_aria")}
                         >
                             JR
                         </a>
-                        {/* Desktop Navigation */}
-                        <nav className="hidden md:flex items-center justify-center gap-8">
+
+                        {/* Desktop Navigation - Escondido em mobile, visível a partir de md */}
+                        <nav className="hidden md:flex items-center justify-center gap-4 lg:gap-6 xl:gap-8">
                             {navItems.map((item) => (
                                 <NavItem
                                     key={item.href}
@@ -189,10 +194,11 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                                 />
                             ))}
                         </nav>
+
                         {/* Actions */}
-                        <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
                             {/* Language Switcher */}
-                            <div className="flex items-center space-x-2 border-r border-gray-200 dark:border-gray-700 pr-4">
+                            <div className="flex items-center space-x-1 sm:space-x-2 border-r border-gray-200 dark:border-gray-700 pr-2 sm:pr-3 md:pr-4">
                                 <LanguageButton
                                     language="pt"
                                     currentLanguage={i18n.language}
@@ -210,37 +216,40 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                                     ariaLabel={t("header.english_language")}
                                 />
                             </div>
+
                             {/* Dark Mode Toggle */}
                             <button
                                 onClick={toggleDarkMode}
-                                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+                                className="p-1.5 sm:p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
                                 aria-label={darkMode ? t("header.toggle_light_mode") : t("header.toggle_dark_mode")}
                                 aria-pressed={darkMode}
                             >
                                 {darkMode ? (
-                                    <Sun className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                                    <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 dark:text-gray-400" />
                                 ) : (
-                                    <Moon className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                                    <Moon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 dark:text-gray-400" />
                                 )}
                             </button>
-                            {/* Mobile Menu Button */}
+
+                            {/* Mobile Menu Button - Escondido em desktop */}
                             <button
                                 ref={menuButtonRef}
-                                className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+                                className="md:hidden p-1.5 sm:p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
                                 onClick={toggleMenu}
                                 aria-expanded={menuOpen}
                                 aria-controls="mobile-menu"
                                 aria-label={menuOpen ? t("header.close_menu") : t("header.open_menu")}
                             >
                                 {menuOpen ? (
-                                    <X className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+                                    <X className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 dark:text-gray-400" />
                                 ) : (
-                                    <Menu className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+                                    <Menu className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 dark:text-gray-400" />
                                 )}
                             </button>
                         </div>
                     </div>
                 </div>
+
                 {/* Mobile Menu Overlay */}
                 {menuOpen && (
                     <div
@@ -249,16 +258,19 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                         aria-hidden="true"
                     />
                 )}
+
                 {/* Mobile Menu */}
                 <div
                     id="mobile-menu"
                     ref={mobileMenuRef}
-                    className={`fixed top-20 right-0 w-64 h-[calc(100vh-5rem)] bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg z-30 transition-transform duration-300 ease-in-out ${menuOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden`}
+                    className={`fixed top-16 sm:top-18 right-0 w-full sm:w-72 md:w-80 h-[calc(100vh-4rem)] sm:h-[calc(100vh-4.5rem)] bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg z-30 transition-transform duration-300 ease-in-out ${
+                        menuOpen ? 'translate-x-0' : 'translate-x-full'
+                    } md:hidden overflow-y-auto`}
                     aria-hidden={!menuOpen}
                 >
-                    <div className="flex flex-col h-full px-6 pt-6">
+                    <div className="flex flex-col h-full px-4 sm:px-6 pt-4 sm:pt-6">
                         <nav className="flex-1">
-                            <ul className="space-y-10">
+                            <ul className="space-y-6 sm:space-y-8 md:space-y-10">
                                 {navItems.map((item) => (
                                     <MobileNavItem
                                         key={item.href}

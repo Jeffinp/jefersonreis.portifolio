@@ -12,36 +12,30 @@ const BackgroundElements = memo(({ isMobile, mousePosition }) => (
             style={{
                 backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), 
                                  linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
-                backgroundSize: isMobile ? '40px 40px' : '80px 80px'
+                backgroundSize: isMobile ? '20px 20px' : '80px 80px'
             }}
         />
 
         {/* Camadas de esferas com efeito de profundidade - bolhas centralizadas */}
         <div className="absolute inset-0 overflow-visible -z-10 pointer-events-none">
-            <div className={`absolute left-1/2 top-1/2 w-[800px] h-[800px] bg-blue-500/5 dark:bg-blue-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2`} style={{ zIndex: 1 }} />
-            <div className={`absolute left-1/2 top-1/2 w-[600px] h-[600px] bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2`} style={{ zIndex: 0, transform: 'translate(-50%, -50%) scale(0.75)' }} />
+            <div className="absolute left-1/2 top-1/2 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] md:w-[600px] md:h-[600px] lg:w-[800px] lg:h-[800px] bg-blue-500/5 dark:bg-blue-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: 1 }} />
+            <div className="absolute left-1/2 top-1/2 w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: 0, transform: 'translate(-50%, -50%) scale(0.75)' }} />
         </div>
 
-        {/* Elementos geométricos flutuantes - menos em mobile */}
-        {!isMobile && (
-            <>
-                <div className="absolute top-20 left-[10%] w-8 h-8 border-2 border-blue-500/30 dark:border-blue-400/30 rounded-md animate-float-slow"
-                    style={{
-                        transform: `rotate(12deg) translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px)`
-                    }}
-                />
-                <div className="absolute top-[30%] right-[15%] w-12 h-12 border-2 border-purple-500/30 dark:border-purple-400/30 rounded-full animate-float-reverse"
-                    style={{
-                        transform: `rotate(-12deg) translate(${mousePosition.x * 15}px, ${mousePosition.y * 15}px)`
-                    }}
-                />
-            </>
-        )}
+        {/* Elementos geométricos flutuantes - responsivos */}
+        <div className="hidden sm:block absolute top-20 left-[5%] sm:left-[7%] md:left-[10%] w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 border-2 border-blue-500/30 dark:border-blue-400/30 rounded-md animate-float-slow"
+            style={{
+                transform: `rotate(12deg) translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px)`
+            }}
+        />
+        <div className="hidden sm:block absolute top-[30%] right-[10%] sm:right-[12%] md:right-[15%] w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 border-2 border-purple-500/30 dark:border-purple-400/30 rounded-full animate-float-reverse"
+            style={{
+                transform: `rotate(-12deg) translate(${mousePosition.x * 15}px, ${mousePosition.y * 15}px)`
+            }}
+        />
 
-        {/* Apenas alguns elementos leves em mobile */}
-        {isMobile && (
-            <div className="absolute top-20 right-20 w-8 h-8 border-2 border-blue-500/30 dark:border-blue-400/30 rounded-md animate-float-slow" />
-        )}
+        {/* Elemento leve para dispositivos móveis */}
+        <div className="sm:hidden absolute top-16 right-10 w-6 h-6 border-2 border-blue-500/30 dark:border-blue-400/30 rounded-md animate-float-slow" />
     </div>
 ));
 
@@ -50,14 +44,14 @@ BackgroundElements.displayName = 'BackgroundElements';
 // Componente memoizado para o card de perfil
 const ProfileCard = memo(({ isMobile, mousePosition, t }) => (
     <motion.div
-        className="w-full md:w-1/2 flex justify-center order-1 md:order-2"
+        className="w-full sm:w-3/4 md:w-1/2 lg:w-5/12 xl:w-2/5 flex justify-center order-1 md:order-2"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
         <div className="perspective-3d">
             <div
-                className={`relative w-64 h-64 md:w-80 md:h-80 transform-gpu transition-all duration-300`}
+                className="relative w-56 h-56 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 transform-gpu transition-all duration-300"
                 style={{
                     transform: isMobile ? 'none' : `rotateY(${mousePosition.x * 5}deg) rotateX(${mousePosition.y * -5}deg)`
                 }}
@@ -69,7 +63,7 @@ const ProfileCard = memo(({ isMobile, mousePosition, t }) => (
 
                 {/* Imagem de perfil com moldura */}
                 <div className="absolute inset-0 flex items-center justify-center transform-gpu -translate-z-0">
-                    <div className="w-48 h-48 md:w-60 md:h-60 rounded-full overflow-hidden border-4 border-white dark:border-gray-700 shadow-xl">
+                    <div className="w-40 h-40 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 xl:w-72 xl:h-72 rounded-full overflow-hidden border-4 border-white dark:border-gray-700 shadow-xl">
                         <img
                             src="/assets/images/Linkedin-foto.webp"
                             alt={t('hero.profileAlt')}
@@ -82,7 +76,8 @@ const ProfileCard = memo(({ isMobile, mousePosition, t }) => (
                 </div>
 
                 {/* Elementos decorativos reduzidos */}
-                <div className="absolute top-0 right-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-blue-400 to-purple-400 shadow-xl transform-gpu translate-z-4 animate-float"
+                <div 
+                    className="absolute top-0 right-0 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full bg-gradient-to-br from-blue-400 to-purple-400 shadow-xl transform-gpu translate-z-4 animate-float"
                     style={{ marginTop: '-0.5rem', marginRight: '-0.5rem' }}
                 ></div>
             </div>
@@ -165,10 +160,10 @@ const Hero = () => {
 
     // Skills para mostrar no carrossel - memoizados
     const skills = [
-        { name: "React", icon: <Code className="w-5 h-5" /> },
-        { name: "Design", icon: <Palette className="w-5 h-5" /> },
-        { name: "Web", icon: <ExternalLink className="w-5 h-5" /> },
-        { name: "Python", icon: <Cpu className="w-5 h-5" /> },
+        { name: "React", icon: <Code className="w-4 h-4 sm:w-5 sm:h-5" /> },
+        { name: "Design", icon: <Palette className="w-4 h-4 sm:w-5 sm:h-5" /> },
+        { name: "Web", icon: <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" /> },
+        { name: "Python", icon: <Cpu className="w-4 h-4 sm:w-5 sm:h-5" /> },
     ];
 
     // Texto do subtítulo - reduzido para menos animações
@@ -178,63 +173,65 @@ const Hero = () => {
         <section
             ref={heroRef}
             id="hero"
-            className="relative min-h-[600px] md:min-h-screen flex items-center bg-transparent py-12 md:py-24 lg:py-32"
+            className="relative min-h-[550px] sm:min-h-[600px] md:min-h-[650px] lg:min-h-screen xl:min-h-screen flex items-center bg-transparent py-8 sm:py-12 md:py-16 lg:py-24 xl:py-32"
             aria-label={t('hero.title')}
         >
             {/* Fundo 3D dinâmico - simplificado e memoizado */}
             <BackgroundElements isMobile={isMobile} mousePosition={mousePosition} />
 
             {/* Conteúdo principal */}
-            <div className="relative z-10 w-full mx-auto px-4 sm:px-8 lg:px-16 py-8 md:py-16 lg:py-20 max-w-7xl">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-20 lg:gap-32">
+            <div className="relative z-10 w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20 max-w-7xl">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-8 sm:gap-10 md:gap-12 lg:gap-20 xl:gap-32">
                     {/* Card do perfil */}
                     <ProfileCard isMobile={isMobile} mousePosition={mousePosition} t={t} />
 
                     {/* Seção de texto animado */}
-                    <div className="w-full md:w-1/2 space-y-8 text-center md:text-left order-2 md:order-1 flex flex-col items-center md:items-start">
+                    <div className="w-full sm:w-4/5 md:w-1/2 lg:w-7/12 xl:w-3/5 space-y-4 sm:space-y-6 md:space-y-8 text-center md:text-left order-2 md:order-1 flex flex-col items-center md:items-start mt-8 md:mt-0">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                             className="w-full"
                         >
-                            <h2 className="text-base md:text-lg font-semibold text-blue-600 dark:text-blue-400 mb-3 tracking-widest uppercase flex items-center justify-center md:justify-start gap-2">
-                                <span className="h-2 w-2 rounded-full bg-blue-600 dark:bg-blue-400"></span>
-                                {isMobile ? "Dev Full Stack & Designer" : "Desenvolvedor Full Stack & Designer"}
+                            <h2 className="text-sm sm:text-base md:text-lg font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3 tracking-widest uppercase flex items-center justify-center md:justify-start gap-2">
+                                <span className="h-1.5 sm:h-2 w-1.5 sm:w-2 rounded-full bg-blue-600 dark:bg-blue-400"></span>
+                                <span className="hidden xs:inline">Desenvolvedor</span>
+                                <span className="xs:hidden">Dev</span>
+                                {' '}Full Stack & Designer
                             </h2>
 
-                            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-4 md:mb-6 text-slate-900 dark:text-white">
+                            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight leading-tight mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-slate-900 dark:text-white">
                                 {t('hero.title')}
                             </h1>
 
-                            <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-300 max-w-xl mx-auto md:mx-0 font-medium mb-6 md:mb-8">
+                            <p className="text-base xs:text-lg sm:text-xl md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 max-w-full sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto md:mx-0 font-medium mb-4 sm:mb-5 md:mb-6 lg:mb-8">
                                 {subtitleText}
                             </p>
 
                             {/* Botões de ação */}
-                            <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center md:justify-start w-full">
+                            <div className="flex flex-col xs:flex-row gap-3 sm:gap-4 mt-4 sm:mt-5 md:mt-6 justify-center md:justify-start w-full">
                                 <a
                                     href="#contact"
-                                    className="inline-flex items-center justify-center px-7 py-3 font-semibold rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-lg transition-colors duration-300 text-base md:text-lg gap-2"
+                                    className="inline-flex items-center justify-center px-5 sm:px-6 md:px-7 py-2.5 sm:py-3 font-semibold rounded-lg sm:rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-lg transition-colors duration-300 text-sm sm:text-base md:text-lg gap-1.5 sm:gap-2"
                                 >
-                                    <Mail className="w-5 h-5" />
+                                    <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
                                     {t('hero.buttons.contact')}
                                 </a>
                                 <a
                                     href="#portfolio"
-                                    className="inline-flex items-center justify-center px-7 py-3 font-semibold rounded-xl border border-blue-600 hover:border-blue-700 text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 dark:border-blue-500 dark:hover:border-blue-400 transition-colors duration-300 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm shadow-lg text-base md:text-lg gap-2"
+                                    className="inline-flex items-center justify-center px-5 sm:px-6 md:px-7 py-2.5 sm:py-3 font-semibold rounded-lg sm:rounded-xl border border-blue-600 hover:border-blue-700 text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 dark:border-blue-500 dark:hover:border-blue-400 transition-colors duration-300 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm shadow-lg text-sm sm:text-base md:text-lg gap-1.5 sm:gap-2"
                                 >
                                     {t('hero.buttons.viewProjects')}
                                 </a>
                             </div>
                         </motion.div>
 
-                        {/* Skills - component simplificado e sem animações desnecessárias */}
-                        <div className="hidden md:flex gap-4 flex-wrap justify-center md:justify-start mt-6">
+                        {/* Skills - agora responsivos em todos os breakpoints */}
+                        <div className="flex gap-2 xs:gap-3 sm:gap-4 flex-wrap justify-center md:justify-start mt-4 sm:mt-5 md:mt-6">
                             {skills.map((skill, index) => (
                                 <span
                                     key={index}
-                                    className="inline-flex items-center px-4 py-2 rounded-full text-base bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 shadow-sm border border-gray-200 dark:border-gray-700 gap-2"
+                                    className="inline-flex items-center px-2.5 xs:px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs xs:text-sm sm:text-base bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 shadow-sm border border-gray-200 dark:border-gray-700 gap-1.5 sm:gap-2"
                                 >
                                     {skill.icon}
                                     <span>{skill.name}</span>
@@ -245,17 +242,17 @@ const Hero = () => {
                 </div>
             </div>
 
-            {/* Seta de scroll para baixo - simplificada */}
-            <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 opacity-80 hover:opacity-100 transition-opacity duration-300">
+            {/* Seta de scroll para baixo - responsiva */}
+            <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 transform -translate-x-1/2 z-10 opacity-80 hover:opacity-100 transition-opacity duration-300">
                 <a
                     href="#about"
                     aria-label={t('hero.scrollToAbout')}
                     className="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400"
                 >
-                    <span className="text-xs uppercase tracking-wider mb-2 font-semibold">
+                    <span className="text-[10px] xs:text-xs sm:text-sm uppercase tracking-wider mb-1 sm:mb-2 font-semibold">
                         {t('hero.scrollDown')}
                     </span>
-                    <ChevronDown className="w-6 h-6 animate-bounce" />
+                    <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 animate-bounce" />
                 </a>
             </div>
         </section>

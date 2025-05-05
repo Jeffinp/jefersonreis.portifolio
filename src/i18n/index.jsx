@@ -9,7 +9,7 @@ const resources = {
             menu: {
                 home: "Início",
                 about: "Sobre",
-                areas: "Áreas de Atuação",
+                areas: "Atuação",
                 skills: "Habilidades",
                 portfolio: "Portfólio",
                 resume: "Currículo",
