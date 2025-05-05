@@ -55,7 +55,6 @@ const Header = ({ toggleDarkMode, darkMode }) => {
     const headerRef = useRef(null);
     const [isVisible, setIsVisible] = useState(true);
     const lastScrollY = useRef(0);
-    const throttleTimeout = useRef(null);
 
     // Toggle menu com controle de overflow no body
     const toggleMenu = useCallback(() => {
@@ -111,73 +110,53 @@ const Header = ({ toggleDarkMode, darkMode }) => {
     // Detecta clique fora do menu mobile
     useEffect(() => {
         if (!menuOpen) return;
-
         const handleClickOutside = (event) => {
             const isMenuButton = menuButtonRef.current?.contains(event.target);
             const isInMenu = mobileMenuRef.current?.contains(event.target);
-
             if (!isMenuButton && !isInMenu) {
                 closeMenu();
             }
         };
-
         document.addEventListener('mousedown', handleClickOutside);
         document.addEventListener('touchstart', handleClickOutside);
-
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
             document.removeEventListener('touchstart', handleClickOutside);
         };
     }, [menuOpen, closeMenu]);
 
-    // CORREÇÃO: Implementação otimizada do controle de visibilidade do header durante o scroll
+    // Otimizado: Controle de visibilidade do header usando Tailwind CSS
     useEffect(() => {
-        // Inicializa com o valor atual de scroll
         lastScrollY.current = window.scrollY;
-
         const handleScroll = () => {
-            // Sem throttle para garantir responsividade imediata
             const currentScrollY = window.scrollY;
-            
-            // Determina se está descendo a página (true) ou subindo (false)
             const isScrollingDown = currentScrollY > lastScrollY.current;
-            
-            // Se estiver descendo E já tiver passado do limiar de 80px, esconde o header
-            // Se estiver subindo OU ainda não passou do limiar, mostra o header
             if (isScrollingDown && currentScrollY > 80) {
                 setIsVisible(false);
             } else {
                 setIsVisible(true);
             }
-            
-            // Atualiza a referência para a próxima comparação
             lastScrollY.current = currentScrollY;
         };
-
-        // Atualiza o progresso do scroll separadamente
         const handleScrollProgress = () => {
             const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             if (windowHeight > 0) {
                 setScrollProgress((window.scrollY / windowHeight) * 100);
             }
         };
-
-        // Adiciona os event listeners
         window.addEventListener('scroll', handleScroll, { passive: true });
         window.addEventListener('scroll', handleScrollProgress, { passive: true });
-
-        // Limpa os listeners quando o componente é desmontado
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('scroll', handleScrollProgress);
         };
-    }, []); // Remove a dependência em isVisible para evitar recriações desnecessárias do listener
+    }, []);
 
     return (
         <>
             {/* Barra de progresso do scroll */}
             <div
-                className="fixed top-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 z-50 transition-transform duration-300"
+                className="fixed top-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 z-50 transition-all duration-300"
                 style={{ width: `${scrollProgress}%` }}
                 role="progressbar"
                 aria-valuenow={Math.round(scrollProgress)}
@@ -187,8 +166,7 @@ const Header = ({ toggleDarkMode, darkMode }) => {
 
             <header
                 ref={headerRef}
-                style={{ transform: isVisible ? 'translateY(0)' : 'translateY(-100%)' }}
-                className="fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-slate-900/80 shadow-lg dark:shadow-slate-800/20 backdrop-blur-sm will-change-transform transition-transform duration-300 ease-in-out"
+                className={`fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-slate-900/80 shadow-lg dark:shadow-slate-800/20 backdrop-blur-sm will-change-transform transition-transform duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
             >
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-20">
@@ -200,7 +178,6 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                         >
                             JR
                         </a>
-
                         {/* Desktop Navigation */}
                         <nav className="hidden md:flex items-center justify-center gap-8">
                             {navItems.map((item) => (
@@ -212,7 +189,6 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                                 />
                             ))}
                         </nav>
-
                         {/* Actions */}
                         <div className="flex items-center space-x-4">
                             {/* Language Switcher */}
@@ -234,7 +210,6 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                                     ariaLabel={t("header.english_language")}
                                 />
                             </div>
-
                             {/* Dark Mode Toggle */}
                             <button
                                 onClick={toggleDarkMode}
@@ -248,7 +223,6 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                                     <Moon className="w-5 h-5 text-gray-600 dark:text-gray-400" />
                                 )}
                             </button>
-
                             {/* Mobile Menu Button */}
                             <button
                                 ref={menuButtonRef}
@@ -267,7 +241,6 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                         </div>
                     </div>
                 </div>
-
                 {/* Mobile Menu Overlay */}
                 {menuOpen && (
                     <div
@@ -276,13 +249,11 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                         aria-hidden="true"
                     />
                 )}
-
                 {/* Mobile Menu */}
                 <div
                     id="mobile-menu"
                     ref={mobileMenuRef}
-                    className={`fixed top-20 right-0 w-64 h-[calc(100vh-5rem)] bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg z-30 transition-transform duration-300 ease-in-out ${menuOpen ? 'translate-x-0' : 'translate-x-full'
-                        } md:hidden`}
+                    className={`fixed top-20 right-0 w-64 h-[calc(100vh-5rem)] bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg z-30 transition-transform duration-300 ease-in-out ${menuOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden`}
                     aria-hidden={!menuOpen}
                 >
                     <div className="flex flex-col h-full px-6 pt-6">
