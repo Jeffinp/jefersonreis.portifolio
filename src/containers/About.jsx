@@ -228,10 +228,10 @@ const StatCard = memo(({ value, label, colorClass }) => {
     return (
         <div className="bg-white/80 dark:bg-slate-800/80 p-4 md:p-5 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm md:shadow-md flex flex-col items-center">
             <p className={`text-2xl md:text-3xl font-bold ${colorClass === "blue" ? "text-blue-600 dark:text-blue-400" :
-                    colorClass === "purple" ? "text-purple-600 dark:text-purple-400" :
-                        colorClass === "green" ? "text-green-600 dark:text-green-400" :
-                            colorClass === "pink" ? "text-pink-600 dark:text-pink-400" :
-                                "text-blue-600 dark:text-blue-400"
+                colorClass === "purple" ? "text-purple-600 dark:text-purple-400" :
+                    colorClass === "green" ? "text-green-600 dark:text-green-400" :
+                        colorClass === "pink" ? "text-pink-600 dark:text-pink-400" :
+                            "text-blue-600 dark:text-blue-400"
                 }`}>
                 {value}
             </p>
@@ -442,11 +442,11 @@ const AboutMe = () => {
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12 lg:gap-16 xl:gap-20">
+                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-16 lg:gap-20 xl:gap-24">
                     {/* Bio and Introduction */}
                     <div className="w-full lg:w-1/2 space-y-8">
                         <AnimatedSection delay={0} animation="fadeUp" className="w-full">
-                            <div className="space-y-6">
+                            <div className="space-y-8">
                                 <div className="space-y-2">
                                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 inline-block">
                                         {t('about.title')}
@@ -456,7 +456,7 @@ const AboutMe = () => {
                                     </h3>
                                 </div>
 
-                                <div className="space-y-4 text-gray-600 dark:text-gray-300 text-base md:text-lg">
+                                <div className="space-y-4 text-gray-600 dark:text-gray-300 text-base md:text-lg leading-relaxed md:leading-[1.5]">
                                     <p>{t('about.paragraphs.first')}</p>
                                     <p>{t('about.paragraphs.second')}</p>
                                 </div>
@@ -482,13 +482,13 @@ const AboutMe = () => {
                     </div>
 
                     {/* Statistics and Expertise */}
-                    <div className="w-full lg:w-1/2 space-y-8">
+                    <div className="w-full lg:w-1/2 space-y-12">
                         {/* Statistics */}
                         <AnimatedSection delay={0.1} animation="fadeUp" className="w-full">
-                            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800 dark:text-white">
+                            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-gray-800 dark:text-white mt-8">
                                 {t('about.stats.title')}
                             </h2>
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-2 gap-6">
                                 {stats.map((stat, index) => (
                                     <StatCard
                                         key={index}
@@ -502,10 +502,10 @@ const AboutMe = () => {
 
                         {/* Expertise */}
                         <AnimatedSection delay={0.2} animation="fadeUp">
-                            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800 dark:text-white">
+                            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-gray-800 dark:text-white mt-8">
                                 {t('about.expertise.title')}
                             </h2>
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-2 gap-6">
                                 {expertiseItems.map((item, index) => (
                                     <ExpertiseItem
                                         key={index}
