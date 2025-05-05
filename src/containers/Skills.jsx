@@ -6,7 +6,7 @@ import { debounce } from '../utils';
 
 /**
  * Hook personalizado para gerenciar animações baseadas em visibilidade
- * Simplificado e otimizado para melhor performance
+ * Otimizado para melhor performance e simplicidade
  */
 const useAnimatedVisibility = (threshold = 0.2, once = true) => {
     const controls = useAnimation();
@@ -31,7 +31,6 @@ const AnimatedSection = memo(({
     delay = 0,
     className = "",
     threshold = 0.2,
-    animation = "fadeUp"
 }) => {
     const { ref, controls } = useAnimatedVisibility(threshold);
 
@@ -80,27 +79,27 @@ const SkillBar = memo(({ name, percentage, delay, isVisible }) => (
             delay: isVisible ? delay * 0.1 : 0,
             ease: "easeOut"
         }}
-        className="mb-5"
+        className="mb-4 md:mb-5"
     >
-        <div className="flex justify-between mb-1.5">
-            <span className="text-xs sm:text-sm font-medium text-gray-800 dark:text-gray-200">
+        <div className="flex justify-between items-center mb-1.5">
+            <span className="text-xs font-medium text-gray-800 dark:text-gray-200 sm:text-sm">
                 {name}
             </span>
             <div className="flex items-center gap-1">
                 <span
-                    className={`text-xs sm:text-sm font-medium ${percentage === 100
-                            ? "text-amber-500 dark:text-amber-400"
-                            : "text-gray-600 dark:text-gray-300"
-                        }`}
+                    className={`text-xs font-medium sm:text-sm ${percentage === 100
+                        ? "text-amber-500 dark:text-amber-400"
+                        : "text-gray-600 dark:text-gray-300"
+                    }`}
                 >
                     {percentage}%
                 </span>
                 {percentage === 100 && (
-                    <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-amber-500 dark:text-amber-400" />
+                    <Sparkles className="w-3 h-3 text-amber-500 dark:text-amber-400 sm:w-4 sm:h-4" />
                 )}
             </div>
         </div>
-        <div className="relative w-full h-2.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+        <div className="relative w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden sm:h-2.5">
             <motion.div
                 className="absolute top-0 left-0 h-full rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-400 dark:to-indigo-500"
                 initial={{ width: 0 }}
@@ -148,26 +147,26 @@ const SkillSection = memo(({ title, icon, skills, id, openSection, toggleSection
 
     return (
         <motion.div
-            className="bg-white dark:bg-slate-800 backdrop-blur-sm rounded-xl border border-gray-100 dark:border-gray-700 shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="bg-white dark:bg-slate-800/95 backdrop-blur-sm rounded-lg border border-gray-100 dark:border-gray-700/50 shadow-sm hover:shadow-md transition-shadow duration-300 md:rounded-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
         >
             <button
                 onClick={() => toggleSection(id)}
-                className="w-full px-5 py-5 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 rounded-xl transition-colors"
+                className="w-full px-4 py-4 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 rounded-lg transition-colors md:px-5 md:py-5 md:rounded-xl"
                 aria-expanded={isExpanded}
                 aria-controls={`content-${id}`}
             >
-                <div className="flex items-center gap-4">
-                    <span className="flex-shrink-0 text-2xl sm:text-3xl text-blue-600 dark:text-blue-400">
+                <div className="flex items-center gap-3 md:gap-4">
+                    <span className="flex-shrink-0 text-xl text-blue-600 dark:text-blue-400 sm:text-2xl md:text-3xl">
                         {icon}
                     </span>
                     <div>
-                        <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                        <h3 className="text-base font-bold text-gray-900 dark:text-white md:text-lg">
                             {title}
                         </h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">
+                        <p className="text-xs text-gray-600 dark:text-gray-300 sm:text-sm">
                             {id === 'frontend' ? 'Frontend Development' :
                                 id === 'backend' ? 'Backend Development' :
                                     'Design Tools & Office'}
@@ -176,9 +175,9 @@ const SkillSection = memo(({ title, icon, skills, id, openSection, toggleSection
                 </div>
                 <div
                     className={`transform transition-transform duration-300 ${isExpanded
-                            ? "text-blue-600 dark:text-blue-400 rotate-180"
-                            : "text-gray-400 dark:text-gray-500"
-                        }`}
+                        ? "text-blue-600 dark:text-blue-400 rotate-180"
+                        : "text-gray-400 dark:text-gray-500"
+                    }`}
                 >
                     <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
@@ -193,7 +192,7 @@ const SkillSection = memo(({ title, icon, skills, id, openSection, toggleSection
                         animate="visible"
                         exit="exit"
                     >
-                        <div className="px-5 py-5 border-t border-gray-100 dark:border-gray-700">
+                        <div className="px-4 py-4 border-t border-gray-100 dark:border-gray-700/50 md:px-5 md:py-5">
                             {skills.map((skill, index) => (
                                 <SkillBar
                                     key={`${id}-${index}`}
@@ -222,15 +221,15 @@ const StatItem = memo(({ index, skill }) => {
 
     return (
         <AnimatedSection delay={0.2 + index * 0.1} className="h-full">
-            <div className="h-full bg-white dark:bg-slate-800 backdrop-blur-sm rounded-xl border border-gray-100 dark:border-gray-700 shadow-md hover:shadow-lg transition-all duration-300 group">
-                <div className="p-5 sm:p-6 h-full flex flex-col">
-                    <span className="text-3xl mb-4 block transition-transform duration-300 group-hover:scale-110 group-hover:text-blue-500 dark:group-hover:text-blue-400">
+            <div className="h-full bg-white dark:bg-slate-800/95 backdrop-blur-sm rounded-lg border border-gray-100 dark:border-gray-700/50 shadow-sm hover:shadow-md transition-all duration-300 group md:rounded-xl">
+                <div className="p-4 h-full flex flex-col sm:p-5">
+                    <span className="text-2xl mb-3 block transition-transform duration-300 group-hover:scale-110 group-hover:text-blue-500 dark:group-hover:text-blue-400 sm:text-3xl md:mb-4">
                         {emoji}
                     </span>
-                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                    <h4 className="text-base font-bold text-gray-900 dark:text-white mb-2 md:text-lg">
                         {skill.title}
                     </h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mt-auto">
+                    <p className="text-xs text-gray-600 dark:text-gray-300 mt-auto sm:text-sm">
                         {skill.description}
                     </p>
                 </div>
@@ -293,7 +292,7 @@ const getSoftSkills = (t) => [
 
 /**
  * Componente principal Skills
- * Completamente redesenhado com foco em responsividade, acessibilidade e 
+ * Redesenhado com foco em responsividade, acessibilidade e 
  * estética moderna usando Tailwind CSS
  */
 const Skills = () => {
@@ -352,43 +351,43 @@ const Skills = () => {
         <section
             id="skills"
             ref={sectionRef}
-            className="relative py-16 sm:py-20 lg:py-24 overflow-hidden"
+            className="relative py-12 overflow-hidden sm:py-16 lg:py-20 xl:py-24"
             aria-labelledby="skills-heading"
         >
             {/* Background com padrão de grade responsivo */}
             <div
-                className="absolute inset-0 opacity-[0.03] dark:opacity-[0.07] -z-10"
+                className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
                 style={{
                     backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
-                    backgroundSize: `clamp(20px, 5vw, 40px) clamp(20px, 5vw, 40px)`,
+                    backgroundSize: `clamp(20px, 4vw, 40px) clamp(20px, 4vw, 40px)`,
                 }}
             />
 
             {/* Efeitos de gradiente com posicionamento melhorado */}
             <div className="absolute inset-0 overflow-hidden -z-10 pointer-events-none">
-                <div className="absolute left-1/2 top-1/2 w-full max-w-3xl aspect-square bg-blue-500/5 dark:bg-blue-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
-                <div className="absolute left-1/2 top-1/2 w-full max-w-2xl aspect-square bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2 scale-75" />
+                <div className="absolute left-1/2 top-1/2 w-full max-w-2xl aspect-square bg-blue-500/5 dark:bg-blue-500/10 blur-2xl rounded-full -translate-x-1/2 -translate-y-1/2 md:max-w-3xl md:blur-3xl" />
+                <div className="absolute left-1/2 top-1/2 w-full max-w-xl aspect-square bg-purple-500/5 dark:bg-purple-500/10 blur-2xl rounded-full -translate-x-1/2 -translate-y-1/2 scale-75 md:max-w-2xl md:blur-3xl" />
             </div>
 
             <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-3xl mx-auto lg:max-w-4xl">
                     {/* Cabeçalho da seção - Melhorado com espaçamento e tipografia responsivos */}
-                    <AnimatedSection delay={0} className="text-center mb-12 sm:mb-16">
+                    <AnimatedSection delay={0} className="text-center mb-8 sm:mb-10 lg:mb-12">
                         <h2
                             id="skills-heading"
-                            className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400"
+                            className="text-2xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 sm:text-3xl md:text-4xl lg:text-5xl sm:mb-4 md:mb-5"
                         >
                             {t('skills.title')}
                         </h2>
-                        <p className="text-base text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+                        <p className="text-sm text-gray-700 dark:text-gray-300 max-w-2xl mx-auto sm:text-base">
                             {t('skills.description')}
                         </p>
                     </AnimatedSection>
 
                     {/* Seções de habilidades técnicas com espaçamento consistente */}
-                    <div className="space-y-4 sm:space-y-6 mb-12 sm:mb-16">
+                    <div className="space-y-3 mb-10 sm:space-y-4 md:space-y-5 lg:mb-12">
                         <AnimatedSection delay={0.1}>
-                            <div className="mb-8">
+                            <div className="mb-6">
                                 <SkillSection
                                     id="frontend"
                                     title={t('skills.sections.frontend.title')}
@@ -402,7 +401,7 @@ const Skills = () => {
                         </AnimatedSection>
 
                         <AnimatedSection delay={0.2}>
-                            <div className="mb-8">
+                            <div className="mb-6">
                                 <SkillSection
                                     id="backend"
                                     title={t('skills.sections.backend.title')}
@@ -416,7 +415,7 @@ const Skills = () => {
                         </AnimatedSection>
 
                         <AnimatedSection delay={0.3}>
-                            <div className="mb-8">
+                            <div className="mb-6">
                                 <SkillSection
                                     id="design"
                                     title={t('skills.sections.tools.title')}
@@ -431,14 +430,14 @@ const Skills = () => {
                     </div>
 
                     {/* Soft skills com subtítulo melhorado */}
-                    <AnimatedSection delay={0.4} className="mb-8">
-                        <h3 className="text-2xl font-bold text-center mb-6 text-gray-900 dark:text-white">
+                    <AnimatedSection delay={0.4} className="mb-6 sm:mb-8">
+                        <h3 className="text-xl font-bold text-center mb-4 text-gray-900 dark:text-white sm:text-2xl sm:mb-6">
                             {t('skills.softSkills.title')}
                         </h3>
                     </AnimatedSection>
 
                     {/* Grid responsivo de soft skills com alturas iguais */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 md:gap-5 lg:grid-cols-4">
                         {softSkills.map((skill, index) => (
                             <StatItem key={index} index={index} skill={skill} />
                         ))}
