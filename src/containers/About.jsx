@@ -447,16 +447,16 @@ const AboutMe = () => {
                     <div className="w-full lg:w-1/2 space-y-8">
                         <AnimatedSection delay={0} animation="fadeUp" className="w-full">
                             <div className="space-y-8">
-                                <div className="space-y-2">
-                                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 inline-block">
+                                <div className="space-y-4">
+                                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 inline-block mb-4">
                                         {t('about.title')}
                                     </h2>
-                                    <h3 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white">
+                                    <h3 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-4">
                                         {t('about.devTitle')}
                                     </h3>
                                 </div>
 
-                                <div className="space-y-4 text-gray-600 dark:text-gray-300 text-base md:text-lg leading-relaxed md:leading-[1.5]">
+                                <div className="space-y-6 text-gray-600 dark:text-gray-300 text-base md:text-lg leading-relaxed md:leading-[1.5]">
                                     <p>{t('about.paragraphs.first')}</p>
                                     <p>{t('about.paragraphs.second')}</p>
                                 </div>
