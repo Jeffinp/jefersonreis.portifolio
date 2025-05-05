@@ -203,7 +203,7 @@ const Hero = () => {
                                 {isMobile ? "Dev Full Stack & Designer" : "Desenvolvedor Full Stack & Designer"}
                             </h2>
 
-                            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-4 md:mb-6 text-slate-900 dark:text-white drop-shadow-xl">
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-4 md:mb-6 text-slate-900 dark:text-white">
                                 {t('hero.title')}
                             </h1>
 
