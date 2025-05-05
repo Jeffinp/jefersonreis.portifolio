@@ -95,19 +95,19 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="relative bg-gradient-to-b from-white to-blue-50/70 dark:from-slate-900/60 dark:to-slate-900/60 border-t border-gray-200 dark:border-gray-800">
+        <footer className="relative min-h-[320px] md:min-h-[260px] bg-gradient-to-b from-white to-blue-50/70 dark:from-slate-900/60 dark:to-slate-900/60 border-t border-gray-200 dark:border-gray-800 py-10 md:py-16 flex flex-col justify-center">
             {/* Background decorative elements */}
             <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-500 dark:to-purple-500" />
 
             <SectionBackground wave={false} />
 
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-16">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12">
                     {/* Brand Section */}
                     <AnimatedSection className="space-y-6">
                         <div className="group perspective">
                             <div className="relative transform-gpu hover:-rotate-y-2 hover:scale-[1.02] transition-all duration-300">
-                                <h2 className="text-3xl font-bold">
+                                <h2 className="text-3xl font-bold whitespace-nowrap">
                                     <a href="#" className="group">
                                         <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
                                             {"<"}Jeferson Reis{"/>"}
@@ -118,7 +118,7 @@ const Footer = () => {
                                 <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             </div>
                         </div>
-                        <p className="text-gray-600 dark:text-gray-300 max-w-md leading-relaxed">
+                        <p className="text-gray-600 dark:text-gray-300 max-w-md leading-relaxed whitespace-pre-line">
                             {t("footer.occupation")}
                         </p>
                     </AnimatedSection>
@@ -133,7 +133,7 @@ const Footer = () => {
                                 <AnimatedSection key={item.key} delay={item.delay}>
                                     <a
                                         href={`#${item.key}`}
-                                        className="relative text-gray-600 dark:text-gray-300 transition-all duration-300 hover:translate-x-1 hover:text-blue-600 dark:hover:text-blue-400"
+                                        className="relative text-gray-600 dark:text-gray-300 transition-all duration-300 hover:translate-x-1 hover:text-blue-600 dark:hover:text-blue-400 whitespace-nowrap"
                                     >
                                         <span className="absolute -bottom-px left-0 w-0 h-px bg-gradient-to-r from-blue-500 to-purple-500 hover:w-full transition-all duration-300"></span>
                                         {t(`menu.${item.key}`)}
@@ -158,6 +158,7 @@ const Footer = () => {
                                     title={link.title}
                                     className={`p-3 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-md transition-all duration-300 transform ${link.hoverColor}`}
                                     aria-label={link.label}
+                                    style={{ minWidth: 44, minHeight: 44, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                                     whileHover={{
                                         scale: 1.1,
                                         y: -3,
