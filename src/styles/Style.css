@@ -1,7 +1,27 @@
-@tailwind base;
-@tailwind components;
+/* Substitua diretivas Tailwind v3 por v4 */
+@import "tailwindcss/preflight";
 @tailwind utilities;
 
+@font-face {
+    font-family: 'Nunito Sans';
+    src: url('/assets/fonts/NunitoSans-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    src: url('/assets/fonts/NunitoSans-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    src: url('/assets/fonts/NunitoSans-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
 
 *,
 body,
@@ -97,7 +117,7 @@ body.dark-mode {
 
 body,
 html {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Nunito Sans', Arial, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--background-color);
