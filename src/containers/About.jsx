@@ -13,13 +13,13 @@ const useAnimatedVisibility = (threshold = 0.2, once = true) => {
     const controls = useAnimation();
     const ref = useRef(null);
     const inView = useInView(ref, { once, threshold });
-    
+
     useEffect(() => {
         if (inView) {
             controls.start("visible");
         }
     }, [controls, inView]);
-    
+
     return { ref, controls };
 };
 
@@ -49,7 +49,7 @@ const AnimatedSection = memo(({
     animation = "fadeUp"
 }) => {
     const { ref, controls } = useAnimatedVisibility(threshold);
-    
+
     // Define as variantes de animação com base no tipo solicitado
     const variants = useMemo(() => {
         const animations = {
@@ -91,7 +91,7 @@ const AnimatedSection = memo(({
         };
         return animations[animation];
     }, [animation, delay]);
-    
+
     return (
         <motion.div
             ref={ref}
@@ -114,9 +114,9 @@ const Background = memo(({ isMobile }) => (
     <>
         {/* Fundo com gradiente */}
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50/40 via-white to-gray-50/40 dark:from-blue-950/30 dark:via-slate-900 dark:to-slate-950/40 -z-10"></div>
-        
+
         {/* Grade simplificada - estática para reduzir animações */}
-        <div 
+        <div
             className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
             style={{
                 backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), 
@@ -124,12 +124,12 @@ const Background = memo(({ isMobile }) => (
                 backgroundSize: isMobile ? '40px 40px' : '80px 80px'
             }}
         />
-        
+
         {/* Elementos decorativos - bolhas centralizadas */}
         <div className="absolute inset-0 overflow-visible -z-10 pointer-events-none">
             <div className="absolute left-1/2 top-1/2 w-[700px] h-[700px] bg-blue-500/5 dark:bg-blue-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
-            <div 
-                className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2 scale-75" 
+            <div
+                className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2 scale-75"
                 style={{ transform: 'translate(-50%, -50%) scale(0.7)' }}
             />
         </div>
@@ -153,7 +153,7 @@ const FeatureCard = memo(({
     ariaLabel
 }) => {
     const Icon = icon;
-    
+
     // Mapeamento de cores para classes Tailwind
     const colorMap = {
         blue: {
@@ -169,13 +169,13 @@ const FeatureCard = memo(({
             text: "text-green-600 dark:text-green-400"
         },
         orange: {
-            bg: "from-orange-500 to-red-500", 
+            bg: "from-orange-500 to-red-500",
             text: "text-orange-600 dark:text-orange-400"
         }
     };
-    
+
     const colors = colorMap[colorClass] || colorMap.blue;
-    
+
     return (
         <AnimatedSection
             delay={delay}
@@ -189,7 +189,7 @@ const FeatureCard = memo(({
                     <div className={`relative mb-4 md:mb-6 p-3 md:p-4 rounded-full bg-gradient-to-br ${colors.bg} shadow-lg text-white transition-transform duration-300 group-hover:scale-105`}>
                         <Icon strokeWidth={1.5} className="w-6 h-6 md:w-7 md:h-7" aria-hidden="true" />
                     </div>
-                    
+
                     {/* Título */}
                     <h3
                         id={`feature-title-${index}`}
@@ -197,12 +197,12 @@ const FeatureCard = memo(({
                     >
                         {title}
                     </h3>
-                    
+
                     {/* Descrição */}
                     <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-5 md:mb-6 flex-grow">
                         {description}
                     </p>
-                    
+
                     {/* Botão de ação */}
                     <button
                         type="button"
@@ -227,13 +227,12 @@ FeatureCard.displayName = 'FeatureCard';
 const StatCard = memo(({ value, label, colorClass }) => {
     return (
         <div className="bg-white/80 dark:bg-slate-800/80 p-4 md:p-5 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm md:shadow-md flex flex-col items-center">
-            <p className={`text-2xl md:text-3xl font-bold ${
-                colorClass === "blue" ? "text-blue-600 dark:text-blue-400" :
-                colorClass === "purple" ? "text-purple-600 dark:text-purple-400" :
-                colorClass === "green" ? "text-green-600 dark:text-green-400" :
-                colorClass === "pink" ? "text-pink-600 dark:text-pink-400" :
-                "text-blue-600 dark:text-blue-400"
-            }`}>
+            <p className={`text-2xl md:text-3xl font-bold ${colorClass === "blue" ? "text-blue-600 dark:text-blue-400" :
+                    colorClass === "purple" ? "text-purple-600 dark:text-purple-400" :
+                        colorClass === "green" ? "text-green-600 dark:text-green-400" :
+                            colorClass === "pink" ? "text-pink-600 dark:text-pink-400" :
+                                "text-blue-600 dark:text-blue-400"
+                }`}>
                 {value}
             </p>
             <p className="text-sm text-gray-600 dark:text-gray-300 text-center mt-1">
@@ -256,17 +255,17 @@ const ExpertiseItem = memo(({ icon, label, colorClass }) => {
         green: "bg-green-50 dark:bg-green-900/20",
         pink: "bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 dark:from-pink-900/30 dark:via-purple-900/30 dark:to-blue-900/30"
     };
-    
+
     const textColorMap = {
         blue: "text-blue-600 dark:text-blue-400",
         purple: "text-purple-600 dark:text-purple-400",
         green: "text-green-600 dark:text-green-400",
         pink: "text-pink-600 dark:text-pink-400"
     };
-    
+
     const bgClass = bgColorMap[colorClass] || bgColorMap.blue;
     const textClass = textColorMap[colorClass] || textColorMap.blue;
-    
+
     return (
         <div className={`flex items-center gap-2 p-3 rounded-lg ${bgClass} ${textClass} justify-center lg:justify-start`}>
             {icon}
@@ -296,7 +295,7 @@ const AboutMe = () => {
         const handleResize = debounce(() => {
             checkMobile();
         }, 250);
-        
+
         checkMobile();
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
@@ -305,7 +304,7 @@ const AboutMe = () => {
     // Efeito de paralaxe com mouse (apenas em desktop)
     useEffect(() => {
         if (isMobile) return () => { };
-        
+
         const handleMouseMove = debounce((e) => {
             if (!sectionRef.current) return;
             const rect = sectionRef.current.getBoundingClientRect();
@@ -316,12 +315,12 @@ const AboutMe = () => {
                 y: (y / rect.height) - 0.5
             });
         }, 50);
-        
+
         const sectionElement = sectionRef.current;
         if (sectionElement) {
             sectionElement.addEventListener('mousemove', handleMouseMove);
         }
-        
+
         return () => {
             if (sectionElement) {
                 sectionElement.removeEventListener('mousemove', handleMouseMove);
@@ -435,13 +434,13 @@ const AboutMe = () => {
                     backgroundSize: isMobile ? '40px 40px' : '80px 80px'
                 }}
             />
-            
+
             {/* Gradient Blobs */}
             <div className="absolute inset-0 overflow-visible -z-10 pointer-events-none">
                 <div className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-blue-500/10 dark:bg-blue-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
                 <div className="absolute left-1/2 top-1/2 w-[320px] h-[320px] bg-purple-500/10 dark:bg-purple-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2 scale-75" />
             </div>
-            
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12 lg:gap-16 xl:gap-20">
                     {/* Bio and Introduction */}
@@ -456,12 +455,12 @@ const AboutMe = () => {
                                         {t('about.devTitle')}
                                     </h3>
                                 </div>
-                                
+
                                 <div className="space-y-4 text-gray-600 dark:text-gray-300 text-base md:text-lg">
                                     <p>{t('about.paragraphs.first')}</p>
                                     <p>{t('about.paragraphs.second')}</p>
                                 </div>
-                                
+
                                 <div className="flex flex-col sm:flex-row gap-4 pt-2">
                                     <a
                                         href="#contact"
@@ -481,7 +480,7 @@ const AboutMe = () => {
                             </div>
                         </AnimatedSection>
                     </div>
-                    
+
                     {/* Statistics and Expertise */}
                     <div className="w-full lg:w-1/2 space-y-8">
                         {/* Statistics */}
@@ -491,7 +490,7 @@ const AboutMe = () => {
                             </h2>
                             <div className="grid grid-cols-2 gap-4">
                                 {stats.map((stat, index) => (
-                                    <StatCard 
+                                    <StatCard
                                         key={index}
                                         value={stat.value}
                                         label={stat.label}
@@ -500,7 +499,7 @@ const AboutMe = () => {
                                 ))}
                             </div>
                         </AnimatedSection>
-                        
+
                         {/* Expertise */}
                         <AnimatedSection delay={0.2} animation="fadeUp">
                             <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800 dark:text-white">
@@ -517,30 +516,6 @@ const AboutMe = () => {
                                 ))}
                             </div>
                         </AnimatedSection>
-                    </div>
-                </div>
-                
-                {/* Services Section */}
-                <div className="mt-24 md:mt-28 lg:mt-32">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-10 md:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
-                        {t('about.features.title', 'Meus Serviços')}
-                    </h2>
-                    
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-                        {features.map((feature, index) => (
-                            <FeatureCard
-                                key={index}
-                                icon={feature.icon}
-                                title={feature.title}
-                                description={feature.description}
-                                actionText={feature.actionText}
-                                onClick={feature.onClick}
-                                colorClass={feature.colorClass}
-                                delay={feature.delay}
-                                index={index}
-                                ariaLabel={feature.ariaLabel}
-                            />
-                        ))}
                     </div>
                 </div>
             </div>
