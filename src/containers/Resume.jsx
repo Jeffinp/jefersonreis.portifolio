@@ -305,7 +305,7 @@ const Resume = () => {
         <section
             ref={sectionRef}
             id="resume"
-            className="relative py-16 md:py-24 bg-transparent overflow-hidden"
+            className="relative py-16 md:py-24 bg-transparent"
             aria-labelledby="resume-heading"
         >
             {/* Fundo de quadrados alinhados igual ao atuacao/skills/projects */}

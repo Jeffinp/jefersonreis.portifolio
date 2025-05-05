@@ -175,8 +175,9 @@ const Hero = () => {
     return (
         <section
             ref={heroRef}
-            id="home"
-            className="relative min-h-screen flex items-center overflow-hidden bg-transparent py-12 md:py-24 lg:py-32"
+            id="hero"
+            className="relative min-h-screen flex items-center bg-transparent py-12 md:py-24 lg:py-32"
+            aria-label={t('hero.title')}
         >
             {/* Fundo 3D dinâmico - simplificado e memoizado */}
             <BackgroundElements isMobile={isMobile} mousePosition={mousePosition} />

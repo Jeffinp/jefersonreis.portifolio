@@ -103,7 +103,7 @@ html {
     background-color: var(--background-color);
     transition: var(--transition);
     width: 100%;
-    overflow-X: hidden
+    overflow-x: hidden;
 }
 
 /* Estilizando a barra de rolagem com as cores do tema resume */

@@ -95,7 +95,7 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="relative overflow-hidden bg-gradient-to-b from-white to-blue-50/70 dark:from-slate-900/60 dark:to-slate-900/60 border-t border-gray-200 dark:border-gray-800">
+        <footer className="relative bg-gradient-to-b from-white to-blue-50/70 dark:from-slate-900/60 dark:to-slate-900/60 border-t border-gray-200 dark:border-gray-800">
             {/* Background decorative elements */}
             <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-500 dark:to-purple-500" />
 

@@ -31,8 +31,8 @@ const LanguageButton = ({ language, currentLanguage, onClick, icon, label, ariaL
     <button
         onClick={onClick}
         className={`flex items-center space-x-1 px-2 py-1 rounded-md transition-colors duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 ${currentLanguage === language
-                ? 'bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-600 dark:text-blue-400'
-                : 'text-gray-600 dark:text-gray-400'
+            ? 'bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-600 dark:text-blue-400'
+            : 'text-gray-600 dark:text-gray-400'
             }`}
         aria-label={ariaLabel}
     >
@@ -49,11 +49,13 @@ const LanguageButton = ({ language, currentLanguage, onClick, icon, label, ariaL
 const Header = ({ toggleDarkMode, darkMode }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
-    const [prevScrollPos, setPrevScrollPos] = useState(0);
     const { i18n, t } = useTranslation();
     const mobileMenuRef = useRef(null);
     const menuButtonRef = useRef(null);
     const headerRef = useRef(null);
+    const [isVisible, setIsVisible] = useState(true);
+    const lastScrollY = useRef(0);
+    const throttleTimeout = useRef(null);
 
     // Toggle menu com controle de overflow no body
     const toggleMenu = useCallback(() => {
@@ -101,6 +103,11 @@ const Header = ({ toggleDarkMode, darkMode }) => {
         document.documentElement.classList.toggle('dark', darkMode);
     }, [darkMode]);
 
+    // Garante que o body nunca fique travado ao montar o Header
+    useEffect(() => {
+        document.body.classList.remove('overflow-hidden');
+    }, []);
+
     // Detecta clique fora do menu mobile
     useEffect(() => {
         if (!menuOpen) return;
@@ -123,41 +130,54 @@ const Header = ({ toggleDarkMode, darkMode }) => {
         };
     }, [menuOpen, closeMenu]);
 
-    // Controle do scroll progressivo e direção
+    // CORREÇÃO: Implementação otimizada do controle de visibilidade do header durante o scroll
     useEffect(() => {
+        // Inicializa com o valor atual de scroll
+        lastScrollY.current = window.scrollY;
+
         const handleScroll = () => {
-            // Evitar cálculos desnecessários se o menu estiver aberto
-            if (menuOpen) return;
-
+            // Sem throttle para garantir responsividade imediata
             const currentScrollY = window.scrollY;
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-
-            // Calcular progresso do scroll (evitando divisão por zero)
-            if (windowHeight > 0) {
-                setScrollProgress((currentScrollY / windowHeight) * 100);
-            }
-
-            // Controlar a visibilidade do header baseado na direção do scroll
-            if (currentScrollY > prevScrollPos && currentScrollY > 100) {
-                // Rolando para baixo - esconder o header
-                if (headerRef.current) headerRef.current.style.top = '-100px';
+            
+            // Determina se está descendo a página (true) ou subindo (false)
+            const isScrollingDown = currentScrollY > lastScrollY.current;
+            
+            // Se estiver descendo E já tiver passado do limiar de 80px, esconde o header
+            // Se estiver subindo OU ainda não passou do limiar, mostra o header
+            if (isScrollingDown && currentScrollY > 80) {
+                setIsVisible(false);
             } else {
-                // Rolando para cima ou no topo - mostrar o header
-                if (headerRef.current) headerRef.current.style.top = '0';
+                setIsVisible(true);
             }
-
-            setPrevScrollPos(currentScrollY);
+            
+            // Atualiza a referência para a próxima comparação
+            lastScrollY.current = currentScrollY;
         };
 
+        // Atualiza o progresso do scroll separadamente
+        const handleScrollProgress = () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            if (windowHeight > 0) {
+                setScrollProgress((window.scrollY / windowHeight) * 100);
+            }
+        };
+
+        // Adiciona os event listeners
         window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [prevScrollPos, menuOpen]);
+        window.addEventListener('scroll', handleScrollProgress, { passive: true });
+
+        // Limpa os listeners quando o componente é desmontado
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', handleScrollProgress);
+        };
+    }, []); // Remove a dependência em isVisible para evitar recriações desnecessárias do listener
 
     return (
         <>
             {/* Barra de progresso do scroll */}
             <div
-                className="fixed top-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 z-50 transition-all duration-300"
+                className="fixed top-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 z-50 transition-transform duration-300"
                 style={{ width: `${scrollProgress}%` }}
                 role="progressbar"
                 aria-valuenow={Math.round(scrollProgress)}
@@ -167,7 +187,8 @@ const Header = ({ toggleDarkMode, darkMode }) => {
 
             <header
                 ref={headerRef}
-                className="fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-slate-900/80 shadow-lg dark:shadow-slate-800/20 backdrop-blur-sm transition-all duration-300"
+                style={{ transform: isVisible ? 'translateY(0)' : 'translateY(-100%)' }}
+                className="fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-slate-900/80 shadow-lg dark:shadow-slate-800/20 backdrop-blur-sm will-change-transform transition-transform duration-300 ease-in-out"
             >
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-20">

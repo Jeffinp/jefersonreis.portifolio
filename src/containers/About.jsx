@@ -297,7 +297,7 @@ const AboutMe = () => {
         <section
             ref={sectionRef}
             id="about"
-            className="relative py-12 md:py-24 bg-transparent overflow-hidden"
+            className="relative py-12 md:py-24 bg-transparent"
             aria-label={t('about.ariaLabel')}
         >
             {/* Fundo de quadrados alinhados igual ao padrão das outras seções */}

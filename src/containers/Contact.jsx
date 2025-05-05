@@ -224,7 +224,7 @@ const Contact = () => {
         <section
             ref={sectionRef}
             id="contact"
-            className="relative py-20 md:py-24 bg-transparent overflow-hidden"
+            className="relative py-20 md:py-24 bg-transparent"
             aria-label="Contato"
         >
             {/* Fundo de quadrados alinhados igual ao atuacao/skills/projects/resume */}

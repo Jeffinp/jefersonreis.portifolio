@@ -309,7 +309,7 @@ const ExpertiseAreas = () => {
         <section
             ref={sectionRef}
             id="areas"
-            className="relative py-16 md:py-24 bg-transparent overflow-hidden"
+            className="relative py-16 md:py-24 bg-transparent"
             aria-labelledby="expertise-heading"
         >
             {/* Fundo simplificado e memoizado */}

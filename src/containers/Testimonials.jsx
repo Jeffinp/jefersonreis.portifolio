@@ -307,7 +307,7 @@ const Testimonials = () => {
         <section
             ref={sectionRef}
             id="testimonials"
-            className="relative py-16 md:py-24 overflow-hidden"
+            className="relative py-16 md:py-24"
             aria-labelledby="testimonials-heading"
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}

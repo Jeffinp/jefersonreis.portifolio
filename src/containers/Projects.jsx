@@ -632,7 +632,7 @@ const PortfolioSection = () => {
         <section
             id="portfolio"
             ref={sectionRef}
-            className="relative py-16 md:py-24 bg-transparent overflow-hidden z-10"
+            className="relative py-16 md:py-24 bg-transparent z-10"
         >
             {/* Fundo de quadrados alinhados igual ao atuacao/skills */}
             <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"

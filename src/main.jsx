@@ -24,51 +24,6 @@ const Resume = lazy(() => import('./containers/Resume'));
 const Contact = lazy(() => import('./containers/Contact'));
 const ScrollToTopBtn = lazy(() => import('./components/ScrollToTopBtn'));
 
-// Adicionar estilos para resolver o problema de transição entre seções
-const sectionStyles = `
-  html, body {
-    overflow-x: hidden;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  body {
-    position: relative;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-  #root {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .section-container {
-    position: relative;
-  }
-  
-  /* Remove overflow hidden das seções para permitir que os elementos decorativos fluam */
-  #about, #skills, #services, #resume, #portfolio, #testimonials, #contact {
-    overflow: visible !important;
-  }
-  
-  /* Cria overlap entre seções para transição suave */
-  .overlap-section {
-    margin-top: -60px;
-    padding-top: 80px;
-  }
-  
-  /* Ajusta o z-index para controlar sobreposições */
-  .z-lower { z-index: 1; }
-  .z-higher { z-index: 2; }
-  
-  /* Aumenta o tamanho das bolhas nos limites das seções */
-  .section-boundary-bubble {
-    height: 800px !important;
-    width: 800px !important;
-    opacity: 0.1;
-  }
-`;
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -138,8 +93,6 @@ const App = () => {
     return (
         <>
             <SEOHead />
-            {/* Injetar estilos para corrigir as transições */}
-            <style>{sectionStyles}</style>
 
             {/* Bolhas globais atravessando todas as seções */}
             <div className="fixed inset-0 pointer-events-none -z-10" aria-hidden="true">
@@ -151,7 +104,7 @@ const App = () => {
                 darkMode={darkMode}
                 toggleDarkMode={() => setDarkMode(prev => !prev)}
             />
-            <main className="relative w-full overflow-hidden">
+            <main className="relative w-full">
                 <Suspense fallback={<Loader />}>
                     <Hero />
                     <About />

@@ -334,7 +334,7 @@ const Skills = () => {
         <section
             id="skills"
             ref={sectionRef}
-            className="relative py-16 md:py-24 bg-transparent overflow-hidden"
+            className="relative py-16 md:py-24 bg-transparent"
         >
             {/* Fundo de quadrados alinhados igual ao atuacao */}
             <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
