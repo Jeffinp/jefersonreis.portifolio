@@ -12,8 +12,8 @@ const CarouselButton = memo(({ direction, onClick, disabled }) => {
             onClick={onClick}
             disabled={disabled}
             className={`absolute top-1/2 transform -translate-y-1/2 z-20
-                ${direction === 'left' 
-                    ? 'left-0 sm:left-1 md:left-2 lg:left-4' 
+                ${direction === 'left'
+                    ? 'left-0 sm:left-1 md:left-2 lg:left-4'
                     : 'right-0 sm:right-1 md:right-2 lg:right-4'}
                 ${disabled ? 'opacity-30 cursor-not-allowed' : 'opacity-70 hover:opacity-100'}
                 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full 
@@ -75,17 +75,16 @@ const ProjectItem = memo(({ project, t, isMobile }) => {
                         )}
                     </div>
 
-                    {link && (
-                        <a
-                            href={link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center text-xs sm:text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
-                        >
-                            {t('portfolio.viewProject')}
-                            <ExternalLink className="ml-1 w-3 h-3 sm:w-4 sm:h-4" />
-                        </a>
-                    )}
+                    {/* Botão de visualizar projeto - Melhorado para maior visibilidade */}
+                    <a
+                        href={link || image}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center w-full px-3 py-2 mt-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 rounded-md transition-colors duration-300"
+                    >
+                        {t('portfolio.projectLabels.viewProject')}
+                        <ExternalLink className="ml-2 w-4 h-4" />
+                    </a>
                 </div>
             </div>
         </div>
@@ -128,6 +127,10 @@ const PortfolioSection = () => {
     const [screenSize, setScreenSize] = useState('md');
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isTransitioning, setIsTransitioning] = useState(false);
+
+    // Ref para controlar melhor o bloqueio durante transições
+    const isTransitioningRef = useRef(false);
+    const transitionTimeoutRef = useRef(null);
 
     const trackRef = useRef(null);
     const itemWidth = useRef(0);
@@ -576,7 +579,7 @@ const PortfolioSection = () => {
     const checkScreenSize = useCallback(() => {
         const width = window.innerWidth;
         setIsMobile(width < 768);
-        
+
         // Define o tamanho da tela atual para uso ao longo do componente
         if (width < 480) {
             setScreenSize('xs');
@@ -593,27 +596,41 @@ const PortfolioSection = () => {
         }
     }, []);
 
-    // Mover o carrossel - otimizado - mantido como está
+    // Mover o carrossel - reescrito para usar ref e prevenir cliques rápidos
     const moveCarousel = useCallback((newIndex) => {
-        if (!trackRef.current) return;
+        if (!trackRef.current || isTransitioningRef.current) return;
+
+        // Usar ref para prevenção imediata de cliques múltiplos
+        isTransitioningRef.current = true;
         setIsTransitioning(true);
+
         const safeIndex = Math.max(0, Math.min(newIndex, totalItems - getItemsPerView()));
         setCurrentIndex(safeIndex);
+
         const translateX = safeIndex * -itemWidth.current;
         trackRef.current.style.transform = `translateX(${translateX}px)`;
-        setTimeout(() => setIsTransitioning(false), 500);
+
+        // Limpar timeout anterior se existir
+        if (transitionTimeoutRef.current) {
+            clearTimeout(transitionTimeoutRef.current);
+        }
+
+        // Definir novo timeout e armazenar a referência
+        transitionTimeoutRef.current = setTimeout(() => {
+            isTransitioningRef.current = false;
+            setIsTransitioning(false);
+            transitionTimeoutRef.current = null;
+        }, 600); // Tempo suficiente para completar a transição
     }, [totalItems, getItemsPerView]);
 
-    // Handlers de navegação memoizados - mantidos como estão
+    // Handlers de navegação - simplificados pois verificamos transição no moveCarousel
     const goToPrevious = useCallback(() => {
-        if (isTransitioning) return;
         moveCarousel(currentIndex - 1);
-    }, [currentIndex, moveCarousel, isTransitioning]);
+    }, [currentIndex, moveCarousel]);
 
     const goToNext = useCallback(() => {
-        if (isTransitioning) return;
         moveCarousel(currentIndex + 1);
-    }, [currentIndex, moveCarousel, isTransitioning]);
+    }, [currentIndex, moveCarousel]);
 
     // Redimensionamento com debounce - MELHORADO
     useEffect(() => {
@@ -658,30 +675,35 @@ const PortfolioSection = () => {
         }
     }, [filteredProjects, getItemsPerView]);
 
-    // Implementação de arrastar (drag) para mobile - NOVO
+    // Implementação de arrastar (drag) - melhorada
     const handleTouchStart = useCallback((e) => {
-        if (isTransitioning) return;
+        if (isTransitioningRef.current) return;
         setIsDragging(true);
         setMousePosition({ x: e.touches[0].clientX, y: e.touches[0].clientY });
-    }, [isTransitioning]);
+    }, []);
 
     const handleTouchMove = useCallback((e) => {
-        if (!isDragging || isTransitioning) return;
-        
+        if (!isDragging || isTransitioningRef.current) return;
+
         const deltaX = e.touches[0].clientX - mousePosition.x;
-        
-        if (Math.abs(deltaX) > 30) { // Limite mínimo para considerar como swipe
-            if (deltaX > 0) {
-                goToPrevious();
-            } else {
-                goToNext();
+
+        if (Math.abs(deltaX) > 50) { // Aumentado para evitar swipes acidentais
+            if (deltaX > 0 && currentIndex > 0) {
+                moveCarousel(currentIndex - 1);
+            } else if (deltaX < 0 && currentIndex < totalItems - getItemsPerView()) {
+                moveCarousel(currentIndex + 1);
             }
             setIsDragging(false);
         }
-    }, [isDragging, isTransitioning, mousePosition, goToPrevious, goToNext]);
+    }, [isDragging, currentIndex, mousePosition, moveCarousel, totalItems, getItemsPerView]);
 
-    const handleTouchEnd = useCallback(() => {
-        setIsDragging(false);
+    // Limpeza de timeouts ao desmontar componente
+    useEffect(() => {
+        return () => {
+            if (transitionTimeoutRef.current) {
+                clearTimeout(transitionTimeoutRef.current);
+            }
+        };
     }, []);
 
     return (
@@ -694,39 +716,39 @@ const PortfolioSection = () => {
             <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] -z-10"
                 style={{
                     backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
-                    backgroundSize: screenSize === 'xs' ? '20px 20px' : 
-                                   screenSize === 'sm' ? '30px 30px' : 
-                                   screenSize === 'md' ? '40px 40px' : 
-                                   screenSize === 'lg' ? '60px 60px' : '80px 80px'
+                    backgroundSize: screenSize === 'xs' ? '20px 20px' :
+                        screenSize === 'sm' ? '30px 30px' :
+                            screenSize === 'md' ? '40px 40px' :
+                                screenSize === 'lg' ? '60px 60px' : '80px 80px'
                 }}
             />
             {/* Bolhas centralizadas - MELHORADO para responsividade */}
             <div className="absolute inset-0 overflow-visible opacity-30 dark:opacity-20 pointer-events-none -z-10">
-                <div 
+                <div
                     className="absolute left-1/2 top-1/2 bg-blue-500/10 dark:bg-blue-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2"
                     style={{
-                        width: screenSize === 'xs' ? '300px' : 
-                              screenSize === 'sm' ? '400px' : 
-                              screenSize === 'md' ? '500px' : 
-                              screenSize === 'lg' ? '600px' : '700px',
-                        height: screenSize === 'xs' ? '300px' : 
-                               screenSize === 'sm' ? '400px' : 
-                               screenSize === 'md' ? '500px' : 
-                               screenSize === 'lg' ? '600px' : '700px',
+                        width: screenSize === 'xs' ? '300px' :
+                            screenSize === 'sm' ? '400px' :
+                                screenSize === 'md' ? '500px' :
+                                    screenSize === 'lg' ? '600px' : '700px',
+                        height: screenSize === 'xs' ? '300px' :
+                            screenSize === 'sm' ? '400px' :
+                                screenSize === 'md' ? '500px' :
+                                    screenSize === 'lg' ? '600px' : '700px',
                     }}
                 />
-                <div 
-                    className="absolute left-1/2 top-1/2 bg-purple-500/10 dark:bg-purple-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" 
-                    style={{ 
+                <div
+                    className="absolute left-1/2 top-1/2 bg-purple-500/10 dark:bg-purple-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2"
+                    style={{
                         zIndex: -1,
-                        width: screenSize === 'xs' ? '200px' : 
-                              screenSize === 'sm' ? '300px' : 
-                              screenSize === 'md' ? '350px' : 
-                              screenSize === 'lg' ? '400px' : '500px',
-                        height: screenSize === 'xs' ? '200px' : 
-                               screenSize === 'sm' ? '300px' : 
-                               screenSize === 'md' ? '350px' : 
-                               screenSize === 'lg' ? '400px' : '500px',
+                        width: screenSize === 'xs' ? '200px' :
+                            screenSize === 'sm' ? '300px' :
+                                screenSize === 'md' ? '350px' :
+                                    screenSize === 'lg' ? '400px' : '500px',
+                        height: screenSize === 'xs' ? '200px' :
+                            screenSize === 'sm' ? '300px' :
+                                screenSize === 'md' ? '350px' :
+                                    screenSize === 'lg' ? '400px' : '500px',
                         transform: 'translate(-50%, -50%) scale(0.7)'
                     }}
                 />
@@ -764,9 +786,8 @@ const PortfolioSection = () => {
                     setActiveFilter={setActiveFilter}
                 />
 
-                {/* Carrossel - MELHORADO para touch e responsividade */}
+                {/* Carrossel - Botões atualizados com feedback mais claro */}
                 <div className="relative">
-                    {/* Botões de navegação do carrossel - Usando o componente melhorado */}
                     <CarouselButton
                         direction="left"
                         onClick={goToPrevious}
@@ -779,7 +800,7 @@ const PortfolioSection = () => {
                         disabled={currentIndex >= totalItems - getItemsPerView() || isTransitioning}
                     />
 
-                    {/* Container do carrossel - MELHORADO para touch */}
+                    {/* Container do carrossel - Melhorado com classe de transição controlada */}
                     <div
                         ref={carouselWrapperRef}
                         className="overflow-hidden relative mx-auto"
@@ -787,11 +808,12 @@ const PortfolioSection = () => {
                         onMouseLeave={() => setIsHovering(false)}
                         onTouchStart={handleTouchStart}
                         onTouchMove={handleTouchMove}
-                        onTouchEnd={handleTouchEnd}
+                        onTouchEnd={() => setIsDragging(false)}
                     >
                         <div
                             ref={trackRef}
                             className="flex transition-transform duration-500 ease-out"
+                            style={{ willChange: 'transform' }}
                         >
                             {/* Itens do carrossel - Usando o componente melhorado */}
                             {filteredProjects.map((project, index) => (
@@ -812,11 +834,10 @@ const PortfolioSection = () => {
                         <button
                             key={index}
                             onClick={() => moveCarousel(index * getItemsPerView())}
-                            className={`w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 ${
-                                index === Math.floor(currentIndex / getItemsPerView())
-                                    ? "bg-blue-600 w-3 sm:w-4 md:w-5"
-                                    : "bg-gray-300 dark:bg-gray-700"
-                            }`}
+                            className={`w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 ${index === Math.floor(currentIndex / getItemsPerView())
+                                ? "bg-blue-600 w-3 sm:w-4 md:w-5"
+                                : "bg-gray-300 dark:bg-gray-700"
+                                }`}
                             aria-label={`Go to page ${index + 1}`}
                         />
                     ))}

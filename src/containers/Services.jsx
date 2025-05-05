@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState, useMemo, useCallback, memo } from "react";
-import { Globe, Palette, FileText, Box, Laptop, Video, ChevronRight } from "lucide-react";
+import { Globe, Palette, FileText, Box, Laptop, Video } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
-import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import { debounce } from '../utils';
 
 /**
@@ -103,14 +103,10 @@ const ServiceCard3D = memo(({
     delay,
     index,
     mousePosition,
-    isMobile,
-    expanded,
-    onToggle,
-    actionText
+    isMobile
 }) => {
     const Icon = icon;
-    const isExpanded = expanded === index;
-    
+
     // Map de gradientes seguros para Tailwind
     const gradientMap = {
         "from-blue-500 to-cyan-500": {
@@ -162,7 +158,6 @@ const ServiceCard3D = memo(({
             <motion.div
                 className="relative h-full perspective cursor-pointer"
                 style={{ transform }}
-                onClick={() => onToggle(index)}
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
             >
@@ -182,28 +177,11 @@ const ServiceCard3D = memo(({
                         </h3>
 
                         {/* Descrição */}
-                        <motion.div 
-                            className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed mb-6 flex-grow"
-                            animate={{
-                                height: isExpanded ? 'auto' : '4.5rem',
-                                overflow: isExpanded ? 'visible' : 'hidden'
-                            }}
-                            transition={{ duration: 0.3 }}
-                        >
-                            <p className={isExpanded ? "" : "line-clamp-3"}>
+                        <div className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed mb-6 flex-grow">
+                            <p>
                                 {description}
                             </p>
-                        </motion.div>
-
-                        {/* Botão "Saiba mais" */}
-                        <button
-                            type="button"
-                            className={`flex items-center ${safeGradient.textColor} font-medium mt-auto group`}
-                            aria-expanded={isExpanded}
-                        >
-                            <span>{actionText}</span>
-                            <ChevronRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
-                        </button>
+                        </div>
                     </div>
                 </div>
             </motion.div>
@@ -243,18 +221,9 @@ const WhatsAppButton = memo(({ t, isHovered }) => (
         aria-label={t('services.whatsappButton')}
     >
         <FaWhatsapp className="text-lg sm:text-xl" />
-        <AnimatePresence>
-            {isHovered && (
-                <motion.span
-                    initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: 'auto', opacity: 1 }}
-                    exit={{ width: 0, opacity: 0 }}
-                    className="font-medium whitespace-nowrap overflow-hidden text-sm sm:text-base"
-                >
-                    {t('services.whatsappText')}
-                </motion.span>
-            )}
-        </AnimatePresence>
+        <span className="font-medium whitespace-nowrap overflow-hidden text-sm sm:text-base">
+            {t('services.whatsappText')}
+        </span>
     </a>
 ));
 
@@ -262,7 +231,6 @@ WhatsAppButton.displayName = 'WhatsAppButton';
 
 const Services = () => {
     const { t } = useTranslation();
-    const [expandedCard, setExpandedCard] = useState(null);
     const [isWhatsAppHovered, setIsWhatsAppHovered] = useState(false);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isMobile, setIsMobile] = useState(false);
@@ -272,11 +240,6 @@ const Services = () => {
     const checkMobile = useCallback(() => {
         setIsMobile(window.innerWidth < 768);
     }, []);
-
-    // Handler memoizado para alternar expansão dos cards
-    const handleCardToggle = useCallback((index) => {
-        setExpandedCard(expandedCard === index ? null : index);
-    }, [expandedCard]);
 
     useEffect(() => {
         const handleResize = debounce(() => {
@@ -396,9 +359,6 @@ const Services = () => {
                             index={index}
                             mousePosition={mousePosition}
                             isMobile={isMobile}
-                            expanded={expandedCard}
-                            onToggle={handleCardToggle}
-                            actionText={t('services.learnMore')}
                         />
                     ))}
                 </div>
@@ -406,24 +366,22 @@ const Services = () => {
                 {/* CTA da seção */}
                 <AnimatedSection delay={0.4} className="text-center mt-16 sm:mt-20">
                     <a
-                        href="/assets/catalogo-jeffinp.pdf"
+                        href="https://wa.me/5571984393235"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                        className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-4 px-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                         onMouseEnter={() => setIsWhatsAppHovered(true)}
                         onMouseLeave={() => setIsWhatsAppHovered(false)}
                     >
-                        <FileText className="w-5 h-5" aria-hidden="true" />
-                        <span>{t('services.downloadButton')}</span>
+                        <FaWhatsapp className="w-6 h-6" aria-hidden="true" />
+                        <span className="text-lg">{t('services.whatsappButton')}</span>
                     </a>
-                    <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 max-w-md mx-auto">
-                        {t('services.downloadDescription')}
+                    <p className="mt-4 text-sm text-gray-600 dark:text-gray-300 max-w-md mx-auto">
+                        {t('services.whatsappText')}
                     </p>
                 </AnimatedSection>
             </div>
 
-            {/* Botão do WhatsApp */}
-            <WhatsAppButton t={t} isHovered={isWhatsAppHovered} />
         </section>
     );
 };

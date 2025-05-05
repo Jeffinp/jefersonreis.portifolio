@@ -626,12 +626,10 @@ const resources = {
                 copyEmail: "Copiar email para área de transferência",
                 emailCopied: "Email copiado com sucesso!"
             },
-            // -------------- ADICIONANDO AS TRADUÇÕES PARA OS BOTÕES FLUTUANTES AQUI --------
             floatButtons: {
                 whatsapp: "Fale comigo no WhatsApp",
                 discord: "Junte-se ao meu Discord",
             },
-            // ------------------------------------------------------------------------------ 
         },
     },
 
@@ -641,7 +639,7 @@ const resources = {
             menu: {
                 home: "Home",
                 about: "About",
-                areas: "Areas of Expertise",
+                areas: "Expertise",
                 skills: "Skills",
                 portfolio: "Portfolio",
                 resume: "Resume",
@@ -672,28 +670,68 @@ const resources = {
             },
             about: {
                 title: "About Me",
-                devTitle: "Frontend Development",
-                devDescription:
-                    "I'm a full-stack developer specialized in creating innovative web solutions. With strong expertise in React and Node.js, I consistently focus on performance optimization and exceptional user experience (UX/UI).",
-                designTitle: "Graphic Design",
-                designDescription:
-                    "By merging creativity with cutting-edge design techniques, I craft distinctive visual identities, including logos, banners, and graphic materials tailored specifically to each client's unique needs.",
-                backendTitle: "Backend Development",
-                backendDescription: "Specialized in robust APIs, SQL and NoSQL databases, and scalable infrastructure. I create efficient solutions focused on security and performance for applications of various sizes.",
-                architectureTitle: "Software Architecture",
-                architectureDescription: "Planning and implementation of scalable and resilient architectures, applying design patterns and modern practices to ensure clean, maintainable, and high-performance code.",
-                learnMore: "Learn More"
+                devTitle: "Full Stack Development",
+                paragraphs: {
+                    first: "Hello, I'm Jeferson Reis, passionate about technology, design, and programming. Over the years, I've developed skills as a full-stack developer, graphic designer, and IT technician. I'm always seeking new challenges to create innovative and customized solutions, combining technology and creativity.",
+                    second: "I have experience with React and Node.js, focusing on performance and user experience (UX/UI). Additionally, I specialize in graphic design, creating unique visual identities and custom graphic materials."
+                },
+                cta: {
+                    contact: "Get in Touch",
+                    resume: "Download Resume",
+                    resumeUrl: "/Jeferson_resume.pdf"
+                },
+                stats: {
+                    title: "My Statistics",
+                    experience: "Years of Experience",
+                    projects: "Completed Projects",
+                    clients: "Satisfied Clients",
+                    satisfaction: "Client Satisfaction"
+                },
+                expertise: {
+                    title: "Areas of Expertise",
+                    frontend: "Frontend Development",
+                    backend: "Backend Development",
+                    design: "Graphic Design",
+                    ux: "User Experience"
+                },
+                services: {
+                    title: "My Services",
+                    subtitle: "Discover how I can help transform your ideas into reality."
+                },
+                cards: {
+                    webDev: {
+                        title: "Web Development",
+                        description: "Creation of responsive and SEO-optimized websites, focusing on performance and attractive design.",
+                        ariaLabel: "Learn more about Web Development"
+                    },
+                    design: {
+                        title: "Graphic Design",
+                        description: "Creation of visual identities, logos, and custom graphic materials.",
+                        ariaLabel: "Learn more about Graphic Design"
+                    },
+                    backend: {
+                        title: "Backend Development",
+                        description: "Development of robust APIs and scalable solutions for different types of applications.",
+                        ariaLabel: "Learn more about Backend Development"
+                    },
+                    softSkills: {
+                        title: "Interpersonal Skills",
+                        description: "Effective communication, teamwork, and creative problem solving.",
+                        ariaLabel: "Learn more about Interpersonal Skills"
+                    },
+                    action: "Learn More"
+                }
             },
             expertise: {
                 title: "Areas of Expertise",
                 subtitle:
-                    "Discover my core expertise areas and how they can elevate your project to new heights.",
+                    "Discover my core competencies and how they can elevate your project to new heights.",
                 learnMore: "Learn more",
                 items: {
                     item0: {
                         title: "Immersive Web Development",
                         description:
-                            "Development of SEO-optimized Landing Pages, Corporate Websites, and E-commerce platforms with a focus on responsive design and conversion optimization.",
+                            "Creation of Landing Pages, Corporate Websites, and E-commerce platforms optimized for SEO, with focus on responsiveness and conversion.",
                     },
                     item1: {
                         title: "Design & Visual Identity",
@@ -708,15 +746,15 @@ const resources = {
                     item3: {
                         title: "3D Modeling & Visualization",
                         description:
-                            "Professional 3D modeling, animations, photorealistic renderings, and optimized assets for AR/VR applications and 3D printing.",
+                            "3D modeling, animations, photorealistic renderings, and assets for AR/VR and 3D printing.",
                     },
                     item4: {
                         title: "Technical Support",
                         description:
-                            "System maintenance, data recovery, and device optimization with remote or on-site support.",
+                            "System maintenance, data recovery, and device optimization with remote or on-site assistance.",
                     },
                     item5: {
-                        title: "Editing and Motion Graphics",
+                        title: "Editing & Motion Graphics",
                         description:
                             "Professional video editing and animations using After Effects, Premiere Pro, and Filmora for YouTube, social media, and other formats.",
                     },
@@ -725,50 +763,50 @@ const resources = {
             services: {
                 title: "My Services",
                 subtitle:
-                    "Tailored professional solutions that bring your vision to life!",
+                    "Custom professional solutions to bring your ideas to life!",
                 items: {
                     web: {
                         title: "Immersive Web Development",
                         description:
-                            "I craft exceptional web experiences! From high-converting Landing Pages and storytelling Corporate Websites to dynamic E-commerce platforms and engaging Blogs. Custom design, responsive layouts, and SEO optimization to boost your search rankings!",
+                            "I create unique web experiences! High-converting Landing Pages, Corporate Websites that tell your story, dynamic E-commerce platforms, and engaging Blogs. Custom design, responsive layouts, and SEO optimization to boost your search rankings!",
                     },
                     design: {
                         title: "Memorable Design & Visual Identity",
                         description:
-                            "I develop striking logos and complete visual identities. I create arts for social media, banners, flyers, and other advertising materials that strengthen your brand and connect you with your clients.",
+                            "I develop striking logos and complete visual identities. I create content for social media, banners, flyers, and other promotional materials that strengthen your brand and connect you with your customers.",
                     },
                     documentation: {
                         title: "Impeccable Professional Documentation",
                         description:
-                            "I transform your concepts into professional, high-impact documents. From compelling presentations and clear business documents to advanced spreadsheets, attention-grabbing resumes, and meticulously formatted academic papers.",
+                            "I transform your ideas into professional, impactful documents. Impressive presentations, clear business documents, advanced spreadsheets, standout resumes, and academic papers with flawless formatting.",
                     },
                     modeling: {
-                        title: "Immersive 3D Modeling & Visualization",
+                        title: "3D Modeling & Immersive Visualization",
                         description:
-                            "I bring your projects to life with high-quality 3D modeling! Detailed 3D models and environments, photorealistic renderings, animations, and assets optimized for AR/VR. Projects ready for 3D printing and professional visualization.",
+                            "I bring your projects to life with high-quality 3D modeling! Detailed 3D models and environments, photorealistic renderings, animations, and optimized assets for AR/VR. Projects ready for 3D printing and professional visualization.",
                     },
                     support: {
                         title: "Efficient Technical Support",
                         description:
-                            "Comprehensive technical support for your equipment: formatting, optimization, cleaning, data recovery, and preventive maintenance. Remote or on-site service, with agility and professionalism.",
+                            "Complete technical support for your equipment: formatting, optimization, cleaning, data recovery, and preventive maintenance. Remote or on-site service, with agility and professionalism.",
                     },
                     video: {
-                        title: "Professional Editing and Motion Graphics",
+                        title: "Professional Editing & Motion Graphics",
                         description:
-                            "Dynamic and engaging video content! Expert cutting, editing, color grading, effects, subtitling, motion graphics, and animations. I leverage industry-standard tools including Premiere Pro, After Effects, and Filmora. Perfect for YouTube, social media, corporate videos, events, vignettes, and logo animations!",
+                            "Dynamic and engaging videos! Cutting, editing, color correction, effects, subtitling, motion graphics, and animations. I use Premiere Pro, After Effects, Filmora, and other professional tools. Perfect for YouTube, social media, corporate videos, events, bumpers, and logo animations!",
                     },
                 },
                 downloadButton: "Download Complete Service Catalog",
                 downloadDescription:
-                    "Explore all details and pricing in my comprehensive catalog!",
+                    "Discover all details and pricing in my catalog!",
                 learnMore: "Learn more",
-                whatsappButton: "Chat with me on WhatsApp",
-                whatsappText: "Vamos conversar!",
+                whatsappButton: "Chat via WhatsApp",
+                whatsappText: "Let's talk!",
                 ariaLabel: "Services Section",
             },
             portfolio: {
                 title: "My Portfolio",
-                subtitle: "Projects and works that demonstrate my skills",
+                subtitle: "Projects and works that showcase my skills",
                 categories: {
                     all: "All",
                     web: "Web",
@@ -777,22 +815,22 @@ const resources = {
                     modelagem: "3D Modeling",
                 },
                 projectLabels: {
-                    contracted: "Contracted",
+                    contracted: "Client Project",
                     viewProject: "View Project",
-                    prevProject: "Previous Project",
-                    nextProject: "Next Project",
+                    prevProject: "Previous project",
+                    nextProject: "Next project",
                     viewHighRes: "View in Maximum Quality! Up to 4K!",
                 },
                 projects: {
                     flyserv: {
                         title: "FlyServ Drones",
                         description:
-                            "I developed the front-end and back-end of the FlyServ Drones website, creating the structure, mechanics, and user experience to ensure optimized performance and intuitive navigation.",
+                            "I developed both the front-end and back-end of the FlyServ Drones website, creating the structure, functionality, and user experience to ensure optimized performance and intuitive navigation.",
                     },
                     onlineDrawingCourse: {
                         title: "Online Drawing Course",
                         description:
-                            "Website developed for a drawing teacher, using HTML, CSS, and JavaScript. Focus on intuitive user experience and responsive design.",
+                            "Website developed for an art instructor, using HTML, CSS, and JavaScript. Focus on intuitive user experience and responsive design.",
                     },
                     weightLossProgram: {
                         title: "Seca e Define - Weight Loss Program",
@@ -1025,30 +1063,30 @@ const resources = {
                 connect: "Connect",
                 copyright: "© {{year}} Jeferson Reis. All rights reserved.",
                 social: {
-                    linkedin: "Jeferson Reis Almeida LinkedIn",
-                    github: "Jeferson Reis Almeida GitHub",
-                    instagram: "Jeferson Reis Almeida Instagram",
-                    whatsapp: "Jeferson Reis Almeida WhatsApp",
-                    discord: "Jeferson Reis Almeida Discord",
+                    linkedin: "Jeferson Reis Almeida on LinkedIn",
+                    github: "Jeferson Reis Almeida on GitHub",
+                    instagram: "Jeferson Reis Almeida on Instagram",
+                    whatsapp: "Contact Jeferson Reis Almeida on WhatsApp",
+                    discord: "Join Jeferson Reis Almeida on Discord",
                 },
             },
             skills: {
                 title: "My Skills and Competencies",
                 subtitle:
                     "Technical expertise and interpersonal skills to deliver exceptional results",
-                description: "Discover my key technical and behavioral skills developed throughout my career.",
+                description: "Discover my key technical and interpersonal skills developed throughout my career.",
                 sections: {
                     frontend: {
                         title: "Frontend Development",
-                        experience: "4+ Years of Experience",
+                        experience: "Over 4 years of experience",
                     },
                     backend: {
                         title: "Backend Development",
-                        experience: "4+ Years of Experience",
+                        experience: "Over 4 years of experience",
                     },
                     tools: {
                         title: "Tools & Other Skills",
-                        experience: "4+ Years of Experience",
+                        experience: "Over 4 years of experience",
                     },
                 },
                 softSkills: {
@@ -1057,7 +1095,7 @@ const resources = {
                         communication: {
                             title: "Effective Communication",
                             description:
-                                "Communicate ideas clearly, concisely, and adaptably for different audiences.",
+                                "Communicate ideas clearly, concisely, and adaptably to different audiences.",
                         },
                         teamwork: {
                             title: "Collaboration & Teamwork",
@@ -1082,7 +1120,7 @@ const resources = {
                 subtitle: "Experience and skills that make a difference",
                 highlights: "Highlights",
                 highlightItems: [
-                    "Full-Stack Developer with 4+ years of experience",
+                    "Full-Stack Developer with over 4 years of experience",
                     "React and Node.js Specialist",
                     "Graphic Designer",
                     "IT Expertise",
@@ -1133,7 +1171,7 @@ const resources = {
                     showLess: "Show Less",
                     downloadCV: "Download Full CV",
                 },
-                downloadDescription: "For more details, download my full resume",
+                downloadDescription: "For more details, download my complete resume",
             },
             testimonials: {
                 title: "Testimonials",
@@ -1143,7 +1181,7 @@ const resources = {
                     {
                         rating: 5,
                         content:
-                            '"I was blown away by the quality delivered right on schedule! Every detail was meticulously crafted, and the results far exceeded my expectations. I\'ll definitely be recommending this service to anyone seeking excellence."',
+                            '"I was amazed by the quality of work delivered on time! Every detail was carefully crafted, and the results exceeded all expectations. I will definitely recommend to anyone looking for excellence."',
                         author: "FlyServ Drones",
                         title: "Drone Services Company",
                         image: "/assets/images/icon-flyserv.png",
@@ -1208,7 +1246,7 @@ const resources = {
             contact: {
                 title: "Contact",
                 callMe: "Call me to start your project!",
-                emailMe: "Email me to share your idea!",
+                emailMe: "Email me about your idea!",
                 phone: "+55 71 9 8439-3235",
                 email: "jefersonreisalmeida8356@gmail.com",
                 ariaWhatsapp: "Open WhatsApp conversation",
@@ -1216,12 +1254,10 @@ const resources = {
                 copyEmail: "Copy email to clipboard",
                 emailCopied: "Email successfully copied!"
             },
-            // -------------- ADICIONANDO AS TRADUÇÕES PARA OS BOTÕES FLUTUANTES AQUI --------
             floatButtons: {
                 whatsapp: "Chat with me on WhatsApp",
                 discord: "Join my Discord server",
             },
-            // ------------------------------------------------------------------------------ 
         },
     },
 };
@@ -1230,9 +1266,14 @@ i18n
     .use(initReactI18next) // passa o i18n para react-i18next.
     .init({
         resources,
-        lng: "pt", // idioma padrão
+        lng: localStorage.getItem('i18nextLng') || "pt", // verifica se há um idioma salvo, ou usa o padrão
+        fallbackLng: "pt", // idioma de fallback
         interpolation: {
-            escapeValue: false, // não escape para caracteres HTML (< in JSX).
+            escapeValue: false, // não escapa para caracteres HTML (< in JSX).
+        },
+        detection: {
+            order: ['localStorage', 'navigator'],
+            caches: ['localStorage'], // salva a escolha do idioma no localStorage
         },
     });
 
