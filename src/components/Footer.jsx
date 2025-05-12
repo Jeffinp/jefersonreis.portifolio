@@ -87,12 +87,6 @@ const Footer = () => {
         },
     ];
 
-    const menuItems = [
-        { key: 'home', delay: 0.2 },
-        { key: 'about', delay: 0.3 },
-        { key: 'portfolio', delay: 0.4 },
-        { key: 'contact', delay: 0.5 }
-    ];
 
     return (
         <footer className="relative min-h-[320px] md:min-h-[260px] bg-gradient-to-b from-white to-blue-50/70 dark:from-slate-900/60 dark:to-slate-900/60 border-t border-gray-200 dark:border-gray-800 py-10 md:py-16 flex flex-col justify-center">
@@ -123,32 +117,12 @@ const Footer = () => {
                         </p>
                     </AnimatedSection>
 
-                    {/* Quick Links */}
-                    <AnimatedSection delay={0.1} className="space-y-6">
-                        <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-                            {t("footer.quickLinks")}
-                        </h3>
-                        <nav className="grid grid-cols-2 gap-4">
-                            {menuItems.map((item) => (
-                                <AnimatedSection key={item.key} delay={item.delay}>
-                                    <a
-                                        href={`#${item.key}`}
-                                        className="relative text-gray-600 dark:text-gray-300 transition-all duration-300 hover:translate-x-1 hover:text-blue-600 dark:hover:text-blue-400 whitespace-nowrap"
-                                    >
-                                        <span className="absolute -bottom-px left-0 w-0 h-px bg-gradient-to-r from-blue-500 to-purple-500 hover:w-full transition-all duration-300"></span>
-                                        {t(`menu.${item.key}`)}
-                                    </a>
-                                </AnimatedSection>
-                            ))}
-                        </nav>
-                    </AnimatedSection>
-
                     {/* Social Connections */}
-                    <AnimatedSection delay={0.2} className="space-y-6">
+                    <AnimatedSection delay={0.2} className="space-y-6 lg:col-start-3 lg:col-end-4">
                         <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
                             {t("footer.connect")}
                         </h3>
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-wrap gap-4 justify-end">
                             {socialLinks.map((link, index) => (
                                 <motion.a
                                     key={index}
@@ -156,7 +130,7 @@ const Footer = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title={link.title}
-                                    className={`p-3 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-md transition-all duration-300 transform ${link.hoverColor}`}
+                                    className={`p-3 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-md transition-all duration-300 transform ${link.hoverColor}`}
                                     aria-label={link.label}
                                     style={{ minWidth: 44, minHeight: 44, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                                     whileHover={{

@@ -160,9 +160,9 @@ const EbookPromo = () => {
                                         </h3>
                                         <div className="mt-auto pt-2 flex items-center text-sm text-blue-600 dark:text-blue-400 font-medium">
                                             <Download size={14} className="mr-1" />
-                                            <span aria-label={t("ebooksPromo.details", "Ver detalhes")}>
+                                            <Link to="/ebooks" aria-label={t("ebooksPromo.details", "Ver detalhes")}>
                                                 {t("ebooksPromo.details", "Ver detalhes")}
-                                            </span>
+                                            </Link>
                                         </div>
                                     </div>
                                 </motion.div>
