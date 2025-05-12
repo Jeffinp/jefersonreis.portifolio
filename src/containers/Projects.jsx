@@ -32,7 +32,7 @@ CarouselButton.displayName = 'CarouselButton';
 
 // Componente memoizado para o item do projeto - Responsividade aprimorada
 const ProjectItem = memo(({ project, t, isMobile }) => {
-    const { category, image, titleKey, descriptionKey, link, technologies = [] } = project;
+    const { category, image, titleKey, descriptionKey, link, technologies = [], type } = project;
     const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
 
     return (
@@ -50,6 +50,16 @@ const ProjectItem = memo(({ project, t, isMobile }) => {
                             {category.charAt(0).toUpperCase() + category.slice(1)}
                         </div>
                     )}
+
+                    {/* Project type tag */}
+                    {type && (
+                        <div className={`absolute bottom-2 sm:bottom-3 right-2 sm:right-3 px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs font-medium rounded-md backdrop-blur-sm border border-opacity-20 ${type === 'personal'
+                            ? 'bg-purple-500/60 text-white border-purple-300 dark:border-purple-400'
+                            : 'bg-emerald-500/60 text-white border-emerald-300 dark:border-emerald-400'
+                            }`}>
+                            {type === 'personal' ? t('portfolio.projectLabels.personal') : t('portfolio.projectLabels.commercial')}
+                        </div>
+                    )}
                 </div>
 
                 <div className="p-3 sm:p-4 md:p-5 lg:p-6">
@@ -59,8 +69,8 @@ const ProjectItem = memo(({ project, t, isMobile }) => {
                     <p className={`text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-2 sm:mb-3 md:mb-4 ${isDescriptionVisible ? '' : 'line-clamp-2 sm:line-clamp-3'}`}>
                         {t(descriptionKey)}
                     </p>
-                    <button 
-                        onClick={() => setIsDescriptionVisible(!isDescriptionVisible)} 
+                    <button
+                        onClick={() => setIsDescriptionVisible(!isDescriptionVisible)}
                         className="text-blue-600 dark:text-blue-400 text-xs mt-1"
                     >
                         {isDescriptionVisible ? t('portfolio.projectLabels.hideDescription') : t('portfolio.projectLabels.showMore')}
@@ -291,6 +301,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.brasilPiscinas.title",
             descriptionKey: "portfolio.projects.brasilPiscinas.description",
             technologies: ["Canva"],
+            type: "personal",
         },
         {
             category: "design",
@@ -298,6 +309,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.terrorDuo.title",
             descriptionKey: "portfolio.projects.terrorDuo.description",
             technologies: ["Adobe Photoshop", "Clip Studio", "Illustration"],
+            type: "personal",
         },
         {
             category: "motion",
@@ -305,6 +317,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.bratailsAnimated.title",
             descriptionKey: "portfolio.projects.bratailsAnimated.description",
             technologies: ["Clip Studio", "Motion Graphics", "2D Animation"],
+            type: "personal",
         },
         {
             category: "design",
@@ -344,6 +357,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.parasiteNotebook.title",
             descriptionKey: "portfolio.projects.parasiteNotebook.description",
             technologies: ["Illustration"],
+            type: "personal",
         },
         {
             category: "design",
@@ -351,6 +365,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.giratinaArt.title",
             descriptionKey: "portfolio.projects.giratinaArt.description",
             technologies: ["Illustration", "Adobe Photoshop"],
+            type: "personal",
         },
         {
             category: "design",
@@ -394,6 +409,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.spaceshipPrototype.title",
             descriptionKey: "portfolio.projects.spaceshipPrototype.description",
             technologies: ["Concept Art", "Digital Illustration", "Sci-Fi Design"],
+            type: "personal",
         },
         {
             category: "design",
@@ -401,6 +417,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.bratails360.title",
             descriptionKey: "portfolio.projects.bratails360.description",
             technologies: ["Character Design", "Digital Art", "Illustration"],
+            type: "personal",
         },
         {
             category: "design",
@@ -408,6 +425,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.bratailsSmiling.title",
             descriptionKey: "portfolio.projects.bratailsSmiling.description",
             technologies: ["Character Illustration", "Digital Art", "Portraiture"],
+            type: "personal",
         },
         {
             category: "modelagem",
@@ -423,6 +441,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.twinSwords.title",
             descriptionKey: "portfolio.projects.twinSwords.description",
             technologies: ["Digital Art", "Swords Design", "Illustration"],
+            type: "personal",
         },
         {
             category: "design",
@@ -430,6 +449,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.angelSymbols.title",
             descriptionKey: "portfolio.projects.angelSymbols.description",
             technologies: ["Symbolism", "Digital Illustration", "Graphic Design"],
+            type: "personal",
         },
         {
             category: "design",
@@ -445,6 +465,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.berserkInspired.title",
             descriptionKey: "portfolio.projects.berserkInspired.description",
             technologies: ["Digital Art", "Graphic anime Style", "Illustration"],
+            type: "personal",
         },
         {
             category: "design",
@@ -452,6 +473,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.anniePortrait.title",
             descriptionKey: "portfolio.projects.anniePortrait.description",
             technologies: ["Character Portrait", "Digital Painting", "Illustration"],
+            type: "personal",
         },
         {
             category: "modelagem",
@@ -459,6 +481,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.renderTest.title",
             descriptionKey: "portfolio.projects.renderTest.description",
             technologies: ["Blender", "3D Rendering", "Geometric Design"],
+            type: "personal",
         },
         {
             category: "design",
@@ -474,6 +497,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.twinSwordsVariation.title",
             descriptionKey: "portfolio.projects.twinSwordsVariation.description",
             technologies: ["Digital Art", "Illustration", "Character Design"],
+            type: "personal",
         },
         {
             category: "modelagem",
@@ -481,6 +505,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.asteroid3d.title",
             descriptionKey: "portfolio.projects.asteroid3d.description",
             technologies: ["Blender", "3D Modeling", "Space Design"],
+            type: "personal",
         },
         {
             category: "design",
@@ -488,6 +513,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.bratailsScythe.title",
             descriptionKey: "portfolio.projects.bratailsScythe.description",
             technologies: ["Character Design", "Digital Art", "Weapon Illustration"],
+            type: "personal",
         },
         {
             category: "design",
@@ -499,6 +525,7 @@ const PortfolioSection = () => {
                 "Digital Art",
                 "Emotion Portrayal",
             ],
+            type: "personal",
         },
         {
             category: "modelagem",
@@ -506,6 +533,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.captainShield.title",
             descriptionKey: "portfolio.projects.captainShield.description",
             technologies: ["3D Modeling", "Blender", "Prop Design"],
+            type: "personal",
         },
         {
             category: "design",
@@ -521,6 +549,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.donut3d.title",
             descriptionKey: "portfolio.projects.donut3d.description",
             technologies: ["Blender", "3D Rendering", "Texturing"],
+            type: "personal",
         },
         {
             category: "design",
@@ -528,6 +557,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.bossConcept.title",
             descriptionKey: "portfolio.projects.bossConcept.description",
             technologies: ["Concept Art", "Digital Illustration", "Character Design"],
+            type: "personal",
         },
         {
             category: "modelagem",
@@ -535,6 +565,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.skull3d.title",
             descriptionKey: "portfolio.projects.skull3d.description",
             technologies: ["Blender", "3D Modeling", "Anatomical Alien Rendering"],
+            type: "personal",
         },
         {
             category: "design",
@@ -550,6 +581,7 @@ const PortfolioSection = () => {
             titleKey: "portfolio.projects.modelingTest.title",
             descriptionKey: "portfolio.projects.modelingTest.description",
             technologies: ["3D Modeling", "Blender", "Rendering Test"],
+            type: "personal",
         },
         {
             category: "design",

@@ -193,6 +193,8 @@ const resources = {
                     viewHighRes: "Ver em Qualidade Máxima! Em até 4K!",
                     showMore: "Mostrar Mais",
                     hideDescription: "Ocultar Descrição",
+                    personal: "Pessoal",
+                    commercial: "Comercial",
                 },
                 projects: {
                     flyserv: {
@@ -834,6 +836,8 @@ const resources = {
                     viewHighRes: "View in Maximum Quality! Up to 4K!",
                     showMore: "Show More",
                     hideDescription: "Hide Description",
+                    personal: "Personal",
+                    commercial: "Commercial",
                 },
                 projects: {
                     systemSolar: {
