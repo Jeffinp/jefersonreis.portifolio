@@ -156,8 +156,6 @@ const PortfolioSection = () => {
 
     // Projetos - mantido como está
     const projects = useMemo(() => [
-        /* Array de projetos - mantido como está no código original */
-        // Para não sobrecarregar o código, mantive o mesmo array de projetos
         {
             category: "web",
             image: "/assets/images/SistemaSolar.png",
@@ -166,6 +164,68 @@ const PortfolioSection = () => {
             link: "https://sistema-solar-puce.vercel.app/",
             type: "personal",
             technologies: ["React", "TypeScript", "Tailwind CSS", "Three.js", "Shadcn/UI"],
+        },
+        {
+            category: "web",
+            image: "/assets/images/Chatbot.webp",
+            titleKey: "portfolio.projects.pythonChatbot.title",
+            descriptionKey: "portfolio.projects.pythonChatbot.description",
+            link: "https://github.com/Jeffinp/ProjetoPython",
+            type: "personal",
+            technologies: [
+                "Python",
+                "Machine Learning",
+                "Natural Language Processing",
+            ],
+        },
+        {
+            category: "web",
+            image: "/assets/images/Screenshot_1051.webp",
+            titleKey: "portfolio.projects.fileManager.title",
+            descriptionKey: "portfolio.projects.fileManager.description",
+            link: "https://github.com/Jeffinp/file_organizer",
+            type: "personal",
+            technologies: ["Python", "File Management", "HTML", "CSS", "JavaScript"],
+        },
+        {
+            category: "web",
+            image: "/assets/images/jogoplataforma.webp",
+            titleKey: "portfolio.projects.platformGame.title",
+            descriptionKey: "portfolio.projects.platformGame.description",
+            link: "https://plataforma-chatgpt-main.vercel.app/",
+            type: "personal",
+            technologies: ["JavaScript", "HTML", "CSS", "Game Development"],
+        },
+        {
+            category: "web",
+            image: "/assets/images/site.webp",
+            titleKey: "portfolio.projects.personalPortfolio.title",
+            descriptionKey: "portfolio.projects.personalPortfolio.description",
+            link: "https://jefersonreis-github-io.vercel.app/index.html",
+            type: "personal",
+            technologies: [
+                "Portfolio Design",
+                "React",
+                "Tailwind CSS",
+            ],
+        },
+        {
+            category: "web",
+            image: "/assets/images/Presente-Natal.webp",
+            titleKey: "portfolio.projects.christmasGift.title",
+            descriptionKey: "portfolio.projects.christmasGift.description",
+            link: "https://aterrsagemresponsiva.netlify.app/",
+            type: "personal",
+            technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+        },
+        {
+            category: "web",
+            image: "/assets/images/Screenshot_993.webp",
+            titleKey: "portfolio.projects.justlyTraining.title",
+            descriptionKey: "portfolio.projects.justlyTraining.description",
+            link: "https://justly.netlify.app/",
+            type: "personal",
+            technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
         },
         {
             category: "web",
@@ -193,80 +253,6 @@ const PortfolioSection = () => {
             link: "https://secaedefine.vercel.app",
             type: "contracted",
             technologies: ["HTML", "CSS", "JavaScript"],
-        },
-        {
-            category: "web",
-            image: "/assets/images/Screenshot_1051.webp",
-            titleKey: "portfolio.projects.fileManager.title",
-            descriptionKey: "portfolio.projects.fileManager.description",
-            link: "https://github.com/Jeffinp/file_organizer",
-            type: "personal",
-            technologies: ["Python", "File Management", "HTML", "CSS", "JavaScript"],
-        },
-        {
-            category: "web",
-            image: "/assets/images/Chatbot.webp",
-            titleKey: "portfolio.projects.pythonChatbot.title",
-            descriptionKey: "portfolio.projects.pythonChatbot.description",
-            link: "https://github.com/Jeffinp/ProjetoPython",
-            type: "personal",
-            technologies: [
-                "Python",
-                "Machine Learning",
-                "Natural Language Processing",
-            ],
-        },
-        {
-            category: "web",
-            image: "/assets/images/jogoplataforma.webp",
-            titleKey: "portfolio.projects.platformGame.title",
-            descriptionKey: "portfolio.projects.platformGame.description",
-            link: "https://plataforma-chatgpt-main.vercel.app/",
-            type: "personal",
-            technologies: ["JavaScript", "HTML", "CSS", "Game Development"],
-        },
-        {
-            category: "web",
-            image: "/assets/images/menuinterativo.webp",
-            titleKey: "portfolio.projects.interactiveMenu.title",
-            descriptionKey: "portfolio.projects.interactiveMenu.description",
-            link: "https://menu-interativo.vercel.app/",
-            type: "personal",
-            technologies: ["JavaScript", "HTML", "CSS", "UI/UX Design"],
-        },
-        {
-            category: "web",
-            image: "/assets/images/Presente-Natal.webp",
-            titleKey: "portfolio.projects.christmasGift.title",
-            descriptionKey: "portfolio.projects.christmasGift.description",
-            link: "https://aterrsagemresponsiva.netlify.app/",
-            type: "personal",
-            technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
-        },
-        {
-            category: "web",
-            image: "/assets/images/Screenshot_993.webp",
-            titleKey: "portfolio.projects.justlyTraining.title",
-            descriptionKey: "portfolio.projects.justlyTraining.description",
-            link: "https://justly.netlify.app/",
-            type: "personal",
-            technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
-        },
-        {
-            category: "web",
-            image: "/assets/images/site.webp",
-            titleKey: "portfolio.projects.personalPortfolio.title",
-            descriptionKey: "portfolio.projects.personalPortfolio.description",
-            link: "https://jefersonreis-github-io.vercel.app/index.html",
-            type: "personal",
-            technologies: [
-                "HTML",
-                "CSS",
-                "JavaScript",
-                "Portfolio Design",
-                "React",
-                "Tailwind CSS",
-            ],
         },
         {
             category: "web",
@@ -591,8 +577,7 @@ const PortfolioSection = () => {
             type: "contracted",
             technologies: ["Icon Design", "Digital Art", "Branding"],
         },
-
-    ], []);
+    ].sort((a, b) => b.technologies.length - a.technologies.length), []);
 
     // Categorias memoizadas - mantido como está
     const categories = useMemo(() => [

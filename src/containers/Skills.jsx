@@ -90,7 +90,7 @@ const SkillBar = memo(({ name, percentage, delay, isVisible }) => (
                     className={`text-xs font-medium sm:text-sm ${percentage === 100
                         ? "text-amber-500 dark:text-amber-400"
                         : "text-gray-600 dark:text-gray-300"
-                    }`}
+                        }`}
                 >
                     {percentage}%
                 </span>
@@ -177,7 +177,7 @@ const SkillSection = memo(({ title, icon, skills, id, openSection, toggleSection
                     className={`transform transition-transform duration-300 ${isExpanded
                         ? "text-blue-600 dark:text-blue-400 rotate-180"
                         : "text-gray-400 dark:text-gray-500"
-                    }`}
+                        }`}
                 >
                     <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
@@ -243,33 +243,37 @@ StatItem.displayName = 'StatItem';
 // Dados das habilidades memoizados
 const getFrontendSkills = (t) => [
     { name: "HTML/CSS", percentage: 100 },
-    { name: "JavaScript/TypeScript", percentage: 95 },
+    { name: "JavaScript/TypeScript", percentage: 100 },
     { name: "React.js", percentage: 90 },
     { name: "Next.js", percentage: 85 },
-    { name: "Vue.js", percentage: 75 },
-    { name: "Tailwind CSS", percentage: 95 },
+    { name: "Vue.js", percentage: 80 },
+    { name: "Angular", percentage: 80 },
     { name: "Bootstrap", percentage: 90 },
-    { name: "Responsive Design", percentage: 95 },
+    { name: "Tailwind CSS", percentage: 100 },
+    { name: "Responsive Design", percentage: 100 },
 ];
 
 const getBackendSkills = (t) => [
+    { name: "Python", percentage: 95 },
     { name: "Node.js", percentage: 85 },
-    { name: "Express.js", percentage: 80 },
     { name: "API Development", percentage: 85 },
-    { name: "Python", percentage: 80 },
-    { name: "Django", percentage: 65 },
-    { name: "MySQL/MongoDB", percentage: 75 },
+    { name: "C#", percentage: 80 },
+    { name: "C++", percentage: 80 },
+    { name: "MySQL/PostgreSQL", percentage: 75 },
     { name: "Firebase", percentage: 70 },
 ];
 
 const getDesignSkills = (t) => [
     { name: "Adobe Photoshop", percentage: 95 },
-    { name: "Illustrator", percentage: 90 },
+    { name: "Adobe Illustrator", percentage: 90 },
+    { name: "Pacote Office", percentage: 100 },
+    { name: "Canva", percentage: 95 },
     { name: "Figma", percentage: 85 },
     { name: "UI/UX Design", percentage: 85 },
     { name: "Blender", percentage: 70 },
     { name: "Office Suite", percentage: 95 },
 ];
+
 
 const getSoftSkills = (t) => [
     {
