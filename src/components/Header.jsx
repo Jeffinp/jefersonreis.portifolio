@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import { Sun, Moon, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 // Componente para item de navegação desktop
@@ -47,7 +47,7 @@ const LanguageButton = ({ language, currentLanguage, onClick, icon, label, ariaL
     </button>
 );
 
-const Header = ({ toggleDarkMode, darkMode }) => {
+const Header = ({ darkMode }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
     const { i18n, t } = useTranslation();
@@ -216,20 +216,6 @@ const Header = ({ toggleDarkMode, darkMode }) => {
                                     ariaLabel={t("header.english_language")}
                                 />
                             </div>
-
-                            {/* Dark Mode Toggle */}
-                            <button
-                                onClick={toggleDarkMode}
-                                className="p-1.5 sm:p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
-                                aria-label={darkMode ? t("header.toggle_light_mode") : t("header.toggle_dark_mode")}
-                                aria-pressed={darkMode}
-                            >
-                                {darkMode ? (
-                                    <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 dark:text-gray-400" />
-                                ) : (
-                                    <Moon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 dark:text-gray-400" />
-                                )}
-                            </button>
 
                             {/* Mobile Menu Button - Escondido em desktop */}
                             <button
