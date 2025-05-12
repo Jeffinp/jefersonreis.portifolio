@@ -84,32 +84,25 @@ const EbookPromo = () => {
                     <AnimatedSection className="max-w-xl">
                         <div className="inline-flex items-center bg-blue-100 dark:bg-blue-900/60 rounded-full px-3 py-1 text-sm font-medium text-blue-800 dark:text-blue-200 mb-4">
                             <BookOpen size={16} className="mr-2" />
-                            {t("ebooksPromo.badge", "Novos eBooks disponíveis")}
+                            {t("ebooksPromo.badge")}
                         </div>
 
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 text-transparent bg-clip-text">
-                            {t("ebooksPromo.title", "Conhecimento que transforma")}
+                            {t("ebooksPromo.title")}
                         </h2>
 
                         <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                            {t("ebooksPromo.description", "Acesse minha biblioteca exclusiva de eBooks com conteúdos sobre tecnologia, empreendedorismo e desenvolvimento pessoal. Material prático e objetivo para aplicação imediata.")}
+                            {t("ebooksPromo.description")}
                         </p>
 
                         <ul className="mb-8 space-y-3">
-                            {[
-                                "Conteúdo exclusivo",
-                                "PDF organizado e visual bonito",
-                                "Exemplos práticos",
-                                "Acesso imediato ao conteúdo",
-                                "Atualizações regulares",
-                                "Suporte ao cliente dedicado"
-                            ].map((item, index) => (
+                            {Array.from({ length: 6 }, (_, index) => (
                                 <li key={index} className="flex items-center">
                                     <div className="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/60 flex items-center justify-center mr-3">
                                         <ChevronRight size={14} className="text-green-600 dark:text-green-400" />
                                     </div>
                                     <span className="text-gray-700 dark:text-gray-300">
-                                        {t(`ebooksPromo.benefits.${index}`, item)}
+                                        {t(`ebooksPromo.benefits.${index}`)}
                                     </span>
                                 </li>
                             ))}
@@ -118,9 +111,9 @@ const EbookPromo = () => {
                         <Link
                             to="/ebooks"
                             className="inline-flex items-center justify-center px-6 py-3.5 text-base font-medium text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 rounded-full transition-colors duration-300 shadow-md hover:shadow-lg"
-                            aria-label={t("ebooksPromo.cta", "Explorar Biblioteca")}
+                            aria-label={t("ebooksPromo.cta")}
                         >
-                            {t("ebooksPromo.cta", "Explorar Biblioteca")}
+                            {t("ebooksPromo.cta")}
                             <Book size={18} className="ml-2" />
                         </Link>
                     </AnimatedSection>
@@ -160,8 +153,8 @@ const EbookPromo = () => {
                                         </h3>
                                         <div className="mt-auto pt-2 flex items-center text-sm text-blue-600 dark:text-blue-400 font-medium">
                                             <Download size={14} className="mr-1" />
-                                            <Link to="/ebooks" aria-label={t("ebooksPromo.details", "Ver detalhes")}>
-                                                {t("ebooksPromo.details", "Ver detalhes")}
+                                            <Link to="/ebooks" aria-label={t("ebooksPromo.details")}>
+                                                {t("ebooksPromo.details")}
                                             </Link>
                                         </div>
                                     </div>
@@ -169,11 +162,11 @@ const EbookPromo = () => {
                             ))}
                         </div>
 
-                        {/* Mensagem de aviso*/}
+                        {/* Mensagem de aviso */}
                         <div className="mt-4 flex justify-center">
                             <div className="relative bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 p-2 rounded-lg shadow-lg">
                                 <p className="text-center text-sm">
-                                    Novos eBooks estarão disponíveis em breve. Enquanto isso, aproveite os que já estão disponíveis.
+                                    {t("ebooksPromo.warningMessage")}
                                 </p>
                                 <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-6 border-r-6 border-t-6 border-transparent border-b-blue-100 dark:border-b-blue-900" />
                             </div>

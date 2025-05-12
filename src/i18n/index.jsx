@@ -644,6 +644,39 @@ const resources = {
                 whatsapp: "Fale comigo no WhatsApp",
                 discord: "Junte-se ao meu Discord",
             },
+            ebooksPromo: {
+                badge: "Novos eBooks disponíveis",
+                title: "Conhecimento que transforma",
+                description: "Acesse minha biblioteca exclusiva de eBooks com conteúdos sobre tecnologia, empreendedorismo e desenvolvimento pessoal. Material prático e objetivo para aplicação imediata.",
+                benefits: {
+                    0: "Conteúdo exclusivo",
+                    1: "PDF organizado e visual bonito",
+                    2: "Exemplos práticos",
+                    3: "Acesso imediato ao conteúdo",
+                    4: "Atualizações regulares",
+                    5: "Suporte ao cliente dedicado",
+                },
+                cta: "Explorar Biblioteca",
+                details: "Ver detalhes",
+                warningMessage: "Novos eBooks estarão disponíveis em breve. Enquanto isso, aproveite os que já estão disponíveis.",
+            },
+            ebooks: {
+                title: "eBooks",
+                description: "Uma coleção de eBooks com conteúdo exclusivo para ajudar no seu desenvolvimento pessoal e profissional.",
+                filters: {
+                    all: "Todos",
+                },
+                noResults: "Nenhum eBook encontrado",
+                tryDifferentFilter: "Tente ajustar sua busca ou selecionar outra categoria",
+                resetFilters: "Limpar Filtros",
+                loadMore: "Carregar Mais",
+                featuredEbooks: {
+                    1: {
+                        title: "Internet Lucrativa: O Guia Definitivo para Ganhar Dinheiro Online",
+                        description: "Estratégias comprovadas para iniciar e escalar seu negócio online.",
+                    },
+                },
+            },
         },
     },
 
@@ -1280,6 +1313,39 @@ const resources = {
             floatButtons: {
                 whatsapp: "Chat with me on WhatsApp",
                 discord: "Join my Discord server",
+            },
+            ebooksPromo: {
+                badge: "New eBooks Available",
+                title: "Knowledge that Transforms",
+                description: "Access my exclusive library of eBooks with content on technology, entrepreneurship, and personal development. Practical and objective material for immediate application.",
+                benefits: {
+                    0: "Exclusive content",
+                    1: "Well-organized PDF with beautiful visuals",
+                    2: "Practical examples",
+                    3: "Immediate access to content",
+                    4: "Regular updates",
+                    5: "Dedicated customer support",
+                },
+                cta: "Explore Library",
+                details: "View Details",
+                warningMessage: "New eBooks will be available soon. In the meantime, enjoy the ones already available.",
+            },
+            ebooks: {
+                title: "eBooks",
+                description: "A collection of eBooks with exclusive content to help in your personal and professional development.",
+                filters: {
+                    all: "All",
+                },
+                noResults: "No eBooks found",
+                tryDifferentFilter: "Try adjusting your search or selecting a different category",
+                resetFilters: "Reset Filters",
+                loadMore: "Load More",
+                featuredEbooks: {
+                    1: {
+                        title: "Profitable Internet: The Definitive Guide to Making Money Online",
+                        description: "Proven strategies to start and scale your online business.",
+                    },
+                },
             },
         },
     },

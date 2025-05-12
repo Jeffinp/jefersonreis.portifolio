@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { debounce } from '../utils';
 import { featuredEbooks } from '../data/featuredEbooks';
+import { Link } from 'react-router-dom';
 
 const Ebook = () => {
     const { t } = useTranslation();
@@ -94,10 +95,10 @@ const Ebook = () => {
                     className="text-center mb-12 space-y-4"
                 >
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
-                        {t("ebooks.title", "eBooks")}
+                        {t("ebooks.title")}
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                        {t("ebooks.description", "Uma coleção de eBooks com conteúdo exclusivo para ajudar no seu desenvolvimento pessoal e profissional.")}
+                        {t("ebooks.description")}
                     </p>
                 </motion.div>
 
@@ -195,59 +196,42 @@ const Ebook = () => {
                             {filteredEbooks.map((ebook) => (
                                 <motion.div
                                     key={ebook.id}
-                                    layout
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="group relative bg-white dark:bg-gray-800/50 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 dark:border-gray-700 transition-all duration-300 transform hover:-translate-y-2"
+                                    className="flex flex-col overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700"
+                                    whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                                    style={{
+                                        transformOrigin: "center bottom",
+                                    }}
                                 >
-                                    {/* eBook Cover */}
-                                    <div className="relative h-48 md:h-56 overflow-hidden bg-gradient-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-900">
+                                    <div className="h-40 bg-blue-50 dark:bg-gray-700 relative">
                                         {ebook.coverImage ? (
                                             <img
                                                 src={ebook.coverImage}
-                                                alt={ebook.title}
-                                                className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
+                                                alt={t(`ebooks.featuredEbooks.${ebook.id}.title`)}
+                                                className="w-full h-full object-cover"
                                                 loading="lazy"
                                             />
                                         ) : (
-                                            <div className="w-full h-full flex items-center justify-center">
-                                                <Book size={48} className="text-blue-500 opacity-50" />
+                                            <div className="flex items-center justify-center h-full">
+                                                <Book size={36} className="text-blue-500/50" />
                                             </div>
                                         )}
-                                    </div>
-
-                                    {/* eBook Details */}
-                                    <div className="p-5 space-y-3">
-                                        <h3 className="text-lg font-bold text-gray-900 dark:text-white line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                                            {ebook.title}
-                                        </h3>
-
-                                        <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3">
-                                            {ebook.description}
-                                        </p>
-
-                                        {/* Tags */}
-                                        <div className="flex flex-wrap gap-2">
-                                            {ebook.tags.map((tag, i) => (
-                                                <span
-                                                    key={i}
-                                                    className="px-2 py-1 text-xs bg-blue-50 dark:bg-gray-700 text-blue-700 dark:text-blue-300 rounded-md"
-                                                >
-                                                    {tag.charAt(0).toUpperCase() + tag.slice(1)}
-                                                </span>
-                                            ))}
+                                        <div className="absolute top-2 left-2 px-2 py-1 text-xs font-medium rounded-md bg-blue-600/90 text-white">
+                                            {ebook.tags.join(", ")}
                                         </div>
-
-                                        {/* Download Button */}
-                                        <a
-                                            href={ebook.downloadLink}
-                                            className="flex items-center justify-center w-full py-2 px-4 mt-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-center font-medium rounded-md transition duration-300 group-hover:shadow-lg"
-                                        >
-                                            <Download size={0} className="mr-2" />
-                                            {t("ebooks.downloadBtn", "Lançamento em breve")}
-                                        </a>
+                                    </div>
+                                    <div className="p-4 flex-1 flex flex-col">
+                                        <h3 className="text-base font-semibold mb-2 text-gray-900 dark:text-white line-clamp-2">
+                                            {t(`ebooks.featuredEbooks.${ebook.id}.title`)}
+                                        </h3>
+                                        <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3">
+                                            {t(`ebooks.featuredEbooks.${ebook.id}.description`)}
+                                        </p>
+                                        <div className="mt-auto pt-2 flex items-center text-sm text-blue-600 dark:text-blue-400 font-medium">
+                                            <Download size={14} className="mr-1" />
+                                            <Link to="/ebooks" aria-label={t("ebooksPromo.details")}>
+                                                {t("ebooksPromo.details")}
+                                            </Link>
+                                        </div>
                                     </div>
                                 </motion.div>
                             ))}
@@ -263,10 +247,10 @@ const Ebook = () => {
                     >
                         <Book size={64} className="mx-auto text-gray-300 dark:text-gray-600 mb-4" />
                         <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200">
-                            {t("ebooks.noResults", "Nenhum eBook encontrado")}
+                            {t("ebooks.noResults")}
                         </h3>
                         <p className="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
-                            {t("ebooks.tryDifferentFilter", "Tente ajustar sua busca ou selecionar outra categoria")}
+                            {t("ebooks.tryDifferentFilter")}
                         </p>
                         <button
                             onClick={() => {
@@ -275,7 +259,7 @@ const Ebook = () => {
                             }}
                             className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
                         >
-                            {t("ebooks.resetFilters", "Limpar Filtros")}
+                            {t("ebooks.resetFilters")}
                         </button>
                     </motion.div>
                 )}
