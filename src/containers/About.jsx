@@ -435,12 +435,6 @@ const AboutMe = () => {
                 }}
             />
 
-            {/* Gradient Blobs */}
-            <div className="absolute inset-0 overflow-visible -z-10 pointer-events-none">
-                <div className="absolute left-1/2 top-1/2 w-[500px] h-[500px] bg-blue-500/10 dark:bg-blue-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
-                <div className="absolute left-1/2 top-1/2 w-[320px] h-[320px] bg-purple-500/10 dark:bg-purple-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2 scale-75" />
-            </div>
-
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-16 lg:gap-20 xl:gap-24">
                     {/* Bio and Introduction */}

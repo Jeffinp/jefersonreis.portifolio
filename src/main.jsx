@@ -1,6 +1,7 @@
 // App.jsx
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import "./styles/import.css";
 import { HelmetProvider } from 'react-helmet-async';
 import { I18nextProvider } from 'react-i18next';
@@ -22,8 +23,78 @@ const Skills = lazy(() => import('./containers/Skills'));
 const Projects = lazy(() => import('./containers/Projects'));
 const Resume = lazy(() => import('./containers/Resume'));
 const Contact = lazy(() => import('./containers/Contact'));
+const EbookPromo = lazy(() => import('./containers/EbookPromo'));
+const Ebook = lazy(() => import('./pages/Ebook'));
 const ScrollToTopBtn = lazy(() => import('./components/ScrollToTopBtn'));
 
+// Componente HomePage
+const HomePage = ({ darkMode, toggleDarkMode }) => {
+    return (
+        <>
+            <SEOHead />
+
+            {/* Bolhas globais atravessando todas as seções */}
+            <div className="fixed inset-0 pointer-events-none -z-10" aria-hidden="true">
+                <div className="absolute left-1/2 top-1/2 w-[1200px] h-[1200px] bg-blue-500/10 dark:bg-blue-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
+                <div className="absolute left-1/2 top-1/2 w-[900px] h-[900px] bg-purple-500/10 dark:bg-purple-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
+            </div>
+
+            <Header
+                darkMode={darkMode}
+                toggleDarkMode={toggleDarkMode}
+            />
+            <main className="relative w-full">
+                <Suspense fallback={<Loader />}>
+                    <Hero />
+                    <EbookPromo />
+                    <About />
+                    <Services />
+                    <Skills />
+                    <Projects />
+                    <Resume />
+                    <Contact />
+                </Suspense>
+                <ScrollToTopBtn />
+            </main>
+            <WhatsAppFloatBtn />
+            <DiscordFloatBtn />
+            <Footer />
+        </>
+    );
+};
+
+// Componente EbookPage
+const EbookPage = ({ darkMode, toggleDarkMode }) => {
+    return (
+        <>
+            <SEOHead
+                title="eBooks - Conteúdo Exclusivo"
+                description="Biblioteca de eBooks com conteúdo exclusivo sobre tecnologia, empreendedorismo e desenvolvimento pessoal."
+            />
+
+            {/* Bolhas globais */}
+            <div className="fixed inset-0 pointer-events-none -z-10" aria-hidden="true">
+                <div className="absolute left-1/2 top-1/2 w-[1200px] h-[1200px] bg-blue-500/10 dark:bg-blue-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
+                <div className="absolute left-1/2 top-1/2 w-[900px] h-[900px] bg-purple-500/10 dark:bg-purple-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
+            </div>
+
+            <Header
+                darkMode={darkMode}
+                toggleDarkMode={toggleDarkMode}
+                showBackHome={true}
+            />
+            <main className="relative w-full">
+                <Suspense fallback={<Loader />}>
+                    <Ebook />
+                    <ScrollToTopBtn />
+                </Suspense>
+            </main>
+            <WhatsAppFloatBtn />
+            <DiscordFloatBtn />
+            <Footer />
+        </>
+    );
+};
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -86,40 +157,19 @@ const App = () => {
         return () => clearTimeout(timer);
     }, []);
 
+    const toggleDarkMode = () => setDarkMode(prev => !prev);
+
     if (isLoading) {
         return <Loader />;
     }
 
     return (
-        <>
-            <SEOHead />
-
-            {/* Bolhas globais atravessando todas as seções */}
-            <div className="fixed inset-0 pointer-events-none -z-10" aria-hidden="true">
-                <div className="absolute left-1/2 top-1/2 w-[1200px] h-[1200px] bg-blue-500/10 dark:bg-blue-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
-                <div className="absolute left-1/2 top-1/2 w-[900px] h-[900px] bg-purple-500/10 dark:bg-purple-500/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }} />
-            </div>
-
-            <Header
-                darkMode={darkMode}
-                toggleDarkMode={() => setDarkMode(prev => !prev)}
-            />
-            <main className="relative w-full">
-                <Suspense fallback={<Loader />}>
-                    <Hero />
-                    <About />
-                    <Services />
-                    <Skills />
-                    <Projects />
-                    <Resume />
-                    <Contact />
-                    <ScrollToTopBtn />
-                </Suspense>
-            </main>
-            <WhatsAppFloatBtn />
-            <DiscordFloatBtn />
-            <Footer />
-        </>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<HomePage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
+                <Route path="/ebooks" element={<EbookPage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
+            </Routes>
+        </BrowserRouter>
     );
 };
 

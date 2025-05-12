@@ -12,7 +12,7 @@ const resources = {
                 areas: "Atuação",
                 skills: "Habilidades",
                 portfolio: "Portfólio",
-                resume: "Currículo",
+                ebooks: "eBooks",
                 contact: "Contato",
             },
             header: {
@@ -29,7 +29,7 @@ const resources = {
             hero: {
                 title: "Jeferson Reis Almeida",
                 subtitle:
-                    "Desenvolvedor Full-Stack | Designer Gráfico | Técnico em Informática | ",
+                    "desenvolvedor full-stack | designer gráfico | técnico em informática",
                 transforming: "Transformando Ideias em Realidade",
                 profileAlt: "Foto de Jeferson Reis, desenvolvedor web full-stack",
                 buttons: {
@@ -191,12 +191,24 @@ const resources = {
                     prevProject: "Projeto anterior",
                     nextProject: "Próximo projeto",
                     viewHighRes: "Ver em Qualidade Máxima! Em até 4K!",
+                    showMore: "Mostrar Mais",
+                    hideDescription: "Ocultar Descrição",
                 },
                 projects: {
                     flyserv: {
                         title: "FlyServ Drones",
                         description:
                             "Desenvolvi o front-end e back-end do site FlyServ Drones, criando a estrutura, mecânica e experiência do usuário para garantir um desempenho otimizado e uma navegação intuitiva.",
+                    },
+                    systemSolar: {
+                        title: "Sistema Solar",
+                        description:
+                            "Desenvolvi o Sistema Solar utilizando React, TypeScript, Tailwind CSS, Three.js e Shadcn/UI, com o objetivo de aprimorar e evidenciar minhas habilidades em React e Three.js.",
+                    },
+                    brasilPiscinas: {
+                        title: "Brasil Piscinas",
+                        description:
+                            "Design de demonstração de uma empresa de piscinas, utilizando Canva.",
                     },
                     onlineDrawingCourse: {
                         title: "Curso de Desenho Online",
@@ -820,8 +832,15 @@ const resources = {
                     prevProject: "Previous project",
                     nextProject: "Next project",
                     viewHighRes: "View in Maximum Quality! Up to 4K!",
+                    showMore: "Show More",
+                    hideDescription: "Hide Description",
                 },
                 projects: {
+                    systemSolar: {
+                        title: "Solar System",
+                        description:
+                            "Developed the Solar System using React, TypeScript, Tailwind CSS, Three.js, and Shadcn/UI, to showcase my skills in React and Three.js.",
+                    },
                     flyserv: {
                         title: "FlyServ Drones",
                         description:

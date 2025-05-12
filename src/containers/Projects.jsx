@@ -33,6 +33,7 @@ CarouselButton.displayName = 'CarouselButton';
 // Componente memoizado para o item do projeto - Responsividade aprimorada
 const ProjectItem = memo(({ project, t, isMobile }) => {
     const { category, image, titleKey, descriptionKey, link, technologies = [] } = project;
+    const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
 
     return (
         <div className="flex-shrink-0 w-full xs:w-[280px] sm:w-[320px] md:w-[340px] lg:w-[380px] xl:w-[400px] 2xl:w-[420px] p-1 xs:p-2 sm:p-3 md:p-4">
@@ -55,9 +56,15 @@ const ProjectItem = memo(({ project, t, isMobile }) => {
                     <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 text-gray-900 dark:text-white">
                         {t(titleKey)}
                     </h3>
-                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-2 sm:mb-3 md:mb-4 line-clamp-2 sm:line-clamp-3">
+                    <p className={`text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-2 sm:mb-3 md:mb-4 ${isDescriptionVisible ? '' : 'line-clamp-2 sm:line-clamp-3'}`}>
                         {t(descriptionKey)}
                     </p>
+                    <button 
+                        onClick={() => setIsDescriptionVisible(!isDescriptionVisible)} 
+                        className="text-blue-600 dark:text-blue-400 text-xs mt-1"
+                    >
+                        {isDescriptionVisible ? t('portfolio.projectLabels.hideDescription') : t('portfolio.projectLabels.showMore')}
+                    </button>
 
                     <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3 md:mb-4">
                         {technologies.slice(0, isMobile ? 2 : 3).map((tech, index) => (
@@ -141,6 +148,15 @@ const PortfolioSection = () => {
     const projects = useMemo(() => [
         /* Array de projetos - mantido como está no código original */
         // Para não sobrecarregar o código, mantive o mesmo array de projetos
+        {
+            category: "web",
+            image: "/assets/images/SistemaSolar.png",
+            titleKey: "portfolio.projects.systemSolar.title",
+            descriptionKey: "portfolio.projects.systemSolar.description",
+            link: "https://sistema-solar-puce.vercel.app/",
+            type: "personal",
+            technologies: ["React", "TypeScript", "Tailwind CSS", "Three.js", "Shadcn/UI"],
+        },
         {
             category: "web",
             image: "/assets/images/flyserv.webp",
@@ -268,6 +284,13 @@ const PortfolioSection = () => {
             link: "https://zomato.com",
             type: "personal",
             technologies: ["HTML", "CSS", "Landing Page Design"],
+        },
+        {
+            category: "design",
+            image: "/assets/images/Artes/DesignGráfico_Brasil_piscinas.png",
+            titleKey: "portfolio.projects.brasilPiscinas.title",
+            descriptionKey: "portfolio.projects.brasilPiscinas.description",
+            technologies: ["Canva"],
         },
         {
             category: "design",
