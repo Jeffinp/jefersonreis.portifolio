@@ -245,8 +245,8 @@ const Ebook = () => {
                                             href={ebook.downloadLink}
                                             className="flex items-center justify-center w-full py-2 px-4 mt-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-center font-medium rounded-md transition duration-300 group-hover:shadow-lg"
                                         >
-                                            <Download size={16} className="mr-2" />
-                                            {t("ebooks.downloadBtn", "Baixar")}
+                                            <Download size={0} className="mr-2" />
+                                            {t("ebooks.downloadBtn", "Lançamento em breve")}
                                         </a>
                                     </div>
                                 </motion.div>
