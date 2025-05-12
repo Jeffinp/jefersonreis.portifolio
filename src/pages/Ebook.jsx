@@ -40,7 +40,7 @@ const Ebook = () => {
             setIsMobile(window.innerWidth < 768);
         };
 
-        handleResize(); // Initial check
+        handleResize(); // Verificação inicial
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
@@ -50,10 +50,10 @@ const Ebook = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [handleScroll]);
 
-    // Extract unique tags for filtering
+    // Extrair tags únicas para filtragem
     const allTags = [...new Set(featuredEbooks.flatMap(book => book.tags || []))];
 
-    // Categories for filter buttons
+    // Categorias para botões de filtro
     const categories = [
         { value: "all", label: t("ebooks.filters.all", "Todos") },
         ...allTags.map(tag => ({
@@ -62,7 +62,7 @@ const Ebook = () => {
         }))
     ];
 
-    // Filter and search ebooks
+    // Filtrar e buscar ebooks
     const filteredEbooks = featuredEbooks.filter(book =>
         (activeFilter === "all" || book.tags.includes(activeFilter)) &&
         (searchQuery === "" ||
@@ -86,7 +86,7 @@ const Ebook = () => {
             />
 
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Section Header with Animated Gradient */}
+                {/* Cabeçalho da Seção com Gradiente Animado */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -101,9 +101,9 @@ const Ebook = () => {
                     </p>
                 </motion.div>
 
-                {/* Search and Filter Container */}
+                {/* Container de Busca e Filtro */}
                 <div className="mb-12 flex flex-col md:flex-row gap-4 justify-center items-center">
-                    {/* Search Input */}
+                    {/* Input de Busca */}
                     <div className="relative w-full max-w-md">
                         <input
                             type="text"
@@ -118,7 +118,7 @@ const Ebook = () => {
                         />
                     </div>
 
-                    {/* Mobile Filter Button */}
+                    {/* Botão de Filtro Mobile */}
                     <div className="md:hidden">
                         <button
                             onClick={() => setIsFilterMenuOpen(true)}
@@ -130,7 +130,7 @@ const Ebook = () => {
                     </div>
                 </div>
 
-                {/* Mobile Filter Drawer */}
+                {/* Menu de Filtro Mobile */}
                 <AnimatePresence>
                     {isFilterMenuOpen && isMobile && (
                         <motion.div
@@ -172,7 +172,7 @@ const Ebook = () => {
                     )}
                 </AnimatePresence>
 
-                {/* Desktop Category Filters */}
+                {/* Filtros de Categoria */}
                 <div className="hidden md:flex flex-wrap justify-center gap-2 mb-12">
                     {categories.map((cat) => (
                         <button
