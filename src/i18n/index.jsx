@@ -661,20 +661,19 @@ const resources = {
                 warningMessage: "Novos eBooks estarão disponíveis em breve. Enquanto isso, aproveite os que já estão disponíveis.",
             },
             ebooks: {
-                title: "eBooks",
-                description: "Uma coleção de eBooks com conteúdo exclusivo para ajudar no seu desenvolvimento pessoal e profissional.",
+                title: "Ebooks em destaque",
+                description: "Confira nossos ebooks exclusivos sobre tecnologia, carreira e desenvolvimento pessoal.",
+                searchPlaceholder: "Busque por título, descrição ou tags",
+                filterBtn: "Filtrar",
+                filterTitle: "Filtros",
                 filters: {
                     all: "Todos",
                 },
-                noResults: "Nenhum eBook encontrado",
-                tryDifferentFilter: "Tente ajustar sua busca ou selecionar outra categoria",
-                resetFilters: "Limpar Filtros",
-                loadMore: "Carregar Mais",
+                comingSoon: "Em breve",
+                noResults: "Nenhum resultado encontrado",
+                tryDifferentFilter: "Tente usar outro filtro ou termo de busca.",
+                resetFilters: "Limpar filtros",
                 featuredEbooks: {
-                    1: {
-                        title: "Internet Lucrativa: O Guia Definitivo para Ganhar Dinheiro Online",
-                        description: "Estratégias comprovadas para iniciar e escalar seu negócio online.",
-                    },
                 },
             },
         },
@@ -1331,20 +1330,19 @@ const resources = {
                 warningMessage: "New eBooks will be available soon. In the meantime, enjoy the ones already available.",
             },
             ebooks: {
-                title: "eBooks",
-                description: "A collection of eBooks with exclusive content to help in your personal and professional development.",
+                title: "Featured Ebooks",
+                description: "Check out our exclusive ebooks on technology, career, and personal development.",
+                searchPlaceholder: "Search by title, description or tags",
+                filterBtn: "Filter",
+                filterTitle: "Filters",
                 filters: {
                     all: "All",
                 },
-                noResults: "No eBooks found",
-                tryDifferentFilter: "Try adjusting your search or selecting a different category",
-                resetFilters: "Reset Filters",
-                loadMore: "Load More",
+                comingSoon: "Coming soon",
+                noResults: "No results found",
+                tryDifferentFilter: "Try using a different filter or search term.",
+                resetFilters: "Reset filters",
                 featuredEbooks: {
-                    1: {
-                        title: "Profitable Internet: The Definitive Guide to Making Money Online",
-                        description: "Proven strategies to start and scale your online business.",
-                    },
                 },
             },
         },
@@ -1352,18 +1350,14 @@ const resources = {
 };
 
 i18n
-    .use(initReactI18next) // passa o i18n para react-i18next.
-    .init({
-        resources,
-        lng: localStorage.getItem('i18nextLng') || "pt", // verifica se há um idioma salvo, ou usa o padrão
-        fallbackLng: "pt", // idioma de fallback
-        interpolation: {
-            escapeValue: false, // não escapa para caracteres HTML (< in JSX).
-        },
-        detection: {
-            order: ['localStorage', 'navigator'],
-            caches: ['localStorage'], // salva a escolha do idioma no localStorage
-        },
-    });
+  .use(initReactI18next)
+  .init({
+    resources,
+    lng: 'pt',
+    fallbackLng: 'pt',
+    interpolation: {
+      escapeValue: false
+    }
+  });
 
 export default i18n;

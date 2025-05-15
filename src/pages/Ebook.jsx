@@ -228,9 +228,7 @@ const Ebook = () => {
                                         </p>
                                         <div className="mt-auto pt-2 flex items-center text-sm text-blue-600 dark:text-blue-400 font-medium">
                                             <Download size={14} className="mr-1" />
-                                            <Link to="/ebooks" aria-label={t("ebooksPromo.details")}>
-                                                {t("ebooksPromo.details")}
-                                            </Link>
+                                            <span>{t("ebooks.comingSoon", "Em breve")}</span>
                                         </div>
                                     </div>
                                 </motion.div>
