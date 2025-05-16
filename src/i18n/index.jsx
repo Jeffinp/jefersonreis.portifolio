@@ -631,6 +631,7 @@ const resources = {
             },
             contact: {
                 title: "Contato",
+                subtitle: "Entre em contato comigo para iniciar seu projeto!",
                 callMe: "Me ligue para iniciar seu projeto!",
                 emailMe: "Envie um email para me contar sobre sua ideia!",
                 phone: "+55 71 9 8439-3235",
@@ -668,13 +669,43 @@ const resources = {
                 filterTitle: "Filtros",
                 filters: {
                     all: "Todos",
+                    technology: "Tecnologia",
+                    design: "Design", 
+                    career: "Carreira",
+                    development: "Desenvolvimento",
+                    programming: "Programação",
+                    business: "Negócios"
                 },
                 comingSoon: "Em breve",
                 noResults: "Nenhum resultado encontrado",
                 tryDifferentFilter: "Tente usar outro filtro ou termo de busca.",
                 resetFilters: "Limpar filtros",
                 featuredEbooks: {
-                },
+                    "0": {
+                        title: "Desenvolvimento Web para Iniciantes",
+                        description: "Um guia completo para quem está começando no desenvolvimento web. Aprenda HTML, CSS e JavaScript de forma prática e objetiva."
+                    },
+                    "1": {
+                        title: "Internet Lucrativa: O Guia Definitivo para ganhar dinheiro online",
+                        description: "Descubra estratégias comprovadas para monetizar seu negócio online. Este guia abrangente ensina desde a escolha do nicho até técnicas avançadas de monetização e marketing digital."
+                    },
+                    "2": {
+                        title: "Carreira Freelancer em Tecnologia",
+                        description: "Descubra como iniciar e desenvolver uma carreira de sucesso como freelancer na área de tecnologia e design."
+                    },
+                    "3": {
+                        title: "Guia Prático de Inteligência Artificial",
+                        description: "Entenda os conceitos fundamentais de IA e como aplicá-los em projetos reais sem precisar ser um especialista."
+                    },
+                    "4": {
+                        title: "Dominando React",
+                        description: "Um guia avançado para desenvolvedores que querem aprimorar suas habilidades em React e criar aplicações modernas."
+                    },
+                    "5": {
+                        title: "Fundamentos de UX Design",
+                        description: "Aprenda os princípios essenciais de experiência do usuário para criar produtos digitais que encantam."
+                    }
+                }
             },
         },
     },
@@ -1300,6 +1331,7 @@ const resources = {
             },
             contact: {
                 title: "Contact",
+                subtitle: "Let's talk about your project!",
                 callMe: "Call me to start your project!",
                 emailMe: "Email me about your idea!",
                 phone: "+55 71 9 8439-3235",
@@ -1337,27 +1369,57 @@ const resources = {
                 filterTitle: "Filters",
                 filters: {
                     all: "All",
+                    technology: "Technology",
+                    design: "Design",
+                    career: "Career",
+                    development: "Development",
+                    programming: "Programming",
+                    business: "Business"
                 },
                 comingSoon: "Coming soon",
                 noResults: "No results found",
                 tryDifferentFilter: "Try using a different filter or search term.",
                 resetFilters: "Reset filters",
                 featuredEbooks: {
-                },
+                    "0": {
+                        title: "Web Development for Beginners",
+                        description: "A complete guide for those starting in web development. Learn HTML, CSS, and JavaScript in a practical and objective way."
+                    },
+                    "1": {
+                        title: "Design Thinking in Practice",
+                        description: "Learn how to apply Design Thinking to solve complex problems and create innovative solutions for your clients."
+                    },
+                    "2": {
+                        title: "Technology Freelance Career",
+                        description: "Discover how to start and develop a successful career as a freelancer in technology and design."
+                    },
+                    "3": {
+                        title: "Practical Guide to Artificial Intelligence",
+                        description: "Understand the fundamental concepts of AI and how to apply them in real projects without needing to be an expert."
+                    },
+                    "4": {
+                        title: "Mastering React",
+                        description: "An advanced guide for developers who want to improve their React skills and create modern applications."
+                    },
+                    "5": {
+                        title: "UX Design Fundamentals",
+                        description: "Learn the essential principles of user experience to create digital products that delight."
+                    }
+                }
             },
         },
     },
 };
 
 i18n
-  .use(initReactI18next)
-  .init({
-    resources,
-    lng: 'pt',
-    fallbackLng: 'pt',
-    interpolation: {
-      escapeValue: false
-    }
-  });
+    .use(initReactI18next)
+    .init({
+        resources,
+        lng: 'pt',
+        fallbackLng: 'pt',
+        interpolation: {
+            escapeValue: false
+        }
+    });
 
 export default i18n;
