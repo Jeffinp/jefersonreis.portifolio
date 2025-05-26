@@ -461,6 +461,9 @@ const resources = {
                 subtitle:
                     "Expertise técnica e habilidades interpessoais para entregar resultados excepcionais",
                 description: "Conheça minhas principais habilidades técnicas e comportamentais desenvolvidas ao longo da carreira.",
+                clickToReveal: "Clique para ver minhas habilidades",
+                clickToFlip: "Clique para ver",
+                flipBack: "Voltar",
                 sections: {
                     frontend: {
                         title: "Desenvolvimento Frontend",
@@ -670,7 +673,7 @@ const resources = {
                 filters: {
                     all: "Todos",
                     technology: "Tecnologia",
-                    design: "Design", 
+                    design: "Design",
                     career: "Carreira",
                     development: "Desenvolvimento",
                     programming: "Programação",
@@ -1161,6 +1164,9 @@ const resources = {
                 subtitle:
                     "Technical expertise and interpersonal skills to deliver exceptional results",
                 description: "Discover my key technical and interpersonal skills developed throughout my career.",
+                clickToReveal: "Click to see my skills",
+                clickToFlip: "Click to view",
+                flipBack: "Back",
                 sections: {
                     frontend: {
                         title: "Frontend Development",

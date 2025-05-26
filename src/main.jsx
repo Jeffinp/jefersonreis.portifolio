@@ -46,8 +46,8 @@ const HomePage = ({ darkMode, toggleDarkMode }) => {
             <main className="relative w-full">
                 <Suspense fallback={<Loader />}>
                     <Hero />
-                    <EbookPromo />
                     <About />
+                    <EbookPromo />
                     <Services />
                     <Skills />
                     <Projects />
