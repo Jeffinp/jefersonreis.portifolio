@@ -137,34 +137,34 @@ const resources = {
                     "Soluções profissionais personalizadas para dar vida às suas ideias!",
                 items: {
                     web: {
-                        title: "Desenvolvimento Web Imersivo",
+                        title: "Desenvolvimento Web Estratégico",
                         description:
-                            "Crio experiências web únicas! Landing Pages que convertem, Sites Institucionais que contam sua história, E-commerces dinâmicos e Blogs envolventes. Design personalizado, responsividade e SEO para o topo das buscas!",
+                            "Especialista em criar experiências web de alto impacto. Desenvolvo Landing Pages otimizadas para conversão, Sites Institucionais com narrativa estratégica, E-commerces robustos e Blogs profissionais. Garanto design exclusivo, responsividade total e otimização SEO para máxima visibilidade.",
                     },
                     design: {
-                        title: "Design & Identidade Visual Memorável",
+                        title: "Design & Branding Estratégico",
                         description:
-                            "Desenvolvo logotipos marcantes e identidades visuais completas. Crio artes para redes sociais, banners, flyers e outros materiais publicitários que fortalecem sua marca e conectam você com seus clientes.",
+                            "Especializado em criar identidades visuais que estabelecem autoridade no mercado. Desenvolvo sistemas completos de branding, incluindo logotipos distintivos, comunicação visual consistente e materiais publicitários estratégicos que consolidam o posicionamento da sua marca.",
                     },
                     documentation: {
-                        title: "Documentação Profissional Impecável",
+                        title: "Documentação Corporativa Especializada",
                         description:
-                            "Transformo suas ideias em documentos profissionais e impactantes. Apresentações que impressionam, documentos empresariais claros, planilhas avançadas, currículos que destacam talentos e trabalhos acadêmicos com formatação impecável.",
+                            "Especialista em transformar conceitos em documentação executiva de alto padrão. Produzo apresentações corporativas, documentos empresariais estratégicos, planilhas analíticas avançadas, currículos executivos e documentos acadêmicos com rigorosos padrões de formatação.",
                     },
                     modeling: {
-                        title: "Modelagem 3D & Visualização Imersiva",
+                        title: "Modelagem 3D & Visualização Arquitetônica",
                         description:
-                            "Dou vida aos seus projetos com modelagem 3D de alta qualidade! Modelos e ambientes 3D detalhados, renderizações fotorrealistas, animações e assets otimizados para AR/VR. Projetos prontos para impressão 3D e visualização profissional.",
+                            "Especialista em criação de conteúdo 3D de alta precisão. Desenvolvo modelos tridimensionais complexos, renderizações hiper-realistas, animações técnicas e assets otimizados para realidade aumentada e virtual. Projetos executados com precisão para impressão 3D e visualização profissional.",
                     },
                     support: {
-                        title: "Suporte Técnico Eficiente",
+                        title: "Consultoria & Suporte Técnico Especializado",
                         description:
-                            "Suporte técnico completo para seus equipamentos: formatação, otimização, limpeza, recuperação de dados e manutenção preventiva. Atendimento remoto ou presencial, com agilidade e profissionalismo.",
+                            "Ofereço soluções técnicas abrangentes para infraestrutura de TI: otimização de sistemas, recuperação avançada de dados, manutenção preventiva e corretiva. Atendimento personalizado remoto ou presencial, garantindo eficiência operacional máxima.",
                     },
                     video: {
-                        title: "Edição e Motion Graphics Profissional",
+                        title: "Produção Audiovisual & Motion Design",
                         description:
-                            "Vídeos dinâmicos e envolventes! Corte, montagem, correção de cor, efeitos, legendagem, motion graphics e animações. Utilizo Premiere Pro, After Effects, Filmora e outras ferramentas profissionais. Ideal para YouTube, redes sociais, vídeos institucionais, eventos, vinhetas e animações de logo!",
+                            "Especialista em produção audiovisual corporativa. Executo edição profissional, pós-produção avançada, motion graphics corporativos e animações técnicas utilizando suíte Adobe profissional. Produções otimizadas para múltiplas plataformas: mídias sociais, marketing digital, apresentações corporativas e branding dinâmico.",
                     },
                 },
                 downloadButton: "Baixe o Catálogo Completo de Serviços",
