@@ -197,6 +197,11 @@ const resources = {
                     commercial: "Comercial",
                 },
                 projects: {
+                    itamir: {
+                        title: "Sistema de gestão jurídica",
+                        description:
+                            "Desenvolvi o sistema de gestão jurídica para a empresa Itamir, criando a estrutura, mecânica e experiência do usuário para garantir um desempenho otimizado e uma navegação intuitiva.",
+                    },
                     flyserv: {
                         title: "FlyServ Drones",
                         description:

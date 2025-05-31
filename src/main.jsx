@@ -9,6 +9,7 @@ import i18n from './i18n';
 import SEOHead from "./components/SEOHead";
 import WhatsAppFloatBtn from "./components/WhatsAppFloatBtn.jsx";
 import DiscordFloatBtn from "./components/DiscordFloatBtn.jsx";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // Importação comum apenas para componentes críticos de primeira renderização
 import Header from './components/Header';
@@ -169,6 +170,7 @@ const App = () => {
                 <Route path="/" element={<HomePage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
                 <Route path="/ebooks" element={<EbookPage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
             </Routes>
+            <SpeedInsights />
         </BrowserRouter>
     );
 };
