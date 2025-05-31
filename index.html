@@ -36,13 +36,21 @@
     content="Desenvolvimento web profissional e design impactante para seu negócio digital.">
   <meta name="twitter:image" content="https://jefersonreis-github-io.vercel.app/assets/images/twitter-card.webp">
 
+  <!-- Resource Hints para melhorar o desempenho -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+  <!-- Ícones e favicons -->
   <link rel="icon" href="/assets/images/icon/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/icon/apple-touch-icon.png">
   <link rel="manifest" href="/assets/images/icon/favicon.svg">
   <link rel="shortcut icon" href="/assets/images/icon/favicon.ico" type="image/x-icon">
 
-  <!-- Pré-carregamento crítico -->
-  <link rel="preload" href="/assets/images/Linkedin-foto.webp" as="image" type="image/webp">
+  <!-- Pré-carregamento de recursos críticos para o LCP -->
+  <link rel="preload" href="/assets/images/Linkedin-foto.webp" as="image" type="image/webp" fetchpriority="high">
+  <link rel="preload" href="/src/main.jsx" as="script" fetchpriority="high">
+  <link rel="modulepreload" href="/src/containers/Hero.jsx">
 
   <!-- Estilos críticos inline -->
   <style>
@@ -76,6 +84,26 @@
 
     .dark .hero-title-critical {
       color: #fff;
+    }
+
+    /* Outros estilos críticos */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      transition: background-color 0.3s ease;
+    }
+
+    .dark\:bg-slate-900 {
+      background-color: #0f172a;
+    }
+
+    /* Estilo crítico para o loader */
+    .loader-critical {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
   </style>
 
@@ -113,10 +141,17 @@
 </head>
 
 <body class="dark:bg-slate-900">
-  <div id="root"></div>
+  <div id="root">
+    <!-- Conteúdo estático inicial para melhorar o LCP -->
+    <div class="loader-critical">
+      <div role="status" aria-live="polite">
+        Carregando...
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts otimizados -->
-  <script type="module" src="/src/main.jsx"></script>
+  <script type="module" src="/src/main.jsx" async></script>
 </body>
 
 </html>

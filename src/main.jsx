@@ -15,9 +15,10 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
+// Importando o Hero diretamente para melhorar o LCP
+import Hero from './containers/Hero';
 
 // Lazy loading para componentes não críticos
-const Hero = lazy(() => import('./containers/Hero'));
 const About = lazy(() => import('./containers/About'));
 const Services = lazy(() => import('./containers/Services'));
 const Skills = lazy(() => import('./containers/Skills'));
@@ -30,6 +31,16 @@ const ScrollToTopBtn = lazy(() => import('./components/ScrollToTopBtn'));
 
 // Componente HomePage
 const HomePage = ({ darkMode, toggleDarkMode }) => {
+    // Precarregar o componente About para melhorar a experiência de rolagem
+    useEffect(() => {
+        const preloadAbout = () => {
+            import('./containers/About');
+        };
+        // Precarregar após o componente principal ser renderizado
+        const timer = setTimeout(preloadAbout, 1000);
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <>
             <SEOHead />
@@ -45,8 +56,9 @@ const HomePage = ({ darkMode, toggleDarkMode }) => {
                 toggleDarkMode={toggleDarkMode}
             />
             <main className="relative w-full">
+                {/* Renderizando Hero diretamente para melhorar o LCP */}
+                <Hero />
                 <Suspense fallback={<Loader />}>
-                    <Hero />
                     <About />
                     <EbookPromo />
                     <Services />

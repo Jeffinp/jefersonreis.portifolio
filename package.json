@@ -41,6 +41,8 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^16.0.0",
+    "image-minimizer-webpack-plugin": "^4.1.3",
+    "imagemin": "^9.0.1",
     "rollup-plugin-visualizer": "^5.12.0",
     "terser": "^5.24.0",
     "vite": "^6.0.7",

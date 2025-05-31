@@ -17,18 +17,11 @@ const BackgroundElements = memo(({ isMobile, mousePosition }) => (
             }}
         />
 
-        {/* Camadas de esferas com efeito de profundidade - centralizado e responsivo */}
+        {/* Simplificando para uma única camada de esfera para melhorar o LCP */}
         <div className="absolute inset-0 overflow-visible -z-10 pointer-events-none">
             <div
                 className="absolute left-1/2 top-1/2 w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] md:w-[600px] md:h-[600px] lg:w-[800px] lg:h-[800px] 2xl:w-[900px] 2xl:h-[900px] bg-blue-500/5 dark:bg-blue-500/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2"
                 style={{ zIndex: 1 }}
-            />
-            <div
-                className="absolute left-1/2 top-1/2 w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] 2xl:w-[700px] 2xl:h-[700px] bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full"
-                style={{
-                    zIndex: 0,
-                    transform: 'translate(-50%, -50%) scale(0.75)'
-                }}
             />
         </div>
 
@@ -83,6 +76,8 @@ const ProfileCard = memo(({ isMobile, mousePosition, t }) => (
                             width={240}
                             height={240}
                             loading="eager"
+                            fetchpriority="high"
+                            decoding="async"
                         />
                     </div>
                 </div>
@@ -104,8 +99,19 @@ const Hero = () => {
     const [scrollProgress, setScrollProgress] = useState(0);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isMobile, setIsMobile] = useState(false);
+    const [animationsEnabled, setAnimationsEnabled] = useState(false);
     const heroRef = useRef(null);
     const controls = useAnimation();
+
+    // Habilitar animações somente após o carregamento inicial
+    useEffect(() => {
+        // Atrasar a habilitação das animações para melhorar o LCP
+        const timer = setTimeout(() => {
+            setAnimationsEnabled(true);
+        }, 1000);
+
+        return () => clearTimeout(timer);
+    }, []);
 
     // Detectar dispositivo móvel com callback memoizado
     const checkMobile = useCallback(() => {
@@ -114,6 +120,8 @@ const Hero = () => {
 
     // Controle de scroll com debounce
     useEffect(() => {
+        if (!animationsEnabled) return;
+
         const handleScroll = debounce(() => {
             if (!document.documentElement) return;
             const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -123,7 +131,7 @@ const Hero = () => {
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [animationsEnabled]);
 
     // Efeito de paralaxe com mouse (apenas em desktop, com debounce)
     useEffect(() => {
@@ -139,7 +147,7 @@ const Hero = () => {
 
     // Efeito de paralaxe simplificado e otimizado
     useEffect(() => {
-        if (isMobile) return () => { };
+        if (isMobile || !animationsEnabled) return () => { };
 
         const handleMouseMove = debounce((e) => {
             if (!heroRef.current) return;
@@ -163,12 +171,14 @@ const Hero = () => {
                 heroElement.removeEventListener('mousemove', handleMouseMove);
             }
         };
-    }, [isMobile]);
+    }, [isMobile, animationsEnabled]);
 
     // Animação inicial
     useEffect(() => {
-        controls.start('visible');
-    }, [controls]);
+        if (animationsEnabled) {
+            controls.start('visible');
+        }
+    }, [controls, animationsEnabled]);
 
     // Skills para mostrar no carrossel - memoizados e mais semânticos
     const skills = [
