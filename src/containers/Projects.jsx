@@ -30,6 +30,7 @@ CarouselButton.displayName = 'CarouselButton';
 const ProjectItem = memo(({ project, t, isMobile }) => {
     const { category, image, titleKey, descriptionKey, link, technologies = [], type, restricted } = project;
     const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
+    const [isTechnologiesExpanded, setIsTechnologiesExpanded] = useState(false);
 
     return (
         <div className="flex-shrink-0 w-full xs:w-[280px] sm:w-[320px] md:w-[340px] lg:w-[380px] xl:w-[400px] 2xl:w-[420px] p-1 xs:p-2 sm:p-3 md:p-4">
@@ -70,10 +71,8 @@ const ProjectItem = memo(({ project, t, isMobile }) => {
                         className="text-blue-600 dark:text-blue-400 text-xs mt-1"
                     >
                         {isDescriptionVisible ? t('portfolio.projectLabels.hideDescription') : t('portfolio.projectLabels.showMore')}
-                    </button>
-
-                    <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3 md:mb-4">
-                        {technologies.slice(0, isMobile ? 2 : 3).map((tech, index) => (
+                    </button>                    <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3 md:mb-4">
+                        {(isTechnologiesExpanded ? technologies : technologies.slice(0, isMobile ? 2 : 3)).map((tech, index) => (
                             <span
                                 key={index}
                                 className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md"
@@ -82,11 +81,23 @@ const ProjectItem = memo(({ project, t, isMobile }) => {
                             </span>
                         ))}
                         {technologies.length > (isMobile ? 2 : 3) && (
-                            <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md">
-                                +{technologies.length - (isMobile ? 2 : 3)}
-                            </span>
+                            <button
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    setIsTechnologiesExpanded(!isTechnologiesExpanded);
+                                }}
+                                type="button"
+                                className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-md hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                                title={isTechnologiesExpanded ? t('portfolio.projectLabels.showLess') : t('portfolio.projectLabels.showMore')}
+                            >
+                                {isTechnologiesExpanded ?
+                                    t('portfolio.projectLabels.showLess') :
+                                    `+${technologies.length - (isMobile ? 2 : 3)}`
+                                }
+                            </button>
                         )}
-                    </div>                    {/* Botão de visualizar projeto ou mensagem de projeto restrito */}
+                    </div>{/* Botão de visualizar projeto ou mensagem de projeto restrito */}
                     {restricted ? (
                         <div className="mt-2 p-3 bg-gray-100 dark:bg-gray-700 rounded-md border border-gray-200 dark:border-gray-600">
                             <div className="flex items-center justify-center mb-2">
@@ -439,11 +450,10 @@ const PortfolioSection = () => {
                             ref={trackRef}
                             className="flex transition-transform duration-500 ease-out"
                             style={{ willChange: 'transform' }}
-                        >
-                            {/* Itens do carrossel - Usando o componente melhorado */}
-                            {filteredProjects.map((project, index) => (
+                        >                            {/* Itens do carrossel - Usando o componente melhorado */}
+                            {filteredProjects.map((project) => (
                                 <ProjectItem
-                                    key={`${project.category}-${index}`}
+                                    key={project.id}
                                     project={project}
                                     t={t}
                                     isMobile={isMobile}

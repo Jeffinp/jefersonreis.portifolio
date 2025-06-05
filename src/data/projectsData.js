@@ -2,15 +2,17 @@
 const projectsData = [
     // PROJETOS COMERCIAIS (Listados primeiro)   
     {
+        id: "itamir-gestao-juridica",
         category: "web",
         image: "/assets/images/gestaojuridica.png",
         titleKey: "portfolio.projects.itamir.title",
         descriptionKey: "portfolio.projects.itamir.description",
         type: "contracted",
         restricted: true,
-        technologies: ["React", "Tailwind CSS", "Vite", "Responsive Design"],
+        technologies: ["React/Vite", "Python", "Tailwind CSS", "postgreSQL", "Framer Motion"],
     },
     {
+        id: "flyserv-drones",
         category: "web",
         image: "/assets/images/flyserv.webp",
         titleKey: "portfolio.projects.flyserv.title",
@@ -20,6 +22,17 @@ const projectsData = [
         technologies: ["HTML", "CSS", "JavaScript"],
     },
     {
+        id: "gestao_financeira",
+        category: "web",
+        image: "assets/images/Gestao_financeira.png",
+        titleKey: "portfolio.projects.gestaoFinanceira.title",
+        descriptionKey: "portfolio.projects.gestaoFinanceira.description",
+        link: "https://gestao-financeira-three.vercel.app/",
+        type: "personal",
+        technologies: ["React", "TypeScript", "Framer-motion", "Tailwind CSS"],
+    },
+    {
+        id: "online-drawing-course",
         category: "web",
         image: "/assets/images/Screenshot_987.webp",
         titleKey: "portfolio.projects.onlineDrawingCourse.title",
@@ -29,6 +42,7 @@ const projectsData = [
         technologies: ["HTML", "CSS", "JavaScript"],
     },
     {
+        id: "weight-loss-program",
         category: "web",
         image: "/assets/images/Screenshot_1023.webp",
         titleKey: "portfolio.projects.weightLossProgram.title",
@@ -36,10 +50,9 @@ const projectsData = [
         link: "https://secaedefine.vercel.app",
         type: "contracted",
         technologies: ["HTML", "CSS", "JavaScript"],
-    },
-
-    // PERSONAL WEB PROJECTS (Listed after commercial projects)
+    },    // PERSONAL WEB PROJECTS (Listed after commercial projects)
     {
+        id: "sistema-solar",
         category: "web",
         image: "/assets/images/SistemaSolar.png",
         titleKey: "portfolio.projects.systemSolar.title",
@@ -49,6 +62,7 @@ const projectsData = [
         technologies: ["React", "TypeScript", "Tailwind CSS", "Three.js", "Shadcn/UI"],
     },
     {
+        id: "python-chatbot",
         category: "web",
         image: "/assets/images/Chatbot.webp",
         titleKey: "portfolio.projects.pythonChatbot.title",
@@ -62,6 +76,7 @@ const projectsData = [
         ],
     },
     {
+        id: "file-manager",
         category: "web",
         image: "/assets/images/Screenshot_1051.webp",
         titleKey: "portfolio.projects.fileManager.title",
@@ -71,6 +86,7 @@ const projectsData = [
         technologies: ["Python", "File Management", "HTML", "CSS", "JavaScript"],
     },
     {
+        id: "platform-game",
         category: "web",
         image: "/assets/images/jogoplataforma.webp",
         titleKey: "portfolio.projects.platformGame.title",
@@ -80,6 +96,7 @@ const projectsData = [
         technologies: ["JavaScript", "HTML", "CSS", "Game Development"],
     },
     {
+        id: "personal-portfolio",
         category: "web",
         image: "/assets/images/site.webp",
         titleKey: "portfolio.projects.personalPortfolio.title",
@@ -93,6 +110,7 @@ const projectsData = [
         ],
     },
     {
+        id: "christmas-gift",
         category: "web",
         image: "/assets/images/Presente-Natal.webp",
         titleKey: "portfolio.projects.christmasGift.title",
@@ -101,9 +119,9 @@ const projectsData = [
         type: "personal",
         technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
     },
-    
     // PROJETOS NÃO WEB (Design, Motion, Modelagem 3D)
     {
+        id: "brasil-piscinas",
         category: "design",
         image: "/assets/images/Artes/DesignGráfico_Brasil_piscinas.png",
         titleKey: "portfolio.projects.brasilPiscinas.title",
@@ -112,6 +130,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "terror-duo",
         category: "design",
         image: "/assets/images/Artes/DuplaDoTerror.webp",
         titleKey: "portfolio.projects.terrorDuo.title",
@@ -120,6 +139,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "bratails-animated",
         category: "motion",
         image: "/assets/images/Artes/BratailsAnim.gif",
         titleKey: "portfolio.projects.bratailsAnimated.title",
@@ -128,6 +148,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "olive-brand-design",
         category: "design",
         image: "/assets/images/Artes/Azete.webp",
         titleKey: "portfolio.projects.oliveBrandDesign.title",
@@ -136,6 +157,7 @@ const projectsData = [
         technologies: ["Adobe Photoshop", "Branding", "Product Design"],
     },
     {
+        id: "stylized-flag",
         category: "design",
         image: "/assets/images/Artes/BandeiraEstilosaBrasil.webp",
         titleKey: "portfolio.projects.stylizedFlag.title",
@@ -144,6 +166,7 @@ const projectsData = [
         technologies: ["Clip Studio", "Digital Art", "Illustration"],
     },
     {
+        id: "gamer-case",
         category: "design",
         image: "/assets/images/Artes/DesignComputador.webp",
         titleKey: "portfolio.projects.gamerCase.title",
@@ -152,6 +175,7 @@ const projectsData = [
         technologies: ["Adobe Photoshop", "Product Design", "Graphic Design"],
     },
     {
+        id: "environment-shirt",
         category: "design",
         image: "/assets/images/Artes/Estampa.webp",
         titleKey: "portfolio.projects.environmentShirt.title",
@@ -160,6 +184,7 @@ const projectsData = [
         technologies: ["Adobe Photoshop", "Graphic Design"],
     },
     {
+        id: "parasite-notebook",
         category: "design",
         image: "/assets/images/Artes/ParasitaCaderno.webp",
         titleKey: "portfolio.projects.parasiteNotebook.title",
@@ -168,6 +193,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "giratina-art",
         category: "design",
         image: "/assets/images/Artes/giratina.webp",
         titleKey: "portfolio.projects.giratinaArt.title",
@@ -176,6 +202,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "burger-design",
         category: "design",
         image: "/assets/images/Artes/hamburguer.webp",
         titleKey: "portfolio.projects.burgerDesign.title",
@@ -184,6 +211,7 @@ const projectsData = [
         technologies: ["Adobe Photoshop", "Food Design"],
     },
     {
+        id: "notebook-drawing",
         category: "design",
         image: "/assets/images/Artes/Alastor.webp",
         titleKey: "portfolio.projects.notebookDrawing.title",
@@ -192,6 +220,7 @@ const projectsData = [
         technologies: ["Illustration", "Character Design"],
     },
     {
+        id: "pizza-design",
         category: "design",
         image: "/assets/images/Artes/PizzalDoSul.webp",
         titleKey: "portfolio.projects.pizzaDesign.title",
@@ -200,6 +229,7 @@ const projectsData = [
         technologies: ["Adobe Photoshop", "Food Marketing", "Graphic Design"],
     },
     {
+        id: "pizza-promo",
         category: "design",
         image: "/assets/images/Artes/PizzaInsta.webp",
         titleKey: "portfolio.projects.pizzaPromo.title",
@@ -212,6 +242,7 @@ const projectsData = [
         ],
     },
     {
+        id: "spaceship-prototype",
         category: "design",
         image: "/assets/images/Artes/ProtNave.webp",
         titleKey: "portfolio.projects.spaceshipPrototype.title",
@@ -220,6 +251,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "bratails-360",
         category: "design",
         image: "/assets/images/Artes/Bryan360.webp",
         titleKey: "portfolio.projects.bratails360.title",
@@ -228,6 +260,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "bratails-smiling",
         category: "design",
         image: "/assets/images/Artes/BryanSorrindo.webp",
         titleKey: "portfolio.projects.bratailsSmiling.title",
@@ -236,6 +269,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "bratails-spaceship",
         category: "modelagem",
         image: "/assets/images/Artes/BratailsNave.webp",
         titleKey: "portfolio.projects.bratailsSpaceship.title",
@@ -244,6 +278,7 @@ const projectsData = [
         technologies: ["Blender", "3D Modeling", "Sci-Fi Design"],
     },
     {
+        id: "twin-swords",
         category: "modelagem",
         image: "/assets/images/Artes/Asgemeas2.webp",
         titleKey: "portfolio.projects.twinSwords.title",
@@ -252,6 +287,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "angel-symbols",
         category: "design",
         image: "/assets/images/Artes/Angel.webp",
         titleKey: "portfolio.projects.angelSymbols.title",
@@ -260,6 +296,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "four-kingdoms",
         category: "design",
         image: "/assets/images/Artes/TFK.webp",
         titleKey: "portfolio.projects.fourKingdoms.title",
@@ -268,6 +305,7 @@ const projectsData = [
         technologies: ["Concept Art", "Illustration", "Digital Painting"],
     },
     {
+        id: "berserk-inspired",
         category: "design",
         image: "/assets/images/Artes/FurryQueMataFurry.webp",
         titleKey: "portfolio.projects.berserkInspired.title",
@@ -276,6 +314,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "annie-portrait",
         category: "design",
         image: "/assets/images/Artes/Annie.webp",
         titleKey: "portfolio.projects.anniePortrait.title",
@@ -284,6 +323,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "render-test",
         category: "modelagem",
         image: "/assets/images/Artes/Cubos.webp",
         titleKey: "portfolio.projects.renderTest.title",
@@ -292,6 +332,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "vicente-cover",
         category: "design",
         image: "/assets/images/Artes/ArteVicente.webp",
         titleKey: "portfolio.projects.vicenteCover.title",
@@ -300,6 +341,7 @@ const projectsData = [
         technologies: ["Album Cover Design", "Graphic Design", "Digital Art"],
     },
     {
+        id: "twin-swords-variation",
         category: "modelagem",
         image: "/assets/images/Artes/AsGemeas.webp",
         titleKey: "portfolio.projects.twinSwordsVariation.title",
@@ -308,6 +350,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "asteroid-3d",
         category: "modelagem",
         image: "/assets/images/Artes/Asteroide.webp",
         titleKey: "portfolio.projects.asteroid3d.title",
@@ -316,6 +359,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "bratails-scythe",
         category: "design",
         image: "/assets/images/Artes/BryanComFoice.webp",
         titleKey: "portfolio.projects.bratailsScythe.title",
@@ -324,6 +368,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "bratails-surprised",
         category: "design",
         image: "/assets/images/Artes/Bryanoao.webp",
         titleKey: "portfolio.projects.bratailsSurprised.title",
@@ -336,6 +381,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "captain-shield",
         category: "modelagem",
         image: "/assets/images/Artes/CapitaoAmerica.webp",
         titleKey: "portfolio.projects.captainShield.title",
@@ -344,6 +390,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "clickteam-logo",
         category: "design",
         image: "/assets/images/Artes/ClickTeamLogo.webp",
         titleKey: "portfolio.projects.clickteamLogo.title",
@@ -352,6 +399,7 @@ const projectsData = [
         technologies: ["Logo Design", "Branding", "Adobe Photoshop"],
     },
     {
+        id: "donut-3d",
         category: "modelagem",
         image: "/assets/images/Artes/cycles.webp",
         titleKey: "portfolio.projects.donut3d.title",
@@ -360,6 +408,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "boss-concept",
         category: "design",
         image: "/assets/images/Artes/forma1.webp",
         titleKey: "portfolio.projects.bossConcept.title",
@@ -368,6 +417,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "skull-3d",
         category: "modelagem",
         image: "/assets/images/Artes/cranio.webp",
         titleKey: "portfolio.projects.skull3d.title",
@@ -376,6 +426,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "screaviny-prototype",
         category: "design",
         image: "/assets/images/Artes/ProtScreabiny.webp",
         titleKey: "portfolio.projects.screavinyPrototype.title",
@@ -384,6 +435,7 @@ const projectsData = [
         technologies: ["Concept Design", "Digital Art", "Character Prototype"],
     },
     {
+        id: "modeling-test",
         category: "modelagem",
         image: "/assets/images/Artes/untitled.webp",
         titleKey: "portfolio.projects.modelingTest.title",
@@ -392,6 +444,7 @@ const projectsData = [
         type: "personal",
     },
     {
+        id: "discord-icons",
         category: "design",
         image: "/assets/images/Artes/Versões.webp",
         titleKey: "portfolio.projects.discordIcons.title",

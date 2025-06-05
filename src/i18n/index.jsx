@@ -191,6 +191,7 @@ const resources = {
                     nextProject: "Próximo projeto",
                     viewHighRes: "Ver em Qualidade Máxima! Em até 4K!",
                     showMore: "Mostrar Mais",
+                    showLess: "Mostrar Menos",
                     hideDescription: "Ocultar Descrição",
                     personal: "Pessoal",
                     commercial: "Comercial",
@@ -201,12 +202,17 @@ const resources = {
                     itamir: {
                         title: "Sistema de gestão jurídica",
                         description:
-                            "Desenvolvi o sistema de gestão jurídica para a empresa Itamir, criando a estrutura, mecânica e experiência do usuário para garantir um desempenho otimizado e uma navegação intuitiva.",
+                            "Criei, sob contrato, um sistema de gestão jurídica projetado para maximizar a produtividade e organização de advogados através de uma interface intuitiva, eficiente e de alta performance. Suas funcionalidades centrais abrangem o gerenciamento de usuários, processos, tarefas, documentos, agenda e a emissão de relatórios. O sistema é multiusuário, permitindo que um administrador centralize o trabalho de diversos advogados e controle o acesso. O painel de controle oferece uma visão clara das pendências e informações importantes. Atualmente em produção, a plataforma está em constante evolução e aprimoramento.",
                     },
                     flyserv: {
                         title: "FlyServ Drones",
                         description:
                             "Desenvolvi o front-end e back-end do site FlyServ Drones, criando a estrutura, mecânica e experiência do usuário para garantir um desempenho otimizado e uma navegação intuitiva.",
+                    },
+                    gestaoFinanceira: {
+                        title: "Gestão Financeira",
+                        description:
+                            "Como iniciativa pessoal, estou desenvolvendo um sistema de gestão financeira projetado para otimizar a performance e a experiência do usuário, com frontend em React. A próxima fase inclui a implementação do back-end em Python. Esta solução visa facilitar o controle financeiro abrangente, atendendo desde pessoas físicas até empresas de diversos portes (pequeno, médio e grande). Destaca-se pela futura integração com lojas, consolidando-se como uma ferramenta centralizada, versátil e adaptável. O projeto está em contínuo desenvolvimento."
                     },
                     systemSolar: {
                         title: "Sistema Solar",
@@ -906,6 +912,7 @@ const resources = {
                     nextProject: "Next project",
                     viewHighRes: "View in Maximum Quality! Up to 4K!",
                     showMore: "Show More",
+                    showLess: "Show Less",
                     hideDescription: "Hide Description",
                     personal: "Personal",
                     commercial: "Commercial",
