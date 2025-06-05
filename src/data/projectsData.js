@@ -9,7 +9,7 @@ const projectsData = [
         descriptionKey: "portfolio.projects.itamir.description",
         type: "contracted",
         restricted: true,
-        technologies: ["React/Vite", "Python", "Tailwind CSS", "postgreSQL", "Framer Motion"],
+        technologies: ["React/Vite", "Python", "Tailwind CSS", "postgreSQL", "Framer Motion", "Shadcn/UI", "React Router DOM", "Axios", "React Hook Form", "Material-UI (MUI)"], 
     },
     {
         id: "flyserv-drones",
