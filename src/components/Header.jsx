@@ -134,7 +134,7 @@ const Header = ({ darkMode, toggleDarkMode, showBackHome = false }) => {
             return [];
         }
 
-        return ['home', 'about', 'areas', 'skills', 'portfolio', 'ebooks-promo','contact'].map(item => ({
+        return ['home', 'about', 'services', 'skills', 'portfolio', 'ebooks-promo','contact'].map(item => ({
             href: `#${item}`,
             label: t(`menu.${item}`, item === 'ebooks-promo' ? 'eBooks' : '')
         }));

@@ -308,9 +308,9 @@ const ExpertiseAreas = () => {
     return (
         <section
             ref={sectionRef}
-            id="areas"
             className="relative py-16 md:py-24 bg-transparent"
             aria-labelledby="expertise-heading"
+            id="areas"
         >
             {/* Fundo simplificado e memoizado */}
             <Background isMobile={isMobile} mousePosition={mousePosition} />

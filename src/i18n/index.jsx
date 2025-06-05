@@ -9,7 +9,7 @@ const resources = {
             menu: {
                 home: "Início",
                 about: "Sobre",
-                areas: "Atuação",
+                services: "Serviços",
                 skills: "Habilidades",
                 portfolio: "Portfólio",
                 ebooks: "eBooks",
@@ -719,7 +719,7 @@ const resources = {
             menu: {
                 home: "Home",
                 about: "About",
-                areas: "Expertise",
+                services: "Services",
                 skills: "Skills",
                 portfolio: "Portfolio",
                 resume: "Resume",

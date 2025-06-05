@@ -184,7 +184,7 @@ const Hero = () => {
     return (
         <section
             ref={heroRef}
-            id="hero"
+            id="home"
             className="relative min-h-[600px] sm:min-h-[650px] md:min-h-[700px] lg:min-h-screen flex items-center bg-transparent py-12 sm:py-16 md:py-20 lg:py-24 2xl:py-32 overflow-hidden"
             aria-label={t('hero.title')}
         >

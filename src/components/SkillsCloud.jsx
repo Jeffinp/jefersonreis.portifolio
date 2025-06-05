@@ -9,7 +9,7 @@ const SkillsCloud = () => {
     const { t } = useTranslation();
 
     return (
-        <section className="py-10 md:py-16 bg-transparent">
+        <section id="skills" className="py-10 md:py-16 bg-transparent">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
