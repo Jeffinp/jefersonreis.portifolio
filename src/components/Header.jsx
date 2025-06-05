@@ -119,12 +119,24 @@ const Header = ({ darkMode, toggleDarkMode, showBackHome = false }) => {
     // Navegar e fechar menu (para itens de menu móvel)
     const handleNavClick = useCallback((e) => {
         if (menuOpen) {
-            e.preventDefault();
-            const href = e.currentTarget.getAttribute('href');
             closeMenu();
-            setTimeout(() => {
-                document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-            }, 300);
+        }
+
+        const href = e.currentTarget.getAttribute('href');
+        if (href && href.startsWith('#')) {
+            e.preventDefault();
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                // Pequeno delay para garantir que o menu está fechado primeiro
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70, // Ajuste para o cabeçalho fixo
+                        behavior: 'smooth'
+                    });
+                }, menuOpen ? 300 : 0);
+            }
         }
     }, [menuOpen, closeMenu]);
 
@@ -134,7 +146,7 @@ const Header = ({ darkMode, toggleDarkMode, showBackHome = false }) => {
             return [];
         }
 
-        return ['home', 'about', 'services', 'skills', 'portfolio', 'ebooks-promo','contact'].map(item => ({
+        return ['home', 'about', 'areas', 'skills', 'portfolio', 'ebooks-promo', 'contact'].map(item => ({
             href: `#${item}`,
             label: t(`menu.${item}`, item === 'ebooks-promo' ? 'eBooks' : '')
         }));
@@ -216,7 +228,7 @@ const Header = ({ darkMode, toggleDarkMode, showBackHome = false }) => {
                                 {t('menu.ebooks', 'eBooks')}
                             </Link>
 
-        
+
                         </div>
                     ) : (
                         <>
@@ -260,10 +272,10 @@ const Header = ({ darkMode, toggleDarkMode, showBackHome = false }) => {
                                     ref={menuButtonRef}
                                     onClick={toggleMenu}
                                     aria-expanded={menuOpen}
-                                    aria-label={menuOpen ? t('general.closeMenu') : t('general.openMenu')}
+                                    aria-label={menuOpen ? t('header.close_menu') : t('header.open_menu')}
                                     className="md:hidden p-1 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
                                 >
-                                    <span className="sr-only">{menuOpen ? t('general.closeMenu') : t('general.openMenu')}</span>
+                                    <span className="sr-only">{menuOpen ? t('header.close_menu') : t('header.open_menu')}</span>
                                     {menuOpen ? (
                                         <X className="h-6 w-6 text-gray-900 dark:text-gray-100" />
                                     ) : (

@@ -6,7 +6,7 @@ import SkillsCloud from '../components/SkillsCloud';
  * Utiliza o novo SkillsCloud para uma apresentação moderna e interativa
  */
 const Skills = () => {
-    return <SkillsCloud />;
+    return <div id="skills"><SkillsCloud /></div>;
 };
 
 export default Skills;

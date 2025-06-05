@@ -164,7 +164,7 @@ const ServiceCard3D = memo(({
                 <div className="relative h-full rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md flex flex-col">
                     {/* Borda de acento superior com gradiente */}
                     <div className={`h-1 w-full bg-gradient-to-r ${safeGradient.gradientClass}`}></div>
-                    
+
                     <div className="p-5 sm:p-6 lg:p-8 flex flex-col items-center text-center h-full">
                         {/* Ícone com gradiente */}
                         <div className={`mb-6 p-4 rounded-full bg-gradient-to-br ${safeGradient.gradientClass} text-white shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105`}>
@@ -195,7 +195,7 @@ ServiceCard3D.displayName = 'ServiceCard3D';
 const Background = memo(({ isMobile }) => (
     <div className="absolute inset-0 -z-10">
         {/* Grade de fundo responsiva */}
-        <div 
+        <div
             className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]"
             style={{
                 backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), 
@@ -203,7 +203,7 @@ const Background = memo(({ isMobile }) => (
                 backgroundSize: isMobile ? '2rem 2rem' : '5rem 5rem'
             }}
         />
-        
+
         {/* Elipse de destaque sutíl no fundo */}
         <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-500/5 dark:to-purple-500/5 rounded-full blur-3xl" />
     </div>
@@ -327,9 +327,9 @@ const Services = () => {
 
     return (
         <section
+            id="areas"
             ref={sectionRef}
-            id="services"
-            className="relative py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden"
+            className="relative py-16 md:py-24 lg:py-32 bg-gray-50 dark:bg-gray-900 overflow-hidden"
             aria-label={t('services.ariaLabel')}
         >
             {/* Fundo dinâmico */}

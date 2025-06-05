@@ -3,6 +3,15 @@ const projectsData = [
     // PROJETOS COMERCIAIS (Listados primeiro)
     {
         category: "web",
+        image: "/assets/images/gestaojuridica.png",
+        titleKey: "portfolio.projects.itamir.title",
+        descriptionKey: "portfolio.projects.itamir.description",
+        link: "https://itamir.com.br/",
+        type: "contracted",
+        technologies: ["React", "Tailwind CSS", "Vite", "Responsive Design"],
+    },
+    {
+        category: "web",
         image: "/assets/images/flyserv.webp",
         titleKey: "portfolio.projects.flyserv.title",
         descriptionKey: "portfolio.projects.flyserv.description",

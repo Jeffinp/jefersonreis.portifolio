@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 
-const SEOHead = () => {
+const SEOHead = ({ title, description }) => {
     const { i18n } = useTranslation();
 
     const translations = {
@@ -37,15 +37,15 @@ const SEOHead = () => {
     return (
         <Helmet>
             <html lang={i18n.language} />
-            <title>{currentLang.title}</title>
+            <title>{title || currentLang.title}</title>
 
-            <meta name="description" content={currentLang.description} />
+            <meta name="description" content={description || currentLang.description} />
             <meta name="keywords" content={currentLang.keywords} />
             <meta name="language" content={i18n.language} />
 
             {/* OpenGraph tags */}
-            <meta property="og:title" content={currentLang.title} />
-            <meta property="og:description" content={currentLang.ogDescription} />
+            <meta property="og:title" content={title || currentLang.title} />
+            <meta property="og:description" content={description || currentLang.ogDescription} />
             <meta
                 property="og:locale"
                 content={i18n.language === "en" ? "en_US" : "pt_BR"}
@@ -53,9 +53,18 @@ const SEOHead = () => {
             <meta property="og:image:alt" content={currentLang.imageAlt} />
 
             {/* Twitter tags */}
-            <meta name="twitter:title" content={currentLang.title} />
-            <meta name="twitter:description" content={currentLang.ogDescription} />
+            <meta name="twitter:title" content={title || currentLang.title} />
+            <meta name="twitter:description" content={description || currentLang.ogDescription} />
             <meta name="twitter:image:alt" content={currentLang.imageAlt} />
+
+            {/* Melhorias de performance para o LCP */}
+            <link rel="preload" href="/assets/images/Linkedin-foto.webp" as="image" type="image/webp" />
+            <link rel="preload" href="/src/containers/Hero.jsx" as="fetch" crossorigin="anonymous" />
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+
+            {/* Resource Hints */}
+            <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         </Helmet>
     );
 };
