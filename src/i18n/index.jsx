@@ -184,8 +184,7 @@ const resources = {
                     design: "Design",
                     motion: "Motion",
                     modelagem: "Modelagem 3D",
-                },
-                projectLabels: {
+                }, projectLabels: {
                     contracted: "Contratado",
                     viewProject: "Ver Projeto",
                     prevProject: "Projeto anterior",
@@ -195,6 +194,8 @@ const resources = {
                     hideDescription: "Ocultar Descrição",
                     personal: "Pessoal",
                     commercial: "Comercial",
+                    restrictedProject: "Projeto Comercial - Acesso Restrito",
+                    restrictedMessage: "Este projeto foi desenvolvido sob contrato comercial. Por questões de confidencialidade, o acesso ao projeto completo não está disponível publicamente.",
                 },
                 projects: {
                     itamir: {
@@ -898,8 +899,7 @@ const resources = {
                     design: "Design",
                     motion: "Motion",
                     modelagem: "3D Modeling",
-                },
-                projectLabels: {
+                }, projectLabels: {
                     contracted: "Client Project",
                     viewProject: "View Project",
                     prevProject: "Previous project",
@@ -909,6 +909,8 @@ const resources = {
                     hideDescription: "Hide Description",
                     personal: "Personal",
                     commercial: "Commercial",
+                    restrictedProject: "Commercial Project - Restricted Access",
+                    restrictedMessage: "This project was developed under commercial contract. For confidentiality reasons, access to the complete project is not publicly available.",
                 },
                 projects: {
                     systemSolar: {

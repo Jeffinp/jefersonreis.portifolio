@@ -1,13 +1,13 @@
 // Data de projetos do portifólio
 const projectsData = [
-    // PROJETOS COMERCIAIS (Listados primeiro)
+    // PROJETOS COMERCIAIS (Listados primeiro)   
     {
         category: "web",
         image: "/assets/images/gestaojuridica.png",
         titleKey: "portfolio.projects.itamir.title",
         descriptionKey: "portfolio.projects.itamir.description",
-        link: "https://itamir.com.br/",
         type: "contracted",
+        restricted: true,
         technologies: ["React", "Tailwind CSS", "Vite", "Responsive Design"],
     },
     {

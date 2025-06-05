@@ -28,7 +28,7 @@ CarouselButton.displayName = 'CarouselButton';
 
 // Componente memoizado para o item do projeto - Responsividade aprimorada
 const ProjectItem = memo(({ project, t, isMobile }) => {
-    const { category, image, titleKey, descriptionKey, link, technologies = [], type } = project;
+    const { category, image, titleKey, descriptionKey, link, technologies = [], type, restricted } = project;
     const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
 
     return (
@@ -86,18 +86,29 @@ const ProjectItem = memo(({ project, t, isMobile }) => {
                                 +{technologies.length - (isMobile ? 2 : 3)}
                             </span>
                         )}
-                    </div>
-
-                    {/* Botão de visualizar projeto - Melhorado para maior visibilidade */}
-                    <a
-                        href={link || image}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center w-full px-3 py-2 mt-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 rounded-md transition-colors duration-300"
-                    >
-                        {t('portfolio.projectLabels.viewProject')}
-                        <ExternalLink className="ml-2 w-4 h-4" />
-                    </a>
+                    </div>                    {/* Botão de visualizar projeto ou mensagem de projeto restrito */}
+                    {restricted ? (
+                        <div className="mt-2 p-3 bg-gray-100 dark:bg-gray-700 rounded-md border border-gray-200 dark:border-gray-600">
+                            <div className="flex items-center justify-center mb-2">
+                                <span className="text-xs font-medium text-orange-600 dark:text-orange-400 bg-orange-100 dark:bg-orange-900/30 px-2 py-1 rounded-full">
+                                    {t('portfolio.projectLabels.restrictedProject')}
+                                </span>
+                            </div>
+                            <p className="text-xs text-center text-gray-600 dark:text-gray-400 leading-relaxed">
+                                {t('portfolio.projectLabels.restrictedMessage')}
+                            </p>
+                        </div>
+                    ) : (
+                        <a
+                            href={link || image}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center w-full px-3 py-2 mt-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 rounded-md transition-colors duration-300"
+                        >
+                            {t('portfolio.projectLabels.viewProject')}
+                            <ExternalLink className="ml-2 w-4 h-4" />
+                        </a>
+                    )}
                 </div>
             </div>
         </div>
