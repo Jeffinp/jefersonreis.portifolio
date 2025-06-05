@@ -327,9 +327,9 @@ const Services = () => {
 
     return (
         <section
-            id="areas"
+            id="services"
             ref={sectionRef}
-            className="relative py-16 md:py-24 lg:py-32 bg-gray-50 dark:bg-gray-900 overflow-hidden"
+            className="relative py-16 md:py-24 lg:py-32 overflow-hidden"
             aria-label={t('services.ariaLabel')}
         >
             {/* Fundo dinâmico */}
