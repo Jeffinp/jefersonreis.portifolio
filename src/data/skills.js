@@ -47,7 +47,7 @@ export const skills = {
             name: "Django",
             icon: "FileCode",
             imagePath: "/assets/images/skills/django.png"
-        }, 
+        },
         {
             name: "C#",
             icon: "Hash",
@@ -72,6 +72,11 @@ export const skills = {
             imagePath: "/assets/images/skills/firebase.png"
         },
         {
+            name: "Supabase",
+            icon: "GitHub",
+            imagePath: "/assets/images/skills/supabase.webp"
+        },
+        {
             name: "PHP",
             icon: "FileCode2",
             imagePath: "/assets/images/skills/php.png"
@@ -82,7 +87,8 @@ export const skills = {
             name: "Git",
             icon: "GitBranch",
             imagePath: "/assets/images/skills/git.png"
-        }, {
+        },
+        {
             name: "Docker",
             icon: "Package",
             imagePath: "/assets/images/skills/docker.png"
@@ -154,9 +160,10 @@ export const skillItemColors = {
     "Node.js": "from-green-400 to-green-600",
     "Python": "from-blue-400 to-yellow-400",
     "Django": "from-gray-600 to-gray-800",
-    "MySQL": "from-blue-400 to-orange-400",
+    "MySQL": "from-blue-400 to-blue-500",
     "PostgreSQL": "from-blue-500 to-blue-700",
     "Firebase": "from-yellow-400 to-orange-500",
+    "Supabase": "from-green-400 to-green-600",
     "Express.js": "from-gray-500 to-gray-700",
     "C#": "from-purple-400 to-purple-600",
     "C++": "from-blue-500 to-blue-700",
@@ -169,5 +176,5 @@ export const skillItemColors = {
     "Figma": "from-purple-400 to-pink-500",
     "UI/UX Design": "from-pink-400 to-purple-500",
     "Blender": "from-orange-400 to-orange-600",
-    "Chatbots": "from-blue-400 to-indigo-500"
+    "Canva": "from-blue-300 to-violet-600"
 };
