@@ -1,16 +1,96 @@
-/* Estilos para o efeito de card flip 3D */
-.perspective-1000 {
-    perspective: 1000px;
+/* Estilos para o componente SkillCard */
+.skill-item-card {
+    transition: all 0.3s ease;
 }
 
-.preserve-3d {
-    transform-style: preserve-3d;
+.skill-item-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-.backface-hidden {
-    backface-visibility: hidden;
+/* Animação para as imagens das habilidades */
+.skill-item-card img {
+    transition: all 0.3s ease;
 }
 
-.rotateY-180 {
-    transform: rotateY(180deg);
+.skill-item-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Classes de texto com gradiente para ícones */
+.text-gradient-blue-400 {
+    color: #2563eb;
+    /* text-blue-600 */
+}
+
+.dark .text-gradient-blue-400 {
+    color: #60a5fa;
+    /* text-blue-400 */
+}
+
+.text-gradient-indigo-400 {
+    color: #4f46e5;
+    /* text-indigo-600 */
+}
+
+.dark .text-gradient-indigo-400 {
+    color: #818cf8;
+    /* text-indigo-400 */
+}
+
+.text-gradient-emerald-400 {
+    color: #059669;
+    /* text-emerald-600 */
+}
+
+.dark .text-gradient-emerald-400 {
+    color: #34d399;
+    /* text-emerald-400 */
+}
+
+.text-gradient-teal-400 {
+    color: #0d9488;
+    /* text-teal-600 */
+}
+
+.dark .text-gradient-teal-400 {
+    color: #2dd4bf;
+    /* text-teal-400 */
+}
+
+.text-gradient-amber-400 {
+    color: #d97706;
+    /* text-amber-600 */
+}
+
+.dark .text-gradient-amber-400 {
+    color: #fbbf24;
+    /* text-amber-400 */
+}
+
+.text-gradient-orange-400 {
+    color: #ea580c;
+    /* text-orange-600 */
+}
+
+.dark .text-gradient-orange-400 {
+    color: #fb923c;
+    /* text-orange-400 */
+}
+
+/* Estilo para a visualização detalhada da habilidade */
+.skill-detail-view {
+    min-height: 300px;
+}
+
+/* Transição suave para mudança de visualização */
+.skill-detail-view,
+.skills-grid {
+    transition: all 0.3s ease;
+}
+
+/* Efeito de hover na imagem da habilidade */
+.skill-detail-view img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
 }

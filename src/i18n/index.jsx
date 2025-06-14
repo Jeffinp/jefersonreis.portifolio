@@ -205,9 +205,8 @@ const resources = {
                             "Criei, sob contrato, um sistema de gestão jurídica projetado para maximizar a produtividade e organização de advogados através de uma interface intuitiva, eficiente e de alta performance. Suas funcionalidades centrais abrangem o gerenciamento de usuários, processos, tarefas, documentos, agenda e a emissão de relatórios. O sistema é multiusuário, permitindo que um administrador centralize o trabalho de diversos advogados e controle o acesso. O painel de controle oferece uma visão clara das pendências e informações importantes. Atualmente em produção, a plataforma está em constante evolução e aprimoramento.",
                     },
                     flyserv: {
-                        title: "FlyServ Drones",
-                        description:
-                            "Desenvolvi o front-end e back-end do site FlyServ Drones, criando a estrutura, mecânica e experiência do usuário para garantir um desempenho otimizado e uma navegação intuitiva.",
+                        title: "FlyServ Drones - Plataforma Institucional Completa",
+                        description: "Desenvolvi a plataforma web da FlyServ Drones com React 19, TypeScript e Tailwind CSS 4.0, focando em design responsivo, animações fluidas e acessibilidade. O site conta com SPA, formulário de orçamento, carrossel 3D, hero com vídeo, e páginas institucionais. No backend, utilizei PHP para processar formulários com validação, segurança e envio de e-mails. O projeto inclui SEO avançado, integração com WhatsApp, otimização de performance e animações contextuais.",
                     },
                     gestaoFinanceira: {
                         title: "Gestão Financeira",

@@ -9,7 +9,7 @@ const projectsData = [
         descriptionKey: "portfolio.projects.itamir.description",
         type: "contracted",
         restricted: true,
-        technologies: ["React/Vite", "Python", "Tailwind CSS", "postgreSQL", "Framer Motion", "Shadcn/UI", "React Router DOM", "Axios", "React Hook Form", "Material-UI (MUI)"], 
+        technologies: ["React 19", "Vite", "Python", "Tailwind CSS 4.0", "postgreSQL", "Framer Motion", "Shadcn/UI", "React Router DOM", "argon2-cffi", "Axios", "React Hook Form", "Material-UI (MUI)"], 
     },
     {
         id: "flyserv-drones",
@@ -19,7 +19,7 @@ const projectsData = [
         descriptionKey: "portfolio.projects.flyserv.description",
         link: "https://flyservdrones.com.br/",
         type: "contracted",
-        technologies: ["HTML", "CSS", "JavaScript"],
+        technologies: ["React 19", "TypeScript", "Tailwind CSS 4.0", "Framer Motion", "Headless UI", "React Router DOM", "PHP", "Vite", "React Helmet"],
     },
     {
         id: "gestao_financeira",
