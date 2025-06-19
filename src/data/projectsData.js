@@ -22,6 +22,16 @@ const projectsData = [
         technologies: ["React 19", "TypeScript", "Tailwind CSS 4.0", "Framer Motion", "Headless UI", "React Router DOM", "PHP", "Vite", "React Helmet"],
     },
     {
+        id: "Meu Shop - Plataforma de E-commerce",
+        category: "web",
+        image: "/assets/images/MeuShop.png",
+        titleKey: "portfolio.projects.meuShop.title",
+        descriptionKey: "portfolio.projects.meuShop.description",
+        link: "https://meu-ecommerce.vercel.app/",
+        type: "personal",
+        technologies: ["Angular", "TypeScript", "Tailwind CSS 4.0", "Python", "PostgreSQL", "Axios", "argon2-cffi"],
+    },
+    {
         id: "gestao_financeira",
         category: "web",
         image: "assets/images/Gestao_financeira.png",

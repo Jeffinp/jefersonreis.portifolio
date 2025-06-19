@@ -23,7 +23,7 @@ const About = lazy(() => import("./containers/About"));
 const Services = lazy(() => import("./containers/Services"));
 const Skills = lazy(() => import("./containers/Skills"));
 const Projects = lazy(() => import("./containers/Projects"));
-const Resume = lazy(() => import("./containers/Resume"));
+const Timeline = lazy(() => import("./containers/Timeline"));
 const Contact = lazy(() => import("./containers/Contact"));
 const EbookPromo = lazy(() => import("./containers/EbookPromo"));
 const Ebook = lazy(() => import("./pages/Ebook"));
@@ -64,10 +64,9 @@ const HomePage = ({ darkMode, toggleDarkMode }) => {
         <Suspense fallback={<Loader />}>
           <About />
           <EbookPromo />
-          <Services />
-          <Skills />
+          <Services /> <Skills />
           <Projects />
-          <Resume />
+          <Timeline />
           <Contact />
         </Suspense>
         <ScrollToTopBtn />
