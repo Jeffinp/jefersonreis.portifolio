@@ -805,6 +805,7 @@ const resources = {
         skills: "Skills",
         portfolio: "Portfolio",
         timeline: "Journey",
+        ebooks: "eBooks",
         contact: "Contact",
       },
       header: {
@@ -1041,15 +1042,35 @@ const resources = {
             "This project was developed under commercial contract. For confidentiality reasons, access to the complete project is not publicly available.",
         },
         projects: {
+          meuShop: {
+            title: "Meu Shop - E-commerce Platform",
+            description:
+              "Currently, I'm developing an e-commerce platform with Angular, TypeScript, and Tailwind CSS 4.0, focusing on responsive design, fluid animations, and accessibility. The site will feature SPA, quote form, 3D carousel, hero with video, and institutional pages. The backend is yet to be implemented, with plans to use Python for form processing with validation, security, and email sending. The project will include advanced SEO, WhatsApp integration, performance optimization, and contextual animations. It's in beta phase.",
+          },
+          itamir: {
+            title: "Legal Management System",
+            description:
+              "I created, under contract, a legal management system designed to maximize productivity and organization for lawyers through an intuitive, efficient, and high-performance interface. Its core functionalities include user management, processes, tasks, documents, calendar, and report generation. The system is multi-user, allowing an administrator to centralize the work of multiple lawyers and control access. The control panel provides a clear view of pending items and important information. Currently in production, the platform is in constant evolution and improvement.",
+          },
+          flyserv: {
+            title: "FlyServ Drones - Complete Institutional Platform",
+            description:
+              "I developed the FlyServ Drones web platform with React 19, TypeScript, and Tailwind CSS 4.0, focusing on responsive design, fluid animations, and accessibility. The site features SPA, quote form, 3D carousel, hero with video, and institutional pages. On the backend, I used PHP to process forms with validation, security, and email sending. The project includes advanced SEO, WhatsApp integration, performance optimization, and contextual animations.",
+          },
+          gestaoFinanceira: {
+            title: "Financial Management",
+            description:
+              "As a personal initiative, I'm developing a financial management system designed to optimize performance and user experience, with React frontend. The next phase includes implementing the backend in Python. This solution aims to facilitate comprehensive financial control, serving from individuals to companies of various sizes (small, medium, and large). It stands out for future integration with stores, consolidating as a centralized, versatile, and adaptable tool. The project is in continuous development.",
+          },
           systemSolar: {
             title: "Solar System",
             description:
-              "Developed the Solar System using React, TypeScript, Tailwind CSS, Three.js, and Shadcn/UI, to showcase my skills in React and Three.js.",
+              "I developed the Solar System using React, TypeScript, Tailwind CSS, Three.js, and Shadcn/UI, with the goal of improving and showcasing my skills in React and Three.js.",
           },
-          flyserv: {
-            title: "FlyServ Drones",
+          brasilPiscinas: {
+            title: "Brasil Piscinas",
             description:
-              "I developed both the front-end and back-end of the FlyServ Drones website, creating the structure, functionality, and user experience to ensure optimized performance and intuitive navigation.",
+              "Demonstration design for a pool company, using Canva.",
           },
           onlineDrawingCourse: {
             title: "Online Drawing Course",
@@ -1532,9 +1553,10 @@ const resources = {
               "A complete guide for those starting in web development. Learn HTML, CSS, and JavaScript in a practical and objective way.",
           },
           1: {
-            title: "Design Thinking in Practice",
+            title:
+              "Lucrative Internet: The Definitive Guide to Making Money Online",
             description:
-              "Learn how to apply Design Thinking to solve complex problems and create innovative solutions for your clients.",
+              "Discover proven strategies to monetize your online business. This comprehensive guide teaches everything from niche selection to advanced monetization techniques and digital marketing.",
           },
           2: {
             title: "Technology Freelance Career",
