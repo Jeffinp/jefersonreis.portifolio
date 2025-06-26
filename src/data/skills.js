@@ -32,104 +32,166 @@ export const skills = {
             icon: "Wind",
             imagePath: "/assets/images/skills/tailwind.png"
         },
+        {
+            name: "SCSS",
+            icon: "Palette",
+            imagePath: "https://cdn-icons-png.flaticon.com/512/5968/5968358.png"
+        },
+        {
+            name: "Material-UI",
+            icon: "Component",
+            imagePath: "https://miro.medium.com/v2/resize:fit:820/1*rpiHSO8j5Ng9dzobkcvAkQ.png"
+        },
+        {
+            name: "Webpack",
+            icon: "Container",
+            imagePath: "https://raw.githubusercontent.com/webpack/media/master/logo/icon.png"
+        },
+        {
+            name: "Vite",
+            icon: "Zap",
+            imagePath: "https://cambridge-intelligence.com/wp-content/uploads/2024/07/Vite-official-logo.png"
+        },
     ],
     backend: [
         {
             name: "Node.js",
             icon: "ServerCog",
-            imagePath: "/assets/images/skills/nodejs.png"
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
         }, {
             name: "Python",
             icon: "FileCode",
-            imagePath: "/assets/images/skills/python.png"
-        },
-        {
-            name: "Django",
-            icon: "FileCode",
-            imagePath: "/assets/images/skills/django.png"
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
         },
         {
             name: "C#",
             icon: "Hash",
-            imagePath: "/assets/images/skills/csharp.png"
-        }, {
-            name: "C++",
-            icon: "PlusSquare",
-            imagePath: "/assets/images/skills/cpp.png"
-        },
-        {
-            name: "MySQL",
-            icon: "Database",
-            imagePath: "/assets/images/skills/mysql.png"
-        }, {
-            name: "PostgreSQL",
-            icon: "Columns",
-            imagePath: "/assets/images/skills/postgresql.png"
-        },
-        {
-            name: "Firebase",
-            icon: "Flame",
-            imagePath: "/assets/images/skills/firebase.png"
-        },
-        {
-            name: "Supabase",
-            icon: "GitHub",
-            imagePath: "/assets/images/skills/supabase.webp"
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
         },
         {
             name: "PHP",
             icon: "FileCode2",
-            imagePath: "/assets/images/skills/php.png"
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+        },
+        {
+            name: "Django",
+            icon: "FileCode",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"
+        },
+        {
+            name: "Flask",
+            icon: "Route",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg"
+        },
+        {
+            name: "FastAPI",
+            icon: "Zap",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"
+        },
+        {
+            name: "ASP.NET Core",
+            icon: "Network",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg"
+        },
+        {
+            name: "Laravel",
+            icon: "Feather",
+            imagePath: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/800px-Laravel.svg.png"
+        },
+        {
+            name: "PostgreSQL",
+            icon: "Columns",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+        },
+        {
+            name: "MySQL",
+            icon: "Database",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg"
+        },
+        {
+            name: "MariaDB",
+            icon: "DatabaseZap",
+            imagePath: "https://cdn.worldvectorlogo.com/logos/mariadb.svg"
+        },
+        {
+            name: "Redis",
+            icon: "BrainCircuit",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg"
+        },
+        {
+            name: "Firebase",
+            icon: "Flame",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+        },
+        {
+            name: "Supabase",
+            icon: "GitHub",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg"
+        },
+        {
+            name: "JWT",
+            icon: "KeyRound",
+            imagePath: "https://user-images.githubusercontent.com/5418178/177059352-fe91dcd5-e17b-4103-88ae-70d6d396cf85.png"
+        },
+        {
+            name: "C++",
+            icon: "PlusSquare",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
         }
     ],
     outras: [
         {
             name: "Git",
             icon: "GitBranch",
-            imagePath: "/assets/images/skills/git.png"
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+        },
+        {
+            name: "Linux",
+            icon: "Terminal",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
         },
         {
             name: "Docker",
             icon: "Package",
-            imagePath: "/assets/images/skills/docker.png"
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
         },
         {
             name: "Vercel",
             icon: "ArrowUpRight",
-            imagePath: "/assets/images/skills/vercel.png"
-        }, {
-            name: "Linux",
-            icon: "Terminal",
-            imagePath: "/assets/images/skills/linux.png"
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg"
+        },
+        {
+            name: "Render",
+            icon: "Server",
+            imagePath: "https://cdn.sanity.io/images/34ent8ly/production/ec37a3660704e1fa2b4246c9a01ab34e145194ad-824x824.png"
+        },
+        {
+            name: "Google Cloud",
+            icon: "Cloud",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"
+        },
+        {
+            name: "Figma",
+            icon: "Figma",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
         },
         {
             name: "Notion",
             icon: "FileText",
-            imagePath: "/assets/images/skills/notion.png"
-        }, {
-            name: "Figma",
-            icon: "Figma",
-            imagePath: "/assets/images/skills/figma.png"
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/notion/notion-original.svg"
         },
         {
-            name: "UI/UX Design",
-            icon: "Paintbrush",
-            imagePath: "/assets/images/skills/uiux.png"
-        }, {
             name: "Blender",
             icon: "Shapes",
-            imagePath: "/assets/images/skills/blender.png"
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg"
         },
         {
             name: "Canva",
             icon: "PenTool",
-            imagePath: "/assets/images/skills/canva.webp"
-        }, {
-            name: "Pacote Office",
-            icon: "FileSpreadsheet",
-            imagePath: "/assets/images/skills/office.png"
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg"
         }
     ]
+
 };
 
 export const skillsIcons = {
