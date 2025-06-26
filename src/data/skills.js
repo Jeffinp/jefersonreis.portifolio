@@ -9,7 +9,8 @@ export const skills = {
             name: "TypeScript",
             icon: "FileType",
             imagePath: "/assets/images/skills/typescript.png"
-        }, {
+        },
+        {
             name: "React",
             icon: "Atom",
             imagePath: "/assets/images/skills/react.png"
@@ -18,19 +19,26 @@ export const skills = {
             name: "Next.js",
             icon: "ArrowRight",
             imagePath: "/assets/images/skills/nextjs.png"
-        }, {
-            name: "Vue.js",
-            icon: "FileSymlink",
-            imagePath: "/assets/images/skills/vuejs.png"
+        },
+        {
+            name: "Vite",
+            icon: "Zap",
+            imagePath: "https://cambridge-intelligence.com/wp-content/uploads/2024/07/Vite-official-logo.png"
+        },
+        {
+            name: "Tailwind CSS",
+            icon: "Wind",
+            imagePath: "/assets/images/skills/tailwind.png"
         },
         {
             name: "Angular",
             icon: "Unplug",
             imagePath: "/assets/images/skills/angular.png"
-        }, {
-            name: "Tailwind CSS",
-            icon: "Wind",
-            imagePath: "/assets/images/skills/tailwind.png"
+        },
+        {
+            name: "Vue.js",
+            icon: "FileSymlink",
+            imagePath: "/assets/images/skills/vuejs.png"
         },
         {
             name: "SCSS",
@@ -38,65 +46,26 @@ export const skills = {
             imagePath: "https://cdn-icons-png.flaticon.com/512/5968/5968358.png"
         },
         {
-            name: "Material-UI",
-            icon: "Component",
-            imagePath: "https://miro.medium.com/v2/resize:fit:820/1*rpiHSO8j5Ng9dzobkcvAkQ.png"
-        },
-        {
             name: "Webpack",
             icon: "Container",
             imagePath: "https://raw.githubusercontent.com/webpack/media/master/logo/icon.png"
         },
         {
-            name: "Vite",
-            icon: "Zap",
-            imagePath: "https://cambridge-intelligence.com/wp-content/uploads/2024/07/Vite-official-logo.png"
+            name: "Material-UI",
+            icon: "Component",
+            imagePath: "https://miro.medium.com/v2/resize:fit:820/1*rpiHSO8j5Ng9dzobkcvAkQ.png"
         },
     ],
     backend: [
         {
-            name: "Node.js",
-            icon: "ServerCog",
-            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-        }, {
             name: "Python",
             icon: "FileCode",
             imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
         },
         {
-            name: "C#",
-            icon: "Hash",
-            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
-        },
-        {
-            name: "PHP",
-            icon: "FileCode2",
-            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
-        },
-        {
-            name: "Django",
-            icon: "FileCode",
-            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"
-        },
-        {
-            name: "Flask",
-            icon: "Route",
-            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg"
-        },
-        {
-            name: "FastAPI",
-            icon: "Zap",
-            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"
-        },
-        {
-            name: "ASP.NET Core",
-            icon: "Network",
-            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg"
-        },
-        {
-            name: "Laravel",
-            icon: "Feather",
-            imagePath: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/800px-Laravel.svg.png"
+            name: "Node.js",
+            icon: "ServerCog",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
         },
         {
             name: "PostgreSQL",
@@ -109,9 +78,24 @@ export const skills = {
             imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg"
         },
         {
-            name: "MariaDB",
-            icon: "DatabaseZap",
-            imagePath: "https://cdn.worldvectorlogo.com/logos/mariadb.svg"
+            name: "Django",
+            icon: "FileCode",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"
+        },
+        {
+            name: "C#",
+            icon: "Hash",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
+        },
+        {
+            name: "PHP",
+            icon: "FileCode2",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+        },
+        {
+            name: "ASP.NET Core",
+            icon: "Network",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg"
         },
         {
             name: "Redis",
@@ -119,9 +103,29 @@ export const skills = {
             imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg"
         },
         {
+            name: "Laravel",
+            icon: "Feather",
+            imagePath: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/800px-Laravel.svg.png"
+        },
+        {
+            name: "FastAPI",
+            icon: "Zap",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"
+        },
+        {
             name: "Firebase",
             icon: "Flame",
             imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+        },
+        {
+            name: "Flask",
+            icon: "Route",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg"
+        },
+        {
+            name: "MariaDB",
+            icon: "DatabaseZap",
+            imagePath: "https://cdn.worldvectorlogo.com/logos/mariadb.svg"
         },
         {
             name: "Supabase",
@@ -146,14 +150,14 @@ export const skills = {
             imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
         },
         {
-            name: "Linux",
-            icon: "Terminal",
-            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
-        },
-        {
             name: "Docker",
             icon: "Package",
             imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+        },
+        {
+            name: "Linux",
+            icon: "Terminal",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
         },
         {
             name: "Vercel",
@@ -161,9 +165,9 @@ export const skills = {
             imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg"
         },
         {
-            name: "Render",
-            icon: "Server",
-            imagePath: "https://cdn.sanity.io/images/34ent8ly/production/ec37a3660704e1fa2b4246c9a01ab34e145194ad-824x824.png"
+            name: "Figma",
+            icon: "Figma",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
         },
         {
             name: "Google Cloud",
@@ -171,9 +175,9 @@ export const skills = {
             imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"
         },
         {
-            name: "Figma",
-            icon: "Figma",
-            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+            name: "Render",
+            icon: "Server",
+            imagePath: "https://cdn.sanity.io/images/34ent8ly/production/ec37a3660704e1fa2b4246c9a01ab34e145194ad-824x824.png"
         },
         {
             name: "Notion",
@@ -181,17 +185,16 @@ export const skills = {
             imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/notion/notion-original.svg"
         },
         {
-            name: "Blender",
-            icon: "Shapes",
-            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg"
-        },
-        {
             name: "Canva",
             icon: "PenTool",
             imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg"
+        },
+        {
+            name: "Blender",
+            icon: "Shapes",
+            imagePath: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg"
         }
     ]
-
 };
 
 export const skillsIcons = {
