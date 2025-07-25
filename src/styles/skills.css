@@ -1,96 +1,94 @@
-/* Estilos para o componente SkillCard */
-.skill-item-card {
-    transition: all 0.3s ease;
+/* Skills Cloud Styling */
+
+.skills-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  position: relative;
 }
 
-.skill-item-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+.skill-tag {
+  @apply flex cursor-pointer items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-800 shadow-md transition-all duration-300 hover:scale-105 hover:bg-indigo-50 hover:shadow-lg dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-indigo-900;
 }
 
-/* Animação para as imagens das habilidades */
-.skill-item-card img {
-    transition: all 0.3s ease;
+.skill-tag img,
+.skill-tag svg {
+  @apply h-5 w-5;
 }
 
-.skill-item-card:hover img {
-    transform: scale(1.05);
+.skill-category-title {
+  @apply mb-6 text-center text-xl font-bold text-indigo-600 md:text-2xl dark:text-indigo-400;
 }
 
-/* Classes de texto com gradiente para ícones */
-.text-gradient-blue-400 {
-    color: #2563eb;
-    /* text-blue-600 */
+.skill-grid {
+  @apply mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6;
 }
 
-.dark .text-gradient-blue-400 {
-    color: #60a5fa;
-    /* text-blue-400 */
+.skill-card {
+  @apply flex flex-col items-center justify-center rounded-lg bg-white p-4 shadow-md transition-all duration-300 hover:scale-105 hover:bg-indigo-50 hover:shadow-lg dark:bg-gray-800 dark:hover:bg-indigo-900/30;
 }
 
-.text-gradient-indigo-400 {
-    color: #4f46e5;
-    /* text-indigo-600 */
+.skill-icon {
+  @apply mb-3 h-12 w-12 object-contain;
 }
 
-.dark .text-gradient-indigo-400 {
-    color: #818cf8;
-    /* text-indigo-400 */
+.skill-name {
+  @apply text-center text-sm font-medium text-gray-800 dark:text-gray-200;
 }
 
-.text-gradient-emerald-400 {
-    color: #059669;
-    /* text-emerald-600 */
+.skill-level {
+  @apply mt-2 h-2 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700;
 }
 
-.dark .text-gradient-emerald-400 {
-    color: #34d399;
-    /* text-emerald-400 */
+.skill-level-fill {
+  @apply h-full rounded-full bg-indigo-500;
 }
 
-.text-gradient-teal-400 {
-    color: #0d9488;
-    /* text-teal-600 */
+/* Hover effects */
+.skill-card:hover .skill-name {
+  @apply text-indigo-600 dark:text-indigo-400;
 }
 
-.dark .text-gradient-teal-400 {
-    color: #2dd4bf;
-    /* text-teal-400 */
+.skill-card:hover .skill-level-fill {
+  @apply bg-indigo-400 dark:bg-indigo-300;
 }
 
-.text-gradient-amber-400 {
-    color: #d97706;
-    /* text-amber-600 */
+/* Animation for skill tags */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
-.dark .text-gradient-amber-400 {
-    color: #fbbf24;
-    /* text-amber-400 */
+.skill-tag:nth-child(3n + 1) {
+  animation: float 4s ease-in-out infinite;
 }
 
-.text-gradient-orange-400 {
-    color: #ea580c;
-    /* text-orange-600 */
+.skill-tag:nth-child(3n + 2) {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 1s;
 }
 
-.dark .text-gradient-orange-400 {
-    color: #fb923c;
-    /* text-orange-400 */
+.skill-tag:nth-child(3n) {
+  animation: float 5s ease-in-out infinite;
+  animation-delay: 2s;
 }
 
-/* Estilo para a visualização detalhada da habilidade */
-.skill-detail-view {
-    min-height: 300px;
+/* 3D effect for skill cards on hover */
+.skill-card {
+  transition: transform 0.3s ease;
 }
 
-/* Transição suave para mudança de visualização */
-.skill-detail-view,
-.skills-grid {
-    transition: all 0.3s ease;
-}
-
-/* Efeito de hover na imagem da habilidade */
-.skill-detail-view img:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
+.skill-card:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.05);
 }

@@ -1,0 +1,350 @@
+{
+  "menu": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "skills": "Skills",
+    "portfolio": "Portfolio",
+    "timeline": "Journey",
+    "ebooks": "eBooks",
+    "contact": "Contact"
+  },
+  "header": {
+    "logo_aria": "Jeferson Reis - Full Stack Developer",
+    "portuguese": "Portuguese",
+    "english": "English",
+    "portuguese_language": "Switch to Portuguese language",
+    "english_language": "Switch to English language",
+    "toggle_dark_mode": "Enable dark mode",
+    "toggle_light_mode": "Enable light mode",
+    "open_menu": "Open navigation menu",
+    "close_menu": "Close navigation menu"
+  },
+  "hero": {
+    "title": "Jeferson Reis Almeida",
+    "subtitle": "full-stack developer | graphic designer | IT technician",
+    "transforming": "Transforming Ideas into Reality",
+    "profileAlt": "Photo of Jeferson Reis, full-stack web developer",
+    "buttons": {
+      "viewProjects": "View My Projects",
+      "contact": "Get in Touch"
+    },
+    "scrollDown": "Scroll down",
+    "scrollToAbout": "Scroll to About section"
+  },
+  "about": {
+    "title": "About Me",
+    "devTitle": "Full Stack Development",
+    "paragraphs": {
+      "first": "Hello, I'm Jeferson Reis, passionate about technology, design, and programming. Over the years, I've developed skills as a full-stack developer, graphic designer, and IT technician. I'm always looking for new challenges to create innovative and customized solutions, combining technology and creativity.",
+      "second": "I have experience with React and Node.js, focusing on performance and user experience (UX/UI). Additionally, I specialize in graphic design, creating unique visual identities and customized graphic materials."
+    },
+    "cta": {
+      "contact": "Get in Touch",
+      "resume": "Download Resume",
+      "resumeUrl": "/Jeferson_currículo.pdf"
+    },
+    "stats": {
+      "title": "My Statistics",
+      "experience": "Years of Experience",
+      "projects": "Completed Projects",
+      "clients": "Satisfied Clients",
+      "satisfaction": "Client Satisfaction"
+    },
+    "expertise": {
+      "title": "Areas of Expertise",
+      "frontend": "Frontend Development",
+      "backend": "Backend Development",
+      "design": "Graphic Design",
+      "ux": "User Experience"
+    },
+    "services": {
+      "title": "My Services",
+      "subtitle": "Discover how I can help transform your ideas into reality."
+    },
+    "cards": {
+      "webDev": {
+        "title": "Web Development",
+        "description": "Creation of responsive and SEO-optimized websites, focusing on performance and attractive design.",
+        "ariaLabel": "Learn more about Web Development"
+      },
+      "design": {
+        "title": "Graphic Design",
+        "description": "Creation of visual identities, logos, and customized graphic materials.",
+        "ariaLabel": "Learn more about Graphic Design"
+      },
+      "backend": {
+        "title": "Backend Development",
+        "description": "Development of robust APIs and scalable solutions for different types of applications.",
+        "ariaLabel": "Learn more about Backend Development"
+      },
+      "softSkills": {
+        "title": "Interpersonal Skills",
+        "description": "Effective communication, teamwork, and creative problem-solving.",
+        "ariaLabel": "Learn more about Interpersonal Skills"
+      },
+      "action": "Learn More"
+    }
+  },
+  "expertise": {
+    "title": "Areas of Work",
+    "subtitle": "Get to know my main areas of expertise and how I can help your project take off.",
+    "learnMore": "Learn more",
+    "items": {
+      "item0": {
+        "title": "Immersive Web Development",
+        "description": "Creation of Landing Pages, Corporate Websites, and E-commerce platforms optimized for SEO, focusing on responsiveness and conversion."
+      },
+      "item1": {
+        "title": "Design & Visual Identity",
+        "description": "Development of logos, visual identities, image manipulation, and graphic materials to strengthen your brand."
+      },
+      "item2": {
+        "title": "Professional Documentation",
+        "description": "Creation of presentations, proposals, spreadsheets, resumes, reports, and financial control documents, with impeccable formatting."
+      },
+      "item3": {
+        "title": "3D Modeling & Visualization",
+        "description": "3D modeling, animations, photorealistic renderings, and assets for AR/VR and 3D printing."
+      },
+      "item4": {
+        "title": "Technical Support",
+        "description": "System maintenance, data recovery, and device optimization with remote or on-site service."
+      },
+      "item5": {
+        "title": "Editing and Motion Graphics",
+        "description": "Professional video editing and animations with After Effects, Premiere Pro, and Filmora for YouTube, social media, and other formats."
+      }
+    }
+  },
+  "services": {
+    "title": "My Services",
+    "subtitle": "Customized professional solutions to bring your ideas to life!",
+    "items": {
+      "web": {
+        "title": "Strategic Web Development",
+        "description": "Specialist in creating high-impact web experiences. I develop conversion-optimized Landing Pages, Corporate Websites with strategic narratives, robust E-commerce platforms, and professional Blogs. I guarantee exclusive design, total responsiveness, and SEO optimization for maximum visibility."
+      },
+      "design": {
+        "title": "Strategic Design & Branding",
+        "description": "Specialized in creating visual identities that establish authority in the market. I develop complete branding systems, including distinctive logos, consistent visual communication, and strategic advertising materials that consolidate your brand's positioning."
+      },
+      "documentation": {
+        "title": "Specialized Corporate Documentation",
+        "description": "Specialist in transforming concepts into high-standard executive documentation. I produce corporate presentations, strategic business documents, advanced analytical spreadsheets, executive resumes, and academic documents with rigorous formatting standards."
+      },
+      "modeling": {
+        "title": "3D Modeling & Architectural Visualization",
+        "description": "Specialist in creating high-precision 3D content. I develop complex three-dimensional models, hyper-realistic renderings, technical animations, and optimized assets for augmented and virtual reality. Projects executed with precision for 3D printing and professional visualization."
+      },
+      "support": {
+        "title": "Specialized Consulting & Technical Support",
+        "description": "I offer comprehensive technical solutions for IT infrastructure: system optimization, advanced data recovery, preventive and corrective maintenance. Personalized remote or on-site service, ensuring maximum operational efficiency."
+      },
+      "video": {
+        "title": "Audiovisual Production & Motion Design",
+        "description": "Specialist in corporate audiovisual production. I execute professional editing, advanced post-production, corporate motion graphics, and technical animations using the professional Adobe suite. Productions optimized for multiple platforms: social media, digital marketing, corporate presentations, and dynamic branding."
+      }
+    },
+    "downloadButton": "Download the Complete Service Catalog",
+    "downloadDescription": "Discover all the details and prices in my catalog!",
+    "learnMore": "Learn more",
+    "whatsappButton": "Talk via WhatsApp",
+    "whatsappText": "Let's talk!",
+    "ariaLabel": "Services Section"
+  },
+  "portfolio": {
+    "title": "My Portfolio",
+    "subtitle": "Projects and works that demonstrate my skills",
+    "categories": {
+      "all": "All",
+      "web": "Web",
+      "design": "Design",
+      "motion": "Motion",
+      "modelagem": "3D Modeling",
+      "mobile": "Mobile"
+    },
+    "projectLabels": {
+      "contracted": "Contracted",
+      "personal": "Personal",
+      "viewProject": "View Project",
+      "prevProject": "Previous project",
+      "nextProject": "Next project",
+      "seeMore": "See more",
+      "seeLess": "See less",
+      "restrictedProject": "Restricted Project",
+      "notPubliclyAvailable": "This project is not available for public viewing."
+    },
+    "projects": {
+      "leveSaudeMobile": {
+        "title": "Leve Saúde - Mobile App",
+        "description": "Mobile app for health management developed with React Native and TypeScript.",
+        "fullDescription": "Technical test developed in React Native with TypeScript for Leve Saúde company. The app allows managing health information with an intuitive and modern interface."
+      },
+      "portfolio": {
+        "title": "Personal Portfolio",
+        "description": "Personal portfolio developed with Next.js, TypeScript and Tailwind CSS.",
+        "fullDescription": "Personal portfolio developed with Next.js, TypeScript and Tailwind CSS. The project features sections to showcase skills, projects, resume and testimonials."
+      },
+      "flyserv": {
+        "title": "FlyServ - Software Engineering",
+        "description": "Corporate landing page for a software engineering company.",
+        "fullDescription": "Development of a corporate landing page for a software engineering company specialized in high-performance solutions."
+      },
+      "acsendoflex": {
+        "title": "Acsendoflex - Virtual Gym",
+        "description": "Online training platform for gym.",
+        "fullDescription": "Complete platform for virtual gym with members area, payment system and workout tracking."
+      },
+      "itamir": {
+        "title": "Itamir - Legal Management",
+        "description": "Complete system for legal office management.",
+        "fullDescription": "Complete system for legal office management with process control, clients, hearings and document generation."
+      },
+      "flyservDrones": {
+        "title": "FlyServ Drones",
+        "description": "Corporate landing page for drone company.",
+        "fullDescription": "Development of corporate landing page for company specialized in drone services."
+      },
+      "meuShop": {
+        "title": "My Shop - E-commerce Platform",
+        "description": "Complete e-commerce platform with various functionalities.",
+        "fullDescription": "Complete e-commerce platform with registration system, shopping cart, product management and payment integration."
+      },
+      "gestaoFinanceira": {
+        "title": "Financial Management System",
+        "description": "Application for personal and business financial control.",
+        "fullDescription": "Complete system for financial management with control of income, expenses, investments and customized reports."
+      },
+      "onlineDrawingCourse": {
+        "title": "Online Drawing Course",
+        "description": "Online drawing teaching platform with courses and tutorials.",
+        "fullDescription": "Website for online drawing course with interactive content, video lessons and learning resources."
+      },
+      "weightLossProgram": {
+        "title": "Weight Loss Program",
+        "description": "Platform for weight loss program with plans and monitoring.",
+        "fullDescription": "Website for weight loss program with information about diets, exercises and subscription plans."
+      },
+      "systemSolar": {
+        "title": "Interactive Solar System",
+        "description": "Interactive 3D experience of the solar system.",
+        "fullDescription": "Interactive 3D model of the solar system with information about each planet and orbit simulation."
+      },
+      "pythonChatbot": {
+        "title": "Intelligent Chatbot",
+        "description": "Chatbot for customer service with AI.",
+        "fullDescription": "Development of intelligent chatbot using AI to automate customer service and answer frequently asked questions."
+      },
+      "fileManager": {
+        "title": "File Manager",
+        "description": "File management and organization system.",
+        "fullDescription": "Application for automatic file organization with classification by type, date and other attributes."
+      },
+      "platformGame": {
+        "title": "2D Platform Game",
+        "description": "Platform game developed in JavaScript.",
+        "fullDescription": "2D platform game developed with pure JavaScript with innovative mechanics and challenging level design."
+      },
+      "christmasGift": {
+        "title": "Christmas Gift",
+        "description": "Interactive site with Christmas theme for gifts.",
+        "fullDescription": "Interactive site with Christmas theme to share messages and virtual gifts."
+      },
+      "brasilPiscinas": {
+        "title": "Brasil Piscinas",
+        "description": "Graphic design for pool company.",
+        "fullDescription": "Graphic design material for pool company, including logo, business cards and promotional materials."
+      },
+      "terrorDuo": {
+        "title": "Terror Duo",
+        "description": "Illustration of terror characters.",
+        "fullDescription": "Digital illustration of characters inspired by horror films and games."
+      },
+      "bratailsAnimated": {
+        "title": "Bratails Animated",
+        "description": "2D animation of original character.",
+        "fullDescription": "2D animation of original character with fluid and expressive movement sequences."
+      },
+      "oliveBrandDesign": {
+        "title": "Olive Brand Design",
+        "description": "Package design for olive oil brand.",
+        "fullDescription": "Package design and visual identity for premium olive oil brand."
+      },
+      "stylizedFlag": {
+        "title": "Stylized Brazilian Flag",
+        "description": "Artistic redesign of the Brazilian flag."
+      },
+      "gamerCase": {
+        "title": "Gamer Case Design",
+        "description": "Design concept for gaming computer case."
+      },
+      "environmentShirt": {
+        "title": "Environmental Print",
+        "description": "Print design with environmental theme for t-shirts."
+      },
+      "parasiteNotebook": {
+        "title": "Parasite Notebook",
+        "description": "Character illustration for notebook cover."
+      },
+      "giratinaArt": {
+        "title": "Giratina Art",
+        "description": "Digital illustration of Pokemon Giratina."
+      },
+      "burgerDesign": {
+        "title": "Burger Design",
+        "description": "Design for artisanal burger promotion."
+      },
+      "bratailsSpaceship": {
+        "title": "Bratails Spaceship",
+        "description": "3D modeling of spaceship for character."
+      },
+      "asteroid3d": {
+        "title": "Asteroid 3D",
+        "description": "3D modeling of asteroid with realistic textures."
+      },
+      "renderTest": {
+        "title": "Render Test",
+        "description": "3D rendering test with geometric shapes."
+      },
+      "donut3d": {
+        "title": "Donut 3D",
+        "description": "3D modeling and rendering of donut."
+      },
+      "skull3d": {
+        "title": "Skull 3D",
+        "description": "3D modeling of alien skull."
+      }
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "I'm available for new projects and opportunities. Feel free to reach out!",
+    "projectTitle": "Available for Projects",
+    "availableForProjects": "I'm available for new projects and opportunities. Feel free to reach out!",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "message": "Your Message",
+      "sendButton": "Send Message",
+      "successMessage": "Thank you! Your message has been sent successfully.",
+      "errorMessage": "Oops! Something went wrong. Please try again later."
+    },
+    "socialMedia": {
+      "title": "My Social Media",
+      "description": "Follow me on social media to keep up with my work and news!"
+    }
+  },
+  "footer": {
+    "tagline": "Full-stack Developer & Graphic Designer specialized in creating impactful digital experiences with React, Next.js, and Node.js.",
+    "connectWithMe": "Connect with me",
+    "quickLinks": "Quick links",
+    "allRightsReserved": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "linkedin": "Connect with me on LinkedIn",
+    "github": "See my projects on GitHub",
+    "instagram": "Follow me on Instagram",
+    "whatsapp": "Contact me on WhatsApp",
+    "discord": "Find me on Discord"
+  }
+}

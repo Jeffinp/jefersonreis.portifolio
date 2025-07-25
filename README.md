@@ -43,10 +43,11 @@ Para visualizar o site localmente em seu computador, siga os passos abaixo:
    ```bash
    git clone https://github.com/Jeffinp/jefersonreis.github.io.git
 
+   ```
+
 2. Navegue até o diretório do projeto:
 
 cd jefersonreis.github.io
-
 
 3. Abra o arquivo index.html em seu navegador.
 
@@ -68,17 +69,12 @@ Sinta-se à vontade para entrar em contato comigo:
 
 Este projeto está sob a licença MIT, permitindo uso, modificação e distribuição livre, desde que a devida atribuição seja feita.
 
-
 ---
 
 ## 📈 Status do Projeto
 
 Este portfólio está em constante desenvolvimento, com atualizações regulares para refletir novos projetos, habilidades e melhorias no design.
 
-
 ---
 
 Obrigado por visitar meu portfólio! Explore à vontade e sinta-se à vontade para entrar em contato para colaborações ou feedback.
-
-
-
