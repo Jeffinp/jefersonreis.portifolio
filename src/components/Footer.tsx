@@ -80,7 +80,7 @@ const Footer: React.FC = () => {
       icon: (
         <Linkedin className="h-5 w-5 text-blue-600 md:h-6 md:w-6 dark:text-blue-400" />
       ),
-      href: 'https://www.linkedin.com/in/jeferson-reis-877a942b7/',
+      href: `https://${process.env.NEXT_PUBLIC_LINKEDIN_URL}`,
       title: t('footer.linkedin'),
       label: 'LinkedIn',
       hoverColor: 'hover:bg-blue-500 hover:text-white dark:hover:bg-blue-600',
@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
       icon: (
         <Github className="h-5 w-5 text-gray-800 md:h-6 md:w-6 dark:text-gray-200" />
       ),
-      href: 'https://github.com/Jeffinp',
+      href: process.env.NEXT_PUBLIC_GITHUB_URL || 'https://github.com/jeffinp',
       title: t('footer.github'),
       label: 'GitHub',
       hoverColor: 'hover:bg-gray-800 hover:text-white dark:hover:bg-gray-700',
@@ -111,7 +111,7 @@ const Footer: React.FC = () => {
       icon: (
         <MessageCircle className="h-5 w-5 text-green-600 md:h-6 md:w-6 dark:text-green-400" />
       ),
-      href: 'https://wa.me/qr/KW2XXA46XAXNH1',
+      href: `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/[^0-9]/g, '')}`,
       title: t('footer.whatsapp'),
       label: 'WhatsApp',
       hoverColor: 'hover:bg-green-500 hover:text-white dark:hover:bg-green-600',
@@ -121,7 +121,9 @@ const Footer: React.FC = () => {
       icon: (
         <FaDiscord className="h-5 w-5 text-indigo-600 md:h-6 md:w-6 dark:text-indigo-400" />
       ),
-      href: 'https://discord.com/users/563186981962776577',
+      href:
+        process.env.NEXT_PUBLIC_DISCORD_INVITE ||
+        'https://discord.com/users/563186981962776577',
       title: t('footer.discord'),
       label: 'Discord',
       hoverColor:

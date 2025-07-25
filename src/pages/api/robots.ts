@@ -1,7 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://jefersonreis.dev'
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ||
+    'https://jefersonreis.dev'
 
   const robots = `User-agent: *
 Allow: /

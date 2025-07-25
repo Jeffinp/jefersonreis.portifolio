@@ -227,8 +227,8 @@ const Contact: React.FC = () => {
         />
       ),
       title: 'Me Ligue',
-      link: 'https://wa.me/qr/KW2XXA46XAXNH1',
-      linkText: '+55 (47) 99999-8356',
+      link: `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/[^0-9]/g, '')}`,
+      linkText: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+55 (71) 8174-7099',
       ariaLabel: 'Entre em contato via WhatsApp',
       colorFrom: 'blue',
       colorTo: 'cyan',
@@ -300,7 +300,7 @@ const Contact: React.FC = () => {
               {t('contact.availableForProjects')}
             </p>
             <a
-              href="https://wa.me/qr/KW2XXA46XAXNH1"
+              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/[^0-9]/g, '')}`}
               className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition-colors duration-300 hover:bg-blue-700"
               target="_blank"
               rel="noopener noreferrer"

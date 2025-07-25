@@ -20,9 +20,9 @@ const StructuredData: React.FC<StructuredDataProps> = ({ lang = 'pt' }) => {
     url: siteUrl,
     image: `${siteUrl}/assets/images/Linkedin-foto.webp`,
     sameAs: [
-      'https://linkedin.com/in/jefersonreis',
-      'https://github.com/jefersonreis',
-      'https://instagram.com/jefersonreis.dev',
+      `https://${process.env.NEXT_PUBLIC_LINKEDIN_URL}`,
+      process.env.NEXT_PUBLIC_GITHUB_URL || 'https://github.com/jeffinp',
+      'https://instagram.com/jeffinx___',
       'https://twitter.com/jefersonreis',
     ],
     jobTitle:
@@ -153,9 +153,9 @@ const StructuredData: React.FC<StructuredDataProps> = ({ lang = 'pt' }) => {
       addressCountry: 'BR',
     },
     sameAs: [
-      'https://linkedin.com/in/jefersonreis',
-      'https://github.com/jefersonreis',
-      'https://instagram.com/jefersonreis.dev',
+      `https://${process.env.NEXT_PUBLIC_LINKEDIN_URL}`,
+      process.env.NEXT_PUBLIC_GITHUB_URL || 'https://github.com/jeffinp',
+      'https://instagram.com/jeffinx___',
     ],
   }
 

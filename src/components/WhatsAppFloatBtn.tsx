@@ -8,8 +8,11 @@ interface WhatsAppFloatBtnProps {
 }
 
 const WhatsAppFloatBtn: React.FC<WhatsAppFloatBtnProps> = ({
-  phoneNumber = '5571992594317',
-  message = 'Olá, vim pelo seu portfólio! Gostaria de saber mais sobre seus serviços. :telephone_receiver: :zap:',
+  phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(
+    /[^0-9]/g,
+    '',
+  ) || '5571992594317',
+  message = 'Olá, vim pelo seu portfólio! Gostaria de saber mais sobre seus serviços. 📞⚡',
 }) => {
   const handleWhatsAppClick = () => {
     const encodedMessage = encodeURIComponent(message)

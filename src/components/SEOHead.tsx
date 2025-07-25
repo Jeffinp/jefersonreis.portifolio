@@ -53,9 +53,12 @@ const SEOHead: React.FC<SEOHeadProps> = ({
 
   const currentLang = translations[lang] || translations['pt']
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://jefersonreis.dev'
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ||
+    'https://jefersonreis.dev'
   const siteName =
-    process.env.NEXT_PUBLIC_SITE_NAME || 'Jeferson Reis Portfolio'
+    process.env.NEXT_PUBLIC_SITE_NAME ||
+    'Jeferson Reis | Desenvolvedor Full-Stack'
   const ogImage = `${siteUrl}/assets/images/Linkedin-foto.webp`
 
   return (

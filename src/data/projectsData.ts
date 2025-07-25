@@ -272,7 +272,7 @@ export const projects: Project[] = [
       width: 1200,
       height: 800,
     },
-    link: 'https://github.com/Jeffinp/ProjetoPython',
+    link: `${process.env.NEXT_PUBLIC_GITHUB_URL}/ProjetoPython`,
     tags: [
       { name: 'Python', color: 'bg-green-600 text-white' },
       { name: 'Machine Learning', color: 'bg-purple-700 text-white' },
@@ -293,7 +293,7 @@ export const projects: Project[] = [
       width: 1200,
       height: 800,
     },
-    link: 'https://github.com/Jeffinp/file_organizer',
+    link: `${process.env.NEXT_PUBLIC_GITHUB_URL}/file_organizer`,
     tags: [
       { name: 'Python', color: 'bg-green-600 text-white' },
       { name: 'HTML', color: 'bg-orange-500 text-white' },

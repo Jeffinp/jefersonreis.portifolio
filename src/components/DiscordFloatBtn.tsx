@@ -7,10 +7,15 @@ interface DiscordFloatBtnProps {
 }
 
 const DiscordFloatBtn: React.FC<DiscordFloatBtnProps> = ({
-  username = 'bratails',
+  username = '563186981962776577',
 }) => {
   const handleDiscordClick = () => {
-    window.open(`https://discordapp.com/users/${username}`, '_blank')
+    const discordUrl = process.env.NEXT_PUBLIC_DISCORD_INVITE?.includes(
+      'discord.gg',
+    )
+      ? process.env.NEXT_PUBLIC_DISCORD_INVITE
+      : `https://discordapp.com/users/${username}`
+    window.open(discordUrl, '_blank')
   }
 
   return (
