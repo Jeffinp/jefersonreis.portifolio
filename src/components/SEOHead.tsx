@@ -132,24 +132,39 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <link rel="icon" href="/favicon.ico" />
       <link
         rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/assets/images/icon/favicon-32x32.png"
+        type="image/svg+xml"
+        href="/assets/images/icon/favicon.svg"
       />
       <link
         rel="icon"
         type="image/png"
-        sizes="16x16"
-        href="/assets/images/icon/favicon-16x16.png"
+        sizes="96x96"
+        href="/assets/images/icon/favicon-96x96.png"
       />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
         href="/assets/images/icon/apple-touch-icon.png"
       />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="192x192"
+        href="/assets/images/icon/web-app-manifest-192x192.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="512x512"
+        href="/assets/images/icon/web-app-manifest-512x512.png"
+      />
       <link rel="manifest" href="/assets/images/icon/site.webmanifest" />
       <meta name="theme-color" content="#1f2937" />
       <meta name="msapplication-TileColor" content="#1f2937" />
+      <meta
+        name="msapplication-config"
+        content="/assets/images/icon/browserconfig.xml"
+      />
 
       {/* Performance Optimizations */}
       <link

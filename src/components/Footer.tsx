@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import {
   Linkedin,
   Github,
   Instagram,
   MessageCircle,
-  Mail,
   ExternalLink,
 } from 'lucide-react'
 import { FaDiscord } from 'react-icons/fa'
@@ -174,7 +174,13 @@ const Footer: React.FC = () => {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
               >
-                <Mail className="mr-2 h-4 w-4" />
+                <Image
+                  src="/assets/images/icon/mail-heart-svgrepo-com.svg"
+                  alt="Email icon"
+                  width={16}
+                  height={16}
+                  className="mr-2 h-4 w-4"
+                />
                 Jefersonreisalmeida8356@gmail.com
               </motion.a>
             </div>

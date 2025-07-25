@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename)
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   i18n,
-  
+
   // Security headers configuration
   async headers() {
     return [
@@ -38,7 +38,8 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com https://vercel.live; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;",
+            value:
+              "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com https://vercel.live; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;",
           },
           {
             key: 'X-XSS-Protection',
@@ -121,22 +122,25 @@ const nextConfig: NextConfig = {
   // Performance optimizations
   experimental: {
     scrollRestoration: true,
-    optimizePackageImports: ['@vercel/analytics', 'framer-motion', 'lucide-react'],
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
+    optimizePackageImports: [
+      '@vercel/analytics',
+      'framer-motion',
+      'lucide-react',
+    ],
+  },
+
+  // Turbopack configuration
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
       },
     },
   },
 
   // Enable compression
   compress: true,
-  
-  // Enable build performance optimizations
-  swcMinify: true,
 }
 
 export default nextConfig
