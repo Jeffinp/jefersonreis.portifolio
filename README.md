@@ -80,7 +80,7 @@ Tenha o **Node.js** (versão 18 ou superior) e o **npm** instalados em sua máqu
 
 1.  Clone o repositório:
     ```sh
-    git clone [https://github.com/Jeffinp/jefersonreis.github.io.git](https://github.com/Jeffinp/jefersonreis.github.io.git)
+    git clone https://github.com/Jeffinp/jefersonreis.portifolio.git
     ```
 2.  Navegue até o diretório do projeto:
     ```sh
