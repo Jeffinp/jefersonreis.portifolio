@@ -229,6 +229,12 @@ export const skills: SkillItem[] = [
     description: 'Banco de dados relacional compatível com MySQL',
   },
   {
+    name: 'MongoDB',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
+    category: 'database',
+    description: 'Banco de dados NoSQL orientado a documentos',
+  },
+  {
     name: 'JWT',
     icon: 'https://user-images.githubusercontent.com/5418178/177059352-fe91dcd5-e17b-4103-88ae-70d6d396cf85.png',
     category: 'backend',
