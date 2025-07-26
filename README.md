@@ -19,7 +19,7 @@
 </p>
 
 <div align="center">
-  <img src="" alt="Demo do Portfólio" />
+  <img src="./public/assets/images/site.png" alt="Demo do Portfólio" />
 </div>
 
 ---
