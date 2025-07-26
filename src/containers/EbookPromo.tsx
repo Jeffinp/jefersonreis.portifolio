@@ -4,7 +4,6 @@ import { motion, useAnimation, useInView } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { featuredEbooks } from '@/data/featuredEbooks'
-import SectionBackground from '@/components/SectionBackground'
 
 /**
  * Hook personalizado para gerenciar animações baseadas em visibilidade

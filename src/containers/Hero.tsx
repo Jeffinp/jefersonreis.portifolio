@@ -1,13 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import Image from 'next/image'
-import {
-  Mail,
-  ChevronDown,
-  ExternalLink,
-  Code,
-  Palette,
-  Cpu,
-} from 'lucide-react'
+import { Mail, ChevronDown, Palette } from 'lucide-react'
 import { motion, useAnimation } from 'framer-motion'
 import { debounce } from '@/utils'
 import { useTranslation } from 'next-i18next'

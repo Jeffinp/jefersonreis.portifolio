@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useMemo, useCallback, useState } from 'react'
 import {
-  User,
   Palette,
   ChevronRight,
-  Cpu,
   Code,
   Terminal,
   Layers,
