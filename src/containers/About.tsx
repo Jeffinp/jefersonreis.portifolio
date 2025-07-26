@@ -426,12 +426,12 @@ const About: React.FC = () => {
       colorClass: 'blue' as const,
     },
     {
-      value: '30+',
+      value: '15+',
       label: t('about.stats.projects'),
       colorClass: 'purple' as const,
     },
     {
-      value: '15+',
+      value: '80+',
       label: t('about.stats.clients'),
       colorClass: 'green' as const,
     },
@@ -503,7 +503,7 @@ const About: React.FC = () => {
                     {t('about.cta.contact')}
                   </a>
                   <a
-                    href={t('about.cta.resumeUrl')}
+                    href="/assets/files/jeferson_reis_almeida.pdf"
                     className="inline-flex items-center justify-center rounded-xl border-2 border-blue-600 bg-white/80 px-6 py-3 text-base font-semibold text-blue-600 shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-blue-700 hover:text-blue-700 hover:shadow-blue-500/10 dark:border-blue-500 dark:bg-slate-900/80 dark:text-blue-400 dark:hover:border-blue-400 dark:hover:text-blue-300"
                     target="_blank"
                     rel="noopener noreferrer"
