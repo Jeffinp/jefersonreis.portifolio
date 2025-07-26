@@ -1,114 +1,116 @@
 <div align="center">
-  <h1 align="center">Jeferson Reis's Portfolio</h1>
-  <p align="center">
-    A modern and dynamic personal portfolio built with Next.js, TypeScript, and Tailwind CSS.
-    <br />
-    <a href="https://jefersonreis.dev" target="_blank"><strong>View Demo »</strong></a>
-    <br />
-    <br />
-  </p>
+  <img src="https://img.shields.io/badge/Autor-Jeferson_Reis-blue?style=flat-square" alt="Autor"/>
+  <img src="https://img.shields.io/github/license/Jeffinp/jefersonreis.github.io?style=flat-square&color=orange" alt="Licença">
+  <img src="https://img.shields.io/github/stars/Jeffinp/jefersonreis.github.io?style=social" alt="Stars">
 </div>
 
-<!-- ABOUT THE PROJECT -->
-## 🚀 About The Project
+<h1 align="center">
+  Jeferson Reis - Portfólio Pessoal
+</h1>
 
-This project is my personal portfolio, created to showcase my skills, projects, and professional journey as a full-stack developer. It's designed to be fast, responsive, and visually engaging, offering a seamless user experience across all devices.
+<p align="center">
+  Um portfólio pessoal moderno, dinâmico e visualmente impactante, construído com <strong>Next.js</strong>, <strong>TypeScript</strong> e <strong>Tailwind CSS</strong> para apresentar minha jornada como desenvolvedor full-stack.
+</p>
 
-Here you'll find my featured projects, a summary of my skills, my professional experience, and ways to get in touch with me.
+<p align="center">
+  <a href="https://jefersonreis.dev" target="_blank">
+    <img src="https://img.shields.io/badge/Ver%20Demo-Acessar%20Site-blue?style=for-the-badge&logo=vercel" alt="Ver Demo">
+  </a>
+</p>
 
-### ✨ Features
-
-*   **Modern Tech Stack**: Built with Next.js 14 for optimal performance and SEO.
-*   **Responsive Design**: Fully responsive layout that looks great on desktops, tablets, and mobile devices.
-*   **Internationalization**: Available in two languages: Portuguese (pt-BR) and English (en-US).
-*   **Dark/Light Mode**: Theme toggling for a comfortable viewing experience at any time of day.
-*   **Optimized Assets**: Scripts for image optimization to ensure fast load times.
-
----
-
-### 🛠️ Built With
-
-This project was brought to life using these amazing technologies:
-
-*   [![Next.js][Next.js]][Next-url]
-*   [![React][React.js]][React-url]
-*   [![TypeScript][TypeScript]][TypeScript-url]
-*   [![Tailwind CSS][TailwindCSS]][TailwindCSS-url]
-*   [![Framer Motion][Framer-Motion]][Framer-Motion-url]
-*   [![ESLint][ESLint]][ESLint-url]
-*   [![Prettier][Prettier]][Prettier-url]
+<div align="center">
+  <img src="" alt="Demo do Portfólio" />
+</div>
 
 ---
 
-<!-- GETTING STARTED -->
-## 🏁 Getting Started
+## 📜 Índice
 
-To get a local copy up and running, follow these simple steps.
+- [🌟 Sobre o Projeto](#-sobre-o-projeto)
+- [✨ Funcionalidades](#-funcionalidades)
+- [🛠️ Tecnologias Utilizadas](#️-tecnologias-utilizadas)
+- [🚀 Começando](#-começando)
+- [📫 Contato](#-contato)
+- [📝 Licença](#-licença)
 
-### Prerequisites
+---
 
-Make sure you have Node.js and npm installed on your machine.
-*   npm
+## 🌟 Sobre o Projeto
+
+Este portfólio é um reflexo vibrante das minhas habilidades, projetos e jornada profissional. Projetado com foco em velocidade, acessibilidade e estética, ele oferece uma experiência de usuário fluida e agradável em qualquer dispositivo.
+
+Aqui você poderá descobrir meus projetos de destaque, explorar minhas competências técnicas, conferir minha experiência e, claro, entrar em contato!
+
+---
+
+## ✨ Funcionalidades
+
+- ✅ **Performance de Ponta**: Construído com **Next.js 15+** para garantir performance otimizada e excelente SEO.
+- ✅ **Layout Responsivo**: Design impecável que se adapta a desktops, tablets e smartphones.
+- ✅ **Suporte Multilíngue**: Disponível em Português (pt-BR) e Inglês (en-US).
+- ✅ **Troca de Tema**: Alterne facilmente entre os modos **dark** e **light**.
+- ✅ **Carregamento Rápido**: Otimização de imagens e assets para uma experiência veloz.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+Este projeto foi construído com as mais modernas tecnologias do ecossistema front-end:
+
+| Tecnologia | Descrição |
+| :--- | :--- |
+| **Next.js** | Framework React para produção, com renderização no servidor e geração de sites estáticos. |
+| **React** | Biblioteca para construir interfaces de usuário interativas. |
+| **TypeScript** | Superset do JavaScript que adiciona tipagem estática, aumentando a robustez do código. |
+| **Tailwind CSS** | Framework CSS utility-first para criar designs customizados rapidamente. |
+| **Framer Motion** | Biblioteca de animação para React, usada para criar transições fluidas e microinterações. |
+| **ESLint/Prettier** | Ferramentas para garantir a consistência e a qualidade do código. |
+
+---
+
+## 🚀 Começando
+
+Para obter uma cópia local e executá-la, siga estes passos simples.
+
+### Pré-requisitos
+
+Tenha o **Node.js** (versão 18 ou superior) e o **npm** instalados em sua máquina.
+
+### Instalação
+
+1.  Clone o repositório:
     ```sh
-    npm install npm@latest -g
+    git clone [https://github.com/Jeffinp/jefersonreis.github.io.git](https://github.com/Jeffinp/jefersonreis.github.io.git)
     ```
-
-### Installation
-
-1.  Clone the repo
-    ```sh
-    git clone https://github.com/Jeffinp/jefersonreis.github.io.git
-    ```
-2.  Navigate to the project directory
+2.  Navegue até o diretório do projeto:
     ```sh
     cd jefersonreis.github.io
     ```
-3.  Install NPM packages
+3.  Instale as dependências e inicie o servidor de desenvolvimento:
     ```sh
     npm install
-    ```
-4.  Run the development server
-    ```sh
     npm run dev
     ```
-Now, open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4.  Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado!
 
 ---
 
-<!-- CONTACT -->
-## 📫 Contact
+## 📫 Contato
 
-Jeferson Reis Almeida - [jefersonreisalmeida8356@gmail.com](mailto:jefersonreisalmeida8356@gmail.com)
-
-Project Link: [https://github.com/Jeffinp/jefersonreis.github.io](https://github.com/Jeffinp/jefersonreis.github.io)
+Adoraria me conectar com você! Vamos conversar:
 
 <div align="center">
-
-[![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/jeferson-reis-877a942b7/)
-[![Instagram][instagram-shield]](https://www.instagram.com/jeffinx___/)
-[![WhatsApp][whatsapp-shield]](https://wa.me/qr/KW2XXA46XAXNH1)
-
+  <a href="mailto:jefersonreisalmeida8356@gmail.com" target="_blank"><img src="https://img.shields.io/badge/-Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
+  <a href="https://www.linkedin.com/in/jeferson-reis-877a942b7/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+  <a href="https://wa.me/qr/KW2XXA46XAXNH1" target="_blank"><img src="https://img.shields.io/badge/-WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp"/></a>
 </div>
 
-<!-- LICENSE -->
-## 📝 License
+---
 
-Distributed under the MIT License. See `LICENSE` file for more information (if one exists).
+## 📝 Licença
 
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[instagram-shield]: https://img.shields.io/badge/-Instagram-black.svg?style=for-the-badge&logo=instagram&colorB=555
-[whatsapp-shield]: https://img.shields.io/badge/-WhatsApp-black.svg?style=for-the-badge&logo=whatsapp&colorB=555
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[TailwindCSS]: https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white
-[TailwindCSS-url]: https://tailwindcss.com/
-[TypeScript]: https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white
-[TypeScript-url]: https://www.typescriptlang.org/
-[Framer-Motion]: https://img.shields.io/badge/framer_motion-0055FF?style=for-the-badge&logo=framer&logoColor=white
-[Framer-Motion-url]: https://www.framer.com/motion/
-[ESLint]: https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white
-[ESLint-url]: https://eslint.org/
-[Prettier]: https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E
-[Prettier-url]: https://prettier.io/
+Distribuído sob a Licença MIT. Veja o arquivo `LICENSE` para mais informações.
+
+<p align="center">
+  Feito com ❤️ por Jeferson Reis
+</p>
