@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, memo, useCallback } from 'react'
-import { motion, useAnimation, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import {
   ChevronDown,
   ChevronUp,
@@ -9,63 +9,11 @@ import {
   Award,
   Star,
 } from 'lucide-react'
-import { debounce } from '@/utils'
-import SectionBackground from '@/components/SectionBackground'
-
-/**
- * Hook personalizado para gerenciar animações baseadas em visibilidade
- */
-const useAnimatedVisibility = (threshold = 0.2, once = true) => {
-  const controls = useAnimation()
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once, amount: threshold })
-
-  useEffect(() => {
-    if (inView) {
-      controls.start('visible')
-    }
-  }, [controls, inView])
-
-  return { ref, controls }
-}
-
-interface AnimatedSectionProps {
-  children: React.ReactNode
-  delay?: number
-  className?: string
-}
-
-/**
- * Componente de seção animada
- */
-const AnimatedSection = memo(
-  ({ children, delay = 0, className = '' }: AnimatedSectionProps) => {
-    const { ref, controls } = useAnimatedVisibility(0.2)
-
-    return (
-      <motion.div
-        ref={ref}
-        initial={{ opacity: 0, y: 30 }}
-        animate={controls}
-        variants={{
-          visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-              duration: 0.6,
-              delay,
-            },
-          },
-        }}
-        className={className}
-      >
-        {children}
-      </motion.div>
-    )
-  },
-)
-
-AnimatedSection.displayName = 'AnimatedSection'
+import { useTranslation } from 'next-i18next'
+import { debounce, useAnimatedVisibility } from '@/utils'
+import SectionWrapper from '@/components/SectionWrapper'
+import SectionHeader from '@/components/SectionHeader'
+import AnimatedSection from '@/components/AnimatedSection'
 
 interface MousePosition {
   x: number
@@ -294,25 +242,29 @@ const Timeline: React.FC = () => {
   // Eventos a serem exibidos (todos se expandido, apenas alguns se recolhido)
   const visibleEvents = expanded ? timelineEvents : timelineEvents.slice(0, 3)
 
-  return (
-    <section
-      id="timeline"
-      ref={timelineRef}
-      onMouseMove={!isMobile ? debouncedHandleMouseMove : undefined}
-      className="relative overflow-hidden bg-transparent py-16 md:py-20 lg:py-24 xl:py-28"
-      aria-label="Trajetória Profissional de Jeferson Reis"
-    >
-      <SectionBackground isMobile={isMobile} variant="timeline" />
+  const { t } = useTranslation('common')
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <AnimatedSection className="mb-12 text-center md:mb-16">
-          <h2 className="mb-4 inline-block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent md:text-4xl lg:text-5xl dark:from-blue-400 dark:to-purple-400">
-            Trajetória Profissional
-          </h2>
-          <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-300">
-            Acompanhe minha evolução profissional e conquistas ao longo dos anos
-          </p>
-        </AnimatedSection>
+  return (
+    <SectionWrapper
+      id="timeline"
+      backgroundVariant="timeline"
+      paddingY="large"
+      containerClassName="max-w-7xl"
+      isMobile={isMobile}
+      intensity="subtle"
+      ariaLabel={t('timeline.title')}
+    >
+      <div
+        ref={timelineRef}
+        onMouseMove={!isMobile ? debouncedHandleMouseMove : undefined}
+        aria-label="Trajetória Profissional de Jeferson Reis"
+      >
+        <SectionHeader
+          subtitle={t('timeline.subtitle')}
+          title={t('timeline.title')}
+          description={t('timeline.description')}
+          delay={0.1}
+        />
 
         {/* Timeline */}
         <div className="relative mx-auto max-w-5xl">
@@ -342,7 +294,7 @@ const Timeline: React.FC = () => {
           )}
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   )
 }
 

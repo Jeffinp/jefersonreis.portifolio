@@ -213,7 +213,6 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
       { href: '#skills', label: t('menu.skills') },
       { href: '#projects', label: t('menu.portfolio') },
       { href: '#timeline', label: t('menu.timeline') },
-      { href: '#ebooks-promo', label: t('menu.ebooks') },
       { href: '#contact', label: t('menu.contact') },
     ]
   }, [showBackHome, t])

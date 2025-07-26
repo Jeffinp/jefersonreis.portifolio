@@ -10,6 +10,7 @@ import {
 } from 'lucide-react'
 import { projects } from '@/data/projectsData'
 import { useTranslation } from 'next-i18next'
+import SectionBackground from '@/components/SectionBackground'
 
 interface Category {
   value: string
@@ -240,35 +241,6 @@ const CategoryNav: React.FC<CategoryNavProps> = ({
   )
 }
 
-/**
- * Componente Background padronizado
- */
-const Background: React.FC<{ isMobile: boolean }> = ({ isMobile }) => (
-  <>
-    {/* Gradiente de fundo similar ao Hero/About */}
-    <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-50/40 via-white to-gray-50/40 dark:from-blue-950/30 dark:via-slate-900 dark:to-slate-950/40"></div>
-
-    {/* Grade sutil */}
-    <div
-      className="absolute inset-0 -z-10 opacity-[0.02] dark:opacity-[0.05]"
-      style={{
-        backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), 
-                           linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
-        backgroundSize: isMobile ? '40px 40px' : '80px 80px',
-      }}
-    />
-
-    {/* Esferas borradas decorativas */}
-    <div className="pointer-events-none absolute inset-0 -z-10 overflow-visible">
-      <div className="absolute top-1/2 left-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/5 blur-3xl dark:bg-purple-500/10" />
-      <div
-        className="absolute top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 scale-75 rounded-full bg-blue-500/5 blur-3xl dark:bg-blue-500/10"
-        style={{ transform: 'translate(-50%, -50%) scale(0.7)' }}
-      />
-    </div>
-  </>
-)
-
 const Projects: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [activeFilter, setActiveFilter] = useState('all')
@@ -397,7 +369,11 @@ const Projects: React.FC = () => {
       aria-label="Projetos de Jeferson Reis"
     >
       {/* Background Elements */}
-      <Background isMobile={isMobile} />
+      <SectionBackground
+        variant="projects"
+        isMobile={isMobile}
+        intensity="subtle"
+      />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div

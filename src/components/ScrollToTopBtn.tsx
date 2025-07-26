@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { FaChevronUp } from 'react-icons/fa'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'next-i18next'
 
 const ScrollToTopBtn: React.FC = () => {
+  const { t } = useTranslation('common')
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -40,8 +42,8 @@ const ScrollToTopBtn: React.FC = () => {
             boxShadow: '0 10px 25px -5px rgba(59, 130, 246, 0.4)',
           }}
           whileTap={{ scale: 0.95 }}
-          title="Voltar ao topo"
-          aria-label="Voltar ao topo"
+          title={t('aria.scrollToTop')}
+          aria-label={t('aria.scrollToTop')}
         >
           <FaChevronUp className="h-5 w-5 md:h-6 md:w-6" />
 

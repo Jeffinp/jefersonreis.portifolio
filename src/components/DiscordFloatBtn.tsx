@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { FaDiscord } from 'react-icons/fa'
+import { useTranslation } from 'next-i18next'
 
 interface DiscordFloatBtnProps {
   username?: string
@@ -9,6 +10,7 @@ interface DiscordFloatBtnProps {
 const DiscordFloatBtn: React.FC<DiscordFloatBtnProps> = ({
   username = '563186981962776577',
 }) => {
+  const { t } = useTranslation('common')
   const handleDiscordClick = () => {
     const discordUrl = process.env.NEXT_PUBLIC_DISCORD_INVITE?.includes(
       'discord.gg',
@@ -30,8 +32,8 @@ const DiscordFloatBtn: React.FC<DiscordFloatBtnProps> = ({
         boxShadow: '0 10px 25px -5px rgba(99, 102, 241, 0.4)',
       }}
       whileTap={{ scale: 0.95 }}
-      title="Fale comigo pelo Discord"
-      aria-label="Fale comigo pelo Discord"
+      title={t('aria.discord')}
+      aria-label={t('aria.discord')}
     >
       <FaDiscord className="h-5 w-5 md:h-6 md:w-6" />
 

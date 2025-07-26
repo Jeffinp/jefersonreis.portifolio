@@ -6,7 +6,6 @@
     "skills": "Habilidades",
     "portfolio": "Portfólio",
     "timeline": "Jornada",
-    "ebooks": "eBooks",
     "contact": "Contato"
   },
   "header": {
@@ -346,6 +345,44 @@
     "instagram": "Siga-me no Instagram",
     "whatsapp": "Entre em contato pelo WhatsApp",
     "discord": "Encontre-me no Discord"
+  },
+  "skills": {
+    "title": "Habilidades Técnicas",
+    "subtitle": "Tecnologias e ferramentas que domino",
+    "description": "Tecnologias e ferramentas que domino para criar soluções completas e eficientes",
+    "categories": {
+      "frontend": "Desenvolvimento Frontend",
+      "backend": "Desenvolvimento Backend", 
+      "database": "Bancos de Dados",
+      "devops": "DevOps & CI/CD",
+      "design": "Design & UI/UX",
+      "tools": "Ferramentas"
+    }
+  },
+  "timeline": {
+    "title": "Trajetória Profissional",
+    "subtitle": "Minha Jornada",
+    "description": "Acompanhe minha evolução profissional e conquistas ao longo dos anos"
+  },
+  "testimonials": {
+    "title": "O que meus clientes dizem",
+    "subtitle": "Depoimentos",
+    "description": "Histórias reais de transformação através da tecnologia"
+  },
+  "aria": {
+    "timeline": "Trajetória Profissional de Jeferson Reis",
+    "testimonials": "Depoimentos de clientes",
+    "projects": "Projetos de Jeferson Reis",
+    "contact": "Contato com Jeferson Reis",
+    "services": "Serviços de Jeferson Reis",
+    "hero": "Jeferson Reis - Desenvolvedor Full-Stack",
+    "whatsapp": "Fale comigo pelo WhatsApp",
+    "discord": "Fale comigo pelo Discord",
+    "scrollToTop": "Voltar ao topo",
+    "prevProject": "Projeto anterior",
+    "nextProject": "Próximo projeto",
+    "goToSlide": "Ir para o depoimento {{number}}",
+    "goToPage": "Ir para página {{number}}"
   },
   "error": {
     "serverError": "Erro do Servidor",

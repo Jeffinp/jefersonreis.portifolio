@@ -332,7 +332,11 @@ const Services: React.FC = () => {
       onMouseMove={!isMobile ? debouncedHandleMouseMove : undefined}
       aria-label="Serviços de Jeferson Reis"
     >
-      <SectionBackground isMobile={isMobile} variant="services" />
+      <SectionBackground
+        isMobile={isMobile}
+        variant="services"
+        intensity="subtle"
+      />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="mb-12 text-center md:mb-16">

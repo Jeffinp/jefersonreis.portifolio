@@ -12,96 +12,127 @@ interface SectionBackgroundProps {
     | 'contact'
     | 'timeline'
     | 'testimonials'
+    | 'expertise'
   className?: string
+  intensity?: 'none' | 'subtle' | 'light' | 'medium'
 }
 
 /**
- * Componente Background padronizado para todas as seções
- * Segue o padrão visual estabelecido no Hero e About
+ * Sistema de Background complementar ao gradiente global
+ * Adiciona elementos decorativos específicos por seção sem interferir no gradiente contínuo
  */
 const SectionBackground: React.FC<SectionBackgroundProps> = ({
   isMobile = false,
   variant = 'default',
   className = '',
+  intensity = 'subtle',
 }) => {
-  // Mapeamento de cores por seção
-  const colorMap = {
-    default: {
-      primary: 'blue-500',
-      secondary: 'purple-500',
-    },
-    hero: {
-      primary: 'blue-500',
-      secondary: 'purple-500',
-    },
-    about: {
-      primary: 'blue-500',
-      secondary: 'purple-500',
-    },
-    projects: {
-      primary: 'purple-500',
-      secondary: 'blue-500',
-    },
-    skills: {
-      primary: 'green-500',
-      secondary: 'blue-500',
-    },
-    services: {
-      primary: 'cyan-500',
-      secondary: 'blue-500',
-    },
-    contact: {
-      primary: 'indigo-500',
-      secondary: 'purple-500',
-    },
-    timeline: {
-      primary: 'amber-500',
-      secondary: 'orange-500',
-    },
+  // Elementos decorativos por seção com cores harmoniosas ao gradiente global
+  const decorativeElements = {
+    hero: { primary: '#3b82f6', secondary: '#6366f1', accent: '#8b5cf6' },
+    about: { primary: '#6366f1', secondary: '#8b5cf6', accent: '#a855f7' },
+    expertise: { primary: '#8b5cf6', secondary: '#a855f7', accent: '#c084fc' },
+    skills: { primary: '#a855f7', secondary: '#c084fc', accent: '#d946ef' },
+    projects: { primary: '#c084fc', secondary: '#d946ef', accent: '#e879f9' },
+    services: { primary: '#d946ef', secondary: '#e879f9', accent: '#f0abfc' },
+    timeline: { primary: '#e879f9', secondary: '#f0abfc', accent: '#ec4899' },
     testimonials: {
-      primary: 'rose-500',
-      secondary: 'pink-500',
+      primary: '#f0abfc',
+      secondary: '#ec4899',
+      accent: '#f43f5e',
     },
+    contact: { primary: '#ec4899', secondary: '#f43f5e', accent: '#fb7185' },
+    default: { primary: '#8b5cf6', secondary: '#a855f7', accent: '#c084fc' },
   }
 
-  const colors = colorMap[variant] || colorMap.default
+  const colors = decorativeElements[variant] || decorativeElements.default
+
+  // Intensidade dos efeitos decorativos
+  const intensityMap = {
+    none: { opacity: 0, blur: 0 },
+    subtle: { opacity: 0.008, blur: 4 },
+    light: { opacity: 0.015, blur: 3 },
+    medium: { opacity: 0.025, blur: 2 },
+  }
+
+  const effects = intensityMap[intensity]
+
+  if (intensity === 'none') {
+    return null
+  }
 
   return (
-    <div className={`absolute inset-0 -z-10 overflow-hidden ${className}`}>
-      {/* Gradiente de fundo padronizado */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-50/40 via-white to-gray-50/40 dark:from-blue-950/30 dark:via-slate-900 dark:to-slate-950/40"></div>
-
-      {/* Grade sutil */}
-      <div
-        className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]"
-        style={{
-          backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), 
-                             linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
-          backgroundSize: isMobile ? '40px 40px' : '80px 80px',
-        }}
-      />
-
-      {/* Esferas borradas decorativas com cores específicas por seção */}
-      <div className="pointer-events-none absolute inset-0 overflow-visible">
+    <div
+      className={`pointer-events-none absolute inset-0 -z-40 overflow-hidden ${className}`}
+    >
+      {/* Elementos decorativos específicos da seção */}
+      <div className="absolute inset-0">
+        {/* Esfera principal sutil */}
         <div
-          className={`absolute top-1/2 left-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-${colors.primary}/5 blur-3xl dark:bg-${colors.primary}/10`}
+          className={`absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-${effects.blur}xl`}
+          style={{
+            background: `radial-gradient(circle, ${colors.primary}${Math.round(
+              effects.opacity * 1000,
+            )
+              .toString(16)
+              .padStart(2, '0')}, transparent 70%)`,
+            opacity: effects.opacity * 100,
+          }}
         />
+
+        {/* Esfera secundária */}
         <div
-          className={`absolute top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 scale-75 rounded-full bg-${colors.secondary}/5 blur-3xl dark:bg-${colors.secondary}/10`}
-          style={{ transform: 'translate(-50%, -50%) scale(0.7)' }}
+          className={`absolute top-1/3 right-1/4 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-${effects.blur}xl`}
+          style={{
+            background: `radial-gradient(circle, ${colors.secondary}${Math.round(
+              effects.opacity * 800,
+            )
+              .toString(16)
+              .padStart(2, '0')}, transparent 70%)`,
+            opacity: effects.opacity * 80,
+          }}
+        />
+
+        {/* Esfera de destaque */}
+        <div
+          className={`absolute bottom-1/3 left-1/4 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-${effects.blur}xl`}
+          style={{
+            background: `radial-gradient(circle, ${colors.accent}${Math.round(
+              effects.opacity * 600,
+            )
+              .toString(16)
+              .padStart(2, '0')}, transparent 70%)`,
+            opacity: effects.opacity * 60,
+          }}
         />
       </div>
 
-      {/* Pontos decorativos sutis */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 h-2 w-2 rounded-full bg-blue-400/20 dark:bg-blue-400/10"></div>
-        <div className="absolute top-3/4 right-1/4 h-1 w-1 rounded-full bg-purple-400/20 dark:bg-purple-400/10"></div>
-        <div className="absolute top-1/2 right-1/3 h-1.5 w-1.5 rounded-full bg-cyan-400/20 dark:bg-cyan-400/10"></div>
-      </div>
-
-      {/* Gradiente sutil nas bordas */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gray-200/50 to-transparent dark:via-gray-700/50"></div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gray-200/50 to-transparent dark:via-gray-700/50"></div>
+      {/* Pontos decorativos minimalistas específicos da seção */}
+      {intensity !== 'subtle' && (
+        <div className="absolute inset-0">
+          <div
+            className="absolute top-1/4 left-1/6 h-0.5 w-0.5 rounded-full"
+            style={{
+              backgroundColor: colors.primary,
+              opacity: effects.opacity * 20,
+            }}
+          />
+          <div
+            className="absolute top-2/3 right-1/5 h-0.5 w-0.5 rounded-full"
+            style={{
+              backgroundColor: colors.secondary,
+              opacity: effects.opacity * 15,
+            }}
+          />
+          <div
+            className="absolute bottom-1/5 left-1/3 h-0.5 w-0.5 rounded-full"
+            style={{
+              backgroundColor: colors.accent,
+              opacity: effects.opacity * 18,
+            }}
+          />
+        </div>
+      )}
     </div>
   )
 }

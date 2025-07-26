@@ -5,6 +5,7 @@ import { appWithTranslation } from 'next-i18next'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import GlobalBackground from '@/components/GlobalBackground'
 
 // Dynamic imports for components that don't need SSR
 const ScrollToTopBtn = dynamic(() => import('@/components/ScrollToTopBtn'), {
@@ -33,8 +34,11 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
       <div id="__next-app" className="relative">
+        {/* Background global contínuo */}
+        <GlobalBackground />
+
         <Header />
-        <main role="main" className="min-h-screen">
+        <main role="main" className="relative min-h-screen">
           <Component {...pageProps} />
         </main>
         <Footer />

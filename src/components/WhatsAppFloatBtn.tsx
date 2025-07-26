@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { FaWhatsapp } from 'react-icons/fa'
+import { useTranslation } from 'next-i18next'
 
 interface WhatsAppFloatBtnProps {
   phoneNumber?: string
@@ -14,6 +15,7 @@ const WhatsAppFloatBtn: React.FC<WhatsAppFloatBtnProps> = ({
   ) || '5571992594317',
   message = 'Olá, vim pelo seu portfólio! Gostaria de saber mais sobre seus serviços. 📞⚡',
 }) => {
+  const { t } = useTranslation('common')
   const handleWhatsAppClick = () => {
     const encodedMessage = encodeURIComponent(message)
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
@@ -32,8 +34,8 @@ const WhatsAppFloatBtn: React.FC<WhatsAppFloatBtnProps> = ({
         boxShadow: '0 10px 25px -5px rgba(34, 197, 94, 0.4)',
       }}
       whileTap={{ scale: 0.95 }}
-      title="Fale comigo pelo WhatsApp"
-      aria-label="Fale comigo pelo WhatsApp"
+      title={t('aria.whatsapp')}
+      aria-label={t('aria.whatsapp')}
       style={{ position: 'fixed' }}
     >
       <FaWhatsapp className="h-5 w-5 md:h-6 md:w-6" />

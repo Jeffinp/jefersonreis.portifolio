@@ -1,66 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react'
-import { motion, useAnimation, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { useTranslation } from 'next-i18next'
 import { debounce } from '@/utils'
-import SectionBackground from '@/components/SectionBackground'
-
-/**
- * Hook personalizado para gerenciar animações baseadas em visibilidade
- */
-const useAnimatedVisibility = (amount = 0.2, once = true) => {
-  const controls = useAnimation()
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once, amount })
-
-  useEffect(() => {
-    if (inView) {
-      controls.start('visible')
-    }
-  }, [controls, inView])
-
-  return { ref, controls }
-}
-
-interface AnimatedSectionProps {
-  children: React.ReactNode
-  delay?: number
-  className?: string
-}
-
-/**
- * Componente de seção animada
- */
-const AnimatedSection: React.FC<AnimatedSectionProps> = ({
-  children,
-  delay = 0,
-  className = '',
-}) => {
-  const { ref, controls } = useAnimatedVisibility(0.2)
-
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={{
-        hidden: { opacity: 0, y: 30 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: {
-            duration: 0.6,
-            delay,
-            ease: [0.22, 1, 0.36, 1],
-          },
-        },
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
+import SectionWrapper from '@/components/SectionWrapper'
+import SectionHeader from '@/components/SectionHeader'
+import AnimatedSection from '@/components/AnimatedSection'
 
 interface RatingStarsProps {
   rating: number
@@ -202,7 +148,7 @@ const Testimonials: React.FC = () => {
   const [isHovering, setIsHovering] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isMobile, setIsMobile] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
+  const sectionRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const autoplayInterval = useRef<NodeJS.Timeout | null>(null)
   const autoplayDelay = 5000
@@ -366,29 +312,30 @@ const Testimonials: React.FC = () => {
     autoplayDelay,
   ])
 
-  return (
-    <section
-      ref={sectionRef}
-      id="testimonials"
-      className="relative overflow-hidden bg-transparent py-16 md:py-20 lg:py-24 xl:py-28"
-      aria-labelledby="testimonials-heading"
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-    >
-      <SectionBackground isMobile={isMobile} variant="testimonials" />
+  const { t } = useTranslation('common')
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <AnimatedSection className="mb-12 text-center md:mb-16">
-          <h2
-            id="testimonials-heading"
-            className="mb-4 inline-block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent md:text-4xl lg:text-5xl dark:from-blue-400 dark:to-purple-400"
-          >
-            O que meus clientes dizem
-          </h2>
-          <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-300">
-            Histórias reais de transformação através da tecnologia
-          </p>
-        </AnimatedSection>
+  return (
+    <SectionWrapper
+      id="testimonials"
+      backgroundVariant="testimonials"
+      paddingY="large"
+      containerClassName="max-w-7xl"
+      isMobile={isMobile}
+      intensity="subtle"
+      ariaLabel={t('testimonials.title')}
+    >
+      <div
+        ref={sectionRef}
+        aria-labelledby="testimonials-heading"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
+        <SectionHeader
+          subtitle={t('testimonials.subtitle')}
+          title={t('testimonials.title')}
+          description={t('testimonials.description')}
+          delay={0.1}
+        />
 
         <div className="relative mx-auto max-w-5xl">
           {/* Botões de navegação */}
@@ -444,7 +391,7 @@ const Testimonials: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   )
 }
 

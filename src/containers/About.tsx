@@ -471,7 +471,11 @@ const About: React.FC = () => {
       className="relative overflow-hidden bg-transparent py-16 md:py-20 lg:py-24 xl:py-28"
       aria-label={t('about.title')}
     >
-      <SectionBackground isMobile={isMobile} variant="about" />
+      <SectionBackground
+        isMobile={isMobile}
+        variant="about"
+        intensity="subtle"
+      />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-16 lg:flex-row lg:items-center lg:justify-between lg:gap-20 xl:gap-24">

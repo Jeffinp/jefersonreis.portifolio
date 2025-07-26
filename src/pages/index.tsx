@@ -11,7 +11,6 @@ import ExpertiseAreas from '@/containers/ExpertiseAreas'
 import Services from '@/containers/Services'
 import Timeline from '@/containers/Timeline'
 import Testimonials from '@/containers/Testimonials'
-import EbookPromo from '@/containers/EbookPromo'
 import Contact from '@/containers/Contact'
 
 export default function Home() {
@@ -31,7 +30,6 @@ export default function Home() {
         <Projects />
         <Timeline />
         <Testimonials />
-        <EbookPromo />
         <Contact />
       </main>
     </>

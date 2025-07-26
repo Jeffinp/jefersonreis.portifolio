@@ -6,7 +6,6 @@
     "skills": "Skills",
     "portfolio": "Portfolio",
     "timeline": "Journey",
-    "ebooks": "eBooks",
     "contact": "Contact"
   },
   "header": {
@@ -346,5 +345,43 @@
     "instagram": "Follow me on Instagram",
     "whatsapp": "Contact me on WhatsApp",
     "discord": "Find me on Discord"
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "subtitle": "Technologies and tools I master",
+    "description": "Technologies and tools I master to create complete and efficient solutions",
+    "categories": {
+      "frontend": "Frontend Development",
+      "backend": "Backend Development",
+      "database": "Databases", 
+      "devops": "DevOps & CI/CD",
+      "design": "Design & UI/UX",
+      "tools": "Tools"
+    }
+  },
+  "timeline": {
+    "title": "Professional Journey",
+    "subtitle": "My Journey",
+    "description": "Follow my professional evolution and achievements over the years"
+  },
+  "testimonials": {
+    "title": "What my clients say",
+    "subtitle": "Testimonials",
+    "description": "Real stories of transformation through technology"
+  },
+  "aria": {
+    "timeline": "Jeferson Reis Professional Journey",
+    "testimonials": "Client testimonials",
+    "projects": "Jeferson Reis Projects",
+    "contact": "Contact Jeferson Reis",
+    "services": "Jeferson Reis Services",
+    "hero": "Jeferson Reis - Full-Stack Developer",
+    "whatsapp": "Talk to me on WhatsApp",
+    "discord": "Talk to me on Discord",
+    "scrollToTop": "Back to top",
+    "prevProject": "Previous project",
+    "nextProject": "Next project",
+    "goToSlide": "Go to testimonial {{number}}",
+    "goToPage": "Go to page {{number}}"
   }
 }

@@ -122,40 +122,6 @@ interface MousePosition {
   y: number
 }
 
-interface BackgroundProps {
-  isMobile: boolean
-  mousePosition: MousePosition
-}
-
-// Componente memoizado para o fundo
-const Background = memo(({ isMobile }: BackgroundProps) => (
-  <>
-    {/* Fundo simplificado */}
-    <div className="absolute inset-0 -z-10 bg-gradient-to-b from-gray-50 via-white to-blue-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950/30"></div>
-
-    {/* Grades */}
-    <div
-      className="absolute inset-0 -z-10 opacity-[0.02] dark:opacity-[0.05]"
-      style={{
-        backgroundImage: `linear-gradient(to right, #6366f1 1px, transparent 1px), 
-                               linear-gradient(to bottom, #6366f1 1px, transparent 1px)`,
-        backgroundSize: isMobile ? '40px 40px' : '80px 80px',
-      }}
-    />
-
-    {/* Formas decorativas simplificadas - bolhas centralizadas */}
-    <div className="pointer-events-none absolute inset-0 -z-10 overflow-visible">
-      <div className="absolute top-1/2 left-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/5 blur-3xl dark:bg-blue-500/10" />
-      <div
-        className="absolute top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/5 blur-3xl dark:bg-purple-500/10"
-        style={{ zIndex: -1, transform: 'translate(-50%, -50%) scale(0.7)' }}
-      />
-    </div>
-  </>
-))
-
-Background.displayName = 'Background'
-
 interface ExpertiseCardProps {
   icon: React.ElementType
   title: string
@@ -375,8 +341,12 @@ const ExpertiseAreas: React.FC = () => {
       id="expertise"
       className="relative w-full overflow-hidden bg-transparent py-16 md:py-24 lg:py-32"
     >
-      {/* Background com efeitos */}
-      <Background isMobile={isMobile} mousePosition={mousePosition} />
+      {/* Background unificado */}
+      <SectionBackground
+        variant="expertise"
+        isMobile={isMobile}
+        intensity="subtle"
+      />
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="mx-auto mb-12 max-w-3xl text-center md:mb-16 lg:mb-20">

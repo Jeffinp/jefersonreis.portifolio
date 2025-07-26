@@ -253,7 +253,7 @@ const Hero: React.FC = () => {
       className="relative flex min-h-[600px] items-center overflow-hidden bg-transparent py-12 sm:min-h-[650px] sm:py-16 md:min-h-[700px] md:py-20 lg:min-h-screen lg:py-24 2xl:py-32"
       aria-label="Jeferson Reis - Desenvolvedor Full-Stack"
     >
-      <SectionBackground isMobile={isMobile} variant="hero" />
+      <SectionBackground isMobile={isMobile} variant="hero" intensity="light" />
 
       {/* Conteúdo principal */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12 lg:px-16 lg:py-16 2xl:px-20 2xl:py-20">

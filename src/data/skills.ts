@@ -263,27 +263,27 @@ export const skills: SkillItem[] = [
 export const skillCategories = [
   {
     id: 'frontend',
-    name: 'Desenvolvimento Frontend',
+    nameKey: 'skills.categories.frontend',
   },
   {
     id: 'backend',
-    name: 'Desenvolvimento Backend',
+    nameKey: 'skills.categories.backend',
   },
   {
     id: 'database',
-    name: 'Bancos de Dados',
+    nameKey: 'skills.categories.database',
   },
   {
     id: 'devops',
-    name: 'DevOps & CI/CD',
+    nameKey: 'skills.categories.devops',
   },
   {
     id: 'design',
-    name: 'Design & UI/UX',
+    nameKey: 'skills.categories.design',
   },
   {
     id: 'tools',
-    name: 'Ferramentas',
+    nameKey: 'skills.categories.tools',
   },
 ]
 
