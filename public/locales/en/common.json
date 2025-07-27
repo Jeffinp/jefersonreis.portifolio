@@ -310,11 +310,50 @@
       },
       "donut3d": {
         "title": "Donut 3D",
-        "description": "3D modeling and rendering of donut."
+        "description": "3D modeling and rendering of donut.",
+        "fullDescription": "Classic Blender learning project: photorealistic modeling and rendering of donut with colorful glaze."
       },
       "skull3d": {
         "title": "Skull 3D",
-        "description": "3D modeling of alien skull."
+        "description": "3D modeling of alien skull.",
+        "fullDescription": "Anatomical 3D modeling of alien skull with realistic textures and high-quality rendering."
+      },
+      "flyserv": {
+        "title": "FlyServ - Software Engineering",
+        "description": "Corporate landing page for a software engineering company.",
+        "fullDescription": "Development of a corporate landing page for a software engineering company specialized in high-performance solutions."
+      },
+      "acsendoflex": {
+        "title": "Acsendoflex - Virtual Gym",
+        "description": "Online training platform for gym.",
+        "fullDescription": "Complete platform for virtual gym with members area, payment system and workout tracking."
+      },
+      "stylizedFlag": {
+        "fullDescription": "Artistic reinterpretation of the Brazilian flag with modern style and unique stylized elements."
+      },
+      "gamerCase": {
+        "fullDescription": "Futuristic design concept for gaming computer case with RGB lighting and aggressive aesthetics."
+      },
+      "environmentShirt": {
+        "fullDescription": "Environmental-conscious print design for t-shirts, promoting sustainability and eco-awareness."
+      },
+      "parasiteNotebook": {
+        "fullDescription": "Mysterious and dark character illustration for themed school notebook cover."
+      },
+      "giratinaArt": {
+        "fullDescription": "Artistic digital illustration of Pokemon Giratina with dark and atmospheric style."
+      },
+      "burgerDesign": {
+        "fullDescription": "Appetizing promotional design for artisanal burger focusing on quality and flavor."
+      },
+      "bratailsSpaceship": {
+        "fullDescription": "Futuristic spaceship 3D modeling for Bratails character with detailed sci-fi design."
+      },
+      "asteroid3d": {
+        "fullDescription": "Realistic 3D modeling of space asteroid with detailed textures and atmospheric lighting."
+      },
+      "renderTest": {
+        "fullDescription": "3D rendering capabilities test using complex geometric shapes and varied materials."
       }
     }
   },

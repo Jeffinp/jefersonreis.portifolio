@@ -310,11 +310,50 @@
       },
       "donut3d": {
         "title": "Donut 3D",
-        "description": "Modelagem e renderização 3D de donut."
+        "description": "Modelagem e renderização 3D de donut.",
+        "fullDescription": "Projeto clássico de aprendizado Blender: modelagem e renderização fotorrealística de donut com glacê colorido e sprinkles."
       },
       "skull3d": {
         "title": "Crânio 3D",
-        "description": "Modelagem 3D de crânio alienígena."
+        "description": "Modelagem 3D de crânio alienígena.",
+        "fullDescription": "Modelagem 3D anatômica de crânio alienígena com texturas realistas e renderização de alta qualidade."
+      },
+      "flyserv": {
+        "title": "FlyServ - Engenharia de Software",
+        "description": "Landing page institucional para empresa de engenharia de software.",
+        "fullDescription": "Desenvolvimento de landing page institucional para empresa de engenharia de software especializada em soluções de alto desempenho."
+      },
+      "acsendoflex": {
+        "title": "Acsendoflex - Academia Virtual",
+        "description": "Plataforma de treinamento online para academia.",
+        "fullDescription": "Plataforma completa para academia virtual com área de membros, sistema de pagamentos e acompanhamento de treinos."
+      },
+      "stylizedFlag": {
+        "fullDescription": "Reinterpretação artística da bandeira brasileira com estilo moderno e elementos estilizados únicos."
+      },
+      "gamerCase": {
+        "fullDescription": "Conceito de design futurista para gabinete de computador gamer com iluminação RGB e estética agressiva."
+      },
+      "environmentShirt": {
+        "fullDescription": "Design de estampa com tema ambiental consciente para camisetas, promovendo a sustentabilidade."
+      },
+      "parasiteNotebook": {
+        "fullDescription": "Ilustração de personagem misterioso e sombrio para capa de caderno escolar temático."
+      },
+      "giratinaArt": {
+        "fullDescription": "Ilustração digital artística do Pokémon Giratina com estilo sombrio e atmosférico."
+      },
+      "burgerDesign": {
+        "fullDescription": "Design promocional apetitoso para hambúrguer artesanal com foco em qualidade e sabor."
+      },
+      "bratailsSpaceship": {
+        "fullDescription": "Modelagem 3D de nave espacial futurista para personagem Bratails com design sci-fi detalhado."
+      },
+      "asteroid3d": {
+        "fullDescription": "Modelagem 3D realística de asteroide espacial com texturas detalhadas e iluminação atmosférica."
+      },
+      "renderTest": {
+        "fullDescription": "Teste de capacidades de renderização 3D utilizando formas geométricas complexas e materiais variados."
       }
     }
   },

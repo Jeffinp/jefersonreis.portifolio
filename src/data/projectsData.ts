@@ -70,9 +70,9 @@ export const projects: Project[] = [
       'Mobile Development',
       'Technical Test',
     ],
-    completionDate: '2024',
+    completionDate: '2025',
     teamSize: 1,
-    duration: '2 semanas',
+    duration: '1 semanas',
     challenges: [
       'Desenvolvimento em React Native para primeira experiência mobile',
       'Implementação de navegação complexa com React Navigation',
@@ -590,6 +590,7 @@ export const projects: Project[] = [
     id: 'stylized-flag',
     titleKey: 'portfolio.projects.stylizedFlag.title',
     descriptionKey: 'portfolio.projects.stylizedFlag.description',
+    fullDescriptionKey: 'portfolio.projects.stylizedFlag.fullDescription',
     image: {
       src: '/assets/images/Artes/BandeiraEstilosaBrasil.webp',
       alt: 'Bandeira Estilizada do Brasil',
@@ -608,6 +609,7 @@ export const projects: Project[] = [
     id: 'gamer-case',
     titleKey: 'portfolio.projects.gamerCase.title',
     descriptionKey: 'portfolio.projects.gamerCase.description',
+    fullDescriptionKey: 'portfolio.projects.gamerCase.fullDescription',
     image: {
       src: '/assets/images/Artes/DesignComputador.webp',
       alt: 'Design de Gabinete Gamer',
@@ -626,6 +628,7 @@ export const projects: Project[] = [
     id: 'environment-shirt',
     titleKey: 'portfolio.projects.environmentShirt.title',
     descriptionKey: 'portfolio.projects.environmentShirt.description',
+    fullDescriptionKey: 'portfolio.projects.environmentShirt.fullDescription',
     image: {
       src: '/assets/images/Artes/Estampa.webp',
       alt: 'Estampa Ambiental',
@@ -644,6 +647,7 @@ export const projects: Project[] = [
     id: 'parasite-notebook',
     titleKey: 'portfolio.projects.parasiteNotebook.title',
     descriptionKey: 'portfolio.projects.parasiteNotebook.description',
+    fullDescriptionKey: 'portfolio.projects.parasiteNotebook.fullDescription',
     image: {
       src: '/assets/images/Artes/ParasitaCaderno.webp',
       alt: 'Caderno Parasita',
@@ -659,6 +663,7 @@ export const projects: Project[] = [
     id: 'giratina-art',
     titleKey: 'portfolio.projects.giratinaArt.title',
     descriptionKey: 'portfolio.projects.giratinaArt.description',
+    fullDescriptionKey: 'portfolio.projects.giratinaArt.fullDescription',
     image: {
       src: '/assets/images/Artes/giratina.webp',
       alt: 'Arte do Giratina',
@@ -677,6 +682,7 @@ export const projects: Project[] = [
     id: 'burger-design',
     titleKey: 'portfolio.projects.burgerDesign.title',
     descriptionKey: 'portfolio.projects.burgerDesign.description',
+    fullDescriptionKey: 'portfolio.projects.burgerDesign.fullDescription',
     image: {
       src: '/assets/images/Artes/hamburguer.webp',
       alt: 'Design de Hambúrguer',
@@ -720,6 +726,7 @@ export const projects: Project[] = [
     id: 'bratails-spaceship',
     titleKey: 'portfolio.projects.bratailsSpaceship.title',
     descriptionKey: 'portfolio.projects.bratailsSpaceship.description',
+    fullDescriptionKey: 'portfolio.projects.bratailsSpaceship.fullDescription',
     image: {
       src: '/assets/images/Artes/BratailsNave.webp',
       alt: 'Nave do Bratails',
@@ -739,6 +746,7 @@ export const projects: Project[] = [
     id: 'asteroid-3d',
     titleKey: 'portfolio.projects.asteroid3d.title',
     descriptionKey: 'portfolio.projects.asteroid3d.description',
+    fullDescriptionKey: 'portfolio.projects.asteroid3d.fullDescription',
     image: {
       src: '/assets/images/Artes/Asteroide.webp',
       alt: 'Asteroide 3D',
@@ -758,6 +766,7 @@ export const projects: Project[] = [
     id: 'render-test',
     titleKey: 'portfolio.projects.renderTest.title',
     descriptionKey: 'portfolio.projects.renderTest.description',
+    fullDescriptionKey: 'portfolio.projects.renderTest.fullDescription',
     image: {
       src: '/assets/images/Artes/Cubos.webp',
       alt: 'Teste de Render',
@@ -777,6 +786,7 @@ export const projects: Project[] = [
     id: 'donut-3d',
     titleKey: 'portfolio.projects.donut3d.title',
     descriptionKey: 'portfolio.projects.donut3d.description',
+    fullDescriptionKey: 'portfolio.projects.donut3d.fullDescription',
     image: {
       src: '/assets/images/Artes/cycles.webp',
       alt: 'Donut 3D',
@@ -796,6 +806,7 @@ export const projects: Project[] = [
     id: 'skull-3d',
     titleKey: 'portfolio.projects.skull3d.title',
     descriptionKey: 'portfolio.projects.skull3d.description',
+    fullDescriptionKey: 'portfolio.projects.skull3d.fullDescription',
     image: {
       src: '/assets/images/Artes/cranio.webp',
       alt: 'Crânio 3D',
