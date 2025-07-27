@@ -119,6 +119,16 @@ export const useContactForm = (): UseContactFormReturn => {
           process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'public_key_default'
 
         // Preparar dados para o template
+        const now = new Date()
+        const formattedTime = now.toLocaleString('pt-BR', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          timeZone: 'America/Sao_Paulo',
+        })
+
         const templateParams = {
           from_name: formData.name,
           from_email: formData.email,
@@ -126,6 +136,7 @@ export const useContactForm = (): UseContactFormReturn => {
           message: formData.message,
           reply_to: formData.email,
           to_name: 'Jeferson Reis',
+          time: formattedTime,
         }
 
         // Enviar e-mail
