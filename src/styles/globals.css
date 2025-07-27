@@ -71,29 +71,29 @@ html.light body {
 }
 
 /* Garantir visibilidade de todos os títulos no modo claro */
-.light h1:not(.text-white):not([class*="bg-"]),
-.light h2:not(.text-white):not([class*="bg-"]),
-.light h3:not(.text-white):not([class*="bg-"]),
-.light h4:not(.text-white):not([class*="bg-"]),
-.light h5:not(.text-white):not([class*="bg-"]),
-.light h6:not(.text-white):not([class*="bg-"]) {
+.light h1:not(.text-white):not([class*='bg-']),
+.light h2:not(.text-white):not([class*='bg-']),
+.light h3:not(.text-white):not([class*='bg-']),
+.light h4:not(.text-white):not([class*='bg-']),
+.light h5:not(.text-white):not([class*='bg-']),
+.light h6:not(.text-white):not([class*='bg-']) {
   color: #1f2937 !important;
 }
 
 /* Garantir visibilidade de texto geral no modo claro */
-.light p:not(.text-white):not([class*="bg-"]),
-.light span:not(.text-white):not([class*="bg-"]),
-.light div:not(.text-white):not([class*="bg-"]) {
+.light p:not(.text-white):not([class*='bg-']),
+.light span:not(.text-white):not([class*='bg-']),
+.light div:not(.text-white):not([class*='bg-']) {
   color: #374151 !important;
 }
 
 /* Forçar cards com fundo claro no modo claro */
 .light .bg-white\/90,
-.light [class*="bg-white/"],
+.light [class*='bg-white/'],
 .light .bg-slate-800\/90,
-.light [class*="bg-slate-800/"],
+.light [class*='bg-slate-800/'],
 .light .bg-gray-800\/90,
-.light [class*="bg-gray-800/"] {
+.light [class*='bg-gray-800/'] {
   background-color: rgba(255, 255, 255, 0.95) !important;
   border-color: #e5e7eb !important;
 }
@@ -106,7 +106,7 @@ html.light body {
 }
 
 /* Garantir que gradientes de fundo sejam removidos no modo claro */
-.light [class*="bg-gradient-"] {
+.light [class*='bg-gradient-'] {
   background-image: none !important;
   background-color: #ffffff !important;
 }
@@ -132,8 +132,8 @@ html.light body {
 }
 
 /* Forçar todas as classes de fundo slate e gray para branco no modo claro */
-.light [class*="dark:bg-slate-"],
-.light [class*="dark:bg-gray-"] {
+.light [class*='dark:bg-slate-'],
+.light [class*='dark:bg-gray-'] {
   background-color: rgba(255, 255, 255, 0.95) !important;
 }
 
@@ -291,7 +291,7 @@ html.light body {
 }
 
 /* Regras específicas para evitar textos brancos sem fundo adequado */
-.light .text-white:not([class*="bg-"]):not([class*="gradient"]) {
+.light .text-white:not([class*='bg-']):not([class*='gradient']) {
   color: #1f2937 !important;
 }
 
@@ -302,7 +302,7 @@ html.light body {
 }
 
 /* Garantir que elementos com gradiente de fundo mantenham texto branco */
-.light [class*="bg-gradient-"].text-white,
+.light [class*='bg-gradient-'].text-white,
 .light .bg-blue-600.text-white,
 .light .bg-purple-600.text-white,
 .light .bg-green-600.text-white,
@@ -313,46 +313,82 @@ html.light body {
 }
 
 /* Corrigir ícones nos serviços e áreas de expertise - manter fundo colorido e ícone branco */
-.light [class*="bg-gradient-to-br"].text-white {
-  background-image: linear-gradient(to bottom right, #3b82f6, #1d4ed8) !important;
+.light [class*='bg-gradient-to-br'].text-white {
+  background-image: linear-gradient(
+    to bottom right,
+    #3b82f6,
+    #1d4ed8
+  ) !important;
   color: #ffffff !important;
 }
 
 /* Cores específicas para diferentes gradientes */
 .light .from-blue-500.to-cyan-500.text-white {
-  background-image: linear-gradient(to bottom right, #3b82f6, #0891b2) !important;
+  background-image: linear-gradient(
+    to bottom right,
+    #3b82f6,
+    #0891b2
+  ) !important;
 }
 
 .light .from-purple-500.to-pink-500.text-white {
-  background-image: linear-gradient(to bottom right, #a855f7, #ec4899) !important;
+  background-image: linear-gradient(
+    to bottom right,
+    #a855f7,
+    #ec4899
+  ) !important;
 }
 
 .light .from-orange-500.to-red-500.text-white {
-  background-image: linear-gradient(to bottom right, #f97316, #ef4444) !important;
+  background-image: linear-gradient(
+    to bottom right,
+    #f97316,
+    #ef4444
+  ) !important;
 }
 
 .light .from-green-500.to-teal-500.text-white {
-  background-image: linear-gradient(to bottom right, #22c55e, #14b8a6) !important;
+  background-image: linear-gradient(
+    to bottom right,
+    #22c55e,
+    #14b8a6
+  ) !important;
 }
 
 .light .from-red-500.to-purple-500.text-white {
-  background-image: linear-gradient(to bottom right, #ef4444, #a855f7) !important;
+  background-image: linear-gradient(
+    to bottom right,
+    #ef4444,
+    #a855f7
+  ) !important;
 }
 
 .light .from-blue-500.to-indigo-500.text-white {
-  background-image: linear-gradient(to bottom right, #3b82f6, #6366f1) !important;
+  background-image: linear-gradient(
+    to bottom right,
+    #3b82f6,
+    #6366f1
+  ) !important;
 }
 
 .light .from-indigo-500.to-purple-500.text-white {
-  background-image: linear-gradient(to bottom right, #6366f1, #a855f7) !important;
+  background-image: linear-gradient(
+    to bottom right,
+    #6366f1,
+    #a855f7
+  ) !important;
 }
 
 .light .from-blue-500.to-cyan-500.text-white {
-  background-image: linear-gradient(to bottom right, #3b82f6, #06b6d4) !important;
+  background-image: linear-gradient(
+    to bottom right,
+    #3b82f6,
+    #06b6d4
+  ) !important;
 }
 
 /* Garantir que TODOS os ícones de serviços sejam visíveis no modo claro */
-.light #services [class*="bg-gradient-to-br"],
+.light #services [class*='bg-gradient-to-br'],
 .light #services .bg-gradient-to-br {
   background-image: inherit !important;
   color: #ffffff !important;
@@ -360,13 +396,15 @@ html.light body {
 
 /* Forçar visibilidade dos ícones SVG */
 .light #services svg,
-.light #services [class*="lucide"] {
+.light #services [class*='lucide'] {
   color: #ffffff !important;
   fill: currentColor !important;
 }
 
 /* Corrigir logo e textos do header no modo claro */
-.light header .bg-gradient-to-r.from-blue-600.to-purple-600.bg-clip-text.text-transparent {
+.light
+  header
+  .bg-gradient-to-r.from-blue-600.to-purple-600.bg-clip-text.text-transparent {
   background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
   background-clip: text !important;
   -webkit-background-clip: text !important;
@@ -374,7 +412,7 @@ html.light body {
 }
 
 /* Garantir que o texto do header seja sempre visível */
-.light header span[class*="bg-gradient-to-r"] {
+.light header span[class*='bg-gradient-to-r'] {
   background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
   background-clip: text !important;
   -webkit-background-clip: text !important;
@@ -393,14 +431,16 @@ html.light body {
 }
 
 /* Corrigir logo no footer para ambos os modos */
-.light footer .bg-gradient-to-r.from-blue-600.to-purple-600.bg-clip-text.text-transparent {
+.light
+  footer
+  .bg-gradient-to-r.from-blue-600.to-purple-600.bg-clip-text.text-transparent {
   background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
   background-clip: text !important;
   -webkit-background-clip: text !important;
   color: transparent !important;
 }
 
-.light footer span[class*="bg-gradient-to-r"] {
+.light footer span[class*='bg-gradient-to-r'] {
   background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
   background-clip: text !important;
   -webkit-background-clip: text !important;
@@ -422,13 +462,13 @@ html.light body {
 }
 
 /* Menu mobile - garantir fundo sólido e visibilidade */
-.light header [ref="mobileMenuRef"],
+.light header [ref='mobileMenuRef'],
 .light .fixed.inset-y-0.right-0.z-50 {
   background-color: #ffffff !important;
   border-color: #e5e7eb !important;
 }
 
-.dark header [ref="mobileMenuRef"],
+.dark header [ref='mobileMenuRef'],
 .dark .fixed.inset-y-0.right-0.z-50 {
   background-color: #0f172a !important;
   border-color: #374151 !important;
@@ -444,7 +484,7 @@ html.light body {
 }
 
 /* Corrigir gradientes no menu mobile */
-.light .fixed.inset-y-0.right-0.z-50 span[class*="bg-gradient-to-r"] {
+.light .fixed.inset-y-0.right-0.z-50 span[class*='bg-gradient-to-r'] {
   background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
   background-clip: text !important;
   -webkit-background-clip: text !important;
@@ -491,4 +531,97 @@ html {
 .gpu-accelerated {
   will-change: transform;
   transform: translateZ(0);
+}
+
+/* Otimizações de performance avançadas */
+/* Reduzir layout shift */
+img,
+video,
+iframe {
+  height: auto;
+}
+
+/* Melhorar performance de scroll */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+/* Otimizar animações */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Aceleração GPU para elementos animados */
+.animate-pulse,
+.animate-spin,
+.animate-bounce,
+[class*='animate-'] {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Otimizar carregamento de imagens */
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-placeholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Otimizações específicas para tema escuro */
+.dark .image-placeholder {
+  background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+  background-size: 200% 100%;
+}
+
+/* Prevenção de CLS (Cumulative Layout Shift) */
+.aspect-ratio-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-ratio-4-3 {
+  aspect-ratio: 4 / 3;
+}
+
+.aspect-ratio-1-1 {
+  aspect-ratio: 1 / 1;
+}
+
+/* Otimizar renderização de texto */
+.text-rendering-optimized {
+  text-rendering: optimizeSpeed;
+}
+
+/* Reduzir trabalho de paint */
+.contain-layout {
+  contain: layout;
+}
+
+.contain-paint {
+  contain: paint;
+}
+
+.contain-strict {
+  contain: strict;
 }

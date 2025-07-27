@@ -29,6 +29,15 @@ const Analytics = dynamic(
     ssr: false,
   },
 )
+const SpeedInsights = dynamic(
+  () =>
+    import('@vercel/speed-insights/next').then((mod) => ({
+      default: mod.SpeedInsights,
+    })),
+  {
+    ssr: false,
+  },
+)
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -47,7 +56,10 @@ function App({ Component, pageProps }: AppProps) {
         <ScrollToTopBtn />
         <WhatsAppFloatBtn />
         <DiscordFloatBtn />
+
+        {/* Analytics and Performance Monitoring */}
         <Analytics />
+        <SpeedInsights />
       </div>
     </ThemeProvider>
   )

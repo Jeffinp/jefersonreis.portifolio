@@ -4,40 +4,46 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
 import SEOHead from '@/components/SEOHead'
 import StructuredData from '@/components/StructuredData'
+import LoadingSkeleton from '@/components/LoadingSkeleton'
+import { useViewportLazyLoad } from '@/hooks/useViewportLazyLoad'
 import Hero from '@/containers/Hero'
 import About from '@/containers/About'
 
-// Carregamento dinâmico de seções não-críticas (abaixo da dobra)
+// Carregamento dinâmico de seções não-críticas com lazy loading avançado
 const Skills = dynamic(() => import('@/containers/Skills'), {
-  loading: () => (
-    <div className="min-h-[400px] animate-pulse bg-gray-100 dark:bg-gray-800" />
-  ),
+  loading: () => <LoadingSkeleton variant="skills" />,
 })
 const Services = dynamic(() => import('@/containers/Services'), {
-  loading: () => (
-    <div className="min-h-[400px] animate-pulse bg-gray-100 dark:bg-gray-800" />
-  ),
+  loading: () => <LoadingSkeleton variant="services" />,
 })
 const Projects = dynamic(() => import('@/containers/Projects'), {
-  loading: () => (
-    <div className="min-h-[400px] animate-pulse bg-gray-100 dark:bg-gray-800" />
-  ),
+  loading: () => <LoadingSkeleton variant="projects" />,
 })
 const Timeline = dynamic(() => import('@/containers/Timeline'), {
-  loading: () => (
-    <div className="min-h-[400px] animate-pulse bg-gray-100 dark:bg-gray-800" />
-  ),
+  loading: () => <LoadingSkeleton variant="timeline" />,
 })
 const Testimonials = dynamic(() => import('@/containers/Testimonials'), {
-  loading: () => (
-    <div className="min-h-[400px] animate-pulse bg-gray-100 dark:bg-gray-800" />
-  ),
+  loading: () => <LoadingSkeleton variant="testimonials" />,
 })
 const Contact = dynamic(() => import('@/containers/Contact'), {
-  loading: () => (
-    <div className="min-h-[400px] animate-pulse bg-gray-100 dark:bg-gray-800" />
-  ),
+  loading: () => <LoadingSkeleton variant="contact" />,
 })
+
+// Componente wrapper para lazy loading com Intersection Observer
+const LazySection: React.FC<{
+  children: React.ReactNode
+  fallback: React.ReactNode
+  threshold?: number
+  rootMargin?: string
+}> = ({ children, fallback, threshold = 0.1, rootMargin = '300px' }) => {
+  const { ref, isIntersecting } = useViewportLazyLoad({
+    threshold,
+    rootMargin,
+    triggerOnce: true,
+  })
+
+  return <div ref={ref}>{isIntersecting ? children : fallback}</div>
+}
 
 export default function Home() {
   const router = useRouter()
@@ -48,14 +54,58 @@ export default function Home() {
       <SEOHead lang={currentLang} />
       <StructuredData lang={currentLang} />
       <main>
+        {/* Seções críticas carregadas imediatamente */}
         <Hero />
         <About />
-        <Skills />
-        <Services />
-        <Projects />
-        <Timeline />
-        <Testimonials />
-        <Contact />
+
+        {/* Seções não-críticas com lazy loading inteligente */}
+        <LazySection
+          fallback={<LoadingSkeleton variant="skills" />}
+          threshold={0.2}
+          rootMargin="400px"
+        >
+          <Skills />
+        </LazySection>
+
+        <LazySection
+          fallback={<LoadingSkeleton variant="services" />}
+          threshold={0.2}
+          rootMargin="400px"
+        >
+          <Services />
+        </LazySection>
+
+        <LazySection
+          fallback={<LoadingSkeleton variant="projects" />}
+          threshold={0.2}
+          rootMargin="300px"
+        >
+          <Projects />
+        </LazySection>
+
+        <LazySection
+          fallback={<LoadingSkeleton variant="timeline" />}
+          threshold={0.2}
+          rootMargin="200px"
+        >
+          <Timeline />
+        </LazySection>
+
+        <LazySection
+          fallback={<LoadingSkeleton variant="testimonials" />}
+          threshold={0.2}
+          rootMargin="200px"
+        >
+          <Testimonials />
+        </LazySection>
+
+        <LazySection
+          fallback={<LoadingSkeleton variant="contact" />}
+          threshold={0.2}
+          rootMargin="100px"
+        >
+          <Contact />
+        </LazySection>
       </main>
     </>
   )

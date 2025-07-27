@@ -4,6 +4,7 @@ import { motion, useAnimation, useInView } from 'framer-motion'
 import { debounce } from '@/utils'
 import { useTranslation } from 'next-i18next'
 import SectionBackground from '@/components/SectionBackground'
+import ContactForm from '@/components/ContactForm'
 
 /**
  * Hook personalizado para gerenciar animações baseadas em visibilidade
@@ -281,21 +282,29 @@ const Contact: React.FC = () => {
           </p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-          {contactInfo.map((item, index) => (
-            <ContactCard
-              key={index}
-              item={item}
-              index={index}
-              isMobile={isMobile}
-              mousePosition={mousePosition}
-              hoveredCard={hoveredCard}
-              setHoveredCard={setHoveredCard}
-            />
-          ))}
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          {/* Contact Information */}
+          <div className="space-y-6">
+            {contactInfo.map((item, index) => (
+              <ContactCard
+                key={index}
+                item={item}
+                index={index}
+                isMobile={isMobile}
+                mousePosition={mousePosition}
+                hoveredCard={hoveredCard}
+                setHoveredCard={setHoveredCard}
+              />
+            ))}
+          </div>
+
+          {/* Contact Form */}
+          <div className="lg:pl-8">
+            <ContactForm />
+          </div>
         </div>
 
-        <AnimatedSection className="mt-16 text-center md:mt-20" delay={0.3}>
+        <AnimatedSection className="mt-16 text-center md:mt-20" delay={0.5}>
           <div className="rounded-2xl border border-white/20 bg-white/90 p-8 shadow-xl backdrop-blur-md md:p-10 dark:border-slate-700/80 dark:bg-slate-800/90">
             <h3 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">
               {t('contact.projectTitle')}

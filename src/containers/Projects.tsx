@@ -7,10 +7,13 @@ import {
   ChevronRight,
   Grid3X3,
   Minus,
+  Eye,
 } from 'lucide-react'
 import { projects } from '@/data/projectsData'
 import { useTranslation } from 'next-i18next'
 import SectionBackground from '@/components/SectionBackground'
+import ProjectModal from '@/components/ProjectModal'
+import { useAnalytics } from '@/hooks/useAnalytics'
 
 interface Category {
   value: string
@@ -52,9 +55,14 @@ const CarouselButton: React.FC<CarouselButtonProps> = ({
 interface ProjectItemProps {
   project: any
   isMobile: boolean
+  onOpenModal: (project: any) => void
 }
 
-const ProjectItem: React.FC<ProjectItemProps> = ({ project, isMobile }) => {
+const ProjectItem: React.FC<ProjectItemProps> = ({
+  project,
+  isMobile,
+  onOpenModal,
+}) => {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false)
   const [isTechnologiesExpanded, setIsTechnologiesExpanded] = useState(false)
   const { t } = useTranslation('common')
@@ -146,26 +154,38 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, isMobile }) => {
             )}
           </div>
 
-          {link && !project.restricted ? (
-            <a
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-flex w-full items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-medium text-white transition-colors duration-300 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
+          <div className="mt-2 flex gap-2">
+            {/* Case Study Button - Always show */}
+            <button
+              onClick={() => onOpenModal(project)}
+              className="inline-flex flex-1 items-center justify-center rounded-md bg-purple-600 px-3 py-2 text-sm font-medium text-white transition-colors duration-300 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600"
             >
-              {t('portfolio.projectLabels.viewProject')}
-              <ExternalLink className="ml-2 h-4 w-4" />
-            </a>
-          ) : (
-            <div className="mt-2 rounded-md border border-gray-200 bg-gray-100 p-3 dark:border-gray-600 dark:bg-gray-700">
-              <div className="mb-2 flex items-center justify-center">
+              <Eye className="mr-2 h-4 w-4" />
+              Case Study
+            </button>
+
+            {/* External Link Button - Only if available and not restricted */}
+            {link && !project.restricted && (
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex flex-1 items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-medium text-white transition-colors duration-300 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
+              >
+                <ExternalLink className="mr-2 h-4 w-4" />
+                Demo
+              </a>
+            )}
+          </div>
+
+          {/* Restricted Project Notice */}
+          {project.restricted && (
+            <div className="mt-2 rounded-md border border-gray-200 bg-gray-100 p-2 dark:border-gray-600 dark:bg-gray-700">
+              <div className="flex items-center justify-center">
                 <span className="rounded-full bg-orange-100 px-2 py-1 text-xs font-medium text-orange-600 dark:bg-orange-900/30 dark:text-orange-400">
                   {t('portfolio.projectLabels.restrictedProject')}
                 </span>
               </div>
-              <p className="text-center text-xs leading-relaxed text-gray-600 dark:text-gray-400">
-                {t('portfolio.projectLabels.notPubliclyAvailable')}
-              </p>
             </div>
           )}
         </div>
@@ -246,7 +266,10 @@ const Projects: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('all')
   const [isMobile, setIsMobile] = useState(false)
   const [viewMode, setViewMode] = useState<'carousel' | 'grid'>('carousel')
+  const [selectedProject, setSelectedProject] = useState<any>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const { t } = useTranslation('common')
+  const { trackProjectView, trackCaseStudyOpen } = useAnalytics()
 
   const trackRef = useRef<HTMLDivElement>(null)
   const touchStartXRef = useRef<number>(0)
@@ -328,6 +351,49 @@ const Projects: React.FC = () => {
     setViewMode((prev) => (prev === 'carousel' ? 'grid' : 'carousel'))
     setCurrentIndex(0)
   }
+
+  // Handlers do modal
+  const handleOpenModal = useCallback(
+    (project: any) => {
+      // Track case study opening
+      trackCaseStudyOpen(
+        project.id,
+        t(`portfolio.projects.${project.id}.title`),
+      )
+
+      // Transform project data to match ProjectModal interface
+      const transformedProject = {
+        id: project.id,
+        title: t(`portfolio.projects.${project.id}.title`),
+        description: t(`portfolio.projects.${project.id}.description`),
+        fullDescription: project.fullDescriptionKey
+          ? t(project.fullDescriptionKey)
+          : t(`portfolio.projects.${project.id}.fullDescription`),
+        image: project.image.src,
+        technologies: project.technologies || [],
+        category: project.category,
+        githubUrl: project.githubUrl,
+        liveUrl: project.link,
+        featured: project.featured || false,
+        type: project.type || 'personal',
+        completionDate: project.completionDate || '2024',
+        teamSize: project.teamSize,
+        duration: project.duration,
+        challenges: project.challenges,
+        results: project.results,
+        testimonial: project.testimonial,
+      }
+
+      setSelectedProject(transformedProject)
+      setIsModalOpen(true)
+    },
+    [t, trackCaseStudyOpen],
+  )
+
+  const handleCloseModal = useCallback(() => {
+    setIsModalOpen(false)
+    setSelectedProject(null)
+  }, [])
 
   // Adicionar handlers de touch para funcionalidade de swipe no carrossel
   useEffect(() => {
@@ -422,7 +488,11 @@ const Projects: React.FC = () => {
                     style={{ width: `${100 / itemsPerView}%` }}
                     className="flex-shrink-0"
                   >
-                    <ProjectItem project={project} isMobile={isMobile} />
+                    <ProjectItem
+                      project={project}
+                      isMobile={isMobile}
+                      onOpenModal={handleOpenModal}
+                    />
                   </motion.div>
                 ))}
               </div>
@@ -479,12 +549,23 @@ const Projects: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
               >
-                <ProjectItem project={project} isMobile={isMobile} />
+                <ProjectItem
+                  project={project}
+                  isMobile={isMobile}
+                  onOpenModal={handleOpenModal}
+                />
               </motion.div>
             ))}
           </div>
         )}
       </div>
+
+      {/* Project Modal */}
+      <ProjectModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </section>
   )
 }

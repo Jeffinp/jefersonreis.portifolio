@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { Sun, Moon, Monitor } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from '@/contexts/ThemeContext'
+import { useAnalytics } from '@/hooks/useAnalytics'
 
 interface ThemeToggleProps {
   className?: string
@@ -21,6 +22,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({
   const { theme, resolvedTheme, setTheme, toggleTheme } = useTheme()
   const [isOpen, setIsOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const { trackThemeChange } = useAnalytics()
 
   // Evitar hydration mismatch
   useEffect(() => {
@@ -160,6 +162,9 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({
                   <motion.button
                     key={option.key}
                     onClick={() => {
+                      trackThemeChange(
+                        option.key as 'light' | 'dark' | 'system',
+                      )
                       setTheme(option.key)
                       setIsOpen(false)
                     }}

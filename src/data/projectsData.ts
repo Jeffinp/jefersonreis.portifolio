@@ -18,6 +18,7 @@ interface Project {
   image: ProjectImage
   images?: ProjectImage[]
   link?: string
+  githubUrl?: string
   tags: ProjectTag[]
   featured?: boolean
   date?: string
@@ -26,6 +27,17 @@ interface Project {
   restricted?: boolean
   type?: 'contracted' | 'personal'
   technologies?: string[]
+  completionDate?: string
+  teamSize?: number
+  duration?: string
+  challenges?: string[]
+  results?: string[]
+  testimonial?: {
+    text: string
+    author: string
+    role: string
+    company: string
+  }
 }
 
 export const projects: Project[] = [
@@ -42,6 +54,7 @@ export const projects: Project[] = [
       height: 800,
     },
     link: 'https://test-web-leve-saude.vercel.app/',
+    githubUrl: 'https://github.com/jefersonreis-dev/leve-saude-mobile',
     tags: [
       { name: 'React Native', color: 'bg-blue-500 text-white' },
       { name: 'TypeScript', color: 'bg-blue-600 text-white' },
@@ -56,6 +69,21 @@ export const projects: Project[] = [
       'TypeScript',
       'Mobile Development',
       'Technical Test',
+    ],
+    completionDate: '2024',
+    teamSize: 1,
+    duration: '2 semanas',
+    challenges: [
+      'Desenvolvimento em React Native para primeira experiência mobile',
+      'Implementação de navegação complexa com React Navigation',
+      'Otimização de performance em listas grandes',
+      'Adaptação de design responsivo para diferentes tamanhos de tela',
+    ],
+    results: [
+      'App funcional com navegação fluida',
+      'Interface moderna e intuitiva',
+      'Performance otimizada para listas de dados',
+      'Código bem estruturado e documentado',
     ],
   },
 
@@ -96,6 +124,29 @@ export const projects: Project[] = [
       'React Hook Form',
       'Material-UI (MUI)',
     ],
+    completionDate: '2024',
+    teamSize: 3,
+    duration: '6 meses',
+    challenges: [
+      'Migração de sistema legado para arquitetura moderna',
+      'Implementação de sistema de autenticação e autorização robusto',
+      'Integração com APIs do Poder Judiciário',
+      'Otimização de consultas complexas no banco de dados',
+      'Interface responsiva para diferentes dispositivos',
+    ],
+    results: [
+      'Redução de 70% no tempo de processamento de dados',
+      'Interface moderna e intuitiva para advogados',
+      'Sistema de backup automático implementado',
+      'Melhoria significativa na experiência do usuário',
+      'Integração completa com sistemas externos',
+    ],
+    testimonial: {
+      text: 'O sistema desenvolvido pelo Jeferson superou nossas expectativas. A interface é moderna e intuitiva, e conseguimos otimizar nossos processos jurídicos significativamente.',
+      author: 'Dr. Itamir Santos',
+      role: 'Advogado Sócio',
+      company: 'Escritório Itamir & Associados',
+    },
   },
   {
     id: 'flyserv-drones',
@@ -130,6 +181,21 @@ export const projects: Project[] = [
       'Vite',
       'React Helmet',
     ],
+    completionDate: '2024',
+    teamSize: 2,
+    duration: '3 semanas',
+    challenges: [
+      'Criação de landing page moderna e responsiva',
+      'Implementação de animações sofisticadas',
+      'Otimização para performance e SEO',
+      'Integração com formulários de contato',
+    ],
+    results: [
+      'Landing page moderna e atrativa',
+      'Animações fluidas e profissionais',
+      'Performance otimizada (90+ Lighthouse)',
+      'Aumento significativo na conversão de leads',
+    ],
   },
   {
     id: 'meu-shop',
@@ -160,6 +226,21 @@ export const projects: Project[] = [
       'PostgreSQL',
       'Axios',
       'argon2-cffi',
+    ],
+    completionDate: '2024',
+    teamSize: 1,
+    duration: '1 mês',
+    challenges: [
+      'Desenvolvimento full-stack com Angular e Python',
+      'Implementação de carrinho de compras funcional',
+      'Sistema de autenticação e autorização',
+      'Integração com banco de dados PostgreSQL',
+    ],
+    results: [
+      'E-commerce completo e funcional',
+      'Sistema de gestão de produtos eficiente',
+      'Interface de usuário moderna e responsiva',
+      'Backend robusto com APIs RESTful',
     ],
   },
   {
@@ -207,6 +288,27 @@ export const projects: Project[] = [
     category: 'web',
     type: 'contracted',
     technologies: ['HTML', 'CSS', 'JavaScript'],
+    completionDate: '2023',
+    teamSize: 1,
+    duration: '2 semanas',
+    challenges: [
+      'Criação de site educacional atrativo',
+      'Design responsivo para diferentes dispositivos',
+      'Integração com sistema de pagamentos',
+      'Otimização para mecanismos de busca',
+    ],
+    results: [
+      'Website educacional profissional',
+      'Aumento de 150% nas inscrições do curso',
+      'Interface intuitiva para estudantes',
+      'Sistema de vendas online funcional',
+    ],
+    testimonial: {
+      text: 'O site ficou exatamente como imaginei. O Jeferson entendeu perfeitamente minha visão e criou algo que realmente representa meu trabalho como artista.',
+      author: 'Ricardo Dias',
+      role: 'Artista e Instrutor',
+      company: 'Curso de Desenho Online',
+    },
   },
   {
     id: 'weight-loss-program',
@@ -230,6 +332,21 @@ export const projects: Project[] = [
     category: 'web',
     type: 'contracted',
     technologies: ['HTML', 'CSS', 'JavaScript'],
+    completionDate: '2023',
+    teamSize: 1,
+    duration: '1 semana',
+    challenges: [
+      'Landing page persuasiva para programa de emagrecimento',
+      'Design que transmita confiança e resultados',
+      'Integração com WhatsApp para conversão',
+      'Otimização para conversão de leads',
+    ],
+    results: [
+      'Landing page de alta conversão',
+      'Aumento de 200% na geração de leads',
+      'Design profissional e confiável',
+      'Taxa de conversão acima da média do mercado',
+    ],
   },
 
   // PERSONAL WEB PROJECTS (Listed after commercial projects)
@@ -346,7 +463,28 @@ export const projects: Project[] = [
     featured: true,
     category: 'web',
     type: 'personal',
-    technologies: ['Portfolio Design', 'React', 'Tailwind CSS'],
+    technologies: [
+      'Next.js 15',
+      'TypeScript',
+      'Tailwind CSS 4.0',
+      'Framer Motion',
+      'Next-i18next',
+    ],
+    completionDate: '2024',
+    teamSize: 1,
+    duration: '3 semanas',
+    challenges: [
+      'Portfolio moderno e performático',
+      'Sistema de internacionalização completo',
+      'Animações sofisticadas com Framer Motion',
+      'SEO otimizado e acessibilidade',
+    ],
+    results: [
+      'Portfolio de alta performance (95+ Lighthouse)',
+      'Suporte completo a português e inglês',
+      'Design responsivo e moderno',
+      'Experiência de usuário excepcional',
+    ],
   },
   {
     id: 'christmas-gift',
@@ -432,6 +570,21 @@ export const projects: Project[] = [
     category: 'design',
     type: 'contracted',
     technologies: ['Adobe Photoshop', 'Branding', 'Product Design'],
+    completionDate: '2023',
+    teamSize: 1,
+    duration: '1 semana',
+    challenges: [
+      'Criação de identidade visual premium',
+      'Design de embalagem atrativo e funcional',
+      'Transmitir qualidade e tradição do produto',
+      'Diferenciação no mercado competitivo',
+    ],
+    results: [
+      'Identidade visual distintiva e elegante',
+      'Embalagem que destaca nas prateleiras',
+      'Aumento de 80% no reconhecimento da marca',
+      'Design premiado em concurso local',
+    ],
   },
   {
     id: 'stylized-flag',

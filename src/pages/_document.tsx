@@ -8,6 +8,22 @@ export default function Document() {
         <meta name="theme-color" content="#ffffff" />
         <meta name="color-scheme" content="light dark" />
 
+        {/* Preload recursos críticos para performance */}
+        <link
+          rel="preload"
+          href="/assets/fonts/nunito-sans-v15-latin-regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+
+        {/* DNS prefetch para recursos externos */}
+        <link rel="dns-prefetch" href="//vercel.com" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+        {/* Preconnect para recursos críticos */}
+        <link rel="preconnect" href="https://vitals.vercel-analytics.com" />
+
         {/* Prevenção de FOUC - Script de inicialização de tema */}
         <script
           dangerouslySetInnerHTML={{
@@ -46,6 +62,37 @@ export default function Document() {
                   document.documentElement.style.colorScheme = 'light'
                 }
               })()
+            `,
+          }}
+        />
+
+        {/* Script de otimização de performance */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Otimizar carregamento de imagens
+              if ('loading' in HTMLImageElement.prototype) {
+                document.documentElement.classList.add('native-lazy-loading')
+              }
+              
+              // Detectar suporte a IntersectionObserver
+              if ('IntersectionObserver' in window) {
+                document.documentElement.classList.add('intersection-observer')
+              }
+              
+              // Detectar connection API para otimizações baseadas na conexão
+              if (navigator.connection && navigator.connection.effectiveType) {
+                document.documentElement.classList.add('connection-' + navigator.connection.effectiveType)
+                // Reduzir qualidade de imagens em conexões lentas
+                if (['slow-2g', '2g'].includes(navigator.connection.effectiveType)) {
+                  document.documentElement.classList.add('low-bandwidth')
+                }
+              }
+              
+              // Detectar preferência por movimento reduzido
+              if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.documentElement.classList.add('reduce-motion')
+              }
             `,
           }}
         />

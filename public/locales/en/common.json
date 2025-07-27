@@ -26,7 +26,9 @@
     "profileAlt": "Photo of Jeferson Reis, full-stack web developer",
     "buttons": {
       "viewProjects": "View My Projects",
-      "contact": "Get in Touch"
+      "contact": "Get in Touch",
+      "contact_tooltip": "Let's talk about your next project",
+      "projects_tooltip": "Explore my work and experience"
     },
     "scrollDown": "Scroll down",
     "scrollToAbout": "Scroll to About section"
@@ -322,12 +324,21 @@
     "projectTitle": "Available for Projects",
     "availableForProjects": "I'm available for new projects and opportunities. Feel free to reach out!",
     "form": {
-      "name": "Your Name",
-      "email": "Your Email",
-      "message": "Your Message",
-      "sendButton": "Send Message",
-      "successMessage": "Thank you! Your message has been sent successfully.",
-      "errorMessage": "Oops! Something went wrong. Please try again later."
+      "title": "Send a Message",
+      "name": "Full name",
+      "name_placeholder": "Your full name",
+      "email": "Email",
+      "email_placeholder": "your@email.com",
+      "subject": "Subject",
+      "subject_placeholder": "What would you like to talk about?",
+      "message": "Message",
+      "message_placeholder": "Tell me more about your project or idea...",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "send_another": "Send Another Message",
+      "success_title": "Message sent successfully!",
+      "success_message": "Thank you for contacting me. I'll respond soon.",
+      "privacy_notice": "Your information is treated with complete confidentiality and will not be shared with third parties."
     },
     "socialMedia": {
       "title": "My Social Media",

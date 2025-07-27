@@ -26,7 +26,9 @@
     "profileAlt": "Foto de Jeferson Reis, desenvolvedor web full-stack",
     "buttons": {
       "viewProjects": "Ver Meus Projetos",
-      "contact": "Entrar em Contato"
+      "contact": "Entrar em Contato",
+      "contact_tooltip": "Vamos conversar sobre seu próximo projeto",
+      "projects_tooltip": "Conheça meu trabalho e experiência"
     },
     "scrollDown": "Rolar para baixo",
     "scrollToAbout": "Rolar para a seção Sobre"
@@ -322,12 +324,21 @@
     "projectTitle": "Disponível para Projetos",
     "availableForProjects": "Estou disponível para novos projetos e oportunidades. Fique à vontade para entrar em contato!",
     "form": {
-      "name": "Nome",
+      "title": "Envie uma Mensagem",
+      "name": "Nome completo",
+      "name_placeholder": "Seu nome completo",
       "email": "E-mail",
+      "email_placeholder": "seu@email.com",
+      "subject": "Assunto",
+      "subject_placeholder": "Sobre o que você gostaria de conversar?",
       "message": "Mensagem",
-      "sendButton": "Enviar Mensagem",
-      "successMessage": "Mensagem enviada com sucesso! Entrarei em contato em breve.",
-      "errorMessage": "Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente mais tarde."
+      "message_placeholder": "Conte-me mais sobre seu projeto ou ideia...",
+      "send": "Enviar Mensagem",
+      "sending": "Enviando...",
+      "send_another": "Enviar Outra Mensagem",
+      "success_title": "Mensagem enviada com sucesso!",
+      "success_message": "Obrigado pelo contato. Responderei em breve.",
+      "privacy_notice": "Suas informações são tratadas com total confidencialidade e não serão compartilhadas com terceiros."
     },
     "socialMedia": {
       "title": "Minhas Redes Sociais",
