@@ -331,9 +331,6 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-lg font-bold text-transparent sm:text-xl lg:text-2xl dark:from-blue-400 dark:to-purple-400">
                 JR
               </span>
-              <span className="ml-1 hidden bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-lg font-bold text-transparent sm:inline-block sm:text-xl lg:text-2xl dark:from-blue-400 dark:to-purple-400">
-                Jeferson Reis
-              </span>
               <span className="absolute right-0 -bottom-0.5 left-0 h-[2px] origin-left scale-x-0 transform bg-gradient-to-r from-blue-600 to-purple-600 transition-transform duration-300 group-hover:scale-x-100 dark:from-blue-400 dark:to-purple-400"></span>
             </Link>
           </div>
