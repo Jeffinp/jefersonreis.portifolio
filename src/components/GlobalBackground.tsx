@@ -13,22 +13,10 @@ const GlobalBackground: React.FC<GlobalBackgroundProps> = ({
 }) => {
   return (
     <div className={`fixed inset-0 -z-50 overflow-hidden ${className}`}>
-      {/* Gradiente principal contínuo - azul no topo, rosado no rodapé */}
-      {/* Light mode */}
-      <div
-        className="absolute inset-0 dark:hidden"
-        style={{
-          background: `linear-gradient(to bottom, 
-            rgb(239 246 255 / 0.6), 
-            rgb(238 242 255 / 0.5), 
-            rgb(196 181 253 / 0.4), 
-            rgb(251 207 232 / 0.5), 
-            rgb(254 242 242 / 0.6)
-          )`,
-        }}
-      ></div>
+      {/* Light mode - Fundo sólido limpo */}
+      <div className="absolute inset-0 bg-white dark:hidden"></div>
 
-      {/* Dark mode */}
+      {/* Dark mode - Gradiente elegante */}
       <div
         className="absolute inset-0 hidden dark:block"
         style={{
@@ -42,12 +30,12 @@ const GlobalBackground: React.FC<GlobalBackgroundProps> = ({
         }}
       ></div>
 
-      {/* Overlay sutil para suavizar transições */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/10 dark:from-slate-900/30 dark:via-transparent dark:to-slate-900/20"></div>
+      {/* Overlay sutil apenas no modo escuro */}
+      <div className="absolute inset-0 hidden bg-gradient-to-b from-slate-900/30 via-transparent to-slate-900/20 dark:block"></div>
 
-      {/* Padrão quadriculado sutil */}
+      {/* Padrão quadriculado apenas no modo escuro */}
       <div
-        className="absolute inset-0 opacity-[0.015] dark:opacity-[0.025]"
+        className="absolute inset-0 hidden opacity-[0.025] dark:block"
         style={{
           backgroundImage: `
             linear-gradient(to right, #3b82f6 1px, transparent 1px),
@@ -58,8 +46,8 @@ const GlobalBackground: React.FC<GlobalBackgroundProps> = ({
         }}
       />
 
-      {/* Elementos decorativos flutuantes sutis */}
-      <div className="pointer-events-none absolute inset-0">
+      {/* Elementos decorativos flutuantes apenas no modo escuro */}
+      <div className="pointer-events-none absolute inset-0 hidden dark:block">
         {/* Topo - tons azuis */}
         <div
           className="absolute top-0 left-1/4 h-[600px] w-[600px] rounded-full opacity-[0.03] blur-3xl"
@@ -101,26 +89,26 @@ const GlobalBackground: React.FC<GlobalBackgroundProps> = ({
         />
       </div>
 
-      {/* Pontos decorativos minimalistas distribuídos */}
-      <div className="pointer-events-none absolute inset-0">
+      {/* Pontos decorativos apenas no modo escuro */}
+      <div className="pointer-events-none absolute inset-0 hidden dark:block">
         {/* Topo */}
-        <div className="absolute top-[10%] left-[15%] h-1 w-1 rounded-full bg-blue-400/20 dark:bg-blue-400/10"></div>
-        <div className="absolute top-[15%] right-[20%] h-0.5 w-0.5 rounded-full bg-indigo-400/25 dark:bg-indigo-400/15"></div>
+        <div className="absolute top-[10%] left-[15%] h-1 w-1 rounded-full bg-blue-400/10"></div>
+        <div className="absolute top-[15%] right-[20%] h-0.5 w-0.5 rounded-full bg-indigo-400/15"></div>
 
         {/* Centro */}
-        <div className="absolute top-[45%] left-[10%] h-0.5 w-0.5 rounded-full bg-purple-400/20 dark:bg-purple-400/10"></div>
-        <div className="absolute top-[55%] right-[15%] h-1 w-1 rounded-full bg-purple-400/25 dark:bg-purple-400/15"></div>
+        <div className="absolute top-[45%] left-[10%] h-0.5 w-0.5 rounded-full bg-purple-400/10"></div>
+        <div className="absolute top-[55%] right-[15%] h-1 w-1 rounded-full bg-purple-400/15"></div>
 
         {/* Inferior */}
-        <div className="absolute bottom-[20%] left-[25%] h-0.5 w-0.5 rounded-full bg-pink-400/25 dark:bg-pink-400/15"></div>
-        <div className="absolute right-[30%] bottom-[10%] h-1 w-1 rounded-full bg-rose-400/20 dark:bg-rose-400/10"></div>
+        <div className="absolute bottom-[20%] left-[25%] h-0.5 w-0.5 rounded-full bg-pink-400/15"></div>
+        <div className="absolute right-[30%] bottom-[10%] h-1 w-1 rounded-full bg-rose-400/10"></div>
       </div>
 
-      {/* Linhas de horizonte sutis para criar profundidade */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-1/4 right-0 left-0 h-px bg-gradient-to-r from-transparent via-blue-200/20 to-transparent dark:via-blue-700/20"></div>
-        <div className="absolute top-1/2 right-0 left-0 h-px bg-gradient-to-r from-transparent via-purple-200/15 to-transparent dark:via-purple-700/15"></div>
-        <div className="absolute right-0 bottom-1/4 left-0 h-px bg-gradient-to-r from-transparent via-pink-200/20 to-transparent dark:via-pink-700/20"></div>
+      {/* Linhas de horizonte apenas no modo escuro */}
+      <div className="pointer-events-none absolute inset-0 hidden dark:block">
+        <div className="absolute top-1/4 right-0 left-0 h-px bg-gradient-to-r from-transparent via-blue-700/20 to-transparent"></div>
+        <div className="absolute top-1/2 right-0 left-0 h-px bg-gradient-to-r from-transparent via-purple-700/15 to-transparent"></div>
+        <div className="absolute right-0 bottom-1/4 left-0 h-px bg-gradient-to-r from-transparent via-pink-700/20 to-transparent"></div>
       </div>
     </div>
   )

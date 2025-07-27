@@ -1,5 +1,471 @@
 @import 'tailwindcss';
 
+/* Garantir que o modo escuro funcione corretamente */
+html.dark,
+.dark {
+  color-scheme: dark;
+}
+
+html.light,
+.light {
+  color-scheme: light;
+}
+
+/* Estilos base para garantir que o tema seja aplicado */
+html.light body {
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+html.dark body {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+/* Garantir que as classes Tailwind dark: funcionem corretamente */
+.dark .dark\:text-white {
+  color: #ffffff !important;
+}
+
+.dark .dark\:text-blue-400 {
+  color: #60a5fa !important;
+}
+
+.dark .dark\:text-gray-300 {
+  color: #d1d5db !important;
+}
+
+.dark .dark\:text-gray-200 {
+  color: #e5e7eb !important;
+}
+
+.dark .dark\:bg-gray-800 {
+  background-color: #1f2937 !important;
+}
+
+.dark .dark\:bg-slate-800 {
+  background-color: #1e293b !important;
+}
+
+/* Garantir visibilidade específica para títulos principais */
+.light .section-title {
+  color: #1f2937 !important;
+}
+
+.dark .section-title {
+  color: #f9fafb !important;
+}
+
+/* Garantir que no modo claro não há gradientes de fundo */
+.light body,
+.light main,
+.light section {
+  background-image: none !important;
+}
+
+/* Forçar fundo sólido limpo no modo claro */
+html.light,
+html.light body {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+/* Garantir visibilidade de todos os títulos no modo claro */
+.light h1:not(.text-white):not([class*="bg-"]),
+.light h2:not(.text-white):not([class*="bg-"]),
+.light h3:not(.text-white):not([class*="bg-"]),
+.light h4:not(.text-white):not([class*="bg-"]),
+.light h5:not(.text-white):not([class*="bg-"]),
+.light h6:not(.text-white):not([class*="bg-"]) {
+  color: #1f2937 !important;
+}
+
+/* Garantir visibilidade de texto geral no modo claro */
+.light p:not(.text-white):not([class*="bg-"]),
+.light span:not(.text-white):not([class*="bg-"]),
+.light div:not(.text-white):not([class*="bg-"]) {
+  color: #374151 !important;
+}
+
+/* Forçar cards com fundo claro no modo claro */
+.light .bg-white\/90,
+.light [class*="bg-white/"],
+.light .bg-slate-800\/90,
+.light [class*="bg-slate-800/"],
+.light .bg-gray-800\/90,
+.light [class*="bg-gray-800/"] {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Forçar texto escuro em cards no modo claro */
+.light .text-gray-800,
+.light .text-gray-700,
+.light .text-gray-600 {
+  color: #374151 !important;
+}
+
+/* Garantir que gradientes de fundo sejam removidos no modo claro */
+.light [class*="bg-gradient-"] {
+  background-image: none !important;
+  background-color: #ffffff !important;
+}
+
+/* Seções específicas - About e Services */
+.light #about,
+.light #services {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+.light #about *,
+.light #services * {
+  background-image: none !important;
+}
+
+/* Cards específicos em todas as seções */
+.light .rounded-xl,
+.light .rounded-2xl,
+.light .rounded-lg {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Forçar todas as classes de fundo slate e gray para branco no modo claro */
+.light [class*="dark:bg-slate-"],
+.light [class*="dark:bg-gray-"] {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Forçar texto visível em todas as seções */
+.light section h1,
+.light section h2,
+.light section h3,
+.light section h4,
+.light section h5,
+.light section h6,
+.light section p,
+.light .rounded-xl h1,
+.light .rounded-xl h2,
+.light .rounded-xl h3,
+.light .rounded-xl h4,
+.light .rounded-xl h5,
+.light .rounded-xl h6,
+.light .rounded-xl p,
+.light .rounded-2xl h1,
+.light .rounded-2xl h2,
+.light .rounded-2xl h3,
+.light .rounded-2xl h4,
+.light .rounded-2xl h5,
+.light .rounded-2xl h6,
+.light .rounded-2xl p {
+  color: #374151 !important;
+}
+
+/* Corrigir elementos com problemas específicos no modo claro */
+
+/* Hero - Pills de habilidades */
+.light .bg-blue-100 {
+  background-color: #dbeafe !important;
+  border: 1px solid #3b82f6 !important;
+}
+
+.light .text-blue-700 {
+  color: #1d4ed8 !important;
+}
+
+/* Projects - Botão "Ver mais" */
+.light .bg-blue-100.text-blue-700 {
+  background-color: #eff6ff !important;
+  color: #1e40af !important;
+  border: 1px solid #3b82f6 !important;
+}
+
+.light .bg-blue-100.text-blue-700:hover,
+.light .hover\:bg-blue-200:hover {
+  background-color: #dbeafe !important;
+  color: #1e3a8a !important;
+}
+
+/* Timeline - Elementos com gradiente e texto branco */
+.light .bg-gradient-to-r.text-white {
+  background: #3b82f6 !important;
+  color: #ffffff !important;
+}
+
+/* Botões azuis com melhor contraste */
+.light .bg-blue-600 {
+  background-color: #2563eb !important;
+}
+
+.light .bg-blue-600:hover,
+.light .hover\:bg-blue-700:hover {
+  background-color: #1d4ed8 !important;
+}
+
+/* Texto azul com melhor contraste */
+.light .text-blue-600 {
+  color: #1d4ed8 !important;
+}
+
+.light .text-blue-500 {
+  color: #2563eb !important;
+}
+
+.light .text-blue-400 {
+  color: #3b82f6 !important;
+}
+
+/* Categorias no Projects - Melhor contraste */
+.light .bg-gray-100.text-gray-700 {
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.light .bg-gray-100.text-gray-700:hover,
+.light .hover\:bg-gray-200:hover {
+  background-color: #e5e7eb !important;
+  color: #1f2937 !important;
+}
+
+/* Fundos coloridos do About - Melhor contraste */
+.light .bg-purple-50 {
+  background-color: #faf5ff !important;
+  border: 1px solid #a855f7 !important;
+}
+
+.light .bg-green-50 {
+  background-color: #f0fdf4 !important;
+  border: 1px solid #22c55e !important;
+}
+
+.light .bg-pink-50 {
+  background-color: #fdf2f8 !important;
+  border: 1px solid #ec4899 !important;
+}
+
+.light .bg-orange-50 {
+  background-color: #fff7ed !important;
+  border: 1px solid #f97316 !important;
+}
+
+/* Textos coloridos com melhor contraste */
+.light .text-purple-600 {
+  color: #7c3aed !important;
+}
+
+.light .text-green-600 {
+  color: #16a34a !important;
+}
+
+.light .text-pink-600 {
+  color: #db2777 !important;
+}
+
+.light .text-orange-600 {
+  color: #ea580c !important;
+}
+
+/* Tags coloridas nos projetos */
+.light .bg-purple-500.text-white,
+.light .bg-orange-500.text-white,
+.light .bg-pink-500.text-white,
+.light .bg-green-500.text-white {
+  background-color: inherit !important;
+  color: #374151 !important;
+  border: 1px solid currentColor !important;
+}
+
+/* Botões especiais - View Toggle e outros */
+.light .bg-gray-800 {
+  background-color: #f9fafb !important;
+  color: #374151 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.light .bg-gray-800:hover,
+.light .hover\:bg-gray-700:hover {
+  background-color: #f3f4f6 !important;
+  color: #1f2937 !important;
+}
+
+/* Regras específicas para evitar textos brancos sem fundo adequado */
+.light .text-white:not([class*="bg-"]):not([class*="gradient"]) {
+  color: #1f2937 !important;
+}
+
+/* Botões flutuantes - manter com texto branco pois têm fundo colorido */
+.light .bg-green-500.text-white,
+.light .bg-indigo-500.text-white {
+  color: #ffffff !important;
+}
+
+/* Garantir que elementos com gradiente de fundo mantenham texto branco */
+.light [class*="bg-gradient-"].text-white,
+.light .bg-blue-600.text-white,
+.light .bg-purple-600.text-white,
+.light .bg-green-600.text-white,
+.light .bg-amber-500.text-white,
+.light .bg-orange-500.text-white,
+.light .bg-red-500.text-white {
+  color: #ffffff !important;
+}
+
+/* Corrigir ícones nos serviços e áreas de expertise - manter fundo colorido e ícone branco */
+.light [class*="bg-gradient-to-br"].text-white {
+  background-image: linear-gradient(to bottom right, #3b82f6, #1d4ed8) !important;
+  color: #ffffff !important;
+}
+
+/* Cores específicas para diferentes gradientes */
+.light .from-blue-500.to-cyan-500.text-white {
+  background-image: linear-gradient(to bottom right, #3b82f6, #0891b2) !important;
+}
+
+.light .from-purple-500.to-pink-500.text-white {
+  background-image: linear-gradient(to bottom right, #a855f7, #ec4899) !important;
+}
+
+.light .from-orange-500.to-red-500.text-white {
+  background-image: linear-gradient(to bottom right, #f97316, #ef4444) !important;
+}
+
+.light .from-green-500.to-teal-500.text-white {
+  background-image: linear-gradient(to bottom right, #22c55e, #14b8a6) !important;
+}
+
+.light .from-red-500.to-purple-500.text-white {
+  background-image: linear-gradient(to bottom right, #ef4444, #a855f7) !important;
+}
+
+.light .from-blue-500.to-indigo-500.text-white {
+  background-image: linear-gradient(to bottom right, #3b82f6, #6366f1) !important;
+}
+
+.light .from-indigo-500.to-purple-500.text-white {
+  background-image: linear-gradient(to bottom right, #6366f1, #a855f7) !important;
+}
+
+.light .from-blue-500.to-cyan-500.text-white {
+  background-image: linear-gradient(to bottom right, #3b82f6, #06b6d4) !important;
+}
+
+/* Garantir que TODOS os ícones de serviços sejam visíveis no modo claro */
+.light #services [class*="bg-gradient-to-br"],
+.light #services .bg-gradient-to-br {
+  background-image: inherit !important;
+  color: #ffffff !important;
+}
+
+/* Forçar visibilidade dos ícones SVG */
+.light #services svg,
+.light #services [class*="lucide"] {
+  color: #ffffff !important;
+  fill: currentColor !important;
+}
+
+/* Corrigir logo e textos do header no modo claro */
+.light header .bg-gradient-to-r.from-blue-600.to-purple-600.bg-clip-text.text-transparent {
+  background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+/* Garantir que o texto do header seja sempre visível */
+.light header span[class*="bg-gradient-to-r"] {
+  background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+/* Corrigir footer no modo claro e escuro */
+.light footer {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+.dark footer {
+  background: #0f172a !important;
+  background-image: none !important;
+}
+
+/* Corrigir logo no footer para ambos os modos */
+.light footer .bg-gradient-to-r.from-blue-600.to-purple-600.bg-clip-text.text-transparent {
+  background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+.light footer span[class*="bg-gradient-to-r"] {
+  background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+/* Garantir que o cursor piscante seja visível */
+.light footer .bg-gradient-to-r.from-blue-500.to-purple-500 {
+  background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
+}
+
+/* Corrigir textos do footer no modo claro */
+.light footer .text-gray-600 {
+  color: #4b5563 !important;
+}
+
+.light footer .text-gray-500 {
+  color: #6b7280 !important;
+}
+
+/* Menu mobile - garantir fundo sólido e visibilidade */
+.light header [ref="mobileMenuRef"],
+.light .fixed.inset-y-0.right-0.z-50 {
+  background-color: #ffffff !important;
+  border-color: #e5e7eb !important;
+}
+
+.dark header [ref="mobileMenuRef"],
+.dark .fixed.inset-y-0.right-0.z-50 {
+  background-color: #0f172a !important;
+  border-color: #374151 !important;
+}
+
+/* Garantir que o texto do menu mobile seja visível */
+.light .fixed.inset-y-0.right-0.z-50 .text-gray-700 {
+  color: #374151 !important;
+}
+
+.light .fixed.inset-y-0.right-0.z-50 .text-gray-300 {
+  color: #6b7280 !important;
+}
+
+/* Corrigir gradientes no menu mobile */
+.light .fixed.inset-y-0.right-0.z-50 span[class*="bg-gradient-to-r"] {
+  background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+/* Melhorar contraste das cores específicas dos textos coloridos */
+.light .text-gray-300 {
+  color: #4b5563 !important;
+}
+
+.light .text-gray-200 {
+  color: #6b7280 !important;
+}
+
+/* Garantir que elementos com classes Tailwind de texto escuro sejam aplicadas */
+.light .text-slate-900,
+.light .text-gray-900 {
+  color: #0f172a !important;
+}
+
 /* Performance optimizations */
 * {
   box-sizing: border-box;
@@ -25,304 +491,4 @@ html {
 .gpu-accelerated {
   will-change: transform;
   transform: translateZ(0);
-}
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-
-  /* Cores - Modo Claro */
-  --resume-primary-color: #1d4ed8;
-  --resume-primary-color-rgb: 29, 78, 216;
-  --resume-secondary-color: #10b981;
-  --resume-accent-color: #f97316;
-  --resume-accent-color-rgb: 249, 115, 22;
-  --resume-text-color: #1f2937;
-  --resume-text-color-secondary: #4b5563;
-  --resume-background-color: #fbfbfd;
-  --resume-background-color-light: #e5e7eb;
-  --resume-card-background: #ffffff;
-  --resume-hover-color: #2563eb;
-  --resume-active-color: #1e40af;
-  --resume-focus-color: #3b82f6;
-  --resume-success-color: #10b981;
-  --resume-success-color-rgb: 16, 185, 129;
-  --resume-warning-color: #f59e0b;
-  --resume-error-color: #ef4444;
-  --resume-info-color: #60a5fa;
-  --resume-border-color: #e5e7eb;
-  --resume-border-color-light: #d1d5db;
-  --resume-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --resume-shadow-md:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --resume-shadow-lg:
-    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --resume-spacing-unit: 0.5rem;
-  --resume-spacing-xs: var(--resume-spacing-unit);
-  --resume-spacing-sm: calc(var(--resume-spacing-unit) * 2);
-  --resume-spacing-md: calc(var(--resume-spacing-unit) * 3);
-  --resume-spacing-lg: calc(var(--resume-spacing-unit) * 4);
-  --resume-spacing-xl: calc(var(--resume-spacing-unit) * 6);
-  --resume-spacing-xxl: calc(var(--resume-spacing-unit) * 8);
-  --resume-font-family-base: 'Nunito Sans', sans-serif;
-  --resume-font-size-base: 0.9rem;
-  --resume-font-size-title: 1.8rem;
-  --resume-font-size-section-title: 1.3rem;
-  --resume-font-size-item-title: 1.1rem;
-  --resume-font-weight-regular: 400;
-  --resume-font-weight-semibold: 600;
-  --resume-font-weight-bold: 700;
-  --resume-font-weight-extrabold: 800;
-  --resume-line-height-base: 1.6;
-  --resume-transition-fast: 0.2s ease;
-  --resume-transition-normal: 0.3s ease;
-  --resume-transition-slow: 0.5s ease;
-  --resume-border-radius-sm: 0.125rem;
-  --resume-border-radius-md: 0.375rem;
-  --resume-border-radius-lg: 0.5rem;
-  --resume-border-radius-full: 9999px;
-  --resume-background-color-rgb: 243, 244, 246;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-
-    /* Variáveis para o Modo Escuro */
-    --resume-primary-color: #2563eb;
-    --resume-primary-color-rgb: 37, 99, 235;
-    --resume-secondary-color: #10b981;
-    --resume-accent-color: #f97316;
-    --resume-accent-color-rgb: 249, 115, 22;
-    --resume-text-color: #d1d5db;
-    --resume-text-color-secondary: #9ca3af;
-    --resume-background-color: #1e2836;
-    --resume-background-color-light: #1f2937;
-    --resume-card-background: #2d3748;
-    --resume-hover-color: #3b82f6;
-    --resume-active-color: #1e40af;
-    --resume-focus-color: #3b82f6;
-    --resume-success-color: #10b981;
-    --resume-success-color-rgb: 16, 185, 129;
-    --resume-warning-color: #f59e0b;
-    --resume-error-color: #ef4444;
-    --resume-info-color: #60a5fa;
-    --resume-border-color: #374151;
-    --resume-border-color-light: #4b5563;
-    --resume-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-    --resume-shadow-md:
-      0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.18);
-    --resume-shadow-lg:
-      0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
-    --resume-background-color-rgb: 17, 24, 39;
-  }
-}
-
-@font-face {
-  font-family: 'Nunito Sans';
-  src: url('/assets/fonts/nunito-sans-v15-latin-regular.woff2') format('woff2');
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito Sans';
-  src: url('/assets/fonts/nunito-sans-v15-latin-600.woff2') format('woff2');
-  font-weight: 600;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito Sans';
-  src: url('/assets/fonts/nunito-sans-v15-latin-800.woff2') format('woff2');
-  font-weight: 800;
-  font-display: swap;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Nunito Sans', Arial, sans-serif;
-  line-height: 1.6;
-  width: 100%;
-  overflow-x: hidden;
-}
-
-/* Estilizando a barra de rolagem */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-  background-color: var(--resume-background-color-light);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--resume-primary-color);
-  border-radius: var(--resume-border-radius-full);
-  border: 2px solid var(--resume-background-color-light);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--resume-hover-color);
-}
-
-::-webkit-scrollbar-thumb:active {
-  background-color: var(--resume-active-color);
-}
-
-/* Animações */
-@keyframes float-1 {
-  0%,
-  100% {
-    transform: translateY(0) translateX(10px) scale(1);
-  }
-
-  50% {
-    transform: translateY(-20px) translateX(-10px) scale(1.05);
-  }
-}
-
-@keyframes float-2 {
-  0%,
-  100% {
-    transform: translateY(0) translateX(-10px) scale(1);
-  }
-
-  50% {
-    transform: translateY(20px) translateX(10px) scale(0.95);
-  }
-}
-
-@keyframes jump {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-@keyframes pulse-ring {
-  0% {
-    opacity: 1;
-    transform: scale(0.5);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(1.5);
-  }
-}
-
-@keyframes bounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-}
-
-/* Classes para animações */
-.animate-float-1 {
-  animation: float-1 6s ease-in-out infinite;
-}
-
-.animate-float-2 {
-  animation: float-2 8s ease-in-out infinite;
-}
-
-.animate-jump {
-  animation: jump 1s ease-in-out infinite;
-}
-
-.animate-bounce {
-  animation: bounce 2s ease-in-out infinite;
-}
-
-.animate-pulse-ring {
-  animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-}
-
-.animate-blink {
-  animation: blink 1.5s ease-in-out infinite;
-}
-
-/* Padrão de grid sutil para background */
-.bg-grid-pattern {
-  background-size: 30px 30px;
-  background-image:
-    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-}
-
-/* Animações de blob */
-@keyframes blob {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
-}
-
-.animate-blob {
-  animation: blob 12s infinite ease-in-out;
-}
-
-.animation-delay-1000 {
-  animation-delay: 1s;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
-
-/* Efeito 3D */
-.perspective {
-  perspective: 1000px;
-}
-
-/* Transformações 3D */
-.transform-gpu {
-  transform: translateZ(0);
-}
-
-.-rotate-y-2 {
-  transform: rotateY(-2deg);
 }

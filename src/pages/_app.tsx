@@ -32,7 +32,7 @@ const Analytics = dynamic(
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
+    <ThemeProvider>
       <div id="__next-app" className="relative">
         {/* Background global contínuo */}
         <GlobalBackground />

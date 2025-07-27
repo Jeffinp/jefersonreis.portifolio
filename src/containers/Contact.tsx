@@ -273,7 +273,7 @@ const Contact: React.FC = () => {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="mb-12 text-center md:mb-16">
-          <h2 className="mb-4 inline-block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent md:text-4xl lg:text-5xl dark:from-blue-400 dark:to-purple-400">
+          <h2 className="section-title mb-4 text-3xl font-bold text-blue-600 md:text-4xl lg:text-5xl dark:text-blue-400">
             {t('contact.title')}
           </h2>
           <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-300">

@@ -6,7 +6,17 @@ import React, {
   useCallback,
   memo,
 } from 'react'
-import { Globe, Palette, FileText, Box, Laptop, Video } from 'lucide-react'
+import {
+  Globe,
+  Palette,
+  FileText,
+  Box,
+  Laptop,
+  Video,
+  Code2,
+  Camera,
+  Cpu,
+} from 'lucide-react'
 import { motion, useAnimation, useInView, Easing } from 'framer-motion'
 import { useTranslation } from 'next-i18next'
 import { debounce } from '@/utils'
@@ -324,13 +334,53 @@ const Services: React.FC = () => {
     },
   ]
 
+  // Áreas de expertise (mesclado do ExpertiseAreas)
+  const expertiseAreas: Service[] = [
+    {
+      icon: Code2,
+      title: t('expertise.items.item0.title'),
+      description: t('expertise.items.item0.description'),
+      gradient: 'from-blue-500 to-cyan-500',
+    },
+    {
+      icon: Palette,
+      title: t('expertise.items.item1.title'),
+      description: t('expertise.items.item1.description'),
+      gradient: 'from-purple-500 to-pink-500',
+    },
+    {
+      icon: FileText,
+      title: t('expertise.items.item2.title'),
+      description: t('expertise.items.item2.description'),
+      gradient: 'from-orange-500 to-red-500',
+    },
+    {
+      icon: Box,
+      title: t('expertise.items.item3.title'),
+      description: t('expertise.items.item3.description'),
+      gradient: 'from-green-500 to-teal-500',
+    },
+    {
+      icon: Cpu,
+      title: t('expertise.items.item4.title'),
+      description: t('expertise.items.item4.description'),
+      gradient: 'from-red-500 to-purple-500',
+    },
+    {
+      icon: Camera,
+      title: t('expertise.items.item5.title'),
+      description: t('expertise.items.item5.description'),
+      gradient: 'from-indigo-500 to-purple-500',
+    },
+  ]
+
   return (
     <section
       id="services"
       ref={sectionRef}
       className="relative overflow-hidden bg-transparent py-16 md:py-20 lg:py-24 xl:py-28"
       onMouseMove={!isMobile ? debouncedHandleMouseMove : undefined}
-      aria-label="Serviços de Jeferson Reis"
+      aria-label="Serviços e Áreas de Expertise de Jeferson Reis"
     >
       <SectionBackground
         isMobile={isMobile}
@@ -340,7 +390,7 @@ const Services: React.FC = () => {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="mb-12 text-center md:mb-16">
-          <h2 className="mb-4 inline-block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent md:text-4xl lg:text-5xl dark:from-blue-400 dark:to-purple-400">
+          <h2 className="section-title mb-4 text-3xl font-bold text-blue-600 md:text-4xl lg:text-5xl dark:text-blue-400">
             {t('services.title')}
           </h2>
           <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-300">
@@ -362,6 +412,34 @@ const Services: React.FC = () => {
               isMobile={isMobile}
             />
           ))}
+        </div>
+
+        {/* Seção de Áreas de Expertise */}
+        <div className="mt-24 md:mt-32">
+          <AnimatedSection className="mb-12 text-center md:mb-16" delay={0.6}>
+            <h2 className="section-title mb-4 text-3xl font-bold text-blue-600 md:text-4xl lg:text-5xl dark:text-blue-400">
+              {t('expertise.title')}
+            </h2>
+            <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-300">
+              {t('expertise.subtitle')}
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8">
+            {expertiseAreas.map((area, index) => (
+              <ServiceCard3D
+                key={`expertise-${index}`}
+                icon={area.icon}
+                title={area.title}
+                description={area.description}
+                gradient={area.gradient}
+                delay={0.1 * (index % 3) + 0.6}
+                index={index + services.length}
+                mousePosition={mousePosition}
+                isMobile={isMobile}
+              />
+            ))}
+          </div>
         </div>
 
         <AnimatedSection

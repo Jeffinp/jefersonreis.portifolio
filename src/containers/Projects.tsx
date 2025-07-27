@@ -306,7 +306,7 @@ const Projects: React.FC = () => {
     if (window.innerWidth < 1024) return 2
     if (window.innerWidth < 1440) return 3
     return 4
-  }, [isMobile])
+  }, [])
   const maxIndex = Math.max(0, totalItems - itemsPerView)
 
   // Navegar para o próximo slide
@@ -382,7 +382,7 @@ const Projects: React.FC = () => {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="mb-12 text-center md:mb-16"
         >
-          <h2 className="mb-4 inline-block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent md:text-4xl lg:text-5xl dark:from-blue-400 dark:to-purple-400">
+          <h2 className="section-title mb-4 text-3xl font-bold text-blue-600 md:text-4xl lg:text-5xl dark:text-blue-400">
             {t('portfolio.title')}
           </h2>
           <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-300">

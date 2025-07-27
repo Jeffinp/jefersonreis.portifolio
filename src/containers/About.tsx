@@ -1,12 +1,5 @@
 import React, { useEffect, useRef, useMemo, useCallback, useState } from 'react'
-import {
-  Palette,
-  ChevronRight,
-  Code,
-  Terminal,
-  Layers,
-  Monitor,
-} from 'lucide-react'
+import { Palette, Code, Terminal, Monitor } from 'lucide-react'
 import {
   motion,
   useAnimation,
@@ -35,21 +28,6 @@ const useAnimatedVisibility = (amount = 0.2, once = true) => {
   return { ref, controls }
 }
 
-/**
- * Hook personalizado para navegação suave entre seções
- */
-const useSmoothScroll = () => {
-  return useCallback((elementId: string) => {
-    const element = document.getElementById(elementId)
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      })
-    }
-  }, [])
-}
-
 interface AnimatedSectionProps {
   children: React.ReactNode
   delay?: number
@@ -69,9 +47,9 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   animation = 'fadeUp',
 }) => {
   const { ref, controls } = useAnimatedVisibility(threshold)
-  const cubicBezier: [number, number, number, number] = [0.22, 1, 0.36, 1]
   // Define as variantes de animação com base no tipo solicitado
   const variants: Variants = useMemo(() => {
+    const cubicBezier: [number, number, number, number] = [0.22, 1, 0.36, 1]
     const animations = {
       fadeUp: {
         hidden: { opacity: 0, y: 30 },
@@ -123,99 +101,6 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
     >
       {children}
     </motion.div>
-  )
-}
-
-interface FeatureCardProps {
-  icon: React.ElementType
-  title: string
-  description: string
-  actionText: string
-  onClick: () => void
-  colorClass?: 'blue' | 'purple' | 'green' | 'orange'
-  delay: number
-  index: number
-  ariaLabel: string
-}
-
-/**
- * Componente de Card para destacar recursos/habilidades
- */
-const FeatureCard: React.FC<FeatureCardProps> = ({
-  icon,
-  title,
-  description,
-  actionText,
-  onClick,
-  colorClass = 'blue',
-  delay,
-  index,
-  ariaLabel,
-}) => {
-  const Icon = icon
-
-  // Mapeamento de cores para classes Tailwind
-  const colorMap = {
-    blue: {
-      bg: 'from-blue-500 to-cyan-500',
-      text: 'text-blue-600 dark:text-blue-400',
-    },
-    purple: {
-      bg: 'from-purple-500 to-pink-500',
-      text: 'text-purple-600 dark:text-purple-400',
-    },
-    green: {
-      bg: 'from-green-500 to-blue-500',
-      text: 'text-green-600 dark:text-green-400',
-    },
-    orange: {
-      bg: 'from-orange-500 to-red-500',
-      text: 'text-orange-600 dark:text-orange-400',
-    },
-  }
-
-  const colors = colorMap[colorClass] || colorMap.blue
-
-  return (
-    <AnimatedSection delay={delay} className="group h-full" threshold={0.1}>
-      <div className="relative h-full overflow-hidden rounded-xl border border-gray-100 bg-white/90 p-5 shadow-md backdrop-blur-md transition-all duration-300 hover:shadow-xl md:p-6 lg:rounded-2xl lg:p-8 dark:border-slate-700/80 dark:bg-slate-800/90">
-        <div className="relative flex h-full flex-col items-center text-center">
-          {/* Ícone com gradiente */}
-          <div
-            className={`relative mb-4 rounded-full bg-gradient-to-br p-3 md:mb-6 md:p-4 ${colors.bg} text-white shadow-lg transition-transform duration-300 group-hover:scale-105`}
-          >
-            <Icon
-              strokeWidth={1.5}
-              className="h-6 w-6 md:h-7 md:w-7"
-              aria-hidden="true"
-            />
-          </div>
-
-          {/* Título */}
-          <h3
-            id={`feature-title-${index}`}
-            className="mb-3 text-lg font-bold text-gray-800 md:mb-4 md:text-xl dark:text-white"
-          >
-            {title}
-          </h3>
-
-          {/* Descrição */}
-          <p className="mb-6 flex-grow text-gray-600 dark:text-gray-300">
-            {description}
-          </p>
-
-          {/* Botão de ação */}
-          <button
-            onClick={onClick}
-            className={`inline-flex items-center text-sm font-medium ${colors.text} transition-colors duration-200 group-hover:underline focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:focus:ring-offset-gray-800`}
-            aria-label={ariaLabel}
-          >
-            {actionText}
-            <ChevronRight className="ml-1 h-4 w-4 transform transition-transform duration-200 group-hover:translate-x-1" />
-          </button>
-        </div>
-      </div>
-    </AnimatedSection>
   )
 }
 
@@ -325,7 +210,6 @@ const About: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isMobile, setIsMobile] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
-  const scrollTo = useSmoothScroll()
 
   // Detectar dispositivo móvel com debounce
   const checkMobile = useCallback(() => {
@@ -368,53 +252,6 @@ const About: React.FC = () => {
       }
     }
   }, [isMobile])
-
-  // Memoizar os dados das features para evitar re-renderizações
-  const features = useMemo(
-    () => [
-      {
-        icon: Code,
-        title: t('about.cards.webDev.title'),
-        description: t('about.cards.webDev.description'),
-        actionText: t('about.cards.action'),
-        onClick: () => scrollTo('projects'),
-        colorClass: 'blue' as const,
-        ariaLabel: t('about.cards.webDev.ariaLabel'),
-        delay: 0.1,
-      },
-      {
-        icon: Palette,
-        title: t('about.cards.design.title'),
-        description: t('about.cards.design.description'),
-        actionText: t('about.cards.action'),
-        onClick: () => scrollTo('projects'),
-        colorClass: 'purple' as const,
-        ariaLabel: t('about.cards.design.ariaLabel'),
-        delay: 0.2,
-      },
-      {
-        icon: Terminal,
-        title: t('about.cards.backend.title'),
-        description: t('about.cards.backend.description'),
-        actionText: t('about.cards.action'),
-        onClick: () => scrollTo('skills-section'),
-        colorClass: 'green' as const,
-        ariaLabel: t('about.cards.backend.ariaLabel'),
-        delay: 0.3,
-      },
-      {
-        icon: Layers,
-        title: t('about.cards.softSkills.title'),
-        description: t('about.cards.softSkills.description'),
-        actionText: t('about.cards.action'),
-        onClick: () => scrollTo('skills-section'),
-        colorClass: 'orange' as const,
-        ariaLabel: t('about.cards.softSkills.ariaLabel'),
-        delay: 0.4,
-      },
-    ],
-    [scrollTo, t],
-  )
 
   // Estatísticas
   const stats = [
@@ -484,7 +321,7 @@ const About: React.FC = () => {
             <AnimatedSection delay={0} animation="fadeUp" className="w-full">
               <div className="space-y-8">
                 <div className="space-y-4">
-                  <h2 className="mb-4 inline-block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent md:text-4xl lg:text-5xl dark:from-blue-400 dark:to-purple-400">
+                  <h2 className="section-title mb-4 text-3xl font-bold text-blue-600 md:text-4xl lg:text-5xl dark:text-blue-400">
                     {t('about.title')}
                   </h2>
                   <h3 className="mb-4 text-xl font-bold text-gray-800 md:text-2xl dark:text-white">
@@ -552,39 +389,6 @@ const About: React.FC = () => {
                 ))}
               </div>
             </AnimatedSection>
-          </div>
-        </div>
-
-        {/* Feature Cards */}
-        <div className="mt-20 md:mt-24 lg:mt-28 xl:mt-32">
-          <AnimatedSection
-            delay={0}
-            animation="fadeUp"
-            className="mb-12 text-center md:mb-16"
-          >
-            <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl dark:text-white">
-              {t('about.services.title')}
-            </h2>
-            <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-300">
-              {t('about.services.subtitle')}
-            </p>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
-            {features.map((feature, index) => (
-              <FeatureCard
-                key={index}
-                icon={feature.icon}
-                title={feature.title}
-                description={feature.description}
-                actionText={feature.actionText}
-                onClick={feature.onClick}
-                colorClass={feature.colorClass}
-                delay={feature.delay}
-                index={index}
-                ariaLabel={feature.ariaLabel}
-              />
-            ))}
           </div>
         </div>
       </div>

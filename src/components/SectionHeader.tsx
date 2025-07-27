@@ -55,7 +55,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
         )}
 
         <h2
-          className={`mb-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl dark:from-white dark:to-gray-300 ${titleClassName}`}
+          className={`section-title mb-4 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl dark:text-white ${titleClassName}`}
         >
           {title}
         </h2>

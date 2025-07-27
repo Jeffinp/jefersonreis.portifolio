@@ -73,7 +73,7 @@ const SkillCard: React.FC<SkillCardProps> = ({
                     fill
                     className="object-contain p-1"
                     sizes="(max-width: 640px) 40vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
-                    priority={index < 6} // Load first 6 images with priority
+                    loading="lazy" // Lazy load all skill icons since they're below the fold
                     placeholder="blur"
                     blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PC9zdmc+"
                     quality={80}

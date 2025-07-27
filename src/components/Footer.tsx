@@ -141,9 +141,9 @@ const Footer: React.FC = () => {
   ]
 
   return (
-    <footer className="relative overflow-hidden border-t border-gray-200 bg-gradient-to-b from-white to-blue-50/70 pt-12 pb-8 dark:border-gray-800 dark:from-slate-900/60 dark:to-slate-900/60">
-      {/* Top gradient accent */}
-      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 dark:from-blue-500 dark:via-purple-500 dark:to-blue-500" />
+    <footer className="relative overflow-hidden border-t border-gray-200 bg-white pt-12 pb-8 dark:border-gray-800 dark:bg-gradient-to-b dark:from-slate-900/60 dark:to-slate-900/60">
+      {/* Top gradient accent - apenas no modo escuro */}
+      <div className="absolute inset-x-0 top-0 hidden h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:block" />
 
       <SectionBackground variant="default" />
 

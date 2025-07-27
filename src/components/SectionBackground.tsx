@@ -65,8 +65,8 @@ const SectionBackground: React.FC<SectionBackgroundProps> = ({
     <div
       className={`pointer-events-none absolute inset-0 -z-40 overflow-hidden ${className}`}
     >
-      {/* Elementos decorativos específicos da seção */}
-      <div className="absolute inset-0">
+      {/* Elementos decorativos específicos da seção - apenas no modo escuro */}
+      <div className="absolute inset-0 hidden dark:block">
         {/* Esfera principal sutil */}
         <div
           className={`absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-${effects.blur}xl`}
