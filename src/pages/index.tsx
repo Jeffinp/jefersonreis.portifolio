@@ -37,7 +37,13 @@ const LazySection: React.FC<{
   sectionId: string
   threshold?: number
   rootMargin?: string
-}> = ({ children, fallback, sectionId, threshold = 0.1, rootMargin = '300px' }) => {
+}> = ({
+  children,
+  fallback,
+  sectionId,
+  threshold = 0.1,
+  rootMargin = '300px',
+}) => {
   const { ref, isIntersecting } = useViewportLazyLoad({
     threshold,
     rootMargin,
