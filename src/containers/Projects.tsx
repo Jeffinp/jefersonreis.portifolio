@@ -430,7 +430,6 @@ const Projects: React.FC = () => {
 
   return (
     <section
-      id="projects"
       className="relative overflow-hidden bg-transparent py-16 md:py-20 lg:py-24 xl:py-28"
       aria-label="Projetos de Jeferson Reis"
     >

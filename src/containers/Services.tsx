@@ -376,7 +376,6 @@ const Services: React.FC = () => {
 
   return (
     <section
-      id="services"
       ref={sectionRef}
       className="relative overflow-hidden bg-transparent py-16 md:py-20 lg:py-24 xl:py-28"
       onMouseMove={!isMobile ? debouncedHandleMouseMove : undefined}

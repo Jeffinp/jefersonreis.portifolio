@@ -3,7 +3,7 @@ import SectionBackground from './SectionBackground'
 
 interface SectionWrapperProps {
   children: React.ReactNode
-  id: string
+  id?: string
   className?: string
   containerClassName?: string
   backgroundVariant?:

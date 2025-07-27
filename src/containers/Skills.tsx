@@ -13,7 +13,6 @@ const Skills: React.FC = () => {
 
   return (
     <SectionWrapper
-      id="skills"
       backgroundVariant="skills"
       paddingY="large"
       intensity="subtle"

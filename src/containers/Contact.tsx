@@ -262,7 +262,6 @@ const Contact: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      id="contact"
       className="relative overflow-hidden bg-transparent py-16 md:py-20 lg:py-24 xl:py-28"
       aria-label="Contato com Jeferson Reis"
     >

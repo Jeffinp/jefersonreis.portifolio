@@ -316,7 +316,6 @@ const Testimonials: React.FC = () => {
 
   return (
     <SectionWrapper
-      id="testimonials"
       backgroundVariant="testimonials"
       paddingY="large"
       containerClassName="max-w-7xl"

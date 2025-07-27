@@ -30,19 +30,25 @@ const Contact = dynamic(() => import('@/containers/Contact'), {
 })
 
 // Componente wrapper para lazy loading com Intersection Observer
+// Mantém os IDs das seções no DOM para permitir navegação por atalhos
 const LazySection: React.FC<{
   children: React.ReactNode
   fallback: React.ReactNode
+  sectionId: string
   threshold?: number
   rootMargin?: string
-}> = ({ children, fallback, threshold = 0.1, rootMargin = '300px' }) => {
+}> = ({ children, fallback, sectionId, threshold = 0.1, rootMargin = '300px' }) => {
   const { ref, isIntersecting } = useViewportLazyLoad({
     threshold,
     rootMargin,
     triggerOnce: true,
   })
 
-  return <div ref={ref}>{isIntersecting ? children : fallback}</div>
+  return (
+    <div ref={ref} id={sectionId}>
+      {isIntersecting ? children : fallback}
+    </div>
+  )
 }
 
 export default function Home() {
@@ -60,6 +66,7 @@ export default function Home() {
 
         {/* Seções não-críticas com lazy loading inteligente */}
         <LazySection
+          sectionId="skills"
           fallback={<LoadingSkeleton variant="skills" />}
           threshold={0.2}
           rootMargin="400px"
@@ -68,6 +75,7 @@ export default function Home() {
         </LazySection>
 
         <LazySection
+          sectionId="services"
           fallback={<LoadingSkeleton variant="services" />}
           threshold={0.2}
           rootMargin="400px"
@@ -76,6 +84,7 @@ export default function Home() {
         </LazySection>
 
         <LazySection
+          sectionId="projects"
           fallback={<LoadingSkeleton variant="projects" />}
           threshold={0.2}
           rootMargin="300px"
@@ -84,6 +93,7 @@ export default function Home() {
         </LazySection>
 
         <LazySection
+          sectionId="timeline"
           fallback={<LoadingSkeleton variant="timeline" />}
           threshold={0.2}
           rootMargin="200px"
@@ -92,6 +102,7 @@ export default function Home() {
         </LazySection>
 
         <LazySection
+          sectionId="testimonials"
           fallback={<LoadingSkeleton variant="testimonials" />}
           threshold={0.2}
           rootMargin="200px"
@@ -100,6 +111,7 @@ export default function Home() {
         </LazySection>
 
         <LazySection
+          sectionId="contact"
           fallback={<LoadingSkeleton variant="contact" />}
           threshold={0.2}
           rootMargin="100px"

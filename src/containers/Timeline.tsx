@@ -246,7 +246,6 @@ const Timeline: React.FC = () => {
 
   return (
     <SectionWrapper
-      id="timeline"
       backgroundVariant="timeline"
       paddingY="large"
       containerClassName="max-w-7xl"
