@@ -10,10 +10,7 @@ import {
   InteractiveCard,
   AnimatedTooltip,
 } from '@/components/MicroInteractions'
-import {
-  staggerContainer,
-  staggerItem,
-} from '@/hooks/useAnimations'
+import { staggerContainer, staggerItem } from '@/hooks/useAnimations'
 import {
   SiNextdotjs,
   SiAngular,
