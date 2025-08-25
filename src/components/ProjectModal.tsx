@@ -151,8 +151,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                     }`}
                   >
                     {project.type === 'personal'
-                      ? 'Projeto Pessoal'
-                      : 'Projeto Comercial'}
+                      ? t('portfolio.projectModal.personalProject')
+                      : t('portfolio.projectModal.commercialProject')}
                   </span>
                 </div>
               </div>
@@ -169,10 +169,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                   <div className="mb-4 flex flex-wrap items-start justify-between gap-4">
                     <div>
                       <h2 className="mb-2 text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
-                        {t(`projects.items.${project.id}.title`)}
+                        {project.title}
                       </h2>
                       <p className="text-gray-600 dark:text-gray-400">
-                        {project.category}
+                        {t(`portfolio.categories.${project.category}`)}
                       </p>
                     </div>
 
@@ -184,9 +184,9 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                           variant="secondary"
                           size="sm"
                           icon={<Github className="h-4 w-4" />}
-                          tooltip="Ver código no GitHub"
+                          tooltip={t('portfolio.projectModal.viewCodeGithub')}
                         >
-                          Código
+                          {t('portfolio.projectModal.code')}
                         </EnhancedButton>
                       )}
                       {project.liveUrl && (
@@ -196,9 +196,9 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                           variant="primary"
                           size="sm"
                           icon={<ExternalLink className="h-4 w-4" />}
-                          tooltip="Ver projeto ao vivo"
+                          tooltip={t('portfolio.projectModal.viewLiveProject')}
                         >
-                          Demo
+                          {t('portfolio.projectModal.demo')}
                         </EnhancedButton>
                       )}
                     </div>
@@ -214,7 +214,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                         {project.completionDate}
                       </p>
                       <p className="text-xs text-gray-600 dark:text-gray-400">
-                        Conclusão
+                        {t('portfolio.projectModal.completion')}
                       </p>
                     </InteractiveCard>
 
@@ -222,10 +222,11 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                       <InteractiveCard className="p-4 text-center">
                         <Users className="mx-auto mb-2 h-6 w-6 text-green-600" />
                         <p className="text-sm font-medium text-gray-900 dark:text-white">
-                          {project.teamSize} pessoas
+                          {project.teamSize}{' '}
+                          {t('portfolio.projectModal.people')}
                         </p>
                         <p className="text-xs text-gray-600 dark:text-gray-400">
-                          Equipe
+                          {t('portfolio.projectModal.team')}
                         </p>
                       </InteractiveCard>
                     )}
@@ -237,7 +238,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                           {project.duration}
                         </p>
                         <p className="text-xs text-gray-600 dark:text-gray-400">
-                          Duração
+                          {t('portfolio.projectModal.duration')}
                         </p>
                       </InteractiveCard>
                     )}
@@ -245,10 +246,11 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                     <InteractiveCard className="p-4 text-center">
                       <div className="mx-auto mb-2 h-6 w-6 rounded-full bg-orange-600" />
                       <p className="text-sm font-medium text-gray-900 dark:text-white">
-                        {project.technologies.length} techs
+                        {project.technologies.length}{' '}
+                        {t('portfolio.projectModal.techs')}
                       </p>
                       <p className="text-xs text-gray-600 dark:text-gray-400">
-                        Tecnologias
+                        {t('portfolio.projectModal.technologies')}
                       </p>
                     </InteractiveCard>
                   </div>
@@ -257,17 +259,17 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 {/* Description */}
                 <motion.div variants={itemVariants} className="mb-6">
                   <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-                    Sobre o Projeto
+                    {t('portfolio.projectModal.aboutProject')}
                   </h3>
                   <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-                    {t(`projects.items.${project.id}.fullDescription`)}
+                    {project.fullDescription}
                   </p>
                 </motion.div>
 
                 {/* Technologies */}
                 <motion.div variants={itemVariants} className="mb-6">
                   <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-                    Tecnologias Utilizadas
+                    {t('portfolio.projectModal.technologiesUsed')}
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, index) => (
@@ -285,7 +287,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 {project.challenges && project.challenges.length > 0 && (
                   <motion.div variants={itemVariants} className="mb-6">
                     <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-                      Desafios Enfrentados
+                      {t('portfolio.projectModal.challengesFaced')}
                     </h3>
                     <ul className="space-y-2">
                       {project.challenges.map((challenge, index) => (
@@ -305,7 +307,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 {project.results && project.results.length > 0 && (
                   <motion.div variants={itemVariants} className="mb-6">
                     <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-                      Resultados Alcançados
+                      {t('portfolio.projectModal.resultsAchieved')}
                     </h3>
                     <ul className="space-y-2">
                       {project.results.map((result, index) => (
@@ -325,7 +327,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 {project.testimonial && (
                   <motion.div variants={itemVariants} className="mb-6">
                     <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-                      Depoimento do Cliente
+                      {t('portfolio.projectModal.clientTestimonial')}
                     </h3>
                     <InteractiveCard className="p-6">
                       <blockquote className="mb-4 text-gray-700 dark:text-gray-300">

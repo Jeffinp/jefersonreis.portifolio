@@ -356,19 +356,16 @@ const Projects: React.FC = () => {
   const handleOpenModal = useCallback(
     (project: any) => {
       // Track case study opening
-      trackCaseStudyOpen(
-        project.id,
-        t(`portfolio.projects.${project.id}.title`),
-      )
+      trackCaseStudyOpen(project.id, t(project.titleKey))
 
       // Transform project data to match ProjectModal interface
       const transformedProject = {
         id: project.id,
-        title: t(`portfolio.projects.${project.id}.title`),
-        description: t(`portfolio.projects.${project.id}.description`),
+        title: t(project.titleKey),
+        description: t(project.descriptionKey),
         fullDescription: project.fullDescriptionKey
           ? t(project.fullDescriptionKey)
-          : t(`portfolio.projects.${project.id}.fullDescription`),
+          : t(project.descriptionKey), // fallback to description if no fullDescription
         image: project.image.src,
         technologies: project.technologies || [],
         category: project.category,
@@ -381,7 +378,18 @@ const Projects: React.FC = () => {
         duration: project.duration,
         challenges: project.challenges,
         results: project.results,
-        testimonial: project.testimonial,
+        testimonial: project.testimonialKey
+          ? {
+              text: t(`portfolio.testimonials.${project.testimonialKey}.text`),
+              author: t(
+                `portfolio.testimonials.${project.testimonialKey}.author`,
+              ),
+              role: t(`portfolio.testimonials.${project.testimonialKey}.role`),
+              company: t(
+                `portfolio.testimonials.${project.testimonialKey}.company`,
+              ),
+            }
+          : undefined,
       }
 
       setSelectedProject(transformedProject)

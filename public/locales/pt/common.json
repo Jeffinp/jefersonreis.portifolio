@@ -176,6 +176,25 @@
       "restrictedProject": "Projeto restrito",
       "notPubliclyAvailable": "Este projeto não está disponível para visualização pública."
     },
+    "projectModal": {
+      "personalProject": "Projeto Pessoal",
+      "commercialProject": "Projeto Comercial",
+      "aboutProject": "Sobre o Projeto",
+      "technologiesUsed": "Tecnologias Utilizadas",
+      "challengesFaced": "Desafios Enfrentados",
+      "resultsAchieved": "Resultados Alcançados",
+      "clientTestimonial": "Depoimento do Cliente",
+      "completion": "Conclusão",
+      "team": "Equipe",
+      "duration": "Duração",
+      "technologies": "Tecnologias",
+      "people": "pessoas",
+      "techs": "techs",
+      "viewCodeGithub": "Ver código no GitHub",
+      "viewLiveProject": "Ver projeto ao vivo",
+      "code": "Código",
+      "demo": "Demo"
+    },
     "projects": {
       "leveSaudeMobile": {
         "title": "Leve Saúde - App Mobile",
@@ -355,6 +374,20 @@
       "renderTest": {
         "fullDescription": "Teste de capacidades de renderização 3D utilizando formas geométricas complexas e materiais variados."
       }
+    },
+    "testimonials": {
+      "itamir": {
+        "text": "O desenvolvimento deste SaaS foi excepcional, resultando em um produto otimizado e bem estruturado. Continuo refinando minhas ideias e aprimorando a plataforma, e sou profundamente grato ao Jeferson pelo apoio contínuo e colaboração neste projeto.",
+        "author": "Pedro",
+        "role": "Empresário",
+        "company": "Cliente"
+      },
+      "onlineDrawingCourse": {
+        "text": "O site ficou exatamente como imaginei. O Jeferson entendeu perfeitamente minha visão e criou algo que realmente representa meu trabalho como artista.",
+        "author": "Ricardo Dias",
+        "role": "Artista e Instrutor",
+        "company": "Curso de Desenho Online"
+      }
     }
   },
   "contact": {
@@ -402,7 +435,7 @@
     "description": "Tecnologias e ferramentas que domino para criar soluções completas e eficientes",
     "categories": {
       "frontend": "Desenvolvimento Frontend",
-      "backend": "Desenvolvimento Backend", 
+      "backend": "Desenvolvimento Backend",
       "database": "Bancos de Dados",
       "devops": "DevOps & CI/CD",
       "design": "Design & UI/UX",

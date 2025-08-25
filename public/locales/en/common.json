@@ -176,6 +176,25 @@
       "restrictedProject": "Restricted Project",
       "notPubliclyAvailable": "This project is not available for public viewing."
     },
+    "projectModal": {
+      "personalProject": "Personal Project",
+      "commercialProject": "Commercial Project",
+      "aboutProject": "About the Project",
+      "technologiesUsed": "Technologies Used",
+      "challengesFaced": "Challenges Faced",
+      "resultsAchieved": "Results Achieved",
+      "clientTestimonial": "Client Testimonial",
+      "completion": "Completion",
+      "team": "Team",
+      "duration": "Duration",
+      "technologies": "Technologies",
+      "people": "people",
+      "techs": "techs",
+      "viewCodeGithub": "View code on GitHub",
+      "viewLiveProject": "View live project",
+      "code": "Code",
+      "demo": "Demo"
+    },
     "projects": {
       "leveSaudeMobile": {
         "title": "Leve Saúde - Mobile App",
@@ -354,6 +373,20 @@
       },
       "renderTest": {
         "fullDescription": "3D rendering capabilities test using complex geometric shapes and varied materials."
+      }
+    },
+    "testimonials": {
+      "itamir": {
+        "text": "The development of this SaaS was exceptional, resulting in an optimized and well-structured product. I continue refining my ideas and improving the platform, and I am deeply grateful to Jeferson for his continuous support and collaboration on this project.",
+        "author": "Pedro",
+        "role": "Entrepreneur",
+        "company": "Client"
+      },
+      "onlineDrawingCourse": {
+        "text": "The website turned out exactly as I imagined. Jeferson perfectly understood my vision and created something that truly represents my work as an artist.",
+        "author": "Ricardo Dias",
+        "role": "Artist and Instructor",
+        "company": "Online Drawing Course"
       }
     }
   },

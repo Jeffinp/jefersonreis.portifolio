@@ -11,8 +11,6 @@ import {
   AnimatedTooltip,
 } from '@/components/MicroInteractions'
 import {
-  useScrollAnimation,
-  fadeInUp,
   staggerContainer,
   staggerItem,
 } from '@/hooks/useAnimations'
