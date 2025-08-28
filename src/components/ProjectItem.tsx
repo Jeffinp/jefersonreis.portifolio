@@ -39,20 +39,24 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false)
   const [isTechnologiesExpanded, setIsTechnologiesExpanded] = useState(false)
   const { t } = useTranslation('main')
-  
+
   // Helper para buscar traduções de projetos de diferentes namespaces
   const { t: tMobile } = useTranslation('projects/mobile-projects')
-  const { t: tWeb } = useTranslation('projects/web-projects') 
+  const { t: tWeb } = useTranslation('projects/web-projects')
   const { t: tDesign } = useTranslation('projects/design-projects')
   const { t: t3D } = useTranslation('projects/3d-projects')
-  
   const getProjectTranslation = (key: string) => {
     // Tenta buscar a tradução nos diferentes namespaces
     try {
-      return tMobile(key) !== key ? tMobile(key) :
-             tWeb(key) !== key ? tWeb(key) :
-             tDesign(key) !== key ? tDesign(key) :
-             t3D(key) !== key ? t3D(key) : key
+      return tMobile(key) !== key
+        ? tMobile(key)
+        : tWeb(key) !== key
+          ? tWeb(key)
+          : tDesign(key) !== key
+            ? tDesign(key)
+            : t3D(key) !== key
+              ? t3D(key)
+              : key
     } catch {
       return key
     }

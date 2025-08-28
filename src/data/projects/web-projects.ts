@@ -183,8 +183,8 @@ export const webProjects: Project[] = [
       'Desenvolvimento de interface responsiva',
       'Integração com APIs externas',
       'Otimização de performance',
-      'Otimização de performance'
-    ]
+      'Otimização de performance',
+    ],
   },
   {
     id: 'ricardodias',
@@ -221,8 +221,8 @@ export const webProjects: Project[] = [
       'Desenvolvimento de interface responsiva',
       'Integração com APIs externas',
       'Otimização de performance',
-      'Otimização de performance'
-    ]
+      'Otimização de performance',
+    ],
   },
   {
     id: 'flyserv-drones',
@@ -290,8 +290,8 @@ export const webProjects: Project[] = [
       'Desenvolvimento de interface responsiva',
       'Integração com APIs externas',
       'Otimização de performance',
-      'Otimização de performance'
-    ]
+      'Otimização de performance',
+    ],
   },
   {
     id: 'meushop',
@@ -327,8 +327,8 @@ export const webProjects: Project[] = [
       'Desenvolvimento de interface responsiva',
       'Integração com APIs externas',
       'Otimização de performance',
-      'Otimização de performance'
-    ]
+      'Otimização de performance',
+    ],
   },
   {
     id: 'organizadorweb',
@@ -364,8 +364,8 @@ export const webProjects: Project[] = [
       'Desenvolvimento de interface responsiva',
       'Integração com APIs externas',
       'Otimização de performance',
-      'Otimização de performance'
-    ]
+      'Otimização de performance',
+    ],
   },
   {
     id: 'sistema-solar-3d',
@@ -395,8 +395,8 @@ export const webProjects: Project[] = [
       'Desenvolvimento de interface responsiva',
       'Integração com APIs externas',
       'Otimização de performance',
-      'Otimização de performance'
-    ]
+      'Otimização de performance',
+    ],
   },
   {
     id: 'menu-interativo',
@@ -432,8 +432,8 @@ export const webProjects: Project[] = [
       'Desenvolvimento de interface responsiva',
       'Integração com APIs externas',
       'Otimização de performance',
-      'Otimização de performance'
-    ]
+      'Otimização de performance',
+    ],
   },
   {
     id: 'chatbot',
@@ -469,8 +469,8 @@ export const webProjects: Project[] = [
       'Desenvolvimento de interface responsiva',
       'Integração com APIs externas',
       'Otimização de performance',
-      'Otimização de performance'
-    ]
+      'Otimização de performance',
+    ],
   },
   {
     id: 'jogo-plataforma',
@@ -506,7 +506,7 @@ export const webProjects: Project[] = [
       'Desenvolvimento de interface responsiva',
       'Integração com APIs externas',
       'Otimização de performance',
-      'Otimização de performance'
-    ]
-  }
+      'Otimização de performance',
+    ],
+  },
 ]

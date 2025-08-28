@@ -6,17 +6,7 @@ import React, {
   useCallback,
   memo,
 } from 'react'
-import {
-  Globe,
-  Palette,
-  FileText,
-  Box,
-  Laptop,
-  Video,
-  Code2,
-  Camera,
-  Cpu,
-} from 'lucide-react'
+import { Globe, Palette, FileText, Box, Laptop, Video } from 'lucide-react'
 import { motion, useAnimation, useInView, Easing } from 'framer-motion'
 import { useTranslation } from 'next-i18next'
 import { debounce } from '@/utils'
@@ -334,7 +324,6 @@ const Services: React.FC = () => {
     },
   ]
 
-
   return (
     <section
       ref={sectionRef}
@@ -373,7 +362,6 @@ const Services: React.FC = () => {
             />
           ))}
         </div>
-
 
         <AnimatedSection
           className="mx-auto mt-16 max-w-3xl text-center"

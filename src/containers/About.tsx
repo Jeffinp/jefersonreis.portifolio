@@ -159,7 +159,6 @@ const StatCard: React.FC<StatCardProps> = ({
   )
 }
 
-
 /**
  * Componente principal About
  */
@@ -235,7 +234,6 @@ const About: React.FC = () => {
     },
   ]
 
-
   return (
     <section
       ref={sectionRef}
@@ -307,7 +305,6 @@ const About: React.FC = () => {
                 ))}
               </div>
             </AnimatedSection>
-
           </div>
         </div>
       </div>
