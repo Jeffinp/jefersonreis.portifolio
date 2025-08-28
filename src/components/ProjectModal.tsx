@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ExternalLink, Github, Calendar, Users, Zap } from 'lucide-react'
 import Image from 'next/image'
@@ -43,6 +43,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   onClose,
 }) => {
   const { t } = useTranslation('main')
+  const [headerLoaded, setHeaderLoaded] = useState(false)
 
   if (!project) return null
 
@@ -132,14 +133,28 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
             {/* Content */}
             <div className="max-h-[90vh] overflow-y-auto">
               {/* Header Image */}
-              <div className="relative h-64 w-full overflow-hidden">
+              <div className="relative h-64 w-full overflow-hidden bg-gray-200 dark:bg-gray-800">
+                {/* Skeleton enquanto carrega */}
+                {!headerLoaded && (
+                  <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-800 dark:to-gray-700" />
+                )}
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover"
+                  sizes="100vw"
+                  priority
+                  placeholder="blur"
+                  blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIGZpbGw9JyNlZWUnIC8+PC9zdmc+"
+                  onLoad={() => setHeaderLoaded(true)}
+                  onError={() => setHeaderLoaded(true)}
+                  className={`object-cover transition-opacity duration-300 ${
+                    headerLoaded ? 'opacity-100' : 'opacity-0'
+                  }`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                {headerLoaded && (
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                )}
 
                 {/* Project Type Badge */}
                 <div className="absolute bottom-4 left-4">

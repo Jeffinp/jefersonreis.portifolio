@@ -6,7 +6,7 @@ export const designProjects: Project[] = [
     titleKey: 'portfolio.projects.art2DAlastor.title',
     descriptionKey: 'portfolio.projects.art2DAlastor.description',
     image: {
-      src: '/assets/images/projects/3d/art-3d-alastor.webp',
+      src: '/assets/images/projects/2d/art-2d-alastor.webp',
       alt: 'Alastor 2D Art',
       width: 800,
       height: 1000,

@@ -67,27 +67,25 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
   const [isTechnologiesExpanded, setIsTechnologiesExpanded] = useState(false)
   const { t } = useTranslation('main')
 
-  // Helper para buscar traduções de projetos de diferentes namespaces
-  const { t: tMobile } = useTranslation('projects/mobile-projects')
-  const { t: tWeb } = useTranslation('projects/web-projects')
-  const { t: tDesign } = useTranslation('projects/design-projects')
-  const { t: t3D } = useTranslation('projects/3d-projects')
+  // Helper para buscar traduções de projetos de diferentes namespaces (sem logs de missingKey)
+  const { t: tMobile, i18n: i18nMobile } = useTranslation(
+    'projects/mobile-projects',
+  )
+  const { t: tWeb, i18n: i18nWeb } = useTranslation('projects/web-projects')
+  const { t: tDesign, i18n: i18nDesign } = useTranslation(
+    'projects/design-projects',
+  )
+  const { t: t3D, i18n: i18n3D } = useTranslation('projects/3d-projects')
 
   const getProjectTranslation = (key: string) => {
-    // Tenta buscar a tradução nos diferentes namespaces
-    try {
-      return tMobile(key) !== key
-        ? tMobile(key)
-        : tWeb(key) !== key
-          ? tWeb(key)
-          : tDesign(key) !== key
-            ? tDesign(key)
-            : t3D(key) !== key
-              ? t3D(key)
-              : key
-    } catch {
-      return key
-    }
+    // Evita logs de missingKey usando exists antes de traduzir
+    if (i18nMobile?.exists(key, { ns: 'projects/mobile-projects' }))
+      return tMobile(key)
+    if (i18nWeb?.exists(key, { ns: 'projects/web-projects' })) return tWeb(key)
+    if (i18nDesign?.exists(key, { ns: 'projects/design-projects' }))
+      return tDesign(key)
+    if (i18n3D?.exists(key, { ns: 'projects/3d-projects' })) return t3D(key)
+    return key
   }
 
   const { category, image, titleKey, descriptionKey, link, tags } = project
@@ -299,10 +297,14 @@ const Projects: React.FC = () => {
   const { trackProjectView, trackCaseStudyOpen } = useAnalytics()
 
   // Hooks para buscar traduções de projetos de diferentes namespaces
-  const { t: tMobile } = useTranslation('projects/mobile-projects')
-  const { t: tWeb } = useTranslation('projects/web-projects')
-  const { t: tDesign } = useTranslation('projects/design-projects')
-  const { t: t3D } = useTranslation('projects/3d-projects')
+  const { t: tMobile, i18n: i18nMobile } = useTranslation(
+    'projects/mobile-projects',
+  )
+  const { t: tWeb, i18n: i18nWeb } = useTranslation('projects/web-projects')
+  const { t: tDesign, i18n: i18nDesign } = useTranslation(
+    'projects/design-projects',
+  )
+  const { t: t3D, i18n: i18n3D } = useTranslation('projects/3d-projects')
 
   const trackRef = useRef<HTMLDivElement>(null)
   const touchStartXRef = useRef<number>(0)
@@ -310,22 +312,17 @@ const Projects: React.FC = () => {
   // Helper para buscar traduções de projetos de diferentes namespaces
   const getProjectTranslation = useCallback(
     (key: string) => {
-      // Tenta buscar a tradução nos diferentes namespaces
-      try {
-        return tMobile(key) !== key
-          ? tMobile(key)
-          : tWeb(key) !== key
-            ? tWeb(key)
-            : tDesign(key) !== key
-              ? tDesign(key)
-              : t3D(key) !== key
-                ? t3D(key)
-                : key
-      } catch {
-        return key
-      }
+      // Evita logs de missingKey usando exists antes de traduzir
+      if (i18nMobile?.exists(key, { ns: 'projects/mobile-projects' }))
+        return tMobile(key)
+      if (i18nWeb?.exists(key, { ns: 'projects/web-projects' }))
+        return tWeb(key)
+      if (i18nDesign?.exists(key, { ns: 'projects/design-projects' }))
+        return tDesign(key)
+      if (i18n3D?.exists(key, { ns: 'projects/3d-projects' })) return t3D(key)
+      return key
     },
-    [tMobile, tWeb, tDesign, t3D],
+    [i18nMobile, i18nWeb, i18nDesign, i18n3D, tMobile, tWeb, tDesign, t3D],
   )
 
   // Categorias atualizadas (removidas 'motion' e adicionado '3d')

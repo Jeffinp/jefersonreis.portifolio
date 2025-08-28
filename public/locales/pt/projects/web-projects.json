@@ -1,6 +1,16 @@
 {
   "portfolio": {
     "projects": {
+      "rezerveBarber": {
+        "title": "Rezerve — Sistema de Agendamento Omnichannel para Barbearias",
+        "description": "Sistema completo de agendamento via WhatsApp para barbearias com APIs PHP, MySQL, n8n e integração de pagamentos.",
+        "fullDescription": "Desenvolvi um sistema de agendamento omnichannel para barbearias, integrado ao WhatsApp via Evolution API e orquestrado por n8n, com APIs PHP e banco MySQL. O destaque é a versão Enterprise do workflow, que detecta automaticamente o domínio e usa variáveis de ambiente (.env), tornando o deploy portável. O backend implementa endpoints REST para listar profissionais por serviço, consultar horários disponíveis e criar agendamentos com validação, segurança e transações. O banco inclui carteira financeira (receitas/comissões), saques, planos de assinatura e logs. O sistema permite que clientes agendem serviços diretamente pelo WhatsApp, escolhendo profissional, data e horário, com confirmação automatizada e opções de pagamento via Mercado Pago."
+      },
+      "lexcheck": {
+        "title": "LexCheck — Verificação e Enriquecimento de Citações Jurídicas",
+        "description": "Sistema web em FastAPI para revisar documentos (PDF/DOCX/TXT), detectar e padronizar citações legais, verificar no LexML e gerar relatórios PDF/Excel.",
+        "fullDescription": "O LexCheck acelera a conferência de citações jurídicas em documentos. Desenvolvido com FastAPI (Python), UI leve em Jinja2 e processamento de arquivos com PyPDF2 e python-docx, o sistema detecta, normaliza e verifica referências legais em uma base local (SQLite) e na API pública do LexML. Gera relatórios executivos em PDF (ReportLab) e Excel (OpenPyXL), com operação 100% local por padrão (LGPD) e distribuição via PyInstaller para Windows. Inclui limites de tamanho/extensão, diretórios temporários, endpoints REST e logs." 
+      },
       "assistenteVendasIA": {
         "title": "Assistente de Vendas com IA - CRM com WhatsApp",
         "description": "Sistema completo de CRM com integração WhatsApp, IA para atendimento automatizado e gestão de leads para empresa de transporte.",
@@ -26,9 +36,9 @@
         "fullDescription": "Site corporativo desenvolvido com React 19 e TypeScript, apresentando serviços de drones de forma atrativa. Design responsivo com Tailwind CSS 4.0 e animações suaves para destacar os diferenciais da empresa."
       },
       "portfolio": {
-        "title": "Portfolio - Site Pessoal",
-        "description": "Site pessoal para apresentação de projetos e habilidades.",
-        "fullDescription": "Portfolio desenvolvido com React e TypeScript, apresentando projetos de forma atrativa. Design responsivo com Tailwind CSS e animações suaves para destacar as habilidades do desenvolvedor."
+        "title": "Portfólio Pessoal – Jeferson Reis Almeida",
+        "description": "Site pessoal construído com Next.js 15, React 19 e Tailwind 4, com animações suaves, i18n e foco em performance, acessibilidade e SEO.",
+        "fullDescription": "Este portfólio foi projetado para apresentar minha jornada, projetos e habilidades com uma experiência moderna e performática. Construído com Next.js 15, React 19 e TypeScript, utiliza Tailwind CSS 4 para estilização, Framer Motion para microinterações, e next-i18next para internacionalização (pt/en). O projeto inclui otimizações de SEO, métricas com Vercel Analytics, imagens otimizadas, lazy loading, dark mode, e uma arquitetura de componentes acessível e reutilizável. O foco é demonstrar boas práticas de frontend, DX e qualidade de código, com CI de linting e formatação (ESLint + Prettier)."
       },
       "ricardodias": {
         "title": "Ricardo Dias",

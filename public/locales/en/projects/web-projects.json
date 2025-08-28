@@ -1,6 +1,11 @@
 {
   "portfolio": {
     "projects": {
+      "rezerveBarber": {
+        "title": "Rezerve — Omnichannel Scheduling System for Barbershops",
+        "description": "Complete WhatsApp scheduling system for barbershops with PHP APIs, MySQL, n8n workflows and payment integration.",
+        "fullDescription": "I developed an omnichannel scheduling system for barbershops, integrated with WhatsApp via Evolution API and orchestrated by n8n, with PHP APIs and MySQL database. The highlight is the Enterprise version of the workflow, which automatically detects the domain and uses environment variables (.env), making deployment portable. The backend implements REST endpoints to list professionals by service, check available time slots, and create appointments with validation, security, and transactions. The database includes a financial wallet (revenue/commissions), withdrawals, subscription plans, and logs. The system allows clients to schedule services directly through WhatsApp, choosing a professional, date, and time, with automated confirmation and payment options via Mercado Pago."
+      },
       "assistenteVendasIA": {
         "title": "AI Sales Assistant - WhatsApp CRM",
         "description": "Complete CRM system with WhatsApp integration, conversational AI for automated customer service, and lead management for a transport company.",
@@ -20,6 +25,16 @@
         "title": "Ascendoflex - Landing Page",
         "description": "Conversion-optimized landing page with modern and responsive design.",
         "fullDescription": "Landing page developed with React and TypeScript, focused on high conversion. Responsive design with Styled Components and performance optimizations for better user experience."
+      },
+      "portfolio": {
+        "title": "Personal Portfolio – Jeferson Reis Almeida",
+        "description": "Personal website built with Next.js 15, React 19 and Tailwind 4, featuring smooth animations, i18n and strong focus on performance, accessibility and SEO.",
+        "fullDescription": "This portfolio showcases my journey, projects and skills through a modern, high‑performance experience. Built with Next.js 15, React 19 and TypeScript, it uses Tailwind CSS 4 for styling, Framer Motion for micro‑interactions, and next‑i18next for internationalization (pt/en). The project includes SEO optimizations, metrics with Vercel Analytics, optimized images, lazy loading, dark mode, and an accessible, reusable component architecture. The goal is to demonstrate frontend best practices, strong DX and code quality with linting/formatting CI (ESLint + Prettier)."
+      },
+      "lexcheck": {
+        "title": "LexCheck — Legal Citations Verification & Enrichment",
+        "description": "FastAPI web system to review documents (PDF/DOCX/TXT), detect and normalize legal citations, verify against LexML and generate PDF/Excel reports.",
+        "fullDescription": "LexCheck speeds up the review of legal citations in documents. Built with FastAPI (Python), a lightweight Jinja2 UI and file processing via PyPDF2 and python-docx, it detects, normalizes and verifies references against a local SQLite database and the public LexML API. It generates executive PDF (ReportLab) and Excel (OpenPyXL) reports, runs 100% locally by default (LGPD) and ships as a Windows executable using PyInstaller. Includes file size/type limits, OS temp directories, REST endpoints and logs."
       }
     }
   }
