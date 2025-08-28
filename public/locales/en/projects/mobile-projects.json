@@ -1,6 +1,11 @@
 {
   "portfolio": {
     "projects": {
+      "stashy": {
+        "title": "Stashy — Financial Management Super App",
+        "description": "Complete mobile financial management app with NestJS backend, PostgreSQL on Supabase, and React Native with Expo frontend.",
+        "fullDescription": "Stashy is a mobile financial management application, designed as a \"super app\" for the Brazilian market. It combines simplicity of use with a robust technical foundation, modern integrations (Render + Supabase), a polished design, and an ambitious roadmap featuring AI, Open Banking, gamification, and financial education.\n\nThe backend is complete with NestJS and PostgreSQL/Supabase, offering JWT authentication, expense CRUD, category system, and dashboard with real data. The API is documented with Swagger and deployment is functional on Render.\n\nThe mobile application was developed with React Native and Expo, featuring login and registration screens with modern UX, API-integrated dashboard, expense addition screen, category selection, and Brazilian formatting for currency and dates. Navigation is done through tabs and session management uses Context API.\n\nThe project architecture is based on an organized monorepo, with a modular backend (auth, users, dashboard, expenses) and mobile with reusable components. The design system includes a consistent palette, custom components, and support for light/dark themes.\n\nThe project roadmap is ambitious, including biometric authentication, dashboard with insights, machine learning categorization, Open Banking integration, receipt OCR, geolocation, gamification, financial education, and much more."
+      },
       "leveSaudeMobile": {
         "title": "Leve Saúde - Mobile App",
         "description": "React Native app for health management with intuitive interface and smooth navigation.",

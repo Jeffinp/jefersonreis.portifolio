@@ -1,33 +1,42 @@
 {
   "portfolio": {
     "projects": {
+      "ricardodias": {
+        "title": "Ricardo Dias — Premium Website for Art Teacher",
+        "description": "Premium website for an art teacher focused on conversion, resulting in over 100 new students for the in-person course.",
+        "fullDescription": "I developed a premium website for an art teacher with a clear goal: increase enrollments for the in-person course. I worked from strategy and technical architecture to visual experience and performance, creating a fast, responsive site with strong authority appeal. The result directly impacted the business: over 100 new students for the course, with the site achieving scores above 90 on Google (PageSpeed/Lighthouse), excellent performance, and solid SEO.\n\nI delivered a conversion-oriented strategy with content structure and navigation focused on turning visitors into leads, premium UX/UI with minimalist and elegant design, scalable componentization (carousel, testimonials, FAQ/Accordion), advanced performance with lazy loading and image optimization, complete technical SEO, and full accessibility/responsiveness.\n\nThe technical stack included Next.js 15, React 19, TypeScript, Tailwind CSS 4, Framer Motion, Headless UI, and Lucide, resulting in a super fast and fluid experience, with noticeable improvements in Core Web Vitals and a significant increase in organic traffic and conversion rate."
+      },
+      "sistemaSolar3D": {
+        "title": "AstroVerse — Interactive 3D Solar System",
+        "description": "Complete 3D modeling of the solar system with realistic animations and astronomical details."
+      },
       "rezerveBarber": {
         "title": "Rezerve — Omnichannel Scheduling System for Barbershops",
         "description": "Complete WhatsApp scheduling system for barbershops with PHP APIs, MySQL, n8n workflows and payment integration.",
         "fullDescription": "I developed an omnichannel scheduling system for barbershops, integrated with WhatsApp via Evolution API and orchestrated by n8n, with PHP APIs and MySQL database. The highlight is the Enterprise version of the workflow, which automatically detects the domain and uses environment variables (.env), making deployment portable. The backend implements REST endpoints to list professionals by service, check available time slots, and create appointments with validation, security, and transactions. The database includes a financial wallet (revenue/commissions), withdrawals, subscription plans, and logs. The system allows clients to schedule services directly through WhatsApp, choosing a professional, date, and time, with automated confirmation and payment options via Mercado Pago."
       },
       "assistenteVendasIA": {
-        "title": "AI Sales Assistant - WhatsApp CRM",
+        "title": "JDX Transportes — AI-Powered Sales Assistant for WhatsApp",
         "description": "Complete CRM system with WhatsApp integration, conversational AI for automated customer service, and lead management for a transport company.",
         "fullDescription": "I developed a complete CRM system with WhatsApp integration and conversational AI to automate customer service and lead management for a transport company. The backend was built with FastAPI, PostgreSQL 16+ and SQLAlchemy 2.0, with support for asynchronous operations. WhatsApp integration was done via Z-API, allowing automated responses using OpenAI's GPT-4.1. The system processes quotes automatically, qualifies leads and offers a complete dashboard with real-time metrics. The frontend was developed with Next.js 15.4+, TypeScript and React 19, offering a modern and responsive interface. The architecture is scalable, using Docker and Google Cloud Run for the backend and Vercel for the frontend."
       },
       "itamir": {
-        "title": "Legal Management SaaS System",
+        "title": "Juristask — Legal Management SaaS System",
         "description": "Complete platform for law firm management with modern interface and advanced features.",
         "fullDescription": "Complete legal management system developed with React 19 and Python, offering full control of processes, clients, deadlines, and finances. Modern interface with Tailwind CSS 4.0 and smooth animations with Framer Motion."
       },
       "flyservDrones": {
-        "title": "FlyServ Drones - Corporate Website",
+        "title": "FlyServ — Corporate Website for Drone Company",
         "description": "Modern website for drone company focused on conversion and user experience.",
         "fullDescription": "Corporate website developed with React 19 and TypeScript, presenting drone services attractively. Responsive design with Tailwind CSS 4.0 and smooth animations to highlight company differentials."
       },
       "ascendoflex": {
-        "title": "Ascendoflex - Landing Page",
+        "title": "Ascendoflex — High-Converting Landing Page",
         "description": "Conversion-optimized landing page with modern and responsive design.",
         "fullDescription": "Landing page developed with React and TypeScript, focused on high conversion. Responsive design with Styled Components and performance optimizations for better user experience."
       },
       "portfolio": {
-        "title": "Personal Portfolio – Jeferson Reis Almeida",
+        "title": "Personal Portfolio — Jeferson Reis Almeida",
         "description": "Personal website built with Next.js 15, React 19 and Tailwind 4, featuring smooth animations, i18n and strong focus on performance, accessibility and SEO.",
         "fullDescription": "This portfolio showcases my journey, projects and skills through a modern, high‑performance experience. Built with Next.js 15, React 19 and TypeScript, it uses Tailwind CSS 4 for styling, Framer Motion for micro‑interactions, and next‑i18next for internationalization (pt/en). The project includes SEO optimizations, metrics with Vercel Analytics, optimized images, lazy loading, dark mode, and an accessible, reusable component architecture. The goal is to demonstrate frontend best practices, strong DX and code quality with linting/formatting CI (ESLint + Prettier)."
       },

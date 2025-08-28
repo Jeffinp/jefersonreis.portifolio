@@ -12,26 +12,26 @@
         "fullDescription": "O LexCheck acelera a conferência de citações jurídicas em documentos. Desenvolvido com FastAPI (Python), UI leve em Jinja2 e processamento de arquivos com PyPDF2 e python-docx, o sistema detecta, normaliza e verifica referências legais em uma base local (SQLite) e na API pública do LexML. Gera relatórios executivos em PDF (ReportLab) e Excel (OpenPyXL), com operação 100% local por padrão (LGPD) e distribuição via PyInstaller para Windows. Inclui limites de tamanho/extensão, diretórios temporários, endpoints REST e logs." 
       },
       "assistenteVendasIA": {
-        "title": "Assistente de Vendas com IA - CRM com WhatsApp",
+        "title": "JDX Transportes — Assistente de Vendas com IA para WhatsApp",
         "description": "Sistema completo de CRM com integração WhatsApp, IA para atendimento automatizado e gestão de leads para empresa de transporte.",
         "fullDescription": "Desenvolvi um sistema completo de CRM com integração WhatsApp e IA conversacional para automatizar o atendimento e gestão de leads de uma transportadora. O backend foi construído com FastAPI, PostgreSQL 16+ e SQLAlchemy 2.0, com suporte a operações assíncronas. A integração com WhatsApp foi feita via Z-API, permitindo respostas automáticas usando GPT-4.1 da OpenAI. O sistema processa cotações automaticamente, qualifica leads e oferece um dashboard completo com métricas em tempo real. O frontend foi desenvolvido com Next.js 15.4+, TypeScript e React 19, oferecendo uma interface moderna e responsiva. A arquitetura é escalável, usando Docker e Google Cloud Run para o backend e Vercel para o frontend."
       },
       "itamir": {
-        "title": "Juristask - Sistema de Gestão Jurídica SaaS",
+        "title": "Juristask — Sistema de Gestão Jurídica SaaS",
         "description": "Desenvolvi o Juristask, um sistema SaaS completo para gestão jurídica, com arquitetura multi-tenant moderna, backend robusto em FastAPI e frontend em React 19 + TypeScript. Solução pronta para produção, altamente personalizável e repleta de recursos avançados para escritórios de advocacia.",
         "fullDescription": "O Juristask é um sistema de gestão jurídica SaaS desenvolvido com arquitetura multi-tenant, garantindo isolamento total entre clientes (tenant_id). O backend utiliza FastAPI com mais de 40 endpoints REST, autenticação JWT com MFA, PostgreSQL 15 (25+ tabelas) e Alembic para migrações, Redis para cache e sessões, integração com Stripe, RBAC para controle de permissões, módulos completos para clientes, processos, audiências, tarefas, calendário, documentos e financeiro, middleware PCI-compliant, logging estruturado e monitoramento. O frontend foi construído com React 19, TypeScript, Vite, TailwindCSS 4, React Query, mais de 60 componentes reutilizáveis, dashboard em tempo real, notificações toast, validação com Zod e suporte a modo claro/escuro. Entre os diferenciais estão personalização white-label, geração dinâmica de PDFs, OCR, captura de dados via RSS/API, integração com Google Calendar e modelos de petições. O sistema está pronto para produção, com Docker, testes automatizados e documentação completa."
       },
       "leve-saude-web": {
-        "title": "Leve Saúde - Teste Web",
+        "title": "Leve Saúde — App Mobile para Gestão de Saúde",
         "description": "Teste para empresa de saúde, com foco em conversão e experiência do usuário.",
         "fullDescription": "Teste desenvolvido com React 19 e TypeScript, apresentando serviços de saúde de forma atrativa. Design responsivo com Tailwind CSS 4.0 e animações suaves para destacar os diferenciais da empresa."
       },
       "sistemaSolar3D": {
-        "title": "Sistema Solar 3D",
+        "title": "AstroVerse — Sistema Solar 3D Interativo",
         "description": "Modelagem 3D completa do sistema solar com animações realistas e detalhes astronômicos."
       },
       "flyservDrones": {
-        "title": "FlyServ Drones - Site Corporativo",
+        "title": "FlyServ — Site Corporativo para Empresa de Drones",
         "description": "Website moderno para empresa de drones com foco em conversão e experiência do usuário.",
         "fullDescription": "Site corporativo desenvolvido com React 19 e TypeScript, apresentando serviços de drones de forma atrativa. Design responsivo com Tailwind CSS 4.0 e animações suaves para destacar os diferenciais da empresa."
       },
@@ -41,28 +41,28 @@
         "fullDescription": "Este portfólio foi projetado para apresentar minha jornada, projetos e habilidades com uma experiência moderna e performática. Construído com Next.js 15, React 19 e TypeScript, utiliza Tailwind CSS 4 para estilização, Framer Motion para microinterações, e next-i18next para internacionalização (pt/en). O projeto inclui otimizações de SEO, métricas com Vercel Analytics, imagens otimizadas, lazy loading, dark mode, e uma arquitetura de componentes acessível e reutilizável. O foco é demonstrar boas práticas de frontend, DX e qualidade de código, com CI de linting e formatação (ESLint + Prettier)."
       },
       "ricardodias": {
-        "title": "Ricardo Dias",
-        "description": "website para um cliente, professor de artes",
-        "fullDescription": "Site pessoal desenvolvido com React e TypeScript, apresentando projetos de forma atrativa. Design responsivo com Tailwind CSS e animações suaves para destacar as habilidades do desenvolvedor."
+        "title": "Ricardo Dias — Site para Professor de Artes",
+        "description": "Website premium para professor de artes com foco em conversão, resultando em mais de 100 novos alunos para o curso presencial.",
+        "fullDescription": "Desenvolvi um website premium para um professor de artes com objetivo claro: aumentar as matrículas do curso presencial. Trabalhei desde a estratégia e arquitetura técnica até a experiência visual e performance, criando um site rápido, responsivo e com forte apelo de autoridade. O resultado foi direto no negócio: mais de 100 novos alunos para o curso, com o site atingindo pontuações acima de 90 no Google (PageSpeed/Lighthouse), desempenho excelente e SEO sólido.\n\nEntreguei uma estratégia orientada a conversão com estrutura de conteúdo e navegação focadas em transformar visitantes em leads, UX/UI premium com design minimalista e elegante, componentização escalável (carrossel, depoimentos, FAQ/Accordion), performance avançada com lazy loading e otimização de imagens, SEO técnico completo e total acessibilidade/responsividade.\n\nA stack técnica incluiu Next.js 15, React 19, TypeScript, Tailwind CSS 4, Framer Motion, Headless UI e Lucide, resultando em uma experiência super rápida e fluida, com melhorias perceptíveis nos Core Web Vitals e aumento significativo no tráfego orgânico e taxa de conversão."
       },
       "meushop": {
-        "title": "MeuShop - E-commerce",
+        "title": "MeuShop — Plataforma de E-commerce",
         "description": "E-commerce desenvolvido com React e TypeScript, apresentando produtos de forma atrativa. Design responsivo com Tailwind CSS e animações suaves para destacar as habilidades do desenvolvedor."
       },
       "organizadorweb": {
-        "title": "Organizador Web",
+        "title": "TaskFlow — Organizador Web de Tarefas",
         "description": "Organizador Web desenvolvido com React e TypeScript, apresentando produtos de forma atrativa. Design responsivo com Tailwind CSS e animações suaves para destacar as habilidades do desenvolvedor."
       },
       "chatbot": {
-        "title": "Chatbot",
+        "title": "SmartChat — Chatbot Inteligente para Atendimento",
         "description": "Chatbot desenvolvido com React e TypeScript, apresentando produtos de forma atrativa. Design responsivo com Tailwind CSS e animações suaves para destacar as habilidades do desenvolvedor."
       },
       "jogo-plataforma": {
-        "title": "Jogo Plataforma",
+        "title": "PixelJump — Jogo de Plataforma Web",
         "description": "Jogo Plataforma desenvolvido com React e TypeScript, apresentando produtos de forma atrativa. Design responsivo com Tailwind CSS e animações suaves para destacar as habilidades do desenvolvedor."
       },
       "menu-interativo": {
-        "title": "Menu Interativo",
+        "title": "DynamicMenu — Sistema de Cardápio Interativo",
         "description": "Menu Interativo desenvolvido com React e TypeScript, apresentando produtos de forma atrativa. Design responsivo com Tailwind CSS e animações suaves para destacar as habilidades do desenvolvedor."
       }
     }
