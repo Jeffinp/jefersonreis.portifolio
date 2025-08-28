@@ -6,12 +6,7 @@ export const webProjects: Project[] = [
     titleKey: 'portfolio.projects.rezerveBarber.title',
     descriptionKey: 'portfolio.projects.rezerveBarber.description',
     fullDescriptionKey: 'portfolio.projects.rezerveBarber.fullDescription',
-    image: {
-      src: '/assets/images/projects/web/project-rezerve-barber.png',
-      alt: 'Sistema de Agendamento Omnichannel para Barbearias',
-      width: 1200,
-      height: 800,
-    },
+    hasImage: false,
     tags: [
       { name: 'PHP', color: 'bg-indigo-600 text-white' },
       { name: 'MySQL', color: 'bg-blue-600 text-white' },

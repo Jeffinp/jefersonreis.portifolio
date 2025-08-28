@@ -11,7 +11,8 @@ interface ProjectData {
   title: string
   description: string
   fullDescription: string
-  image: string
+  image?: string | null
+  hasImage?: boolean
   technologies: string[]
   category: string
   githubUrl?: string
@@ -134,26 +135,54 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
             <div className="max-h-[90vh] overflow-y-auto">
               {/* Header Image */}
               <div className="relative h-64 w-full overflow-hidden bg-gray-200 dark:bg-gray-800">
-                {/* Skeleton enquanto carrega */}
-                {!headerLoaded && (
-                  <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-800 dark:to-gray-700" />
-                )}
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="100vw"
-                  priority
-                  placeholder="blur"
-                  blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIGZpbGw9JyNlZWUnIC8+PC9zdmc+"
-                  onLoad={() => setHeaderLoaded(true)}
-                  onError={() => setHeaderLoaded(true)}
-                  className={`object-cover transition-opacity duration-300 ${
-                    headerLoaded ? 'opacity-100' : 'opacity-0'
-                  }`}
-                />
-                {headerLoaded && (
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                {project.image ? (
+                  <>
+                    {/* Skeleton enquanto carrega */}
+                    {!headerLoaded && (
+                      <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-800 dark:to-gray-700" />
+                    )}
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="100vw"
+                      priority
+                      placeholder="blur"
+                      blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIGZpbGw9JyNlZWUnIC8+PC9zdmc+"
+                      onLoad={() => setHeaderLoaded(true)}
+                      onError={() => setHeaderLoaded(true)}
+                      className={`object-cover transition-opacity duration-300 ${
+                        headerLoaded ? 'opacity-100' : 'opacity-0'
+                      }`}
+                    />
+                    {headerLoaded && (
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    )}
+                  </>
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800">
+                    <div className="text-center">
+                      <div className="mb-2 text-3xl text-gray-400 dark:text-gray-500">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="mx-auto h-16 w-16"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1.5}
+                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                          />
+                        </svg>
+                      </div>
+                      <p className="text-lg font-medium text-gray-500 dark:text-gray-400">
+                        {t('portfolio.projectLabels.noImage')}
+                      </p>
+                    </div>
+                  </div>
                 )}
 
                 {/* Project Type Badge */}

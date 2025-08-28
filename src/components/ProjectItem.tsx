@@ -21,7 +21,8 @@ interface ProjectItemProps {
     titleKey: string
     descriptionKey: string
     fullDescriptionKey?: string
-    image: ProjectImage
+    image?: ProjectImage
+    hasImage?: boolean
     link?: string
     tags: ProjectTag[]
     featured?: boolean
@@ -77,17 +78,43 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
     <div className="xs:w-[280px] xs:p-2 w-full flex-shrink-0 p-1 sm:w-[320px] sm:p-3 md:w-[340px] md:p-4 lg:w-[380px] xl:w-[400px] 2xl:w-[420px]">
       <div className="h-full transform overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md transition duration-300 hover:shadow-lg sm:rounded-xl lg:hover:shadow-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:shadow-2xl">
         <div className="xs:h-44 relative h-40 overflow-hidden sm:h-48 md:h-52 lg:h-56 xl:h-60">
-          <Image
-            src={image.src}
-            alt={image.alt || getProjectTranslation(titleKey)}
-            className="h-full w-full transform object-cover transition-transform duration-500 hover:scale-105"
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            priority={project.featured}
-            placeholder="blur"
-            blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PC9zdmc+"
-            quality={85}
-          />
+          {image ? (
+            <Image
+              src={image.src}
+              alt={image.alt || getProjectTranslation(titleKey)}
+              className="h-full w-full transform object-cover transition-transform duration-500 hover:scale-105"
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              priority={project.featured}
+              placeholder="blur"
+              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PC9zdmc+"
+              quality={85}
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800">
+              <div className="text-center">
+                <div className="mb-2 text-3xl text-gray-400 dark:text-gray-500">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="mx-auto h-12 w-12"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
+                </div>
+                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  {t('portfolio.projectLabels.noImage')}
+                </p>
+              </div>
+            </div>
+          )}
           {category && (
             <div className="absolute top-2 left-2 rounded-md bg-blue-600/80 px-1.5 py-0.5 text-xs text-white backdrop-blur-sm sm:top-3 sm:left-3 sm:px-2 sm:py-1">
               {t(`portfolio.categories.${category}`)}

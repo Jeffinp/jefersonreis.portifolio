@@ -95,7 +95,8 @@
       "seeMore": "Ver mais",
       "seeLess": "Ver menos",
       "restrictedProject": "Projeto restrito",
-      "notPubliclyAvailable": "Este projeto não está disponível para visualização pública."
+      "notPubliclyAvailable": "Este projeto não está disponível para visualização pública.",
+      "noImage": "Sem imagem disponível"
     },
     "projectModal": {
       "personalProject": "Projeto Pessoal",

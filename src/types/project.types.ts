@@ -22,7 +22,8 @@ export interface Project {
   titleKey: string
   descriptionKey: string
   fullDescriptionKey?: string
-  image: ProjectImage
+  image?: ProjectImage
+  hasImage?: boolean
   images?: ProjectImage[]
   link?: string
   githubUrl?: string
