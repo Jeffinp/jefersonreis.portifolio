@@ -1,0 +1,221 @@
+{
+  "about": {
+    "title": "Sobre Mim",
+    "devTitle": "Desenvolvimento Full Stack",
+    "paragraphs": {
+      "first": "Olá, sou Jeferson Reis, um apaixonado por tecnologia, design e programação. Ao longo dos anos, desenvolvi habilidades como desenvolvedor full-stack, designer gráfico e técnico em informática. Estou sempre em busca de novos desafios para criar soluções inovadoras e personalizadas, combinando tecnologia e criatividade.",
+      "second": "Tenho experiência em React e Node.js, com foco em performance e experiência do usuário (UX/UI). Além disso, sou especializado em design gráfico, criando identidades visuais únicas e materiais gráficos personalizados."
+    },
+    "cta": {
+      "contact": "Entre em Contato",
+      "resume": "Baixar Currículo",
+      "resumeUrl": "/Jeferson_currículo.pdf"
+    },
+    "stats": {
+      "title": "Minhas Estatísticas",
+      "experience": "Anos de Experiência",
+      "projects": "Projetos Completados",
+      "clients": "Clientes Satisfeitos",
+      "satisfaction": "Satisfação do Cliente"
+    }
+  },
+  "skills": {
+    "title": "Minhas Habilidades",
+    "subtitle": "Tecnologias e ferramentas que domino para criar soluções completas",
+    "description": "Minhas habilidades são o resultado de anos de estudo e prática, combinando teoria e experiência para criar soluções eficientes e inovadoras.",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend", 
+      "database": "Banco de Dados",
+      "devops": "DevOps",
+      "design": "Design",
+      "tools": "Ferramentas",
+      "cloud": "Cloud",
+      "mobile": "Mobile",
+      "3d": "3D & Modelagem"
+    }
+  },
+  "services": {
+    "title": "Meus Serviços",
+    "subtitle": "Soluções profissionais personalizadas para dar vida às suas ideias!",
+    "items": {
+      "web": {
+        "title": "Desenvolvimento Web Estratégico",
+        "description": "Especialista em criar experiências web de alto impacto. Desenvolvo Landing Pages otimizadas para conversão, Sites Institucionais com narrativa estratégica, E-commerces robustos e Blogs profissionais. Garanto design exclusivo, responsividade total e otimização SEO para máxima visibilidade."
+      },
+      "design": {
+        "title": "Design & Branding Estratégico",
+        "description": "Especializado em criar identidades visuais que estabelecem autoridade no mercado. Desenvolvo sistemas completos de branding, incluindo logotipos distintivos, comunicação visual consistente e materiais publicitários estratégicos que consolidam o posicionamento da sua marca."
+      },
+      "documentation": {
+        "title": "Documentação Corporativa Especializada",
+        "description": "Especialista em transformar conceitos em documentação executiva de alto padrão. Produzo apresentações corporativas, documentos empresariais estratégicos, planilhas analíticas avançadas, currículos executivos e documentos acadêmicos com rigorosos padrões de formatação."
+      },
+      "modeling": {
+        "title": "Modelagem 3D & Visualização Arquitetônica",
+        "description": "Especialista em criação de conteúdo 3D de alta precisão. Desenvolvo modelos tridimensionais complexos, renderizações hiper-realistas, animações técnicas e assets otimizados para realidade aumentada e virtual. Projetos executados com precisão para impressão 3D e visualização profissional."
+      },
+      "support": {
+        "title": "Consultoria & Suporte Técnico Especializado",
+        "description": "Ofereço soluções técnicas abrangentes para infraestrutura de TI: otimização de sistemas, recuperação avançada de dados, manutenção preventiva e corretiva. Atendimento personalizado remoto ou presencial, garantindo eficiência operacional máxima."
+      },
+      "video": {
+        "title": "Produção Audiovisual & Motion Design",
+        "description": "Especialista em produção audiovisual corporativa. Executo edição profissional, pós-produção avançada, motion graphics corporativos e animações técnicas utilizando suíte Adobe profissional. Produções otimizadas para múltiplas plataformas: mídias sociais, marketing digital, apresentações corporativas e branding dinâmico."
+      }
+    },
+    "downloadButton": "Baixe o Catálogo Completo de Serviços",
+    "downloadDescription": "Descubra todos os detalhes e valores em meu catálogo!",
+    "learnMore": "Saiba mais",
+    "whatsappButton": "Falar pelo WhatsApp",
+    "whatsappText": "Vamos conversar!",
+    "ariaLabel": "Seção de Serviços",
+    "customService": {
+      "title": "Precisa de um serviço personalizado?",
+      "description": "Entre em contato para discutirmos suas necessidades e desenvolver uma solução sob medida para seu projeto.",
+      "cta": "Solicitar orçamento"
+    }
+  },
+  "portfolio": {
+    "title": "Meu Portfólio",
+    "subtitle": "Projetos que desenvolvi com paixão e dedicação",
+    "categories": {
+      "all": "Todos",
+      "web": "Web",
+      "design": "Design",
+      "motion": "Motion",
+      "modelagem": "Modelagem 3D",
+      "mobile": "Mobile"
+    },
+    "projectLabels": {
+      "contracted": "Contratado",
+      "personal": "Pessoal",
+      "viewProject": "Ver Projeto",
+      "prevProject": "Projeto anterior",
+      "nextProject": "Próximo projeto",
+      "seeMore": "Ver mais",
+      "seeLess": "Ver menos",
+      "restrictedProject": "Projeto restrito",
+      "notPubliclyAvailable": "Este projeto não está disponível para visualização pública."
+    },
+    "projectModal": {
+      "personalProject": "Projeto Pessoal",
+      "commercialProject": "Projeto Comercial",
+      "aboutProject": "Sobre o Projeto",
+      "technologiesUsed": "Tecnologias Utilizadas",
+      "challengesFaced": "Desafios Enfrentados",
+      "resultsAchieved": "Resultados Alcançados",
+      "clientTestimonial": "Depoimento do Cliente",
+      "completion": "Conclusão",
+      "team": "Equipe",
+      "duration": "Duração",
+      "technologies": "Tecnologias",
+      "people": "pessoas",
+      "techs": "techs",
+      "viewCodeGithub": "Ver código no GitHub",
+      "viewLiveProject": "Ver projeto ao vivo",
+      "code": "Código",
+      "demo": "Demo"
+    },
+    "viewModes": {
+      "grid": "Grade",
+      "carousel": "Carrossel"
+    }
+  },
+  "contact": {
+    "title": "Entre em Contato",
+    "subtitle": "Pronto para transformar sua ideia em realidade? Vamos conversar!",
+    "projectTitle": "Contato para Projetos",
+    "availableForProjects": "Disponível para projetos",
+    "form": {
+      "name": "Nome",
+      "email": "Email",
+      "subject": "Assunto",
+      "message": "Mensagem",
+      "send": "Enviar Mensagem",
+      "sending": "Enviando...",
+      "success": "Mensagem enviada com sucesso!",
+      "error": "Erro ao enviar mensagem. Tente novamente.",
+      "title": "Entre em Contato",
+      "name_placeholder": "Digite seu nome",
+      "email_placeholder": "Digite seu email",
+      "subject_placeholder": "Digite o assunto",
+      "message_placeholder": "Digite sua mensagem",
+      "privacy_notice": "Ao enviar esta mensagem, você concorda com a nossa política de privacidade."
+    }
+  },
+  "footer": {
+    "tagline": "Desenvolvedor Full Stack apaixonado por criar soluções inovadoras e experiências digitais únicas.",
+    "emailLabel": "Email",
+    "email": "jefersonreisalmeida8356@gmail.com",
+    "quickLinks": "Links Rápidos",
+    "menu": {
+      "home": "Início",
+      "about": "Sobre",
+      "services": "Serviços",
+      "portfolio": "Portfólio",
+      "contact": "Contato"
+    },
+    "connectWithMe": "Conecte-se comigo",
+    "social": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "instagram": "Instagram"
+    },
+    "rights": "Todos os direitos reservados.",
+    "allRightsReserved": "Todos os direitos reservados.",
+    "privacyPolicy": "Política de Privacidade"
+  },
+  "privacy": {
+    "title": "Política de Privacidade",
+    "lastUpdated": "Última atualização: Junho de 2024",
+    "closeModal": "Fechar modal de política de privacidade",
+    "close": "Fechar",
+    "sections": {
+      "introduction": {
+        "title": "Introdução",
+        "content": "Esta Política de Privacidade descreve como suas informações pessoais são coletadas, usadas e compartilhadas quando você visita ou interage com o site jefersonreis.dev."
+      },
+      "informationCollection": {
+        "title": "Informações que coletamos",
+        "content": "Quando você visita o site, coletamos automaticamente certas informações sobre seu dispositivo, incluindo:",
+        "items": {
+          "contact": "Informações de contato: nome, e-mail, mensagem (quando você usa o formulário de contato)",
+          "usage": "Informações de uso: páginas visitadas, tempo gasto no site, links clicados",
+          "cookies": "Cookies e tecnologias similares: para melhorar sua experiência de navegação"
+        }
+      },
+      "dataUsage": {
+        "title": "Como usamos suas informações",
+        "content": "Usamos as informações que coletamos para:",
+        "items": {
+          "communication": "Comunicar-me com você quando solicitado através do formulário de contato",
+          "improvement": "Melhorar e otimizar meu site e serviços",
+          "analytics": "Analisar como os visitantes navegam e interagem com o site"
+        }
+      },
+      "dataSharing": {
+        "title": "Compartilhamento de dados",
+        "content": "Não vendemos, comercializamos ou transferimos suas informações pessoais para terceiros, exceto provedores de serviços confiáveis que nos ajudam a operar nosso site e fornecer serviços, desde que concordem em manter essas informações confidenciais."
+      },
+      "dataSecurity": {
+        "title": "Segurança de dados",
+        "content": "Implemento medidas de segurança adequadas para proteger suas informações pessoais. No entanto, lembre-se de que nenhum método de transmissão pela internet ou armazenamento eletrônico é 100% seguro."
+      },
+      "userRights": {
+        "title": "Seus direitos",
+        "content": "Você tem os seguintes direitos relacionados aos seus dados pessoais:",
+        "items": {
+          "access": "Direito de acessar os dados pessoais que possuo sobre você",
+          "rectification": "Direito de retificar ou atualizar seus dados pessoais",
+          "deletion": "Direito de solicitar a exclusão de seus dados pessoais",
+          "objection": "Direito de se opor ao processamento de seus dados pessoais"
+        }
+      },
+      "contact": {
+        "title": "Contato",
+        "content": "Para quaisquer questões relacionadas a esta Política de Privacidade, entre em contato através do e-mail: jefersonreisalmeida8356@gmail.com"
+      }
+    }
+  }
+}

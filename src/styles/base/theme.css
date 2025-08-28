@@ -1,0 +1,46 @@
+/* Theme base styles */
+html.dark,
+.dark {
+  color-scheme: dark;
+}
+
+html.light,
+.light {
+  color-scheme: light;
+}
+
+/* Base theme styles */
+html.light body {
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+html.dark body {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+/* Dark mode utility fixes */
+.dark .dark\:text-white {
+  color: #ffffff !important;
+}
+
+.dark .dark\:text-blue-400 {
+  color: #60a5fa !important;
+}
+
+.dark .dark\:text-gray-300 {
+  color: #d1d5db !important;
+}
+
+.dark .dark\:text-gray-200 {
+  color: #e5e7eb !important;
+}
+
+.dark .dark\:bg-gray-800 {
+  background-color: #1f2937 !important;
+}
+
+.dark .dark\:bg-slate-800 {
+  background-color: #1e293b !important;
+}

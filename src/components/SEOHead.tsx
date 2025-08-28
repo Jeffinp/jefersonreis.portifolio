@@ -59,7 +59,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   const siteName =
     process.env.NEXT_PUBLIC_SITE_NAME ||
     'Jeferson Reis | Desenvolvedor Full-Stack'
-  const ogImage = `${siteUrl}/assets/images/Linkedin-foto.webp`
+  const ogImage = `${siteUrl}/assets/images/profile/profile-linkedin.webp`
 
   return (
     <Head>
@@ -133,43 +133,43 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <link
         rel="icon"
         type="image/svg+xml"
-        href="/assets/images/icon/favicon.svg"
+        href="/assets/images/icons/favicon.svg"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="96x96"
-        href="/assets/images/icon/favicon-96x96.png"
+        href="/assets/images/icons/favicon-96x96.png"
       />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="/assets/images/icon/apple-touch-icon.png"
+        href="/assets/images/icons/apple-touch-icon.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="192x192"
-        href="/assets/images/icon/web-app-manifest-192x192.png"
+        href="/assets/images/icons/web-app-manifest-192x192.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="512x512"
-        href="/assets/images/icon/web-app-manifest-512x512.png"
+        href="/assets/images/icons/web-app-manifest-512x512.png"
       />
-      <link rel="manifest" href="/assets/images/icon/site.webmanifest" />
+      <link rel="manifest" href="/assets/images/icons/site.webmanifest" />
       <meta name="theme-color" content="#1f2937" />
       <meta name="msapplication-TileColor" content="#1f2937" />
       <meta
         name="msapplication-config"
-        content="/assets/images/icon/browserconfig.xml"
+        content="/assets/images/icons/browserconfig.xml"
       />
 
       {/* Performance Optimizations */}
       <link
         rel="preload"
-        href="/assets/images/Linkedin-foto.webp"
+        href="/assets/images/profile/profile-linkedin.webp"
         as="image"
         type="image/webp"
       />

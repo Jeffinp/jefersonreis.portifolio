@@ -9,7 +9,7 @@ import SkillsCloud from '@/components/SkillsCloud'
  * Utiliza o SkillsCloud para uma apresentação moderna e interativa
  */
 const Skills: React.FC = () => {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('main')
 
   return (
     <SectionWrapper

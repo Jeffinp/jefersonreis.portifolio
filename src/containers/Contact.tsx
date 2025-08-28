@@ -163,7 +163,7 @@ const Contact: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('main')
 
   // Função de cópia de email
   const handleCopyEmail = useCallback(async () => {

@@ -1,0 +1,46 @@
+/* Button component styles */
+
+/* Blue buttons */
+.light .bg-blue-600:hover,
+.light .hover\:bg-blue-700:hover {
+  background-color: #1d4ed8 !important;
+}
+
+/* Gray buttons */
+.light .bg-gray-800 {
+  background-color: #f9fafb !important;
+  color: #374151 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.light .bg-gray-800:hover,
+.light .hover\:bg-gray-700:hover {
+  background-color: #f3f4f6 !important;
+  color: #1f2937 !important;
+}
+
+/* Category buttons */
+.light .bg-gray-100.text-gray-700 {
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.light .bg-gray-100.text-gray-700:hover,
+.light .hover\:bg-gray-200:hover {
+  background-color: #e5e7eb !important;
+  color: #1f2937 !important;
+}
+
+/* Floating buttons - keep with white text as they have colored background */
+.light .bg-green-500.text-white,
+.light .bg-blue-600.text-white,
+.light .bg-purple-600.text-white,
+.light .bg-pink-600.text-white {
+  /* Keep original colors for floating buttons */
+}
+
+/* Avoid white text without proper background */
+.light .text-white:not([class*='bg-']):not([class*='gradient']) {
+  color: #1f2937 !important;
+}

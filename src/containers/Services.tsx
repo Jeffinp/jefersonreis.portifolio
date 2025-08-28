@@ -258,7 +258,7 @@ interface Service {
 }
 
 const Services: React.FC = () => {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('main')
   const [mousePosition, setMousePosition] = useState<MousePosition>({
     x: 0,
     y: 0,
@@ -334,45 +334,6 @@ const Services: React.FC = () => {
     },
   ]
 
-  // Áreas de expertise (mesclado do ExpertiseAreas)
-  const expertiseAreas: Service[] = [
-    {
-      icon: Code2,
-      title: t('expertise.items.item0.title'),
-      description: t('expertise.items.item0.description'),
-      gradient: 'from-blue-500 to-cyan-500',
-    },
-    {
-      icon: Palette,
-      title: t('expertise.items.item1.title'),
-      description: t('expertise.items.item1.description'),
-      gradient: 'from-purple-500 to-pink-500',
-    },
-    {
-      icon: FileText,
-      title: t('expertise.items.item2.title'),
-      description: t('expertise.items.item2.description'),
-      gradient: 'from-orange-500 to-red-500',
-    },
-    {
-      icon: Box,
-      title: t('expertise.items.item3.title'),
-      description: t('expertise.items.item3.description'),
-      gradient: 'from-green-500 to-teal-500',
-    },
-    {
-      icon: Cpu,
-      title: t('expertise.items.item4.title'),
-      description: t('expertise.items.item4.description'),
-      gradient: 'from-red-500 to-purple-500',
-    },
-    {
-      icon: Camera,
-      title: t('expertise.items.item5.title'),
-      description: t('expertise.items.item5.description'),
-      gradient: 'from-indigo-500 to-purple-500',
-    },
-  ]
 
   return (
     <section
@@ -413,50 +374,22 @@ const Services: React.FC = () => {
           ))}
         </div>
 
-        {/* Seção de Áreas de Expertise */}
-        <div className="mt-24 md:mt-32">
-          <AnimatedSection className="mb-12 text-center md:mb-16" delay={0.6}>
-            <h2 className="section-title mb-4 text-3xl font-bold text-blue-600 md:text-4xl lg:text-5xl dark:text-blue-400">
-              {t('expertise.title')}
-            </h2>
-            <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-300">
-              {t('expertise.subtitle')}
-            </p>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8">
-            {expertiseAreas.map((area, index) => (
-              <ServiceCard3D
-                key={`expertise-${index}`}
-                icon={area.icon}
-                title={area.title}
-                description={area.description}
-                gradient={area.gradient}
-                delay={0.1 * (index % 3) + 0.6}
-                index={index + services.length}
-                mousePosition={mousePosition}
-                isMobile={isMobile}
-              />
-            ))}
-          </div>
-        </div>
 
         <AnimatedSection
           className="mx-auto mt-16 max-w-3xl text-center"
           delay={0.4}
         >
           <h3 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">
-            Precisa de um serviço personalizado?
+            {t('services.customService.title')}
           </h3>
           <p className="mb-6 text-gray-600 dark:text-gray-300">
-            Entre em contato para discutirmos suas necessidades e desenvolver
-            uma solução sob medida para seu projeto.
+            {t('services.customService.description')}
           </p>
           <a
             href="#contact"
             className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors duration-300 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
           >
-            Solicitar orçamento
+            {t('services.customService.cta')}
           </a>
         </AnimatedSection>
       </div>

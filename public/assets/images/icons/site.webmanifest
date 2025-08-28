@@ -1,0 +1,44 @@
+{
+  "name": "Jeferson Reis | Desenvolvedor Full-Stack",
+  "short_name": "Jeferson Reis",
+  "description": "Portfólio de Jeferson Reis, desenvolvedor Full-Stack especializado em tecnologias modernas como Next.js, Node.js, Python, Angular e mais.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#1f2937",
+  "background_color": "#ffffff",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/assets/images/icons/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/icons/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icons/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["business", "productivity", "portfolio"],
+  "screenshots": [
+    {
+      "src": "/assets/images/profile/profile-linkedin.webp",
+      "type": "image/webp",
+      "sizes": "800x600"
+    }
+  ]
+}

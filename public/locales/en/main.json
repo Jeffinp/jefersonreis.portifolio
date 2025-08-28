@@ -1,0 +1,222 @@
+{
+  "about": {
+    "title": "About Me",
+    "devTitle": "Full Stack Development",
+    "paragraphs": {
+      "first": "Hello, I'm Jeferson Reis, passionate about technology, design, and programming. Over the years, I've developed skills as a full-stack developer, graphic designer, and IT technician. I'm always looking for new challenges to create innovative and customized solutions, combining technology and creativity.",
+      "second": "I have experience with React and Node.js, focusing on performance and user experience (UX/UI). Additionally, I specialize in graphic design, creating unique visual identities and customized graphic materials."
+    },
+    "cta": {
+      "contact": "Get in Touch",
+      "resume": "Download Resume",
+      "resumeUrl": "/Jeferson_currículo.pdf"
+    },
+    "stats": {
+      "title": "My Statistics",
+      "experience": "Years of Experience",
+      "projects": "Completed Projects",
+      "clients": "Satisfied Clients",
+      "satisfaction": "Client Satisfaction"
+    }
+  },
+  "skills": {
+    "title": "My Skills",
+    "subtitle": "Technologies and tools I master to create complete solutions",
+    "description": "My skills are the result of years of study and practice, combining theory and experience to create efficient and innovative solutions.",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Database",
+      "design": "Design", 
+      "tools": "Tools",
+      "cloud": "Cloud",
+      "mobile": "Mobile",
+      "3d": "3D & Modeling"
+    }
+  },
+  "services": {
+    "title": "My Services",
+    "subtitle": "Customized professional solutions to bring your ideas to life!",
+    "items": {
+      "web": {
+        "title": "Strategic Web Development",
+        "description": "Specialist in creating high-impact web experiences. I develop conversion-optimized Landing Pages, Corporate Websites with strategic narratives, robust E-commerce platforms, and professional Blogs. I guarantee exclusive design, total responsiveness, and SEO optimization for maximum visibility."
+      },
+      "design": {
+        "title": "Strategic Design & Branding",
+        "description": "Specialized in creating visual identities that establish authority in the market. I develop complete branding systems, including distinctive logos, consistent visual communication, and strategic advertising materials that consolidate your brand's positioning."
+      },
+      "documentation": {
+        "title": "Specialized Corporate Documentation",
+        "description": "Specialist in transforming concepts into high-standard executive documentation. I produce corporate presentations, strategic business documents, advanced analytical spreadsheets, executive resumes, and academic documents with rigorous formatting standards."
+      },
+      "modeling": {
+        "title": "3D Modeling & Architectural Visualization",
+        "description": "Specialist in creating high-precision 3D content. I develop complex three-dimensional models, hyper-realistic renderings, technical animations, and optimized assets for augmented and virtual reality. Projects executed with precision for 3D printing and professional visualization."
+      },
+      "support": {
+        "title": "Specialized Consulting & Technical Support",
+        "description": "I offer comprehensive technical solutions for IT infrastructure: system optimization, advanced data recovery, preventive and corrective maintenance. Personalized remote or on-site service, ensuring maximum operational efficiency."
+      },
+      "video": {
+        "title": "Audiovisual Production & Motion Design",
+        "description": "Specialist in corporate audiovisual production. I execute professional editing, advanced post-production, corporate motion graphics, and technical animations using the professional Adobe suite. Productions optimized for multiple platforms: social media, digital marketing, corporate presentations, and dynamic branding."
+      }
+    },
+    "downloadButton": "Download the Complete Service Catalog",
+    "downloadDescription": "Discover all the details and prices in my catalog!",
+    "learnMore": "Learn more",
+    "whatsappButton": "Talk via WhatsApp",
+    "whatsappText": "Let's talk!",
+    "ariaLabel": "Services Section",
+    "customService": {
+      "title": "Need a custom service?",
+      "description": "Contact me to discuss your needs and develop a tailor-made solution for your project.",
+      "cta": "Request Quote"
+    }
+  },
+  "portfolio": {
+    "title": "My Portfolio",
+    "subtitle": "Projects I've developed with passion and dedication",
+    "categories": {
+      "all": "All",
+      "web": "Web",
+      "design": "Design",
+      "motion": "Motion",
+      "modelagem": "3D Modeling",
+      "mobile": "Mobile"
+    },
+    "projectLabels": {
+      "contracted": "Contracted",
+      "personal": "Personal",
+      "viewProject": "View Project",
+      "prevProject": "Previous project",
+      "nextProject": "Next project",
+      "seeMore": "See more",
+      "seeLess": "See less",
+      "restrictedProject": "Restricted Project",
+      "notPubliclyAvailable": "This project is not available for public viewing."
+    },
+    "projectModal": {
+      "personalProject": "Personal Project",
+      "commercialProject": "Commercial Project",
+      "aboutProject": "About the Project",
+      "technologiesUsed": "Technologies Used",
+      "challengesFaced": "Challenges Faced",
+      "resultsAchieved": "Results Achieved",
+      "clientTestimonial": "Client Testimonial",
+      "completion": "Completion",
+      "team": "Team",
+      "duration": "Duration",
+      "technologies": "Technologies",
+      "people": "people",
+      "techs": "techs",
+      "viewCodeGithub": "View code on GitHub",
+      "viewLiveProject": "View live project",
+      "code": "Code",
+      "demo": "Demo"
+    },
+    "viewModes": {
+      "grid": "Grid",
+      "carousel": "Carousel"
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Ready to transform your idea into reality? Let's talk!",
+    "projectTitle": "Contact for Projects",
+    "availableForProjects": "Available for projects",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Error sending message. Please try again.",
+      "title": "Get in Touch",
+      "subtitle": "Ready to transform your idea into reality? Let's talk!",
+      "name_placeholder": "Enter your name",
+      "email_placeholder": "Enter your email",
+      "subject_placeholder": "Enter the subject",
+      "message_placeholder": "Enter your message",
+      "privacy_notice": "By sending this message, you agree to our privacy policy."
+    }
+  },
+  "footer": {
+    "tagline": "<Jeferson Reis/>",
+    "description": "Full Stack Developer passionate about creating innovative solutions and unique digital experiences.",
+    "emailLabel": "Email",
+    "email": "jefersonreisalmeida8356@gmail.com",
+    "quickLinks": "Quick Links",
+    "menu": {
+      "home": "Home",
+      "about": "About",
+      "services": "Services",
+      "portfolio": "Portfolio",
+      "contact": "Contact"
+    },
+    "connectWithMe": "Connect with me",
+    "social": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "instagram": "Instagram"
+    },
+    "rights": "All rights reserved.",
+    "allRightsReserved": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: June 2024",
+    "closeModal": "Close privacy policy modal",
+    "close": "Close",
+    "sections": {
+      "introduction": {
+        "title": "Introduction",
+        "content": "This Privacy Policy describes how your personal information is collected, used, and shared when you visit or interact with jefersonreis.dev website."
+      },
+      "informationCollection": {
+        "title": "Information We Collect",
+        "content": "When you visit the site, we automatically collect certain information about your device, including:",
+        "items": {
+          "contact": "Contact information: name, email, message (when you use the contact form)",
+          "usage": "Usage information: pages visited, time spent on site, links clicked",
+          "cookies": "Cookies and similar technologies: to enhance your browsing experience"
+        }
+      },
+      "dataUsage": {
+        "title": "How We Use Your Information",
+        "content": "We use the information we collect to:",
+        "items": {
+          "communication": "Communicate with you when requested through the contact form",
+          "improvement": "Improve and optimize my website and services",
+          "analytics": "Analyze how visitors navigate and interact with the site"
+        }
+      },
+      "dataSharing": {
+        "title": "Data Sharing",
+        "content": "We do not sell, trade, or otherwise transfer your personal information to third parties except trusted service providers who assist us in operating our website and delivering services, provided they agree to keep this information confidential."
+      },
+      "dataSecurity": {
+        "title": "Data Security",
+        "content": "We implement appropriate security measures to protect your personal information. However, please remember that no method of transmission over the internet or electronic storage is 100% secure."
+      },
+      "userRights": {
+        "title": "Your Rights",
+        "content": "You have the following rights regarding your personal data:",
+        "items": {
+          "access": "Right to access the personal data I hold about you",
+          "rectification": "Right to rectify or update your personal data",
+          "deletion": "Right to request deletion of your personal data",
+          "objection": "Right to object to processing of your personal data"
+        }
+      },
+      "contact": {
+        "title": "Contact",
+        "content": "For any questions regarding this Privacy Policy, please contact me via email: jefersonreisalmeida8356@gmail.com"
+      }
+    }
+  }
+}

@@ -1,13 +1,4 @@
-interface SkillItem {
-  name: string
-  icon: string
-  category: string
-  description?: string
-}
-
-// Nota: Todos os ícones já estão configurados corretamente com caminhos que funcionam com o componente Image do Next.js
-// Ícones locais usam o formato "/assets/images/...", que o Next.js lida corretamente
-// Ícones externos são de domínios que já estão configurados no next.config.ts
+import type { SkillItem } from '@/types'
 
 export const skills: SkillItem[] = [
   {

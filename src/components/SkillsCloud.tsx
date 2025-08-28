@@ -17,7 +17,7 @@ import {
  * Renderiza apenas o grid de cards, sem seção ou headers
  */
 const SkillsCloud: React.FC = () => {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('main')
   const skillsIcons = {
     frontend: Code,
     backend: Server,

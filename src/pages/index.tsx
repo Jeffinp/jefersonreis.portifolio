@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import SEOHead from '@/components/SEOHead'
 import StructuredData from '@/components/StructuredData'
 import LoadingSkeleton from '@/components/LoadingSkeleton'
-import { useViewportLazyLoad } from '@/hooks/useViewportLazyLoad'
+import { useViewportLazyLoad } from '@/hooks/ui/useViewportLazyLoad'
 import Hero from '@/containers/Hero'
 import About from '@/containers/About'
 
@@ -132,7 +132,18 @@ export default function Home() {
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(locale, [
+        'common',
+        'main',
+        'sections/header',
+        'sections/hero',
+        'sections/testimonials',
+        'sections/timeline',
+        'projects/web-projects',
+        'projects/mobile-projects',
+        'projects/design-projects',
+        'projects/3d-projects',
+      ])),
     },
   }
 }

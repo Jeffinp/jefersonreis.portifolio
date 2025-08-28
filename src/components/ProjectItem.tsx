@@ -38,7 +38,25 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 }) => {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false)
   const [isTechnologiesExpanded, setIsTechnologiesExpanded] = useState(false)
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('main')
+  
+  // Helper para buscar traduções de projetos de diferentes namespaces
+  const { t: tMobile } = useTranslation('projects/mobile-projects')
+  const { t: tWeb } = useTranslation('projects/web-projects') 
+  const { t: tDesign } = useTranslation('projects/design-projects')
+  const { t: t3D } = useTranslation('projects/3d-projects')
+  
+  const getProjectTranslation = (key: string) => {
+    // Tenta buscar a tradução nos diferentes namespaces
+    try {
+      return tMobile(key) !== key ? tMobile(key) :
+             tWeb(key) !== key ? tWeb(key) :
+             tDesign(key) !== key ? tDesign(key) :
+             t3D(key) !== key ? t3D(key) : key
+    } catch {
+      return key
+    }
+  }
 
   const {
     category,
@@ -57,7 +75,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
         <div className="xs:h-44 relative h-40 overflow-hidden sm:h-48 md:h-52 lg:h-56 xl:h-60">
           <Image
             src={image.src}
-            alt={image.alt || t(titleKey)}
+            alt={image.alt || getProjectTranslation(titleKey)}
             className="h-full w-full transform object-cover transition-transform duration-500 hover:scale-105"
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
@@ -81,14 +99,14 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 
         <div className="p-3 sm:p-4 md:p-5 lg:p-6">
           <h3 className="mb-1 text-base font-bold text-gray-900 sm:mb-2 sm:text-lg md:text-xl dark:text-white">
-            {t(`${titleKey}`)}
+            {getProjectTranslation(titleKey)}
           </h3>
           <p
             className={`mb-2 text-xs text-gray-600 sm:mb-3 sm:text-sm md:mb-4 dark:text-gray-300 ${
               isDescriptionVisible ? '' : 'line-clamp-2 sm:line-clamp-3'
             }`}
           >
-            {t(`${descriptionKey}`)}
+            {getProjectTranslation(descriptionKey)}
           </p>
           <button
             onClick={() => setIsDescriptionVisible(!isDescriptionVisible)}

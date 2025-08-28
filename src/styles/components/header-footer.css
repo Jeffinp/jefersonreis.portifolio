@@ -1,0 +1,56 @@
+/* Header and Footer component styles */
+
+/* Header gradient text fixes */
+.light header .bg-gradient-to-r.from-blue-600.to-purple-600.bg-clip-text.text-transparent {
+  background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+.light header span[class*='bg-gradient-to-r'] {
+  background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+/* Footer styles */
+.light footer {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+.dark footer {
+  background: #0f172a !important;
+  background-image: none !important;
+}
+
+/* Footer logo and gradient text */
+.light footer .bg-gradient-to-r.from-blue-600.to-purple-600.bg-clip-text.text-transparent {
+  background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+.light footer span[class*='bg-gradient-to-r'] {
+  background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+/* Footer cursor animation */
+.light footer .bg-gradient-to-r.from-blue-500.to-purple-500 {
+  background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
+}
+
+/* Footer text colors */
+.light footer .text-gray-600 {
+  color: #4b5563 !important;
+}
+
+.light footer .text-gray-500 {
+  color: #6b7280 !important;
+}

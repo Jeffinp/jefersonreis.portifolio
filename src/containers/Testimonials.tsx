@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react'
-import { motion } from 'framer-motion'
 import { useTranslation } from 'next-i18next'
 import { debounce } from '@/utils'
 import SectionWrapper from '@/components/SectionWrapper'
 import SectionHeader from '@/components/SectionHeader'
-import AnimatedSection from '@/components/AnimatedSection'
 
 interface RatingStarsProps {
   rating: number
@@ -312,7 +310,7 @@ const Testimonials: React.FC = () => {
     autoplayDelay,
   ])
 
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('sections/testimonials')
 
   return (
     <SectionWrapper

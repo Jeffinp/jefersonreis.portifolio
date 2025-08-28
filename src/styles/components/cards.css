@@ -1,0 +1,57 @@
+/* Card component styles */
+
+/* Card backgrounds in light mode */
+.light .bg-white\/90,
+.light [class*='bg-white/'],
+.light .bg-slate-800\/90,
+.light [class*='bg-slate-800/'],
+.light .bg-gray-800\/90,
+.light [class*='bg-gray-800/'] {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Card text colors in light mode */
+.light .text-gray-800,
+.light .text-gray-700,
+.light .text-gray-600 {
+  color: #374151 !important;
+}
+
+/* Remove gradients from cards in light mode */
+.light [class*='bg-gradient-'] {
+  background-image: none !important;
+  background-color: #ffffff !important;
+}
+
+/* Rounded cards */
+.light .rounded-xl,
+.light .rounded-2xl,
+.light .rounded-lg {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Force dark backgrounds to white in light mode */
+.light [class*='dark:bg-slate-'],
+.light [class*='dark:bg-gray-'] {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Card content text visibility */
+.light section h1,
+.light section h2,
+.light section h3,
+.light section h4,
+.light section h5,
+.light section h6,
+.light section p,
+.light .rounded-xl h1,
+.light .rounded-xl h2,
+.light .rounded-xl h3,
+.light .rounded-xl h4,
+.light .rounded-xl h5,
+.light .rounded-xl h6,
+.light .rounded-xl p {
+  color: #374151 !important;
+}

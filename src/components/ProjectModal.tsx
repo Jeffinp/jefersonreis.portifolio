@@ -42,7 +42,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('main')
 
   if (!project) return null
 

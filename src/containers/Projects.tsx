@@ -13,7 +13,7 @@ import { projects } from '@/data/projectsData'
 import { useTranslation } from 'next-i18next'
 import SectionBackground from '@/components/SectionBackground'
 import ProjectModal from '@/components/ProjectModal'
-import { useAnalytics } from '@/hooks/useAnalytics'
+import { useAnalytics } from '@/hooks/data/useAnalytics'
 
 interface Category {
   value: string
@@ -65,7 +65,25 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 }) => {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false)
   const [isTechnologiesExpanded, setIsTechnologiesExpanded] = useState(false)
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('main')
+  
+  // Helper para buscar traduções de projetos de diferentes namespaces
+  const { t: tMobile } = useTranslation('projects/mobile-projects')
+  const { t: tWeb } = useTranslation('projects/web-projects') 
+  const { t: tDesign } = useTranslation('projects/design-projects')
+  const { t: t3D } = useTranslation('projects/3d-projects')
+  
+  const getProjectTranslation = (key: string) => {
+    // Tenta buscar a tradução nos diferentes namespaces
+    try {
+      return tMobile(key) !== key ? tMobile(key) :
+             tWeb(key) !== key ? tWeb(key) :
+             tDesign(key) !== key ? tDesign(key) :
+             t3D(key) !== key ? t3D(key) : key
+    } catch {
+      return key
+    }
+  }
 
   const { category, image, titleKey, descriptionKey, link, tags } = project
 
@@ -75,7 +93,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
         <div className="xs:h-44 relative h-40 overflow-hidden sm:h-48 md:h-52 lg:h-56 xl:h-60">
           <Image
             src={image.src}
-            alt={image.alt || t(`${titleKey}`)}
+            alt={image.alt || getProjectTranslation(titleKey)}
             className="h-full w-full transform object-cover transition-transform duration-500 hover:scale-105"
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
@@ -99,14 +117,14 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 
         <div className="p-3 sm:p-4 md:p-5 lg:p-6">
           <h3 className="mb-1 text-base font-bold text-gray-900 sm:mb-2 sm:text-lg md:text-xl dark:text-white">
-            {t(titleKey)}
+            {getProjectTranslation(titleKey)}
           </h3>
           <p
             className={`mb-2 text-xs text-gray-600 sm:mb-3 sm:text-sm md:mb-4 dark:text-gray-300 ${
               isDescriptionVisible ? '' : 'line-clamp-2 sm:line-clamp-3'
             }`}
           >
-            {t(descriptionKey)}
+            {getProjectTranslation(descriptionKey)}
           </p>
           <button
             onClick={() => setIsDescriptionVisible(!isDescriptionVisible)}
@@ -204,12 +222,14 @@ interface ViewToggleProps {
   viewMode: 'carousel' | 'grid'
   onToggle: () => void
   isMobile: boolean
+  t: (key: string) => string
 }
 
 const ViewToggle: React.FC<ViewToggleProps> = ({
   viewMode,
   onToggle,
   isMobile,
+  t,
 }) => {
   return (
     <div className="mb-4 flex justify-center">
@@ -217,18 +237,20 @@ const ViewToggle: React.FC<ViewToggleProps> = ({
         onClick={onToggle}
         className="flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors duration-300 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
         title={
-          viewMode === 'carousel' ? 'Mudar para grade' : 'Mudar para carousel'
+          viewMode === 'carousel' 
+            ? `Mudar para ${t('portfolio.viewModes.grid').toLowerCase()}`
+            : `Mudar para ${t('portfolio.viewModes.carousel').toLowerCase()}`
         }
       >
         {viewMode === 'carousel' ? (
           <>
             <Grid3X3 className="h-4 w-4" />
-            {!isMobile && 'Grade'}
+            {!isMobile && t('portfolio.viewModes.grid')}
           </>
         ) : (
           <>
             <Minus className="h-4 w-4" />
-            {!isMobile && 'Carousel'}
+            {!isMobile && t('portfolio.viewModes.carousel')}
           </>
         )}
       </button>
@@ -241,7 +263,7 @@ const CategoryNav: React.FC<CategoryNavProps> = ({
   activeFilter,
   setActiveFilter,
 }) => {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('main')
   return (
     <div className="xs:gap-1.5 mb-6 flex flex-wrap justify-center gap-1 sm:mb-8 sm:gap-2 md:mb-10 md:gap-3 lg:mb-12 lg:gap-4">
       {categories.map((cat) => (
@@ -268,20 +290,39 @@ const Projects: React.FC = () => {
   const [viewMode, setViewMode] = useState<'carousel' | 'grid'>('carousel')
   const [selectedProject, setSelectedProject] = useState<any>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('main')
   const { trackProjectView, trackCaseStudyOpen } = useAnalytics()
+  
+  // Hooks para buscar traduções de projetos de diferentes namespaces
+  const { t: tMobile } = useTranslation('projects/mobile-projects')
+  const { t: tWeb } = useTranslation('projects/web-projects') 
+  const { t: tDesign } = useTranslation('projects/design-projects')
+  const { t: t3D } = useTranslation('projects/3d-projects')
 
   const trackRef = useRef<HTMLDivElement>(null)
   const touchStartXRef = useRef<number>(0)
+  
+  // Helper para buscar traduções de projetos de diferentes namespaces
+  const getProjectTranslation = useCallback((key: string) => {
+    // Tenta buscar a tradução nos diferentes namespaces
+    try {
+      return tMobile(key) !== key ? tMobile(key) :
+             tWeb(key) !== key ? tWeb(key) :
+             tDesign(key) !== key ? tDesign(key) :
+             t3D(key) !== key ? t3D(key) : key
+    } catch {
+      return key
+    }
+  }, [tMobile, tWeb, tDesign, t3D])
 
   // Categorias atualizadas (removidas 'ia' e 'game' conforme solicitado)
   const categories: Category[] = [
-    { value: 'all', label: 'Todos' },
-    { value: 'web', label: 'Web' },
-    { value: 'mobile', label: 'Mobile' },
-    { value: 'design', label: 'Design' },
-    { value: 'motion', label: 'Motion' },
-    { value: 'modelagem', label: 'Modelagem 3D' },
+    { value: 'all', label: t('portfolio.categories.all') },
+    { value: 'web', label: t('portfolio.categories.web') },
+    { value: 'mobile', label: t('portfolio.categories.mobile') },
+    { value: 'design', label: t('portfolio.categories.design') },
+    { value: 'motion', label: t('portfolio.categories.motion') },
+    { value: 'modelagem', label: t('portfolio.categories.modelagem') },
   ]
 
   // Filtrar projetos baseado na categoria selecionada
@@ -356,16 +397,16 @@ const Projects: React.FC = () => {
   const handleOpenModal = useCallback(
     (project: any) => {
       // Track case study opening
-      trackCaseStudyOpen(project.id, t(project.titleKey))
+      trackCaseStudyOpen(project.id, getProjectTranslation(project.titleKey))
 
       // Transform project data to match ProjectModal interface
       const transformedProject = {
         id: project.id,
-        title: t(project.titleKey),
-        description: t(project.descriptionKey),
+        title: getProjectTranslation(project.titleKey),
+        description: getProjectTranslation(project.descriptionKey),
         fullDescription: project.fullDescriptionKey
-          ? t(project.fullDescriptionKey)
-          : t(project.descriptionKey), // fallback to description if no fullDescription
+          ? getProjectTranslation(project.fullDescriptionKey)
+          : getProjectTranslation(project.descriptionKey), // fallback to description if no fullDescription
         image: project.image.src,
         technologies: project.technologies || [],
         category: project.category,
@@ -380,12 +421,12 @@ const Projects: React.FC = () => {
         results: project.results,
         testimonial: project.testimonialKey
           ? {
-              text: t(`portfolio.testimonials.${project.testimonialKey}.text`),
-              author: t(
+              text: getProjectTranslation(`portfolio.testimonials.${project.testimonialKey}.text`),
+              author: getProjectTranslation(
                 `portfolio.testimonials.${project.testimonialKey}.author`,
               ),
-              role: t(`portfolio.testimonials.${project.testimonialKey}.role`),
-              company: t(
+              role: getProjectTranslation(`portfolio.testimonials.${project.testimonialKey}.role`),
+              company: getProjectTranslation(
                 `portfolio.testimonials.${project.testimonialKey}.company`,
               ),
             }
@@ -395,7 +436,7 @@ const Projects: React.FC = () => {
       setSelectedProject(transformedProject)
       setIsModalOpen(true)
     },
-    [t, trackCaseStudyOpen],
+    [getProjectTranslation, trackCaseStudyOpen],
   )
 
   const handleCloseModal = useCallback(() => {
@@ -473,6 +514,7 @@ const Projects: React.FC = () => {
           viewMode={viewMode}
           onToggle={toggleViewMode}
           isMobile={isMobile}
+          t={t}
         />
 
         {viewMode === 'carousel' ? (

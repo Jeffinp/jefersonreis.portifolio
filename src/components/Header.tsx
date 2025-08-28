@@ -148,7 +148,7 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
   const [activeSection, setActiveSection] = useState<string>('#home')
   const [scrollProgress, setScrollProgress] = useState<number>(0)
   const router = useRouter()
-  const { t, i18n } = useTranslation('common')
+  const { t, i18n } = useTranslation('sections/header')
   const [language, setLanguage] = useState<string>(router.locale || 'pt')
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
@@ -358,7 +358,7 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
                 language="pt"
                 currentLanguage={language}
                 onClick={() => changeLanguage('pt')}
-                icon="/assets/images/icon/brazil.svg"
+                icon="/assets/images/icons/brazil.svg"
                 label={t('header.portuguese')}
                 ariaLabel={t('header.portuguese_language')}
               />
@@ -366,7 +366,7 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
                 language="en"
                 currentLanguage={language}
                 onClick={() => changeLanguage('en')}
-                icon="/assets/images/icon/eua.svg"
+                icon="/assets/images/icons/eua.svg"
                 label={t('header.english')}
                 ariaLabel={t('header.english_language')}
               />
@@ -460,7 +460,7 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
                     language="pt"
                     currentLanguage={language}
                     onClick={() => changeLanguage('pt')}
-                    icon="/assets/images/icon/brazil.svg"
+                    icon="/assets/images/icons/brazil.svg"
                     label={t('header.portuguese')}
                     ariaLabel={t('header.portuguese_language')}
                   />
@@ -468,7 +468,7 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
                     language="en"
                     currentLanguage={language}
                     onClick={() => changeLanguage('en')}
-                    icon="/assets/images/icon/eua.svg"
+                    icon="/assets/images/icons/eua.svg"
                     label={t('header.english')}
                     ariaLabel={t('header.english_language')}
                   />

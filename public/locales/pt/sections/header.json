@@ -1,0 +1,22 @@
+{
+  "menu": {
+    "home": "Início",
+    "about": "Sobre",
+    "services": "Serviços",
+    "skills": "Habilidades",
+    "portfolio": "Portfólio",
+    "timeline": "Jornada",
+    "contact": "Contato"
+  },
+  "header": {
+    "logo_aria": "Jeferson Reis - Desenvolvedor Full Stack",
+    "portuguese": "Português",
+    "english": "Inglês",
+    "portuguese_language": "Mudar para o idioma português",
+    "english_language": "Mudar para o idioma inglês",
+    "toggle_dark_mode": "Ativar modo escuro",
+    "toggle_light_mode": "Ativar modo claro",
+    "open_menu": "Abrir menu de navegação",
+    "close_menu": "Fechar menu de navegação"
+  }
+}

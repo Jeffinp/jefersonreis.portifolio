@@ -1,0 +1,40 @@
+/* Navigation component styles */
+
+/* Mobile menu background */
+.light header [ref='mobileMenuRef'],
+.light .fixed.inset-y-0.right-0.z-50 {
+  background-color: #ffffff !important;
+  border-color: #e5e7eb !important;
+}
+
+.dark header [ref='mobileMenuRef'],
+.dark .fixed.inset-y-0.right-0.z-50 {
+  background-color: #0f172a !important;
+  border-color: #374151 !important;
+}
+
+/* Mobile menu text visibility */
+.light .fixed.inset-y-0.right-0.z-50 .text-gray-700 {
+  color: #374151 !important;
+}
+
+.light .fixed.inset-y-0.right-0.z-50 .text-gray-300 {
+  color: #6b7280 !important;
+}
+
+/* Mobile menu gradient text */
+.light .fixed.inset-y-0.right-0.z-50 span[class*='bg-gradient-to-r'] {
+  background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+/* Text contrast improvements */
+.light .text-gray-300 {
+  color: #4b5563 !important;
+}
+
+.light .text-gray-200 {
+  color: #374151 !important;
+}

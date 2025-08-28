@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import {
   Linkedin,
@@ -8,6 +8,7 @@ import {
   ExternalLink,
 } from 'lucide-react'
 import { FaDiscord } from 'react-icons/fa'
+import PrivacyPolicyModal from './PrivacyPolicyModal'
 import { motion, useAnimation, useInView } from 'framer-motion'
 import SectionBackground from './SectionBackground'
 import { useAppTranslation } from '../i18n'
@@ -74,6 +75,8 @@ interface FooterLink {
 
 const Footer: React.FC = () => {
   const { t } = useAppTranslation()
+  const [isPrivacyPolicyModalOpen, setIsPrivacyPolicyModalOpen] =
+    useState(false)
 
   const socialLinks: SocialLink[] = [
     {
@@ -133,11 +136,11 @@ const Footer: React.FC = () => {
   ]
 
   const quickLinks: FooterLink[] = [
-    { label: t('menu.home'), href: '#home' },
-    { label: t('menu.about'), href: '#about' },
-    { label: t('menu.services'), href: '#services' },
-    { label: t('menu.portfolio'), href: '#portfolio' },
-    { label: t('menu.contact'), href: '#contact' },
+    { label: t('footer.menu.home'), href: '#home' },
+    { label: t('footer.menu.about'), href: '#about' },
+    { label: t('footer.menu.services'), href: '#services' },
+    { label: t('footer.menu.portfolio'), href: '#portfolio' },
+    { label: t('footer.menu.contact'), href: '#contact' },
   ]
 
   return (
@@ -175,7 +178,7 @@ const Footer: React.FC = () => {
                 whileTap={{ scale: 0.97 }}
               >
                 <Image
-                  src="/assets/images/icon/mail-heart-svgrepo-com.svg"
+                  src="/assets/images/icons/mail-heart-svgrepo-com.svg"
                   alt="Email icon"
                   width={16}
                   height={16}
@@ -265,14 +268,14 @@ const Footer: React.FC = () => {
               {t('footer.allRightsReserved')}
             </motion.p>
 
-            <motion.a
-              href="#"
+            <motion.button
+              onClick={() => setIsPrivacyPolicyModalOpen(true)}
               className="flex items-center text-sm text-gray-500 transition-colors duration-300 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
               whileHover={{ scale: 1.05 }}
             >
               <ExternalLink className="mr-1.5 h-3.5 w-3.5" />
               {t('footer.privacyPolicy')}
-            </motion.a>
+            </motion.button>
           </div>
 
           <motion.div
@@ -283,6 +286,12 @@ const Footer: React.FC = () => {
           />
         </AnimatedSection>
       </div>
+
+      {/* Modal de Política de Privacidade */}
+      <PrivacyPolicyModal
+        isOpen={isPrivacyPolicyModalOpen}
+        onClose={() => setIsPrivacyPolicyModalOpen(false)}
+      />
     </footer>
   )
 }

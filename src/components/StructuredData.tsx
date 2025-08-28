@@ -18,7 +18,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ lang = 'pt' }) => {
         ? 'Full-Stack Developer, Graphic Designer and IT Technician specialized in React, Node.js, UX/UI design and process automation'
         : 'Desenvolvedor Full-Stack, Designer Gráfico e Técnico em Informática especializado em React, Node.js, design UX/UI e automação de processos',
     url: siteUrl,
-    image: `${siteUrl}/assets/images/Linkedin-foto.webp`,
+    image: `${siteUrl}/assets/images/profile/profile-linkedin.webp`,
     sameAs: [
       `https://${process.env.NEXT_PUBLIC_LINKEDIN_URL}`,
       process.env.NEXT_PUBLIC_GITHUB_URL || 'https://github.com/jeffinp',
@@ -104,7 +104,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ lang = 'pt' }) => {
         ? 'Professional web development, graphic design and IT services by Jeferson Reis'
         : 'Serviços profissionais de desenvolvimento web, design gráfico e informática por Jeferson Reis',
     url: siteUrl,
-    image: `${siteUrl}/assets/images/Linkedin-foto.webp`,
+    image: `${siteUrl}/assets/images/profile/profile-linkedin.webp`,
     provider: {
       '@type': 'Person',
       name: 'Jeferson Reis',
@@ -130,8 +130,8 @@ const StructuredData: React.FC<StructuredDataProps> = ({ lang = 'pt' }) => {
     '@id': `${siteUrl}/#organization`,
     name: 'Jeferson Reis - Portfolio',
     url: siteUrl,
-    logo: `${siteUrl}/assets/images/icon/favicon-96x96.png`,
-    image: `${siteUrl}/assets/images/Linkedin-foto.webp`,
+    logo: `${siteUrl}/assets/images/icons/favicon-96x96.png`,
+    image: `${siteUrl}/assets/images/profile/profile-linkedin.webp`,
     description:
       lang === 'en'
         ? 'Portfolio of Jeferson Reis, Full-Stack Developer, Graphic Designer and IT Technician'

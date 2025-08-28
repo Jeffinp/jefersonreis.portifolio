@@ -1,8 +1,8 @@
 'use client'
 
 import React, { createContext, useContext } from 'react'
-import { useTheme as useThemeHook } from '@/hooks/useTheme'
-import type { Theme } from '@/hooks/useTheme'
+import { useTheme as useThemeHook } from '@/hooks/theme/useTheme'
+import type { Theme } from '@/hooks/theme/useTheme'
 
 interface ThemeContextType {
   theme: Theme

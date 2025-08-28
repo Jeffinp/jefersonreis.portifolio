@@ -2,9 +2,13 @@ import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
 import { useTranslation } from 'next-i18next'
-import { useContactForm } from '@/hooks/useContactForm'
+import { useContactForm } from '@/hooks/data/useContactForm'
 import EnhancedButton from './EnhancedButton'
-import { fadeInUp, staggerContainer, staggerItem } from '@/hooks/useAnimations'
+import {
+  fadeInUp,
+  staggerContainer,
+  staggerItem,
+} from '@/hooks/ui/useAnimations'
 
 interface InputFieldProps {
   id: string
@@ -108,7 +112,7 @@ const TextAreaField: React.FC<TextAreaFieldProps> = ({
 }
 
 const ContactForm: React.FC = () => {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('main')
   const { formData, formState, handleInputChange, handleSubmit, resetState } =
     useContactForm()
 

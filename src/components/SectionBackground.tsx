@@ -12,7 +12,6 @@ interface SectionBackgroundProps {
     | 'contact'
     | 'timeline'
     | 'testimonials'
-    | 'expertise'
   className?: string
   intensity?: 'none' | 'subtle' | 'light' | 'medium'
 }
@@ -31,7 +30,6 @@ const SectionBackground: React.FC<SectionBackgroundProps> = ({
   const decorativeElements = {
     hero: { primary: '#3b82f6', secondary: '#6366f1', accent: '#8b5cf6' },
     about: { primary: '#6366f1', secondary: '#8b5cf6', accent: '#a855f7' },
-    expertise: { primary: '#8b5cf6', secondary: '#a855f7', accent: '#c084fc' },
     skills: { primary: '#a855f7', secondary: '#c084fc', accent: '#d946ef' },
     projects: { primary: '#c084fc', secondary: '#d946ef', accent: '#e879f9' },
     services: { primary: '#d946ef', secondary: '#e879f9', accent: '#f0abfc' },

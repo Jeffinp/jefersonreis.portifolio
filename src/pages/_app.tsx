@@ -8,18 +8,24 @@ import Footer from '@/components/Footer'
 import GlobalBackground from '@/components/GlobalBackground'
 
 // Dynamic imports for components that don't need SSR
-const ScrollToTopBtn = dynamic(() => import('@/components/ScrollToTopBtn'), {
-  ssr: false,
-})
-const WhatsAppFloatBtn = dynamic(
-  () => import('@/components/WhatsAppFloatBtn'),
+const ScrollToTopButton = dynamic(
+  () => import('@/components/ScrollToTopButton'),
   {
     ssr: false,
   },
 )
-const DiscordFloatBtn = dynamic(() => import('@/components/DiscordFloatBtn'), {
-  ssr: false,
-})
+const WhatsAppFloatingButton = dynamic(
+  () => import('@/components/WhatsAppFloatingButton'),
+  {
+    ssr: false,
+  },
+)
+const DiscordFloatingButton = dynamic(
+  () => import('@/components/DiscordFloatingButton'),
+  {
+    ssr: false,
+  },
+)
 const Analytics = dynamic(
   () =>
     import('@vercel/analytics/react').then((mod) => ({
@@ -53,9 +59,9 @@ function App({ Component, pageProps }: AppProps) {
         <Footer />
 
         {/* Client-side only components */}
-        <ScrollToTopBtn />
-        <WhatsAppFloatBtn />
-        <DiscordFloatBtn />
+        <ScrollToTopButton />
+        <WhatsAppFloatingButton />
+        <DiscordFloatingButton />
 
         {/* Analytics and Performance Monitoring */}
         <Analytics />

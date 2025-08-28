@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { Sun, Moon, Monitor } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from '@/contexts/ThemeContext'
-import { useAnalytics } from '@/hooks/useAnalytics'
+import { useAnalytics } from '@/hooks/data/useAnalytics'
 
 interface ThemeToggleProps {
   className?: string

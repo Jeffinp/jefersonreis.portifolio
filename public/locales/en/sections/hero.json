@@ -1,0 +1,16 @@
+{
+  "hero": {
+    "title": "Jeferson Reis Almeida",
+    "subtitle": "full-stack developer | graphic designer | IT technician",
+    "transforming": "Transforming Ideas into Reality",
+    "profileAlt": "Photo of Jeferson Reis, full-stack web developer",
+    "buttons": {
+      "viewProjects": "View My Projects",
+      "contact": "Get in Touch",
+      "contact_tooltip": "Let's talk about your next project",
+      "projects_tooltip": "Explore my work and experience"
+    },
+    "scrollDown": "Scroll down",
+    "scrollToAbout": "Scroll to About section"
+  }
+}

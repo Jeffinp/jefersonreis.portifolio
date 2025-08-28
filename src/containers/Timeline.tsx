@@ -242,7 +242,7 @@ const Timeline: React.FC = () => {
   // Eventos a serem exibidos (todos se expandido, apenas alguns se recolhido)
   const visibleEvents = expanded ? timelineEvents : timelineEvents.slice(0, 3)
 
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('sections/timeline')
 
   return (
     <SectionWrapper

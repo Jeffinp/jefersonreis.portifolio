@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next'
 
 // Hook para obter as traduções
 export const useAppTranslation = () => {
-  return useTranslation('common')
+  return useTranslation('main')
 }
 
 // Função para obter a URL com o locale

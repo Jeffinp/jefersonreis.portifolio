@@ -1,0 +1,22 @@
+{
+  "portfolio": {
+    "projects": {
+      "art2DAlastor": {
+        "title": "2D Art - Alastor",
+        "description": "Traditional character drawing on sketchbook with digital coloring in Photoshop."
+      },
+      "designBrasilPiscinas": {
+        "title": "Brazil Pools Graphic Design",
+        "description": "Complete visual identity for pool company with unique and impactful elements."
+      },
+      "designPizzaInsta": {
+        "title": "Instagram Design - Pizza",
+        "description": "Creative social media posts focused on gastronomy and visual engagement."
+      },
+      "designClickteamLogo": {
+        "title": "ClickTeam Logo",
+        "description": "Modern logo creation with unique vector elements and strong identity."
+      }
+    }
+  }
+}

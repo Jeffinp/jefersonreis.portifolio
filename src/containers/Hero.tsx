@@ -10,7 +10,7 @@ import {
   InteractiveCard,
   AnimatedTooltip,
 } from '@/components/MicroInteractions'
-import { staggerContainer, staggerItem } from '@/hooks/useAnimations'
+import { staggerContainer, staggerItem } from '@/hooks/ui/useAnimations'
 import {
   SiNextdotjs,
   SiAngular,
@@ -58,7 +58,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
         <div className="absolute inset-0 flex transform-gpu items-center justify-center">
           <div className="h-40 w-40 overflow-hidden rounded-full border-4 border-white shadow-xl sm:h-48 sm:w-48 md:h-52 md:w-52 lg:h-60 lg:w-60 2xl:h-72 2xl:w-72 dark:border-gray-700">
             <Image
-              src="/assets/images/Linkedin-foto.webp"
+              src="/assets/images/profile/profile-linkedin.webp"
               alt="Jeferson Reis - Desenvolvedor Full-Stack"
               className="h-full w-full object-cover"
               width={256}
@@ -91,7 +91,7 @@ const Hero: React.FC = () => {
   const [animationsEnabled, setAnimationsEnabled] = useState(false)
   const heroRef = useRef<HTMLElement>(null)
   const controls = useAnimation()
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('sections/hero')
 
   // Habilitar animações somente após o carregamento inicial
   useEffect(() => {

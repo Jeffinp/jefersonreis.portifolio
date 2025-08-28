@@ -1,0 +1,26 @@
+{
+  "portfolio": {
+    "projects": {
+      "assistenteVendasIA": {
+        "title": "AI Sales Assistant - WhatsApp CRM",
+        "description": "Complete CRM system with WhatsApp integration, conversational AI for automated customer service, and lead management for a transport company.",
+        "fullDescription": "I developed a complete CRM system with WhatsApp integration and conversational AI to automate customer service and lead management for a transport company. The backend was built with FastAPI, PostgreSQL 16+ and SQLAlchemy 2.0, with support for asynchronous operations. WhatsApp integration was done via Z-API, allowing automated responses using OpenAI's GPT-4.1. The system processes quotes automatically, qualifies leads and offers a complete dashboard with real-time metrics. The frontend was developed with Next.js 15.4+, TypeScript and React 19, offering a modern and responsive interface. The architecture is scalable, using Docker and Google Cloud Run for the backend and Vercel for the frontend."
+      },
+      "itamir": {
+        "title": "Legal Management SaaS System",
+        "description": "Complete platform for law firm management with modern interface and advanced features.",
+        "fullDescription": "Complete legal management system developed with React 19 and Python, offering full control of processes, clients, deadlines, and finances. Modern interface with Tailwind CSS 4.0 and smooth animations with Framer Motion."
+      },
+      "flyservDrones": {
+        "title": "FlyServ Drones - Corporate Website",
+        "description": "Modern website for drone company focused on conversion and user experience.",
+        "fullDescription": "Corporate website developed with React 19 and TypeScript, presenting drone services attractively. Responsive design with Tailwind CSS 4.0 and smooth animations to highlight company differentials."
+      },
+      "ascendoflex": {
+        "title": "Ascendoflex - Landing Page",
+        "description": "Conversion-optimized landing page with modern and responsive design.",
+        "fullDescription": "Landing page developed with React and TypeScript, focused on high conversion. Responsive design with Styled Components and performance optimizations for better user experience."
+      }
+    }
+  }
+}

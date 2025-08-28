@@ -1,0 +1,60 @@
+{
+  "portfolio": {
+    "projects": {
+      "assistenteVendasIA": {
+        "title": "Assistente de Vendas com IA - CRM com WhatsApp",
+        "description": "Sistema completo de CRM com integração WhatsApp, IA para atendimento automatizado e gestão de leads para empresa de transporte.",
+        "fullDescription": "Desenvolvi um sistema completo de CRM com integração WhatsApp e IA conversacional para automatizar o atendimento e gestão de leads de uma transportadora. O backend foi construído com FastAPI, PostgreSQL 16+ e SQLAlchemy 2.0, com suporte a operações assíncronas. A integração com WhatsApp foi feita via Z-API, permitindo respostas automáticas usando GPT-4.1 da OpenAI. O sistema processa cotações automaticamente, qualifica leads e oferece um dashboard completo com métricas em tempo real. O frontend foi desenvolvido com Next.js 15.4+, TypeScript e React 19, oferecendo uma interface moderna e responsiva. A arquitetura é escalável, usando Docker e Google Cloud Run para o backend e Vercel para o frontend."
+      },
+      "itamir": {
+        "title": "Juristask - Sistema de Gestão Jurídica SaaS",
+        "description": "Desenvolvi o Juristask, um sistema SaaS completo para gestão jurídica, com arquitetura multi-tenant moderna, backend robusto em FastAPI e frontend em React 19 + TypeScript. Solução pronta para produção, altamente personalizável e repleta de recursos avançados para escritórios de advocacia.",
+        "fullDescription": "O Juristask é um sistema de gestão jurídica SaaS desenvolvido com arquitetura multi-tenant, garantindo isolamento total entre clientes (tenant_id). O backend utiliza FastAPI com mais de 40 endpoints REST, autenticação JWT com MFA, PostgreSQL 15 (25+ tabelas) e Alembic para migrações, Redis para cache e sessões, integração com Stripe, RBAC para controle de permissões, módulos completos para clientes, processos, audiências, tarefas, calendário, documentos e financeiro, middleware PCI-compliant, logging estruturado e monitoramento. O frontend foi construído com React 19, TypeScript, Vite, TailwindCSS 4, React Query, mais de 60 componentes reutilizáveis, dashboard em tempo real, notificações toast, validação com Zod e suporte a modo claro/escuro. Entre os diferenciais estão personalização white-label, geração dinâmica de PDFs, OCR, captura de dados via RSS/API, integração com Google Calendar e modelos de petições. O sistema está pronto para produção, com Docker, testes automatizados e documentação completa."
+      },
+      "leve-saude-web": {
+        "title": "Leve Saúde - Teste Web",
+        "description": "Teste para empresa de saúde, com foco em conversão e experiência do usuário.",
+        "fullDescription": "Teste desenvolvido com React 19 e TypeScript, apresentando serviços de saúde de forma atrativa. Design responsivo com Tailwind CSS 4.0 e animações suaves para destacar os diferenciais da empresa."
+      },
+      "sistemaSolar3D": {
+        "title": "Sistema Solar 3D",
+        "description": "Modelagem 3D completa do sistema solar com animações realistas e detalhes astronômicos."
+      },
+      "flyservDrones": {
+        "title": "FlyServ Drones - Site Corporativo",
+        "description": "Website moderno para empresa de drones com foco em conversão e experiência do usuário.",
+        "fullDescription": "Site corporativo desenvolvido com React 19 e TypeScript, apresentando serviços de drones de forma atrativa. Design responsivo com Tailwind CSS 4.0 e animações suaves para destacar os diferenciais da empresa."
+      },
+      "portfolio": {
+        "title": "Portfolio - Site Pessoal",
+        "description": "Site pessoal para apresentação de projetos e habilidades.",
+        "fullDescription": "Portfolio desenvolvido com React e TypeScript, apresentando projetos de forma atrativa. Design responsivo com Tailwind CSS e animações suaves para destacar as habilidades do desenvolvedor."
+      },
+      "ricardodias": {
+        "title": "Ricardo Dias",
+        "description": "website para um cliente, professor de artes",
+        "fullDescription": "Site pessoal desenvolvido com React e TypeScript, apresentando projetos de forma atrativa. Design responsivo com Tailwind CSS e animações suaves para destacar as habilidades do desenvolvedor."
+      },
+      "meushop": {
+        "title": "MeuShop - E-commerce",
+        "description": "E-commerce desenvolvido com React e TypeScript, apresentando produtos de forma atrativa. Design responsivo com Tailwind CSS e animações suaves para destacar as habilidades do desenvolvedor."
+      },
+      "organizadorweb": {
+        "title": "Organizador Web",
+        "description": "Organizador Web desenvolvido com React e TypeScript, apresentando produtos de forma atrativa. Design responsivo com Tailwind CSS e animações suaves para destacar as habilidades do desenvolvedor."
+      },
+      "chatbot": {
+        "title": "Chatbot",
+        "description": "Chatbot desenvolvido com React e TypeScript, apresentando produtos de forma atrativa. Design responsivo com Tailwind CSS e animações suaves para destacar as habilidades do desenvolvedor."
+      },
+      "jogo-plataforma": {
+        "title": "Jogo Plataforma",
+        "description": "Jogo Plataforma desenvolvido com React e TypeScript, apresentando produtos de forma atrativa. Design responsivo com Tailwind CSS e animações suaves para destacar as habilidades do desenvolvedor."
+      },
+      "menu-interativo": {
+        "title": "Menu Interativo",
+        "description": "Menu Interativo desenvolvido com React e TypeScript, apresentando produtos de forma atrativa. Design responsivo com Tailwind CSS e animações suaves para destacar as habilidades do desenvolvedor."
+      }
+    }
+  }
+}

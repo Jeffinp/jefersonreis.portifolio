@@ -16,7 +16,6 @@ interface SectionWrapperProps {
     | 'contact'
     | 'timeline'
     | 'testimonials'
-    | 'expertise'
   isMobile?: boolean
   paddingY?: 'small' | 'medium' | 'large' | 'none'
   intensity?: 'none' | 'subtle' | 'light' | 'medium'

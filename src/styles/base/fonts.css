@@ -1,0 +1,9 @@
+/* Font definitions and optimizations */
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-display: swap;
+  src: url('/assets/fonts/nunito-sans-v15-latin-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}

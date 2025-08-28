@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useMemo, useCallback, useState } from 'react'
-import { Palette, Code, Terminal, Monitor } from 'lucide-react'
 import {
   motion,
   useAnimation,
@@ -160,53 +159,12 @@ const StatCard: React.FC<StatCardProps> = ({
   )
 }
 
-interface ExpertiseItemProps {
-  icon: React.ReactNode
-  label: string
-  colorClass?: 'blue' | 'purple' | 'green' | 'pink'
-}
-
-/**
- * Componente para itens de expertise
- */
-const ExpertiseItem: React.FC<ExpertiseItemProps> = ({
-  icon,
-  label,
-  colorClass = 'blue',
-}) => {
-  // Mapeamento de cores para classes Tailwind
-  const bgColorMap = {
-    blue: 'bg-blue-50 dark:bg-blue-900/20',
-    purple: 'bg-purple-50 dark:bg-purple-900/20',
-    green: 'bg-green-50 dark:bg-green-900/20',
-    pink: 'bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 dark:from-pink-900/30 dark:via-purple-900/30 dark:to-blue-900/30',
-  }
-
-  const textColorMap = {
-    blue: 'text-blue-600 dark:text-blue-400',
-    purple: 'text-purple-600 dark:text-purple-400',
-    green: 'text-green-600 dark:text-green-400',
-    pink: 'text-pink-600 dark:text-pink-400',
-  }
-
-  const bgClass = bgColorMap[colorClass] || bgColorMap.blue
-  const textClass = textColorMap[colorClass] || textColorMap.blue
-
-  return (
-    <div
-      className={`flex items-center gap-2 rounded-lg p-3 ${bgClass} ${textClass} justify-center lg:justify-start`}
-    >
-      {icon}
-      <span className="text-sm font-medium md:text-base">{label}</span>
-    </div>
-  )
-}
 
 /**
  * Componente principal About
  */
 const About: React.FC = () => {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('main')
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isMobile, setIsMobile] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
@@ -277,29 +235,6 @@ const About: React.FC = () => {
     },
   ]
 
-  // Áreas de expertise
-  const expertiseItems = [
-    {
-      icon: <Code className="h-5 w-5 md:h-6 md:w-6" />,
-      label: t('about.expertise.frontend'),
-      colorClass: 'blue' as const,
-    },
-    {
-      icon: <Terminal className="h-5 w-5 md:h-6 md:w-6" />,
-      label: t('about.expertise.backend'),
-      colorClass: 'purple' as const,
-    },
-    {
-      icon: <Palette className="h-5 w-5 md:h-6 md:w-6" />,
-      label: t('about.expertise.design'),
-      colorClass: 'green' as const,
-    },
-    {
-      icon: <Monitor className="h-5 w-5 md:h-6 md:w-6" />,
-      label: t('about.expertise.ux'),
-      colorClass: 'pink' as const,
-    },
-  ]
 
   return (
     <section
@@ -373,22 +308,6 @@ const About: React.FC = () => {
               </div>
             </AnimatedSection>
 
-            {/* Expertise */}
-            <AnimatedSection delay={0.2} animation="fadeUp">
-              <h2 className="mt-8 mb-8 text-2xl font-bold text-gray-800 md:text-3xl dark:text-white">
-                {t('about.expertise.title')}
-              </h2>
-              <div className="grid grid-cols-2 gap-4">
-                {expertiseItems.map((item, index) => (
-                  <ExpertiseItem
-                    key={index}
-                    icon={item.icon}
-                    label={item.label}
-                    colorClass={item.colorClass}
-                  />
-                ))}
-              </div>
-            </AnimatedSection>
           </div>
         </div>
       </div>

@@ -1,0 +1,22 @@
+{
+  "menu": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "skills": "Skills",
+    "portfolio": "Portfolio",
+    "timeline": "Journey",
+    "contact": "Contact"
+  },
+  "header": {
+    "logo_aria": "Jeferson Reis - Full Stack Developer",
+    "portuguese": "Portuguese",
+    "english": "English",
+    "portuguese_language": "Switch to Portuguese language",
+    "english_language": "Switch to English language",
+    "toggle_dark_mode": "Enable dark mode",
+    "toggle_light_mode": "Enable light mode",
+    "open_menu": "Open navigation menu",
+    "close_menu": "Close navigation menu"
+  }
+}

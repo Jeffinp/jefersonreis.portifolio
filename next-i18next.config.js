@@ -7,7 +7,18 @@ module.exports = {
   },
   debug: process.env.NODE_ENV === 'development',
   reloadOnPrerender: process.env.NODE_ENV === 'development',
-  ns: ['common'],
+  ns: [
+    'common',
+    'main',
+    'sections/header',
+    'sections/hero',
+    'sections/testimonials',
+    'sections/timeline',
+    'projects/web-projects',
+    'projects/mobile-projects',
+    'projects/design-projects',
+    'projects/3d-projects'
+  ],
   defaultNS: 'common',
   localePath: './public/locales',
 }

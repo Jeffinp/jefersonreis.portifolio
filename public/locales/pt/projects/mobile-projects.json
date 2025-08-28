@@ -1,0 +1,11 @@
+{
+  "portfolio": {
+    "projects": {
+      "leveSaudeMobile": {
+        "title": "Leve Saúde - App Mobile",
+        "description": "Aplicativo React Native para gestão de saúde com interface intuitiva e navegação fluida.",
+        "fullDescription": "Aplicativo móvel desenvolvido com React Native e TypeScript, focado em gestão de informações de saúde. Interface moderna com navegação fluida, persistência local de dados e design otimizado para diferentes dispositivos móveis."
+      }
+    }
+  }
+}

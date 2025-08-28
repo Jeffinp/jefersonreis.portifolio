@@ -1,0 +1,61 @@
+/* Performance optimizations */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+/* GPU acceleration for animations */
+.gpu-accelerated {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Reduce layout shift */
+img,
+video,
+iframe {
+  height: auto;
+}
+
+/* Smooth scrolling */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+/* Optimize text rendering */
+.text-rendering-optimized {
+  text-rendering: optimizeSpeed;
+}
+
+/* Reduce paint work */
+.contain-layout {
+  contain: layout;
+}
+
+.contain-paint {
+  contain: paint;
+}
+
+.contain-strict {
+  contain: strict;
+}
+
+/* CLS (Cumulative Layout Shift) prevention */
+.aspect-ratio-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-ratio-4-3 {
+  aspect-ratio: 4 / 3;
+}
+
+.aspect-ratio-1-1 {
+  aspect-ratio: 1 / 1;
+}

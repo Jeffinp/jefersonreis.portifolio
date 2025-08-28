@@ -1,0 +1,52 @@
+/* Layout and section styles */
+
+/* Section titles */
+.light .section-title {
+  color: #1f2937 !important;
+}
+
+.dark .section-title {
+  color: #f9fafb !important;
+}
+
+/* Remove gradients in light mode */
+.light body,
+.light main,
+.light section {
+  background-image: none !important;
+}
+
+/* Force clean solid background in light mode */
+html.light,
+html.light body {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+/* Text visibility in light mode */
+.light h1:not(.text-white):not([class*='bg-']),
+.light h2:not(.text-white):not([class*='bg-']),
+.light h3:not(.text-white):not([class*='bg-']),
+.light h4:not(.text-white):not([class*='bg-']),
+.light h5:not(.text-white):not([class*='bg-']),
+.light h6:not(.text-white):not([class*='bg-']) {
+  color: #1f2937 !important;
+}
+
+.light p:not(.text-white):not([class*='bg-']),
+.light span:not(.text-white):not([class*='bg-']),
+.light div:not(.text-white):not([class*='bg-']) {
+  color: #374151 !important;
+}
+
+/* Specific sections */
+.light #about,
+.light #services {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+.light #about *,
+.light #services * {
+  background-image: none !important;
+}
