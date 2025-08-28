@@ -1,5 +1,42 @@
 {
   "portfolio": {
-    "projects": {}
+    "projects": {
+      "art3DModelo": {
+        "title": "3D Model",
+        "description": "3D character modeling with anatomical details and realistic texturing."
+      },
+      "art3DCycles": {
+        "title": "Cycles Render",
+        "description": "Advanced rendering using the Cycles engine with realistic lighting."
+      },
+      "art3DCranio": {
+        "title": "3D Skull",
+        "description": "Anatomical skull modeling with precise details for medical visualization."
+      },
+      "art3DCubos": {
+        "title": "Cube Composition",
+        "description": "Abstract art created with procedural modeling and geometric textures."
+      },
+      "art3DCapitaoAmerica": {
+        "title": "Captain America",
+        "description": "Modeling of Captain America's shield with realistic metallic materials."
+      },
+      "art3DBratailsNave": {
+        "title": "Spaceship",
+        "description": "Spaceship design with hard surface modeling and technical details."
+      },
+      "art3DAsteroide": {
+        "title": "Asteroid",
+        "description": "Space environment with asteroid and atmospheric lighting effects."
+      },
+      "art3DAsGemeas": {
+        "title": "The Twins - Version 1",
+        "description": "Stylized characters with unique design and detailed facial expressions."
+      },
+      "art3DAsGemeas2": {
+        "title": "The Twins - Version 2",
+        "description": "Variation of the characters with different poses and modeling improvements."
+      }
+    }
   }
 }

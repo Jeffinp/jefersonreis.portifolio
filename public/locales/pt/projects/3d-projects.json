@@ -1,5 +1,42 @@
 {
   "portfolio": {
-    "projects": {}
+    "projects": {
+      "art3DModelo": {
+        "title": "Modelo 3D",
+        "description": "Modelagem 3D de personagem com detalhes anatômicos e texturização realista."
+      },
+      "art3DCycles": {
+        "title": "Render em Cycles",
+        "description": "Renderização avançada utilizando o motor Cycles com iluminação realista."
+      },
+      "art3DCranio": {
+        "title": "Crânio 3D",
+        "description": "Modelagem anatômica de crânio com detalhes precisos para visualização médica."
+      },
+      "art3DCubos": {
+        "title": "Composição de Cubos",
+        "description": "Arte abstrata criada com modelagem procedural e texturas geométricas."
+      },
+      "art3DCapitaoAmerica": {
+        "title": "Capitão América",
+        "description": "Modelagem do escudo do Capitão América com materiais metálicos realistas."
+      },
+      "art3DBratailsNave": {
+        "title": "Nave Espacial",
+        "description": "Design de nave espacial com modelagem hard surface e detalhes técnicos."
+      },
+      "art3DAsteroide": {
+        "title": "Asteroide",
+        "description": "Ambiente espacial com asteroide e efeitos de iluminação atmosférica."
+      },
+      "art3DAsGemeas": {
+        "title": "As Gêmeas - Versão 1",
+        "description": "Personagens estilizados com design único e expressões faciais detalhadas."
+      },
+      "art3DAsGemeas2": {
+        "title": "As Gêmeas - Versão 2",
+        "description": "Variação dos personagens com poses diferentes e melhorias na modelagem."
+      }
+    }
   }
 }
