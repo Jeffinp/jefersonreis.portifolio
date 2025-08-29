@@ -5,7 +5,14 @@ export const threeDProjects: Project[] = [
     id: 'art-3d-modelo',
     titleKey: 'portfolio.projects.art3DModelo.title',
     descriptionKey: 'portfolio.projects.art3DModelo.description',
-    images: [],
+    images: [
+      {
+        src: '@3d/art-3d-modelo.webp',
+        alt: 'Modelo 3D - Personagem estilizado',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: '3D Modeling', color: 'bg-blue-600 text-white' },
       { name: 'Blender', color: 'bg-orange-600 text-white' },
@@ -19,7 +26,14 @@ export const threeDProjects: Project[] = [
     id: 'art-3d-cycles',
     titleKey: 'portfolio.projects.art3DCycles.title',
     descriptionKey: 'portfolio.projects.art3DCycles.description',
-    images: [],
+    images: [
+      {
+        src: '@3d/art-3d-cycles.webp',
+        alt: 'Render 3D com Cycles',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: '3D Rendering', color: 'bg-purple-600 text-white' },
       { name: 'Cycles', color: 'bg-red-600 text-white' },
@@ -33,7 +47,14 @@ export const threeDProjects: Project[] = [
     id: 'art-3d-cranio',
     titleKey: 'portfolio.projects.art3DCranio.title',
     descriptionKey: 'portfolio.projects.art3DCranio.description',
-    images: [],
+    images: [
+      {
+        src: '@3d/art-3d-cranio.webp',
+        alt: 'Modelo 3D de Crânio Anatômico',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'Anatomical Modeling', color: 'bg-red-600 text-white' },
       { name: 'Blender', color: 'bg-orange-600 text-white' },
@@ -47,7 +68,14 @@ export const threeDProjects: Project[] = [
     id: 'art-3d-cubos',
     titleKey: 'portfolio.projects.art3DCubos.title',
     descriptionKey: 'portfolio.projects.art3DCubos.description',
-    images: [],
+    images: [
+      {
+        src: '@3d/art-3d-Cubos.webp',
+        alt: 'Arte 3D Abstrata com Cubos',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'Abstract Art', color: 'bg-purple-600 text-white' },
       { name: 'Procedural Modeling', color: 'bg-green-600 text-white' },
@@ -61,7 +89,14 @@ export const threeDProjects: Project[] = [
     id: 'art-3d-capitao-america',
     titleKey: 'portfolio.projects.art3DCapitaoAmerica.title',
     descriptionKey: 'portfolio.projects.art3DCapitaoAmerica.description',
-    images: [],
+    images: [
+      {
+        src: '@3d/art-3d-CapitaoAmerica.webp',
+        alt: 'Fan Art 3D Capitão América',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'Fan Art', color: 'bg-blue-600 text-white' },
       { name: 'Character Modeling', color: 'bg-red-600 text-white' },
@@ -75,7 +110,14 @@ export const threeDProjects: Project[] = [
     id: 'art-3d-bratails-nave',
     titleKey: 'portfolio.projects.art3DBratailsNave.title',
     descriptionKey: 'portfolio.projects.art3DBratailsNave.description',
-    images: [],
+    images: [
+      {
+        src: '@3d/art-3d-bratails-nave.webp',
+        alt: 'Nave Sci-Fi 3D',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'Sci-Fi Modeling', color: 'bg-purple-600 text-white' },
       { name: 'Vehicle Design', color: 'bg-blue-600 text-white' },
@@ -89,7 +131,14 @@ export const threeDProjects: Project[] = [
     id: 'art-3d-asteroide',
     titleKey: 'portfolio.projects.art3DAsteroide.title',
     descriptionKey: 'portfolio.projects.art3DAsteroide.description',
-    images: [],
+    images: [
+      {
+        src: '@3d/art-3d-Asteroide.webp',
+        alt: 'Asteroide 3D no espaço',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'Space Art', color: 'bg-purple-600 text-white' },
       { name: 'Environment Design', color: 'bg-green-600 text-white' },
@@ -103,7 +152,14 @@ export const threeDProjects: Project[] = [
     id: 'art-3d-as-gemeas',
     titleKey: 'portfolio.projects.art3DAsGemeas.title',
     descriptionKey: 'portfolio.projects.art3DAsGemeas.description',
-    images: [],
+    images: [
+      {
+        src: '@3d/art-3d-as-gemeas.webp',
+        alt: 'As Gêmeas - Personagens 3D estilizadas',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'Character Design', color: 'bg-red-600 text-white' },
       { name: 'Stylized Modeling', color: 'bg-purple-600 text-white' },
@@ -117,7 +173,14 @@ export const threeDProjects: Project[] = [
     id: 'art-3d-asgemeas2',
     titleKey: 'portfolio.projects.art3DAsGemeas2.title',
     descriptionKey: 'portfolio.projects.art3DAsGemeas2.description',
-    images: [],
+    images: [
+      {
+        src: '@3d/art-3d-Asgemeas2.webp',
+        alt: 'As Gêmeas 2 - Arte 3D',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'Character Design', color: 'bg-red-600 text-white' },
       { name: 'Stylized Modeling', color: 'bg-purple-600 text-white' },

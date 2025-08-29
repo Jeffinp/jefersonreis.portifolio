@@ -70,8 +70,24 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
     setHeaderLoaded(false)
   }, [project?.id])
 
-  // Prepare project images
-  const projectImages = project?.images || []
+  // Prepare project images (normaliza aliases @3d/ e @2d/)
+  const resolveImageSrc = (src: string) => {
+    if (src.startsWith('@3d/')) {
+      return src.replace('@3d/', '/assets/images/projects/3d/')
+    }
+    if (src.startsWith('@2d/')) {
+      return src.replace('@2d/', '/assets/images/projects/2d/')
+    }
+    if (src.startsWith('@design/')) {
+      return src.replace('@design/', '/assets/images/projects/design/')
+    }
+    return src
+  }
+
+  const projectImages = (project?.images || []).map((img) => ({
+    ...img,
+    src: resolveImageSrc(img.src),
+  }))
 
   // Navigation functions
   const nextImage = (e?: React.MouseEvent) => {
