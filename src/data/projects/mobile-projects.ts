@@ -6,12 +6,15 @@ export const mobileProjects: Project[] = [
     titleKey: 'portfolio.projects.stashy.title',
     descriptionKey: 'portfolio.projects.stashy.description',
     fullDescriptionKey: 'portfolio.projects.stashy.fullDescription',
-    image: {
-      src: '/assets/images/projects/mobile/project-stashy.png',
-      alt: 'Stashy - App de Gestão Financeira',
-      width: 400,
-      height: 800,
-    },
+
+    images: [
+      {
+        src: '/assets/images/projects/mobile/project-stashy/main.png',
+        alt: 'Stashy - Tela principal',
+        width: 400,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'React Native', color: 'bg-blue-500 text-white' },
       { name: 'TypeScript', color: 'bg-blue-600 text-white' },
@@ -69,12 +72,15 @@ export const mobileProjects: Project[] = [
     titleKey: 'portfolio.projects.leveSaudeMobile.title',
     descriptionKey: 'portfolio.projects.leveSaudeMobile.description',
     fullDescriptionKey: 'portfolio.projects.leveSaudeMobile.fullDescription',
-    image: {
-      src: '/assets/images/projects/mobile/project-leve-saude.png',
-      alt: 'Leve Saúde Mobile App',
-      width: 400,
-      height: 800,
-    },
+
+    images: [
+      {
+        src: '/assets/images/projects/mobile/project-leve-saude-mobile/main.png',
+        alt: 'Leve Saúde Mobile - Tela principal',
+        width: 400,
+        height: 800,
+      },
+    ],
     githubUrl: 'https://github.com/Jeffinp/test-mobile-leve-saude',
     tags: [
       { name: 'React Native', color: 'bg-blue-500 text-white' },
@@ -114,3 +120,4 @@ export const mobileProjects: Project[] = [
     ],
   },
 ]
+

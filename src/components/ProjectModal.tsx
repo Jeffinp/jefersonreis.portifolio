@@ -1,17 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ExternalLink, Github, Calendar, Users, Zap } from 'lucide-react'
+import {
+  X,
+  ExternalLink,
+  Github,
+  Calendar,
+  Users,
+  Zap,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react'
 import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
 import EnhancedButton from './EnhancedButton'
 import { InteractiveCard } from './MicroInteractions'
+
+interface ProjectImage {
+  src: string
+  alt: string
+  width?: number
+  height?: number
+}
 
 interface ProjectData {
   id: string
   title: string
   description: string
   fullDescription: string
-  image?: string | null
+  images: ProjectImage[]
   hasImage?: boolean
   technologies: string[]
   category: string
@@ -45,6 +61,51 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 }) => {
   const { t } = useTranslation('main')
   const [headerLoaded, setHeaderLoaded] = useState(false)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [isHovered, setIsHovered] = useState(false)
+
+  // Reset image index when project changes
+  useEffect(() => {
+    setCurrentImageIndex(0)
+    setHeaderLoaded(false)
+  }, [project?.id])
+
+  // Prepare project images
+  const projectImages = project?.images || []
+
+  // Navigation functions
+  const nextImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation()
+    if (projectImages.length > 1) {
+      setCurrentImageIndex((prev) => (prev + 1) % projectImages.length)
+      setHeaderLoaded(false)
+    }
+  }
+
+  const prevImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation()
+    if (projectImages.length > 1) {
+      setCurrentImageIndex(
+        (prev) => (prev - 1 + projectImages.length) % projectImages.length,
+      )
+      setHeaderLoaded(false)
+    }
+  }
+
+  // Auto-advance images when hovered
+  useEffect(() => {
+    let interval: NodeJS.Timeout
+
+    if (isHovered && projectImages.length > 1) {
+      interval = setInterval(() => {
+        nextImage()
+      }, 5000)
+    }
+
+    return () => {
+      if (interval) clearInterval(interval)
+    }
+  }, [isHovered, projectImages.length, currentImageIndex])
 
   if (!project) return null
 
@@ -133,30 +194,88 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 
             {/* Content */}
             <div className="max-h-[90vh] overflow-y-auto">
-              {/* Header Image */}
-              <div className="relative h-64 w-full overflow-hidden bg-gray-200 dark:bg-gray-800">
-                {project.image ? (
+              {/* Header Image Carousel */}
+              <div
+                className="relative h-64 w-full overflow-hidden bg-gray-200 md:h-80 lg:h-96 dark:bg-gray-800"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                {projectImages.length > 0 ? (
                   <>
-                    {/* Skeleton enquanto carrega */}
-                    {!headerLoaded && (
-                      <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-800 dark:to-gray-700" />
-                    )}
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      sizes="100vw"
-                      priority
-                      placeholder="blur"
-                      blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIGZpbGw9JyNlZWUnIC8+PC9zdmc+"
-                      onLoad={() => setHeaderLoaded(true)}
-                      onError={() => setHeaderLoaded(true)}
-                      className={`object-cover transition-opacity duration-300 ${
-                        headerLoaded ? 'opacity-100' : 'opacity-0'
-                      }`}
-                    />
-                    {headerLoaded && (
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    <AnimatePresence initial={false} mode="wait">
+                      <motion.div
+                        key={currentImageIndex}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="absolute inset-0"
+                      >
+                        {/* Skeleton enquanto carrega */}
+                        {!headerLoaded && (
+                          <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-800 dark:to-gray-700" />
+                        )}
+                        <Image
+                          src={projectImages[currentImageIndex].src}
+                          alt={
+                            projectImages[currentImageIndex].alt ||
+                            project.title
+                          }
+                          fill
+                          sizes="100vw"
+                          priority
+                          placeholder="blur"
+                          blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIGZpbGw9JyNlZWUnIC8+PC9zdmc+"
+                          onLoad={() => setHeaderLoaded(true)}
+                          onError={() => setHeaderLoaded(true)}
+                          className={`object-cover transition-opacity duration-300 ${
+                            headerLoaded ? 'opacity-100' : 'opacity-0'
+                          }`}
+                        />
+                        {headerLoaded && (
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                        )}
+                      </motion.div>
+                    </AnimatePresence>
+
+                    {/* Controles do carrossel - só aparecem quando há múltiplas imagens */}
+                    {projectImages.length > 1 && (
+                      <>
+                        <button
+                          onClick={prevImage}
+                          className="absolute top-1/2 left-4 z-10 -translate-y-1/2 rounded-full bg-white/80 p-2 shadow-md transition-all hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800"
+                          aria-label={t('portfolio.projectLabels.prevImage')}
+                        >
+                          <ChevronLeft className="h-5 w-5 text-gray-800 dark:text-gray-200" />
+                        </button>
+                        <button
+                          onClick={nextImage}
+                          className="absolute top-1/2 right-4 z-10 -translate-y-1/2 rounded-full bg-white/80 p-2 shadow-md transition-all hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800"
+                          aria-label={t('portfolio.projectLabels.nextImage')}
+                        >
+                          <ChevronRight className="h-5 w-5 text-gray-800 dark:text-gray-200" />
+                        </button>
+
+                        {/* Indicadores de imagens */}
+                        <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 space-x-2">
+                          {projectImages.map((_, index) => (
+                            <button
+                              key={index}
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                setCurrentImageIndex(index)
+                                setHeaderLoaded(false)
+                              }}
+                              className={`h-2 w-2 rounded-full ${
+                                currentImageIndex === index
+                                  ? 'bg-white'
+                                  : 'bg-white/50'
+                              } transition-all duration-300 sm:h-2.5 sm:w-2.5`}
+                              aria-label={`${t('portfolio.projectLabels.goToImage')} ${index + 1}`}
+                            />
+                          ))}
+                        </div>
+                      </>
                     )}
                   </>
                 ) : (

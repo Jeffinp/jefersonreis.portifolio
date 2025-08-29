@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import Image from 'next/image'
+import ProjectItem from '@/components/ProjectItem'
 import { motion } from 'framer-motion'
 import {
   ExternalLink,
@@ -58,7 +59,7 @@ interface ProjectItemProps {
   onOpenModal: (project: any) => void
 }
 
-const ProjectItem: React.FC<ProjectItemProps> = ({
+const ProjectItemInline: React.FC<ProjectItemProps> = ({
   project,
   isMobile,
   onOpenModal,
@@ -442,8 +443,8 @@ const Projects: React.FC = () => {
         fullDescription: project.fullDescriptionKey
           ? getProjectTranslation(project.fullDescriptionKey)
           : getProjectTranslation(project.descriptionKey), // fallback to description if no fullDescription
-        image: project.image ? project.image.src : null,
-        hasImage: !!project.image,
+        images: project.images || [],
+        hasImage: !!(project.images && project.images.length > 0),
         technologies: project.technologies || [],
         category: project.category,
         githubUrl: project.githubUrl,

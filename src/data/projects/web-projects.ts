@@ -6,6 +6,7 @@ export const webProjects: Project[] = [
     titleKey: 'portfolio.projects.rezerveBarber.title',
     descriptionKey: 'portfolio.projects.rezerveBarber.description',
     fullDescriptionKey: 'portfolio.projects.rezerveBarber.fullDescription',
+    images: [],
     hasImage: false,
     tags: [
       { name: 'PHP', color: 'bg-indigo-600 text-white' },
@@ -54,12 +55,15 @@ export const webProjects: Project[] = [
     titleKey: 'portfolio.projects.lexcheck.title',
     descriptionKey: 'portfolio.projects.lexcheck.description',
     fullDescriptionKey: 'portfolio.projects.lexcheck.fullDescription',
-    image: {
-      src: '/assets/images/projects/web/project-lexcheck.png',
-      alt: 'LexCheck — Verificação de Citações Jurídicas',
-      width: 1200,
-      height: 800,
-    },
+
+    images: [
+      {
+        src: '/assets/images/projects/web/project-lexcheck/main.png',
+        alt: 'LexCheck — Tela principal',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'FastAPI', color: 'bg-green-600 text-white' },
       { name: 'Python', color: 'bg-blue-700 text-white' },
@@ -110,12 +114,33 @@ export const webProjects: Project[] = [
     titleKey: 'portfolio.projects.assistenteVendasIA.title',
     descriptionKey: 'portfolio.projects.assistenteVendasIA.description',
     fullDescriptionKey: 'portfolio.projects.assistenteVendasIA.fullDescription',
-    image: {
-      src: '/assets/images/projects/web/project-assistente-ia.png',
-      alt: 'Assistente de Vendas com IA - CRM com WhatsApp',
-      width: 1200,
-      height: 800,
-    },
+
+    images: [
+      {
+        src: '/assets/images/projects/web/project-assistente-vendas-ia/main.png',
+        alt: 'Assistente de Vendas com IA - Tela principal',
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: '/assets/images/projects/web/project-assistente-vendas-ia/dashboard.png',
+        alt: 'Dashboard com métricas em tempo real',
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: '/assets/images/projects/web/project-assistente-vendas-ia/chat.png',
+        alt: 'Interface de chat com IA',
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: '/assets/images/projects/web/project-assistente-vendas-ia/leads.png',
+        alt: 'Gestão de leads e funil de vendas',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'FastAPI', color: 'bg-green-600 text-white' },
       { name: 'Python', color: 'bg-blue-700 text-white' },
@@ -174,12 +199,15 @@ export const webProjects: Project[] = [
     titleKey: 'portfolio.projects.itamir.title',
     descriptionKey: 'portfolio.projects.itamir.description',
     fullDescriptionKey: 'portfolio.projects.itamir.fullDescription',
-    image: {
-      src: '/assets/images/projects/web/project-gestao-juridica.png',
-      alt: 'Juristask - Sistema de Gestão Jurídica SaaS',
-      width: 1200,
-      height: 800,
-    },
+
+    images: [
+      {
+        src: '/assets/images/projects/web/project-gestao-juridica/main.png',
+        alt: 'Juristask - Tela principal',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'React 19', color: 'bg-blue-500 text-white' },
       { name: 'TypeScript', color: 'bg-blue-700 text-white' },
@@ -256,12 +284,15 @@ export const webProjects: Project[] = [
     titleKey: 'portfolio.projects.leve-saude-web.title',
     descriptionKey: 'portfolio.projects.leve-saude-web.description',
     fullDescriptionKey: 'portfolio.projects.leve-saude-web.fullDescription',
-    image: {
-      src: '/assets/images/projects/web/project-teste-web-saude.png',
-      alt: 'Leve Saúde Website',
-      width: 1200,
-      height: 800,
-    },
+
+    images: [
+      {
+        src: '/assets/images/projects/web/project-leve-saude-web/main.png',
+        alt: 'Leve Saúde - Tela principal',
+        width: 1200,
+        height: 800,
+      },
+    ],
     githubUrl: 'https://github.com/Jeffinp/test-web-leve-saude',
     link: 'https://test-web-leve-saude.vercel.app/',
     tags: [
@@ -295,12 +326,15 @@ export const webProjects: Project[] = [
     titleKey: 'portfolio.projects.ricardodias.title',
     descriptionKey: 'portfolio.projects.ricardodias.description',
     fullDescriptionKey: 'portfolio.projects.ricardodias.fullDescription',
-    image: {
-      src: '/assets/images/projects/web/ricardodias-web.png',
-      alt: 'Ricardo Dias Website',
-      width: 1200,
-      height: 800,
-    },
+
+    images: [
+      {
+        src: '/assets/images/projects/web/project-ricardo-dias/main.png',
+        alt: 'Ricardo Dias - Tela principal',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'React', color: 'bg-blue-500 text-white' },
       { name: 'TypeScript', color: 'bg-blue-600 text-white' },
@@ -333,12 +367,15 @@ export const webProjects: Project[] = [
     titleKey: 'portfolio.projects.flyservDrones.title',
     descriptionKey: 'portfolio.projects.flyservDrones.description',
     fullDescriptionKey: 'portfolio.projects.flyservDrones.fullDescription',
-    image: {
-      src: '/assets/images/projects/web/project-flyserv.webp',
-      alt: 'FlyServ Drones',
-      width: 1200,
-      height: 800,
-    },
+
+    images: [
+      {
+        src: '/assets/images/projects/web/project-flyserv/main.webp',
+        alt: 'FlyServ Drones - Tela principal',
+        width: 1200,
+        height: 800,
+      },
+    ],
     link: 'https://flyservdrones.com.br/',
     tags: [
       { name: 'React 19', color: 'bg-blue-500 text-white' },
@@ -364,12 +401,15 @@ export const webProjects: Project[] = [
     titleKey: 'portfolio.projects.portfolio.title',
     descriptionKey: 'portfolio.projects.portfolio.description',
     fullDescriptionKey: 'portfolio.projects.portfolio.fullDescription',
-    image: {
-      src: '/assets/images/projects/web/project-portfolio-site.png',
-      alt: 'Portfolio Pessoal - Jeferson Reis Almeida',
-      width: 1200,
-      height: 800,
-    },
+
+    images: [
+      {
+        src: '/assets/images/projects/web/project-portfolio/main.png',
+        alt: 'Portfolio Pessoal - Tela principal',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'Next.js 15', color: 'bg-blue-600 text-white' },
       { name: 'TypeScript', color: 'bg-blue-700 text-white' },
@@ -407,12 +447,15 @@ export const webProjects: Project[] = [
     titleKey: 'portfolio.projects.meushop.title',
     descriptionKey: 'portfolio.projects.meushop.description',
     fullDescriptionKey: 'portfolio.projects.meushop.fullDescription',
-    image: {
-      src: '/assets/images/projects/web/project-meu-shop.png',
-      alt: 'MeuShop Website',
-      width: 1200,
-      height: 800,
-    },
+
+    images: [
+      {
+        src: '/assets/images/projects/web/project-meushop/main.png',
+        alt: 'MeuShop - Tela principal',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'React', color: 'bg-blue-500 text-white' },
       { name: 'TypeScript', color: 'bg-blue-600 text-white' },
@@ -444,12 +487,15 @@ export const webProjects: Project[] = [
     titleKey: 'portfolio.projects.organizadorweb.title',
     descriptionKey: 'portfolio.projects.organizadorweb.description',
     fullDescriptionKey: 'portfolio.projects.organizadorweb.fullDescription',
-    image: {
-      src: '/assets/images/projects/web/organizador-web.webp',
-      alt: 'OrganizadorWeb Website',
-      width: 1200,
-      height: 800,
-    },
+
+    images: [
+      {
+        src: '/assets/images/projects/web/project-organizador/main.webp',
+        alt: 'OrganizadorWeb - Tela principal',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'React', color: 'bg-blue-500 text-white' },
       { name: 'TypeScript', color: 'bg-blue-600 text-white' },
@@ -480,12 +526,15 @@ export const webProjects: Project[] = [
     id: 'sistema-solar-3d',
     titleKey: 'portfolio.projects.sistemaSolar3D.title',
     descriptionKey: 'portfolio.projects.sistemaSolar3D.description',
-    image: {
-      src: '/assets/images/projects/web/project-sistema-solar-web.png',
-      alt: 'Sistema Solar 3D',
-      width: 1200,
-      height: 800,
-    },
+
+    images: [
+      {
+        src: '/assets/images/projects/web/project-sistema-solar/main.png',
+        alt: 'Sistema Solar 3D - Tela principal',
+        width: 1200,
+        height: 800,
+      },
+    ],
     githubUrl: 'https://github.com/Jeffinp/sistema-solar-3d',
     link: 'https://jefersonreis.dev/3d',
     tags: [
@@ -512,12 +561,15 @@ export const webProjects: Project[] = [
     titleKey: 'portfolio.projects.menu-interativo.title',
     descriptionKey: 'portfolio.projects.menu-interativo.description',
     fullDescriptionKey: 'portfolio.projects.menu-interativo.fullDescription',
-    image: {
-      src: '/assets/images/projects/web/project-menu-interativo.webp',
-      alt: 'Menu Interativo Website',
-      width: 1200,
-      height: 800,
-    },
+
+    images: [
+      {
+        src: '/assets/images/projects/web/project-menu-interativo/main.webp',
+        alt: 'Menu Interativo - Tela principal',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'React', color: 'bg-blue-500 text-white' },
       { name: 'TypeScript', color: 'bg-blue-600 text-white' },
@@ -549,12 +601,15 @@ export const webProjects: Project[] = [
     titleKey: 'portfolio.projects.chatbot.title',
     descriptionKey: 'portfolio.projects.chatbot.description',
     fullDescriptionKey: 'portfolio.projects.chatbot.fullDescription',
-    image: {
-      src: '/assets/images/projects/web/project-chatbot.webp',
-      alt: 'Chatbot Website',
-      width: 1200,
-      height: 800,
-    },
+
+    images: [
+      {
+        src: '/assets/images/projects/web/project-chatbot/main.webp',
+        alt: 'Chatbot - Tela principal',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'React', color: 'bg-blue-500 text-white' },
       { name: 'TypeScript', color: 'bg-blue-600 text-white' },
@@ -586,12 +641,15 @@ export const webProjects: Project[] = [
     titleKey: 'portfolio.projects.jogo-plataforma.title',
     descriptionKey: 'portfolio.projects.jogo-plataforma.description',
     fullDescriptionKey: 'portfolio.projects.jogo-plataforma.fullDescription',
-    image: {
-      src: '/assets/images/projects/web/project-jogo-plataforma.webp',
-      alt: 'Jogo Plataforma Website',
-      width: 1200,
-      height: 800,
-    },
+
+    images: [
+      {
+        src: '/assets/images/projects/web/project-jogo-plataforma/main.webp',
+        alt: 'Jogo Plataforma - Tela principal',
+        width: 1200,
+        height: 800,
+      },
+    ],
     tags: [
       { name: 'React', color: 'bg-blue-500 text-white' },
       { name: 'TypeScript', color: 'bg-blue-600 text-white' },
@@ -619,3 +677,4 @@ export const webProjects: Project[] = [
     ],
   },
 ]
+

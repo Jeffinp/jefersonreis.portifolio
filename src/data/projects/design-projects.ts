@@ -5,12 +5,7 @@ export const designProjects: Project[] = [
     id: 'art-2d-alastor',
     titleKey: 'portfolio.projects.art2DAlastor.title',
     descriptionKey: 'portfolio.projects.art2DAlastor.description',
-    image: {
-      src: '/assets/images/projects/2d/art-2d-alastor.webp',
-      alt: 'Alastor 2D Art',
-      width: 800,
-      height: 1000,
-    },
+    images: [],
     tags: [
       { name: 'Character Design', color: 'bg-red-600 text-white' },
       { name: 'Traditional Drawing', color: 'bg-yellow-600 text-white' },
@@ -24,12 +19,7 @@ export const designProjects: Project[] = [
     id: 'design-brasil-piscinas',
     titleKey: 'portfolio.projects.designBrasilPiscinas.title',
     descriptionKey: 'portfolio.projects.designBrasilPiscinas.description',
-    image: {
-      src: '/assets/images/projects/design/project-design-brasil-piscinas.png',
-      alt: 'Design Gráfico Brasil Piscinas',
-      width: 800,
-      height: 600,
-    },
+    images: [],
     tags: [
       { name: 'Graphic Design', color: 'bg-pink-500 text-white' },
       { name: 'Branding', color: 'bg-purple-600 text-white' },
@@ -43,12 +33,7 @@ export const designProjects: Project[] = [
     id: 'design-pizza-insta',
     titleKey: 'portfolio.projects.designPizzaInsta.title',
     descriptionKey: 'portfolio.projects.designPizzaInsta.description',
-    image: {
-      src: '/assets/images/projects/design/project-design-pizza-insta.webp',
-      alt: 'Design Instagram Pizza',
-      width: 1080,
-      height: 1080,
-    },
+    images: [],
     tags: [
       {
         name: 'Social Media',
@@ -65,12 +50,7 @@ export const designProjects: Project[] = [
     id: 'design-clickteam-logo',
     titleKey: 'portfolio.projects.designClickteamLogo.title',
     descriptionKey: 'portfolio.projects.designClickteamLogo.description',
-    image: {
-      src: '/assets/images/projects/design/project-design-clickteam-logo.webp',
-      alt: 'ClickTeam Logo Design',
-      width: 500,
-      height: 500,
-    },
+    images: [],
     tags: [
       { name: 'Logo Design', color: 'bg-blue-600 text-white' },
       { name: 'Branding', color: 'bg-purple-600 text-white' },
@@ -81,3 +61,5 @@ export const designProjects: Project[] = [
     technologies: ['Adobe Illustrator', 'Adobe Photoshop'],
   },
 ]
+
+
