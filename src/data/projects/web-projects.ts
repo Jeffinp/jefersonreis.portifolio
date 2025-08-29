@@ -708,4 +708,3 @@ export const webProjects: Project[] = [
     ],
   },
 ]
-
