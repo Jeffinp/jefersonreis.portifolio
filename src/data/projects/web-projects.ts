@@ -370,8 +370,32 @@ export const webProjects: Project[] = [
 
     images: [
       {
-        src: '/assets/images/projects/web/project-flyserv/main.webp',
+        src: '/assets/images/projects/web/project-flyserv/main.png',
         alt: 'FlyServ Drones - Tela principal',
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: '/assets/images/projects/web/project-flyserv/services.png',
+        alt: 'FlyServ Drones - área de serviços',
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: '/assets/images/projects/web/project-flyserv/contact.png',
+        alt: 'FlyServ Drones - área de contato',
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: '/assets/images/projects/web/project-flyserv/servicespage.png',
+        alt: 'FlyServ Drones - Página de serviços',
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: '/assets/images/projects/web/project-flyserv/servicespage1.png',
+        alt: 'FlyServ Drones - Demonstração de serviços',
         width: 1200,
         height: 800,
       },
@@ -409,7 +433,14 @@ export const webProjects: Project[] = [
         width: 1200,
         height: 800,
       },
+      {
+        src: '/assets/images/projects/web/project-portfolio/skills.png',
+        alt: 'Portfolio Pessoal - Habilidades',
+        width: 1200,
+        height: 800,
+      },
     ],
+    
     tags: [
       { name: 'Next.js 15', color: 'bg-blue-600 text-white' },
       { name: 'TypeScript', color: 'bg-blue-700 text-white' },
