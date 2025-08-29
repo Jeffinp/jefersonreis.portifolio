@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   X,
@@ -90,13 +90,16 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   }))
 
   // Navigation functions
-  const nextImage = (e?: React.MouseEvent) => {
-    e?.stopPropagation()
-    if (projectImages.length > 1) {
-      setCurrentImageIndex((prev) => (prev + 1) % projectImages.length)
-      setHeaderLoaded(false)
-    }
-  }
+  const nextImage = useCallback(
+    (e?: React.MouseEvent) => {
+      e?.stopPropagation()
+      if (projectImages.length > 1) {
+        setCurrentImageIndex((prev) => (prev + 1) % projectImages.length)
+        setHeaderLoaded(false)
+      }
+    },
+    [projectImages.length],
+  )
 
   const prevImage = (e?: React.MouseEvent) => {
     e?.stopPropagation()
@@ -121,7 +124,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
     return () => {
       if (interval) clearInterval(interval)
     }
-  }, [isHovered, projectImages.length, currentImageIndex])
+  }, [isHovered, projectImages.length, currentImageIndex, nextImage])
 
   if (!project) return null
 

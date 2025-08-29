@@ -440,7 +440,7 @@ export const webProjects: Project[] = [
         height: 800,
       },
     ],
-    
+
     tags: [
       { name: 'Next.js 15', color: 'bg-blue-600 text-white' },
       { name: 'TypeScript', color: 'bg-blue-700 text-white' },

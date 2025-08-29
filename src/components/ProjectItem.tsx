@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useTranslation } from 'next-i18next'
@@ -69,12 +69,15 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
   console.log(`Project ${project.id} images:`, projectImages)
 
   // Avançar para a próxima imagem
-  const nextImage = (e?: React.MouseEvent) => {
-    e?.stopPropagation()
-    if (projectImages.length > 1) {
-      setCurrentImageIndex((prev) => (prev + 1) % projectImages.length)
-    }
-  }
+  const nextImage = useCallback(
+    (e?: React.MouseEvent) => {
+      e?.stopPropagation()
+      if (projectImages.length > 1) {
+        setCurrentImageIndex((prev) => (prev + 1) % projectImages.length)
+      }
+    },
+    [projectImages.length],
+  )
 
   // Voltar para a imagem anterior
   const prevImage = (e?: React.MouseEvent) => {
@@ -99,7 +102,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
     return () => {
       if (interval) clearInterval(interval)
     }
-  }, [isHovered, projectImages.length, currentImageIndex])
+  }, [isHovered, projectImages.length, currentImageIndex, nextImage])
 
   // Helper para buscar traduções de projetos de diferentes namespaces
   const { t: tMobile } = useTranslation('projects/mobile-projects')
