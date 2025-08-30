@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
 import SEOHead from '@/components/SEOHead'
 import StructuredData from '@/components/StructuredData'
+import SchemaOrg from '@/components/SchemaOrg'
 import LoadingSkeleton from '@/components/LoadingSkeleton'
 import { useViewportLazyLoad } from '@/hooks/ui/useViewportLazyLoad'
 import Hero from '@/containers/Hero'
@@ -12,21 +13,27 @@ import About from '@/containers/About'
 // Carregamento dinâmico de seções não-críticas com lazy loading avançado
 const Skills = dynamic(() => import('@/containers/Skills'), {
   loading: () => <LoadingSkeleton variant="skills" />,
+  ssr: true, // Mantém SSR para SEO
 })
 const Services = dynamic(() => import('@/containers/Services'), {
   loading: () => <LoadingSkeleton variant="services" />,
+  ssr: true,
 })
 const Projects = dynamic(() => import('@/containers/Projects'), {
   loading: () => <LoadingSkeleton variant="projects" />,
+  ssr: false, // Desabilita SSR para componentes interativos pesados
 })
 const Timeline = dynamic(() => import('@/containers/Timeline'), {
   loading: () => <LoadingSkeleton variant="timeline" />,
+  ssr: true,
 })
 const Testimonials = dynamic(() => import('@/containers/Testimonials'), {
   loading: () => <LoadingSkeleton variant="testimonials" />,
+  ssr: false, // Carousel é client-side
 })
 const Contact = dynamic(() => import('@/containers/Contact'), {
   loading: () => <LoadingSkeleton variant="contact" />,
+  ssr: true,
 })
 
 // Componente wrapper para lazy loading com Intersection Observer
@@ -65,19 +72,22 @@ export default function Home() {
     <>
       <SEOHead lang={currentLang} />
       <StructuredData lang={currentLang} />
+      <SchemaOrg lang={currentLang} />
       <main>
         {/* Seções críticas carregadas imediatamente */}
         <Hero />
         <About />
 
-        {/* Seções não-críticas com lazy loading inteligente */}
+        {/* Seções não-críticas com lazy loading inteligente e Suspense */}
         <LazySection
           sectionId="skills"
           fallback={<LoadingSkeleton variant="skills" />}
           threshold={0.2}
           rootMargin="400px"
         >
-          <Skills />
+          <Suspense fallback={<LoadingSkeleton variant="skills" />}>
+            <Skills />
+          </Suspense>
         </LazySection>
 
         <LazySection
@@ -86,7 +96,9 @@ export default function Home() {
           threshold={0.2}
           rootMargin="400px"
         >
-          <Services />
+          <Suspense fallback={<LoadingSkeleton variant="services" />}>
+            <Services />
+          </Suspense>
         </LazySection>
 
         <LazySection
@@ -95,7 +107,9 @@ export default function Home() {
           threshold={0.2}
           rootMargin="300px"
         >
-          <Projects />
+          <Suspense fallback={<LoadingSkeleton variant="projects" />}>
+            <Projects />
+          </Suspense>
         </LazySection>
 
         <LazySection
@@ -104,7 +118,9 @@ export default function Home() {
           threshold={0.2}
           rootMargin="200px"
         >
-          <Timeline />
+          <Suspense fallback={<LoadingSkeleton variant="timeline" />}>
+            <Timeline />
+          </Suspense>
         </LazySection>
 
         <LazySection
@@ -113,7 +129,9 @@ export default function Home() {
           threshold={0.2}
           rootMargin="200px"
         >
-          <Testimonials />
+          <Suspense fallback={<LoadingSkeleton variant="testimonials" />}>
+            <Testimonials />
+          </Suspense>
         </LazySection>
 
         <LazySection
@@ -122,7 +140,9 @@ export default function Home() {
           threshold={0.2}
           rootMargin="100px"
         >
-          <Contact />
+          <Suspense fallback={<LoadingSkeleton variant="contact" />}>
+            <Contact />
+          </Suspense>
         </LazySection>
       </main>
     </>

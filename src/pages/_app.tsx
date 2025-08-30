@@ -6,6 +6,7 @@ import { ThemeProvider } from '@/contexts/ThemeContext'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import GlobalBackground from '@/components/GlobalBackground'
+import SkipNavigation from '@/components/SkipNavigation'
 
 // Dynamic imports for components that don't need SSR
 const ScrollToTopButton = dynamic(
@@ -49,11 +50,14 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
       <div id="__next-app" className="relative">
+        {/* Skip Navigation Links for Accessibility */}
+        <SkipNavigation />
+
         {/* Background global contínuo */}
         <GlobalBackground />
 
         <Header />
-        <main role="main" className="relative min-h-screen">
+        <main id="main-content" role="main" className="relative min-h-screen">
           <Component {...pageProps} />
         </main>
         <Footer />

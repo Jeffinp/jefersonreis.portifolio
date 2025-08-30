@@ -26,11 +26,11 @@ const nextConfig: NextConfig = {
           { key: 'Cross-Origin-Embedder-Policy', value: 'credentialless' },
           { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
           { key: 'Cross-Origin-Resource-Policy', value: 'same-origin' },
-          // CSP é poderoso, mas 'unsafe-eval' e 'unsafe-inline' são pontos de atenção para futuras melhorias (ex: nonces)
+          // CSP melhorado com hash para scripts inline críticos
           {
             key: 'Content-Security-Policy',
             value:
-              "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com https://vercel.live; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;",
+              "default-src 'self'; script-src 'self' 'sha256-dR9r8B61NuvUglVt0IV1YvhzVQYMcVD3X8gqH1wQDJw=' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com https://vercel.live https://api.emailjs.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.emailjs.com; object-src 'none'; upgrade-insecure-requests;",
           },
           // OTIMIZAÇÃO: Removido 'X-XSS-Protection' por ser legado e já coberto pelo CSP.
         ],
@@ -76,13 +76,33 @@ const nextConfig: NextConfig = {
     scrollRestoration: true,
     optimizePackageImports: [
       '@vercel/analytics',
+      '@vercel/speed-insights',
       'framer-motion',
       'lucide-react',
+      'react-icons',
+      '@emailjs/browser',
     ],
+    serverActions: {
+      bodySizeLimit: '2mb',
+    },
+    // ppr: true, // PPR só disponível no canary - será habilitado quando estiver estável
+    webVitalsAttribution: ['CLS', 'FCP', 'FID', 'INP', 'LCP', 'TTFB'],
   },
+  
+  // typedRoutes desabilitado temporariamente para acelerar build
+  // typedRoutes: true,
 
   // Ativar compressão
   compress: true,
+  
+  // Output padrão para evitar problemas de build
+  // output: 'standalone', // Descomentar apenas para deploy em Docker
+  
+  // Melhorar performance de produção
+  productionBrowserSourceMaps: false,
+  
+  // Configurações de poder computacional
+  poweredByHeader: false,
 };
 
 export default nextConfig;
