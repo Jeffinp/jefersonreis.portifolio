@@ -8,10 +8,10 @@ import {
   ExternalLink,
 } from 'lucide-react'
 import { FaDiscord } from 'react-icons/fa'
-import PrivacyPolicyModal from './PrivacyPolicyModal'
+import { PrivacyPolicyModal } from '@/components/ui'
 import { motion, useAnimation, useInView } from 'framer-motion'
-import SectionBackground from './SectionBackground'
-import { useAppTranslation } from '../i18n'
+import { SectionBackground } from '@/components/common'
+import { useTranslation } from 'next-i18next'
 
 interface AnimatedSectionProps {
   children: React.ReactNode
@@ -74,7 +74,7 @@ interface FooterLink {
 }
 
 const Footer: React.FC = () => {
-  const { t } = useAppTranslation()
+  const { t } = useTranslation('common')
   const [isPrivacyPolicyModalOpen, setIsPrivacyPolicyModalOpen] =
     useState(false)
 

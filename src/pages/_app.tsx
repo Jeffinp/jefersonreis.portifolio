@@ -3,26 +3,24 @@ import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
 import { appWithTranslation } from 'next-i18next'
 import { ThemeProvider } from '@/contexts/ThemeContext'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import GlobalBackground from '@/components/GlobalBackground'
-import SkipNavigation from '@/components/SkipNavigation'
+import { Header, Footer, GlobalBackground } from '@/components/layout'
+import { SkipNavigation } from '@/components/common'
 
 // Dynamic imports for components that don't need SSR
 const ScrollToTopButton = dynamic(
-  () => import('@/components/ScrollToTopButton'),
+  () => import('@/components/ui/ScrollToTopButton'),
   {
     ssr: false,
   },
 )
 const WhatsAppFloatingButton = dynamic(
-  () => import('@/components/WhatsAppFloatingButton'),
+  () => import('@/components/ui/WhatsAppFloatingButton'),
   {
     ssr: false,
   },
 )
 const DiscordFloatingButton = dynamic(
-  () => import('@/components/DiscordFloatingButton'),
+  () => import('@/components/ui/DiscordFloatingButton'),
   {
     ssr: false,
   },

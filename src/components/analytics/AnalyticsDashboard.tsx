@@ -12,7 +12,7 @@ import {
   MousePointer,
   Activity,
 } from 'lucide-react'
-import { InteractiveCard } from './MicroInteractions'
+import { InteractiveCard } from '@/components/ui/MicroInteractions'
 
 interface AnalyticsData {
   pageviews: number

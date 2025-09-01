@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import Image from 'next/image'
-import ProjectItem from '@/components/ProjectItem'
+import { ProjectItem } from '@/components/sections'
 import { motion } from 'framer-motion'
 import {
   ExternalLink,
@@ -12,8 +12,8 @@ import {
 } from 'lucide-react'
 import { projects } from '@/data/projectsData'
 import { useTranslation } from 'next-i18next'
-import SectionBackground from '@/components/SectionBackground'
-import ProjectModal from '@/components/ProjectModal'
+import { SectionBackground } from '@/components/common'
+import { ProjectModal } from '@/components/sections'
 import { useAnalytics } from '@/hooks/data/useAnalytics'
 
 interface Category {

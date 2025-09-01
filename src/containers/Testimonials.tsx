@@ -3,8 +3,7 @@ import Image from 'next/image'
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react'
 import { useTranslation } from 'next-i18next'
 import { debounce } from '@/utils'
-import SectionWrapper from '@/components/SectionWrapper'
-import SectionHeader from '@/components/SectionHeader'
+import { SectionWrapper, SectionHeader } from '@/components/common'
 
 interface RatingStarsProps {
   rating: number

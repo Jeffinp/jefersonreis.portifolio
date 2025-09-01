@@ -4,12 +4,12 @@ import { Mail, ChevronDown, Palette } from 'lucide-react'
 import { motion, useAnimation } from 'framer-motion'
 import { debounce } from '@/utils'
 import { useTranslation } from 'next-i18next'
-import SectionBackground from '@/components/SectionBackground'
-import EnhancedButton from '@/components/EnhancedButton'
+import { SectionBackground } from '@/components/common'
+import { EnhancedButton } from '@/components/ui'
 import {
   InteractiveCard,
   AnimatedTooltip,
-} from '@/components/MicroInteractions'
+} from '@/components/ui/MicroInteractions'
 import { staggerContainer, staggerItem } from '@/hooks/ui/useAnimations'
 import {
   SiNextdotjs,

@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
 import { useTranslation } from 'next-i18next'
 import { useContactForm } from '@/hooks/data/useContactForm'
-import EnhancedButton from './EnhancedButton'
+import { EnhancedButton } from '@/components/ui'
 import {
   fadeInUp,
   staggerContainer,

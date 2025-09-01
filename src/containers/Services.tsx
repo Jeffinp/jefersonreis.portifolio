@@ -10,7 +10,7 @@ import { Globe, Palette, FileText, Box, Laptop, Video } from 'lucide-react'
 import { motion, useAnimation, useInView, Easing } from 'framer-motion'
 import { useTranslation } from 'next-i18next'
 import { debounce } from '@/utils'
-import SectionBackground from '@/components/SectionBackground'
+import { SectionBackground } from '@/components/common'
 
 /**
  * Hook personalizado para gerenciar animações baseadas em visibilidade

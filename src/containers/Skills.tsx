@@ -1,8 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'next-i18next'
-import SectionWrapper from '@/components/SectionWrapper'
-import SectionHeader from '@/components/SectionHeader'
-import SkillsCloud from '@/components/SkillsCloud'
+import { SectionWrapper, SectionHeader } from '@/components/common'
+import { SkillsCloud } from '@/components/sections'
 
 /**
  * Componente principal Skills

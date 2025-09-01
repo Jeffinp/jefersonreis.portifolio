@@ -12,8 +12,8 @@ import {
 } from 'lucide-react'
 import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
-import EnhancedButton from './EnhancedButton'
-import { InteractiveCard } from './MicroInteractions'
+import { EnhancedButton } from '@/components/ui'
+import { InteractiveCard } from '@/components/ui/MicroInteractions'
 
 interface ProjectImage {
   src: string

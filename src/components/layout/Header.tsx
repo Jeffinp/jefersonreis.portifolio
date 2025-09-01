@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
-import ThemeToggle from '@/components/ThemeToggle'
+import { ThemeToggle } from '@/components/ui'
 
 interface NavItemProps {
   href: string

@@ -3,8 +3,8 @@ import { PhoneCall, Mail, ClipboardCheck } from 'lucide-react'
 import { motion, useAnimation, useInView } from 'framer-motion'
 import { debounce } from '@/utils'
 import { useTranslation } from 'next-i18next'
-import SectionBackground from '@/components/SectionBackground'
-import ContactForm from '@/components/ContactForm'
+import { SectionBackground } from '@/components/common'
+import { ContactForm } from '@/components/forms'
 
 /**
  * Hook personalizado para gerenciar animações baseadas em visibilidade
