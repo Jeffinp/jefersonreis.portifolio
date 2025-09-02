@@ -1,10 +1,16 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
 import { SEOHead, StructuredData, SchemaOrg } from '@/components/seo'
 import { LoadingSkeleton } from '@/components/ui'
 import { useViewportLazyLoad } from '@/hooks/ui/useViewportLazyLoad'
+
+// Quantum Hero or Regular Hero based on mode - Use Lite version for better performance
+const LiteQuantumHero = dynamic(() => import('@/containers/quantum/LiteQuantumHero'), {
+  loading: () => <div className="min-h-screen flex items-center justify-center"><LoadingSkeleton variant="skills" /></div>,
+  ssr: false
+})
 import Hero from '@/containers/Hero'
 import About from '@/containers/About'
 
@@ -13,6 +19,10 @@ const Skills = dynamic(() => import('@/containers/Skills'), {
   loading: () => <LoadingSkeleton variant="skills" />,
   ssr: true, // Mantém SSR para SEO
 })
+const LiteQuantumSkills = dynamic(() => import('@/containers/quantum/LiteQuantumSkills'), {
+  loading: () => <LoadingSkeleton variant="skills" />,
+  ssr: false,
+})
 const Services = dynamic(() => import('@/containers/Services'), {
   loading: () => <LoadingSkeleton variant="services" />,
   ssr: true,
@@ -20,6 +30,10 @@ const Services = dynamic(() => import('@/containers/Services'), {
 const Projects = dynamic(() => import('@/containers/Projects'), {
   loading: () => <LoadingSkeleton variant="projects" />,
   ssr: false, // Desabilita SSR para componentes interativos pesados
+})
+const LiteQuantumProjects = dynamic(() => import('@/containers/quantum/LiteQuantumProjects'), {
+  loading: () => <LoadingSkeleton variant="projects" />,
+  ssr: false,
 })
 const Timeline = dynamic(() => import('@/containers/Timeline'), {
   loading: () => <LoadingSkeleton variant="timeline" />,
@@ -65,6 +79,19 @@ const LazySection: React.FC<{
 export default function Home() {
   const router = useRouter()
   const currentLang = router.locale || 'pt'
+  const [quantumMode, setQuantumMode] = useState(false)
+  
+  // Check if quantum mode is enabled
+  useEffect(() => {
+    const savedQuantumMode = localStorage.getItem('quantumMode')
+    if (savedQuantumMode !== null) {
+      setQuantumMode(JSON.parse(savedQuantumMode))
+    } else {
+      // Enable by default for desktop
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+      setQuantumMode(!isMobile)
+    }
+  }, [])
 
   return (
     <>
@@ -72,8 +99,8 @@ export default function Home() {
       <StructuredData lang={currentLang} />
       <SchemaOrg lang={currentLang} />
       <main>
-        {/* Seções críticas carregadas imediatamente */}
-        <Hero />
+        {/* Use Lite Quantum Hero if enabled, otherwise regular Hero */}
+        {quantumMode ? <LiteQuantumHero /> : <Hero />}
         <About />
 
         {/* Seções não-críticas com lazy loading inteligente e Suspense */}
@@ -84,7 +111,7 @@ export default function Home() {
           rootMargin="400px"
         >
           <Suspense fallback={<LoadingSkeleton variant="skills" />}>
-            <Skills />
+            {quantumMode ? <LiteQuantumSkills /> : <Skills />}
           </Suspense>
         </LazySection>
 
@@ -106,7 +133,7 @@ export default function Home() {
           rootMargin="300px"
         >
           <Suspense fallback={<LoadingSkeleton variant="projects" />}>
-            <Projects />
+            {quantumMode ? <LiteQuantumProjects /> : <Projects />}
           </Suspense>
         </LazySection>
 

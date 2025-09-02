@@ -163,8 +163,15 @@
     "social": {
       "linkedin": "LinkedIn",
       "github": "GitHub",
-      "instagram": "Instagram"
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp",
+      "discord": "Discord"
     },
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "instagram": "Instagram",
+    "whatsapp": "WhatsApp",
+    "discord": "Discord",
     "rights": "Todos os direitos reservados.",
     "allRightsReserved": "Todos os direitos reservados.",
     "privacyPolicy": "Política de Privacidade"
@@ -219,6 +226,20 @@
         "title": "Contato",
         "content": "Para quaisquer questões relacionadas a esta Política de Privacidade, entre em contato através do e-mail: jefersonreisalmeida8356@gmail.com"
       }
+    }
+  },
+  "expertise": {
+    "title": "Áreas de Expertise",
+    "subtitle": "Especializado em criar soluções digitais que geram resultados reais"
+  },
+  "projects": {
+    "title": "Projetos em Destaque",
+    "subtitle": "Soluções inovadoras que transformaram ideias em resultados reais",
+    "categories": {
+      "all": "Todos",
+      "web": "Web",
+      "mobile": "Mobile",
+      "design": "Design"
     }
   }
 }

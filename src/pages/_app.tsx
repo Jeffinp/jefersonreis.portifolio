@@ -3,72 +3,72 @@ import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
 import { appWithTranslation } from 'next-i18next'
 import { ThemeProvider } from '@/contexts/ThemeContext'
-import { Header, Footer, GlobalBackground } from '@/components/layout'
-import { SkipNavigation } from '@/components/common'
+import { useState, useEffect } from 'react'
+import { preloadCriticalResources } from '@/config/performance.config'
 
-// Dynamic imports for components that don't need SSR
+// Dynamic import for Optimized Quantum Layout
+const OptimizedQuantumLayout = dynamic(
+  () => import('@/components/layout/OptimizedQuantumLayout'),
+  { ssr: false }
+)
+
+// Legacy components (still used in Quantum Layout)
 const ScrollToTopButton = dynamic(
   () => import('@/components/ui/ScrollToTopButton'),
-  {
-    ssr: false,
-  },
+  { ssr: false }
 )
 const WhatsAppFloatingButton = dynamic(
   () => import('@/components/ui/WhatsAppFloatingButton'),
-  {
-    ssr: false,
-  },
+  { ssr: false }
 )
 const DiscordFloatingButton = dynamic(
   () => import('@/components/ui/DiscordFloatingButton'),
-  {
-    ssr: false,
-  },
+  { ssr: false }
 )
 const Analytics = dynamic(
   () =>
     import('@vercel/analytics/react').then((mod) => ({
       default: mod.Analytics,
     })),
-  {
-    ssr: false,
-  },
+  { ssr: false }
 )
 const SpeedInsights = dynamic(
   () =>
     import('@vercel/speed-insights/next').then((mod) => ({
       default: mod.SpeedInsights,
     })),
-  {
-    ssr: false,
-  },
+  { ssr: false }
 )
 
 function App({ Component, pageProps }: AppProps) {
+  // FIXED: Quantum always enabled, performance always medium
+  const [quantumEnabled, setQuantumEnabled] = useState(true)
+  
+  // Initialize and preload critical resources
+  useEffect(() => {
+    // Preload critical resources
+    preloadCriticalResources()
+    
+    // FIXED: Always enable quantum mode
+    setQuantumEnabled(true)
+  }, [])
+  
   return (
     <ThemeProvider>
-      <div id="__next-app" className="relative">
-        {/* Skip Navigation Links for Accessibility */}
-        <SkipNavigation />
-
-        {/* Background global contínuo */}
-        <GlobalBackground />
-
-        <Header />
+      <OptimizedQuantumLayout>
         <main id="main-content" role="main" className="relative min-h-screen">
           <Component {...pageProps} />
         </main>
-        <Footer />
-
-        {/* Client-side only components */}
+        
+        {/* Floating buttons */}
         <ScrollToTopButton />
         <WhatsAppFloatingButton />
         <DiscordFloatingButton />
-
+        
         {/* Analytics and Performance Monitoring */}
         <Analytics />
         <SpeedInsights />
-      </div>
+      </OptimizedQuantumLayout>
     </ThemeProvider>
   )
 }

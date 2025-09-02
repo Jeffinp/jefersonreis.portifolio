@@ -1,15 +1,16 @@
 {
   "hero": {
     "title": "Jeferson Reis Almeida",
-    "subtitle": "desenvolvedor full-stack | designer gráfico | técnico em informática",
-    "transforming": "Transformando Ideias em Realidade",
+    "subtitle": "Desenvolvedor Full-Stack | Designer Gráfico | Técnico em Informática",
+    "transforming": "Transformando ideias em soluções digitais inovadoras que impulsionam negócios",
     "profileAlt": "Foto de Jeferson Reis, desenvolvedor web full-stack",
     "buttons": {
-      "viewProjects": "Ver Meus Projetos",
-      "contact": "Entrar em Contato",
+      "viewProjects": "Ver Projetos",
+      "contact": "Fale Comigo",
       "contact_tooltip": "Vamos conversar sobre seu próximo projeto",
       "projects_tooltip": "Conheça meu trabalho e experiência"
     },
+    "projectsLoaded": "{{count}} projetos carregados com sucesso",
     "scrollDown": "Rolar para baixo",
     "scrollToAbout": "Rolar para a seção Sobre"
   }

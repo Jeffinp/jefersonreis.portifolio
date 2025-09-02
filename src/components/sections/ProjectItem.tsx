@@ -46,27 +46,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
   const [isHovered, setIsHovered] = useState(false)
   const { t } = useTranslation('main')
 
-  // Preparar imagens para o carrossel (normaliza aliases @3d/ e @2d/)
-  const resolveImageSrc = (src: string) => {
-    if (src.startsWith('@3d/')) {
-      return src.replace('@3d/', '/assets/images/projects/3d/')
-    }
-    if (src.startsWith('@2d/')) {
-      return src.replace('@2d/', '/assets/images/projects/2d/')
-    }
-    if (src.startsWith('@design/')) {
-      return src.replace('@design/', '/assets/images/projects/design/')
-    }
-    return src
-  }
-
-  const projectImages = (project.images || []).map((img) => ({
-    ...img,
-    src: resolveImageSrc(img.src),
-  }))
-
-  // Debug log para verificar as imagens
-  console.log(`Project ${project.id} images:`, projectImages)
+  // Preparar imagens para o carrossel
+  const projectImages = project.images || []
 
   // Avançar para a próxima imagem
   const nextImage = useCallback(

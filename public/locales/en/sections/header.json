@@ -1,4 +1,14 @@
 {
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "skills": "Skills",
+    "projects": "Projects",
+    "portfolio": "Portfolio",
+    "timeline": "Journey",
+    "contact": "Contact"
+  },
   "menu": {
     "home": "Home",
     "about": "About",

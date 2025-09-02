@@ -7,7 +7,7 @@ export const designProjects: Project[] = [
     descriptionKey: 'portfolio.projects.art2DAlastor.description',
     images: [
       {
-        src: '@2d/art-2d-alastor.webp',
+        src: '/assets/images/projects/2d/art-2d-alastor.webp',
         alt: 'Art 2D Alastor - Tela principal',
         width: 1200,
         height: 800,
@@ -41,7 +41,7 @@ export const designProjects: Project[] = [
     descriptionKey: 'portfolio.projects.designBrasilPiscinas.description',
     images: [
       {
-        src: '@design/project-design-brasil-piscinas.png',
+        src: '/assets/images/projects/design/project-design-brasil-piscinas.png',
         alt: 'Design Brasil Piscinas - Tela principal',
         width: 1200,
         height: 800,
@@ -75,7 +75,7 @@ export const designProjects: Project[] = [
     descriptionKey: 'portfolio.projects.designPizzaInsta.description',
     images: [
       {
-        src: '@design/project-design-pizza-insta.webp',
+        src: '/assets/images/projects/design/project-design-pizza-insta.webp',
         alt: 'Design Pizza Insta - Tela principal',
         width: 1200,
         height: 800,
@@ -109,7 +109,7 @@ export const designProjects: Project[] = [
     descriptionKey: 'portfolio.projects.designClickteamLogo.description',
     images: [
       {
-        src: '@design/project-design-clickteam-logo.webp',
+        src: '/assets/images/projects/design/project-design-clickteam-logo.webp',
         alt: 'Design Clickteam Logo - Tela principal',
         width: 1200,
         height: 800,

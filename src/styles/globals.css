@@ -1,6 +1,9 @@
 /* Tailwind CSS imports */
 @import 'tailwindcss';
 
+/* Quantum Theme */
+@import './quantum/cosmos-theme.css';
+
 /* Base styles */
 @import './base/theme.css';
 @import './base/layout.css';

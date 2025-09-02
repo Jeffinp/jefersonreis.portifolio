@@ -7,7 +7,7 @@ export const threeDProjects: Project[] = [
     descriptionKey: 'portfolio.projects.art3DModelo.description',
     images: [
       {
-        src: '@3d/art-3d-modelo.webp',
+        src: '/assets/images/projects/3d/art-3d-modelo.webp',
         alt: 'Modelo 3D - Personagem estilizado',
         width: 1200,
         height: 800,
@@ -28,7 +28,7 @@ export const threeDProjects: Project[] = [
     descriptionKey: 'portfolio.projects.art3DCycles.description',
     images: [
       {
-        src: '@3d/art-3d-cycles.webp',
+        src: '/assets/images/projects/3d/art-3d-cycles.webp',
         alt: 'Render 3D com Cycles',
         width: 1200,
         height: 800,
@@ -49,7 +49,7 @@ export const threeDProjects: Project[] = [
     descriptionKey: 'portfolio.projects.art3DCranio.description',
     images: [
       {
-        src: '@3d/art-3d-cranio.webp',
+        src: '/assets/images/projects/3d/art-3d-cranio.webp',
         alt: 'Modelo 3D de Crânio Anatômico',
         width: 1200,
         height: 800,
@@ -70,7 +70,7 @@ export const threeDProjects: Project[] = [
     descriptionKey: 'portfolio.projects.art3DCubos.description',
     images: [
       {
-        src: '@3d/art-3d-Cubos.webp',
+        src: '/assets/images/projects/3d/art-3d-Cubos.webp',
         alt: 'Arte 3D Abstrata com Cubos',
         width: 1200,
         height: 800,
@@ -91,7 +91,7 @@ export const threeDProjects: Project[] = [
     descriptionKey: 'portfolio.projects.art3DCapitaoAmerica.description',
     images: [
       {
-        src: '@3d/art-3d-CapitaoAmerica.webp',
+        src: '/assets/images/projects/3d/art-3d-CapitaoAmerica.webp',
         alt: 'Fan Art 3D Capitão América',
         width: 1200,
         height: 800,
@@ -112,7 +112,7 @@ export const threeDProjects: Project[] = [
     descriptionKey: 'portfolio.projects.art3DBratailsNave.description',
     images: [
       {
-        src: '@3d/art-3d-bratails-nave.webp',
+        src: '/assets/images/projects/3d/art-3d-bratails-nave.webp',
         alt: 'Nave Sci-Fi 3D',
         width: 1200,
         height: 800,
@@ -133,7 +133,7 @@ export const threeDProjects: Project[] = [
     descriptionKey: 'portfolio.projects.art3DAsteroide.description',
     images: [
       {
-        src: '@3d/art-3d-Asteroide.webp',
+        src: '/assets/images/projects/3d/art-3d-Asteroide.webp',
         alt: 'Asteroide 3D no espaço',
         width: 1200,
         height: 800,
@@ -154,7 +154,7 @@ export const threeDProjects: Project[] = [
     descriptionKey: 'portfolio.projects.art3DAsGemeas.description',
     images: [
       {
-        src: '@3d/art-3d-as-gemeas.webp',
+        src: '/assets/images/projects/3d/art-3d-as-gemeas.webp',
         alt: 'As Gêmeas - Personagens 3D estilizadas',
         width: 1200,
         height: 800,
@@ -175,7 +175,7 @@ export const threeDProjects: Project[] = [
     descriptionKey: 'portfolio.projects.art3DAsGemeas2.description',
     images: [
       {
-        src: '@3d/art-3d-Asgemeas2.webp',
+        src: '/assets/images/projects/3d/art-3d-Asgemeas2.webp',
         alt: 'As Gêmeas 2 - Arte 3D',
         width: 1200,
         height: 800,

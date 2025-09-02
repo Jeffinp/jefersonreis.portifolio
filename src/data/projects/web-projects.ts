@@ -451,6 +451,7 @@ export const webProjects: Project[] = [
     category: 'web',
     type: 'personal',
     link: 'https://jefersonreis.dev/',
+    githubUrl: 'https://github.com/Jeffinp/jefersonreis.portifolio',
     featured: false,
     restricted: false,
     technologies: [

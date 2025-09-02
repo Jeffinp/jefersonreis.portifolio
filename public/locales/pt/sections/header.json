@@ -1,4 +1,14 @@
 {
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "services": "Serviços",
+    "skills": "Habilidades",
+    "projects": "Projetos",
+    "portfolio": "Portfólio",
+    "timeline": "Jornada",
+    "contact": "Contato"
+  },
   "menu": {
     "home": "Início",
     "about": "Sobre",
