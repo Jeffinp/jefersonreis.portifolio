@@ -179,7 +179,7 @@ const Footer: React.FC = () => {
               >
                 <Image
                   src="/assets/images/icons/mail-heart-svgrepo-com.svg"
-                  alt="Email icon"
+                  alt={t('aria.emailIcon')}
                   width={16}
                   height={16}
                   className="mr-2 h-4 w-4"

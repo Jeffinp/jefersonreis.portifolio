@@ -12,7 +12,31 @@
     "prevProject": "Previous project",
     "nextProject": "Next project",
     "goToSlide": "Go to testimonial {{number}}",
-    "goToPage": "Go to page {{number}}"
+    "goToPage": "Go to page {{number}}",
+    "toggleLanguage": "Toggle Language",
+    "emailIcon": "Email icon"
+  },
+  "quantum": {
+    "cursor": {
+      "warp": "WARP",
+      "link": "LINK",
+      "type": "TYPE",
+      "view": "VIEW"
+    },
+    "navigation": {
+      "searchPlaceholder": "Search navigation...",
+      "getInTouch": "Get in touch",
+      "home": "Return to main viewport",
+      "about": "Discover my journey",
+      "expertise": "View technical expertise",
+      "services": "Explore services offered",
+      "projects": "Browse portfolio projects",
+      "timeline": "Career milestones",
+      "contact": "Get in touch"
+    }
+  },
+  "analytics": {
+    "pageViews": "Page Views"
   },
   "error": {
     "serverError": "Server Error",

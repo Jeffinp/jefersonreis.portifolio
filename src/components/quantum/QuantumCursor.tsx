@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { motion, useSpring, useMotionValue } from 'framer-motion'
+import { useTranslation } from 'next-i18next'
 
 interface QuantumCursorProps {
   enabled?: boolean
@@ -8,6 +9,7 @@ interface QuantumCursorProps {
 export const QuantumCursor: React.FC<QuantumCursorProps> = ({
   enabled = true,
 }) => {
+  const { t } = useTranslation('common')
   const [isHovering, setIsHovering] = useState(false)
   const [isClicking, setIsClicking] = useState(false)
   const [cursorText, setCursorText] = useState('')
@@ -54,16 +56,16 @@ export const QuantumCursor: React.FC<QuantumCursorProps> = ({
 
         // Add special text for specific elements
         if (target.matches('[data-warp]')) {
-          setCursorText('WARP')
+          setCursorText(t('quantum.cursor.warp'))
         } else if (target.matches('a[href^="http"]')) {
-          setCursorText('LINK')
+          setCursorText(t('quantum.cursor.link'))
         }
       } else if (target.matches('input, textarea')) {
         setIsHovering(true)
-        setCursorText('TYPE')
+        setCursorText(t('quantum.cursor.type'))
       } else if (target.matches('[data-planet], .project-card')) {
         setIsHovering(true)
-        setCursorText('VIEW')
+        setCursorText(t('quantum.cursor.view'))
       } else {
         setIsHovering(false)
         setCursorText('')
@@ -91,7 +93,7 @@ export const QuantumCursor: React.FC<QuantumCursorProps> = ({
       window.removeEventListener('mouseup', handleMouseUp)
       window.removeEventListener('mouseleave', handleMouseLeave)
     }
-  }, [enabled, cursorX, cursorY])
+  }, [enabled, cursorX, cursorY, t])
 
   // Clean up particles periodically
   useEffect(() => {

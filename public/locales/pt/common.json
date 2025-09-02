@@ -12,7 +12,31 @@
     "prevProject": "Projeto anterior",
     "nextProject": "Próximo projeto",
     "goToSlide": "Ir para o depoimento {{number}}",
-    "goToPage": "Ir para página {{number}}"
+    "goToPage": "Ir para página {{number}}",
+    "toggleLanguage": "Alternar idioma",
+    "emailIcon": "Ícone de email"
+  },
+  "quantum": {
+    "cursor": {
+      "warp": "TELETRANSPORTE",
+      "link": "LINK",
+      "type": "DIGITAR",
+      "view": "VISUALIZAR"
+    },
+    "navigation": {
+      "searchPlaceholder": "Buscar navegação...",
+      "getInTouch": "Entre em contato",
+      "home": "Retornar ao viewport principal",
+      "about": "Descobrir minha jornada",
+      "expertise": "Ver expertise técnica",
+      "services": "Explorar serviços oferecidos",
+      "projects": "Navegar pelos projetos do portfólio",
+      "timeline": "Marcos da carreira",
+      "contact": "Entre em contato"
+    }
+  },
+  "analytics": {
+    "pageViews": "Visualizações de Página"
   },
   "error": {
     "serverError": "Erro do Servidor",

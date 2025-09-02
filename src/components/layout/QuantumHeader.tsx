@@ -244,7 +244,7 @@ const QuantumHeader: React.FC<QuantumHeaderProps> = ({
                       ? 'bg-stellar-blue/10 text-stellar-blue hover:bg-stellar-blue/20'
                       : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700'
                   }`}
-                  title="Toggle Language"
+                  title={t('aria.toggleLanguage')}
                 >
                   <Globe className="h-4 w-4" />
                 </motion.button>

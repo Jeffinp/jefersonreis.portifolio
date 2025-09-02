@@ -156,7 +156,7 @@ export const LiteSpaceNavigation: React.FC<LiteSpaceNavigationProps> = memo(
           x: 50,
           y: 20,
           color: 'from-blue-400 to-cyan-400',
-          description: 'Return to main viewport',
+          description: t('quantum.navigation.home'),
         },
         {
           id: 'about',
@@ -166,7 +166,7 @@ export const LiteSpaceNavigation: React.FC<LiteSpaceNavigationProps> = memo(
           x: 20,
           y: 40,
           color: 'from-purple-400 to-pink-400',
-          description: 'Discover my journey',
+          description: t('quantum.navigation.about'),
         },
         {
           id: 'services',
@@ -176,7 +176,7 @@ export const LiteSpaceNavigation: React.FC<LiteSpaceNavigationProps> = memo(
           x: 80,
           y: 35,
           color: 'from-green-400 to-emerald-400',
-          description: 'Professional solutions',
+          description: t('quantum.navigation.services'),
         },
         {
           id: 'skills',
@@ -186,7 +186,7 @@ export const LiteSpaceNavigation: React.FC<LiteSpaceNavigationProps> = memo(
           x: 35,
           y: 70,
           color: 'from-yellow-400 to-orange-400',
-          description: 'Technical expertise',
+          description: t('quantum.navigation.expertise'),
         },
         {
           id: 'projects',
@@ -196,7 +196,7 @@ export const LiteSpaceNavigation: React.FC<LiteSpaceNavigationProps> = memo(
           x: 65,
           y: 60,
           color: 'from-red-400 to-rose-400',
-          description: 'Featured work',
+          description: t('quantum.navigation.projects'),
         },
         {
           id: 'timeline',
@@ -206,7 +206,7 @@ export const LiteSpaceNavigation: React.FC<LiteSpaceNavigationProps> = memo(
           x: 15,
           y: 65,
           color: 'from-indigo-400 to-blue-400',
-          description: 'Career milestones',
+          description: t('quantum.navigation.timeline'),
         },
         {
           id: 'contact',
@@ -216,7 +216,7 @@ export const LiteSpaceNavigation: React.FC<LiteSpaceNavigationProps> = memo(
           x: 50,
           y: 85,
           color: 'from-teal-400 to-cyan-400',
-          description: 'Get in touch',
+          description: t('quantum.navigation.contact'),
         },
       ],
       [t],
@@ -361,7 +361,7 @@ export const LiteSpaceNavigation: React.FC<LiteSpaceNavigationProps> = memo(
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search navigation..."
+                    placeholder={t('quantum.navigation.searchPlaceholder')}
                     className="bg-transparent text-white placeholder-gray-400 outline-none"
                   />
                   <kbd className="rounded bg-white/20 px-2 py-1 text-xs text-gray-300">
