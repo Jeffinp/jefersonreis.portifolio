@@ -177,7 +177,6 @@ export const OptimizedQuantumLayout: React.FC<OptimizedQuantumLayoutProps> = ({
           {showCursor && performanceMode === 'high' && (
             <QuantumCursor enabled={true} />
           )}
-
         </>
       )}
 
