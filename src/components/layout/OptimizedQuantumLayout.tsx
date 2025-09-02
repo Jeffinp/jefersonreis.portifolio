@@ -21,11 +21,6 @@ const LiteSpaceNavigation = dynamic(
 )
 
 // Only load heavy components if performance allows
-const AICompanion = dynamic(() => import('@/components/quantum/AICompanion'), {
-  ssr: false,
-  loading: () => null, // No loading state to avoid flicker
-})
-
 const QuantumCursor = dynamic(
   () => import('@/components/quantum/QuantumCursor'),
   {
@@ -58,7 +53,6 @@ export const OptimizedQuantumLayout: React.FC<OptimizedQuantumLayoutProps> = ({
   >('medium')
   const [soundEnabled, setSoundEnabled] = useState(false)
   const [showCursor, setShowCursor] = useState(false)
-  const [showAI, setShowAI] = useState(false)
   const [isInitialized, setIsInitialized] = useState(false)
 
   // Check device and set initial performance mode
@@ -100,7 +94,6 @@ export const OptimizedQuantumLayout: React.FC<OptimizedQuantumLayoutProps> = ({
   useEffect(() => {
     // Medium mode fixed configuration
     setShowCursor(false)
-    setShowAI(true)
   }, [])
 
   // Save preferences
@@ -185,11 +178,6 @@ export const OptimizedQuantumLayout: React.FC<OptimizedQuantumLayoutProps> = ({
             <QuantumCursor enabled={true} />
           )}
 
-          {/* AI Companion - Only on medium+ performance */}
-          {showAI &&
-            (performanceMode === 'medium' || performanceMode === 'high') && (
-              <AICompanion enabled={true} />
-            )}
         </>
       )}
 
