@@ -7,14 +7,15 @@ export const PERFORMANCE_CONFIG = {
     // Quality FIXED to medium (80) for all modes
     quality: {
       'ultra-low': 80,
-      'low': 80,
-      'medium': 80,
-      'high': 80,
+      low: 80,
+      medium: 80,
+      high: 80,
     },
     // Blur placeholder for images
-    blurDataURL: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA8A/9k=',
+    blurDataURL:
+      'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA8A/9k=',
   },
-  
+
   // Animation settings per performance mode
   animations: {
     'ultra-low': {
@@ -22,23 +23,23 @@ export const PERFORMANCE_CONFIG = {
       duration: 0,
       stagger: 0,
     },
-    'low': {
+    low: {
       enabled: true,
       duration: 0.3,
       stagger: 0.02,
     },
-    'medium': {
+    medium: {
       enabled: true,
       duration: 0.5,
       stagger: 0.05,
     },
-    'high': {
+    high: {
       enabled: true,
       duration: 0.6,
       stagger: 0.1,
     },
   },
-  
+
   // Particle settings FIXED to medium values
   particles: {
     'ultra-low': {
@@ -46,40 +47,40 @@ export const PERFORMANCE_CONFIG = {
       animated: true,
       fps: 30,
     },
-    'low': {
+    low: {
       count: 40,
       animated: true,
       fps: 30,
     },
-    'medium': {
+    medium: {
       count: 40,
       animated: true,
       fps: 30,
     },
-    'high': {
+    high: {
       count: 40,
       animated: true,
       fps: 30,
     },
   },
-  
+
   // Lazy loading settings
   lazyLoading: {
     // Intersection Observer settings
     rootMargin: {
       'ultra-low': '50px',
-      'low': '100px',
-      'medium': '200px',
-      'high': '300px',
+      low: '100px',
+      medium: '200px',
+      high: '300px',
     },
     threshold: {
       'ultra-low': 0.5,
-      'low': 0.3,
-      'medium': 0.2,
-      'high': 0.1,
+      low: 0.3,
+      medium: 0.2,
+      high: 0.1,
     },
   },
-  
+
   // Component loading priorities
   componentPriorities: {
     hero: 'critical',
@@ -91,18 +92,13 @@ export const PERFORMANCE_CONFIG = {
     testimonials: 'low',
     contact: 'medium',
   },
-  
+
   // Preload settings
   preload: {
-    fonts: [
-      '/fonts/inter-var.woff2',
-    ],
-    criticalImages: [
-      '/assets/images/profile.jpg',
-      '/assets/images/logo.png',
-    ],
+    fonts: ['/fonts/inter-var.woff2'],
+    criticalImages: ['/assets/images/profile.jpg', '/assets/images/logo.png'],
   },
-  
+
   // Performance thresholds
   thresholds: {
     fps: {
@@ -118,7 +114,7 @@ export const PERFORMANCE_CONFIG = {
       low: 40,
     },
   },
-  
+
   // Debounce/Throttle delays
   delays: {
     scroll: 100,
@@ -129,7 +125,9 @@ export const PERFORMANCE_CONFIG = {
 }
 
 // Helper function to get config based on performance mode
-export const getPerformanceConfig = (mode: 'ultra-low' | 'low' | 'medium' | 'high') => {
+export const getPerformanceConfig = (
+  mode: 'ultra-low' | 'low' | 'medium' | 'high',
+) => {
   return {
     imageQuality: PERFORMANCE_CONFIG.images.quality[mode],
     animations: PERFORMANCE_CONFIG.animations[mode],
@@ -140,7 +138,11 @@ export const getPerformanceConfig = (mode: 'ultra-low' | 'low' | 'medium' | 'hig
 }
 
 // Device detection utilities - ALWAYS RETURNS MEDIUM
-export const getDevicePerformanceMode = (): 'ultra-low' | 'low' | 'medium' | 'high' => {
+export const getDevicePerformanceMode = ():
+  | 'ultra-low'
+  | 'low'
+  | 'medium'
+  | 'high' => {
   // FIXED: Always return medium regardless of device
   return 'medium'
 }
@@ -148,9 +150,9 @@ export const getDevicePerformanceMode = (): 'ultra-low' | 'low' | 'medium' | 'hi
 // Preload critical resources
 export const preloadCriticalResources = () => {
   if (typeof window === 'undefined') return
-  
+
   // Preload fonts
-  PERFORMANCE_CONFIG.preload.fonts.forEach(font => {
+  PERFORMANCE_CONFIG.preload.fonts.forEach((font) => {
     const link = document.createElement('link')
     link.rel = 'preload'
     link.href = font
@@ -159,9 +161,9 @@ export const preloadCriticalResources = () => {
     link.crossOrigin = 'anonymous'
     document.head.appendChild(link)
   })
-  
+
   // Preload critical images
-  PERFORMANCE_CONFIG.preload.criticalImages.forEach(image => {
+  PERFORMANCE_CONFIG.preload.criticalImages.forEach((image) => {
     const link = document.createElement('link')
     link.rel = 'preload'
     link.href = image

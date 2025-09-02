@@ -5,7 +5,9 @@ interface QuantumCursorProps {
   enabled?: boolean
 }
 
-export const QuantumCursor: React.FC<QuantumCursorProps> = ({ enabled = true }) => {
+export const QuantumCursor: React.FC<QuantumCursorProps> = ({
+  enabled = true,
+}) => {
   const [isHovering, setIsHovering] = useState(false)
   const [isClicking, setIsClicking] = useState(false)
   const [cursorText, setCursorText] = useState('')
@@ -16,7 +18,9 @@ export const QuantumCursor: React.FC<QuantumCursorProps> = ({ enabled = true }) 
   const cursorYSpring = useSpring(cursorY, springConfig)
 
   // Particle trail for quantum effect
-  const [particles, setParticles] = useState<{ x: number; y: number; id: number }[]>([])
+  const [particles, setParticles] = useState<
+    { x: number; y: number; id: number }[]
+  >([])
   const particleIdRef = useRef(0)
 
   useEffect(() => {
@@ -47,7 +51,7 @@ export const QuantumCursor: React.FC<QuantumCursorProps> = ({ enabled = true }) 
       if (target.matches('a, button')) {
         setIsHovering(true)
         setCursorText('')
-        
+
         // Add special text for specific elements
         if (target.matches('[data-warp]')) {
           setCursorText('WARP')
@@ -146,8 +150,8 @@ export const QuantumCursor: React.FC<QuantumCursorProps> = ({ enabled = true }) 
               isHovering ? 'border-blue-400' : 'border-gray-400'
             }`}
             style={{
-              boxShadow: isHovering 
-                ? '0 0 20px rgba(59, 130, 246, 0.5)' 
+              boxShadow: isHovering
+                ? '0 0 20px rgba(59, 130, 246, 0.5)'
                 : '0 0 10px rgba(156, 163, 175, 0.3)',
             }}
           />
@@ -212,7 +216,7 @@ export const QuantumCursor: React.FC<QuantumCursorProps> = ({ enabled = true }) 
         {/* Hover Text Label */}
         {cursorText && (
           <motion.div
-            className="absolute left-8 top-8"
+            className="absolute top-8 left-8"
             initial={{ opacity: 0, scale: 0.8, y: -5 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: -5 }}
@@ -257,7 +261,8 @@ export const QuantumCursor: React.FC<QuantumCursorProps> = ({ enabled = true }) 
             <div
               className="h-12 w-12 rounded-full"
               style={{
-                background: 'radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%)',
+                background:
+                  'radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%)',
                 filter: 'blur(8px)',
               }}
             />

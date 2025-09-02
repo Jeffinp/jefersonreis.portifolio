@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react'
 export const useScrollFix = () => {
   const lastScrollY = useRef(0)
   const isUserScrolling = useRef(false)
-  const scrollTimeout = useRef<NodeJS.Timeout>()
+  const scrollTimeout = useRef<NodeJS.Timeout | undefined>(undefined)
 
   useEffect(() => {
     let ticking = false
@@ -22,7 +22,7 @@ export const useScrollFix = () => {
           // Detect unnatural scroll behavior (automatic scrolling up)
           if (delta < -10 && !isUserScrolling.current) {
             consecutiveScrollUps++
-            
+
             // If we detect multiple consecutive unnatural upward scrolls, block them
             if (consecutiveScrollUps > threshold) {
               window.scrollTo(0, lastScrollY.current)
@@ -54,9 +54,21 @@ export const useScrollFix = () => {
     // Listen for user scroll events
     window.addEventListener('scroll', handleScroll, { passive: true })
     window.addEventListener('wheel', handleUserInteraction, { passive: true })
-    window.addEventListener('touchmove', handleUserInteraction, { passive: true })
+    window.addEventListener('touchmove', handleUserInteraction, {
+      passive: true,
+    })
     window.addEventListener('keydown', (e) => {
-      if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(e.key)) {
+      if (
+        [
+          'ArrowUp',
+          'ArrowDown',
+          'PageUp',
+          'PageDown',
+          'Home',
+          'End',
+          ' ',
+        ].includes(e.key)
+      ) {
         handleUserInteraction()
       }
     })

@@ -11,7 +11,11 @@ import {
 } from 'lucide-react'
 import { useTranslation } from 'next-i18next'
 import { debounce, useAnimatedVisibility } from '@/utils'
-import { SectionWrapper, SectionHeader, AnimatedSection } from '@/components/common'
+import {
+  SectionWrapper,
+  SectionHeader,
+  AnimatedSection,
+} from '@/components/common'
 
 interface MousePosition {
   x: number
