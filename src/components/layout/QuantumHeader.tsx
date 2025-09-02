@@ -113,7 +113,7 @@ const QuantumHeader: React.FC<QuantumHeaderProps> = ({
                       : 'text-gray-500 dark:text-gray-400'
                   }`}
                 >
-                  {quantumMode ? 'Quantum Developer' : 'Full-Stack Developer'}
+                  Full-Stack Developer
                 </p>
               </div>
             </Link>

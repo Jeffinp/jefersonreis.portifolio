@@ -8,7 +8,7 @@ import { EnhancedButton } from '@/components/ui'
 const LiteQuantumHero: React.FC = memo(() => {
   const { t } = useTranslation('sections/hero')
   const [typedText, setTypedText] = useState('')
-  const fullText = 'Quantum Developer'
+  const fullText = 'Full-Stack Developer'
 
   // Simple typing effect without heavy animations
   useEffect(() => {
