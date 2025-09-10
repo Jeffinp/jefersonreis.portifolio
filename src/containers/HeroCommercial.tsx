@@ -237,12 +237,12 @@ const HeroCommercial: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* Coluna de Cards de Serviços */}
+          {/* Coluna de Cards de Serviços - Desktop */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="grid gap-4 sm:grid-cols-2"
+            className="hidden md:grid gap-4 sm:grid-cols-2"
           >
             {services.map((service, index) => (
               <motion.div
@@ -286,6 +286,56 @@ const HeroCommercial: React.FC = () => {
                 — Maria Silva, CEO StartupX
               </p>
             </motion.div>
+          </motion.div>
+
+          {/* Versão Mobile - Tabela Compacta */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="md:hidden"
+          >
+            <div className="rounded-xl border border-white/20 bg-white/10 p-4 backdrop-blur-md">
+              <h3 className="mb-3 text-center text-sm font-bold text-white/90">
+                💰 Investimento por Serviço
+              </h3>
+              <div className="space-y-2">
+                {services.slice(0, 4).map((service, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between border-b border-white/10 pb-2 last:border-0"
+                  >
+                    <span className="text-xs text-white/80">{service.name}</span>
+                    <span className="text-sm font-bold text-yellow-400">
+                      {service.price.split(' ')[0]}+
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <button
+                onClick={() => {
+                  const element = document.getElementById('services')
+                  element?.scrollIntoView({ behavior: 'smooth' })
+                }}
+                className="mt-3 w-full rounded-lg bg-white/20 py-2 text-xs font-semibold text-white"
+              >
+                Ver Todos os Detalhes →
+              </button>
+            </div>
+            
+            {/* Mini depoimento mobile */}
+            <div className="mt-4 rounded-lg border border-green-400/30 bg-green-400/10 p-3 backdrop-blur-md">
+              <div className="flex items-center gap-2 mb-2">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                ))}
+                <span className="text-xs text-yellow-400">5.0</span>
+              </div>
+              <p className="text-xs text-white/80 italic">
+                "Site rápido e moderno que realmente converte!"
+              </p>
+              <p className="text-xs text-white/60 mt-1">— Maria S.</p>
+            </div>
           </motion.div>
         </div>
 
