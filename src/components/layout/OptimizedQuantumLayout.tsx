@@ -44,7 +44,7 @@ export const OptimizedQuantumLayout: React.FC<OptimizedQuantumLayoutProps> = ({
   const router = useRouter()
   const performanceMetrics = usePerformanceMonitor()
   useScrollFix() // Apply scroll fix to prevent automatic scrolling
-  
+
   // Check if we're on the home page (audience selector)
   const isHomePage = router.pathname === '/'
 

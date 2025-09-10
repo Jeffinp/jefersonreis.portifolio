@@ -10,14 +10,14 @@ export default function Home() {
 
   return (
     <>
-      <SEOHead 
+      <SEOHead
         lang={currentLang}
         title="Jeferson Reis - Desenvolvedor Full-Stack & Especialista em Soluções Digitais"
         description="Desenvolvimento web moderno, automações inteligentes e apps mobile. Disponível para projetos freelance e oportunidades CLT/PJ."
       />
       <StructuredData lang={currentLang} />
       <SchemaOrg lang={currentLang} />
-      
+
       {/* Always show the audience selector on home page */}
       <AudienceSelector />
     </>
@@ -27,10 +27,7 @@ export default function Home() {
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, [
-        'common',
-        'sections/header',
-      ])),
+      ...(await serverSideTranslations(locale, ['common', 'sections/header'])),
     },
   }
 }

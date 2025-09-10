@@ -1,6 +1,16 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Briefcase, Rocket, ArrowRight, Users, Code, TrendingUp, Clock, Shield, Star } from 'lucide-react'
+import {
+  Briefcase,
+  Rocket,
+  ArrowRight,
+  Users,
+  Code,
+  TrendingUp,
+  Clock,
+  Shield,
+  Star,
+} from 'lucide-react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
@@ -11,7 +21,7 @@ const AudienceSelector: React.FC = () => {
   const handleSelection = (target: 'empresa' | 'freelance') => {
     // Salva a preferência
     localStorage.setItem('portfolioTarget', target)
-    
+
     // Redireciona para página específica
     if (target === 'empresa') {
       router.push('/empresa')
@@ -37,7 +47,10 @@ const AudienceSelector: React.FC = () => {
           className="mb-12 text-center"
         >
           <h1 className="mb-4 text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl dark:text-white">
-            Olá! Eu sou <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Jeferson Reis</span>
+            Olá! Eu sou{' '}
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Jeferson Reis
+            </span>
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300">
             Desenvolvedor Full-Stack & Especialista em Soluções Digitais
@@ -60,7 +73,7 @@ const AudienceSelector: React.FC = () => {
           >
             {/* Gradient overlay on hover */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-cyan-600/5 opacity-0 transition-opacity group-hover:opacity-100" />
-            
+
             {/* Icon */}
             <div className="mb-6 inline-flex rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 p-4 text-white shadow-lg">
               <Briefcase className="h-8 w-8" />
@@ -70,9 +83,10 @@ const AudienceSelector: React.FC = () => {
             <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
               Sou Empresa / Recrutador
             </h2>
-            
+
             <p className="mb-6 text-gray-600 dark:text-gray-300">
-              Procuro um desenvolvedor Full-Stack experiente para integrar nossa equipe ou projeto
+              Procuro um desenvolvedor Full-Stack experiente para integrar nossa
+              equipe ou projeto
             </p>
 
             {/* Benefits list */}
@@ -121,7 +135,7 @@ const AudienceSelector: React.FC = () => {
           >
             {/* Gradient overlay on hover */}
             <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-pink-600/5 opacity-0 transition-opacity group-hover:opacity-100" />
-            
+
             {/* Icon */}
             <div className="mb-6 inline-flex rounded-full bg-gradient-to-br from-purple-500 to-pink-500 p-4 text-white shadow-lg">
               <Rocket className="h-8 w-8" />
@@ -131,9 +145,10 @@ const AudienceSelector: React.FC = () => {
             <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
               Quero Escalar Meu Negócio
             </h2>
-            
+
             <p className="mb-6 text-gray-600 dark:text-gray-300">
-              Preciso de sites, sistemas e automações para vender mais e trabalhar menos
+              Preciso de sites, sistemas e automações para vender mais e
+              trabalhar menos
             </p>
 
             {/* Benefits list */}
@@ -179,7 +194,8 @@ const AudienceSelector: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-12 text-center text-sm text-gray-500 dark:text-gray-400"
         >
-          Você pode mudar sua escolha a qualquer momento usando o menu de navegação
+          Você pode mudar sua escolha a qualquer momento usando o menu de
+          navegação
         </motion.p>
       </div>
     </div>

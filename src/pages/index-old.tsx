@@ -36,18 +36,24 @@ const Contact = dynamic(() => import('@/containers/portfolio/Contact'), {
 })
 
 // Commercial Components (Freelancers/Clientes)
-const HeroCommercial = dynamic(() => import('@/containers/commercial/HeroCommercial'), {
-  loading: () => (
-    <div className="flex min-h-screen items-center justify-center">
-      <LoadingSkeleton variant="skills" />
-    </div>
-  ),
-  ssr: false,
-})
-const AboutCommercial = dynamic(() => import('@/containers/commercial/AboutCommercial'), {
-  loading: () => <LoadingSkeleton variant="skills" />,
-  ssr: true,
-})
+const HeroCommercial = dynamic(
+  () => import('@/containers/commercial/HeroCommercial'),
+  {
+    loading: () => (
+      <div className="flex min-h-screen items-center justify-center">
+        <LoadingSkeleton variant="skills" />
+      </div>
+    ),
+    ssr: false,
+  },
+)
+const AboutCommercial = dynamic(
+  () => import('@/containers/commercial/AboutCommercial'),
+  {
+    loading: () => <LoadingSkeleton variant="skills" />,
+    ssr: true,
+  },
+)
 const ServicesCommercial = dynamic(
   () => import('@/containers/commercial/ServicesCommercial'),
   {
@@ -55,10 +61,13 @@ const ServicesCommercial = dynamic(
     ssr: true,
   },
 )
-const FAQCommercial = dynamic(() => import('@/containers/commercial/FAQCommercial'), {
-  loading: () => <LoadingSkeleton variant="services" />,
-  ssr: true,
-})
+const FAQCommercial = dynamic(
+  () => import('@/containers/commercial/FAQCommercial'),
+  {
+    loading: () => <LoadingSkeleton variant="services" />,
+    ssr: true,
+  },
+)
 
 // Shared Components
 const Projects = dynamic(() => import('@/containers/shared/Projects'), {
@@ -154,7 +163,7 @@ export default function Home() {
   const currentLang = router.locale || 'pt'
   const [quantumMode, setQuantumMode] = useState(false)
   const [showSelector, setShowSelector] = useState(false)
-  
+
   // Novo sistema de target
   const { target, isEmpresa, isFreelance, isDefault } = useTargetAudience()
 
@@ -164,7 +173,7 @@ export default function Home() {
     // Users will be redirected to /empresa or /freelance
     setShowSelector(true)
   }, [])
-  
+
   // Check if quantum mode is enabled
   useEffect(() => {
     const savedQuantumMode = localStorage.getItem('quantumMode')
@@ -204,7 +213,7 @@ export default function Home() {
         ) : (
           <HeroPortfolio />
         )}
-        
+
         {/* About - diferente para cada público */}
         {isFreelance ? <AboutCommercial /> : <AboutPortfolio />}
 
@@ -297,7 +306,6 @@ export default function Home() {
             </Suspense>
           </LazySection>
         )}
-
       </main>
 
       {/* Chat Widget and Social Proof - Para freelance apenas */}
@@ -318,7 +326,7 @@ export default function Home() {
               console.log('Conversion event:', data)
               // Track conversion events
               if (typeof window !== 'undefined' && (window as any).gtag) {
-                (window as any).gtag('event', 'conversion', {
+                ;(window as any).gtag('event', 'conversion', {
                   event_category: 'engagement',
                   event_label: data.type,
                   value: data.value,

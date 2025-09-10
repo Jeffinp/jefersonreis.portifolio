@@ -18,7 +18,7 @@ export const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({
   const [email, setEmail] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
-  
+
   const { isVisible, dismiss } = useExitIntent({
     threshold: 10,
     delay: 0,
@@ -46,7 +46,7 @@ export const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({
     })
 
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await new Promise((resolve) => setTimeout(resolve, 1000))
 
     // Save to localStorage for follow-up
     const leads = JSON.parse(localStorage.getItem('exitIntentLeads') || '[]')
@@ -140,14 +140,16 @@ export const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed left-1/2 top-1/2 z-[10000] w-[90%] max-w-lg -translate-x-1/2 -translate-y-1/2 transform"
+            className="fixed top-1/2 left-1/2 z-[10000] w-[90%] max-w-lg -translate-x-1/2 -translate-y-1/2 transform"
           >
             <div className="relative overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-gray-900">
               {/* Header com gradiente */}
-              <div className={`relative bg-gradient-to-r ${currentVariant.color} p-6 text-white`}>
+              <div
+                className={`relative bg-gradient-to-r ${currentVariant.color} p-6 text-white`}
+              >
                 <button
                   onClick={handleClose}
-                  className="absolute right-4 top-4 rounded-full bg-white/20 p-2 backdrop-blur transition-all hover:bg-white/30"
+                  className="absolute top-4 right-4 rounded-full bg-white/20 p-2 backdrop-blur transition-all hover:bg-white/30"
                 >
                   <X className="h-5 w-5 text-white" />
                 </button>
@@ -157,8 +159,12 @@ export const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({
                     <Icon className="h-8 w-8 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-3xl font-bold">{currentVariant.title}</h2>
-                    <p className="text-lg opacity-90">{currentVariant.subtitle}</p>
+                    <h2 className="text-3xl font-bold">
+                      {currentVariant.title}
+                    </h2>
+                    <p className="text-lg opacity-90">
+                      {currentVariant.subtitle}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -192,7 +198,7 @@ export const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder="Digite seu melhor e-mail"
                           required
-                          className="w-full rounded-lg border border-gray-300 px-4 py-3 text-base focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                          className="w-full rounded-lg border border-gray-300 px-4 py-3 text-base focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
                         />
                       </div>
 

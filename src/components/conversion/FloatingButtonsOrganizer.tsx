@@ -8,11 +8,9 @@ interface FloatingButtonsOrganizerProps {
   mobileCollapsible?: boolean
 }
 
-export const FloatingButtonsOrganizer: React.FC<FloatingButtonsOrganizerProps> = ({
-  children,
-  position = 'right',
-  mobileCollapsible = true,
-}) => {
+export const FloatingButtonsOrganizer: React.FC<
+  FloatingButtonsOrganizerProps
+> = ({ children, position = 'right', mobileCollapsible = true }) => {
   const [isMobile, setIsMobile] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
   const [showButtons, setShowButtons] = useState(true)
@@ -26,25 +24,25 @@ export const FloatingButtonsOrganizer: React.FC<FloatingButtonsOrganizerProps> =
         setIsExpanded(false)
       }
     }
-    
+
     checkMobile()
     window.addEventListener('resize', checkMobile)
-    
+
     // Auto-hide buttons when scrolling on mobile
     let lastScrollY = window.scrollY
     const handleScroll = () => {
       if (!isMobile) return
-      
+
       const currentScrollY = window.scrollY
       const scrollingDown = currentScrollY > lastScrollY
-      
+
       // Hide when scrolling down, show when scrolling up
       setShowButtons(!scrollingDown || currentScrollY < 100)
       lastScrollY = currentScrollY
     }
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true })
-    
+
     return () => {
       window.removeEventListener('resize', checkMobile)
       window.removeEventListener('scroll', handleScroll)
@@ -91,25 +89,32 @@ export const FloatingButtonsOrganizer: React.FC<FloatingButtonsOrganizerProps> =
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.8, y: 20 }}
                   transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-                  className="absolute bottom-16 right-0 space-y-3"
+                  className="absolute right-0 bottom-16 space-y-3"
                 >
                   {/* Render children with adjusted positioning */}
                   <div className="space-y-3">
                     {React.Children.map(children, (child, index) => {
                       if (React.isValidElement(child)) {
                         // Clone and modify className to remove fixed positioning
-                        return React.cloneElement(child as React.ReactElement<any>, {
-                          className: (child.props.className || '')
-                            .replace(/fixed|bottom-\[?\d+px?\]?|right-\[?\d+px?\]?|left-\[?\d+px?\]?/g, '')
-                            .trim() + ' relative block w-full',
-                          style: {
-                            ...child.props.style,
-                            position: 'relative',
-                            bottom: 'auto',
-                            right: 'auto',
-                            left: 'auto',
+                        return React.cloneElement(
+                          child as React.ReactElement<any>,
+                          {
+                            className:
+                              (child.props.className || '')
+                                .replace(
+                                  /fixed|bottom-\[?\d+px?\]?|right-\[?\d+px?\]?|left-\[?\d+px?\]?/g,
+                                  '',
+                                )
+                                .trim() + ' relative block w-full',
+                            style: {
+                              ...child.props.style,
+                              position: 'relative',
+                              bottom: 'auto',
+                              right: 'auto',
+                              left: 'auto',
+                            },
                           },
-                        })
+                        )
                       }
                       return child
                     })}

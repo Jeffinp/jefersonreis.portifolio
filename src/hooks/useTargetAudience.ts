@@ -24,8 +24,10 @@ export const useTargetAudience = (): UseTargetAudienceReturn => {
   useEffect(() => {
     // Prioridade: Query param > localStorage > default
     const queryTarget = router.query.target as string
-    const savedTarget = localStorage.getItem('portfolioTarget') as TargetAudience
-    
+    const savedTarget = localStorage.getItem(
+      'portfolioTarget',
+    ) as TargetAudience
+
     if (queryTarget === 'empresa' || queryTarget === 'freelance') {
       setTargetState(queryTarget)
       localStorage.setItem('portfolioTarget', queryTarget)
@@ -61,14 +63,14 @@ export const useTargetAudience = (): UseTargetAudienceReturn => {
   const getTargetURL = (targetType: TargetAudience): string => {
     const baseURL = window.location.pathname
     const currentParams = new URLSearchParams(window.location.search)
-    
+
     // Remove target param if switching to default
     if (targetType === 'default') {
       currentParams.delete('target')
     } else {
       currentParams.set('target', targetType)
     }
-    
+
     // Preserve utm params and other tracking
     const queryString = currentParams.toString()
     return queryString ? `${baseURL}?${queryString}` : baseURL

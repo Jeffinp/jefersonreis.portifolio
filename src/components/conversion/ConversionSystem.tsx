@@ -15,9 +15,12 @@ const InteractiveQuiz = dynamic(() => import('./InteractiveQuiz'), {
 const ROICalculator = dynamic(() => import('./ROICalculator'), {
   ssr: false,
 })
-const FloatingButtonsOrganizer = dynamic(() => import('./FloatingButtonsOrganizer'), {
-  ssr: false,
-})
+const FloatingButtonsOrganizer = dynamic(
+  () => import('./FloatingButtonsOrganizer'),
+  {
+    ssr: false,
+  },
+)
 
 interface ConversionSystemProps {
   enabled?: boolean
@@ -68,10 +71,10 @@ export const ConversionSystem: React.FC<ConversionSystemProps> = ({
 
   const handleConversion = (data: any) => {
     console.log('Conversion detected:', data)
-    
+
     // Send to analytics
     if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'conversion', {
+      ;(window as any).gtag('event', 'conversion', {
         event_category: 'engagement',
         event_label: data.type || 'unknown',
         value: data.value || 0,

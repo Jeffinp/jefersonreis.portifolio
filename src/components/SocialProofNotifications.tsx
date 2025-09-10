@@ -286,14 +286,14 @@ const SocialProofNotifications: React.FC = () => {
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
-            className="fixed z-40 top-20 left-2 sm:top-24 sm:left-4"
+            className="fixed top-20 left-2 z-40 sm:top-24 sm:left-4"
           >
-            <div className="flex items-center gap-1 rounded-lg border border-gray-200 bg-white px-2 py-1 shadow-md dark:border-gray-700 dark:bg-gray-800 sm:gap-2 sm:px-3 sm:py-2">
+            <div className="flex items-center gap-1 rounded-lg border border-gray-200 bg-white px-2 py-1 shadow-md sm:gap-2 sm:px-3 sm:py-2 dark:border-gray-700 dark:bg-gray-800">
               <div className="relative">
                 <Users className="h-4 w-4 text-green-600 dark:text-green-400" />
                 <div className="absolute -top-1 -right-1 h-2 w-2 animate-pulse rounded-full bg-green-500" />
               </div>
-              <span className="text-xs text-gray-700 dark:text-gray-300 sm:text-sm">
+              <span className="text-xs text-gray-700 sm:text-sm dark:text-gray-300">
                 <span className="font-semibold text-gray-900 dark:text-white">
                   {onlineUsers}
                 </span>{' '}
@@ -313,9 +313,9 @@ const SocialProofNotifications: React.FC = () => {
             animate={{ opacity: 1, x: 0, y: 0 }}
             exit={{ opacity: 0, x: -100, y: 20 }}
             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-            className="fixed z-40 max-w-[280px] sm:max-w-sm top-32 left-2 sm:top-36 sm:left-4"
+            className="fixed top-32 left-2 z-40 max-w-[280px] sm:top-36 sm:left-4 sm:max-w-sm"
           >
-            <div className="flex items-start gap-2 rounded-lg border border-green-200 bg-white p-2 shadow-xl dark:border-green-800 dark:bg-gray-800 sm:gap-3 sm:p-3">
+            <div className="flex items-start gap-2 rounded-lg border border-green-200 bg-white p-2 shadow-xl sm:gap-3 sm:p-3 dark:border-green-800 dark:bg-gray-800">
               <div className="rounded-full bg-green-100 p-2 dark:bg-green-900/30">
                 <ShoppingCart className="h-4 w-4 text-green-600 dark:text-green-400" />
               </div>
@@ -353,9 +353,9 @@ const SocialProofNotifications: React.FC = () => {
             initial={{ opacity: 0, y: 50, x: -50 }}
             animate={{ opacity: 1, y: 0, x: 0 }}
             exit={{ opacity: 0, y: 50, x: -50 }}
-            className="fixed z-40 max-w-[280px] sm:max-w-sm bottom-20 left-2 sm:bottom-24 sm:left-4"
+            className="fixed bottom-20 left-2 z-40 max-w-[280px] sm:bottom-24 sm:left-4 sm:max-w-sm"
           >
-            <div className="flex items-start gap-2 rounded-lg border border-gray-200 bg-white p-3 shadow-2xl dark:border-gray-700 dark:bg-gray-800 sm:gap-3 sm:p-4">
+            <div className="flex items-start gap-2 rounded-lg border border-gray-200 bg-white p-3 shadow-2xl sm:gap-3 sm:p-4 dark:border-gray-700 dark:bg-gray-800">
               <div
                 className={`rounded-full p-2 ${currentNotification.color} text-white`}
               >
@@ -373,7 +373,6 @@ const SocialProofNotifications: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
     </>
   )
 }

@@ -47,7 +47,7 @@ export const useExitIntent = ({
         }
       }
     },
-    [threshold, delay, cooldown, onTrigger]
+    [threshold, delay, cooldown, onTrigger],
   )
 
   // Mobile exit intent - detectar scroll up rápido no topo
@@ -57,7 +57,10 @@ export const useExitIntent = ({
 
       // Implementar lógica de detecção de saída em mobile
       // Por exemplo, scroll rápido para cima quando já está no topo
-      if (window.scrollY < 100 && e.touches[0].clientY > window.innerHeight * 0.8) {
+      if (
+        window.scrollY < 100 &&
+        e.touches[0].clientY > window.innerHeight * 0.8
+      ) {
         const lastShown = localStorage.getItem('exitIntentLastShownMobile')
         const now = Date.now()
 
@@ -74,7 +77,7 @@ export const useExitIntent = ({
         onTrigger?.()
       }
     },
-    [mobileEnabled, cooldown, onTrigger]
+    [mobileEnabled, cooldown, onTrigger],
   )
 
   useEffect(() => {

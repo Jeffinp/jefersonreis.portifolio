@@ -1,19 +1,29 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'next-i18next'
-import { Download, Calendar, MessageCircle, ArrowRight, Code, Briefcase, Rocket } from 'lucide-react'
+import {
+  Download,
+  Calendar,
+  MessageCircle,
+  ArrowRight,
+  Code,
+  Briefcase,
+  Rocket,
+} from 'lucide-react'
 import { useTargetAudience } from '@/hooks/useTargetAudience'
 import { SectionBackground } from '@/components/common'
 
 const HeroAdaptive: React.FC = () => {
   const { t } = useTranslation('sections/hero')
-  const { target, isEmpresa, isFreelance, isDefault, switchToTarget } = useTargetAudience()
+  const { target, isEmpresa, isFreelance, isDefault, switchToTarget } =
+    useTargetAudience()
 
   const handleWhatsAppClick = () => {
-    const message = isFreelance 
+    const message = isFreelance
       ? 'Olá! Vi seu portfólio e tenho interesse em seus serviços de desenvolvimento.'
       : 'Olá! Vi seu portfólio e gostaria de conversar sobre oportunidades.'
-    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+5575999999999'
+    const whatsappNumber =
+      process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+5575999999999'
     const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')
   }
@@ -32,15 +42,19 @@ const HeroAdaptive: React.FC = () => {
       return {
         title: 'Desenvolvedor Full-Stack Sênior',
         subtitle: 'React • Node.js • Python • IA • 2+ anos de experiência',
-        description: 'Especialista em sistemas escaláveis, automações inteligentes e soluções que geram resultados reais. Disponível para CLT, PJ e projetos desafiadores.',
-        primaryCTA: { label: 'Baixar CV', action: handleDownloadCV, icon: Download },
-        secondaryCTA: { label: 'Agendar Conversa', action: handleScheduleMeeting, icon: Calendar },
-        badges: [
-          'Stack Moderno',
-          'Metodologias Ágeis',
-          'Clean Code',
-          'DevOps',
-        ],
+        description:
+          'Especialista em sistemas escaláveis, automações inteligentes e soluções que geram resultados reais. Disponível para CLT, PJ e projetos desafiadores.',
+        primaryCTA: {
+          label: 'Baixar CV',
+          action: handleDownloadCV,
+          icon: Download,
+        },
+        secondaryCTA: {
+          label: 'Agendar Conversa',
+          action: handleScheduleMeeting,
+          icon: Calendar,
+        },
+        badges: ['Stack Moderno', 'Metodologias Ágeis', 'Clean Code', 'DevOps'],
       }
     }
 
@@ -48,9 +62,21 @@ const HeroAdaptive: React.FC = () => {
       return {
         title: 'Sites que VENDEM + Automações com IA',
         subtitle: 'Desenvolvedor Full-Stack especialista em resultados',
-        description: 'Landing pages que convertem 3x mais. Automações que economizam 20h/semana. Apps que geram receita real. ROI comprovado em 60 dias.',
-        primaryCTA: { label: 'Quero Orçamento', action: handleWhatsAppClick, icon: MessageCircle },
-        secondaryCTA: { label: 'Ver Preços', action: () => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }), icon: ArrowRight },
+        description:
+          'Landing pages que convertem 3x mais. Automações que economizam 20h/semana. Apps que geram receita real. ROI comprovado em 60 dias.',
+        primaryCTA: {
+          label: 'Quero Orçamento',
+          action: handleWhatsAppClick,
+          icon: MessageCircle,
+        },
+        secondaryCTA: {
+          label: 'Ver Preços',
+          action: () =>
+            document
+              .getElementById('services')
+              ?.scrollIntoView({ behavior: 'smooth' }),
+          icon: ArrowRight,
+        },
         badges: [
           'Entrega em 7 dias',
           '50+ projetos',
@@ -63,8 +89,10 @@ const HeroAdaptive: React.FC = () => {
     // Versão default - mostra ambas opções
     return {
       title: 'Desenvolvedor Full-Stack & Especialista em IA',
-      subtitle: 'Transformando ideias em soluções digitais que geram resultados',
-      description: 'Desenvolvimento web moderno, automações inteligentes e apps mobile. Disponível para projetos freelance e oportunidades CLT/PJ.',
+      subtitle:
+        'Transformando ideias em soluções digitais que geram resultados',
+      description:
+        'Desenvolvimento web moderno, automações inteligentes e apps mobile. Disponível para projetos freelance e oportunidades CLT/PJ.',
       primaryCTA: null, // Será substituído por dual CTA
       secondaryCTA: null,
       badges: [
@@ -239,7 +267,17 @@ const HeroAdaptive: React.FC = () => {
             <div className="relative rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-8 backdrop-blur-sm">
               {/* Tech Stack Visual */}
               <div className="grid grid-cols-3 gap-4">
-                {['React', 'Node.js', 'Python', 'TypeScript', 'Next.js', 'PostgreSQL', 'Docker', 'AWS', 'OpenAI'].map((tech, index) => (
+                {[
+                  'React',
+                  'Node.js',
+                  'Python',
+                  'TypeScript',
+                  'Next.js',
+                  'PostgreSQL',
+                  'Docker',
+                  'AWS',
+                  'OpenAI',
+                ].map((tech, index) => (
                   <motion.div
                     key={tech}
                     initial={{ opacity: 0, scale: 0 }}

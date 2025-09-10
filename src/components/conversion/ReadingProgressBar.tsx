@@ -27,7 +27,7 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
   // Spring animation for smooth progress
   const springProgress = useSpring(0, { stiffness: 400, damping: 40 })
   const width = useTransform(springProgress, [0, 100], ['0%', '100%'])
-  
+
   // Reset milestones when page reloads (new session)
   useEffect(() => {
     // Clear shown milestones on component mount (new page load)
@@ -39,7 +39,11 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
     { percentage: 25, icon: Zap, message: '🔥 Continue assim!' },
     { percentage: 50, icon: Star, message: '⭐ Metade do caminho!' },
     { percentage: 75, icon: Target, message: '🎯 Quase lá!' },
-    { percentage: 95, icon: Trophy, message: '🏆 Incrível! Finalize com o formulário!' },
+    {
+      percentage: 95,
+      icon: Trophy,
+      message: '🏆 Incrível! Finalize com o formulário!',
+    },
   ]
 
   const calculateProgress = useCallback(() => {
@@ -49,11 +53,11 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
 
     // Calculate total scrollable height
     const scrollableHeight = documentHeight - windowHeight
-    
+
     if (scrollableHeight > 0) {
       const scrollPercentage = (scrollTop / scrollableHeight) * 100
       const clampedProgress = Math.min(Math.max(scrollPercentage, 0), 100)
-      
+
       setProgress(clampedProgress)
       springProgress.set(clampedProgress)
 
@@ -68,13 +72,13 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
           ) {
             setMilestone(m.percentage)
             onMilestone?.(m.percentage)
-            
+
             // Mark milestone as shown for this session
-            setShownMilestones(prev => new Set(prev).add(m.percentage))
-            
+            setShownMilestones((prev) => new Set(prev).add(m.percentage))
+
             // Show milestone notification
             showMilestoneNotification(m)
-            
+
             // Reset milestone after animation
             setTimeout(() => setMilestone(null), 3000)
           }
@@ -94,7 +98,7 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
         <span class="text-2xl">${milestone.message}</span>
       </div>
     `
-    
+
     // Style the notification
     Object.assign(notification.style, {
       position: 'fixed',
@@ -191,21 +195,21 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
     <>
       {/* Progress Bar Container */}
       <div
-        className={`fixed left-0 right-0 z-[99999] ${
+        className={`fixed right-0 left-0 z-[99999] ${
           position === 'top' ? 'top-0' : 'bottom-0'
         }`}
         style={{ height: `${height}px` }}
       >
         {/* Background */}
         <div className="absolute inset-0 bg-gray-300 dark:bg-gray-700" />
-        
+
         {/* Progress Fill */}
         <motion.div
           className="absolute left-0 h-full bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600"
           style={{ width }}
         >
           {/* Animated glow effect at the end */}
-          <div className="absolute -right-2 top-0 h-full w-8">
+          <div className="absolute top-0 -right-2 h-full w-8">
             <div className="h-full w-full animate-pulse bg-gradient-to-r from-transparent via-white/30 to-white/60" />
           </div>
           {/* Shadow for depth */}
@@ -252,7 +256,9 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
           } right-4`}
         >
           <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2 shadow-xl">
-            <Flame className={`h-4 w-4 text-white ${progress > 80 ? 'animate-pulse' : ''}`} />
+            <Flame
+              className={`h-4 w-4 text-white ${progress > 80 ? 'animate-pulse' : ''}`}
+            />
             <span className="text-sm font-bold text-white">
               {Math.round(progress)}%
             </span>

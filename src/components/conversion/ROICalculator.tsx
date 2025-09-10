@@ -49,16 +49,17 @@ export const ROICalculator: React.FC = () => {
 
   // Calculate ROI
   const results: ROIResults = useMemo(() => {
-    const currentSales = (inputs.monthlyVisitors * inputs.currentConversion) / 100
-    const projectedSales = (inputs.monthlyVisitors * inputs.conversionRate) / 100
-    
+    const currentSales =
+      (inputs.monthlyVisitors * inputs.currentConversion) / 100
+    const projectedSales =
+      (inputs.monthlyVisitors * inputs.conversionRate) / 100
+
     const currentRevenue = currentSales * inputs.averageTicket
     const projectedRevenue = projectedSales * inputs.averageTicket
     const revenueIncrease = projectedRevenue - currentRevenue
-    const percentageIncrease = currentRevenue > 0 
-      ? ((revenueIncrease / currentRevenue) * 100)
-      : 100
-    
+    const percentageIncrease =
+      currentRevenue > 0 ? (revenueIncrease / currentRevenue) * 100 : 100
+
     const monthlyProfit = revenueIncrease
     const yearlyProfit = monthlyProfit * 12
     const paybackTime = monthlyProfit > 0 ? siteInvestment / monthlyProfit : 0
@@ -113,7 +114,7 @@ export const ROICalculator: React.FC = () => {
     localStorage.setItem('roiLeads', JSON.stringify(roiLeads))
 
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await new Promise((resolve) => setTimeout(resolve, 1000))
 
     // Create personalized WhatsApp message
     const message = `Olá! Calculei meu ROI e vi que posso ter ${results.roi.toFixed(0)}% de retorno anual. Quero saber mais!`
@@ -139,11 +140,12 @@ export const ROICalculator: React.FC = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 3 }}
         onClick={() => setIsOpen(true)}
-        className="fixed z-40 flex items-center gap-2 rounded-full bg-gradient-to-r from-green-600 to-emerald-600 px-3 py-2 text-white shadow-xl transition-all hover:scale-105 hover:shadow-2xl sm:px-4 sm:py-3
-                   bottom-[230px] right-4 sm:bottom-48 sm:right-6"
+        className="fixed right-4 bottom-[230px] z-40 flex items-center gap-2 rounded-full bg-gradient-to-r from-green-600 to-emerald-600 px-3 py-2 text-white shadow-xl transition-all hover:scale-105 hover:shadow-2xl sm:right-6 sm:bottom-48 sm:px-4 sm:py-3"
       >
         <Calculator className="h-4 w-4 sm:h-5 sm:w-5" />
-        <span className="text-sm font-semibold sm:text-base">Calcule seu ROI</span>
+        <span className="text-sm font-semibold sm:text-base">
+          Calcule seu ROI
+        </span>
       </motion.button>
 
       {/* Calculator Modal */}
@@ -164,7 +166,7 @@ export const ROICalculator: React.FC = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              className="fixed left-1/2 top-1/2 z-[10000] max-h-[90vh] w-[90%] max-w-3xl -translate-x-1/2 -translate-y-1/2 transform overflow-auto"
+              className="fixed top-1/2 left-1/2 z-[10000] max-h-[90vh] w-[90%] max-w-3xl -translate-x-1/2 -translate-y-1/2 transform overflow-auto"
             >
               <div className="rounded-2xl bg-white shadow-2xl dark:bg-gray-900">
                 {/* Header */}
@@ -175,9 +177,12 @@ export const ROICalculator: React.FC = () => {
                         <Calculator className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <h2 className="text-2xl font-bold">Calculadora de ROI</h2>
+                        <h2 className="text-2xl font-bold">
+                          Calculadora de ROI
+                        </h2>
                         <p className="text-green-100">
-                          Descubra quanto você pode faturar com um site profissional
+                          Descubra quanto você pode faturar com um site
+                          profissional
                         </p>
                       </div>
                     </div>
@@ -211,7 +216,7 @@ export const ROICalculator: React.FC = () => {
                           Visitantes mensais no seu site/página
                           <div className="group relative">
                             <Info className="h-3 w-3 text-gray-400" />
-                            <div className="invisible absolute left-0 top-6 z-10 w-48 rounded-lg bg-gray-800 p-2 text-xs text-white opacity-0 transition-all group-hover:visible group-hover:opacity-100">
+                            <div className="invisible absolute top-6 left-0 z-10 w-48 rounded-lg bg-gray-800 p-2 text-xs text-white opacity-0 transition-all group-hover:visible group-hover:opacity-100">
                               Estimativa de pessoas que visitam seu site por mês
                             </div>
                           </div>
@@ -223,13 +228,19 @@ export const ROICalculator: React.FC = () => {
                             max="10000"
                             step="100"
                             value={inputs.monthlyVisitors}
-                            onChange={(e) => handleInputChange('monthlyVisitors', parseInt(e.target.value))}
+                            onChange={(e) =>
+                              handleInputChange(
+                                'monthlyVisitors',
+                                parseInt(e.target.value),
+                              )
+                            }
                             className="w-full"
                           />
                           <div className="mt-2 flex justify-between text-sm text-gray-600">
                             <span>100</span>
                             <span className="font-bold text-green-600">
-                              {inputs.monthlyVisitors.toLocaleString('pt-BR')} visitantes
+                              {inputs.monthlyVisitors.toLocaleString('pt-BR')}{' '}
+                              visitantes
                             </span>
                             <span>10.000</span>
                           </div>
@@ -243,7 +254,7 @@ export const ROICalculator: React.FC = () => {
                           Taxa de conversão atual (%)
                           <div className="group relative">
                             <Info className="h-3 w-3 text-gray-400" />
-                            <div className="invisible absolute left-0 top-6 z-10 w-48 rounded-lg bg-gray-800 p-2 text-xs text-white opacity-0 transition-all group-hover:visible group-hover:opacity-100">
+                            <div className="invisible absolute top-6 left-0 z-10 w-48 rounded-lg bg-gray-800 p-2 text-xs text-white opacity-0 transition-all group-hover:visible group-hover:opacity-100">
                               Quantos % dos visitantes viram clientes hoje
                             </div>
                           </div>
@@ -255,7 +266,12 @@ export const ROICalculator: React.FC = () => {
                             max="5"
                             step="0.1"
                             value={inputs.currentConversion}
-                            onChange={(e) => handleInputChange('currentConversion', parseFloat(e.target.value))}
+                            onChange={(e) =>
+                              handleInputChange(
+                                'currentConversion',
+                                parseFloat(e.target.value),
+                              )
+                            }
                             className="w-full"
                           />
                           <div className="mt-2 flex justify-between text-sm text-gray-600">
@@ -275,7 +291,7 @@ export const ROICalculator: React.FC = () => {
                           Taxa de conversão com site profissional (%)
                           <div className="group relative">
                             <Info className="h-3 w-3 text-gray-400" />
-                            <div className="invisible absolute left-0 top-6 z-10 w-48 rounded-lg bg-gray-800 p-2 text-xs text-white opacity-0 transition-all group-hover:visible group-hover:opacity-100">
+                            <div className="invisible absolute top-6 left-0 z-10 w-48 rounded-lg bg-gray-800 p-2 text-xs text-white opacity-0 transition-all group-hover:visible group-hover:opacity-100">
                               Com um site otimizado, a média é 3-5%
                             </div>
                           </div>
@@ -287,7 +303,12 @@ export const ROICalculator: React.FC = () => {
                             max="10"
                             step="0.5"
                             value={inputs.conversionRate}
-                            onChange={(e) => handleInputChange('conversionRate', parseFloat(e.target.value))}
+                            onChange={(e) =>
+                              handleInputChange(
+                                'conversionRate',
+                                parseFloat(e.target.value),
+                              )
+                            }
                             className="w-full"
                           />
                           <div className="mt-2 flex justify-between text-sm text-gray-600">
@@ -307,7 +328,7 @@ export const ROICalculator: React.FC = () => {
                           Ticket médio (valor por venda)
                           <div className="group relative">
                             <Info className="h-3 w-3 text-gray-400" />
-                            <div className="invisible absolute left-0 top-6 z-10 w-48 rounded-lg bg-gray-800 p-2 text-xs text-white opacity-0 transition-all group-hover:visible group-hover:opacity-100">
+                            <div className="invisible absolute top-6 left-0 z-10 w-48 rounded-lg bg-gray-800 p-2 text-xs text-white opacity-0 transition-all group-hover:visible group-hover:opacity-100">
                               Valor médio que cada cliente gasta
                             </div>
                           </div>
@@ -319,7 +340,12 @@ export const ROICalculator: React.FC = () => {
                             max="2000"
                             step="50"
                             value={inputs.averageTicket}
-                            onChange={(e) => handleInputChange('averageTicket', parseInt(e.target.value))}
+                            onChange={(e) =>
+                              handleInputChange(
+                                'averageTicket',
+                                parseInt(e.target.value),
+                              )
+                            }
                             className="w-full"
                           />
                           <div className="mt-2 flex justify-between text-sm text-gray-600">
@@ -359,7 +385,10 @@ export const ROICalculator: React.FC = () => {
                           </p>
                           <div className="mt-2 flex items-center justify-center gap-2 text-sm text-green-600">
                             <ArrowUp className="h-4 w-4" />
-                            <span>+{results.percentageIncrease.toFixed(0)}% de crescimento</span>
+                            <span>
+                              +{results.percentageIncrease.toFixed(0)}% de
+                              crescimento
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -429,7 +458,7 @@ export const ROICalculator: React.FC = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="seu@email.com"
                             required
-                            className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 dark:border-gray-700 dark:bg-gray-800"
+                            className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 focus:outline-none dark:border-gray-700 dark:bg-gray-800"
                           />
                         </div>
                         <button

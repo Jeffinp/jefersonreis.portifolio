@@ -19,7 +19,7 @@ export const AdaptiveNavigation: React.FC = () => {
   // Items de navegação adaptáveis baseados na página atual
   const currentPath = router.pathname
   let navigationItems: NavigationItem[] = []
-  
+
   if (currentPath === '/empresa') {
     navigationItems = [
       { href: '#home', label: t('nav.home'), showFor: ['empresa'] },
@@ -28,7 +28,11 @@ export const AdaptiveNavigation: React.FC = () => {
       { href: '#services', label: t('nav.services'), showFor: ['empresa'] },
       { href: '#projects', label: t('nav.portfolio'), showFor: ['empresa'] },
       { href: '#timeline', label: t('nav.timeline'), showFor: ['empresa'] },
-      { href: '#testimonials', label: t('nav.testimonials'), showFor: ['empresa'] },
+      {
+        href: '#testimonials',
+        label: t('nav.testimonials'),
+        showFor: ['empresa'],
+      },
       { href: '#contact', label: t('nav.contact'), showFor: ['empresa'] },
     ]
   } else if (currentPath === '/freelance') {
@@ -37,7 +41,11 @@ export const AdaptiveNavigation: React.FC = () => {
       { href: '#about', label: t('nav.about'), showFor: ['freelance'] },
       { href: '#services', label: t('nav.services'), showFor: ['freelance'] },
       { href: '#projects', label: t('nav.portfolio'), showFor: ['freelance'] },
-      { href: '#testimonials', label: t('nav.testimonials'), showFor: ['freelance'] },
+      {
+        href: '#testimonials',
+        label: t('nav.testimonials'),
+        showFor: ['freelance'],
+      },
       { href: '#faq', label: 'FAQ', showFor: ['freelance'] },
     ]
   } else {
@@ -46,10 +54,13 @@ export const AdaptiveNavigation: React.FC = () => {
   }
 
   // Determinar o target baseado na página atual
-  const currentTarget = currentPath === '/empresa' ? 'empresa' : 
-                       currentPath === '/freelance' ? 'freelance' : 
-                       'default'
-  
+  const currentTarget =
+    currentPath === '/empresa'
+      ? 'empresa'
+      : currentPath === '/freelance'
+        ? 'freelance'
+        : 'default'
+
   // Usar todos os items já filtrados pela página
   const visibleItems = navigationItems
 
@@ -85,7 +96,7 @@ export const AdaptiveNavigation: React.FC = () => {
             <Rocket className="h-3 w-3" />
             <span className="hidden sm:inline">Freelance</span>
           </button>
-          
+
           <button
             onClick={() => router.push('/empresa')}
             className={`flex items-center gap-1 rounded px-3 py-1 text-xs font-medium transition-colors ${
@@ -98,7 +109,7 @@ export const AdaptiveNavigation: React.FC = () => {
             <Briefcase className="h-3 w-3" />
             <span className="hidden sm:inline">Empresa</span>
           </button>
-          
+
           <button
             onClick={() => router.push('/')}
             className={`flex items-center gap-1 rounded px-3 py-1 text-xs font-medium transition-colors ${

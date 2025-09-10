@@ -8,18 +8,24 @@ import { LoadingSkeleton } from '@/components/ui'
 import { useViewportLazyLoad } from '@/hooks/ui/useViewportLazyLoad'
 
 // Commercial Components (Freelancers/Clientes)
-const HeroCommercial = dynamic(() => import('@/containers/commercial/HeroCommercial'), {
-  loading: () => (
-    <div className="flex min-h-screen items-center justify-center">
-      <LoadingSkeleton variant="skills" />
-    </div>
-  ),
-  ssr: false,
-})
-const AboutCommercial = dynamic(() => import('@/containers/commercial/AboutCommercial'), {
-  loading: () => <LoadingSkeleton variant="skills" />,
-  ssr: true,
-})
+const HeroCommercial = dynamic(
+  () => import('@/containers/commercial/HeroCommercial'),
+  {
+    loading: () => (
+      <div className="flex min-h-screen items-center justify-center">
+        <LoadingSkeleton variant="skills" />
+      </div>
+    ),
+    ssr: false,
+  },
+)
+const AboutCommercial = dynamic(
+  () => import('@/containers/commercial/AboutCommercial'),
+  {
+    loading: () => <LoadingSkeleton variant="skills" />,
+    ssr: true,
+  },
+)
 const ServicesCommercial = dynamic(
   () => import('@/containers/commercial/ServicesCommercial'),
   {
@@ -27,10 +33,13 @@ const ServicesCommercial = dynamic(
     ssr: true,
   },
 )
-const FAQCommercial = dynamic(() => import('@/containers/commercial/FAQCommercial'), {
-  loading: () => <LoadingSkeleton variant="services" />,
-  ssr: true,
-})
+const FAQCommercial = dynamic(
+  () => import('@/containers/commercial/FAQCommercial'),
+  {
+    loading: () => <LoadingSkeleton variant="services" />,
+    ssr: true,
+  },
+)
 
 // Shared Components
 const Projects = dynamic(() => import('@/containers/shared/Projects'), {
@@ -101,19 +110,19 @@ export default function FreelancePage() {
 
   return (
     <>
-      <SEOHead 
-        lang={currentLang} 
+      <SEOHead
+        lang={currentLang}
         title="Sites que Vendem 3x Mais | Jeferson Reis - Desenvolvimento Web"
         description="Landing pages que convertem 3x mais. Automações que economizam 20h/semana. Apps que geram receita real. Garantia de 7 dias."
       />
       <StructuredData lang={currentLang} />
       <SchemaOrg lang={currentLang} />
       <Analytics />
-      
+
       <main>
         {/* Hero Commercial */}
         <HeroCommercial />
-        
+
         {/* About Commercial */}
         <AboutCommercial />
 
@@ -168,7 +177,7 @@ export default function FreelancePage() {
 
       {/* Conversion Widgets */}
       <ChatWidget />
-      <SocialProofNotifications 
+      <SocialProofNotifications
         maxNotifications={7}
         pauseOnFormFocus={true}
         section="general"
@@ -186,7 +195,7 @@ export default function FreelancePage() {
           console.log('Conversion event:', data)
           // Track conversion events
           if (typeof window !== 'undefined' && (window as any).gtag) {
-            (window as any).gtag('event', 'conversion', {
+            ;(window as any).gtag('event', 'conversion', {
               event_category: 'engagement',
               event_label: data.type,
               value: data.value,

@@ -58,10 +58,20 @@ export const InteractiveQuiz: React.FC = () => {
       subtitle: 'Isso nos ajuda a entender suas necessidades',
       type: 'single',
       answers: [
-        { id: 'startup', text: 'Startup/Novo Negócio', icon: TrendingUp, value: 'startup' },
+        {
+          id: 'startup',
+          text: 'Startup/Novo Negócio',
+          icon: TrendingUp,
+          value: 'startup',
+        },
         { id: 'small', text: 'Pequena Empresa', icon: Users, value: 'small' },
         { id: 'medium', text: 'Média Empresa', icon: Globe, value: 'medium' },
-        { id: 'personal', text: 'Profissional Liberal', icon: Target, value: 'personal' },
+        {
+          id: 'personal',
+          text: 'Profissional Liberal',
+          icon: Target,
+          value: 'personal',
+        },
       ],
     },
     {
@@ -70,10 +80,20 @@ export const InteractiveQuiz: React.FC = () => {
       subtitle: 'O que você quer alcançar com seu projeto',
       type: 'single',
       answers: [
-        { id: 'sales', text: 'Aumentar Vendas', icon: ShoppingCart, value: 'sales' },
+        {
+          id: 'sales',
+          text: 'Aumentar Vendas',
+          icon: ShoppingCart,
+          value: 'sales',
+        },
         { id: 'leads', text: 'Gerar Leads', icon: Users, value: 'leads' },
         { id: 'brand', text: 'Fortalecer Marca', icon: Globe, value: 'brand' },
-        { id: 'automation', text: 'Automatizar Processos', icon: Brain, value: 'automation' },
+        {
+          id: 'automation',
+          text: 'Automatizar Processos',
+          icon: Brain,
+          value: 'automation',
+        },
       ],
     },
     {
@@ -83,9 +103,24 @@ export const InteractiveQuiz: React.FC = () => {
       type: 'multiple',
       answers: [
         { id: 'landing', text: 'Landing Page', icon: Globe, value: 'landing' },
-        { id: 'website', text: 'Site Institucional', icon: Laptop, value: 'website' },
-        { id: 'ecommerce', text: 'E-commerce', icon: ShoppingCart, value: 'ecommerce' },
-        { id: 'app', text: 'Aplicativo Mobile', icon: Smartphone, value: 'app' },
+        {
+          id: 'website',
+          text: 'Site Institucional',
+          icon: Laptop,
+          value: 'website',
+        },
+        {
+          id: 'ecommerce',
+          text: 'E-commerce',
+          icon: ShoppingCart,
+          value: 'ecommerce',
+        },
+        {
+          id: 'app',
+          text: 'Aplicativo Mobile',
+          icon: Smartphone,
+          value: 'app',
+        },
         { id: 'ai', text: 'Automação com IA', icon: Brain, value: 'ai' },
       ],
     },
@@ -95,10 +130,25 @@ export const InteractiveQuiz: React.FC = () => {
       subtitle: 'Nos ajuda a priorizar seu projeto',
       type: 'single',
       answers: [
-        { id: 'urgent', text: 'Urgente (7-15 dias)', icon: Calendar, value: 'urgent' },
+        {
+          id: 'urgent',
+          text: 'Urgente (7-15 dias)',
+          icon: Calendar,
+          value: 'urgent',
+        },
         { id: 'month', text: 'Este mês', icon: Calendar, value: 'month' },
-        { id: 'quarter', text: 'Próximos 3 meses', icon: Calendar, value: 'quarter' },
-        { id: 'planning', text: 'Estou planejando', icon: Calendar, value: 'planning' },
+        {
+          id: 'quarter',
+          text: 'Próximos 3 meses',
+          icon: Calendar,
+          value: 'quarter',
+        },
+        {
+          id: 'planning',
+          text: 'Estou planejando',
+          icon: Calendar,
+          value: 'planning',
+        },
       ],
     },
     {
@@ -108,9 +158,24 @@ export const InteractiveQuiz: React.FC = () => {
       type: 'single',
       answers: [
         { id: 'low', text: 'R$ 800 - 2.000', icon: DollarSign, value: 'low' },
-        { id: 'medium', text: 'R$ 2.000 - 5.000', icon: DollarSign, value: 'medium' },
-        { id: 'high', text: 'R$ 5.000 - 10.000', icon: DollarSign, value: 'high' },
-        { id: 'enterprise', text: 'Acima de R$ 10.000', icon: DollarSign, value: 'enterprise' },
+        {
+          id: 'medium',
+          text: 'R$ 2.000 - 5.000',
+          icon: DollarSign,
+          value: 'medium',
+        },
+        {
+          id: 'high',
+          text: 'R$ 5.000 - 10.000',
+          icon: DollarSign,
+          value: 'high',
+        },
+        {
+          id: 'enterprise',
+          text: 'Acima de R$ 10.000',
+          icon: DollarSign,
+          value: 'enterprise',
+        },
       ],
     },
   ]
@@ -198,7 +263,7 @@ export const InteractiveQuiz: React.FC = () => {
 
   const handleAnswer = (questionId: string, value: any) => {
     const question = questions[currentStep]
-    
+
     if (question.type === 'multiple') {
       const currentValues = answers[questionId] || []
       const newValues = currentValues.includes(value)
@@ -261,7 +326,7 @@ export const InteractiveQuiz: React.FC = () => {
     localStorage.setItem('quizLeads', JSON.stringify(quizLeads))
 
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await new Promise((resolve) => setTimeout(resolve, 1000))
 
     // Redirect to WhatsApp with personalized message
     const message = `Olá! Fiz o quiz e recebi a recomendação: ${result?.title}. Gostaria de um orçamento personalizado.`
@@ -282,11 +347,12 @@ export const InteractiveQuiz: React.FC = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 2 }}
         onClick={() => setIsOpen(true)}
-        className="fixed z-40 flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-3 py-2 text-white shadow-xl transition-all hover:scale-105 hover:shadow-2xl sm:px-4 sm:py-3
-                   bottom-[180px] right-4 sm:bottom-32 sm:right-6"
+        className="fixed right-4 bottom-[180px] z-40 flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-3 py-2 text-white shadow-xl transition-all hover:scale-105 hover:shadow-2xl sm:right-6 sm:bottom-32 sm:px-4 sm:py-3"
       >
         <Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />
-        <span className="text-sm font-semibold sm:text-base">Quiz: Descubra sua solução ideal</span>
+        <span className="text-sm font-semibold sm:text-base">
+          Quiz: Descubra sua solução ideal
+        </span>
       </motion.button>
 
       {/* Quiz Modal */}
@@ -307,7 +373,7 @@ export const InteractiveQuiz: React.FC = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              className="fixed left-1/2 top-1/2 z-[10000] w-[90%] max-w-2xl -translate-x-1/2 -translate-y-1/2 transform"
+              className="fixed top-1/2 left-1/2 z-[10000] w-[90%] max-w-2xl -translate-x-1/2 -translate-y-1/2 transform"
             >
               <div className="overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-gray-900">
                 {/* Progress Bar */}
@@ -347,16 +413,25 @@ export const InteractiveQuiz: React.FC = () => {
                         <div className="mb-8 grid gap-3 sm:grid-cols-2">
                           {questions[currentStep].answers.map((answer) => {
                             const Icon = answer.icon
-                            const isSelected = questions[currentStep].type === 'multiple'
-                              ? answers[questions[currentStep].id]?.includes(answer.value)
-                              : answers[questions[currentStep].id] === answer.value
+                            const isSelected =
+                              questions[currentStep].type === 'multiple'
+                                ? answers[questions[currentStep].id]?.includes(
+                                    answer.value,
+                                  )
+                                : answers[questions[currentStep].id] ===
+                                  answer.value
 
                             return (
                               <motion.button
                                 key={answer.id}
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
-                                onClick={() => handleAnswer(questions[currentStep].id, answer.value)}
+                                onClick={() =>
+                                  handleAnswer(
+                                    questions[currentStep].id,
+                                    answer.value,
+                                  )
+                                }
                                 className={`flex items-center gap-3 rounded-lg border-2 p-4 text-left transition-all ${
                                   isSelected
                                     ? 'border-purple-600 bg-purple-50 dark:bg-purple-900/20'
@@ -364,13 +439,21 @@ export const InteractiveQuiz: React.FC = () => {
                                 }`}
                               >
                                 {Icon && (
-                                  <Icon className={`h-6 w-6 ${
-                                    isSelected ? 'text-purple-600' : 'text-gray-400'
-                                  }`} />
+                                  <Icon
+                                    className={`h-6 w-6 ${
+                                      isSelected
+                                        ? 'text-purple-600'
+                                        : 'text-gray-400'
+                                    }`}
+                                  />
                                 )}
-                                <span className={`font-medium ${
-                                  isSelected ? 'text-purple-900 dark:text-purple-300' : 'text-gray-700 dark:text-gray-300'
-                                }`}>
+                                <span
+                                  className={`font-medium ${
+                                    isSelected
+                                      ? 'text-purple-900 dark:text-purple-300'
+                                      : 'text-gray-700 dark:text-gray-300'
+                                  }`}
+                                >
                                   {answer.text}
                                 </span>
                                 {isSelected && (
@@ -397,7 +480,9 @@ export const InteractiveQuiz: React.FC = () => {
                               onClick={handleNext}
                               className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-2 text-white transition-all hover:shadow-lg"
                             >
-                              {currentStep === questions.length - 1 ? 'Ver Resultado' : 'Próxima'}
+                              {currentStep === questions.length - 1
+                                ? 'Ver Resultado'
+                                : 'Próxima'}
                               <ChevronRight className="h-5 w-5" />
                             </button>
                           )}
@@ -428,7 +513,8 @@ export const InteractiveQuiz: React.FC = () => {
                         </p>
                         <div className="mb-3 flex gap-4 text-sm">
                           <span className="text-gray-600 dark:text-gray-400">
-                            💰 Investimento: <strong>{result.estimatedPrice}</strong>
+                            💰 Investimento:{' '}
+                            <strong>{result.estimatedPrice}</strong>
                           </span>
                           <span className="text-gray-600 dark:text-gray-400">
                             ⏱️ Prazo: <strong>{result.estimatedTime}</strong>
@@ -436,9 +522,14 @@ export const InteractiveQuiz: React.FC = () => {
                         </div>
                         <div className="space-y-1">
                           {result.features.map((feature, index) => (
-                            <div key={index} className="flex items-center gap-2 text-sm">
+                            <div
+                              key={index}
+                              className="flex items-center gap-2 text-sm"
+                            >
                               <CheckCircle className="h-4 w-4 text-green-500" />
-                              <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                              <span className="text-gray-700 dark:text-gray-300">
+                                {feature}
+                              </span>
                             </div>
                           ))}
                         </div>
@@ -456,7 +547,7 @@ export const InteractiveQuiz: React.FC = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="seu@email.com"
                             required
-                            className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 dark:border-gray-700 dark:bg-gray-800"
+                            className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 focus:outline-none dark:border-gray-700 dark:bg-gray-800"
                           />
                         </div>
                         <button
@@ -464,7 +555,9 @@ export const InteractiveQuiz: React.FC = () => {
                           disabled={isSubmitting}
                           className="w-full rounded-lg bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-3 font-semibold text-white shadow-lg transition-all hover:shadow-xl disabled:opacity-50"
                         >
-                          {isSubmitting ? 'Enviando...' : 'Receber Orçamento no WhatsApp'}
+                          {isSubmitting
+                            ? 'Enviando...'
+                            : 'Receber Orçamento no WhatsApp'}
                         </button>
                       </form>
                     </motion.div>

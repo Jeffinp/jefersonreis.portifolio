@@ -76,7 +76,7 @@ const HeroCommercial: React.FC = () => {
 
   const benefits = [
     'Especialista em IA e automações',
-    'Código limpo e documentado', 
+    'Código limpo e documentado',
     'SEO otimizado desde o início',
     'Suporte pós-entrega incluso',
     'Pagamento facilitado',
@@ -136,7 +136,8 @@ const HeroCommercial: React.FC = () => {
             >
               <CheckCircle className="h-4 w-4 text-green-600" />
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                +50 projetos entregues • Clientes relatam até 300% mais conversões
+                +50 projetos entregues • Clientes relatam até 300% mais
+                conversões
               </span>
             </motion.div>
 
@@ -164,7 +165,8 @@ const HeroCommercial: React.FC = () => {
                 </span>
               </p>
               <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                *Sites completos: 15-30 dias | Apps: 45-90 dias | Consulte prazos específicos
+                *Sites completos: 15-30 dias | Apps: 45-90 dias | Consulte
+                prazos específicos
               </p>
             </div>
 
@@ -242,7 +244,7 @@ const HeroCommercial: React.FC = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden md:grid gap-4 sm:grid-cols-2"
+            className="hidden gap-4 sm:grid-cols-2 md:grid"
           >
             {services.map((service, index) => (
               <motion.div
@@ -305,7 +307,9 @@ const HeroCommercial: React.FC = () => {
                     key={index}
                     className="flex items-center justify-between border-b border-white/10 pb-2 last:border-0"
                   >
-                    <span className="text-xs text-white/80">{service.name}</span>
+                    <span className="text-xs text-white/80">
+                      {service.name}
+                    </span>
                     <span className="text-sm font-bold text-yellow-400">
                       {service.price.split(' ')[0]}+
                     </span>
@@ -322,19 +326,22 @@ const HeroCommercial: React.FC = () => {
                 Ver Todos os Detalhes →
               </button>
             </div>
-            
+
             {/* Mini depoimento mobile */}
             <div className="mt-4 rounded-lg border border-green-400/30 bg-green-400/10 p-3 backdrop-blur-md">
-              <div className="flex items-center gap-2 mb-2">
+              <div className="mb-2 flex items-center gap-2">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                  <Star
+                    key={i}
+                    className="h-3 w-3 fill-yellow-400 text-yellow-400"
+                  />
                 ))}
                 <span className="text-xs text-yellow-400">5.0</span>
               </div>
               <p className="text-xs text-white/80 italic">
                 "Site rápido e moderno que realmente converte!"
               </p>
-              <p className="text-xs text-white/60 mt-1">— Maria S.</p>
+              <p className="mt-1 text-xs text-white/60">— Maria S.</p>
             </div>
           </motion.div>
         </div>

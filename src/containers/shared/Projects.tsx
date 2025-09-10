@@ -554,75 +554,75 @@ const Projects: React.FC = () => {
         {/* Removido ViewToggle - sempre usar carrossel */}
 
         {/* MODO CAROUSEL - Sempre ativo */}
-          <div className="relative">
-            <div className="relative overflow-hidden">
-              <div
-                ref={trackRef}
-                className="flex transition-transform duration-500 ease-out"
-                style={{
-                  transform: `translateX(-${(currentIndex * 100) / itemsPerView}%)`,
-                }}
-              >
-                {filteredProjects.map((project, index) => (
-                  <motion.div
-                    key={project.id}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    style={{ width: `${100 / itemsPerView}%` }}
-                    className="flex-shrink-0"
-                  >
-                    <ProjectItem
-                      project={project}
-                      isMobile={isMobile}
-                      onOpenModal={handleOpenModal}
-                    />
-                  </motion.div>
-                ))}
-              </div>
+        <div className="relative">
+          <div className="relative overflow-hidden">
+            <div
+              ref={trackRef}
+              className="flex transition-transform duration-500 ease-out"
+              style={{
+                transform: `translateX(-${(currentIndex * 100) / itemsPerView}%)`,
+              }}
+            >
+              {filteredProjects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  style={{ width: `${100 / itemsPerView}%` }}
+                  className="flex-shrink-0"
+                >
+                  <ProjectItem
+                    project={project}
+                    isMobile={isMobile}
+                    onOpenModal={handleOpenModal}
+                  />
+                </motion.div>
+              ))}
             </div>
-
-            {/* Botões de navegação */}
-            {currentIndex > 0 && (
-              <CarouselButton
-                direction="left"
-                onClick={prevSlide}
-                disabled={currentIndex === 0}
-              />
-            )}
-
-            {currentIndex < maxIndex && (
-              <CarouselButton
-                direction="right"
-                onClick={nextSlide}
-                disabled={currentIndex >= maxIndex}
-              />
-            )}
-
-            {/* Indicadores de página */}
-            {totalItems > itemsPerView && (
-              <div className="mt-6 flex justify-center space-x-2">
-                {Array.from({
-                  length: Math.ceil(totalItems / itemsPerView),
-                }).map((_, index) => {
-                  const pageIndex = index * itemsPerView
-                  const isActive = pageIndex === currentIndex
-                  return (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentIndex(pageIndex)}
-                      className={`h-2 w-2 rounded-full transition-colors duration-300 ${
-                        isActive
-                          ? 'bg-blue-600'
-                          : 'bg-gray-300 hover:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-500'
-                      }`}
-                      aria-label={`Ir para página ${index + 1}`}
-                    />
-                  )
-                })}
-              </div>
-            )}
           </div>
+
+          {/* Botões de navegação */}
+          {currentIndex > 0 && (
+            <CarouselButton
+              direction="left"
+              onClick={prevSlide}
+              disabled={currentIndex === 0}
+            />
+          )}
+
+          {currentIndex < maxIndex && (
+            <CarouselButton
+              direction="right"
+              onClick={nextSlide}
+              disabled={currentIndex >= maxIndex}
+            />
+          )}
+
+          {/* Indicadores de página */}
+          {totalItems > itemsPerView && (
+            <div className="mt-6 flex justify-center space-x-2">
+              {Array.from({
+                length: Math.ceil(totalItems / itemsPerView),
+              }).map((_, index) => {
+                const pageIndex = index * itemsPerView
+                const isActive = pageIndex === currentIndex
+                return (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(pageIndex)}
+                    className={`h-2 w-2 rounded-full transition-colors duration-300 ${
+                      isActive
+                        ? 'bg-blue-600'
+                        : 'bg-gray-300 hover:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-500'
+                    }`}
+                    aria-label={`Ir para página ${index + 1}`}
+                  />
+                )
+              })}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Project Modal */}

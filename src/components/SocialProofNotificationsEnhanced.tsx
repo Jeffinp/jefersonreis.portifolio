@@ -38,15 +38,19 @@ interface SocialProofNotificationsProps {
   section?: string
 }
 
-const SocialProofNotificationsEnhanced: React.FC<SocialProofNotificationsProps> = ({
+const SocialProofNotificationsEnhanced: React.FC<
+  SocialProofNotificationsProps
+> = ({
   maxNotifications = 7,
   pauseOnFormFocus = true,
   section = 'general',
 }) => {
   const [onlineUsers, setOnlineUsers] = useState(0)
-  const [currentNotification, setCurrentNotification] = useState<Notification | null>(null)
+  const [currentNotification, setCurrentNotification] =
+    useState<Notification | null>(null)
   const [showUsersOnline, setShowUsersOnline] = useState(true)
-  const [currentSaleNotification, setCurrentSaleNotification] = useState<Sale | null>(null)
+  const [currentSaleNotification, setCurrentSaleNotification] =
+    useState<Sale | null>(null)
   const [notificationCount, setNotificationCount] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [userIsActive, setUserIsActive] = useState(true)
@@ -77,7 +81,7 @@ const SocialProofNotificationsEnhanced: React.FC<SocialProofNotificationsProps> 
   // Função para escolher cidade com peso
   const getRandomCity = useCallback(() => {
     const expanded = citiesWithWeight.flatMap(({ city, weight }) =>
-      Array(weight).fill(city)
+      Array(weight).fill(city),
     )
     return expanded[Math.floor(Math.random() * expanded.length)]
   }, [citiesWithWeight])
@@ -214,7 +218,7 @@ const SocialProofNotificationsEnhanced: React.FC<SocialProofNotificationsProps> 
   const generateSmartNotification = useCallback(() => {
     // Para se já atingiu o limite
     if (notificationCount >= maxNotifications) return
-    
+
     // Para se está pausado ou usuário inativo
     if (isPaused || !userIsActive) return
 
@@ -256,12 +260,21 @@ const SocialProofNotificationsEnhanced: React.FC<SocialProofNotificationsProps> 
     }
 
     // Escolher template baseado na seção
-    const templateGroup = section === 'pricing' ? templates.pricing : templates.services
-    const template = templateGroup[Math.floor(Math.random() * templateGroup.length)]
-    const messageTemplate = template.messages[Math.floor(Math.random() * template.messages.length)]
-    
-    const customer = customersWithCompanies[Math.floor(Math.random() * customersWithCompanies.length)]
-    const service = servicesWithContext[Math.floor(Math.random() * servicesWithContext.length)]
+    const templateGroup =
+      section === 'pricing' ? templates.pricing : templates.services
+    const template =
+      templateGroup[Math.floor(Math.random() * templateGroup.length)]
+    const messageTemplate =
+      template.messages[Math.floor(Math.random() * template.messages.length)]
+
+    const customer =
+      customersWithCompanies[
+        Math.floor(Math.random() * customersWithCompanies.length)
+      ]
+    const service =
+      servicesWithContext[
+        Math.floor(Math.random() * servicesWithContext.length)
+      ]
     const city = getRandomCity()
     const timeOnSite = Math.floor(Math.random() * 10) + 2
 
@@ -302,12 +315,18 @@ const SocialProofNotificationsEnhanced: React.FC<SocialProofNotificationsProps> 
   const generateSmartSale = useCallback(() => {
     // Para se já atingiu o limite
     if (notificationCount >= maxNotifications) return
-    
+
     // Para se está pausado
     if (isPaused) return
 
-    const customer = customersWithCompanies[Math.floor(Math.random() * customersWithCompanies.length)]
-    const service = servicesWithContext[Math.floor(Math.random() * servicesWithContext.length)]
+    const customer =
+      customersWithCompanies[
+        Math.floor(Math.random() * customersWithCompanies.length)
+      ]
+    const service =
+      servicesWithContext[
+        Math.floor(Math.random() * servicesWithContext.length)
+      ]
     const city = getRandomCity()
 
     // Tempos mais realistas
@@ -366,20 +385,27 @@ const SocialProofNotificationsEnhanced: React.FC<SocialProofNotificationsProps> 
     // Primeira venda após 5s, outras notificações após delay calculado
     if (notificationCount === 0) {
       saleTimeoutRef.current = setTimeout(generateSmartSale, 5000)
-      notificationTimeoutRef.current = setTimeout(generateSmartNotification, delay)
+      notificationTimeoutRef.current = setTimeout(
+        generateSmartNotification,
+        delay,
+      )
     } else {
       // Alternar entre vendas e outras notificações
       const showSale = Math.random() > 0.6 // 40% chance de ser venda
-      
+
       if (showSale) {
         saleTimeoutRef.current = setTimeout(generateSmartSale, delay)
       } else {
-        notificationTimeoutRef.current = setTimeout(generateSmartNotification, delay)
+        notificationTimeoutRef.current = setTimeout(
+          generateSmartNotification,
+          delay,
+        )
       }
     }
 
     return () => {
-      if (notificationTimeoutRef.current) clearTimeout(notificationTimeoutRef.current)
+      if (notificationTimeoutRef.current)
+        clearTimeout(notificationTimeoutRef.current)
       if (saleTimeoutRef.current) clearTimeout(saleTimeoutRef.current)
     }
   }, [
@@ -399,14 +425,14 @@ const SocialProofNotificationsEnhanced: React.FC<SocialProofNotificationsProps> 
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
-            className="fixed z-40 top-20 left-2 sm:top-24 sm:left-4"
+            className="fixed top-20 left-2 z-40 sm:top-24 sm:left-4"
           >
-            <div className="flex items-center gap-1 rounded-lg border border-gray-200 bg-white px-2 py-1 shadow-md dark:border-gray-700 dark:bg-gray-800 sm:gap-2 sm:px-3 sm:py-2">
+            <div className="flex items-center gap-1 rounded-lg border border-gray-200 bg-white px-2 py-1 shadow-md sm:gap-2 sm:px-3 sm:py-2 dark:border-gray-700 dark:bg-gray-800">
               <div className="relative">
                 <Users className="h-4 w-4 text-green-600 dark:text-green-400" />
                 <div className="absolute -top-1 -right-1 h-2 w-2 animate-pulse rounded-full bg-green-500" />
               </div>
-              <span className="text-xs text-gray-700 dark:text-gray-300 sm:text-sm">
+              <span className="text-xs text-gray-700 sm:text-sm dark:text-gray-300">
                 <span className="font-semibold text-gray-900 dark:text-white">
                   {onlineUsers}
                 </span>{' '}
@@ -426,11 +452,11 @@ const SocialProofNotificationsEnhanced: React.FC<SocialProofNotificationsProps> 
             animate={{ opacity: 1, x: 0, y: 0 }}
             exit={{ opacity: 0, x: -100, y: 20 }}
             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-            className="fixed z-40 max-w-[300px] sm:max-w-sm top-32 left-2 sm:top-36 sm:left-4"
+            className="fixed top-32 left-2 z-40 max-w-[300px] sm:top-36 sm:left-4 sm:max-w-sm"
           >
-            <div className="relative overflow-hidden rounded-lg border border-green-200 bg-white p-3 shadow-xl dark:border-green-800 dark:bg-gray-800 sm:p-4">
+            <div className="relative overflow-hidden rounded-lg border border-green-200 bg-white p-3 shadow-xl sm:p-4 dark:border-green-800 dark:bg-gray-800">
               {/* Barra de progresso animada no topo */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-green-100 dark:bg-green-900">
+              <div className="absolute top-0 right-0 left-0 h-1 bg-green-100 dark:bg-green-900">
                 <motion.div
                   initial={{ width: '0%' }}
                   animate={{ width: '100%' }}
@@ -438,7 +464,7 @@ const SocialProofNotificationsEnhanced: React.FC<SocialProofNotificationsProps> 
                   className="h-full bg-gradient-to-r from-green-500 to-green-600"
                 />
               </div>
-              
+
               <div className="flex items-start gap-3">
                 <div className="rounded-full bg-green-100 p-2 dark:bg-green-900/30">
                   <ShoppingCart className="h-4 w-4 text-green-600 dark:text-green-400" />
@@ -448,10 +474,13 @@ const SocialProofNotificationsEnhanced: React.FC<SocialProofNotificationsProps> 
                     Nova contratação! 🎉
                   </p>
                   <p className="mt-1 text-sm text-gray-700 dark:text-gray-300">
-                    <span className="font-medium">{currentSaleNotification.customer}</span>
+                    <span className="font-medium">
+                      {currentSaleNotification.customer}
+                    </span>
                     {currentSaleNotification.company && (
                       <span className="text-xs text-gray-500 dark:text-gray-400">
-                        {' '}• {currentSaleNotification.company}
+                        {' '}
+                        • {currentSaleNotification.company}
                       </span>
                     )}
                   </p>
@@ -465,7 +494,8 @@ const SocialProofNotificationsEnhanced: React.FC<SocialProofNotificationsProps> 
                   </p>
                   <p className="mt-1 flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
                     <MapPin className="h-3 w-3" />
-                    {currentSaleNotification.city} • {currentSaleNotification.time}
+                    {currentSaleNotification.city} •{' '}
+                    {currentSaleNotification.time}
                   </p>
                 </div>
               </div>
@@ -482,14 +512,16 @@ const SocialProofNotificationsEnhanced: React.FC<SocialProofNotificationsProps> 
             initial={{ opacity: 0, y: 50, x: -50 }}
             animate={{ opacity: 1, y: 0, x: 0 }}
             exit={{ opacity: 0, y: 50, x: -50 }}
-            className="fixed z-40 max-w-[300px] sm:max-w-sm bottom-20 left-2 sm:bottom-24 sm:left-4"
+            className="fixed bottom-20 left-2 z-40 max-w-[300px] sm:bottom-24 sm:left-4 sm:max-w-sm"
           >
-            <div className="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-3 shadow-2xl dark:border-gray-700 dark:bg-gray-800 sm:p-4">
+            <div className="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-3 shadow-2xl sm:p-4 dark:border-gray-700 dark:bg-gray-800">
               {/* Indicador de urgência */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500" />
-              
+              <div className="absolute top-0 right-0 left-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500" />
+
               <div className="flex items-start gap-3">
-                <div className={`rounded-full p-2 ${currentNotification.color} text-white`}>
+                <div
+                  className={`rounded-full p-2 ${currentNotification.color} text-white`}
+                >
                   <currentNotification.icon className="h-4 w-4" />
                 </div>
                 <div className="flex-1">
@@ -509,11 +541,11 @@ const SocialProofNotificationsEnhanced: React.FC<SocialProofNotificationsProps> 
 
       {/* Indicador de limite atingido (sutil) */}
       {notificationCount >= maxNotifications && (
-        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-30">
+        <div className="fixed bottom-4 left-1/2 z-30 -translate-x-1/2">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full"
+            className="rounded-full bg-gray-100 px-3 py-1 dark:bg-gray-800"
           >
             <p className="text-xs text-gray-500 dark:text-gray-400">
               🔕 Notificações pausadas para sua melhor experiência

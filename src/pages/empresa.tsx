@@ -127,8 +127,8 @@ export default function EmpresaPage() {
 
   return (
     <>
-      <SEOHead 
-        lang={currentLang} 
+      <SEOHead
+        lang={currentLang}
         title="Jeferson Reis - Desenvolvedor Full-Stack para Empresas"
         description="Desenvolvedor Full-Stack Sênior com expertise em React, Node.js, Python e IA. Disponível para CLT, PJ e projetos desafiadores."
       />
@@ -138,7 +138,7 @@ export default function EmpresaPage() {
       <main>
         {/* Hero Portfolio */}
         {quantumMode ? <LiteQuantumHero /> : <HeroPortfolio />}
-        
+
         {/* About */}
         <AboutPortfolio />
 
