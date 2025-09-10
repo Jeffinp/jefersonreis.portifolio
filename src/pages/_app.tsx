@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import { appWithTranslation } from 'next-i18next'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { preloadCriticalResources } from '@/config/performance.config'
 
 // Dynamic import for Optimized Quantum Layout
@@ -41,9 +42,11 @@ const SpeedInsights = dynamic(
 )
 
 function App({ Component, pageProps }: AppProps) {
+  const router = useRouter()
   // FIXED: Quantum always enabled, performance always medium
   const [quantumEnabled, setQuantumEnabled] = useState(true)
-  const [commercialMode, setCommercialMode] = useState(false)
+  const [isFreelancePage, setIsFreelancePage] = useState(false)
+  const [isHomePage, setIsHomePage] = useState(false)
 
   // Initialize and preload critical resources
   useEffect(() => {
@@ -53,29 +56,31 @@ function App({ Component, pageProps }: AppProps) {
     // FIXED: Always enable quantum mode
     setQuantumEnabled(true)
 
-    // Check for commercial mode
-    const urlParams = new URLSearchParams(window.location.search)
-    const isCommercial =
-      urlParams.get('mode') === 'commercial' ||
-      localStorage.getItem('commercialMode') === 'true'
-    setCommercialMode(isCommercial)
-  }, [])
+    // Check if we're on the freelance page or home page
+    const isFreelance = router.pathname === '/freelance'
+    const isHome = router.pathname === '/'
+    setIsFreelancePage(isFreelance)
+    setIsHomePage(isHome)
+  }, [router.pathname])
 
   return (
     <ThemeProvider>
       <OptimizedQuantumLayout>
         <main id="main-content" role="main" className="relative min-h-screen">
-          <Component {...pageProps} commercialMode={commercialMode} />
+          <Component {...pageProps} />
         </main>
 
-        {/* Floating buttons - Only show in non-commercial mode and not on home page */}
-        {!commercialMode && (
+        {/* Floating buttons - Show based on page */}
+        {router.pathname === '/empresa' && (
           <>
             <ScrollToTopButton />
             <WhatsAppFloatingButton />
             <DiscordFloatingButton />
           </>
         )}
+        
+        {/* ScrollToTop for freelance page */}
+        {router.pathname === '/freelance' && <ScrollToTopButton />}
 
         {/* Analytics and Performance Monitoring */}
         <Analytics />
