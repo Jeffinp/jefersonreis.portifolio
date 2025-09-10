@@ -43,6 +43,7 @@ const SpeedInsights = dynamic(
 function App({ Component, pageProps }: AppProps) {
   // FIXED: Quantum always enabled, performance always medium
   const [quantumEnabled, setQuantumEnabled] = useState(true)
+  const [commercialMode, setCommercialMode] = useState(false)
 
   // Initialize and preload critical resources
   useEffect(() => {
@@ -51,19 +52,29 @@ function App({ Component, pageProps }: AppProps) {
 
     // FIXED: Always enable quantum mode
     setQuantumEnabled(true)
+    
+    // Check for commercial mode
+    const urlParams = new URLSearchParams(window.location.search)
+    const isCommercial = urlParams.get('mode') === 'commercial' || 
+                        localStorage.getItem('commercialMode') === 'true'
+    setCommercialMode(isCommercial)
   }, [])
 
   return (
     <ThemeProvider>
       <OptimizedQuantumLayout>
         <main id="main-content" role="main" className="relative min-h-screen">
-          <Component {...pageProps} />
+          <Component {...pageProps} commercialMode={commercialMode} />
         </main>
 
-        {/* Floating buttons */}
-        <ScrollToTopButton />
-        <WhatsAppFloatingButton />
-        <DiscordFloatingButton />
+        {/* Floating buttons - Only show in non-commercial mode */}
+        {!commercialMode && (
+          <>
+            <ScrollToTopButton />
+            <WhatsAppFloatingButton />
+            <DiscordFloatingButton />
+          </>
+        )}
 
         {/* Analytics and Performance Monitoring */}
         <Analytics />

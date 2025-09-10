@@ -5,6 +5,12 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
 import { ThemeToggle } from '@/components/ui'
+import dynamic from 'next/dynamic'
+
+const CommercialToggle = dynamic(
+  () => import('@/components/ui/CommercialToggle'),
+  { ssr: false }
+)
 
 interface NavItemProps {
   href: string
@@ -22,7 +28,7 @@ const NavItem: React.FC<NavItemProps> = ({
   isRouterLink = false,
   isActive = false,
 }) => {
-  const baseClasses = `relative rounded-md px-3 py-2 text-sm transition-all duration-300 sm:text-base lg:text-lg ${
+  const baseClasses = `relative rounded-md px-2 py-1 text-xs transition-all duration-300 sm:text-sm lg:text-base ${
     isActive
       ? 'bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold dark:from-blue-400 dark:to-purple-400'
       : 'text-gray-700 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:bg-clip-text hover:text-transparent dark:text-gray-300 dark:hover:from-blue-400 dark:hover:to-purple-400'
@@ -65,7 +71,7 @@ const MobileNavItem: React.FC<MobileNavItemProps> = ({
   isRouterLink = false,
   isActive = false,
 }) => {
-  const baseClasses = `relative flex items-center rounded-md px-4 py-3 text-lg font-medium transition-all duration-300 sm:text-xl ${
+  const baseClasses = `relative flex items-center rounded-md px-3 py-2 text-base font-medium transition-all duration-300 sm:text-lg ${
     isActive
       ? 'bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold border-l-4 border-blue-600 bg-blue-50 dark:border-blue-400 dark:bg-blue-900/20 dark:from-blue-400 dark:to-purple-400'
       : 'text-gray-900 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:bg-clip-text hover:text-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none hover:bg-blue-50 dark:text-white dark:hover:from-blue-400 dark:hover:to-purple-400 dark:focus:ring-blue-400 dark:hover:bg-blue-900/20'
@@ -147,12 +153,38 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState<string>('#home')
   const [scrollProgress, setScrollProgress] = useState<number>(0)
+  const [isCommercialMode, setIsCommercialMode] = useState(false)
   const router = useRouter()
   const { t, i18n } = useTranslation('sections/header')
   const [language, setLanguage] = useState<string>(router.locale || 'pt')
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLElement>(null)
+  
+  // Check commercial mode on mount
+  useEffect(() => {
+    const checkCommercialMode = () => {
+      const urlParams = new URLSearchParams(window.location.search)
+      const isCommercial = urlParams.get('mode') === 'commercial' || 
+                          localStorage.getItem('commercialMode') === 'true'
+      setIsCommercialMode(isCommercial)
+    }
+    
+    checkCommercialMode()
+    // Listen for storage changes
+    window.addEventListener('storage', checkCommercialMode)
+    return () => window.removeEventListener('storage', checkCommercialMode)
+  }, [])
+  
+  // Toggle commercial mode
+  const toggleCommercialMode = useCallback(() => {
+    const newMode = !isCommercialMode
+    setIsCommercialMode(newMode)
+    localStorage.setItem('commercialMode', String(newMode))
+    
+    // Reload page to apply changes
+    window.location.reload()
+  }, [isCommercialMode])
 
   // Toggle menu com controle de overflow no body
   const toggleMenu = useCallback(() => {
@@ -222,6 +254,20 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
     if (showBackHome) {
       return []
     }
+    
+    // Check if commercial mode is active
+    const isCommercialMode = localStorage.getItem('commercialMode') === 'true'
+    
+    if (isCommercialMode) {
+      // Simplified menu for commercial mode
+      return [
+        { href: '#home', label: 'Início' },
+        { href: '#services', label: 'Serviços' },
+        { href: '#projects', label: 'Portfólio' },
+        { href: '#testimonials', label: 'Depoimentos' },
+      ]
+    }
+    
     return [
       { href: '#home', label: t('menu.home') },
       { href: '#about', label: t('menu.about') },
@@ -307,7 +353,7 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
   return (
     <header
       ref={headerRef}
-      className={`fixed top-0 right-0 left-0 z-50 py-2 transition-all duration-300 md:py-3 ${
+      className={`fixed top-0 right-0 left-0 z-50 py-1 transition-all duration-300 md:py-2 ${
         isScrolled || menuOpen
           ? 'bg-white/90 shadow-sm backdrop-blur-lg dark:bg-slate-900/90'
           : 'bg-transparent'
@@ -350,8 +396,14 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
             </nav>
           )}
 
-          {/* Controles - Tema e Idioma */}
+          {/* Controles - Tema, Modo e Idioma */}
           <div className="flex items-center gap-3 sm:gap-4">
+            {/* Commercial Toggle */}
+            <CommercialToggle 
+              isCommercial={isCommercialMode}
+              onToggle={toggleCommercialMode}
+            />
+            
             {/* Seletor de idioma */}
             <div className="mr-1 flex items-center gap-2">
               <LanguageButton
