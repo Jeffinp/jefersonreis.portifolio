@@ -78,7 +78,7 @@ function App({ Component, pageProps }: AppProps) {
             <DiscordFloatingButton />
           </>
         )}
-        
+
         {/* ScrollToTop for freelance page */}
         {router.pathname === '/freelance' && <ScrollToTopButton />}
 
