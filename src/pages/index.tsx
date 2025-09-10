@@ -126,6 +126,13 @@ const SocialProofNotifications = dynamic(
     ssr: false,
   },
 )
+// Import Conversion System
+const ConversionSystem = dynamic(
+  () => import('@/components/conversion/ConversionSystem'),
+  {
+    ssr: false,
+  },
+)
 
 export default function Home() {
   const router = useRouter()
@@ -311,6 +318,27 @@ export default function Home() {
         <>
           <ChatWidget />
           <SocialProofNotifications />
+          <ConversionSystem
+            enabled={true}
+            features={{
+              exitIntent: true,
+              readingProgress: true,
+              quiz: true,
+              roiCalculator: true,
+            }}
+            exitIntentVariant="discount"
+            onConversion={(data) => {
+              console.log('Conversion event:', data)
+              // Track conversion events
+              if (typeof window !== 'undefined' && (window as any).gtag) {
+                (window as any).gtag('event', 'conversion', {
+                  event_category: 'engagement',
+                  event_label: data.type,
+                  value: data.value,
+                })
+              }
+            }}
+          />
         </>
       )}
     </>
