@@ -52,11 +52,12 @@ function App({ Component, pageProps }: AppProps) {
 
     // FIXED: Always enable quantum mode
     setQuantumEnabled(true)
-    
+
     // Check for commercial mode
     const urlParams = new URLSearchParams(window.location.search)
-    const isCommercial = urlParams.get('mode') === 'commercial' || 
-                        localStorage.getItem('commercialMode') === 'true'
+    const isCommercial =
+      urlParams.get('mode') === 'commercial' ||
+      localStorage.getItem('commercialMode') === 'true'
     setCommercialMode(isCommercial)
   }, [])
 

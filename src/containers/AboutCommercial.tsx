@@ -34,25 +34,29 @@ const AboutCommercial: React.FC = () => {
               Sou <strong>Jeferson Reis</strong>, desenvolvedor full-stack com{' '}
               <strong>6+ anos de experiência</strong> criando soluções que{' '}
               <strong>realmente vendem</strong>. Já entreguei mais de{' '}
-              <strong>137 projetos</strong> que geraram resultados reais para meus clientes.
+              <strong>137 projetos</strong> que geraram resultados reais para
+              meus clientes.
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <div className="h-2 w-2 rounded-full bg-green-500" />
                 <span className="text-sm text-gray-700 dark:text-gray-300">
-                  <strong>Especialista em conversão:</strong> Seus visitantes viram clientes
+                  <strong>Especialista em conversão:</strong> Seus visitantes
+                  viram clientes
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="h-2 w-2 rounded-full bg-green-500" />
                 <span className="text-sm text-gray-700 dark:text-gray-300">
-                  <strong>Tecnologia de ponta:</strong> Next.js, React, TypeScript, IA
+                  <strong>Tecnologia de ponta:</strong> Next.js, React,
+                  TypeScript, IA
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="h-2 w-2 rounded-full bg-green-500" />
                 <span className="text-sm text-gray-700 dark:text-gray-300">
-                  <strong>Entrega garantida:</strong> No prazo ou seu dinheiro de volta
+                  <strong>Entrega garantida:</strong> No prazo ou seu dinheiro
+                  de volta
                 </span>
               </div>
             </div>
@@ -100,8 +104,8 @@ const AboutCommercial: React.FC = () => {
             🏆 Compromisso com Resultados
           </p>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-            "Se seu site não gerar resultados em 30 dias, eu refaço sem custo adicional.
-            Essa é minha garantia de sucesso para você!"
+            "Se seu site não gerar resultados em 30 dias, eu refaço sem custo
+            adicional. Essa é minha garantia de sucesso para você!"
           </p>
         </motion.div>
       </div>

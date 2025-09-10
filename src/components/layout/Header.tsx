@@ -9,7 +9,7 @@ import dynamic from 'next/dynamic'
 
 const CommercialToggle = dynamic(
   () => import('@/components/ui/CommercialToggle'),
-  { ssr: false }
+  { ssr: false },
 )
 
 interface NavItemProps {
@@ -160,28 +160,29 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLElement>(null)
-  
+
   // Check commercial mode on mount
   useEffect(() => {
     const checkCommercialMode = () => {
       const urlParams = new URLSearchParams(window.location.search)
-      const isCommercial = urlParams.get('mode') === 'commercial' || 
-                          localStorage.getItem('commercialMode') === 'true'
+      const isCommercial =
+        urlParams.get('mode') === 'commercial' ||
+        localStorage.getItem('commercialMode') === 'true'
       setIsCommercialMode(isCommercial)
     }
-    
+
     checkCommercialMode()
     // Listen for storage changes
     window.addEventListener('storage', checkCommercialMode)
     return () => window.removeEventListener('storage', checkCommercialMode)
   }, [])
-  
+
   // Toggle commercial mode
   const toggleCommercialMode = useCallback(() => {
     const newMode = !isCommercialMode
     setIsCommercialMode(newMode)
     localStorage.setItem('commercialMode', String(newMode))
-    
+
     // Reload page to apply changes
     window.location.reload()
   }, [isCommercialMode])
@@ -254,10 +255,10 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
     if (showBackHome) {
       return []
     }
-    
+
     // Check if commercial mode is active
     const isCommercialMode = localStorage.getItem('commercialMode') === 'true'
-    
+
     if (isCommercialMode) {
       // Simplified menu for commercial mode
       return [
@@ -267,7 +268,7 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
         { href: '#testimonials', label: 'Depoimentos' },
       ]
     }
-    
+
     return [
       { href: '#home', label: t('menu.home') },
       { href: '#about', label: t('menu.about') },
@@ -399,11 +400,11 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
           {/* Controles - Tema, Modo e Idioma */}
           <div className="flex items-center gap-3 sm:gap-4">
             {/* Commercial Toggle */}
-            <CommercialToggle 
+            <CommercialToggle
               isCommercial={isCommercialMode}
               onToggle={toggleCommercialMode}
             />
-            
+
             {/* Seletor de idioma */}
             <div className="mr-1 flex items-center gap-2">
               <LanguageButton

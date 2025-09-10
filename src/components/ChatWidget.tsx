@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MessageCircle, X, Send, Clock, Zap, HelpCircle, DollarSign } from 'lucide-react'
+import {
+  MessageCircle,
+  X,
+  Send,
+  Clock,
+  Zap,
+  HelpCircle,
+  DollarSign,
+} from 'lucide-react'
 
 interface Message {
   id: string
@@ -13,8 +21,9 @@ export const ChatWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [message, setMessage] = useState('')
   const [showNotification, setShowNotification] = useState(false)
-  
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+55 75 99999-9999'
+
+  const whatsappNumber =
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+55 75 99999-9999'
 
   useEffect(() => {
     // Mostrar notificação após 10 segundos
@@ -34,38 +43,48 @@ export const ChatWidget: React.FC = () => {
       id: '1',
       text: 'Quero um orçamento',
       icon: DollarSign,
-      action: () => sendToWhatsApp('Olá! Gostaria de solicitar um orçamento para um projeto.')
+      action: () =>
+        sendToWhatsApp(
+          'Olá! Gostaria de solicitar um orçamento para um projeto.',
+        ),
     },
     {
-      id: '2', 
+      id: '2',
       text: 'Quanto custa um site?',
       icon: HelpCircle,
-      action: () => sendToWhatsApp('Olá! Gostaria de saber quanto custa para fazer um site profissional.')
+      action: () =>
+        sendToWhatsApp(
+          'Olá! Gostaria de saber quanto custa para fazer um site profissional.',
+        ),
     },
     {
       id: '3',
       text: 'Prazo para landing page?',
       icon: Clock,
-      action: () => sendToWhatsApp('Olá! Qual o prazo de entrega para uma landing page?')
+      action: () =>
+        sendToWhatsApp('Olá! Qual o prazo de entrega para uma landing page?'),
     },
     {
       id: '4',
       text: 'Como funciona a IA?',
       icon: Zap,
-      action: () => sendToWhatsApp('Olá! Gostaria de entender como funciona a automação com IA para WhatsApp.')
-    }
+      action: () =>
+        sendToWhatsApp(
+          'Olá! Gostaria de entender como funciona a automação com IA para WhatsApp.',
+        ),
+    },
   ]
 
   const sendToWhatsApp = (msg: string) => {
     const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent(msg)}`
     window.open(whatsappUrl, '_blank')
     setIsOpen(false)
-    
+
     // Track evento (será implementado depois)
     if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'whatsapp_click', {
+      ;(window as any).gtag('event', 'whatsapp_click', {
         event_category: 'engagement',
-        event_label: 'chat_widget'
+        event_label: 'chat_widget',
       })
     }
   }
@@ -86,7 +105,7 @@ export const ChatWidget: React.FC = () => {
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 100 }}
-            className="fixed bottom-24 right-6 z-[9999] max-w-xs rounded-lg bg-white p-4 shadow-xl dark:bg-gray-800"
+            className="fixed right-6 bottom-24 z-[9999] max-w-xs rounded-lg bg-white p-4 shadow-xl dark:bg-gray-800"
           >
             <button
               onClick={() => setShowNotification(false)}
@@ -116,7 +135,7 @@ export const ChatWidget: React.FC = () => {
       {/* Botão do Chat */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-[10000] rounded-full bg-gradient-to-r from-green-500 to-green-600 p-4 text-white shadow-lg hover:from-green-600 hover:to-green-700"
+        className="fixed right-6 bottom-6 z-[10000] rounded-full bg-gradient-to-r from-green-500 to-green-600 p-4 text-white shadow-lg hover:from-green-600 hover:to-green-700"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -141,7 +160,7 @@ export const ChatWidget: React.FC = () => {
             </motion.div>
           )}
         </AnimatePresence>
-        
+
         {/* Indicador de online */}
         <span className="absolute top-0 right-0 flex h-3 w-3">
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
@@ -157,7 +176,7 @@ export const ChatWidget: React.FC = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-6 z-[9999] w-[350px] overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-gray-800"
+            className="fixed right-6 bottom-24 z-[9999] w-[350px] overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-gray-800"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-green-500 to-green-600 p-4 text-white">
@@ -167,7 +186,7 @@ export const ChatWidget: React.FC = () => {
                     <div className="h-10 w-10 rounded-full bg-white/20 p-2">
                       <MessageCircle className="h-full w-full" />
                     </div>
-                    <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-green-500 bg-green-400"></span>
+                    <span className="absolute right-0 bottom-0 h-3 w-3 rounded-full border-2 border-green-500 bg-green-400"></span>
                   </div>
                   <div>
                     <h3 className="font-semibold">Jeferson Reis</h3>
@@ -187,7 +206,8 @@ export const ChatWidget: React.FC = () => {
             <div className="p-4">
               <div className="mb-4 rounded-lg bg-gray-100 p-3 dark:bg-gray-700">
                 <p className="text-sm text-gray-700 dark:text-gray-300">
-                  👋 Oi! Sou o Jeferson, desenvolvedor full-stack especialista em IA. Como posso ajudar você hoje?
+                  👋 Oi! Sou o Jeferson, desenvolvedor full-stack especialista
+                  em IA. Como posso ajudar você hoje?
                 </p>
               </div>
 
@@ -221,7 +241,9 @@ export const ChatWidget: React.FC = () => {
                     type="text"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && handleCustomMessage()}
+                    onKeyPress={(e) =>
+                      e.key === 'Enter' && handleCustomMessage()
+                    }
                     placeholder="Digite sua mensagem..."
                     className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-green-500 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                   />

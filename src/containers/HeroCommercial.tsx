@@ -1,6 +1,14 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import Image from 'next/image'
-import { Mail, Phone, CheckCircle, ArrowRight, Star, Clock, AlertCircle } from 'lucide-react'
+import {
+  Mail,
+  Phone,
+  CheckCircle,
+  ArrowRight,
+  Star,
+  Clock,
+  AlertCircle,
+} from 'lucide-react'
 import { motion, useAnimation } from 'framer-motion'
 import { useTranslation } from 'next-i18next'
 import { SectionBackground } from '@/components/common'
@@ -10,7 +18,11 @@ import { InteractiveCard } from '@/components/ui/MicroInteractions'
 const HeroCommercial: React.FC = () => {
   const [scrollProgress, setScrollProgress] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
-  const [timeLeft, setTimeLeft] = useState({ hours: 23, minutes: 59, seconds: 59 })
+  const [timeLeft, setTimeLeft] = useState({
+    hours: 23,
+    minutes: 59,
+    seconds: 59,
+  })
   const heroRef = useRef<HTMLElement>(null)
   const controls = useAnimation()
   const { t } = useTranslation('sections/hero')
@@ -32,7 +44,7 @@ const HeroCommercial: React.FC = () => {
   // Timer countdown
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(prev => {
+      setTimeLeft((prev) => {
         if (prev.seconds > 0) {
           return { ...prev, seconds: prev.seconds - 1 }
         } else if (prev.minutes > 0) {
@@ -77,7 +89,11 @@ const HeroCommercial: React.FC = () => {
       className="relative flex min-h-screen items-center overflow-hidden bg-transparent py-12 sm:py-16 md:py-20 lg:py-24"
       aria-label="Jeferson Reis - Desenvolvedor Full-Stack Especialista em IA"
     >
-      <SectionBackground isMobile={isMobile} variant="hero" intensity="medium" />
+      <SectionBackground
+        isMobile={isMobile}
+        variant="hero"
+        intensity="medium"
+      />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 py-8 sm:px-8 md:px-10 lg:px-16 2xl:px-20">
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
@@ -93,11 +109,13 @@ const HeroCommercial: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="inline-flex items-center gap-3 rounded-lg bg-red-500/10 border border-red-500/20 px-4 py-2 mb-4"
+              className="mb-4 inline-flex items-center gap-3 rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-2"
             >
-              <AlertCircle className="h-5 w-5 text-red-600 animate-pulse" />
+              <AlertCircle className="h-5 w-5 animate-pulse text-red-600" />
               <div className="flex items-center gap-2">
-                <span className="text-sm font-bold text-red-600">OFERTA TERMINA EM:</span>
+                <span className="text-sm font-bold text-red-600">
+                  OFERTA TERMINA EM:
+                </span>
                 <div className="flex items-center gap-1 font-mono text-lg font-bold text-red-700">
                   <span>{String(timeLeft.hours).padStart(2, '0')}</span>
                   <span className="animate-pulse">:</span>
@@ -125,7 +143,9 @@ const HeroCommercial: React.FC = () => {
             <div>
               <h1 className="mb-4 text-3xl leading-tight font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
                 Seu Site Pronto em{' '}
-                <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">7 Dias</span>
+                <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                  7 Dias
+                </span>
                 <br />
                 ou Devolvemos{' '}
                 <span className="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
@@ -133,9 +153,14 @@ const HeroCommercial: React.FC = () => {
                 </span>
               </h1>
               <p className="text-lg text-gray-600 lg:text-xl dark:text-gray-300">
-                <strong className="text-gray-900 dark:text-white">De R$ 0 a R$ 10.000/mês</strong> com seu novo site.
+                <strong className="text-gray-900 dark:text-white">
+                  De R$ 0 a R$ 10.000/mês
+                </strong>{' '}
+                com seu novo site.
                 <br />
-                <span className="text-base">Garantia de 30 dias: Se não vender, refazemos grátis!</span>
+                <span className="text-base">
+                  Garantia de 30 dias: Se não vender, refazemos grátis!
+                </span>
               </p>
             </div>
 
@@ -155,7 +180,9 @@ const HeroCommercial: React.FC = () => {
                   className="flex items-center gap-2"
                 >
                   <CheckCircle className="h-5 w-5 text-green-500 dark:text-green-400" />
-                  <span className="text-gray-700 dark:text-gray-300">{benefit}</span>
+                  <span className="text-gray-700 dark:text-gray-300">
+                    {benefit}
+                  </span>
                 </motion.div>
               ))}
             </motion.div>
@@ -169,7 +196,7 @@ const HeroCommercial: React.FC = () => {
             >
               <button
                 onClick={handleContactClick}
-                className="group relative flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-green-600 to-green-700 px-8 py-4 text-lg font-bold text-white shadow-xl transition-all hover:from-green-700 hover:to-green-800 hover:shadow-2xl animate-pulse hover:animate-none"
+                className="group relative flex animate-pulse items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-green-600 to-green-700 px-8 py-4 text-lg font-bold text-white shadow-xl transition-all hover:animate-none hover:from-green-700 hover:to-green-800 hover:shadow-2xl"
               >
                 <span className="absolute -top-3 -right-2 rounded-full bg-red-500 px-2 py-1 text-xs font-bold text-white">
                   -30% HOJE
@@ -195,10 +222,14 @@ const HeroCommercial: React.FC = () => {
             >
               <div className="flex items-center gap-1 text-yellow-400">
                 <Clock className="h-4 w-4 animate-pulse" />
-                <span className="font-semibold">2 pessoas estão vendo esta oferta agora</span>
+                <span className="font-semibold">
+                  2 pessoas estão vendo esta oferta agora
+                </span>
               </div>
               <span className="text-gray-400">•</span>
-              <span className="text-red-400 font-semibold">Apenas 3 vagas restantes</span>
+              <span className="font-semibold text-red-400">
+                Apenas 3 vagas restantes
+              </span>
             </motion.div>
           </motion.div>
 

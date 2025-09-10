@@ -14,7 +14,7 @@ import {
   CheckCircle,
   ArrowRight,
   ArrowLeft,
-  Loader2
+  Loader2,
 } from 'lucide-react'
 
 interface FormData {
@@ -23,19 +23,19 @@ interface FormData {
   whatsapp: string
   email: string
   empresa: string
-  
+
   // Qualificação
   tipoServico: string
   descricaoProjeto: string
   orcamento: string
   prazo: string
-  
+
   // Informações adicionais
   temSite: string
   temLogo: string
   objetivoPrincipal: string
   comoConheceu: string
-  
+
   // Extras
   urgencia: string
   decisor: string
@@ -57,7 +57,7 @@ const Step1: React.FC<StepProps> = ({ formData, updateFormData, onNext }) => {
     if (!formData.nome) newErrors.nome = 'Nome é obrigatório'
     if (!formData.whatsapp) newErrors.whatsapp = 'WhatsApp é obrigatório'
     if (!formData.email) newErrors.email = 'Email é obrigatório'
-    
+
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
@@ -93,7 +93,9 @@ const Step1: React.FC<StepProps> = ({ formData, updateFormData, onNext }) => {
             value={formData.nome}
             onChange={(e) => updateFormData({ nome: e.target.value })}
             className={`w-full rounded-lg border px-4 py-3 focus:border-blue-500 focus:outline-none dark:bg-gray-700 ${
-              errors.nome ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+              errors.nome
+                ? 'border-red-500'
+                : 'border-gray-300 dark:border-gray-600'
             }`}
             placeholder="João Silva"
           />
@@ -112,7 +114,9 @@ const Step1: React.FC<StepProps> = ({ formData, updateFormData, onNext }) => {
             value={formData.whatsapp}
             onChange={(e) => updateFormData({ whatsapp: e.target.value })}
             className={`w-full rounded-lg border px-4 py-3 focus:border-blue-500 focus:outline-none dark:bg-gray-700 ${
-              errors.whatsapp ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+              errors.whatsapp
+                ? 'border-red-500'
+                : 'border-gray-300 dark:border-gray-600'
             }`}
             placeholder="(75) 99999-9999"
           />
@@ -131,7 +135,9 @@ const Step1: React.FC<StepProps> = ({ formData, updateFormData, onNext }) => {
             value={formData.email}
             onChange={(e) => updateFormData({ email: e.target.value })}
             className={`w-full rounded-lg border px-4 py-3 focus:border-blue-500 focus:outline-none dark:bg-gray-700 ${
-              errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+              errors.email
+                ? 'border-red-500'
+                : 'border-gray-300 dark:border-gray-600'
             }`}
             placeholder="joao@empresa.com"
           />
@@ -166,7 +172,12 @@ const Step1: React.FC<StepProps> = ({ formData, updateFormData, onNext }) => {
   )
 }
 
-const Step2: React.FC<StepProps> = ({ formData, updateFormData, onNext, onBack }) => {
+const Step2: React.FC<StepProps> = ({
+  formData,
+  updateFormData,
+  onNext,
+  onBack,
+}) => {
   const services = [
     { value: 'landing', label: 'Landing Page (R$ 800-1.500)', icon: '🚀' },
     { value: 'site', label: 'Site Profissional (R$ 2.000-2.500)', icon: '🌐' },
@@ -279,7 +290,9 @@ const Step2: React.FC<StepProps> = ({ formData, updateFormData, onNext, onBack }
           </label>
           <textarea
             value={formData.descricaoProjeto}
-            onChange={(e) => updateFormData({ descricaoProjeto: e.target.value })}
+            onChange={(e) =>
+              updateFormData({ descricaoProjeto: e.target.value })
+            }
             className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-700"
             rows={4}
             placeholder="Conte-me sobre suas necessidades, objetivos e expectativas..."
@@ -307,7 +320,12 @@ const Step2: React.FC<StepProps> = ({ formData, updateFormData, onNext, onBack }
   )
 }
 
-const Step3: React.FC<StepProps> = ({ formData, updateFormData, onNext, onBack }) => {
+const Step3: React.FC<StepProps> = ({
+  formData,
+  updateFormData,
+  onNext,
+  onBack,
+}) => {
   const objectives = [
     { value: 'vendas', label: 'Aumentar vendas online', icon: '💰' },
     { value: 'leads', label: 'Capturar mais leads', icon: '🎯' },
@@ -351,7 +369,9 @@ const Step3: React.FC<StepProps> = ({ formData, updateFormData, onNext, onBack }
             {objectives.map((objective) => (
               <button
                 key={objective.value}
-                onClick={() => updateFormData({ objetivoPrincipal: objective.value })}
+                onClick={() =>
+                  updateFormData({ objetivoPrincipal: objective.value })
+                }
                 className={`rounded-lg border-2 p-3 text-left transition-all ${
                   formData.objetivoPrincipal === objective.value
                     ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
@@ -495,13 +515,14 @@ export const LeadQualifierForm: React.FC = () => {
     comoConheceu: '',
     urgencia: '',
     decisor: '',
-    concorrentes: ''
+    concorrentes: '',
   })
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+55 75 99999-9999'
+  const whatsappNumber =
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+55 75 99999-9999'
 
   const updateFormData = useCallback((data: Partial<FormData>) => {
-    setFormData(prev => ({ ...prev, ...data }))
+    setFormData((prev) => ({ ...prev, ...data }))
   }, [])
 
   const handleSubmit = async () => {
@@ -515,8 +536,8 @@ export const LeadQualifierForm: React.FC = () => {
         body: JSON.stringify({
           ...formData,
           source: 'website_form',
-          timestamp: new Date().toISOString()
-        })
+          timestamp: new Date().toISOString(),
+        }),
       })
 
       if (!response.ok) throw new Error('Failed to submit')
@@ -590,7 +611,8 @@ Podemos conversar sobre o projeto?`
           Solicitação Enviada! 🎉
         </h3>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
-          Recebi suas informações e já estou preparando uma proposta personalizada.
+          Recebi suas informações e já estou preparando uma proposta
+          personalizada.
         </p>
         <p className="text-sm text-gray-500 dark:text-gray-500">
           Você será redirecionado para o WhatsApp. Se não abrir automaticamente,{' '}
@@ -621,11 +643,7 @@ Podemos conversar sobre o projeto?`
                   : 'bg-gray-200 text-gray-500 dark:bg-gray-700'
               }`}
             >
-              {step < currentStep ? (
-                <CheckCircle className="h-6 w-6" />
-              ) : (
-                step
-              )}
+              {step < currentStep ? <CheckCircle className="h-6 w-6" /> : step}
             </div>
           ))}
         </div>

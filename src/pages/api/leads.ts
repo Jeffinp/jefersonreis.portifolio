@@ -50,27 +50,29 @@ async function sendWhatsAppNotification(leadData: LeadData): Promise<void> {
 }
 
 // Função para salvar no banco de dados local (JSON temporário)
-async function saveToDatabase(leadData: LeadData & { leadId: string }): Promise<void> {
+async function saveToDatabase(
+  leadData: LeadData & { leadId: string },
+): Promise<void> {
   // Em produção, usar um banco de dados real (Supabase, Firebase, MongoDB, etc.)
   // Por enquanto, vamos apenas logar
   console.log('Saving lead to database:', leadData)
-  
+
   // Se você quiser salvar em um arquivo JSON temporário (apenas desenvolvimento)
   if (process.env.NODE_ENV === 'development') {
-    const fs = await import('fs').then(m => m.promises)
+    const fs = await import('fs').then((m) => m.promises)
     const path = await import('path')
-    
+
     try {
       const leadsFile = path.join(process.cwd(), 'leads.json')
       let leads = []
-      
+
       try {
         const fileContent = await fs.readFile(leadsFile, 'utf-8')
         leads = JSON.parse(fileContent)
       } catch (error) {
         // File doesn't exist yet, will create new one
       }
-      
+
       leads.push(leadData)
       await fs.writeFile(leadsFile, JSON.stringify(leads, null, 2))
     } catch (error) {
@@ -81,25 +83,25 @@ async function saveToDatabase(leadData: LeadData & { leadId: string }): Promise<
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ApiResponse>
+  res: NextApiResponse<ApiResponse>,
 ) {
   // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({
       success: false,
-      message: 'Method not allowed'
+      message: 'Method not allowed',
     })
   }
 
   try {
     // Validate required fields
     const requiredFields = ['nome', 'whatsapp', 'email', 'tipoServico']
-    const missingFields = requiredFields.filter(field => !req.body[field])
-    
+    const missingFields = requiredFields.filter((field) => !req.body[field])
+
     if (missingFields.length > 0) {
       return res.status(400).json({
         success: false,
-        message: `Missing required fields: ${missingFields.join(', ')}`
+        message: `Missing required fields: ${missingFields.join(', ')}`,
       })
     }
 
@@ -107,12 +109,17 @@ export default async function handler(
     const leadId = generateLeadId()
 
     // Prepare lead data
-    const leadData: LeadData & { leadId: string; ip?: string; userAgent?: string } = {
+    const leadData: LeadData & {
+      leadId: string
+      ip?: string
+      userAgent?: string
+    } = {
       leadId,
       ...req.body,
       timestamp: new Date().toISOString(),
-      ip: req.headers['x-forwarded-for'] as string || req.socket.remoteAddress,
-      userAgent: req.headers['user-agent']
+      ip:
+        (req.headers['x-forwarded-for'] as string) || req.socket.remoteAddress,
+      userAgent: req.headers['user-agent'],
     }
 
     // Save to database
@@ -122,8 +129,8 @@ export default async function handler(
     Promise.all([
       saveToGoogleSheets(leadData),
       sendEmailNotification(leadData),
-      sendWhatsAppNotification(leadData)
-    ]).catch(error => {
+      sendWhatsAppNotification(leadData),
+    ]).catch((error) => {
       console.error('Error sending notifications:', error)
     })
 
@@ -131,16 +138,15 @@ export default async function handler(
     return res.status(200).json({
       success: true,
       message: 'Lead captured successfully',
-      leadId
+      leadId,
     })
-
   } catch (error) {
     console.error('Error processing lead:', error)
-    
+
     return res.status(500).json({
       success: false,
       message: 'Internal server error',
-      error: process.env.NODE_ENV === 'development' ? String(error) : undefined
+      error: process.env.NODE_ENV === 'development' ? String(error) : undefined,
     })
   }
 }

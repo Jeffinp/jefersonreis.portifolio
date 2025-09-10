@@ -30,7 +30,7 @@ export const CommercialToggle: React.FC<CommercialToggleProps> = ({
               transition={{ type: 'spring', stiffness: 500, damping: 30 }}
             />
           </div>
-          
+
           {/* Labels */}
           <div className="flex items-center gap-1">
             {isCommercial ? (
@@ -50,9 +50,9 @@ export const CommercialToggle: React.FC<CommercialToggleProps> = ({
             )}
           </div>
         </div>
-        
+
         {/* Tooltip */}
-        <div className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 transform whitespace-nowrap rounded bg-gray-900 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100 dark:bg-gray-700">
+        <div className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 transform rounded bg-gray-900 px-2 py-1 text-xs whitespace-nowrap text-white opacity-0 transition-opacity group-hover:opacity-100 dark:bg-gray-700">
           {isCommercial ? 'Mudar para Portfolio' : 'Mudar para Comercial'}
           <div className="absolute -top-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 transform bg-gray-900 dark:bg-gray-700"></div>
         </div>

@@ -1,18 +1,18 @@
 import React, { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  Globe, 
-  Smartphone, 
-  Brain, 
-  Laptop, 
-  Check, 
+import {
+  Globe,
+  Smartphone,
+  Brain,
+  Laptop,
+  Check,
   Star,
   Clock,
   Zap,
   TrendingUp,
   Shield,
   ArrowRight,
-  CheckCircle
+  CheckCircle,
 } from 'lucide-react'
 import { useTranslation } from 'next-i18next'
 import { SectionBackground } from '@/components/common'
@@ -38,7 +38,11 @@ interface ServiceCardProps {
   onSelect: () => void
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, onSelect }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({
+  service,
+  index,
+  onSelect,
+}) => {
   const [isHovered, setIsHovered] = useState(false)
   const Icon = service.icon
 
@@ -60,29 +64,36 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, onSelect }) =
         </div>
       )}
 
-      <div className={`relative h-full overflow-hidden rounded-2xl border-2 backdrop-blur-md transition-all duration-300 ${
-        service.popular 
-          ? 'border-blue-500 bg-white/95 shadow-2xl dark:bg-gray-800/95' 
-          : 'border-gray-200 bg-white/90 shadow-lg hover:border-blue-300 hover:bg-white/95 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800/90 dark:hover:bg-gray-800/95'
-      }`}>
-        
+      <div
+        className={`relative h-full overflow-hidden rounded-2xl border-2 backdrop-blur-md transition-all duration-300 ${
+          service.popular
+            ? 'border-blue-500 bg-white/95 shadow-2xl dark:bg-gray-800/95'
+            : 'border-gray-200 bg-white/90 shadow-lg hover:border-blue-300 hover:bg-white/95 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800/90 dark:hover:bg-gray-800/95'
+        }`}
+      >
         {/* Header */}
-        <div className={`relative p-6 pb-4 ${
-          service.popular 
-            ? 'bg-gradient-to-br from-blue-600 to-blue-700 text-white' 
-            : 'bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800'
-        }`}>
+        <div
+          className={`relative p-6 pb-4 ${
+            service.popular
+              ? 'bg-gradient-to-br from-blue-600 to-blue-700 text-white'
+              : 'bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800'
+          }`}
+        >
           <div className="mb-4 flex items-center justify-between">
-            <div className={`rounded-lg p-3 ${
-              service.popular 
-                ? 'bg-white/20' 
-                : 'bg-blue-100 dark:bg-blue-900/30'
-            }`}>
-              <Icon className={`h-8 w-8 ${
-                service.popular 
-                  ? 'text-white' 
-                  : 'text-blue-600 dark:text-blue-400'
-              }`} />
+            <div
+              className={`rounded-lg p-3 ${
+                service.popular
+                  ? 'bg-white/20'
+                  : 'bg-blue-100 dark:bg-blue-900/30'
+              }`}
+            >
+              <Icon
+                className={`h-8 w-8 ${
+                  service.popular
+                    ? 'text-white'
+                    : 'text-blue-600 dark:text-blue-400'
+                }`}
+              />
             </div>
             {service.discount && (
               <span className="rounded-full bg-red-500 px-3 py-1 text-xs font-bold text-white">
@@ -90,15 +101,21 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, onSelect }) =
               </span>
             )}
           </div>
-          
-          <h3 className={`mb-1 text-2xl font-bold ${
-            service.popular ? 'text-white' : 'text-gray-800 dark:text-white'
-          }`}>
+
+          <h3
+            className={`mb-1 text-2xl font-bold ${
+              service.popular ? 'text-white' : 'text-gray-800 dark:text-white'
+            }`}
+          >
             {service.title}
           </h3>
-          <p className={`text-sm ${
-            service.popular ? 'text-blue-100' : 'text-gray-600 dark:text-gray-400'
-          }`}>
+          <p
+            className={`text-sm ${
+              service.popular
+                ? 'text-blue-100'
+                : 'text-gray-600 dark:text-gray-400'
+            }`}
+          >
             {service.subtitle}
           </p>
         </div>
@@ -134,18 +151,20 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, onSelect }) =
             O que está incluído:
           </h4>
           <ul className="space-y-2">
-            {service.features.slice(0, isHovered ? undefined : 5).map((feature, i) => (
-              <motion.li
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.05 }}
-                className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400"
-              >
-                <CheckCircle className="h-4 w-4 flex-shrink-0 text-green-500" />
-                <span>{feature}</span>
-              </motion.li>
-            ))}
+            {service.features
+              .slice(0, isHovered ? undefined : 5)
+              .map((feature, i) => (
+                <motion.li
+                  key={i}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400"
+                >
+                  <CheckCircle className="h-4 w-4 flex-shrink-0 text-green-500" />
+                  <span>{feature}</span>
+                </motion.li>
+              ))}
           </ul>
           {service.features.length > 5 && !isHovered && (
             <p className="mt-2 text-xs text-gray-500">
@@ -157,12 +176,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, onSelect }) =
         {/* Results (if available) */}
         {service.results && (
           <div className="border-t border-gray-100 bg-blue-50 p-4 dark:border-gray-700 dark:bg-blue-900/20">
-            <h4 className="mb-2 text-xs font-semibold uppercase text-blue-700 dark:text-blue-400">
+            <h4 className="mb-2 text-xs font-semibold text-blue-700 uppercase dark:text-blue-400">
               Resultados típicos:
             </h4>
             <div className="space-y-1">
               {service.results.map((result, i) => (
-                <div key={i} className="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-300">
+                <div
+                  key={i}
+                  className="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-300"
+                >
                   <TrendingUp className="h-3 w-3 text-blue-600" />
                   <span>{result}</span>
                 </div>
@@ -193,8 +215,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, onSelect }) =
 const ServicesCommercial: React.FC = () => {
   const { t } = useTranslation('main')
   const [selectedService, setSelectedService] = useState<string | null>(null)
-  
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+55 75 99999-9999'
+
+  const whatsappNumber =
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+55 75 99999-9999'
 
   const services: Service[] = [
     {
@@ -204,7 +227,8 @@ const ServicesCommercial: React.FC = () => {
       subtitle: 'Página que converte visitantes em clientes',
       price: 'R$ 800 - 1.500',
       duration: '7-15 dias*',
-      description: 'Landing page otimizada para conversão. *Prazo varia: Frontend (7 dias) | Com integrações (10 dias) | Full-stack com painel (15 dias).',
+      description:
+        'Landing page otimizada para conversão. *Prazo varia: Frontend (7 dias) | Com integrações (10 dias) | Full-stack com painel (15 dias).',
       features: [
         'Design exclusivo e personalizado',
         'Otimização para conversão (CRO)',
@@ -215,13 +239,13 @@ const ServicesCommercial: React.FC = () => {
         'Velocidade otimizada (PageSpeed 90+)',
         'Analytics configurado',
         'SSL e segurança',
-        '30 dias de suporte grátis'
+        '30 dias de suporte grátis',
       ],
       results: [
         '+45% taxa de conversão média',
         'Carregamento < 3 segundos',
-        'Score SEO 95+'
-      ]
+        'Score SEO 95+',
+      ],
     },
     {
       id: 'site',
@@ -232,7 +256,8 @@ const ServicesCommercial: React.FC = () => {
       originalPrice: 'R$ 5.000',
       duration: '15-30 dias*',
       discount: '-20%',
-      description: 'Site institucional completo. *Prazo: Frontend estático (15 dias) | Com CMS simples (20 dias) | Full-stack com painel completo (30 dias).',
+      description:
+        'Site institucional completo. *Prazo: Frontend estático (15 dias) | Com CMS simples (20 dias) | Full-stack com painel completo (30 dias).',
       features: [
         'Até 8 páginas personalizadas',
         'Blog integrado com CMS',
@@ -245,14 +270,14 @@ const ServicesCommercial: React.FC = () => {
         'Google Maps integrado',
         'Certificado SSL gratuito',
         'Backup automático',
-        '60 dias de suporte'
+        '60 dias de suporte',
       ],
       popular: true,
       results: [
         '+200% tráfego orgânico',
         '+150% leads qualificados',
-        '98% satisfação do cliente'
-      ]
+        '98% satisfação do cliente',
+      ],
     },
     {
       id: 'ia',
@@ -261,7 +286,8 @@ const ServicesCommercial: React.FC = () => {
       subtitle: 'Atendimento automatizado 24/7',
       price: 'R$ 3.500 - 4.000',
       duration: '20-40 dias*',
-      description: 'Chatbot inteligente com IA. *Prazo: Bot simples (20 dias) | IA treinada (30 dias) | Sistema completo com CRM (40 dias).',
+      description:
+        'Chatbot inteligente com IA. *Prazo: Bot simples (20 dias) | IA treinada (30 dias) | Sistema completo com CRM (40 dias).',
       features: [
         'Chatbot com IA avançada',
         'Atendimento 24/7 automático',
@@ -274,13 +300,13 @@ const ServicesCommercial: React.FC = () => {
         'Treinamento da IA incluso',
         'Fluxos conversacionais customizados',
         'Integração com sistemas',
-        '90 dias de ajustes grátis'
+        '90 dias de ajustes grátis',
       ],
       results: [
         '80% redução no tempo de resposta',
         '+300% leads qualificados',
-        '24/7 disponibilidade'
-      ]
+        '24/7 disponibilidade',
+      ],
     },
     {
       id: 'app',
@@ -289,7 +315,8 @@ const ServicesCommercial: React.FC = () => {
       subtitle: 'Aplicativo nativo para iOS e Android',
       price: 'R$ 7.000 - 12.000',
       duration: '45-90 dias*',
-      description: 'App mobile completo. *Prazo: App simples (45 dias) | Com backend (60 dias) | Sistema completo com painel (90 dias).',
+      description:
+        'App mobile completo. *Prazo: App simples (45 dias) | Com backend (60 dias) | Sistema completo com painel (90 dias).',
       features: [
         'App nativo iOS + Android',
         'Design UI/UX profissional',
@@ -303,13 +330,13 @@ const ServicesCommercial: React.FC = () => {
         'Publicação nas lojas',
         'Código fonte incluído',
         'Documentação completa',
-        '6 meses de manutenção'
+        '6 meses de manutenção',
       ],
       results: [
         '4.8★ avaliação média nas lojas',
         '+5000 downloads primeiro mês',
-        '95% retenção de usuários'
-      ]
+        '95% retenção de usuários',
+      ],
     },
     {
       id: 'saas',
@@ -318,7 +345,8 @@ const ServicesCommercial: React.FC = () => {
       subtitle: 'Plataforma completa como serviço',
       price: 'R$ 6.000+',
       duration: '30-60 dias*',
-      description: 'Sistema SaaS completo. *Prazo: MVP básico (30 dias) | Com pagamentos (45 dias) | Plataforma completa (60 dias).',
+      description:
+        'Sistema SaaS completo. *Prazo: MVP básico (30 dias) | Com pagamentos (45 dias) | Plataforma completa (60 dias).',
       features: [
         'Dashboard administrativo completo',
         'Sistema de planos e assinaturas',
@@ -333,13 +361,13 @@ const ServicesCommercial: React.FC = () => {
         'Deploy automatizado',
         'Documentação técnica completa',
         'Código fonte incluído',
-        '90 dias de suporte técnico'
+        '90 dias de suporte técnico',
       ],
       results: [
         'MRR desde o primeiro mês',
         'Escala para milhares de usuários',
-        'Uptime 99.9% garantido'
-      ]
+        'Uptime 99.9% garantido',
+      ],
     },
     {
       id: 'custom',
@@ -348,7 +376,8 @@ const ServicesCommercial: React.FC = () => {
       subtitle: 'Desenvolvimento sob medida',
       price: 'Sob consulta',
       duration: 'A definir',
-      description: 'Soluções personalizadas. Prazo definido após análise detalhada dos requisitos e complexidade do projeto.',
+      description:
+        'Soluções personalizadas. Prazo definido após análise detalhada dos requisitos e complexidade do projeto.',
       features: [
         'Análise completa de requisitos',
         'Arquitetura personalizada',
@@ -363,24 +392,27 @@ const ServicesCommercial: React.FC = () => {
         'Consultoria técnica especializada',
         'Treinamento da equipe',
         'Suporte e manutenção sob medida',
-        'SLA personalizado'
+        'SLA personalizado',
       ],
       results: [
         'Solução 100% personalizada',
         'ROI médio de 6 meses',
-        'Suporte dedicado'
-      ]
-    }
+        'Suporte dedicado',
+      ],
+    },
   ]
 
-  const handleServiceSelect = useCallback((serviceId: string) => {
-    const service = services.find(s => s.id === serviceId)
-    if (!service) return
+  const handleServiceSelect = useCallback(
+    (serviceId: string) => {
+      const service = services.find((s) => s.id === serviceId)
+      if (!service) return
 
-    const message = `Olá! Tenho interesse no serviço de *${service.title}*.\n\nGostaria de receber um orçamento personalizado.\n\nPrazo desejado: ${service.duration}\nOrçamento estimado: ${service.price}`
-    const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`
-    window.open(whatsappUrl, '_blank')
-  }, [whatsappNumber])
+      const message = `Olá! Tenho interesse no serviço de *${service.title}*.\n\nGostaria de receber um orçamento personalizado.\n\nPrazo desejado: ${service.duration}\nOrçamento estimado: ${service.price}`
+      const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`
+      window.open(whatsappUrl, '_blank')
+    },
+    [whatsappNumber],
+  )
 
   return (
     <section
@@ -388,7 +420,11 @@ const ServicesCommercial: React.FC = () => {
       className="relative overflow-hidden bg-transparent py-16 md:py-20 lg:py-24"
       aria-label="Serviços e Preços"
     >
-      <SectionBackground variant="services" isMobile={false} intensity="subtle" />
+      <SectionBackground
+        variant="services"
+        isMobile={false}
+        intensity="subtle"
+      />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -398,25 +434,35 @@ const ServicesCommercial: React.FC = () => {
           className="mb-16 text-center"
         >
           <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl dark:text-white">
-            Como Posso <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Ajudar Seu Negócio</span>
+            Como Posso{' '}
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Ajudar Seu Negócio
+            </span>
           </h2>
           <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-300">
-            Soluções profissionais com preços transparentes. Escolha o serviço ideal para seu projeto.
+            Soluções profissionais com preços transparentes. Escolha o serviço
+            ideal para seu projeto.
           </p>
-          
+
           {/* Trust badges */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm">
             <div className="flex items-center gap-2">
               <Shield className="h-5 w-5 text-green-600" />
-              <span className="text-gray-700 dark:text-gray-300">Garantia de Satisfação</span>
+              <span className="text-gray-700 dark:text-gray-300">
+                Garantia de Satisfação
+              </span>
             </div>
             <div className="flex items-center gap-2">
               <Clock className="h-5 w-5 text-blue-600" />
-              <span className="text-gray-700 dark:text-gray-300">Entrega no Prazo</span>
+              <span className="text-gray-700 dark:text-gray-300">
+                Entrega no Prazo
+              </span>
             </div>
             <div className="flex items-center gap-2">
               <Star className="h-5 w-5 text-yellow-500" />
-              <span className="text-gray-700 dark:text-gray-300">4.9/5 Avaliação</span>
+              <span className="text-gray-700 dark:text-gray-300">
+                4.9/5 Avaliação
+              </span>
             </div>
           </div>
         </motion.div>
@@ -444,7 +490,8 @@ const ServicesCommercial: React.FC = () => {
             Precisa de Algo Personalizado?
           </h3>
           <p className="mb-6 text-lg opacity-90">
-            Desenvolvimento de SaaS, sistemas complexos, integrações específicas...
+            Desenvolvimento de SaaS, sistemas complexos, integrações
+            específicas...
           </p>
           <button
             onClick={() => handleServiceSelect('custom')}
@@ -460,13 +507,14 @@ const ServicesCommercial: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="mt-12 rounded-lg bg-yellow-50 border border-yellow-200 p-4 text-center dark:bg-yellow-900/20 dark:border-yellow-800"
+          className="mt-12 rounded-lg border border-yellow-200 bg-yellow-50 p-4 text-center dark:border-yellow-800 dark:bg-yellow-900/20"
         >
           <p className="text-sm text-yellow-800 dark:text-yellow-200">
-            <strong>📅 Sobre os prazos:</strong> Os tempos informados variam conforme o escopo. 
-            <span className="block mt-1">
-              <strong>Frontend apenas:</strong> prazo mínimo | 
-              <strong> Frontend + Backend:</strong> prazo médio | 
+            <strong>📅 Sobre os prazos:</strong> Os tempos informados variam
+            conforme o escopo.
+            <span className="mt-1 block">
+              <strong>Frontend apenas:</strong> prazo mínimo |
+              <strong> Frontend + Backend:</strong> prazo médio |
               <strong> Sistema completo:</strong> prazo máximo
             </span>
           </p>
@@ -483,7 +531,9 @@ const ServicesCommercial: React.FC = () => {
             <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/30">
               <Zap className="h-6 w-6" />
             </div>
-            <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">Pagamento Facilitado</h4>
+            <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">
+              Pagamento Facilitado
+            </h4>
             <p className="text-sm text-gray-600 dark:text-gray-400">
               50% entrada + 50% na entrega. Aceito Pix, cartão e boleto.
             </p>
@@ -492,7 +542,9 @@ const ServicesCommercial: React.FC = () => {
             <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-green-600 dark:bg-green-900/30">
               <Shield className="h-6 w-6" />
             </div>
-            <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">Garantia Total</h4>
+            <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">
+              Garantia Total
+            </h4>
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Revisões ilimitadas até sua total satisfação com o projeto.
             </p>
@@ -501,7 +553,9 @@ const ServicesCommercial: React.FC = () => {
             <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 text-purple-600 dark:bg-purple-900/30">
               <Clock className="h-6 w-6" />
             </div>
-            <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">Suporte Incluso</h4>
+            <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">
+              Suporte Incluso
+            </h4>
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Suporte técnico gratuito por até 90 dias após a entrega.
             </p>

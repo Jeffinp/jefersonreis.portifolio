@@ -48,10 +48,13 @@ const Services = dynamic(() => import('@/containers/Services'), {
   ssr: true,
 })
 // Commercial optimized services
-const ServicesCommercial = dynamic(() => import('@/containers/ServicesCommercial'), {
-  loading: () => <LoadingSkeleton variant="services" />,
-  ssr: true,
-})
+const ServicesCommercial = dynamic(
+  () => import('@/containers/ServicesCommercial'),
+  {
+    loading: () => <LoadingSkeleton variant="services" />,
+    ssr: true,
+  },
+)
 const Projects = dynamic(() => import('@/containers/Projects'), {
   loading: () => <LoadingSkeleton variant="projects" />,
   ssr: false, // Desabilita SSR para componentes interativos pesados
@@ -116,9 +119,12 @@ const ChatWidget = dynamic(() => import('@/components/ChatWidget'), {
 const Analytics = dynamic(() => import('@/components/Analytics'), {
   ssr: false,
 })
-const SocialProofNotifications = dynamic(() => import('@/components/SocialProofNotifications'), {
-  ssr: false,
-})
+const SocialProofNotifications = dynamic(
+  () => import('@/components/SocialProofNotifications'),
+  {
+    ssr: false,
+  },
+)
 
 export default function Home() {
   const router = useRouter()
@@ -136,11 +142,12 @@ export default function Home() {
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
       setQuantumMode(!isMobile)
     }
-    
+
     // Check for commercial mode from URL params or localStorage
     const urlParams = new URLSearchParams(window.location.search)
-    const isCommercial = urlParams.get('mode') === 'commercial' || 
-                        localStorage.getItem('commercialMode') === 'true'
+    const isCommercial =
+      urlParams.get('mode') === 'commercial' ||
+      localStorage.getItem('commercialMode') === 'true'
     setCommercialMode(isCommercial)
   }, [])
 
@@ -252,7 +259,7 @@ export default function Home() {
           </LazySection>
         )}
       </main>
-      
+
       {/* Chat Widget and Social Proof - Only show in commercial mode */}
       {commercialMode && (
         <>

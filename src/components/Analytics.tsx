@@ -1,7 +1,11 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
-import { trackPageView, initializeTracking, trackBounceRate } from '@/utils/tracking'
+import {
+  trackPageView,
+  initializeTracking,
+  trackBounceRate,
+} from '@/utils/tracking'
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
 const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID
