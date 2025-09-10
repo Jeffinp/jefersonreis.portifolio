@@ -46,6 +46,41 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
     },
   ]
 
+  const showMilestoneNotification = useCallback(
+    (milestone: any) => {
+      // Create temporary notification element
+      const notification = document.createElement('div')
+      notification.className = 'milestone-notification'
+      notification.innerHTML = `
+      <div class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+        <span class="text-2xl">${milestone.message}</span>
+      </div>
+    `
+
+      // Style the notification
+      Object.assign(notification.style, {
+        position: 'fixed',
+        top: position === 'top' ? '60px' : 'auto',
+        bottom: position === 'bottom' ? '60px' : 'auto',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        zIndex: '9999',
+        animation: 'slideInBounce 0.5s ease-out',
+      })
+
+      document.body.appendChild(notification)
+
+      // Remove after animation
+      setTimeout(() => {
+        notification.style.animation = 'slideOutFade 0.3s ease-out'
+        setTimeout(() => {
+          document.body.removeChild(notification)
+        }, 300)
+      }, 2000)
+    },
+    [position],
+  )
+
   const calculateProgress = useCallback(() => {
     const windowHeight = window.innerHeight
     const documentHeight = document.documentElement.scrollHeight
@@ -87,39 +122,15 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
     }
 
     setTotalHeight(documentHeight)
-  }, [springProgress, milestone, showMilestones, onMilestone, shownMilestones])
-
-  const showMilestoneNotification = (milestone: any) => {
-    // Create temporary notification element
-    const notification = document.createElement('div')
-    notification.className = 'milestone-notification'
-    notification.innerHTML = `
-      <div class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
-        <span class="text-2xl">${milestone.message}</span>
-      </div>
-    `
-
-    // Style the notification
-    Object.assign(notification.style, {
-      position: 'fixed',
-      top: position === 'top' ? '60px' : 'auto',
-      bottom: position === 'bottom' ? '60px' : 'auto',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      zIndex: '9999',
-      animation: 'slideInBounce 0.5s ease-out',
-    })
-
-    document.body.appendChild(notification)
-
-    // Remove after animation
-    setTimeout(() => {
-      notification.style.animation = 'slideOutFade 0.3s ease-out'
-      setTimeout(() => {
-        document.body.removeChild(notification)
-      }, 300)
-    }, 2000)
-  }
+  }, [
+    springProgress,
+    milestone,
+    showMilestones,
+    onMilestone,
+    shownMilestones,
+    milestones,
+    showMilestoneNotification,
+  ])
 
   useEffect(() => {
     // Initial calculation

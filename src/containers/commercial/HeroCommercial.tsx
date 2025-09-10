@@ -339,7 +339,7 @@ const HeroCommercial: React.FC = () => {
                 <span className="text-xs text-yellow-400">5.0</span>
               </div>
               <p className="text-xs text-white/80 italic">
-                "Site rápido e moderno que realmente converte!"
+                &quot;Site rápido e moderno que realmente converte!&quot;
               </p>
               <p className="mt-1 text-xs text-white/60">— Maria S.</p>
             </div>
