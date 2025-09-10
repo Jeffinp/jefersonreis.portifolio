@@ -376,12 +376,12 @@ const SocialProofNotifications: React.FC = () => {
 
       {/* Badge de avaliação - Removido para ficar mais clean */}
 
-      {/* Badge de disponibilidade - Movido para cima do WhatsApp */}
+      {/* Badge de disponibilidade - Oculto em mobile */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 8 }}
-        className="fixed right-6 bottom-28 z-40"
+        className="fixed right-6 bottom-28 z-40 hidden sm:block"
       >
         <div className="rounded-lg border border-gray-200 bg-white px-4 py-3 shadow-lg dark:border-gray-700 dark:bg-gray-800">
           <div className="flex items-center gap-2">
