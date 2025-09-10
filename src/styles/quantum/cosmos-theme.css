@@ -7,14 +7,14 @@
   /* Primary Space Colors */
   --cosmic-black: #0a0e1a;
   --deep-space: #050810;
-  --nebula-purple: #6B46C1;
-  --stellar-blue: #0EA5E9;
-  --nova-pink: #EC4899;
+  --nebula-purple: #6b46c1;
+  --stellar-blue: #0ea5e9;
+  --nova-pink: #ec4899;
   --asteroid-gray: #475569;
-  --starlight: #FBBF24;
-  --aurora-green: #10B981;
+  --starlight: #fbbf24;
+  --aurora-green: #10b981;
   --space-dust: rgba(255, 255, 255, 0.1);
-  --cosmic-white: #F8FAFC;
+  --cosmic-white: #f8fafc;
 
   /* Glow Effects */
   --glow-purple: 0 0 60px rgba(107, 70, 193, 0.8);
@@ -23,11 +23,26 @@
   --glow-star: 0 0 20px rgba(251, 191, 36, 1);
 
   /* Gradient Definitions */
-  --gradient-galaxy: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-  --gradient-nebula: radial-gradient(circle, #6B46C1 0%, #0EA5E9 50%, transparent 70%);
-  --gradient-supernova: conic-gradient(from 180deg, #EC4899, #FBBF24, #EC4899);
-  --gradient-aurora: linear-gradient(90deg, #10B981, #0EA5E9, #6B46C1, #EC4899);
-  --gradient-space: linear-gradient(180deg, #050810 0%, #0a0e1a 50%, #1a1e2a 100%);
+  --gradient-galaxy: linear-gradient(
+    135deg,
+    #667eea 0%,
+    #764ba2 50%,
+    #f093fb 100%
+  );
+  --gradient-nebula: radial-gradient(
+    circle,
+    #6b46c1 0%,
+    #0ea5e9 50%,
+    transparent 70%
+  );
+  --gradient-supernova: conic-gradient(from 180deg, #ec4899, #fbbf24, #ec4899);
+  --gradient-aurora: linear-gradient(90deg, #10b981, #0ea5e9, #6b46c1, #ec4899);
+  --gradient-space: linear-gradient(
+    180deg,
+    #050810 0%,
+    #0a0e1a 50%,
+    #1a1e2a 100%
+  );
 
   /* Animation Speeds */
   --warp-speed: 0.3s;
@@ -51,7 +66,7 @@ html.dark {
   --bg-primary: var(--cosmic-black);
   --bg-secondary: var(--deep-space);
   --text-primary: var(--cosmic-white);
-  --text-secondary: #CBD5E1;
+  --text-secondary: #cbd5e1;
 }
 
 /* Cosmic Background */
@@ -102,7 +117,6 @@ html.dark {
 }
 
 @keyframes nebula-float {
-
   0%,
   100% {
     transform: translateY(0) scale(1);
@@ -124,7 +138,6 @@ html.dark {
 }
 
 @keyframes pulse-glow {
-
   0%,
   100% {
     opacity: 0.8;
@@ -156,11 +169,13 @@ html.dark {
 
 /* Holographic Effect */
 .holographic {
-  background: linear-gradient(45deg,
-      rgba(14, 165, 233, 0.3),
-      rgba(107, 70, 193, 0.3),
-      rgba(236, 72, 153, 0.3),
-      rgba(14, 165, 233, 0.3));
+  background: linear-gradient(
+    45deg,
+    rgba(14, 165, 233, 0.3),
+    rgba(107, 70, 193, 0.3),
+    rgba(236, 72, 153, 0.3),
+    rgba(14, 165, 233, 0.3)
+  );
   background-size: 200% 200%;
   animation: holographic-shift 3s ease infinite;
   backdrop-filter: blur(10px);
@@ -210,7 +225,6 @@ html.dark {
 }
 
 @keyframes glitch-shift {
-
   0%,
   100% {
     transform: translate(0);
@@ -234,7 +248,6 @@ html.dark {
 }
 
 @keyframes glitch-1 {
-
   0%,
   100% {
     clip-path: inset(0 0 0 0);
@@ -254,7 +267,6 @@ html.dark {
 }
 
 @keyframes glitch-2 {
-
   0%,
   100% {
     clip-path: inset(0 0 0 0);
@@ -298,7 +310,6 @@ html.dark {
 }
 
 @keyframes aurora-wave {
-
   0%,
   100% {
     transform: translateX(-50%) translateY(0) scale(1);
@@ -355,10 +366,12 @@ html.dark {
   position: absolute;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg,
-      transparent,
-      var(--stellar-blue),
-      transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--stellar-blue),
+    transparent
+  );
   animation: scan 3s linear infinite;
   box-shadow: 0 0 10px var(--stellar-blue);
 }
@@ -421,7 +434,6 @@ html.dark {
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {

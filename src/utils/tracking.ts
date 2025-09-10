@@ -19,14 +19,14 @@ export const trackLead = (serviceType: string, value: number) => {
       value: value,
       service_type: serviceType,
       event_category: 'engagement',
-      event_label: 'lead_form'
+      event_label: 'lead_form',
     })
 
     // Google Ads conversion tracking
     window.gtag('event', 'conversion', {
-      'send_to': process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID,
-      'value': value,
-      'currency': 'BRL'
+      send_to: process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID,
+      value: value,
+      currency: 'BRL',
     })
   }
 
@@ -35,7 +35,7 @@ export const trackLead = (serviceType: string, value: number) => {
     window.fbq('track', 'Lead', {
       value: value,
       currency: 'BRL',
-      content_name: serviceType
+      content_name: serviceType,
     })
   }
 }
@@ -50,10 +50,10 @@ export const trackFormStart = (formType: string) => {
       value: 0,
       form_type: formType,
       event_category: 'engagement',
-      event_label: 'form_start'
+      event_label: 'form_start',
     })
   }
-  
+
   if (window.fbq) {
     window.fbq('track', 'InitiateCheckout')
   }
@@ -67,14 +67,14 @@ export const trackWhatsAppClick = (source: string) => {
     window.gtag('event', 'contact_whatsapp', {
       source: source,
       event_category: 'engagement',
-      event_label: 'whatsapp_click'
+      event_label: 'whatsapp_click',
     })
   }
-  
+
   if (window.fbq) {
     window.fbq('track', 'Contact', {
       contact_method: 'whatsapp',
-      source: source
+      source: source,
     })
   }
 }
@@ -86,7 +86,7 @@ export const trackPageView = (pagePath: string, pageTitle?: string) => {
   if (window.gtag) {
     window.gtag('config', process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID, {
       page_path: pagePath,
-      page_title: pageTitle
+      page_title: pageTitle,
     })
   }
 
@@ -98,12 +98,15 @@ export const trackPageView = (pagePath: string, pageTitle?: string) => {
 /**
  * Track custom event
  */
-export const trackEvent = (eventName: string, parameters?: Record<string, any>) => {
+export const trackEvent = (
+  eventName: string,
+  parameters?: Record<string, any>,
+) => {
   if (window.gtag) {
     window.gtag('event', eventName, {
       ...parameters,
       event_category: parameters?.category || 'engagement',
-      event_label: parameters?.label || eventName
+      event_label: parameters?.label || eventName,
     })
   }
 
@@ -120,7 +123,7 @@ export const trackScrollDepth = (percentage: number) => {
     window.gtag('event', 'scroll', {
       percent_scrolled: percentage,
       event_category: 'engagement',
-      event_label: `${percentage}%`
+      event_label: `${percentage}%`,
     })
   }
 }
@@ -133,7 +136,7 @@ export const trackTimeOnPage = (seconds: number) => {
     window.gtag('event', 'time_on_page', {
       value: seconds,
       event_category: 'engagement',
-      event_label: `${seconds} seconds`
+      event_label: `${seconds} seconds`,
     })
   }
 }
@@ -141,17 +144,23 @@ export const trackTimeOnPage = (seconds: number) => {
 /**
  * Track service view
  */
-export const trackServiceView = (serviceId: string, serviceName: string, price: string) => {
+export const trackServiceView = (
+  serviceId: string,
+  serviceName: string,
+  price: string,
+) => {
   if (window.gtag) {
     window.gtag('event', 'view_item', {
       currency: 'BRL',
       value: parseFloat(price.replace(/[^0-9]/g, '')) || 0,
-      items: [{
-        item_id: serviceId,
-        item_name: serviceName,
-        price: price,
-        quantity: 1
-      }]
+      items: [
+        {
+          item_id: serviceId,
+          item_name: serviceName,
+          price: price,
+          quantity: 1,
+        },
+      ],
     })
   }
 
@@ -161,7 +170,7 @@ export const trackServiceView = (serviceId: string, serviceName: string, price: 
       content_name: serviceName,
       content_type: 'product',
       value: parseFloat(price.replace(/[^0-9]/g, '')) || 0,
-      currency: 'BRL'
+      currency: 'BRL',
     })
   }
 }
@@ -169,20 +178,23 @@ export const trackServiceView = (serviceId: string, serviceName: string, price: 
 /**
  * Track form submission
  */
-export const trackFormSubmission = (formName: string, data?: Record<string, any>) => {
+export const trackFormSubmission = (
+  formName: string,
+  data?: Record<string, any>,
+) => {
   if (window.gtag) {
     window.gtag('event', 'form_submit', {
       form_name: formName,
       ...data,
       event_category: 'engagement',
-      event_label: formName
+      event_label: formName,
     })
   }
 
   if (window.fbq) {
     window.fbq('track', 'CompleteRegistration', {
       content_name: formName,
-      ...data
+      ...data,
     })
   }
 }
@@ -196,7 +208,7 @@ export const trackCTAClick = (ctaName: string, location: string) => {
       cta_name: ctaName,
       location: location,
       event_category: 'engagement',
-      event_label: `${ctaName}_${location}`
+      event_label: `${ctaName}_${location}`,
     })
   }
 }
@@ -210,7 +222,7 @@ export const trackDownload = (fileName: string, fileType: string) => {
       file_name: fileName,
       file_type: fileType,
       event_category: 'engagement',
-      event_label: fileName
+      event_label: fileName,
     })
   }
 }
@@ -220,14 +232,14 @@ export const trackDownload = (fileName: string, fileType: string) => {
  */
 export const getServiceValue = (serviceType: string): number => {
   const serviceValues: Record<string, number> = {
-    'landing': 1150,
-    'site': 2250,
-    'ia': 3750,
-    'app': 7500,
-    'saas': 6000,
-    'custom': 5000
+    landing: 1150,
+    site: 2250,
+    ia: 3750,
+    app: 7500,
+    saas: 6000,
+    custom: 5000,
   }
-  
+
   return serviceValues[serviceType] || 1000
 }
 
@@ -238,7 +250,7 @@ export const initializeTracking = () => {
   // Google Analytics 4
   if (process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) {
     window.dataLayer = window.dataLayer || []
-    window.gtag = function() {
+    window.gtag = function () {
       window.dataLayer?.push(arguments)
     }
     window.gtag('js', new Date())
@@ -247,10 +259,12 @@ export const initializeTracking = () => {
 
   // Facebook Pixel
   if (process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID) {
-    !function(f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
+    !(function (f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
       if (f.fbq) return
-      n = f.fbq = function() {
-        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      n = f.fbq = function () {
+        n.callMethod
+          ? n.callMethod.apply(n, arguments)
+          : n.queue.push(arguments)
       }
       if (!f._fbq) f._fbq = n
       n.push = n
@@ -262,8 +276,13 @@ export const initializeTracking = () => {
       t.src = v
       s = b.getElementsByTagName(e)[0]
       s.parentNode.insertBefore(t, s)
-    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js')
-    
+    })(
+      window,
+      document,
+      'script',
+      'https://connect.facebook.net/en_US/fbevents.js',
+    )
+
     window.fbq?.('init', process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID)
     window.fbq?.('track', 'PageView')
   }
@@ -274,7 +293,7 @@ export const initializeTracking = () => {
  */
 export const trackBounceRate = () => {
   let engaged = false
-  
+
   // Track engagement after 15 seconds
   setTimeout(() => {
     if (!engaged) {
@@ -282,7 +301,7 @@ export const trackBounceRate = () => {
       trackEvent('user_engagement', {
         engagement_time_msec: 15000,
         category: 'engagement',
-        label: 'engaged_user'
+        label: 'engaged_user',
       })
     }
   }, 15000)
@@ -294,12 +313,12 @@ export const trackBounceRate = () => {
       trackEvent('user_engagement', {
         trigger: 'scroll',
         category: 'engagement',
-        label: 'engaged_user'
+        label: 'engaged_user',
       })
       window.removeEventListener('scroll', handleScroll)
     }
   }
-  
+
   window.addEventListener('scroll', handleScroll, { passive: true })
 }
 
@@ -312,7 +331,7 @@ export const generateUTMUrl = (
   medium: string,
   campaign: string,
   term?: string,
-  content?: string
+  content?: string,
 ): string => {
   const url = new URL(baseUrl)
   url.searchParams.set('utm_source', source)

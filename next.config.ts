@@ -1,10 +1,10 @@
-import type { NextConfig } from 'next';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { i18n } from './next-i18next.config.js';
+import type { NextConfig } from 'next'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { i18n } from './next-i18next.config.js'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
@@ -21,8 +21,14 @@ const nextConfig: NextConfig = {
           { key: 'X-Frame-Options', value: 'DENY' },
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-          { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains; preload' },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains; preload',
+          },
           { key: 'Cross-Origin-Embedder-Policy', value: 'credentialless' },
           { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
           { key: 'Cross-Origin-Resource-Policy', value: 'same-origin' },
@@ -35,7 +41,7 @@ const nextConfig: NextConfig = {
           // OTIMIZAÇÃO: Removido 'X-XSS-Protection' por ser legado e já coberto pelo CSP.
         ],
       },
-    ];
+    ]
   },
 
   images: {
@@ -67,8 +73,8 @@ const nextConfig: NextConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@/i18n': path.resolve(__dirname, './src/i18n'),
-    };
-    return config;
+    }
+    return config
   },
 
   // Otimizações de performance
@@ -88,21 +94,21 @@ const nextConfig: NextConfig = {
     // ppr: true, // PPR só disponível no canary - será habilitado quando estiver estável
     webVitalsAttribution: ['CLS', 'FCP', 'FID', 'INP', 'LCP', 'TTFB'],
   },
-  
+
   // typedRoutes desabilitado temporariamente para acelerar build
   // typedRoutes: true,
 
   // Ativar compressão
   compress: true,
-  
+
   // Output padrão para evitar problemas de build
   // output: 'standalone', // Descomentar apenas para deploy em Docker
-  
+
   // Melhorar performance de produção
   productionBrowserSourceMaps: false,
-  
+
   // Configurações de poder computacional
   poweredByHeader: false,
-};
+}
 
-export default nextConfig;
+export default nextConfig

@@ -17,7 +17,7 @@ module.exports = {
     'projects/web-projects',
     'projects/mobile-projects',
     'projects/design-projects',
-    'projects/3d-projects'
+    'projects/3d-projects',
   ],
   defaultNS: 'common',
   localePath: './public/locales',

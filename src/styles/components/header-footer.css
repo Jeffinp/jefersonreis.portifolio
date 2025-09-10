@@ -1,7 +1,9 @@
 /* Header and Footer component styles */
 
 /* Header gradient text fixes */
-.light header .bg-gradient-to-r.from-blue-600.to-purple-600.bg-clip-text.text-transparent {
+.light
+  header
+  .bg-gradient-to-r.from-blue-600.to-purple-600.bg-clip-text.text-transparent {
   background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
   background-clip: text !important;
   -webkit-background-clip: text !important;
@@ -27,7 +29,9 @@
 }
 
 /* Footer logo and gradient text */
-.light footer .bg-gradient-to-r.from-blue-600.to-purple-600.bg-clip-text.text-transparent {
+.light
+  footer
+  .bg-gradient-to-r.from-blue-600.to-purple-600.bg-clip-text.text-transparent {
   background-image: linear-gradient(to right, #2563eb, #7c3aed) !important;
   background-clip: text !important;
   -webkit-background-clip: text !important;
