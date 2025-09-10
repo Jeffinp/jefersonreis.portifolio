@@ -48,5 +48,19 @@
     "goHome": "Home Page",
     "pageNotFound": "Page not found",
     "pageNotFoundMessage": "The page you are looking for does not exist or has been moved."
+  },
+  "footer": {
+    "tagline": "Full-Stack Developer & Graphic Designer",
+    "quickLinks": "Quick Links",
+    "menu": {
+      "home": "Home",
+      "about": "About",
+      "services": "Services",
+      "portfolio": "Portfolio",
+      "contact": "Contact"
+    },
+    "connectWithMe": "Connect With Me",
+    "allRightsReserved": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy"
   }
 }

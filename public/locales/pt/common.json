@@ -48,5 +48,19 @@
     "goHome": "Página Inicial",
     "pageNotFound": "Página não encontrada",
     "pageNotFoundMessage": "A página que você está procurando não existe ou foi movida."
+  },
+  "footer": {
+    "tagline": "Desenvolvedor Full-Stack & Designer Gráfico",
+    "quickLinks": "Links Rápidos",
+    "menu": {
+      "home": "Início",
+      "about": "Sobre",
+      "services": "Serviços",
+      "portfolio": "Portfólio",
+      "contact": "Contato"
+    },
+    "connectWithMe": "Conecte-se Comigo",
+    "allRightsReserved": "Todos os direitos reservados.",
+    "privacyPolicy": "Política de Privacidade"
   }
 }
