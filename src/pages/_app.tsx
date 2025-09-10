@@ -68,7 +68,7 @@ function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} commercialMode={commercialMode} />
         </main>
 
-        {/* Floating buttons - Only show in non-commercial mode */}
+        {/* Floating buttons - Only show in non-commercial mode and not on home page */}
         {!commercialMode && (
           <>
             <ScrollToTopButton />

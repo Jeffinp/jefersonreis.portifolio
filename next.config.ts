@@ -13,6 +13,13 @@ const nextConfig: NextConfig = {
 
   // Configuração de headers de segurança
   async headers() {
+    // Desenvolvimento: CSP mais permissivo
+    const isDev = process.env.NODE_ENV === 'development'
+    
+    const cspHeader = isDev
+      ? "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https: blob: https://www.google-analytics.com https://www.facebook.com; connect-src 'self' ws: wss: https://www.google-analytics.com https://vitals.vercel-insights.com https://va.vercel-scripts.com https://vercel.live https://api.emailjs.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.emailjs.com; object-src 'none';"
+      : "default-src 'self'; script-src 'self' 'sha256-dR9r8B61NuvUglVt0IV1YvhzVQYMcVD3X8gqH1wQDJw=' 'sha256-6q7CtSUhBASWIcZbaKmkg/GctwTCSeUGT8DMvrup3fM=' 'sha256-pU5E8IbTozyzhKXbmd6xCHkYUyyXPm4Q2615bZid42E=' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https: blob: https://www.google-analytics.com https://www.facebook.com; connect-src 'self' https://www.google-analytics.com https://vitals.vercel-insights.com https://va.vercel-scripts.com https://vercel.live https://api.emailjs.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.emailjs.com; object-src 'none'; upgrade-insecure-requests;"
+    
     return [
       {
         source: '/(.*)',
@@ -25,20 +32,19 @@ const nextConfig: NextConfig = {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()',
           },
-          {
+          // HSTS apenas em produção
+          ...(isDev ? [] : [{
             key: 'Strict-Transport-Security',
             value: 'max-age=31536000; includeSubDomains; preload',
-          },
+          }]),
           { key: 'Cross-Origin-Embedder-Policy', value: 'credentialless' },
           { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
           { key: 'Cross-Origin-Resource-Policy', value: 'same-origin' },
-          // CSP melhorado com hash para scripts inline críticos
+          // CSP adaptável para dev/prod
           {
             key: 'Content-Security-Policy',
-            value:
-              "default-src 'self'; script-src 'self' 'sha256-dR9r8B61NuvUglVt0IV1YvhzVQYMcVD3X8gqH1wQDJw=' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com https://vercel.live https://api.emailjs.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.emailjs.com; object-src 'none'; upgrade-insecure-requests;",
+            value: cspHeader,
           },
-          // OTIMIZAÇÃO: Removido 'X-XSS-Protection' por ser legado e já coberto pelo CSP.
         ],
       },
     ]

@@ -6,11 +6,7 @@ import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
 import { ThemeToggle } from '@/components/ui'
 import dynamic from 'next/dynamic'
-
-const CommercialToggle = dynamic(
-  () => import('@/components/ui/CommercialToggle'),
-  { ssr: false },
-)
+import { AdaptiveNavigation } from '@/components/navigation/AdaptiveNavigation'
 
 interface NavItemProps {
   href: string
@@ -153,7 +149,7 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState<string>('#home')
   const [scrollProgress, setScrollProgress] = useState<number>(0)
-  const [isCommercialMode, setIsCommercialMode] = useState(false)
+  // Removed commercial mode state - now using target audience system
   const router = useRouter()
   const { t, i18n } = useTranslation('sections/header')
   const [language, setLanguage] = useState<string>(router.locale || 'pt')
@@ -161,31 +157,7 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLElement>(null)
 
-  // Check commercial mode on mount
-  useEffect(() => {
-    const checkCommercialMode = () => {
-      const urlParams = new URLSearchParams(window.location.search)
-      const isCommercial =
-        urlParams.get('mode') === 'commercial' ||
-        localStorage.getItem('commercialMode') === 'true'
-      setIsCommercialMode(isCommercial)
-    }
-
-    checkCommercialMode()
-    // Listen for storage changes
-    window.addEventListener('storage', checkCommercialMode)
-    return () => window.removeEventListener('storage', checkCommercialMode)
-  }, [])
-
-  // Toggle commercial mode
-  const toggleCommercialMode = useCallback(() => {
-    const newMode = !isCommercialMode
-    setIsCommercialMode(newMode)
-    localStorage.setItem('commercialMode', String(newMode))
-
-    // Reload page to apply changes
-    window.location.reload()
-  }, [isCommercialMode])
+  // Target audience is now managed by useTargetAudience hook
 
   // Toggle menu com controle de overflow no body
   const toggleMenu = useCallback(() => {
@@ -256,18 +228,7 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
       return []
     }
 
-    // Check if commercial mode is active
-    const isCommercialMode = localStorage.getItem('commercialMode') === 'true'
-
-    if (isCommercialMode) {
-      // Simplified menu for commercial mode
-      return [
-        { href: '#home', label: 'Início' },
-        { href: '#services', label: 'Serviços' },
-        { href: '#projects', label: 'Portfólio' },
-        { href: '#testimonials', label: 'Depoimentos' },
-      ]
-    }
+    // Navigation items are now handled by AdaptiveNavigation component
 
     return [
       { href: '#home', label: t('menu.home') },
@@ -382,28 +343,16 @@ const Header: React.FC<HeaderProps> = ({ showBackHome = false }) => {
             </Link>
           </div>
 
-          {/* Nav Desktop */}
+          {/* Adaptive Navigation Desktop */}
           {!showBackHome && (
-            <nav className="hidden items-center space-x-6 lg:flex xl:space-x-8">
-              {navItems.map((item) => (
-                <NavItem
-                  key={item.href}
-                  href={item.href}
-                  label={item.label}
-                  onClick={handleNavClick}
-                  isActive={activeSection === item.href}
-                />
-              ))}
-            </nav>
+            <div className="hidden lg:block">
+              <AdaptiveNavigation />
+            </div>
           )}
 
           {/* Controles - Tema, Modo e Idioma */}
           <div className="flex items-center gap-3 sm:gap-4">
-            {/* Commercial Toggle */}
-            <CommercialToggle
-              isCommercial={isCommercialMode}
-              onToggle={toggleCommercialMode}
-            />
+            {/* Target switcher is now part of AdaptiveNavigation */}
 
             {/* Seletor de idioma */}
             <div className="mr-1 flex items-center gap-2">

@@ -44,6 +44,9 @@ export const OptimizedQuantumLayout: React.FC<OptimizedQuantumLayoutProps> = ({
   const router = useRouter()
   const performanceMetrics = usePerformanceMonitor()
   useScrollFix() // Apply scroll fix to prevent automatic scrolling
+  
+  // Check if we're on the home page (audience selector)
+  const isHomePage = router.pathname === '/'
 
   // State
   const [isNavigationOpen, setIsNavigationOpen] = useState(false)
@@ -192,14 +195,16 @@ export const OptimizedQuantumLayout: React.FC<OptimizedQuantumLayoutProps> = ({
       <div
         className={`min-h-screen transition-colors duration-500 ${backgroundClass}`}
       >
-        {/* Quantum Header */}
-        <QuantumHeader
-          onNavigationOpen={() => setIsNavigationOpen(true)}
-          quantumMode={quantumMode}
-          onQuantumModeToggle={() => setQuantumMode((prev) => !prev)}
-          soundEnabled={soundEnabled}
-          onSoundToggle={() => setSoundEnabled((prev) => !prev)}
-        />
+        {/* Quantum Header - Hide on home page */}
+        {!isHomePage && (
+          <QuantumHeader
+            onNavigationOpen={() => setIsNavigationOpen(true)}
+            quantumMode={quantumMode}
+            onQuantumModeToggle={() => setQuantumMode((prev) => !prev)}
+            soundEnabled={soundEnabled}
+            onSoundToggle={() => setSoundEnabled((prev) => !prev)}
+          />
+        )}
 
         {/* Main Content */}
         <main className="relative z-10">
@@ -211,8 +216,8 @@ export const OptimizedQuantumLayout: React.FC<OptimizedQuantumLayoutProps> = ({
           {children}
         </main>
 
-        {/* Footer */}
-        <Footer />
+        {/* Footer - Hide on home page */}
+        {!isHomePage && <Footer />}
       </div>
 
       {/* Performance Monitor Removed - Fixed Medium Mode */}

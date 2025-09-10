@@ -22,10 +22,17 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
   const [progress, setProgress] = useState(0)
   const [milestone, setMilestone] = useState<number | null>(null)
   const [totalHeight, setTotalHeight] = useState(0)
+  const [shownMilestones, setShownMilestones] = useState<Set<number>>(new Set())
 
   // Spring animation for smooth progress
   const springProgress = useSpring(0, { stiffness: 400, damping: 40 })
   const width = useTransform(springProgress, [0, 100], ['0%', '100%'])
+  
+  // Reset milestones when page reloads (new session)
+  useEffect(() => {
+    // Clear shown milestones on component mount (new page load)
+    setShownMilestones(new Set())
+  }, [])
 
   // Milestones configuration
   const milestones = [
@@ -56,10 +63,14 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
           if (
             clampedProgress >= m.percentage &&
             clampedProgress < m.percentage + 2 &&
-            milestone !== m.percentage
+            milestone !== m.percentage &&
+            !shownMilestones.has(m.percentage) // Only show if not already shown in this session
           ) {
             setMilestone(m.percentage)
             onMilestone?.(m.percentage)
+            
+            // Mark milestone as shown for this session
+            setShownMilestones(prev => new Set(prev).add(m.percentage))
             
             // Show milestone notification
             showMilestoneNotification(m)
@@ -72,7 +83,7 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
     }
 
     setTotalHeight(documentHeight)
-  }, [springProgress, milestone, showMilestones, onMilestone])
+  }, [springProgress, milestone, showMilestones, onMilestone, shownMilestones])
 
   const showMilestoneNotification = (milestone: any) => {
     // Create temporary notification element
