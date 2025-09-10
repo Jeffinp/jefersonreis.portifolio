@@ -411,7 +411,7 @@ const ServicesCommercial: React.FC = () => {
       const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`
       window.open(whatsappUrl, '_blank')
     },
-    [whatsappNumber],
+    [whatsappNumber, services],
   )
 
   return (

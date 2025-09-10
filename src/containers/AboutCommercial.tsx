@@ -104,8 +104,8 @@ const AboutCommercial: React.FC = () => {
             🏆 Compromisso com Resultados
           </p>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-            "Se seu site não gerar resultados em 30 dias, eu refaço sem custo
-            adicional. Essa é minha garantia de sucesso para você!"
+            &ldquo;Se seu site não gerar resultados em 30 dias, eu refaço sem custo
+            adicional. Essa é minha garantia de sucesso para você!&rdquo;
           </p>
         </motion.div>
       </div>

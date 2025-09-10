@@ -353,7 +353,7 @@ export default function SiteProfissionalLandingPage() {
                     ))}
                   </div>
                   <p className="mb-4 text-gray-600 dark:text-gray-400">
-                    "{testimonial.testimonial}"
+                    &ldquo;{testimonial.testimonial}&rdquo;
                   </p>
                   <div className="border-t border-gray-200 pt-4 dark:border-gray-700">
                     <div className="font-semibold text-gray-900 dark:text-white">

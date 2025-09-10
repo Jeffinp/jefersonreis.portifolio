@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Users,
@@ -39,38 +39,44 @@ const SocialProofNotifications: React.FC = () => {
   const [saleIndex, setSaleIndex] = useState(0)
 
   // Lista de cidades brasileiras para randomizar
-  const cities = [
-    'São Paulo',
-    'Rio de Janeiro',
-    'Salvador',
-    'Brasília',
-    'Fortaleza',
-    'Belo Horizonte',
-    'Manaus',
-    'Curitiba',
-    'Recife',
-    'Porto Alegre',
-    'Camaçari',
-    'Lauro de Freitas',
-    'Feira de Santana',
-    'Vitória da Conquista',
-    'Itabuna',
-    'Ilhéus',
-    'Juazeiro',
-    'Aracaju',
-    'Maceió',
-    'João Pessoa',
-  ]
+  const cities = useMemo(
+    () => [
+      'São Paulo',
+      'Rio de Janeiro',
+      'Salvador',
+      'Brasília',
+      'Fortaleza',
+      'Belo Horizonte',
+      'Manaus',
+      'Curitiba',
+      'Recife',
+      'Porto Alegre',
+      'Camaçari',
+      'Lauro de Freitas',
+      'Feira de Santana',
+      'Vitória da Conquista',
+      'Itabuna',
+      'Ilhéus',
+      'Juazeiro',
+      'Aracaju',
+      'Maceió',
+      'João Pessoa',
+    ],
+    [],
+  )
 
   // Lista de serviços para randomizar
-  const services = [
-    'Landing Page',
-    'Site Profissional',
-    'Automação com IA',
-    'App Mobile',
-    'SaaS',
-    'Sistema Personalizado',
-  ]
+  const services = useMemo(
+    () => [
+      'Landing Page',
+      'Site Profissional',
+      'Automação com IA',
+      'App Mobile',
+      'SaaS',
+      'Sistema Personalizado',
+    ],
+    [],
+  )
 
   // Gerar número aleatório de usuários online entre 90-150
   useEffect(() => {
