@@ -70,7 +70,7 @@ function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </main>
 
-        {/* Floating buttons - Show based on page */}
+        {/* Floating buttons - Show only on empresa page (portfolio) */}
         {router.pathname === '/empresa' && (
           <>
             <ScrollToTopButton />
@@ -78,9 +78,6 @@ function App({ Component, pageProps }: AppProps) {
             <DiscordFloatingButton />
           </>
         )}
-
-        {/* ScrollToTop for freelance page */}
-        {router.pathname === '/freelance' && <ScrollToTopButton />}
 
         {/* Analytics and Performance Monitoring */}
         <Analytics />
