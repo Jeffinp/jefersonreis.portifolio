@@ -259,7 +259,7 @@ export const initializeTracking = () => {
 
   // Facebook Pixel
   if (process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID) {
-    !(function (f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
+    ;(function (f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
       if (f.fbq) return
       n = f.fbq = function () {
         n.callMethod
