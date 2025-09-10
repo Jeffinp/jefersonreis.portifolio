@@ -275,8 +275,8 @@ const HeroCommercial: React.FC = () => {
                 ))}
               </div>
               <p className="mb-2 text-sm text-blue-100 italic">
-                &ldquo;Jeferson transformou nossa ideia em realidade. Site rápido,
-                moderno e que realmente converte!&rdquo;
+                &ldquo;Jeferson transformou nossa ideia em realidade. Site
+                rápido, moderno e que realmente converte!&rdquo;
               </p>
               <p className="text-xs text-blue-200">
                 — Maria Silva, CEO StartupX

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Globe,
@@ -219,7 +219,7 @@ const ServicesCommercial: React.FC = () => {
   const whatsappNumber =
     process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+55 75 99999-9999'
 
-  const services: Service[] = [
+  const services: Service[] = useMemo(() => [
     {
       id: 'landing',
       icon: Zap,
@@ -400,7 +400,7 @@ const ServicesCommercial: React.FC = () => {
         'Suporte dedicado',
       ],
     },
-  ]
+  ], [])
 
   const handleServiceSelect = useCallback(
     (serviceId: string) => {
