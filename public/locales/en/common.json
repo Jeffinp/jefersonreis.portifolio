@@ -62,5 +62,9 @@
     "connectWithMe": "Connect With Me",
     "allRightsReserved": "All rights reserved.",
     "privacyPolicy": "Privacy Policy"
+  },
+  "commercial": {
+    "viewPortfolio": "View Full Portfolio",
+    "exploreWork": "Explore my complete work as a developer and designer"
   }
 }

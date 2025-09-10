@@ -2,6 +2,7 @@ import React, { Suspense, useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { SEOHead, StructuredData, SchemaOrg } from '@/components/seo'
 import { LoadingSkeleton } from '@/components/ui'
 import { useViewportLazyLoad } from '@/hooks/ui/useViewportLazyLoad'
@@ -128,6 +129,7 @@ const SocialProofNotifications = dynamic(
 
 export default function Home() {
   const router = useRouter()
+  const { t } = useTranslation('common')
   const currentLang = router.locale || 'pt'
   const [quantumMode, setQuantumMode] = useState(false)
   const [commercialMode, setCommercialMode] = useState(true) // Enable commercial mode by default
@@ -145,11 +147,23 @@ export default function Home() {
 
     // Check for commercial mode from URL params or localStorage
     const urlParams = new URLSearchParams(window.location.search)
-    const isCommercial =
-      urlParams.get('mode') === 'commercial' ||
-      localStorage.getItem('commercialMode') === 'true'
-    setCommercialMode(isCommercial)
+    const savedCommercialMode = localStorage.getItem('commercialMode')
+    
+    // If URL param explicitly sets portfolio mode or localStorage says false, show portfolio
+    if (urlParams.get('mode') === 'portfolio' || savedCommercialMode === 'false') {
+      setCommercialMode(false)
+    } else {
+      // Default is commercial mode
+      setCommercialMode(true)
+    }
   }, [])
+
+  // Function to switch to portfolio mode
+  const switchToPortfolio = () => {
+    setCommercialMode(false)
+    localStorage.setItem('commercialMode', 'false')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
     <>
@@ -257,6 +271,38 @@ export default function Home() {
               <Contact />
             </Suspense>
           </LazySection>
+        )}
+
+        {/* Button to switch to portfolio mode - Only show in commercial mode */}
+        {commercialMode && (
+          <section className="py-16 px-4 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-black">
+            <div className="container mx-auto text-center">
+              <button
+                onClick={switchToPortfolio}
+                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
+              >
+                <span className="text-lg">
+                  {t('commercial.viewPortfolio')}
+                </span>
+                <svg
+                  className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </button>
+              <p className="mt-4 text-gray-600 dark:text-gray-400">
+                {t('commercial.exploreWork')}
+              </p>
+            </div>
+          </section>
         )}
       </main>
 
