@@ -374,27 +374,6 @@ const SocialProofNotifications: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Badge de avaliação - Removido para ficar mais clean */}
-
-      {/* Badge de disponibilidade - Oculto em mobile */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 8 }}
-        className="fixed right-6 bottom-28 z-40 hidden sm:block"
-      >
-        <div className="rounded-lg border border-gray-200 bg-white px-4 py-3 shadow-lg dark:border-gray-700 dark:bg-gray-800">
-          <div className="flex items-center gap-2">
-            <div className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
-            <p className="text-sm text-gray-700 dark:text-gray-300">
-              Aceitando novos projetos
-            </p>
-          </div>
-          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-            Agenda limitada este mês
-          </p>
-        </div>
-      </motion.div>
     </>
   )
 }
