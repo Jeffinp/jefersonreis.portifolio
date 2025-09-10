@@ -551,15 +551,9 @@ const Projects: React.FC = () => {
           setActiveFilter={setActiveFilter}
         />
 
-        <ViewToggle
-          viewMode={viewMode}
-          onToggle={toggleViewMode}
-          isMobile={isMobile}
-          t={t}
-        />
+        {/* Removido ViewToggle - sempre usar carrossel */}
 
-        {viewMode === 'carousel' ? (
-          // MODO CAROUSEL
+        {/* MODO CAROUSEL - Sempre ativo */}
           <div className="relative">
             <div className="relative overflow-hidden">
               <div
@@ -629,25 +623,6 @@ const Projects: React.FC = () => {
               </div>
             )}
           </div>
-        ) : (
-          // MODO GRID
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-              >
-                <ProjectItem
-                  project={project}
-                  isMobile={isMobile}
-                  onOpenModal={handleOpenModal}
-                />
-              </motion.div>
-            ))}
-          </div>
-        )}
       </div>
 
       {/* Project Modal */}

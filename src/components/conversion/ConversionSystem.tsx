@@ -84,12 +84,13 @@ export const ConversionSystem: React.FC<ConversionSystemProps> = ({
 
   return (
     <>
-      {/* Reading Progress Bar - Always show on desktop */}
-      {features.readingProgress && !isMobile && (
+      {/* Reading Progress Bar - Show on all devices */}
+      {features.readingProgress && (
         <ReadingProgressBar
-          showMilestones={true}
+          showMilestones={!isMobile}
           showPercentage={true}
           position="top"
+          height={isMobile ? 4 : 6}
           onMilestone={(percentage) => {
             handleConversion({
               type: 'reading_milestone',

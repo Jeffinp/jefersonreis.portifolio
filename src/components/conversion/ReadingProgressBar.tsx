@@ -14,7 +14,7 @@ interface ReadingProgressBarProps {
 export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
   showMilestones = true,
   color = 'bg-gradient-to-r from-blue-500 to-purple-500',
-  height = 4,
+  height = 6, // Aumentado para melhor visibilidade
   position = 'top',
   showPercentage = true,
   onMilestone,
@@ -180,23 +180,25 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
     <>
       {/* Progress Bar Container */}
       <div
-        className={`fixed left-0 right-0 z-[9998] ${
+        className={`fixed left-0 right-0 z-[99999] ${
           position === 'top' ? 'top-0' : 'bottom-0'
         }`}
         style={{ height: `${height}px` }}
       >
         {/* Background */}
-        <div className="absolute inset-0 bg-gray-200 dark:bg-gray-800" />
+        <div className="absolute inset-0 bg-gray-300 dark:bg-gray-700" />
         
         {/* Progress Fill */}
         <motion.div
-          className={`absolute left-0 h-full ${color}`}
+          className="absolute left-0 h-full bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600"
           style={{ width }}
         >
           {/* Animated glow effect at the end */}
-          <div className="absolute -right-1 top-0 h-full w-4">
-            <div className="h-full w-full animate-pulse bg-gradient-to-r from-transparent to-white/50" />
+          <div className="absolute -right-2 top-0 h-full w-8">
+            <div className="h-full w-full animate-pulse bg-gradient-to-r from-transparent via-white/30 to-white/60" />
           </div>
+          {/* Shadow for depth */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent" />
         </motion.div>
 
         {/* Milestone markers */}
@@ -234,14 +236,14 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className={`fixed z-[9999] ${
-            position === 'top' ? 'top-12' : 'bottom-12'
+          className={`fixed z-[100000] ${
+            position === 'top' ? 'top-16' : 'bottom-12'
           } right-4`}
         >
-          <div className="flex items-center gap-2 rounded-full bg-white px-3 py-1 shadow-lg dark:bg-gray-800">
-            <Flame className={`h-4 w-4 ${progress > 80 ? 'text-orange-500 animate-pulse' : 'text-gray-400'}`} />
-            <span className="text-sm font-bold text-gray-700 dark:text-gray-300">
-              {Math.round(progress)}% lido
+          <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2 shadow-xl">
+            <Flame className={`h-4 w-4 text-white ${progress > 80 ? 'animate-pulse' : ''}`} />
+            <span className="text-sm font-bold text-white">
+              {Math.round(progress)}%
             </span>
           </div>
         </motion.div>
