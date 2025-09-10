@@ -55,8 +55,8 @@ const SocialProofNotificationsEnhanced: React.FC<
   const [isPaused, setIsPaused] = useState(false)
   const [userIsActive, setUserIsActive] = useState(true)
   const [timeOnPage, setTimeOnPage] = useState(0)
-  const notificationTimeoutRef = useRef<NodeJS.Timeout>()
-  const saleTimeoutRef = useRef<NodeJS.Timeout>()
+  const notificationTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
+  const saleTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
 
   // Lista de cidades brasileiras com pesos (mais realista)
   const citiesWithWeight = useMemo(

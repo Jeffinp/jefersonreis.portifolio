@@ -96,18 +96,19 @@ export const FloatingButtonsOrganizer: React.FC<
                     {React.Children.map(children, (child, index) => {
                       if (React.isValidElement(child)) {
                         // Clone and modify className to remove fixed positioning
+                        const childElement = child as React.ReactElement<{className?: string, style?: React.CSSProperties}>
                         return React.cloneElement(
-                          child as React.ReactElement<any>,
+                          childElement,
                           {
                             className:
-                              (child.props.className || '')
+                              (childElement.props.className || '')
                                 .replace(
                                   /fixed|bottom-\[?\d+px?\]?|right-\[?\d+px?\]?|left-\[?\d+px?\]?/g,
                                   '',
                                 )
                                 .trim() + ' relative block w-full',
                             style: {
-                              ...child.props.style,
+                              ...childElement.props.style,
                               position: 'relative',
                               bottom: 'auto',
                               right: 'auto',

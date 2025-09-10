@@ -83,8 +83,7 @@ export const ROICalculator: React.FC = () => {
 
   const handleCalculate = () => {
     setShowResults(true)
-    trackEvent({
-      action: 'roi_calculated',
+    trackEvent('roi_calculated', {
       category: 'Conversion',
       label: 'ROI Calculator',
       value: results.yearlyProfit,
@@ -96,8 +95,7 @@ export const ROICalculator: React.FC = () => {
     setIsSubmitting(true)
 
     // Track conversion
-    trackEvent({
-      action: 'roi_calculator_lead',
+    trackEvent('roi_calculator_lead', {
       category: 'Conversion',
       label: email,
       value: results.yearlyProfit,

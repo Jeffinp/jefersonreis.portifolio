@@ -308,8 +308,7 @@ export const InteractiveQuiz: React.FC = () => {
     setIsSubmitting(true)
 
     // Track conversion
-    trackEvent({
-      action: 'quiz_completed',
+    trackEvent('quiz_completed', {
       category: 'Conversion',
       label: result?.type,
       value: email,

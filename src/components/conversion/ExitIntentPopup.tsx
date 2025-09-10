@@ -25,8 +25,7 @@ export const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({
     cooldown: 24 * 60 * 60 * 1000, // 24 horas
     mobileEnabled: false,
     onTrigger: () => {
-      trackEvent({
-        action: 'exit_intent_triggered',
+      trackEvent('exit_intent_triggered', {
         category: 'Conversion',
         label: variant,
       })
@@ -38,8 +37,7 @@ export const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({
     setIsSubmitting(true)
 
     // Track conversion
-    trackEvent({
-      action: 'exit_intent_converted',
+    trackEvent('exit_intent_converted', {
       category: 'Conversion',
       label: variant,
       value: email,
@@ -72,8 +70,7 @@ export const ExitIntentPopup: React.FC<ExitIntentPopupProps> = ({
   const handleClose = () => {
     dismiss()
     onClose?.()
-    trackEvent({
-      action: 'exit_intent_closed',
+    trackEvent('exit_intent_closed', {
       category: 'Conversion',
       label: variant,
     })
