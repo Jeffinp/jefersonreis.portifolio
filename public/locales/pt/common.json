@@ -66,5 +66,9 @@
   "commercial": {
     "viewPortfolio": "Ver Portfólio Completo",
     "exploreWork": "Explore meu trabalho completo como desenvolvedor e designer"
+  },
+  "portfolio": {
+    "viewCommercial": "Quero Orçamento Rápido",
+    "commercialDescription": "Veja preços, prazos e contrate direto pelo WhatsApp"
   }
 }

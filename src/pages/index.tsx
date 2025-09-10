@@ -172,6 +172,13 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  // Function to switch to commercial mode
+  const switchToCommercial = () => {
+    setCommercialMode(true)
+    localStorage.setItem('commercialMode', 'true')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <>
       <SEOHead lang={currentLang} />
@@ -280,37 +287,79 @@ export default function Home() {
           </LazySection>
         )}
 
-        {/* Button to switch to portfolio mode - Only show in commercial mode */}
-        {commercialMode && (
-          <section className="py-16 px-4 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-black">
-            <div className="container mx-auto text-center">
-              <button
-                onClick={switchToPortfolio}
-                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
-              >
-                <span className="text-lg">
-                  {t('commercial.viewPortfolio')}
-                </span>
-                <svg
-                  className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+        {/* Button to switch modes */}
+        <section className="py-16 px-4 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-black">
+          <div className="container mx-auto text-center">
+            {commercialMode ? (
+              <>
+                <button
+                  onClick={switchToPortfolio}
+                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
-                </svg>
-              </button>
-              <p className="mt-4 text-gray-600 dark:text-gray-400">
-                {t('commercial.exploreWork')}
-              </p>
-            </div>
-          </section>
-        )}
+                  <span className="text-lg">
+                    {t('commercial.viewPortfolio')}
+                  </span>
+                  <svg
+                    className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </button>
+                <p className="mt-4 text-gray-600 dark:text-gray-400">
+                  {t('commercial.exploreWork')}
+                </p>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={switchToCommercial}
+                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-full shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span className="text-lg">
+                    {t('portfolio.viewCommercial')}
+                  </span>
+                  <svg
+                    className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </button>
+                <p className="mt-4 text-gray-600 dark:text-gray-400">
+                  {t('portfolio.commercialDescription')}
+                </p>
+              </>
+            )}
+          </div>
+        </section>
       </main>
 
       {/* Chat Widget and Social Proof - Only show in commercial mode */}

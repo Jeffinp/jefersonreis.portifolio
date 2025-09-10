@@ -66,5 +66,9 @@
   "commercial": {
     "viewPortfolio": "View Full Portfolio",
     "exploreWork": "Explore my complete work as a developer and designer"
+  },
+  "portfolio": {
+    "viewCommercial": "Get Quick Quote",
+    "commercialDescription": "See prices, deadlines and hire directly via WhatsApp"
   }
 }
