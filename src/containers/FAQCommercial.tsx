@@ -33,7 +33,7 @@ const FAQCommercial: React.FC = () => {
       id: 2,
       question: 'E se eu não gostar do resultado?',
       answer:
-        'Oferecemos garantia de satisfação de 7 dias. Se não ficar 100% satisfeito, devolvemos seu dinheiro integralmente. Além disso, fazemos revisões ilimitadas até você aprovar o projeto. Sua satisfação é nossa prioridade!',
+        'Oferecemos garantia de satisfação de 7 dias para você avaliar o trabalho. Além disso, fazemos revisões ilimitadas até você aprovar completamente o projeto. Trabalhamos juntos até alcançar o resultado que você deseja. Sua satisfação é nossa prioridade!',
       icon: Shield,
     },
     {

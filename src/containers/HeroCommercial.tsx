@@ -76,10 +76,11 @@ const HeroCommercial: React.FC = () => {
 
   const benefits = [
     'Especialista em IA e automações',
-    'Código limpo e documentado',
+    'Código limpo e documentado', 
     'SEO otimizado desde o início',
     'Suporte pós-entrega incluso',
     'Pagamento facilitado',
+    'Revisões ilimitadas até aprovação',
   ]
 
   return (
@@ -135,32 +136,35 @@ const HeroCommercial: React.FC = () => {
             >
               <CheckCircle className="h-4 w-4 text-green-600" />
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                137 sites entregues este ano • Cliente #138 economiza 30% hoje
+                +50 projetos entregues • Clientes relatam até 300% mais conversões
               </span>
             </motion.div>
 
             {/* Título Principal */}
             <div>
               <h1 className="mb-4 text-3xl leading-tight font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
-                Seu Site Pronto em{' '}
+                Landing Page Profissional em{' '}
                 <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-                  7 Dias
+                  7 Dias*
                 </span>
                 <br />
-                ou Devolvemos{' '}
-                <span className="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
-                  100% do Valor
+                Com Garantia de{' '}
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Satisfação Total
                 </span>
               </h1>
               <p className="text-lg text-gray-600 lg:text-xl dark:text-gray-300">
                 <strong className="text-gray-900 dark:text-white">
-                  De R$ 0 a R$ 10.000/mês
+                  Sites que Geram Resultados Reais
                 </strong>{' '}
-                com seu novo site.
+                para seu Negócio.
                 <br />
                 <span className="text-base">
-                  Garantia de 30 dias: Se não vender, refazemos grátis!
+                  7 dias de garantia + Revisões até sua aprovação
                 </span>
+              </p>
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                *Sites completos: 15-30 dias | Apps: 45-90 dias | Consulte prazos específicos
               </p>
             </div>
 
@@ -198,8 +202,8 @@ const HeroCommercial: React.FC = () => {
                 onClick={handleContactClick}
                 className="group relative flex animate-pulse items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-green-600 to-green-700 px-8 py-4 text-lg font-bold text-white shadow-xl transition-all hover:animate-none hover:from-green-700 hover:to-green-800 hover:shadow-2xl"
               >
-                <span className="absolute -top-3 -right-2 rounded-full bg-red-500 px-2 py-1 text-xs font-bold text-white">
-                  -30% HOJE
+                <span className="absolute -top-3 -right-2 rounded-full bg-green-500 px-2 py-1 text-xs font-bold text-white">
+                  VAGAS LIMITADAS
                 </span>
                 <Phone className="h-5 w-5" />
                 GARANTIR MINHA VAGA AGORA
