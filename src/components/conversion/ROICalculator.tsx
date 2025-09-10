@@ -139,10 +139,11 @@ export const ROICalculator: React.FC = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 3 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-48 right-6 z-40 flex items-center gap-2 rounded-full bg-gradient-to-r from-green-600 to-emerald-600 px-4 py-3 text-white shadow-xl transition-all hover:scale-105 hover:shadow-2xl"
+        className="fixed z-40 flex items-center gap-2 rounded-full bg-gradient-to-r from-green-600 to-emerald-600 px-3 py-2 text-white shadow-xl transition-all hover:scale-105 hover:shadow-2xl sm:px-4 sm:py-3
+                   bottom-[230px] right-4 sm:bottom-48 sm:right-6"
       >
-        <Calculator className="h-5 w-5" />
-        <span className="font-semibold">Calcule seu ROI</span>
+        <Calculator className="h-4 w-4 sm:h-5 sm:w-5" />
+        <span className="text-sm font-semibold sm:text-base">Calcule seu ROI</span>
       </motion.button>
 
       {/* Calculator Modal */}

@@ -15,6 +15,9 @@ const InteractiveQuiz = dynamic(() => import('./InteractiveQuiz'), {
 const ROICalculator = dynamic(() => import('./ROICalculator'), {
   ssr: false,
 })
+const FloatingButtonsOrganizer = dynamic(() => import('./FloatingButtonsOrganizer'), {
+  ssr: false,
+})
 
 interface ConversionSystemProps {
   enabled?: boolean
@@ -109,11 +112,19 @@ export const ConversionSystem: React.FC<ConversionSystemProps> = ({
         />
       )}
 
-      {/* Interactive Quiz - Show on all devices */}
-      {features.quiz && <InteractiveQuiz />}
-
-      {/* ROI Calculator - Show on all devices */}
-      {features.roiCalculator && <ROICalculator />}
+      {/* Floating Buttons - Organized on mobile */}
+      {isMobile ? (
+        <FloatingButtonsOrganizer position="right" mobileCollapsible={true}>
+          {features.quiz && <InteractiveQuiz />}
+          {features.roiCalculator && <ROICalculator />}
+        </FloatingButtonsOrganizer>
+      ) : (
+        <>
+          {/* Desktop - Show normally */}
+          {features.quiz && <InteractiveQuiz />}
+          {features.roiCalculator && <ROICalculator />}
+        </>
+      )}
     </>
   )
 }

@@ -282,10 +282,11 @@ export const InteractiveQuiz: React.FC = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 2 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-32 right-6 z-40 flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-4 py-3 text-white shadow-xl transition-all hover:scale-105 hover:shadow-2xl"
+        className="fixed z-40 flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-3 py-2 text-white shadow-xl transition-all hover:scale-105 hover:shadow-2xl sm:px-4 sm:py-3
+                   bottom-[180px] right-4 sm:bottom-32 sm:right-6"
       >
-        <Sparkles className="h-5 w-5" />
-        <span className="font-semibold">Quiz: Descubra sua solução ideal</span>
+        <Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />
+        <span className="text-sm font-semibold sm:text-base">Quiz: Descubra sua solução ideal</span>
       </motion.button>
 
       {/* Quiz Modal */}
