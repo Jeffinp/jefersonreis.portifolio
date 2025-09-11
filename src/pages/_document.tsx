@@ -20,9 +20,23 @@ export default function Document() {
         {/* DNS prefetch para recursos externos */}
         <link rel="dns-prefetch" href="//vercel.com" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//www.googletagmanager.com" />
 
         {/* Preconnect para recursos críticos */}
         <link rel="preconnect" href="https://vitals.vercel-analytics.com" />
+
+        {/* Google tag (gtag.js) para medição de conversões */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17550897920"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-17550897920');
+            `,
+          }}
+        />
 
         {/* Prevenção de FOUC - Script de inicialização de tema */}
         <script
