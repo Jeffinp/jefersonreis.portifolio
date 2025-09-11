@@ -72,7 +72,7 @@ function App({ Component, pageProps }: AppProps) {
 
         {/* Floating buttons - Different per page */}
         {/* Commercial page (freelance) uses ChatWidget instead */}
-        
+
         {/* All buttons for empresa page */}
         {router.pathname === '/empresa' && (
           <>
