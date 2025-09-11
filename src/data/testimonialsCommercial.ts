@@ -305,13 +305,14 @@ export const getTestimonialsByIndustry = (industry: string) => {
 
 // Função para obter métricas agregadas
 export const getAggregatedMetrics = () => {
-  const totalProjects = testimonialsCommercial.length
+  const totalTestimonials = testimonialsCommercial.length
   const averageRating =
-    testimonialsCommercial.reduce((acc, t) => acc + t.rating, 0) / totalProjects
+    testimonialsCommercial.reduce((acc, t) => acc + t.rating, 0) /
+    totalTestimonials
   const industries = [...new Set(testimonialsCommercial.map((t) => t.industry))]
 
   return {
-    totalProjects,
+    totalProjects: 100, // Total real de projetos entregues
     averageRating,
     totalIndustries: industries.length,
     satisfactionRate: '98%',

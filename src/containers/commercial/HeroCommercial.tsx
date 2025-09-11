@@ -136,7 +136,7 @@ const HeroCommercial: React.FC = () => {
             >
               <CheckCircle className="h-4 w-4 text-green-600" />
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                +50 projetos entregues • Clientes relatam até 300% mais
+                +100 projetos entregues • Clientes relatam até 300% mais
                 conversões
               </span>
             </motion.div>
