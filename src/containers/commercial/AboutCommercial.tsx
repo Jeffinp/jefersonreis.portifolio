@@ -5,7 +5,7 @@ import { Award, TrendingUp, Users, Zap } from 'lucide-react'
 const AboutCommercial: React.FC = () => {
   const stats = [
     { icon: Award, value: '6+', label: 'Anos de Experiência' },
-    { icon: Users, value: '137+', label: 'Clientes Satisfeitos' },
+    { icon: Users, value: '100+', label: 'Clientes Satisfeitos' },
     { icon: TrendingUp, value: '98%', label: 'Taxa de Sucesso' },
     { icon: Zap, value: '24h', label: 'Tempo de Resposta' },
   ]
@@ -34,7 +34,7 @@ const AboutCommercial: React.FC = () => {
               Sou <strong>Jeferson Reis</strong>, desenvolvedor full-stack com{' '}
               <strong>6+ anos de experiência</strong> criando soluções que{' '}
               <strong>realmente vendem</strong>. Já entreguei mais de{' '}
-              <strong>137 projetos</strong> que geraram resultados reais para
+              <strong>100 projetos</strong> que geraram resultados reais para
               meus clientes.
             </p>
             <div className="space-y-3">

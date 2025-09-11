@@ -213,17 +213,17 @@ const About: React.FC = () => {
   // Estatísticas
   const stats = [
     {
-      value: '5+',
+      value: '6+',
       label: t('about.stats.experience'),
       colorClass: 'blue' as const,
     },
     {
-      value: '15+',
+      value: '100+',
       label: t('about.stats.projects'),
       colorClass: 'purple' as const,
     },
     {
-      value: '80+',
+      value: '100+',
       label: t('about.stats.clients'),
       colorClass: 'green' as const,
     },

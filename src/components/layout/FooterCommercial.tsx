@@ -25,7 +25,7 @@ export const FooterCommercial: React.FC = () => {
   const handleWhatsAppClick = () => {
     trackCTAClick('footer_whatsapp', 'commercial_footer')
     const message = 'Olá! Gostaria de saber mais sobre os serviços.'
-    const whatsappUrl = `https://wa.me/5575999999999?text=${encodeURIComponent(message)}`
+    const whatsappUrl = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')
   }
 
@@ -60,9 +60,9 @@ export const FooterCommercial: React.FC = () => {
   ]
 
   const achievements = [
-    { number: '+47', label: 'Clientes Satisfeitos' },
+    { number: '+100', label: 'Clientes Satisfeitos' },
     { number: '98%', label: 'Taxa de Satisfação' },
-    { number: '+150', label: 'Projetos Entregues' },
+    { number: '+100', label: 'Projetos Entregues' },
     { number: '4.9', label: 'Avaliação Média' },
   ]
 
@@ -95,7 +95,7 @@ export const FooterCommercial: React.FC = () => {
                   <ArrowRight className="h-5 w-5 animate-pulse" />
                 </motion.button>
                 <a
-                  href="tel:+5575999999999"
+                  href={`tel:${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/[^0-9+]/g, '')}`}
                   className="flex items-center gap-2 rounded-lg border-2 border-white bg-white/10 px-6 py-3 text-lg font-bold text-white backdrop-blur transition-all hover:bg-white/20"
                 >
                   <Phone className="h-5 w-5" />
@@ -170,7 +170,7 @@ export const FooterCommercial: React.FC = () => {
                 ))}
               </div>
               <p className="mt-1 text-xs text-gray-600 dark:text-gray-400">
-                4.9/5 baseado em 47 avaliações
+                4.9/5 baseado em 100+ avaliações
               </p>
             </div>
 
@@ -230,25 +230,25 @@ export const FooterCommercial: React.FC = () => {
                     className="flex items-center gap-2 text-sm text-gray-600 transition-colors hover:text-green-600 dark:text-gray-400 dark:hover:text-green-400"
                   >
                     <MessageCircle className="h-4 w-4" />
-                    WhatsApp: (75) 99999-9999
+                    WhatsApp: {process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}
                   </button>
                 </li>
                 <li>
                   <a
-                    href="tel:+5575999999999"
+                    href={`tel:${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/[^0-9+]/g, '')}`}
                     className="flex items-center gap-2 text-sm text-gray-600 transition-colors hover:text-green-600 dark:text-gray-400 dark:hover:text-green-400"
                   >
                     <Phone className="h-4 w-4" />
-                    Telefone: (75) 99999-9999
+                    Telefone: {process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}
                   </a>
                 </li>
                 <li>
                   <a
-                    href="mailto:contato@jefersonreis.com"
+                    href="mailto:Jefersonreisalmeida8356@gmail.com"
                     className="flex items-center gap-2 text-sm text-gray-600 transition-colors hover:text-green-600 dark:text-gray-400 dark:hover:text-green-400"
                   >
                     <Mail className="h-4 w-4" />
-                    contato@jefersonreis.com
+                    Jefersonreisalmeida8356@gmail.com
                   </a>
                 </li>
                 <li className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
