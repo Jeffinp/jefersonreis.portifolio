@@ -47,8 +47,7 @@ export const OptimizedQuantumLayout: React.FC<OptimizedQuantumLayoutProps> = ({
 
   // Check if we're on specific pages
   const isHomePage = router.pathname === '/'
-  const isCommercialPage =
-    router.pathname === '/' || router.pathname === '/freelance'
+  const isCommercialPage = router.pathname === '/freelance'
 
   // State
   const [isNavigationOpen, setIsNavigationOpen] = useState(false)
@@ -197,8 +196,8 @@ export const OptimizedQuantumLayout: React.FC<OptimizedQuantumLayoutProps> = ({
       <div
         className={`min-h-screen transition-colors duration-500 ${backgroundClass}`}
       >
-        {/* Quantum Header - Hide on commercial pages */}
-        {!isCommercialPage && (
+        {/* Quantum Header - Hide on home and commercial pages */}
+        {!isHomePage && !isCommercialPage && (
           <QuantumHeader
             onNavigationOpen={() => setIsNavigationOpen(true)}
             quantumMode={quantumMode}
@@ -218,8 +217,8 @@ export const OptimizedQuantumLayout: React.FC<OptimizedQuantumLayoutProps> = ({
           {children}
         </main>
 
-        {/* Footer - Hide on commercial pages */}
-        {!isCommercialPage && <Footer />}
+        {/* Footer - Hide on home and commercial pages */}
+        {!isHomePage && !isCommercialPage && <Footer />}
       </div>
 
       {/* Performance Monitor Removed - Fixed Medium Mode */}

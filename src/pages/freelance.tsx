@@ -100,7 +100,7 @@ const LazySection: React.FC<{
   )
 }
 
-export default function FreelancePage() {
+export default function ComercialPage() {
   const router = useRouter()
   const { t } = useTranslation('common')
   const currentLang = router.locale || 'pt'
