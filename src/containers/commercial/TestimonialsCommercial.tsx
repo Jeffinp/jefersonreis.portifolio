@@ -112,7 +112,9 @@ export const TestimonialsCommercial: React.FC = () => {
           className="mb-8 grid grid-cols-2 gap-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-4 text-white shadow-lg sm:grid-cols-4 sm:gap-4 sm:p-5"
         >
           <div className="text-center">
-            <p className="text-2xl font-bold sm:text-3xl">{metrics.totalProjects}+</p>
+            <p className="text-2xl font-bold sm:text-3xl">
+              {metrics.totalProjects}+
+            </p>
             <p className="text-xs opacity-90 sm:text-sm">Projetos</p>
           </div>
           <div className="text-center">
@@ -122,11 +124,15 @@ export const TestimonialsCommercial: React.FC = () => {
             <p className="text-xs opacity-90 sm:text-sm">Avaliação</p>
           </div>
           <div className="text-center">
-            <p className="text-2xl font-bold sm:text-3xl">{metrics.satisfactionRate}</p>
+            <p className="text-2xl font-bold sm:text-3xl">
+              {metrics.satisfactionRate}
+            </p>
             <p className="text-xs opacity-90 sm:text-sm">Satisfação</p>
           </div>
           <div className="text-center">
-            <p className="text-2xl font-bold sm:text-3xl">{metrics.totalIndustries}+</p>
+            <p className="text-2xl font-bold sm:text-3xl">
+              {metrics.totalIndustries}+
+            </p>
             <p className="text-xs opacity-90 sm:text-sm">Setores</p>
           </div>
         </motion.div>
@@ -139,7 +145,7 @@ export const TestimonialsCommercial: React.FC = () => {
           transition={{ delay: 0.2 }}
           className="mb-10"
         >
-          <div className="relative rounded-xl border border-gray-200 bg-white/80 p-6 backdrop-blur-sm shadow-lg dark:border-gray-700 dark:bg-gray-800/80">
+          <div className="relative rounded-xl border border-gray-200 bg-white/80 p-6 shadow-lg backdrop-blur-sm dark:border-gray-700 dark:bg-gray-800/80">
             <Quote className="absolute top-4 left-4 h-6 w-6 text-blue-200 dark:text-blue-800" />
 
             <AnimatePresence mode="wait">
@@ -303,7 +309,7 @@ export const TestimonialsCommercial: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-5"
+          className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
         >
           {filteredTestimonials.slice(0, 6).map((testimonial, index) => (
             <motion.div
@@ -312,7 +318,7 @@ export const TestimonialsCommercial: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="rounded-xl border border-gray-200 bg-white/80 p-4 backdrop-blur-sm shadow-md transition-all hover:shadow-lg sm:p-5 dark:border-gray-700 dark:bg-gray-800/80"
+              className="rounded-xl border border-gray-200 bg-white/80 p-4 shadow-md backdrop-blur-sm transition-all hover:shadow-lg sm:p-5 dark:border-gray-700 dark:bg-gray-800/80"
             >
               {/* Header */}
               <div className="mb-4 flex items-start justify-between">
