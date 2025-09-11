@@ -199,7 +199,8 @@ export const TestimonialsCommercial: React.FC = () => {
 
                   {/* Testimonial Text */}
                   <p className="mb-6 text-lg text-gray-700 dark:text-gray-300">
-                    &ldquo;{featuredTestimonials[currentIndex].testimonial}&rdquo;
+                    &ldquo;{featuredTestimonials[currentIndex].testimonial}
+                    &rdquo;
                   </p>
 
                   {/* Results Grid */}
