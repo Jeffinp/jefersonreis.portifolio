@@ -281,7 +281,7 @@ export const FooterCommercial: React.FC = () => {
             </div>
             <div className="text-center text-xs text-gray-500 sm:text-right dark:text-gray-500">
               <p>© 2024 Jeferson Reis. Todos os direitos reservados.</p>
-              <p className="mt-1">CNPJ: 00.000.000/0001-00</p>
+              <p className="mt-1">CNPJ: 60.922.187/0001-02</p>
             </div>
           </div>
         </div>
