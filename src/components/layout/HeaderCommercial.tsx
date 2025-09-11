@@ -108,12 +108,12 @@ export const HeaderCommercial: React.FC<HeaderCommercialProps> = ({
             <div className="flex items-center gap-3">
               {/* Email - Desktop only */}
               <a
-                href="mailto:jeferson@jefersonreis.dev"
+                href="mailto:Jefersonreisalmeida8356@gmail.com"
                 className="hidden items-center gap-2 rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition-all hover:bg-gray-50 lg:flex dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
               >
                 <Mail className="h-4 w-4" />
                 <span className="hidden xl:inline">
-                  jeferson@jefersonreis.dev
+                  Jefersonreisalmeida8356@gmail.com
                 </span>
                 <span className="xl:hidden">Email</span>
               </a>
@@ -174,7 +174,7 @@ export const HeaderCommercial: React.FC<HeaderCommercialProps> = ({
 
                 {/* Mobile Email Link */}
                 <a
-                  href="mailto:jeferson@jefersonreis.dev"
+                  href="mailto:Jefersonreisalmeida8356@gmail.com"
                   className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
                 >
                   <Mail className="h-5 w-5 text-blue-600" />

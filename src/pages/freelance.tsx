@@ -48,10 +48,13 @@ const Projects = dynamic(() => import('@/containers/shared/Projects'), {
   loading: () => <LoadingSkeleton variant="projects" />,
   ssr: false,
 })
-const Testimonials = dynamic(() => import('@/containers/shared/Testimonials'), {
-  loading: () => <LoadingSkeleton variant="testimonials" />,
-  ssr: false,
-})
+const TestimonialsCommercial = dynamic(
+  () => import('@/containers/commercial/TestimonialsCommercial'),
+  {
+    loading: () => <LoadingSkeleton variant="testimonials" />,
+    ssr: false,
+  },
+)
 
 // Widgets
 const ChatWidget = dynamic(() => import('@/components/ChatWidget'), {
@@ -162,7 +165,7 @@ export default function ComercialPage() {
           rootMargin="200px"
         >
           <Suspense fallback={<LoadingSkeleton variant="testimonials" />}>
-            <Testimonials />
+            <TestimonialsCommercial />
           </Suspense>
         </LazySection>
 
