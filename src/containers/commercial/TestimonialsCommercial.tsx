@@ -82,7 +82,7 @@ export const TestimonialsCommercial: React.FC = () => {
   return (
     <section
       id="testimonials"
-      className="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white py-20 dark:from-gray-900 dark:to-gray-950"
+      className="relative overflow-hidden bg-transparent py-12 md:py-16"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -90,17 +90,16 @@ export const TestimonialsCommercial: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12 text-center"
+          className="mb-8 text-center"
         >
-          <span className="mb-2 inline-block rounded-full bg-green-100 px-4 py-1 text-sm font-semibold text-green-600 dark:bg-green-900/30 dark:text-green-400">
-            Casos de Sucesso
-          </span>
-          <h2 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white">
-            Resultados Reais, Clientes Reais
+          <h2 className="mb-3 text-2xl font-bold text-gray-900 sm:text-3xl lg:text-4xl dark:text-white">
+            Resultados{' '}
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Comprovados
+            </span>
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
-            Veja como empresas como a sua multiplicaram seus resultados com
-            nossas soluções
+          <p className="mx-auto max-w-2xl text-base text-gray-600 lg:text-lg dark:text-gray-300">
+            Empresas reais, resultados reais
           </p>
         </motion.div>
 
@@ -110,25 +109,25 @@ export const TestimonialsCommercial: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="mb-12 grid grid-cols-2 gap-4 rounded-2xl bg-gradient-to-r from-green-600 to-emerald-600 p-6 text-white shadow-xl sm:grid-cols-4"
+          className="mb-8 grid grid-cols-2 gap-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-4 text-white shadow-lg sm:grid-cols-4 sm:gap-4 sm:p-5"
         >
           <div className="text-center">
-            <p className="text-3xl font-bold">{metrics.totalProjects}+</p>
-            <p className="text-sm opacity-90">Projetos Entregues</p>
+            <p className="text-2xl font-bold sm:text-3xl">{metrics.totalProjects}+</p>
+            <p className="text-xs opacity-90 sm:text-sm">Projetos</p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-bold">
+            <p className="text-2xl font-bold sm:text-3xl">
               {metrics.averageRating.toFixed(1)}★
             </p>
-            <p className="text-sm opacity-90">Avaliação Média</p>
+            <p className="text-xs opacity-90 sm:text-sm">Avaliação</p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-bold">{metrics.satisfactionRate}</p>
-            <p className="text-sm opacity-90">Taxa de Satisfação</p>
+            <p className="text-2xl font-bold sm:text-3xl">{metrics.satisfactionRate}</p>
+            <p className="text-xs opacity-90 sm:text-sm">Satisfação</p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-bold">{metrics.totalIndustries}+</p>
-            <p className="text-sm opacity-90">Setores Atendidos</p>
+            <p className="text-2xl font-bold sm:text-3xl">{metrics.totalIndustries}+</p>
+            <p className="text-xs opacity-90 sm:text-sm">Setores</p>
           </div>
         </motion.div>
 
@@ -138,10 +137,10 @@ export const TestimonialsCommercial: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mb-16"
+          className="mb-10"
         >
-          <div className="relative rounded-2xl bg-white p-8 shadow-xl dark:bg-gray-800">
-            <Quote className="absolute top-4 left-4 h-8 w-8 text-green-200 dark:text-green-800" />
+          <div className="relative rounded-xl border border-gray-200 bg-white/80 p-6 backdrop-blur-sm shadow-lg dark:border-gray-700 dark:bg-gray-800/80">
+            <Quote className="absolute top-4 left-4 h-6 w-6 text-blue-200 dark:text-blue-800" />
 
             <AnimatePresence mode="wait">
               {featuredTestimonials.length > 0 && (
@@ -156,7 +155,7 @@ export const TestimonialsCommercial: React.FC = () => {
                   <div className="mb-6 flex flex-col items-center gap-6 sm:flex-row">
                     {/* Avatar and Info */}
                     <div className="flex items-center gap-4">
-                      <div className="relative h-20 w-20 overflow-hidden rounded-full bg-gradient-to-br from-green-400 to-emerald-600">
+                      <div className="relative h-16 w-16 overflow-hidden rounded-full bg-gradient-to-br from-blue-500 to-purple-600">
                         <div className="flex h-full w-full items-center justify-center text-2xl font-bold text-white">
                           {featuredTestimonials[currentIndex].name
                             .split(' ')
@@ -187,7 +186,7 @@ export const TestimonialsCommercial: React.FC = () => {
 
                     {/* Project Info */}
                     <div className="flex-1 text-center sm:text-right">
-                      <span className="inline-block rounded-lg bg-green-100 px-3 py-1 text-sm font-semibold text-green-600 dark:bg-green-900/30 dark:text-green-400">
+                      <span className="inline-block rounded-lg bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
                         {featuredTestimonials[currentIndex].projectType}
                       </span>
                       <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
@@ -213,7 +212,7 @@ export const TestimonialsCommercial: React.FC = () => {
                             key={idx}
                             className="rounded-lg bg-gray-50 p-3 text-center dark:bg-gray-700"
                           >
-                            <Icon className="mx-auto mb-1 h-5 w-5 text-green-600 dark:text-green-400" />
+                            <Icon className="mx-auto mb-1 h-5 w-5 text-blue-600 dark:text-blue-400" />
                             <p className="text-2xl font-bold text-gray-900 dark:text-white">
                               {result.value}
                             </p>
@@ -231,7 +230,7 @@ export const TestimonialsCommercial: React.FC = () => {
                     <div className="flex items-center gap-4">
                       <span className="text-sm text-gray-600 dark:text-gray-400">
                         Investimento:{' '}
-                        <strong className="text-green-600 dark:text-green-400">
+                        <strong className="text-blue-600 dark:text-blue-400">
                           {featuredTestimonials[currentIndex].investment}
                         </strong>
                       </span>
@@ -240,7 +239,7 @@ export const TestimonialsCommercial: React.FC = () => {
                           href={featuredTestimonials[currentIndex].websiteUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-1 text-sm text-green-600 hover:underline dark:text-green-400"
+                          className="flex items-center gap-1 text-sm text-blue-600 hover:underline dark:text-blue-400"
                         >
                           Ver site
                           <ExternalLink className="h-3 w-3" />
@@ -288,7 +287,7 @@ export const TestimonialsCommercial: React.FC = () => {
                 onClick={() => setSelectedIndustry(industry)}
                 className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${
                   selectedIndustry === industry
-                    ? 'bg-green-600 text-white shadow-lg'
+                    ? 'bg-blue-600 text-white shadow-lg'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
                 }`}
               >
@@ -304,7 +303,7 @@ export const TestimonialsCommercial: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-5"
         >
           {filteredTestimonials.slice(0, 6).map((testimonial, index) => (
             <motion.div
@@ -313,12 +312,12 @@ export const TestimonialsCommercial: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="rounded-xl bg-white p-6 shadow-lg transition-all hover:shadow-xl dark:bg-gray-800"
+              className="rounded-xl border border-gray-200 bg-white/80 p-4 backdrop-blur-sm shadow-md transition-all hover:shadow-lg sm:p-5 dark:border-gray-700 dark:bg-gray-800/80"
             >
               {/* Header */}
               <div className="mb-4 flex items-start justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="relative h-12 w-12 overflow-hidden rounded-full bg-gradient-to-br from-green-400 to-emerald-600">
+                  <div className="relative h-10 w-10 overflow-hidden rounded-full bg-gradient-to-br from-blue-500 to-purple-600">
                     <div className="flex h-full w-full items-center justify-center text-sm font-bold text-white">
                       {testimonial.name
                         .split(' ')
@@ -356,12 +355,12 @@ export const TestimonialsCommercial: React.FC = () => {
               </div>
 
               {/* Testimonial */}
-              <p className="mb-4 line-clamp-3 text-sm text-gray-700 dark:text-gray-300">
+              <p className="mb-3 line-clamp-2 text-sm text-gray-700 dark:text-gray-300">
                 &ldquo;{testimonial.testimonial}&rdquo;
               </p>
 
               {/* Key Results */}
-              <div className="space-y-2 border-t border-gray-200 pt-4 dark:border-gray-700">
+              <div className="space-y-1.5 border-t border-gray-200 pt-3 dark:border-gray-700">
                 {testimonial.results.slice(0, 2).map((result, idx) => {
                   const Icon = iconMap[result.icon] || TrendingUp
                   return (
@@ -370,10 +369,10 @@ export const TestimonialsCommercial: React.FC = () => {
                       className="flex items-center justify-between"
                     >
                       <span className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
-                        <Icon className="h-4 w-4 text-green-600 dark:text-green-400" />
+                        <Icon className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
                         {result.metric}
                       </span>
-                      <span className="text-sm font-bold text-green-600 dark:text-green-400">
+                      <span className="text-sm font-bold text-blue-600 dark:text-blue-400">
                         {result.value}
                       </span>
                     </div>
@@ -393,16 +392,16 @@ export const TestimonialsCommercial: React.FC = () => {
           className="mt-12 text-center"
         >
           <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
-            Junte-se a dezenas de empresas que já transformaram seus negócios
+            Junte-se a 100+ empresas que transformaram seus negócios
           </p>
           <button
             onClick={() => {
               const message =
                 'Olá! Vi os casos de sucesso e quero transformar meu negócio também!'
-              const whatsappUrl = `https://wa.me/5575999999999?text=${encodeURIComponent(message)}`
+              const whatsappUrl = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(message)}`
               window.open(whatsappUrl, '_blank')
             }}
-            className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-green-600 to-emerald-600 px-8 py-3 text-lg font-bold text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+            className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-2.5 text-base font-bold text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl sm:px-8 sm:py-3 sm:text-lg"
           >
             Quero Resultados Assim
             <ChevronRight className="h-5 w-5" />
