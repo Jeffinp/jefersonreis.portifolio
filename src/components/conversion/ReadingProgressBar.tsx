@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import { motion, useSpring, useTransform } from 'framer-motion'
 import { Zap, Trophy, Star, Target, Flame } from 'lucide-react'
 
@@ -35,16 +35,19 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
   }, [])
 
   // Milestones configuration
-  const milestones = [
-    { percentage: 25, icon: Zap, message: '🔥 Continue assim!' },
-    { percentage: 50, icon: Star, message: '⭐ Metade do caminho!' },
-    { percentage: 75, icon: Target, message: '🎯 Quase lá!' },
-    {
-      percentage: 95,
-      icon: Trophy,
-      message: '🏆 Incrível! Finalize com o formulário!',
-    },
-  ]
+  const milestones = useMemo(
+    () => [
+      { percentage: 25, icon: Zap, message: '🔥 Continue assim!' },
+      { percentage: 50, icon: Star, message: '⭐ Metade do caminho!' },
+      { percentage: 75, icon: Target, message: '🎯 Quase lá!' },
+      {
+        percentage: 95,
+        icon: Trophy,
+        message: '🏆 Incrível! Finalize com o formulário!',
+      },
+    ],
+    [],
+  )
 
   const showMilestoneNotification = useCallback(
     (milestone: any) => {

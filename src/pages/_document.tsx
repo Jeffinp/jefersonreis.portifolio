@@ -26,7 +26,10 @@ export default function Document() {
         <link rel="preconnect" href="https://vitals.vercel-analytics.com" />
 
         {/* Google tag (gtag.js) para medição de conversões */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17550897920"></script>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17550897920"
+        ></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
