@@ -6,6 +6,8 @@ import { useTranslation } from 'next-i18next'
 import { SEOHead, StructuredData, SchemaOrg } from '@/components/seo'
 import { LoadingSkeleton } from '@/components/ui'
 import { useViewportLazyLoad } from '@/hooks/ui/useViewportLazyLoad'
+import HeaderCommercial from '@/components/layout/HeaderCommercial'
+import FooterCommercial from '@/components/layout/FooterCommercial'
 
 // Commercial Components (Freelancers/Clientes)
 const HeroCommercial = dynamic(
@@ -119,6 +121,8 @@ export default function FreelancePage() {
       <SchemaOrg lang={currentLang} />
       <Analytics />
 
+      <HeaderCommercial />
+
       <main>
         {/* Hero Commercial */}
         <HeroCommercial />
@@ -175,6 +179,8 @@ export default function FreelancePage() {
         </LazySection>
       </main>
 
+      <FooterCommercial />
+
       {/* Conversion Widgets */}
       <ChatWidget />
       <SocialProofNotifications
@@ -186,7 +192,7 @@ export default function FreelancePage() {
         enabled={true}
         features={{
           exitIntent: true,
-          readingProgress: true,
+          readingProgress: false,
           quiz: true,
           roiCalculator: true,
         }}

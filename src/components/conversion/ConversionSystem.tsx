@@ -38,7 +38,7 @@ export const ConversionSystem: React.FC<ConversionSystemProps> = ({
   enabled = true,
   features = {
     exitIntent: true,
-    readingProgress: true,
+    readingProgress: false,
     quiz: true,
     roiCalculator: true,
   },

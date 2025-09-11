@@ -70,7 +70,10 @@ function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </main>
 
-        {/* Floating buttons - Show only on empresa page (portfolio) */}
+        {/* Floating buttons - Only for empresa page */}
+        {/* Note: Commercial pages use ChatWidget instead */}
+
+        {/* All buttons for empresa page */}
         {router.pathname === '/empresa' && (
           <>
             <ScrollToTopButton />
