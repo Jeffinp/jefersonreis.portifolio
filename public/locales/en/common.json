@@ -70,5 +70,17 @@
   "portfolio": {
     "viewCommercial": "Get Quick Quote",
     "commercialDescription": "See prices, deadlines and hire directly via WhatsApp"
+  },
+  "projects": {
+    "featured": "Featured",
+    "demo": "Demo",
+    "code": "Code",
+    "all": "All",
+    "noProjectsInCategory": "No projects found in this category.",
+    "categories": {
+      "web": "Web",
+      "mobile": "Mobile",
+      "system": "Systems"
+    }
   }
 }

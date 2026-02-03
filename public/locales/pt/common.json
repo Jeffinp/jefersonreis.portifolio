@@ -70,5 +70,17 @@
   "portfolio": {
     "viewCommercial": "Quero Orçamento Rápido",
     "commercialDescription": "Veja preços, prazos e contrate direto pelo WhatsApp"
+  },
+  "projects": {
+    "featured": "Destaque",
+    "demo": "Demo",
+    "code": "Código",
+    "all": "Todos",
+    "noProjectsInCategory": "Nenhum projeto encontrado nesta categoria.",
+    "categories": {
+      "web": "Web",
+      "mobile": "Mobile",
+      "system": "Sistemas"
+    }
   }
 }

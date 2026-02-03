@@ -21,10 +21,10 @@
         "description": "SaaS jurídico que permitiu escritórios atenderem 3x mais clientes, reduzir custos operacionais em 60% e aumentar faturamento em 120%.",
         "fullDescription": "O Juristask revolucionou a gestão de escritórios de advocacia, permitindo que atendam 3x mais clientes enquanto reduzem custos operacionais em 60% e aumentam o faturamento em 120%. Mais do que um sistema, é uma máquina de crescimento: a arquitetura multi-tenant SaaS elimina custos de infraestrutura, a automação de processos libera advogados para focar em casos rentáveis, e o controle financeiro integrado (com Stripe) maximiza a lucratividade. Com FastAPI, PostgreSQL 15 e React 19, entreguei uma solução que atrai clientes pela eficiência: OCR processa documentos instantaneamente, IA organiza processos automaticamente, e a integração com Google Calendar elimina conflitos de agenda. O dashboard em tempo real mostra exatamente onde está o dinheiro, permitindo decisões estratégicas que multiplicam resultados. Escritórios usando o Juristask relatam não apenas organização, mas transformação: conquistam mais clientes pela agilidade, cobram honorários maiores pela qualidade do serviço, e escalam sem aumentar a equipe. É tecnologia gerando lucro real."
       },
-      "leve-saude-web": {
-        "title": "Leve Saúde — App Mobile para Gestão de Saúde",
-        "description": "Teste para empresa de saúde, com foco em conversão e experiência do usuário.",
-        "fullDescription": "Teste desenvolvido com React 19 e TypeScript, apresentando serviços de saúde de forma atrativa. Design responsivo com Tailwind CSS 4.0 e animações suaves para destacar os diferenciais da empresa."
+      "leveSaudeWeb": {
+        "title": "Leve Saúde — Website Institucional de Saúde",
+        "description": "Website institucional para empresa de saúde com foco em conversão e experiência do usuário.",
+        "fullDescription": "Website institucional desenvolvido com React 19 e TypeScript, apresentando serviços de saúde de forma atrativa. Design responsivo com Tailwind CSS 4.0 e animações suaves para destacar os diferenciais da empresa. Interface moderna que destaca os benefícios dos serviços, facilitando a jornada do usuário e aumentando a conversão de visitantes em leads qualificados."
       },
       "sistemaSolar3D": {
         "title": "AstroVerse — Sistema Solar 3D Interativo",

@@ -1,0 +1,50 @@
+{
+  "navigation": {
+    "home": "Início",
+    "about": "Sobre",
+    "projects": "Projetos",
+    "skills": "Habilidades",
+    "contact": "Contato"
+  },
+  "theme": {
+    "light": "Modo claro",
+    "dark": "Modo escuro",
+    "system": "Sistema",
+    "toggle": "Alternar tema"
+  },
+  "locale": {
+    "pt": "Português",
+    "en": "English",
+    "change": "Mudar idioma"
+  },
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "close": "Fechar",
+    "save": "Salvar",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "clear": "Limpar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "viewMore": "Ver mais",
+    "viewLess": "Ver menos"
+  },
+  "audience": {
+    "title": "Bem-vindo ao meu portfólio",
+    "subtitle": "Escolha como você quer me conhecer",
+    "empresa": {
+      "title": "Sou Empresa",
+      "description": "Portfólio técnico completo com projetos e habilidades"
+    },
+    "freelance": {
+      "title": "Preciso de Serviços",
+      "description": "Soluções profissionais para o seu negócio"
+    }
+  }
+}
