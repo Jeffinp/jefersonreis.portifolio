@@ -16,7 +16,11 @@ interface ProjectModalProps {
   triggerRef?: React.RefObject<HTMLButtonElement | null>
 }
 
-export function ProjectModal({ project, onClose, triggerRef }: ProjectModalProps) {
+export function ProjectModal({
+  project,
+  onClose,
+  triggerRef,
+}: ProjectModalProps) {
   const [mounted, setMounted] = useState(false)
   const closeBtnRef = useRef<HTMLButtonElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
@@ -70,7 +74,9 @@ export function ProjectModal({ project, onClose, triggerRef }: ProjectModalProps
 
     const trapFocus = (e: KeyboardEvent) => {
       if (e.key !== 'Tab') return
-      const focusable = Array.from(panel.querySelectorAll<HTMLElement>(FOCUSABLE))
+      const focusable = Array.from(
+        panel.querySelectorAll<HTMLElement>(FOCUSABLE)
+      )
       if (focusable.length === 0) return
       const first = focusable.at(0)
       const last = focusable.at(-1)
@@ -143,7 +149,7 @@ export function ProjectModal({ project, onClose, triggerRef }: ProjectModalProps
                 type="button"
                 onClick={onClose}
                 aria-label="Fechar modal"
-                className="text-muted-foreground hover:text-foreground hover:bg-accent absolute top-4 right-4 z-10 rounded-full p-1.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="text-muted-foreground hover:text-foreground hover:bg-accent focus-visible:ring-ring absolute top-4 right-4 z-10 rounded-full p-1.5 transition-colors focus:outline-none focus-visible:ring-2"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -174,7 +180,7 @@ export function ProjectModal({ project, onClose, triggerRef }: ProjectModalProps
                   {/* Technologies */}
                   {project.technologies?.length > 0 && (
                     <div>
-                      <p className="text-muted-foreground mb-2 text-xs font-semibold uppercase tracking-wider">
+                      <p className="text-muted-foreground mb-2 text-xs font-semibold tracking-wider uppercase">
                         Tecnologias
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -190,7 +196,7 @@ export function ProjectModal({ project, onClose, triggerRef }: ProjectModalProps
                   {/* Description with expandable */}
                   {description && (
                     <div>
-                      <p className="text-muted-foreground mb-2 text-xs font-semibold uppercase tracking-wider">
+                      <p className="text-muted-foreground mb-2 text-xs font-semibold tracking-wider uppercase">
                         Sobre o Projeto
                       </p>
                       <ExpandableDescription text={description} maxLines={4} />
@@ -233,6 +239,6 @@ export function ProjectModal({ project, onClose, triggerRef }: ProjectModalProps
         </>
       )}
     </AnimatePresence>,
-    document.body,
+    document.body
   )
 }

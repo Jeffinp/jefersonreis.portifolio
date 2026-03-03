@@ -9,7 +9,10 @@ export function SkillsSection() {
   const t = useTranslations('skills')
 
   return (
-    <SectionWrapper id="skills">
+    <SectionWrapper
+      id="skills"
+      className="-mt-8 rounded-t-[2.5rem] bg-background pt-16 sm:-mt-10 sm:rounded-t-[3rem] sm:pt-20"
+    >
       <SectionHeader
         subtitle={t('subtitle')}
         title={t('title')}

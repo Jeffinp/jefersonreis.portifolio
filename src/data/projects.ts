@@ -6,7 +6,6 @@ import type { Project, ProjectCategory } from '@/types'
  */
 
 export const projects: Project[] = [
-
   // ==========================================
   // CLIENT PRODUCT — NFC
   // ==========================================

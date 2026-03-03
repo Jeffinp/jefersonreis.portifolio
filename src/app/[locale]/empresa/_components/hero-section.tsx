@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import { Download, ArrowRight } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
+import { AuroraBackground } from '@/components/ui/aurora-background'
 import { fadeIn, staggerContainer, staggerItem } from '@/lib/utils'
 
 export function HeroSection() {
   const t = useTranslations('hero.empresa')
 
   return (
-    <section className="relative min-h-[calc(100vh-4rem)] pt-16">
+    <AuroraBackground className="min-h-[calc(100vh-4rem)] pt-16">
       <div className="container-width flex min-h-[calc(100vh-8rem)] items-center">
         <motion.div
           className="mx-auto max-w-4xl text-center"
@@ -82,9 +83,7 @@ export function HeroSection() {
               const [value, ...rest] = label.split(' ')
               return (
                 <div key={key} className="text-center">
-                  <div className="text-primary text-3xl font-bold">
-                    {value}
-                  </div>
+                  <div className="text-primary text-3xl font-bold">{value}</div>
                   <div className="text-muted-foreground text-sm">
                     {rest.join(' ')}
                   </div>
@@ -114,6 +113,6 @@ export function HeroSection() {
           />
         </motion.div>
       </motion.div>
-    </section>
+    </AuroraBackground>
   )
 }

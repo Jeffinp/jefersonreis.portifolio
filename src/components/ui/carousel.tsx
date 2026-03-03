@@ -36,7 +36,7 @@ export function Carousel({
     (index: number) => {
       if (emblaApi) emblaApi.scrollTo(index)
     },
-    [emblaApi],
+    [emblaApi]
   )
 
   const syncState = useCallback(() => {

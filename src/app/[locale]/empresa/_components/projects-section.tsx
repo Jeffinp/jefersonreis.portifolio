@@ -36,7 +36,7 @@ export function ProjectsSection() {
       triggerRef.current = trigger
       setSelectedProject(project)
     },
-    [],
+    []
   )
 
   const handleClose = useCallback(() => {
