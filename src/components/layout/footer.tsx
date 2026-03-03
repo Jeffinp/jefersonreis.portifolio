@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { Github, Linkedin, Mail, Instagram } from 'lucide-react'
 import { FaWhatsapp, FaDiscord, FaTwitter } from 'react-icons/fa'
+import { useLocale, useTranslations } from 'next-intl'
 import { siteConfig } from '@/lib/config/site'
 
 const socialLinks = [
@@ -44,58 +45,82 @@ const socialLinks = [
 ]
 
 export function Footer() {
+  const tNav = useTranslations('navigation')
+  const locale = useLocale()
   const currentYear = new Date().getFullYear()
+  const isPt = locale === 'pt'
 
   return (
-    <footer className="border-border border-t">
-      <div className="container-width py-12">
-        <div className="grid gap-8 md:grid-cols-3">
+    <footer className="border-border relative border-t">
+      <div className="from-primary/35 via-primary/10 to-transparent absolute top-0 left-0 h-px w-full bg-gradient-to-r" />
+
+      <div className="container-width py-14">
+        <div className="grid gap-10 md:grid-cols-[1.15fr_0.9fr_1fr]">
           {/* Brand */}
-          <div className="space-y-4">
-            <Link href="/" className="flex items-center space-x-2">
-              <span className="gradient-text text-xl font-bold">
+          <div className="space-y-5">
+            <Link href="/" className="inline-flex items-center">
+              <span className="gradient-text text-2xl leading-tight font-bold">
                 {siteConfig.name}
               </span>
             </Link>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-muted-foreground max-w-md text-[15px] leading-relaxed">
               {siteConfig.description}
             </p>
+
+            <div className="flex flex-wrap gap-2.5 pt-1">
+              <a
+                href={`mailto:${siteConfig.contactEmail}`}
+                className="text-muted-foreground border-border/70 hover:border-primary/40 hover:text-primary inline-flex rounded-full border px-3 py-1.5 text-xs transition-colors"
+              >
+                {siteConfig.contactEmail}
+              </a>
+              <a
+                href={siteConfig.whatsapp.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground border-border/70 hover:border-primary/40 hover:text-primary inline-flex rounded-full border px-3 py-1.5 text-xs transition-colors"
+              >
+                WhatsApp
+              </a>
+            </div>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold">Links Rápidos</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="text-foreground/95 text-sm font-semibold tracking-wide">
+              {isPt ? 'Links Rápidos' : 'Quick Links'}
+            </h3>
+            <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
                   href="#about"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary inline-flex transition-colors"
                 >
-                  Sobre
+                  {tNav('about')}
                 </Link>
               </li>
               <li>
                 <Link
                   href="#projects"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary inline-flex transition-colors"
                 >
-                  Projetos
+                  {tNav('projects')}
                 </Link>
               </li>
               <li>
                 <Link
                   href="#skills"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary inline-flex transition-colors"
                 >
-                  Habilidades
+                  {tNav('skills')}
                 </Link>
               </li>
               <li>
                 <Link
                   href="#contact"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary inline-flex transition-colors"
                 >
-                  Contato
+                  {tNav('contact')}
                 </Link>
               </li>
             </ul>
@@ -103,8 +128,10 @@ export function Footer() {
 
           {/* Social */}
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold">Redes Sociais</h3>
-            <div className="flex gap-4">
+            <h3 className="text-foreground/95 text-sm font-semibold tracking-wide">
+              {isPt ? 'Redes Sociais' : 'Social'}
+            </h3>
+            <div className="flex flex-wrap gap-2.5">
               {socialLinks.map((link) => {
                 const Icon = link.icon
                 return (
@@ -113,10 +140,10 @@ export function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-muted-foreground border-border/70 hover:border-primary/40 hover:text-primary inline-flex h-9 w-9 items-center justify-center rounded-full border transition-colors"
                     aria-label={link.name}
                   >
-                    <Icon className="h-5 w-5" />
+                    <Icon className="h-[18px] w-[18px]" />
                   </a>
                 )
               })}
@@ -125,9 +152,10 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="border-border text-muted-foreground mt-8 border-t pt-8 text-center text-sm">
+        <div className="border-border text-muted-foreground mt-10 border-t pt-6 text-center text-sm">
           <p>
-            © {currentYear} {siteConfig.name}. Todos os direitos reservados.
+            © {currentYear} {siteConfig.name}.{' '}
+            {isPt ? 'Todos os direitos reservados.' : 'All rights reserved.'}
           </p>
         </div>
       </div>
