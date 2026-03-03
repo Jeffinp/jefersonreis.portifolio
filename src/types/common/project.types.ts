@@ -37,7 +37,7 @@ export interface Project {
   status: ProjectStatus
   tags: ProjectTag[]
   images: ProjectImage[]
-  thumbnail: ProjectImage
+  thumbnail?: ProjectImage
   technologies: string[]
   liveUrl?: string
   githubUrl?: string

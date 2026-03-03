@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
@@ -26,7 +27,14 @@ export function Header() {
       <nav className="container-width flex h-16 items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
-          <span className="gradient-text text-xl font-bold">JR</span>
+          <Image
+            src="/assets/icon/favicon-32x32.png"
+            alt="Jeferson Reis"
+            width={32}
+            height={32}
+            className="h-8 w-8"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}

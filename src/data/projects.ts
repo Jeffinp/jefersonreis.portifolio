@@ -22,7 +22,7 @@ export const projects: Project[] = [
     category: 'mobile',
     status: 'completed',
     featured: true,
-    order: 6,
+    order: 7,
     client: 'Marcelo Guimarães',
     role: 'Arquiteto e Desenvolvedor Full Stack',
     thumbnail: {
@@ -95,11 +95,7 @@ export const projects: Project[] = [
     category: 'web',
     status: 'completed',
     featured: true,
-    order: 1,
-    thumbnail: {
-      url: '/assets/images/projects/web/rezerve-barber/thumbnail.webp',
-      alt: 'Rezerve Barber - Sistema de Agendamento',
-    },
+    order: 10,
     images: [],
     tags: [
       { id: 'php', label: 'PHP', color: 'bg-indigo-600' },
@@ -140,7 +136,7 @@ export const projects: Project[] = [
     category: 'web',
     status: 'in-progress',
     featured: true,
-    order: 2,
+    order: 4,
     thumbnail: {
       url: '/assets/images/projects/web/project-assistente-vendas-ia/main.png',
       alt: 'Assistente de Vendas com IA',
@@ -203,7 +199,7 @@ export const projects: Project[] = [
     category: 'web',
     status: 'in-progress',
     featured: true,
-    order: 3,
+    order: 5,
     thumbnail: {
       url: '/assets/images/projects/web/project-gestao-juridica/main.png',
       alt: 'Juristask',
@@ -252,7 +248,7 @@ export const projects: Project[] = [
     category: 'web',
     status: 'completed',
     featured: true,
-    order: 4,
+    order: 9,
     thumbnail: {
       url: '/assets/images/projects/web/project-flyserv/main.png',
       alt: 'FlyServ Drones',
@@ -295,7 +291,7 @@ export const projects: Project[] = [
     category: 'web',
     status: 'completed',
     featured: true,
-    order: 5,
+    order: 11,
     thumbnail: {
       url: '/assets/images/projects/web/project-lexcheck/main.png',
       alt: 'LexCheck',
@@ -561,7 +557,7 @@ export const projects: Project[] = [
     category: 'mobile',
     status: 'in-progress',
     featured: true,
-    order: 1,
+    order: 12,
     thumbnail: {
       url: '/assets/images/projects/mobile/project-stashy/main.png',
       alt: 'Stashy',
@@ -607,7 +603,7 @@ export const projects: Project[] = [
     category: 'mobile',
     status: 'completed',
     featured: true,
-    order: 2,
+    order: 13,
     thumbnail: {
       url: '/assets/images/projects/mobile/project-leve-saude-mobile/main.png',
       alt: 'Leve Saúde Mobile',
@@ -656,7 +652,7 @@ export const projects: Project[] = [
     category: 'web',
     status: 'completed',
     featured: true,
-    order: 7,
+    order: 2,
     role: 'Arquiteto e Desenvolvedor Full Stack',
     thumbnail: {
       url: '/assets/images/projects/web/project-orka/main.png',
@@ -733,7 +729,7 @@ export const projects: Project[] = [
     category: 'mobile',
     status: 'in-progress',
     featured: true,
-    order: 8,
+    order: 3,
     role: 'Arquiteto e Desenvolvedor Full Stack',
     thumbnail: {
       url: '/assets/images/projects/mobile/project-carematch/main.png',
@@ -812,7 +808,7 @@ export const projects: Project[] = [
     category: 'web',
     status: 'completed',
     featured: true,
-    order: 9,
+    order: 8,
     client: 'Ágata Martins',
     role: 'Desenvolvedor Full Stack e Designer',
     thumbnail: {
@@ -886,7 +882,7 @@ export const projects: Project[] = [
     category: 'web',
     status: 'in-progress',
     featured: true,
-    order: 10,
+    order: 6,
     role: 'Arquiteto e Desenvolvedor Full Stack',
     thumbnail: {
       url: '/assets/images/projects/web/project-studyflow/main.png',
@@ -966,30 +962,9 @@ export const projects: Project[] = [
     category: 'system',
     status: 'completed',
     featured: true,
-    order: 11,
+    order: 1,
     role: 'Criador e Engenheiro de Sistemas',
-    thumbnail: {
-      url: '/assets/images/projects/system/project-stormdb/main.png',
-      alt: 'StormDB — Banco de Dados In-Memory em Rust',
-    },
-    images: [
-      {
-        url: '/assets/images/projects/system/project-stormdb/main.png',
-        alt: 'Arquitetura do StormDB com crates separados',
-      },
-      {
-        url: '/assets/images/projects/system/project-stormdb/tui.png',
-        alt: 'TUI Dashboard de monitoramento em tempo real',
-      },
-      {
-        url: '/assets/images/projects/system/project-stormdb/benchmark.png',
-        alt: 'Benchmark de 110k ops/s em operações GET',
-      },
-      {
-        url: '/assets/images/projects/system/project-stormdb/replication.png',
-        alt: 'Replicação Master-Slave via TCP',
-      },
-    ],
+    images: [],
     tags: [
       { id: 'rust', label: 'Rust', color: 'bg-orange-700' },
       { id: 'tokio', label: 'Tokio', color: 'bg-purple-600' },

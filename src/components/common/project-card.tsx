@@ -1,8 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, Info } from 'lucide-react'
+import { ExternalLink, Github, Info, ImageOff } from 'lucide-react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -15,6 +16,10 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
+  const t = useTranslations('projects')
+  const tc = useTranslations('common')
+  const hasThumbnail = project.thumbnail?.url
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -29,14 +34,23 @@ export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
       >
         {/* Thumbnail */}
         <div className="relative aspect-video overflow-hidden">
-          <Image
-            src={project.thumbnail.url}
-            alt={project.thumbnail.alt}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-110"
-          />
+          {hasThumbnail ? (
+            <Image
+              src={project.thumbnail!.url}
+              alt={project.thumbnail!.alt}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-110"
+            />
+          ) : (
+            <div className="bg-muted flex h-full w-full flex-col items-center justify-center gap-2">
+              <ImageOff className="text-muted-foreground/40 h-10 w-10" />
+              <span className="text-muted-foreground/50 text-xs">
+                {t('noImage')}
+              </span>
+            </div>
+          )}
           {project.featured && (
-            <Badge className="absolute top-4 right-4">Destaque</Badge>
+            <Badge className="absolute top-4 right-4">{t('featured')}</Badge>
           )}
         </div>
 
@@ -55,7 +69,6 @@ export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
         </CardContent>
 
         <CardFooter className="flex-wrap gap-2 p-6 pt-0">
-          {/* Detalhes — primary action */}
           {onDetails && (
             <Button
               size="sm"
@@ -65,7 +78,7 @@ export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
               }}
             >
               <Info className="mr-2 h-4 w-4" />
-              Detalhes
+              {tc('details')}
             </Button>
           )}
 
@@ -82,7 +95,7 @@ export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
                 rel="noopener noreferrer"
               >
                 <ExternalLink className="mr-2 h-4 w-4" />
-                Demo
+                {tc('demo')}
               </a>
             </Button>
           )}
@@ -99,7 +112,7 @@ export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
                 rel="noopener noreferrer"
               >
                 <Github className="mr-2 h-4 w-4" />
-                Code
+                {tc('code')}
               </a>
             </Button>
           )}

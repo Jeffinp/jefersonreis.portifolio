@@ -50,7 +50,8 @@
     "description": "Some of the projects I've recently developed",
     "all": "All",
     "empty": "No projects found in this category.",
-    "featured": "Featured"
+    "featured": "Featured",
+    "noImage": "No image available"
   },
   "testimonials": {
     "subtitle": "Testimonials",

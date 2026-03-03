@@ -18,10 +18,18 @@ export function ProjectsSection() {
   const triggerRef = useRef<HTMLButtonElement | null>(null)
 
   const categories = getProjectCategories()
+
+  // Featured first (sorted by order), then non-featured
+  const sortedProjects = [...projects].sort((a, b) => {
+    if (a.featured && !b.featured) return -1
+    if (!a.featured && b.featured) return 1
+    return (a.order || 99) - (b.order || 99)
+  })
+
   const filteredProjects =
     selectedCategory === 'all'
-      ? projects
-      : projects.filter((p) => p.category === selectedCategory)
+      ? sortedProjects
+      : sortedProjects.filter((p) => p.category === selectedCategory)
 
   const handleDetails = useCallback(
     (project: Project, trigger: HTMLButtonElement) => {

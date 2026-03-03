@@ -50,7 +50,8 @@
     "description": "Alguns dos projetos que desenvolvi recentemente",
     "all": "Todos",
     "empty": "Nenhum projeto encontrado nesta categoria.",
-    "featured": "Destaque"
+    "featured": "Destaque",
+    "noImage": "Sem imagem disponível"
   },
   "testimonials": {
     "subtitle": "Depoimentos",
