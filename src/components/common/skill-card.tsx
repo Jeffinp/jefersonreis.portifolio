@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import type { Skill } from '@/types'
 
 interface SkillCardProps {
@@ -8,42 +7,45 @@ interface SkillCardProps {
 }
 
 export function SkillCard({ skill }: SkillCardProps) {
-  const [showTooltip, setShowTooltip] = useState(false)
+  const iconSrc = skill.icon
+    ? skill.icon.startsWith('/')
+      ? skill.icon
+      : `/${skill.icon}`
+    : undefined
 
   return (
     <div
-      className="group relative inline-flex flex-col items-center"
-      onMouseEnter={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}
+      className="group relative inline-flex w-20 flex-col items-center gap-2 outline-none"
+      tabIndex={0}
+      aria-label={skill.name}
     >
-      {/* Icon */}
-      {skill.icon && (
-        <div className="flex h-12 w-12 items-center justify-center transition-transform group-hover:scale-110">
+      {iconSrc && (
+        <div className="bg-card/80 border-border/60 shadow-background/40 flex h-14 w-14 items-center justify-center rounded-xl border shadow-[0_10px_24px_-16px] transition-all duration-200 group-hover:-translate-y-0.5 group-hover:border-primary/40 group-hover:shadow-primary/30 group-focus-visible:-translate-y-0.5 group-focus-visible:border-primary/50 group-focus-visible:ring-2 group-focus-visible:ring-primary/40">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={skill.icon.startsWith('/') ? skill.icon : `/${skill.icon}`}
+            src={iconSrc}
             alt={skill.name}
             width={48}
             height={48}
-            className="h-12 w-12 object-contain"
+            className="h-9 w-9 object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]"
             loading="lazy"
           />
         </div>
       )}
 
-      {/* Tooltip */}
-      {showTooltip && (
-        <div className="bg-popover text-popover-foreground absolute -top-12 left-1/2 z-10 -translate-x-1/2 rounded-md px-3 py-2 text-sm whitespace-nowrap shadow-md">
-          <div className="font-semibold">{skill.name}</div>
-          {skill.yearsOfExperience && (
-            <div className="text-muted-foreground text-xs">
-              {skill.yearsOfExperience}+ anos
-            </div>
-          )}
-          {/* Arrow */}
-          <div className="bg-popover absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45" />
-        </div>
-      )}
+      <div className="text-muted-foreground text-center text-[11px] leading-none">
+        {skill.name}
+      </div>
+
+      <div className="bg-popover text-popover-foreground pointer-events-none absolute -top-14 left-1/2 z-20 -translate-x-1/2 rounded-md px-3 py-1.5 text-xs whitespace-nowrap opacity-0 shadow-md transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100">
+        <span className="font-semibold">{skill.name}</span>
+        {skill.yearsOfExperience && (
+          <span className="text-muted-foreground ml-1">
+            ({skill.yearsOfExperience}+ anos)
+          </span>
+        )}
+        <div className="bg-popover absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45" />
+      </div>
     </div>
   )
 }

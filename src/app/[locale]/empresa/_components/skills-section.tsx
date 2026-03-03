@@ -19,7 +19,7 @@ export function SkillsSection() {
         description={t('description')}
       />
 
-      <div className="space-y-10">
+      <div className="space-y-12">
         {skillGroups.map((group) => {
           const IconComponent = LucideIcons[
             group.icon as keyof typeof LucideIcons
@@ -32,10 +32,13 @@ export function SkillsSection() {
                   <IconComponent className="text-primary h-6 w-6" />
                 )}
                 <h3 className="text-lg font-semibold">{group.label}</h3>
-                <div className="bg-border h-px flex-1" />
+                <span className="text-muted-foreground text-xs font-medium">
+                  {group.skills.length}
+                </span>
+                <div className="bg-border/60 h-px flex-1" />
               </div>
 
-              <div className="flex flex-wrap items-center gap-8">
+              <div className="flex flex-wrap items-start gap-x-4 gap-y-6">
                 {group.skills.map((skill) => (
                   <SkillCard key={skill.id} skill={skill} />
                 ))}
