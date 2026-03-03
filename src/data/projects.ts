@@ -874,38 +874,17 @@ export const projects: Project[] = [
   {
     id: 'studyflow',
     slug: 'studyflow',
-    title: 'StudyFlow — Concursando 360',
+    title: 'Concursando360',
     description:
       'Plataforma B2C de gestão de estudos em monorepo — NestJS 11, Next.js 16, React Native (Expo 54), Docker e VPS',
     longDescription:
-      'O StudyFlow (Concursando 360) é uma plataforma B2C completa de planejamento e gestão de estudos para concurseiros. O diferencial de engenharia é a estrutura em Monorepo: três aplicações independentes (backend, web e mobile) coexistem em um único repositório com padronização de código, deploy orquestrado e manutenção centralizada.\n\nO backend NestJS 11 utiliza PostgreSQL + TypeORM, autenticação JWT com hash Argon2 (vencedor do Password Hashing Competition, resistente a ataques GPU/ASIC), proteção com Helmet e Throttler contra força bruta, integração Stripe para assinaturas e Resend para emails transacionais.\n\nA plataforma web usa Next.js 16.1 com React 19.2 e Tailwind CSS v4, adotando React Server Components para enviar o mínimo de JavaScript ao navegador.\n\nO app mobile (React Native + Expo SDK 54) segue Feature-Sliced Design com domínios isolados (Cronograma, Estudos, etc.), Expo Router para file-based routing com deep-linking, expo-secure-store para tokens no cofre nativo do dispositivo, haptics, push notifications e monetização via Google Mobile Ads.\n\nA infraestrutura é totalmente dockerizada com scripts automatizados e deploy self-hosted em VPS Hostinger, eliminando dependência de PaaS caros e reduzindo custo operacional.',
+      'O Concursando360 é uma plataforma B2C completa de planejamento e gestão de estudos para concurseiros. O diferencial de engenharia é a estrutura em Monorepo: três aplicações independentes (backend, web e mobile) coexistem em um único repositório com padronização de código, deploy orquestrado e manutenção centralizada.\n\nO backend NestJS 11 utiliza PostgreSQL + TypeORM, autenticação JWT com hash Argon2 (vencedor do Password Hashing Competition, resistente a ataques GPU/ASIC), proteção com Helmet e Throttler contra força bruta, integração Stripe para assinaturas e Resend para emails transacionais.\n\nA plataforma web usa Next.js 16.1 com React 19.2 e Tailwind CSS v4, adotando React Server Components para enviar o mínimo de JavaScript ao navegador.\n\nO app mobile (React Native + Expo SDK 54) segue Feature-Sliced Design com domínios isolados (Cronograma, Estudos, etc.), Expo Router para file-based routing com deep-linking, expo-secure-store para tokens no cofre nativo do dispositivo, haptics, push notifications e monetização via Google Mobile Ads.\n\nA infraestrutura é totalmente dockerizada com scripts automatizados e deploy self-hosted em VPS Hostinger, eliminando dependência de PaaS caros e reduzindo custo operacional.',
     category: 'web',
     status: 'in-progress',
     featured: true,
     order: 6,
     role: 'Arquiteto e Desenvolvedor Full Stack',
-    thumbnail: {
-      url: '/assets/images/projects/web/project-studyflow/main.png',
-      alt: 'StudyFlow — Plataforma de Gestão de Estudos',
-    },
-    images: [
-      {
-        url: '/assets/images/projects/web/project-studyflow/main.png',
-        alt: 'Dashboard web com cronograma de estudos',
-      },
-      {
-        url: '/assets/images/projects/web/project-studyflow/mobile.png',
-        alt: 'App mobile com planejamento diário',
-      },
-      {
-        url: '/assets/images/projects/web/project-studyflow/stats.png',
-        alt: 'Métricas e progresso de estudos',
-      },
-      {
-        url: '/assets/images/projects/web/project-studyflow/docker.png',
-        alt: 'Infraestrutura Docker e deploy automatizado',
-      },
-    ],
+    images: [],
     tags: [
       { id: 'nestjs', label: 'NestJS 11', color: 'bg-red-600' },
       { id: 'nextjs', label: 'Next.js 16', color: 'bg-black' },

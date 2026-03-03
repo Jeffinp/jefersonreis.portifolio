@@ -28,11 +28,11 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <Image
-            src="/assets/icon/favicon-32x32.png"
+            src="/assets/icon/apple-icon.png"
             alt="Jeferson Reis"
-            width={32}
-            height={32}
-            className="h-8 w-8"
+            width={64}
+            height={64}
+            className="h-9 w-9 rounded-full object-cover"
             priority
           />
         </Link>
