@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
+import { LocaleSwitcher } from '@/components/ui/locale-switcher'
 import { cn } from '@/lib/utils'
 
 const navigation = [
@@ -18,6 +19,7 @@ const navigation = [
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const t = useTranslations('navigation')
+  const tc = useTranslations('common')
 
   return (
     <header className="border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 fixed top-0 z-50 w-full border-b backdrop-blur">
@@ -44,7 +46,8 @@ export function Header() {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <LocaleSwitcher />
           <ThemeToggle />
 
           {/* Mobile menu button */}
@@ -53,7 +56,7 @@ export function Header() {
             className="text-muted-foreground hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center rounded-md p-2 md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            <span className="sr-only">Abrir menu</span>
+            <span className="sr-only">{tc('openMenu')}</span>
             {mobileMenuOpen ? (
               <X className="h-6 w-6" />
             ) : (

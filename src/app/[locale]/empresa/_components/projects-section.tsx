@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useRef, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { SectionWrapper, SectionHeader, ProjectCard } from '@/components/common'
 import { ProjectModal } from '@/components/projects'
 import { projects, getProjectCategories } from '@/data'
@@ -9,6 +10,7 @@ import { Carousel } from '@/components/ui/carousel'
 import type { Project, ProjectCategory } from '@/types'
 
 export function ProjectsSection() {
+  const t = useTranslations('projects')
   const [selectedCategory, setSelectedCategory] = useState<
     ProjectCategory | 'all'
   >('all')
@@ -37,9 +39,9 @@ export function ProjectsSection() {
     <>
       <SectionWrapper id="projects">
         <SectionHeader
-          subtitle="Meu Trabalho"
-          title="Projetos em Destaque"
-          description="Alguns dos projetos que desenvolvi recentemente"
+          subtitle={t('subtitle')}
+          title={t('title')}
+          description={t('description')}
         />
 
         {/* Category filters */}
@@ -49,7 +51,7 @@ export function ProjectsSection() {
             size="sm"
             onClick={() => setSelectedCategory('all')}
           >
-            Todos
+            {t('all')}
           </Button>
           {categories.map((category) => (
             <Button
@@ -81,7 +83,7 @@ export function ProjectsSection() {
           </Carousel>
         ) : (
           <p className="text-muted-foreground py-12 text-center">
-            Nenhum projeto encontrado nesta categoria.
+            {t('empty')}
           </p>
         )}
       </SectionWrapper>

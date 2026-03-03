@@ -33,10 +33,48 @@
     "next": "Próximo",
     "previous": "Anterior",
     "viewMore": "Ver mais",
-    "viewLess": "Ver menos"
+    "viewLess": "Ver menos",
+    "openMenu": "Abrir menu",
+    "details": "Detalhes",
+    "demo": "Demo",
+    "code": "Code"
   },
-  "audience": {
-    "title": "Bem-vindo ao meu portfólio",
-    "subtitle": "Portfólio técnico completo com projetos e habilidades"
+  "skills": {
+    "subtitle": "Minhas Habilidades",
+    "title": "Tecnologias & Ferramentas",
+    "description": "Stack de tecnologias que domino"
+  },
+  "projects": {
+    "subtitle": "Meu Trabalho",
+    "title": "Projetos em Destaque",
+    "description": "Alguns dos projetos que desenvolvi recentemente",
+    "all": "Todos",
+    "empty": "Nenhum projeto encontrado nesta categoria.",
+    "featured": "Destaque"
+  },
+  "testimonials": {
+    "subtitle": "Depoimentos",
+    "title": "O que dizem sobre meu trabalho",
+    "description": "{count} clientes atendidos com nota média de {rating}/5"
+  },
+  "contact": {
+    "subtitle": "Entre em Contato",
+    "title": "Vamos Trabalhar Juntos",
+    "description": "Tem um projeto em mente? Adoraria ouvir sobre ele!",
+    "infoTitle": "Informações de Contato",
+    "form": {
+      "name": "Nome *",
+      "namePlaceholder": "Seu nome",
+      "email": "Email *",
+      "emailPlaceholder": "seu@email.com",
+      "subject": "Assunto *",
+      "subjectPlaceholder": "Sobre o que você quer falar?",
+      "message": "Mensagem *",
+      "messagePlaceholder": "Sua mensagem...",
+      "submit": "Enviar Mensagem",
+      "submitting": "Enviando...",
+      "success": "Mensagem enviada com sucesso!",
+      "error": "Erro ao enviar mensagem. Tente novamente."
+    }
   }
 }

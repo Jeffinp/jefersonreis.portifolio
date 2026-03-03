@@ -77,20 +77,20 @@ export function HeroSection() {
             className="mt-16 grid grid-cols-3 gap-8"
             variants={fadeIn}
           >
-            {[
-              { key: 'experience', value: '5+', label: 'Anos' },
-              { key: 'projects', value: '50+', label: 'Projetos' },
-              { key: 'clients', value: '30+', label: 'Clientes' },
-            ].map((stat) => (
-              <div key={stat.key} className="text-center">
-                <div className="text-primary text-3xl font-bold">
-                  {stat.value}
+            {(['experience', 'projects', 'clients'] as const).map((key) => {
+              const label = t(`stats.${key}`)
+              const [value, ...rest] = label.split(' ')
+              return (
+                <div key={key} className="text-center">
+                  <div className="text-primary text-3xl font-bold">
+                    {value}
+                  </div>
+                  <div className="text-muted-foreground text-sm">
+                    {rest.join(' ')}
+                  </div>
                 </div>
-                <div className="text-muted-foreground text-sm">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </motion.div>
         </motion.div>
       </div>
