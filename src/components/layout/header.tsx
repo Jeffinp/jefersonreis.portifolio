@@ -23,7 +23,7 @@ export function Header() {
   const tc = useTranslations('common')
 
   return (
-    <header className="border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 fixed top-0 z-50 w-full border-b backdrop-blur">
+    <header className="border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 fixed top-0 z-50 w-full border-b backdrop-blur dark:border-white/8 dark:bg-white/4 dark:backdrop-blur-xl dark:backdrop-saturate-[1.8] dark:shadow-[inset_0_-1px_0_0_rgba(255,255,255,0.05),0_4px_24px_rgba(0,0,0,0.2)]">
       <nav className="container-width flex h-16 items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">

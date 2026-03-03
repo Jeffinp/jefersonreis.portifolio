@@ -136,7 +136,7 @@ export function ProjectModal({
               role="dialog"
               aria-modal="true"
               aria-labelledby="modal-project-title"
-              className="bg-card border-border relative flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border shadow-2xl"
+              className="liquid-card bg-card border-border relative flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border shadow-2xl"
               initial={{ opacity: 0, scale: 0.95, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 16 }}

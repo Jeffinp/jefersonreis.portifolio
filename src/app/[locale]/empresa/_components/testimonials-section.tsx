@@ -60,7 +60,7 @@ export function TestimonialsSection() {
       >
         {testimonials.map((testimonial) => (
           <motion.div key={testimonial.id} variants={staggerItem}>
-            <Card className="card-glow h-full">
+            <Card className="liquid-card card-glow h-full">
               <CardContent className="flex h-full flex-col justify-between p-6">
                 <div className="space-y-4">
                   <div className="flex items-start justify-between">

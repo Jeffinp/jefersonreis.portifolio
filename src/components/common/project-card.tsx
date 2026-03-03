@@ -28,7 +28,7 @@ export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
   return (
     <div className="h-full transform-gpu will-change-transform transition-transform duration-300 ease-out motion-safe:hover:-translate-y-1.5 motion-reduce:transform-none motion-reduce:transition-none">
       <Card
-        className="group border-border/70 bg-card/95 hover:border-primary/40 h-full cursor-pointer overflow-hidden transition-colors duration-300 hover:shadow-[0_14px_34px_-24px_rgba(59,130,246,0.45)]"
+        className="liquid-card group border-border/70 bg-card/95 hover:border-primary/40 h-full cursor-pointer overflow-hidden transition-colors duration-300 hover:shadow-[0_14px_34px_-24px_rgba(59,130,246,0.45)]"
         onClick={onClick}
       >
         {/* Thumbnail */}

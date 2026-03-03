@@ -167,6 +167,39 @@ body {
   box-shadow: 0 0 20px -4px rgba(100, 130, 255, 0.2), 0 0 6px -2px rgba(100, 130, 255, 0.1);
 }
 
+/* Liquid Glass — dark mode cards */
+.dark .liquid-card {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.dark .liquid-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    transparent 40%,
+    transparent 60%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dark .liquid-card:hover {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+    0 14px 40px rgba(100, 130, 255, 0.15);
+}
+
 /* Hero stagger animation — CSS-only for instant LCP */
 @keyframes hero-fade-up {
   from {
@@ -199,6 +232,7 @@ body {
   backdrop-filter: blur(12px);
   border: 1px solid color-mix(in oklch, var(--color-border) 50%, transparent);
 }
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
