@@ -1,0 +1,42 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "theme": {
+    "light": "Light mode",
+    "dark": "Dark mode",
+    "system": "System",
+    "toggle": "Toggle theme"
+  },
+  "locale": {
+    "pt": "Português",
+    "en": "English",
+    "change": "Change language"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search",
+    "filter": "Filter",
+    "clear": "Clear",
+    "next": "Next",
+    "previous": "Previous",
+    "viewMore": "View more",
+    "viewLess": "View less"
+  },
+  "audience": {
+    "title": "Welcome to my portfolio",
+    "subtitle": "Complete technical portfolio with projects and skills"
+  }
+}

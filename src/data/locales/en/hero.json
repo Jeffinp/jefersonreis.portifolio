@@ -1,0 +1,17 @@
+{
+  "empresa": {
+    "greeting": "Hi, I'm",
+    "name": "Jeferson Reis",
+    "role": "Full Stack Developer",
+    "description": "Specialized in creating modern, scalable, and high-performance web solutions. I transform ideas into digital products that delight users.",
+    "cta": {
+      "primary": "View Projects",
+      "secondary": "Download Resume"
+    },
+    "stats": {
+      "experience": "5+ Years",
+      "projects": "50+ Projects",
+      "clients": "30+ Clients"
+    }
+  }
+}

@@ -1,46 +1,32 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import createMiddleware from 'next-intl/middleware'
+import { locales, defaultLocale } from './lib/i18n'
 
-export function middleware(request: NextRequest) {
-  const response = NextResponse.next()
+export default createMiddleware({
+  // Lista de todos os locales suportados
+  locales,
 
-  // Add additional security headers
-  response.headers.set('X-DNS-Prefetch-Control', 'on')
-  response.headers.set('X-Permitted-Cross-Domain-Policies', 'none')
+  // Locale padrão quando nenhum corresponder
+  defaultLocale,
 
-  // Add performance headers
-  const pathname = request.nextUrl.pathname
-
-  // Cache static assets more aggressively
-  if (
-    pathname.match(
-      /\.(ico|png|jpg|jpeg|gif|webp|svg|woff|woff2|ttf|eot|otf|css|js)$/,
-    )
-  ) {
-    response.headers.set('Cache-Control', 'public, max-age=31536000, immutable')
-  }
-
-  // Add Vary header for better caching
-  response.headers.set('Vary', 'Accept-Encoding, Accept-Language')
-
-  // Add security headers for API routes
-  if (pathname.startsWith('/api/')) {
-    response.headers.set('X-Robots-Tag', 'noindex, nofollow')
-    response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate')
-  }
-
-  return response
-}
+  // Sempre usar prefixo de locale, mesmo para o padrão
+  localePrefix: 'always',
+})
 
 export const config = {
+  // Aplicar middleware apenas em rotas relevantes
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    // Habilitar redirect para locale
+    '/',
+
+    // Habilitar rotas com locale
+    '/(pt|en)/:path*',
+
+    // Não aplicar em:
+    // - API routes
+    // - Arquivos estáticos (_next/static)
+    // - Imagens (_next/image)
+    // - Assets (images, fonts, etc.)
+    // - Favicon, robots, etc.
+    '/((?!api|_next/static|_next/image|assets|favicon.ico|robots.txt|sitemap.xml).*)',
   ],
 }

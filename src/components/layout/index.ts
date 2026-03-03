@@ -1,3 +1,2 @@
-export { default as Header } from './Header'
-export { default as Footer } from './Footer'
-export { default as GlobalBackground } from './GlobalBackground'
+export { Header } from './header'
+export { Footer } from './footer'

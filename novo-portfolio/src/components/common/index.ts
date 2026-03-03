@@ -1,5 +1,0 @@
-export { AudienceSelector } from './audience-selector'
-export { SectionWrapper } from './section-wrapper'
-export { SectionHeader } from './section-header'
-export { ProjectCard } from './project-card'
-export { SkillCard } from './skill-card'

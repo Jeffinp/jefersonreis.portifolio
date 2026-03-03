@@ -1,283 +1,376 @@
-import type { SkillItem } from '@/types'
+import type { Skill, SkillCategory, SkillGroup } from '@/types'
 
-export const skills: SkillItem[] = [
+/**
+ * Lista completa de skills/habilidades
+ */
+export const skills: Skill[] = [
+  // ==================== 6 Years ====================
   {
-    name: 'React',
-    icon: '/assets/images/skills/react.png',
+    id: 'html5',
+    name: 'HTML5',
     category: 'frontend',
-    description: 'Biblioteca JavaScript para criar interfaces de usuário',
+    level: 'expert',
+    icon: '/assets/images/skills/html5.svg',
+    yearsOfExperience: 6,
   },
   {
-    name: 'TypeScript',
-    icon: '/assets/images/skills/typescript.png',
+    id: 'css3',
+    name: 'CSS3',
     category: 'frontend',
-    description: 'Superset tipado de JavaScript',
+    level: 'expert',
+    icon: '/assets/images/skills/css3.svg',
+    yearsOfExperience: 6,
   },
   {
-    name: 'Next.js',
-    icon: '/assets/images/skills/nextjs.png',
-    category: 'frontend',
-    description: 'Framework React com SSR e SSG',
-  },
-  {
-    name: 'Tailwind CSS',
-    icon: '/assets/images/skills/tailwind.png',
-    category: 'frontend',
-    description: 'Framework CSS utilitário',
-  },
-  {
+    id: 'javascript',
     name: 'JavaScript',
-    icon: '/assets/images/skills/javascript.png',
     category: 'frontend',
-    description: 'Linguagem de programação para web',
+    level: 'expert',
+    icon: '/assets/images/skills/javascript.svg',
+    yearsOfExperience: 6,
   },
   {
-    name: 'Node.js',
-    icon: '/assets/images/skills/nodejs.png',
-    category: 'backend',
-    description: 'Runtime JavaScript baseado no motor V8',
-  },
-  {
-    name: 'Python',
-    icon: '/assets/images/skills/python.png',
-    category: 'backend',
-    description: 'Linguagem de programação de alto nível',
-  },
-  {
-    name: 'Django',
-    icon: '/assets/images/skills/django.png',
-    category: 'backend',
-    description: 'Framework web Python de alto nível',
-  },
-  {
-    name: 'PostgreSQL',
-    icon: '/assets/images/skills/postgresql.png',
-    category: 'database',
-    description: 'Sistema de gerenciamento de banco de dados relacional',
-  },
-  {
-    name: 'MySQL',
-    icon: '/assets/images/skills/mysql.png',
-    category: 'database',
-    description: 'Sistema de gerenciamento de banco de dados relacional',
-  },
-  {
-    name: 'Firebase',
-    icon: '/assets/images/skills/firebase.png',
-    category: 'database',
-    description: 'Plataforma de desenvolvimento de aplicativos',
-  },
-  {
-    name: 'Supabase',
-    icon: '/assets/images/skills/supabase.webp',
-    category: 'database',
-    description: 'Alternativa de código aberto ao Firebase',
-  },
-  {
-    name: 'Docker',
-    icon: '/assets/images/skills/docker.png',
-    category: 'devops',
-    description:
-      'Plataforma para desenvolvimento, envio e execução de aplicações',
-  },
-  {
-    name: 'Git',
-    icon: '/assets/images/skills/git.png',
-    category: 'devops',
-    description: 'Sistema de controle de versão',
-  },
-  {
-    name: 'Vercel',
-    icon: '/assets/images/skills/vercel.png',
-    category: 'devops',
-    description: 'Plataforma para implantação de sites e aplicações',
-  },
-  {
-    name: 'Linux',
-    icon: '/assets/images/skills/linux.png',
-    category: 'devops',
-    description: 'Sistema operacional de código aberto',
-  },
-  {
-    name: 'Figma',
-    icon: '/assets/images/skills/figma.png',
-    category: 'design',
-    description: 'Ferramenta de design de interface',
-  },
-  {
-    name: 'UI/UX',
-    icon: '/assets/images/skills/uiux.png',
-    category: 'design',
-    description: 'Design de interface e experiência do usuário',
-  },
-  {
-    name: 'Canva',
-    icon: '/assets/images/skills/canva.webp',
-    category: 'design',
-    description: 'Plataforma de design gráfico',
-  },
-  {
-    name: 'Blender',
-    icon: '/assets/images/skills/blender.png',
-    category: 'design',
-    description: 'Software de criação 3D',
-  },
-  {
-    name: 'Office',
-    icon: '/assets/images/skills/office.png',
-    category: 'tools',
-    description: 'Suite de aplicativos para escritório',
-  },
-  {
-    name: 'Notion',
-    icon: '/assets/images/skills/notion.png',
-    category: 'tools',
-    description: 'Aplicativo de produtividade e notas',
-  },
-  // Novas skills (com caminhos corrigidos para otimização de imagens):
-  {
-    name: 'Vite',
-    icon: '/assets/images/skills/vite.png',
+    id: 'typescript',
+    name: 'TypeScript',
     category: 'frontend',
-    description: 'Ferramenta de build rápida para projetos web modernos',
+    level: 'expert',
+    icon: '/assets/images/skills/typescript.svg',
+    yearsOfExperience: 6,
   },
   {
-    name: 'Angular',
-    icon: '/assets/images/skills/angular.png',
+    id: 'react',
+    name: 'React',
     category: 'frontend',
-    description: 'Framework para aplicações web robustas',
+    level: 'expert',
+    icon: '/assets/images/skills/react.svg',
+    yearsOfExperience: 6,
   },
   {
+    id: 'nextjs',
+    name: 'Next.js',
+    category: 'frontend',
+    level: 'expert',
+    icon: '/assets/images/skills/nextjs.svg',
+    yearsOfExperience: 6,
+  },
+  {
+    id: 'vuejs',
     name: 'Vue.js',
-    icon: '/assets/images/skills/vuejs.png',
     category: 'frontend',
-    description: 'Framework progressivo para construção de interfaces',
+    level: 'advanced',
+    icon: '/assets/images/skills/vuejs.svg',
+    yearsOfExperience: 6,
   },
   {
-    name: 'SCSS',
-    icon: 'https://cdn-icons-png.flaticon.com/512/5968/5968358.png',
+    id: 'angular',
+    name: 'Angular',
     category: 'frontend',
-    description: 'Extensão de CSS com recursos avançados',
+    level: 'advanced',
+    icon: '/assets/images/skills/angular.svg',
+    yearsOfExperience: 6,
   },
   {
-    name: 'Webpack',
-    icon: 'https://raw.githubusercontent.com/webpack/media/master/logo/icon.png',
+    id: 'tailwind',
+    name: 'Tailwind CSS',
     category: 'frontend',
-    description: 'Empacotador de módulos para aplicações JavaScript',
+    level: 'expert',
+    icon: '/assets/images/skills/tailwind.svg',
+    yearsOfExperience: 6,
   },
   {
-    name: 'Material-UI',
-    icon: 'https://miro.medium.com/v2/resize:fit:820/1*rpiHSO8j5Ng9dzobkcvAkQ.png',
+    id: 'sass',
+    name: 'SASS',
     category: 'frontend',
-    description: 'Biblioteca de componentes React com Material Design',
+    level: 'advanced',
+    icon: '/assets/images/skills/sass.svg',
+    yearsOfExperience: 6,
   },
   {
+    id: 'nodejs',
+    name: 'Node.js',
+    category: 'backend',
+    level: 'expert',
+    icon: '/assets/images/skills/nodejs.svg',
+    yearsOfExperience: 6,
+  },
+  {
+    id: 'python',
+    name: 'Python',
+    category: 'backend',
+    level: 'expert',
+    icon: '/assets/images/skills/python.svg',
+    yearsOfExperience: 6,
+  },
+  {
+    id: 'csharp',
     name: 'C#',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg',
     category: 'backend',
-    description: 'Linguagem de programação moderna e orientada a objetos',
+    level: 'advanced',
+    icon: '/assets/images/skills/csharp.svg',
+    yearsOfExperience: 6,
   },
   {
-    name: 'PHP',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
+    id: 'django',
+    name: 'Django',
     category: 'backend',
-    description: 'Linguagem de programação para desenvolvimento web',
+    level: 'advanced',
+    icon: '/assets/images/skills/django.svg',
+    yearsOfExperience: 6,
   },
   {
-    name: 'ASP.NET Core',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg',
-    category: 'backend',
-    description: 'Framework para aplicações web modernas e de alta performance',
-  },
-  {
-    name: 'Redis',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg',
-    category: 'backend',
-    description: 'Banco de dados em memória, chave-valor, de alta performance',
-  },
-  {
-    name: 'Laravel',
-    icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/800px-Laravel.svg.png',
-    category: 'backend',
-    description: 'Framework PHP para aplicações web elegantes',
-  },
-  {
-    name: 'FastAPI',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg',
-    category: 'backend',
-    description: 'Framework moderno e rápido para APIs em Python',
-  },
-  {
+    id: 'flask',
     name: 'Flask',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg',
     category: 'backend',
-    description: 'Microframework para aplicações web em Python',
+    level: 'advanced',
+    icon: '/assets/images/skills/flask.svg',
+    yearsOfExperience: 6,
   },
   {
+    id: 'fastapi',
+    name: 'FastAPI',
+    category: 'backend',
+    level: 'advanced',
+    icon: '/assets/images/skills/fastapi.svg',
+    yearsOfExperience: 6,
+  },
+  {
+    id: 'dotnet',
+    name: '.NET',
+    category: 'backend',
+    level: 'advanced',
+    icon: '/assets/images/skills/dotnet.svg',
+    yearsOfExperience: 6,
+  },
+  {
+    id: 'postgresql',
+    name: 'PostgreSQL',
+    category: 'database',
+    level: 'expert',
+    icon: '/assets/images/skills/postgresql.svg',
+    yearsOfExperience: 6,
+  },
+  {
+    id: 'mysql',
+    name: 'MySQL',
+    category: 'database',
+    level: 'expert',
+    icon: '/assets/images/skills/mysql.svg',
+    yearsOfExperience: 6,
+  },
+  {
+    id: 'mariadb',
     name: 'MariaDB',
-    icon: 'https://cdn.worldvectorlogo.com/logos/mariadb.svg',
     category: 'database',
-    description: 'Banco de dados relacional compatível com MySQL',
+    level: 'advanced',
+    icon: '/assets/images/skills/mariadb.svg',
+    yearsOfExperience: 6,
   },
   {
-    name: 'MongoDB',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
+    id: 'redis',
+    name: 'Redis',
     category: 'database',
-    description: 'Banco de dados NoSQL orientado a documentos',
+    level: 'advanced',
+    icon: '/assets/images/skills/redis.svg',
+    yearsOfExperience: 6,
   },
   {
-    name: 'JWT',
-    icon: 'https://user-images.githubusercontent.com/5418178/177059352-fe91dcd5-e17b-4103-88ae-70d6d396cf85.png',
-    category: 'backend',
-    description: 'Padrão aberto para autenticação baseada em tokens',
+    id: 'firebase',
+    name: 'Firebase',
+    category: 'database',
+    level: 'expert',
+    icon: '/assets/images/skills/firebase.svg',
+    yearsOfExperience: 6,
   },
   {
-    name: 'C++',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
-    category: 'backend',
-    description: 'Linguagem de programação de alto desempenho',
+    id: 'supabase',
+    name: 'Supabase',
+    category: 'database',
+    level: 'advanced',
+    icon: '/assets/images/skills/supabase.svg',
+    yearsOfExperience: 6,
   },
   {
+    id: 'docker',
+    name: 'Docker',
+    category: 'database',
+    level: 'advanced',
+    icon: '/assets/images/skills/docker.svg',
+    yearsOfExperience: 6,
+  },
+  {
+    id: 'gcp',
     name: 'Google Cloud',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
-    category: 'devops',
-    description: 'Plataforma de serviços em nuvem do Google',
+    category: 'database',
+    level: 'intermediate',
+    icon: '/assets/images/skills/gcp.svg',
+    yearsOfExperience: 6,
   },
   {
-    name: 'Render',
-    icon: 'https://cdn.sanity.io/images/34ent8ly/production/ec37a3660704e1fa2b4246c9a01ab34e145194ad-824x824.png',
-    category: 'devops',
-    description: 'Plataforma de deploy de aplicações modernas',
+    id: 'vercel',
+    name: 'Vercel',
+    category: 'database',
+    level: 'expert',
+    icon: '/assets/images/skills/vercel.svg',
+    yearsOfExperience: 6,
+  },
+  {
+    id: 'figma',
+    name: 'Figma',
+    category: 'tools',
+    level: 'expert',
+    icon: '/assets/images/skills/figma.svg',
+    yearsOfExperience: 6,
+  },
+  {
+    id: 'git',
+    name: 'Git',
+    category: 'tools',
+    level: 'expert',
+    icon: '/assets/images/skills/git.svg',
+    yearsOfExperience: 6,
+  },
+
+  // ==================== 5 Years ====================
+  {
+    id: 'nestjs',
+    name: 'NestJS',
+    category: 'backend',
+    level: 'advanced',
+    icon: '/assets/images/skills/nestjs.svg',
+    yearsOfExperience: 5,
+  },
+  {
+    id: 'go',
+    name: 'Go',
+    category: 'backend',
+    level: 'intermediate',
+    icon: '/assets/images/skills/go.svg',
+    yearsOfExperience: 5,
+  },
+  {
+    id: 'rust',
+    name: 'Rust',
+    category: 'backend',
+    level: 'intermediate',
+    icon: '/assets/images/skills/rust.svg',
+    yearsOfExperience: 5,
+  },
+  {
+    id: 'cpp',
+    name: 'C++',
+    category: 'backend',
+    level: 'intermediate',
+    icon: '/assets/images/skills/cpp.svg',
+    yearsOfExperience: 5,
+  },
+  {
+    id: 'flutter',
+    name: 'Flutter',
+    category: 'mobile',
+    level: 'advanced',
+    icon: '/assets/images/skills/flutter.svg',
+    yearsOfExperience: 5,
+  },
+  {
+    id: 'dart',
+    name: 'Dart',
+    category: 'mobile',
+    level: 'advanced',
+    icon: '/assets/images/skills/dart.svg',
+    yearsOfExperience: 5,
+  },
+  {
+    id: 'kotlin',
+    name: 'Kotlin',
+    category: 'mobile',
+    level: 'intermediate',
+    icon: '/assets/images/skills/kotlin.svg',
+    yearsOfExperience: 5,
+  },
+  {
+    id: 'react-native',
+    name: 'React Native',
+    category: 'mobile',
+    level: 'advanced',
+    icon: '/assets/images/skills/react.svg',
+    yearsOfExperience: 5,
+  },
+
+  // ==================== 4 Years ====================
+  {
+    id: 'php',
+    name: 'PHP',
+    category: 'backend',
+    level: 'advanced',
+    icon: '/assets/images/skills/php.svg',
+    yearsOfExperience: 4,
+  },
+  {
+    id: 'laravel',
+    name: 'Laravel',
+    category: 'backend',
+    level: 'advanced',
+    icon: '/assets/images/skills/laravel.svg',
+    yearsOfExperience: 4,
   },
 ]
 
-export const skillCategories = [
+/**
+ * Grupos de skills por categoria
+ */
+export const skillGroups: SkillGroup[] = [
   {
-    id: 'frontend',
-    nameKey: 'skills.categories.frontend',
+    category: 'frontend',
+    label: 'Frontend Development',
+    icon: 'Code2', // Lucide icon name
+    skills: skills.filter((s) => s.category === 'frontend'),
   },
   {
-    id: 'backend',
-    nameKey: 'skills.categories.backend',
+    category: 'backend',
+    label: 'Backend Development',
+    icon: 'Server', // Lucide icon name
+    skills: skills.filter((s) => s.category === 'backend'),
   },
   {
-    id: 'database',
-    nameKey: 'skills.categories.database',
+    category: 'mobile',
+    label: 'Mobile Development',
+    icon: 'Smartphone', // Lucide icon name
+    skills: skills.filter((s) => s.category === 'mobile'),
   },
   {
-    id: 'devops',
-    nameKey: 'skills.categories.devops',
+    category: 'database',
+    label: 'Database & Cloud',
+    icon: 'Cloud', // Lucide icon name
+    skills: skills.filter((s) => s.category === 'database'),
   },
   {
-    id: 'design',
-    nameKey: 'skills.categories.design',
-  },
-  {
-    id: 'tools',
-    nameKey: 'skills.categories.tools',
+    category: 'tools',
+    label: 'Tools',
+    icon: 'Wrench', // Lucide icon name
+    skills: skills.filter((s) => s.category === 'tools'),
   },
 ]
 
-export const getSkillsByCategory = (category: string): SkillItem[] => {
+/**
+ * Helper: Obter skills por categoria
+ */
+export function getSkillsByCategory(category: SkillCategory): Skill[] {
   return skills.filter((skill) => skill.category === category)
+}
+
+/**
+ * Helper: Obter skills por nível
+ */
+export function getSkillsByLevel(level: Skill['level']): Skill[] {
+  return skills.filter((skill) => skill.level === level)
+}
+
+/**
+ * Helper: Obter top skills (expert level primeiro)
+ */
+export function getTopSkills(limit = 6): Skill[] {
+  const levelOrder = { expert: 4, advanced: 3, intermediate: 2, beginner: 1 }
+  return [...skills]
+    .sort((a, b) => levelOrder[b.level] - levelOrder[a.level])
+    .slice(0, limit)
 }
