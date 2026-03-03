@@ -152,6 +152,21 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+/* Dot grid pattern — dark mode only */
+.dot-grid {
+  background-image: radial-gradient(circle 1px at 1px 1px, rgba(255, 255, 255, 0.06) 1px, transparent 0);
+  background-size: 28px 28px;
+}
+
+/* Testimonial card glow — dark mode hover */
+.card-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.dark .card-glow:hover {
+  box-shadow: 0 0 20px -4px rgba(100, 130, 255, 0.2), 0 0 6px -2px rgba(100, 130, 255, 0.1);
+}
+
 .glass {
   background-color: color-mix(
     in oklch,

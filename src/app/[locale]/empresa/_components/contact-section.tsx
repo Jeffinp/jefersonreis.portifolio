@@ -4,6 +4,7 @@ import { useState, FormEvent } from 'react'
 import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { SectionWrapper, SectionHeader } from '@/components/common'
+import { AuroraBackground } from '@/components/ui/aurora-background'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -56,6 +57,7 @@ export function ContactSection() {
   }
 
   return (
+    <AuroraBackground className="rounded-t-[2.5rem] sm:rounded-t-[3rem]">
     <SectionWrapper id="contact">
       <SectionHeader
         subtitle={t('subtitle')}
@@ -166,5 +168,6 @@ export function ContactSection() {
         </div>
       </div>
     </SectionWrapper>
+    </AuroraBackground>
   )
 }
