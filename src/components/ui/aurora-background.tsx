@@ -1,6 +1,6 @@
 'use client'
 
-import { type ReactNode, useEffect, useRef, useCallback } from 'react'
+import { type ReactNode, useEffect, useRef, useState, useCallback } from 'react'
 import { useTheme } from 'next-themes'
 import { cn } from '@/lib/utils'
 
@@ -97,8 +97,11 @@ export function AuroraBackground({ children, className }: AuroraBackgroundProps)
   const starsRef = useRef<HTMLCanvasElement>(null)
   const animRef = useRef(0)
   const starsDataRef = useRef<Star[]>([])
+  const [mounted, setMounted] = useState(false)
   const { resolvedTheme } = useTheme()
-  const isDark = resolvedTheme === 'dark'
+  const isDark = mounted && resolvedTheme === 'dark'
+
+  useEffect(() => { setMounted(true) }, [])
 
   const setupStars = useCallback((w: number, h: number) => {
     starsDataRef.current = createStars(w, h, 80)
