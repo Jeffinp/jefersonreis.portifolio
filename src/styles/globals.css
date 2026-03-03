@@ -167,6 +167,29 @@ body {
   box-shadow: 0 0 20px -4px rgba(100, 130, 255, 0.2), 0 0 6px -2px rgba(100, 130, 255, 0.1);
 }
 
+/* Hero stagger animation — CSS-only for instant LCP */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-stagger > * {
+  animation: hero-fade-up 0.5s ease-out both;
+}
+
+.hero-stagger > *:nth-child(1) { animation-delay: 0s; }
+.hero-stagger > *:nth-child(2) { animation-delay: 0.08s; }
+.hero-stagger > *:nth-child(3) { animation-delay: 0.16s; }
+.hero-stagger > *:nth-child(4) { animation-delay: 0.24s; }
+.hero-stagger > *:nth-child(5) { animation-delay: 0.32s; }
+.hero-stagger > *:nth-child(6) { animation-delay: 0.4s; }
+
 .glass {
   background-color: color-mix(
     in oklch,

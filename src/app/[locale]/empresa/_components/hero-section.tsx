@@ -5,7 +5,6 @@ import { Download, ArrowRight } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { AuroraBackground } from '@/components/ui/aurora-background'
-import { fadeIn, staggerContainer, staggerItem } from '@/lib/utils'
 
 export function HeroSection() {
   const t = useTranslations('hero.empresa')
@@ -13,49 +12,25 @@ export function HeroSection() {
   return (
     <AuroraBackground className="min-h-[calc(100vh-4rem)] pt-16">
       <div className="container-width flex min-h-[calc(100vh-8rem)] items-center">
-        <motion.div
-          className="mx-auto max-w-4xl text-center"
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Greeting */}
-          <motion.p
-            className="text-muted-foreground mb-4 text-lg"
-            variants={staggerItem}
-          >
+        {/* CSS stagger animation — no JS dependency for LCP */}
+        <div className="hero-stagger mx-auto max-w-4xl text-center">
+          <p className="text-muted-foreground mb-4 text-lg">
             {t('greeting')}
-          </motion.p>
+          </p>
 
-          {/* Name */}
-          <motion.h1
-            className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
-            variants={staggerItem}
-          >
+          <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
             {t('name')}
-          </motion.h1>
+          </h1>
 
-          {/* Role */}
-          <motion.h2
-            className="gradient-text mb-6 text-2xl font-bold sm:text-3xl md:text-4xl"
-            variants={staggerItem}
-          >
+          <h2 className="gradient-text mb-6 text-2xl font-bold sm:text-3xl md:text-4xl">
             {t('role')}
-          </motion.h2>
+          </h2>
 
-          {/* Description */}
-          <motion.p
-            className="text-muted-foreground mx-auto mb-8 max-w-2xl text-lg"
-            variants={staggerItem}
-          >
+          <p className="text-muted-foreground mx-auto mb-8 max-w-2xl text-lg">
             {t('description')}
-          </motion.p>
+          </p>
 
-          {/* CTAs */}
-          <motion.div
-            className="flex flex-col items-center justify-center gap-4 sm:flex-row"
-            variants={staggerItem}
-          >
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button size="lg" asChild>
               <a href="#projects">
                 {t('cta.primary')}
@@ -71,13 +46,9 @@ export function HeroSection() {
                 {t('cta.secondary')}
               </a>
             </Button>
-          </motion.div>
+          </div>
 
-          {/* Stats */}
-          <motion.div
-            className="mt-16 grid grid-cols-3 gap-8"
-            variants={fadeIn}
-          >
+          <div className="mt-16 grid grid-cols-3 gap-8">
             {(['experience', 'projects', 'clients'] as const).map((key) => {
               const label = t(`stats.${key}`)
               const [value, ...rest] = label.split(' ')
@@ -90,11 +61,11 @@ export function HeroSection() {
                 </div>
               )
             })}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — only decorative, can use Framer Motion */}
       <motion.div
         className="absolute bottom-24 left-1/2 -translate-x-1/2 sm:bottom-20"
         initial={{ opacity: 0, y: -10 }}

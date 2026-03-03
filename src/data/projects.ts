@@ -25,25 +25,17 @@ export const projects: Project[] = [
     client: 'Marcelo Guimarães',
     role: 'Arquiteto e Desenvolvedor Full Stack',
     thumbnail: {
-      url: '/assets/images/projects/mobile/project-nfc-social/main.png',
+      url: '/assets/images/projects/mobile/project-nfc-social/main.avif',
       alt: 'Tag Social NFC — App e Painel Administrativo',
     },
     images: [
       {
-        url: '/assets/images/projects/mobile/project-nfc-social/main.png',
+        url: '/assets/images/projects/mobile/project-nfc-social/main.avif',
         alt: 'Tela principal do app Flutter',
       },
       {
-        url: '/assets/images/projects/mobile/project-nfc-social/nfc-write.png',
+        url: '/assets/images/projects/mobile/project-nfc-social/nfc-write.avif',
         alt: 'Interface de gravação da tag NFC por aproximação',
-      },
-      {
-        url: '/assets/images/projects/mobile/project-nfc-social/admin-dashboard.png',
-        alt: 'Painel administrativo com métricas e gráficos',
-      },
-      {
-        url: '/assets/images/projects/mobile/project-nfc-social/admin-codes.png',
-        alt: 'Gestão de códigos e tags emitidas',
       },
     ],
     tags: [
@@ -137,21 +129,13 @@ export const projects: Project[] = [
     featured: true,
     order: 4,
     thumbnail: {
-      url: '/assets/images/projects/web/project-assistente-vendas-ia/main.png',
+      url: '/assets/images/projects/web/project-assistente-vendas-ia/main.avif',
       alt: 'Assistente de Vendas com IA',
     },
     images: [
       {
-        url: '/assets/images/projects/web/project-assistente-vendas-ia/dashboard.png',
-        alt: 'Dashboard com métricas em tempo real',
-      },
-      {
-        url: '/assets/images/projects/web/project-assistente-vendas-ia/chat.png',
-        alt: 'Interface de chat com IA',
-      },
-      {
-        url: '/assets/images/projects/web/project-assistente-vendas-ia/leads.png',
-        alt: 'Gestão de leads e funil de vendas',
+        url: '/assets/images/projects/web/project-assistente-vendas-ia/main.avif',
+        alt: 'Assistente de Vendas com IA',
       },
     ],
     tags: [
@@ -200,7 +184,7 @@ export const projects: Project[] = [
     featured: true,
     order: 5,
     thumbnail: {
-      url: '/assets/images/projects/web/project-gestao-juridica/main.png',
+      url: '/assets/images/projects/web/project-gestao-juridica/main.avif',
       alt: 'Juristask',
     },
     images: [],
@@ -249,16 +233,16 @@ export const projects: Project[] = [
     featured: true,
     order: 9,
     thumbnail: {
-      url: '/assets/images/projects/web/project-flyserv/main.png',
+      url: '/assets/images/projects/web/project-flyserv/main.avif',
       alt: 'FlyServ Drones',
     },
     images: [
       {
-        url: '/assets/images/projects/web/project-flyserv/services.png',
+        url: '/assets/images/projects/web/project-flyserv/services.avif',
         alt: 'Serviços',
       },
       {
-        url: '/assets/images/projects/web/project-flyserv/contact.png',
+        url: '/assets/images/projects/web/project-flyserv/contact.avif',
         alt: 'Contato',
       },
     ],
@@ -292,7 +276,7 @@ export const projects: Project[] = [
     featured: true,
     order: 11,
     thumbnail: {
-      url: '/assets/images/projects/web/project-lexcheck/main.png',
+      url: '/assets/images/projects/web/project-lexcheck/main.avif',
       alt: 'LexCheck',
     },
     images: [],
@@ -341,12 +325,12 @@ export const projects: Project[] = [
     status: 'in-progress',
     featured: false,
     thumbnail: {
-      url: '/assets/images/projects/web/project-portfolio/main.png',
+      url: '/assets/images/projects/web/project-portfolio/main.avif',
       alt: 'Portfolio Pessoal',
     },
     images: [
       {
-        url: '/assets/images/projects/web/project-portfolio/skills.png',
+        url: '/assets/images/projects/web/project-portfolio/skills.avif',
         alt: 'Habilidades',
       },
     ],
@@ -383,7 +367,7 @@ export const projects: Project[] = [
     status: 'completed',
     featured: false,
     thumbnail: {
-      url: '/assets/images/projects/web/project-ricardo-dias/main.png',
+      url: '/assets/images/projects/web/project-ricardo-dias/main.avif',
       alt: 'Ricardo Dias',
     },
     images: [],
@@ -405,7 +389,7 @@ export const projects: Project[] = [
     status: 'completed',
     featured: false,
     thumbnail: {
-      url: '/assets/images/projects/web/project-leve-saude-web/main.png',
+      url: '/assets/images/projects/web/project-leve-saude-web/main.avif',
       alt: 'Leve Saúde Web',
     },
     images: [],
@@ -429,7 +413,7 @@ export const projects: Project[] = [
     status: 'in-progress',
     featured: false,
     thumbnail: {
-      url: '/assets/images/projects/web/project-meushop/main.png',
+      url: '/assets/images/projects/web/project-meushop/main.avif',
       alt: 'MeuShop',
     },
     images: [],
@@ -450,7 +434,7 @@ export const projects: Project[] = [
     status: 'in-progress',
     featured: false,
     thumbnail: {
-      url: '/assets/images/projects/web/project-organizador/main.webp',
+      url: '/assets/images/projects/web/project-organizador/main.avif',
       alt: 'TaskFlow',
     },
     images: [],
@@ -471,7 +455,7 @@ export const projects: Project[] = [
     status: 'completed',
     featured: false,
     thumbnail: {
-      url: '/assets/images/projects/web/project-sistema-solar/main.png',
+      url: '/assets/images/projects/web/project-sistema-solar/main.avif',
       alt: 'AstroVerse',
     },
     images: [],
@@ -494,7 +478,7 @@ export const projects: Project[] = [
     status: 'in-progress',
     featured: false,
     thumbnail: {
-      url: '/assets/images/projects/web/project-menu-interativo/main.webp',
+      url: '/assets/images/projects/web/project-menu-interativo/main.avif',
       alt: 'DynamicMenu',
     },
     images: [],
@@ -515,7 +499,7 @@ export const projects: Project[] = [
     status: 'in-progress',
     featured: false,
     thumbnail: {
-      url: '/assets/images/projects/web/project-chatbot/main.webp',
+      url: '/assets/images/projects/web/project-chatbot/main.avif',
       alt: 'SmartChat',
     },
     images: [],
@@ -536,7 +520,7 @@ export const projects: Project[] = [
     status: 'in-progress',
     featured: false,
     thumbnail: {
-      url: '/assets/images/projects/web/project-jogo-plataforma/main.webp',
+      url: '/assets/images/projects/web/project-jogo-plataforma/main.avif',
       alt: 'PixelJump',
     },
     images: [],
@@ -564,7 +548,7 @@ export const projects: Project[] = [
     featured: true,
     order: 12,
     thumbnail: {
-      url: '/assets/images/projects/mobile/project-stashy/main.png',
+      url: '/assets/images/projects/mobile/project-stashy/main.avif',
       alt: 'Stashy',
     },
     images: [],
@@ -610,7 +594,7 @@ export const projects: Project[] = [
     featured: true,
     order: 13,
     thumbnail: {
-      url: '/assets/images/projects/mobile/project-leve-saude-mobile/main.png',
+      url: '/assets/images/projects/mobile/project-leve-saude-mobile/main.avif',
       alt: 'Leve Saúde Mobile',
     },
     images: [],
@@ -660,24 +644,24 @@ export const projects: Project[] = [
     order: 2,
     role: 'Arquiteto e Desenvolvedor Full Stack',
     thumbnail: {
-      url: '/assets/images/projects/web/project-orka/main.png',
+      url: '/assets/images/projects/web/project-orka/main.avif',
       alt: 'Orka — Dashboard SaaS IoT',
     },
     images: [
       {
-        url: '/assets/images/projects/web/project-orka/main.png',
+        url: '/assets/images/projects/web/project-orka/main.avif',
         alt: 'Dashboard principal com mapa de equipamentos',
       },
       {
-        url: '/assets/images/projects/web/project-orka/realtime.png',
+        url: '/assets/images/projects/web/project-orka/realtime.avif',
         alt: 'Monitoramento de séries temporais em tempo real',
       },
       {
-        url: '/assets/images/projects/web/project-orka/calibration.png',
+        url: '/assets/images/projects/web/project-orka/calibration.avif',
         alt: 'Interface de calibração remota de sensores',
       },
       {
-        url: '/assets/images/projects/web/project-orka/devices.png',
+        url: '/assets/images/projects/web/project-orka/devices.avif',
         alt: 'Gestão de dispositivos com heartbeat e status global',
       },
     ],
