@@ -29,22 +29,25 @@ export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
       transition={{ duration: 0.3 }}
     >
       <Card
-        className="group h-full cursor-pointer overflow-hidden"
+        className="group border-border/70 bg-card/80 hover:border-primary/40 h-full cursor-pointer overflow-hidden backdrop-blur-sm transition-all duration-300 hover:shadow-[0_20px_50px_-28px_rgba(59,130,246,0.55)]"
         onClick={onClick}
       >
         {/* Thumbnail */}
         <div className="relative aspect-video overflow-hidden">
           {hasThumbnail ? (
-            <Image
-              src={project.thumbnail!.url}
-              alt={project.thumbnail!.alt}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-110"
-            />
+            <>
+              <Image
+                src={project.thumbnail!.url}
+                alt={project.thumbnail!.alt}
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
+            </>
           ) : (
-            <div className="bg-muted flex h-full w-full flex-col items-center justify-center gap-2">
-              <ImageOff className="text-muted-foreground/40 h-10 w-10" />
-              <span className="text-muted-foreground/50 text-xs">
+            <div className="from-muted/80 to-muted/40 flex h-full w-full flex-col items-center justify-center gap-2 bg-gradient-to-br">
+              <ImageOff className="text-muted-foreground/45 h-10 w-10" />
+              <span className="text-muted-foreground/60 text-xs font-medium">
                 {t('noImage')}
               </span>
             </div>
@@ -52,10 +55,10 @@ export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
           <Badge
             className={`absolute top-4 right-4 ${
               project.category === 'web'
-                ? 'bg-blue-600 hover:bg-blue-700'
+                ? 'bg-blue-600/95 hover:bg-blue-600'
                 : project.category === 'mobile'
-                  ? 'bg-emerald-600 hover:bg-emerald-700'
-                  : 'bg-orange-600 hover:bg-orange-700'
+                  ? 'bg-emerald-600/95 hover:bg-emerald-600'
+                  : 'bg-orange-600/95 hover:bg-orange-600'
             }`}
           >
             {project.category === 'web'
@@ -66,14 +69,16 @@ export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
           </Badge>
         </div>
 
-        <CardContent className="p-6">
-          <h3 className="mb-2 text-xl font-bold">{project.title}</h3>
+        <CardContent className="flex-1 p-6 pb-4">
+          <h3 className="mb-2 line-clamp-2 min-h-[3.4rem] text-xl font-bold">
+            {project.title}
+          </h3>
           <p className="text-muted-foreground mb-4 line-clamp-2">
             {project.description}
           </p>
           <div className="flex flex-wrap gap-2">
             {project.tags.slice(0, 3).map((tag) => (
-              <Badge key={tag.id} variant="secondary">
+              <Badge key={tag.id} variant="secondary" className="bg-secondary/70">
                 {tag.label}
               </Badge>
             ))}

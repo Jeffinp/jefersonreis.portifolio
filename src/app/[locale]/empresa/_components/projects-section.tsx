@@ -30,6 +30,17 @@ export function ProjectsSection() {
     selectedCategory === 'all'
       ? sortedProjects
       : sortedProjects.filter((p) => p.category === selectedCategory)
+  const categoryCounts = categories.reduce<Record<ProjectCategory, number>>(
+    (acc, category) => {
+      acc[category] = sortedProjects.filter((p) => p.category === category).length
+      return acc
+    },
+    {
+      web: 0,
+      mobile: 0,
+      system: 0,
+    }
+  )
 
   const handleDetails = useCallback(
     (project: Project, trigger: HTMLButtonElement) => {
@@ -53,13 +64,14 @@ export function ProjectsSection() {
         />
 
         {/* Category filters */}
-        <div className="mb-8 flex flex-wrap justify-center gap-2">
+        <div className="mb-10 flex flex-wrap justify-center gap-2">
           <Button
             variant={selectedCategory === 'all' ? 'default' : 'outline'}
             size="sm"
             onClick={() => setSelectedCategory('all')}
+            className="min-w-20"
           >
-            {t('all')}
+            {t('all')} ({sortedProjects.length})
           </Button>
           {categories.map((category) => (
             <Button
@@ -67,8 +79,10 @@ export function ProjectsSection() {
               variant={selectedCategory === category ? 'default' : 'outline'}
               size="sm"
               onClick={() => setSelectedCategory(category)}
+              className="min-w-20"
             >
-              {category.charAt(0).toUpperCase() + category.slice(1)}
+              {category.charAt(0).toUpperCase() + category.slice(1)} (
+              {categoryCounts[category]})
             </Button>
           ))}
         </div>

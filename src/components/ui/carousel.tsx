@@ -78,7 +78,7 @@ export function Carousel({
           <Button
             variant="outline"
             size="icon"
-            className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 rounded-full shadow-lg"
+            className="bg-background/75 border-border/70 hover:bg-background absolute top-1/2 left-3 -translate-y-1/2 rounded-full shadow-lg backdrop-blur"
             onClick={scrollPrev}
             aria-label="Projeto anterior"
           >
@@ -87,7 +87,7 @@ export function Carousel({
           <Button
             variant="outline"
             size="icon"
-            className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 rounded-full shadow-lg"
+            className="bg-background/75 border-border/70 hover:bg-background absolute top-1/2 right-3 -translate-y-1/2 rounded-full shadow-lg backdrop-blur"
             onClick={scrollNext}
             aria-label="Próximo projeto"
           >
@@ -98,13 +98,13 @@ export function Carousel({
 
       {/* Dots */}
       {showDots && scrollSnaps.length > 1 && (
-        <div className="mt-6 flex justify-center gap-2">
+        <div className="mt-8 flex justify-center gap-2.5">
           {scrollSnaps.map((_, index) => (
             <button
               key={index}
-              className={`h-2 w-2 rounded-full transition-all ${
+              className={`h-2.5 w-2.5 rounded-full transition-all ${
                 index === selectedIndex
-                  ? 'bg-primary w-8'
+                  ? 'bg-primary w-7'
                   : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
               }`}
               onClick={() => scrollTo(index)}
