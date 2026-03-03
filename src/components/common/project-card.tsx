@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { ExternalLink, Github, Info, ImageOff } from 'lucide-react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
@@ -17,7 +18,12 @@ interface ProjectCardProps {
 export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
   const t = useTranslations('projects')
   const tc = useTranslations('common')
-  const hasThumbnail = project.thumbnail?.url
+  const [imageFailed, setImageFailed] = useState(false)
+  const hasThumbnail = Boolean(project.thumbnail?.url) && !imageFailed
+
+  useEffect(() => {
+    setImageFailed(false)
+  }, [project.id, project.thumbnail?.url])
 
   return (
     <div className="h-full transform-gpu will-change-transform transition-transform duration-300 ease-out motion-safe:hover:-translate-y-1.5 motion-reduce:transform-none motion-reduce:transition-none">
@@ -34,6 +40,7 @@ export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
                 alt={project.thumbnail!.alt}
                 fill
                 className="object-cover transition-transform duration-300 ease-out group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
+                onError={() => setImageFailed(true)}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
             </>
