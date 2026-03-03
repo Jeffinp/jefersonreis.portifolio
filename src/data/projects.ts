@@ -795,28 +795,7 @@ export const projects: Project[] = [
     order: 8,
     client: 'Ágata Martins',
     role: 'Desenvolvedor Full Stack e Designer',
-    thumbnail: {
-      url: '/assets/images/projects/web/project-agata-martins/main.png',
-      alt: 'Ágata Martins Advocacia — Website Institucional',
-    },
-    images: [
-      {
-        url: '/assets/images/projects/web/project-agata-martins/main.png',
-        alt: 'Hero section com identidade visual Marsala e Dourado',
-      },
-      {
-        url: '/assets/images/projects/web/project-agata-martins/services.png',
-        alt: 'Seção de especialidades com dropdowns e CTAs',
-      },
-      {
-        url: '/assets/images/projects/web/project-agata-martins/faq.png',
-        alt: 'FAQ expandível com dúvidas frequentes',
-      },
-      {
-        url: '/assets/images/projects/web/project-agata-martins/mobile.png',
-        alt: 'Layout mobile-first otimizado para conversão',
-      },
-    ],
+    images: [],
     tags: [
       { id: 'nextjs', label: 'Next.js 15', color: 'bg-black' },
       { id: 'react', label: 'React 19', color: 'bg-blue-500' },

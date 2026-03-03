@@ -35,11 +35,12 @@ export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
         <div className="relative aspect-video overflow-hidden">
           {hasThumbnail ? (
             <>
+              <div className="bg-muted/55 absolute inset-0" />
               <Image
                 src={project.thumbnail!.url}
                 alt={project.thumbnail!.alt}
                 fill
-                className="object-cover transition-transform duration-300 ease-out group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
+                className="object-contain p-2 transition-transform duration-300 ease-out group-hover:scale-[1.02] motion-reduce:transform-none motion-reduce:transition-none"
                 onError={() => setImageFailed(true)}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />

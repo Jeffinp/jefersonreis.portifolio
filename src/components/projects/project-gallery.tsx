@@ -46,13 +46,13 @@ export function ProjectGallery({ images, title }: ProjectGalleryProps) {
           {images.map((image, index) => (
             <div
               key={index}
-              className="relative aspect-video min-w-0 flex-[0_0_100%]"
+              className="bg-muted/60 relative aspect-video min-w-0 flex-[0_0_100%]"
             >
               <Image
                 src={image.url}
                 alt={image.alt || `${title} — imagem ${index + 1}`}
                 fill
-                className="object-cover"
+                className="object-contain p-2"
                 sizes="(max-width: 768px) 100vw, 768px"
                 priority={index === 0}
               />
