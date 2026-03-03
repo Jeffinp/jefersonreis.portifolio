@@ -646,9 +646,9 @@ export const projects: Project[] = [
     slug: 'orka-iot',
     title: 'Orka — Plataforma SaaS IoT',
     description:
-      'Plataforma SaaS global de monitoramento e controle de sensores IoT em tempo real — Go, Angular 19 e TimescaleDB',
+      'Plataforma SaaS global de monitoramento e controle de sensores IoT em tempo real — Go, Angular 21 e TimescaleDB',
     longDescription:
-      'O Orka é uma plataforma SaaS de alto desempenho para controle e monitoramento de hardwares IoT. Recebe milhões de pontos de telemetria em tempo real (pH, temperatura, ORP) via MQTT, e permite que usuários enviem comandos de calibração e alterem parâmetros de sensores remotamente a partir de qualquer lugar do mundo. Atende ativamente o Brasil, Estados Unidos e países hispânicos, com arquitetura Multi-tenant que isola completamente os dados por empresa.\n\nO backend em Go implementa execução síncrona sobre MQTT com channels correlacionados (req_id + timeout), padrão Unit of Work sobre GORM para transações atômicas, Sentinel Errors com domínio, código e tradução automática, e TimescaleDB com hypertables para compressão e agregação on-the-fly de séries temporais.\n\nO frontend Angular 19 usa o padrão Slice/Updater/Store com Signals para reatividade de granulação fina, Feature-Sliced Design, withRequestStatus() reutilizável e Silent Refresh com cookies HttpOnly para sessão resiliente.',
+      'O Orka é uma plataforma SaaS de alto desempenho para controle e monitoramento de hardwares IoT. Recebe milhões de pontos de telemetria em tempo real (pH, temperatura, ORP) via MQTT, e permite que usuários enviem comandos de calibração e alterem parâmetros de sensores remotamente a partir de qualquer lugar do mundo. Atende ativamente o Brasil, Estados Unidos e países hispânicos, com arquitetura Multi-tenant que isola completamente os dados por empresa.\n\nO backend em Go implementa execução síncrona sobre MQTT com channels correlacionados (req_id + timeout), padrão Unit of Work sobre GORM para transações atômicas, Sentinel Errors com domínio, código e tradução automática, e TimescaleDB com hypertables para compressão e agregação on-the-fly de séries temporais.\n\nO frontend Angular 21 usa o padrão Slice/Updater/Store com Signals para reatividade de granulação fina, Feature-Sliced Design, withRequestStatus() reutilizável e Silent Refresh com cookies HttpOnly para sessão resiliente.',
     category: 'web',
     status: 'completed',
     featured: true,
@@ -678,7 +678,7 @@ export const projects: Project[] = [
     ],
     tags: [
       { id: 'golang', label: 'Go', color: 'bg-cyan-600' },
-      { id: 'angular', label: 'Angular 19', color: 'bg-red-600' },
+      { id: 'angular', label: 'Angular 21', color: 'bg-red-600' },
       { id: 'timescaledb', label: 'TimescaleDB', color: 'bg-orange-500' },
       { id: 'mqtt', label: 'MQTT', color: 'bg-purple-600' },
       { id: 'postgresql', label: 'PostgreSQL', color: 'bg-blue-700' },
@@ -691,7 +691,7 @@ export const projects: Project[] = [
       'GORM',
       'MQTT (Eclipse Paho)',
       'JWT / RBAC',
-      'Angular 19',
+      'Angular 21',
       'NgRx Signals',
       'Tailwind CSS v4',
       'Leaflet',
