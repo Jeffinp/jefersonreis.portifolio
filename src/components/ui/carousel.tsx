@@ -59,7 +59,7 @@ export function Carousel({
   return (
     <div className="relative">
       {/* Carousel viewport */}
-      <div className="overflow-hidden" ref={emblaRef}>
+      <div className="-mt-3 overflow-hidden pt-3" ref={emblaRef}>
         <div className="flex gap-4">
           {slides.map((child, index) => (
             <div

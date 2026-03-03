@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { ExternalLink, Github, Info, ImageOff } from 'lucide-react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
@@ -21,15 +20,9 @@ export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
   const hasThumbnail = project.thumbnail?.url
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      whileHover={{ y: -8 }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className="h-full transform-gpu will-change-transform transition-transform duration-300 ease-out motion-safe:hover:-translate-y-1.5 motion-reduce:transform-none motion-reduce:transition-none">
       <Card
-        className="group border-border/70 bg-card/80 hover:border-primary/40 h-full cursor-pointer overflow-hidden backdrop-blur-sm transition-all duration-300 hover:shadow-[0_20px_50px_-28px_rgba(59,130,246,0.55)]"
+        className="group border-border/70 bg-card/95 hover:border-primary/40 h-full cursor-pointer overflow-hidden transition-colors duration-300 hover:shadow-[0_14px_34px_-24px_rgba(59,130,246,0.45)]"
         onClick={onClick}
       >
         {/* Thumbnail */}
@@ -40,7 +33,7 @@ export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
                 src={project.thumbnail!.url}
                 alt={project.thumbnail!.alt}
                 fill
-                className="object-cover transition-transform duration-300 group-hover:scale-110"
+                className="object-cover transition-transform duration-300 ease-out group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
             </>
@@ -135,6 +128,6 @@ export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
           )}
         </CardFooter>
       </Card>
-    </motion.div>
+    </div>
   )
 }
