@@ -49,9 +49,21 @@ export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
               </span>
             </div>
           )}
-          {project.featured && (
-            <Badge className="absolute top-4 right-4">{t('featured')}</Badge>
-          )}
+          <Badge
+            className={`absolute top-4 right-4 ${
+              project.category === 'web'
+                ? 'bg-blue-600 hover:bg-blue-700'
+                : project.category === 'mobile'
+                  ? 'bg-emerald-600 hover:bg-emerald-700'
+                  : 'bg-orange-600 hover:bg-orange-700'
+            }`}
+          >
+            {project.category === 'web'
+              ? 'Web'
+              : project.category === 'mobile'
+                ? 'Mobile'
+                : 'System'}
+          </Badge>
         </div>
 
         <CardContent className="p-6">
