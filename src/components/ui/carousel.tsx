@@ -13,6 +13,9 @@ interface CarouselProps {
   showDots?: boolean
 }
 
+// How many slides ahead/behind the current one to fully render
+const RENDER_WINDOW = 2
+
 export function Carousel({
   children,
   options = { loop: true, align: 'start' },
@@ -56,6 +59,17 @@ export function Carousel({
     }
   }, [emblaApi, syncState])
 
+  // Check if a slide index is within the render window
+  const isInWindow = (index: number) => {
+    const total = slides.length
+    if (total === 0) return false
+
+    const diff = Math.abs(index - selectedIndex)
+    // Handle loop wrap-around
+    const wrappedDiff = Math.min(diff, total - diff)
+    return wrappedDiff <= RENDER_WINDOW
+  }
+
   return (
     <div className="relative">
       {/* Carousel viewport */}
@@ -66,7 +80,11 @@ export function Carousel({
               key={index}
               className="min-w-0 flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
             >
-              {child}
+              {isInWindow(index) ? (
+                child
+              ) : (
+                <div className="aspect-[3/4]" aria-hidden />
+              )}
             </div>
           ))}
         </div>

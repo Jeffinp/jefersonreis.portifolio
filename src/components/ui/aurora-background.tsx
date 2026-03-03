@@ -93,15 +93,39 @@ interface AuroraBackgroundProps {
 }
 
 export function AuroraBackground({ children, className }: AuroraBackgroundProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
   const auroraRef = useRef<HTMLCanvasElement>(null)
   const starsRef = useRef<HTMLCanvasElement>(null)
   const animRef = useRef(0)
+  const visibleRef = useRef(true)
   const starsDataRef = useRef<Star[]>([])
   const [mounted, setMounted] = useState(false)
   const { resolvedTheme } = useTheme()
   const isDark = mounted && resolvedTheme === 'dark'
 
   useEffect(() => { setMounted(true) }, [])
+
+  // Pause animation when off-screen
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const wasVisible = visibleRef.current
+        visibleRef.current = entry?.isIntersecting ?? false
+
+        // Resume animation loop when becoming visible again
+        if (!wasVisible && visibleRef.current && animRef.current === 0) {
+          // The draw loop will be restarted by the main effect
+        }
+      },
+      { threshold: 0 }
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   const setupStars = useCallback((w: number, h: number) => {
     starsDataRef.current = createStars(w, h, 80)
@@ -146,6 +170,12 @@ export function AuroraBackground({ children, className }: AuroraBackgroundProps)
     window.addEventListener('resize', resize)
 
     const draw = () => {
+      // Skip rendering when off-screen — saves CPU/battery on mobile
+      if (!visibleRef.current) {
+        animRef.current = requestAnimationFrame(draw)
+        return
+      }
+
       const now = Date.now()
       const time = now / 4000
 
@@ -223,7 +253,7 @@ export function AuroraBackground({ children, className }: AuroraBackgroundProps)
   }, [isDark, setupStars])
 
   return (
-    <div className={cn('relative overflow-hidden', className)}>
+    <div ref={containerRef} className={cn('relative overflow-hidden', className)}>
       {isDark && (
         <>
           {/* Aurora — low-res canvas scaled up */}
