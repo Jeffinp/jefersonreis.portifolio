@@ -731,28 +731,7 @@ export const projects: Project[] = [
     featured: true,
     order: 3,
     role: 'Arquiteto e Desenvolvedor Full Stack',
-    thumbnail: {
-      url: '/assets/images/projects/mobile/project-carematch/main.png',
-      alt: 'CareMatch — Marketplace de Saúde',
-    },
-    images: [
-      {
-        url: '/assets/images/projects/mobile/project-carematch/main.png',
-        alt: 'Tela principal do app com Smart Match',
-      },
-      {
-        url: '/assets/images/projects/mobile/project-carematch/search.png',
-        alt: 'Busca geoespacial de profissionais próximos',
-      },
-      {
-        url: '/assets/images/projects/mobile/project-carematch/profile.png',
-        alt: 'Perfil do profissional com avaliações e verificação KYC',
-      },
-      {
-        url: '/assets/images/projects/mobile/project-carematch/payment.png',
-        alt: 'Fluxo de pagamento com Stripe Payment Sheet nativo',
-      },
-    ],
+    images: [],
     tags: [
       { id: 'nestjs', label: 'NestJS 11', color: 'bg-red-600' },
       { id: 'react-native', label: 'React Native', color: 'bg-blue-500' },
