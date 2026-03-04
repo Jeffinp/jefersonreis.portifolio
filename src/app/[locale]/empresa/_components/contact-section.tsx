@@ -70,12 +70,23 @@ export function ContactSection() {
   }
 
   return (
-    <div ref={sectionRef} className="bg-background relative overflow-hidden rounded-t-[2.5rem] sm:rounded-t-[3rem]">
+    <div
+      ref={sectionRef}
+      className="bg-background relative overflow-hidden rounded-t-[2.5rem] sm:rounded-t-[3rem]"
+    >
       <div className="pointer-events-none absolute inset-0 opacity-0 dark:opacity-70">
         <Warp
           width="100%"
           height="100%"
-          colors={['#020617', '#0f1e4a', '#020617', '#1e3a8a', '#0a1628', '#1d4ed8', '#030a1a']}
+          colors={[
+            '#020617',
+            '#0f1e4a',
+            '#020617',
+            '#1e3a8a',
+            '#0a1628',
+            '#1d4ed8',
+            '#030a1a',
+          ]}
           proportion={0.42}
           softness={1}
           distortion={0.2}

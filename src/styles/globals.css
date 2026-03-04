@@ -240,8 +240,12 @@ textarea:disabled,
 
 /* Button shimmer — single shine sweep on hover */
 @keyframes btn-shimmer {
-  from { transform: translateX(-150%); }
-  to   { transform: translateX(350%); }
+  from {
+    transform: translateX(-150%);
+  }
+  to {
+    transform: translateX(350%);
+  }
 }
 
 .btn-shine {

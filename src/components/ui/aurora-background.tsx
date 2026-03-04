@@ -35,7 +35,7 @@ export const AuroraBackground = ({
     <div
       ref={containerRef}
       className={cn(
-        'relative flex flex-col items-center justify-center overflow-hidden bg-background text-foreground',
+        'bg-background text-foreground relative flex flex-col items-center justify-center overflow-hidden',
         className
       )}
       {...props}
@@ -56,11 +56,12 @@ export const AuroraBackground = ({
         <div
           className="absolute inset-0"
           style={{
-            background: 'radial-gradient(ellipse 70% 60% at 50% 45%, rgba(2,6,23,0.72) 0%, rgba(2,6,23,0.3) 60%, transparent 100%)',
+            background:
+              'radial-gradient(ellipse 70% 60% at 50% 45%, rgba(2,6,23,0.72) 0%, rgba(2,6,23,0.3) 60%, transparent 100%)',
           }}
         />
         {/* fade bottom para transição suave com a próxima seção */}
-        <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-background" />
+        <div className="to-background absolute inset-0 bg-linear-to-b from-transparent via-transparent" />
       </div>
 
       <div className="relative z-10 w-full">{children}</div>
