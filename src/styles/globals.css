@@ -60,6 +60,25 @@ body {
   font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
 }
 
+/* Interactive affordance */
+button:not(:disabled),
+a[href],
+[role='button']:not([aria-disabled='true']),
+input[type='button']:not(:disabled),
+input[type='submit']:not(:disabled),
+input[type='reset']:not(:disabled),
+label[for] {
+  cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled,
+[aria-disabled='true'] {
+  cursor: not-allowed;
+}
+
 :focus-visible {
   outline: 2px solid var(--color-ring);
   outline-offset: 2px;
