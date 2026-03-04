@@ -3,7 +3,15 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ExternalLink, Github, Zap, Trophy, Calendar, Users } from 'lucide-react'
+import {
+  X,
+  ExternalLink,
+  Github,
+  Zap,
+  Trophy,
+  Calendar,
+  Users,
+} from 'lucide-react'
 import type { Project } from '@/types'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -177,7 +185,9 @@ export function ProjectModal({
                     )}
 
                     {/* Meta: período + time */}
-                    {(project.startDate || project.endDate || project.teamSize) && (
+                    {(project.startDate ||
+                      project.endDate ||
+                      project.teamSize) && (
                       <div className="text-muted-foreground mt-2 flex flex-wrap gap-3 text-xs">
                         {(project.startDate || project.endDate) && (
                           <span className="flex items-center gap-1">
@@ -187,17 +197,27 @@ export function ProjectModal({
                               .map((d) => {
                                 const [y, m] = (d as string).split('-')
                                 return m
-                                  ? new Date(Number(y), Number(m) - 1).toLocaleDateString('pt-BR', { month: 'short', year: 'numeric' })
+                                  ? new Date(
+                                      Number(y),
+                                      Number(m) - 1
+                                    ).toLocaleDateString('pt-BR', {
+                                      month: 'short',
+                                      year: 'numeric',
+                                    })
                                   : y
                               })
                               .join(' → ')}
-                            {project.status === 'in-progress' && !project.endDate && ' → presente'}
+                            {project.status === 'in-progress' &&
+                              !project.endDate &&
+                              ' → presente'}
                           </span>
                         )}
                         {project.teamSize && (
                           <span className="flex items-center gap-1">
                             <Users className="h-3.5 w-3.5" />
-                            {project.teamSize === 1 ? 'Solo' : `${project.teamSize} pessoas`}
+                            {project.teamSize === 1
+                              ? 'Solo'
+                              : `${project.teamSize} pessoas`}
                           </span>
                         )}
                       </div>
@@ -239,8 +259,13 @@ export function ProjectModal({
                       </p>
                       <ul className="space-y-2">
                         {project.challenges.map((item, i) => (
-                          <li key={i} className="text-foreground/80 flex gap-2 text-sm leading-relaxed">
-                            <span className="text-primary mt-0.5 shrink-0">›</span>
+                          <li
+                            key={i}
+                            className="text-foreground/80 flex gap-2 text-sm leading-relaxed"
+                          >
+                            <span className="text-primary mt-0.5 shrink-0">
+                              ›
+                            </span>
                             {item}
                           </li>
                         ))}
@@ -257,8 +282,13 @@ export function ProjectModal({
                       </p>
                       <ul className="space-y-2">
                         {project.results.map((item, i) => (
-                          <li key={i} className="text-foreground/80 flex gap-2 text-sm leading-relaxed">
-                            <span className="text-primary mt-0.5 shrink-0">✓</span>
+                          <li
+                            key={i}
+                            className="text-foreground/80 flex gap-2 text-sm leading-relaxed"
+                          >
+                            <span className="text-primary mt-0.5 shrink-0">
+                              ✓
+                            </span>
                             {item}
                           </li>
                         ))}

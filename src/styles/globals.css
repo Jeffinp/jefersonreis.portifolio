@@ -84,6 +84,19 @@ textarea:disabled,
   outline-offset: 2px;
 }
 
+@keyframes aurora {
+  from {
+    background-position:
+      50% 50%,
+      50% 50%;
+  }
+  to {
+    background-position:
+      350% 50%,
+      350% 50%;
+  }
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
@@ -173,7 +186,11 @@ textarea:disabled,
 
 /* Dot grid pattern — dark mode only */
 .dot-grid {
-  background-image: radial-gradient(circle 1px at 1px 1px, rgba(255, 255, 255, 0.06) 1px, transparent 0);
+  background-image: radial-gradient(
+    circle 1px at 1px 1px,
+    rgba(255, 255, 255, 0.06) 1px,
+    transparent 0
+  );
   background-size: 28px 28px;
 }
 
@@ -183,7 +200,9 @@ textarea:disabled,
 }
 
 .dark .card-glow:hover {
-  box-shadow: 0 0 20px -4px rgba(100, 130, 255, 0.2), 0 0 6px -2px rgba(100, 130, 255, 0.1);
+  box-shadow:
+    0 0 20px -4px rgba(100, 130, 255, 0.2),
+    0 0 6px -2px rgba(100, 130, 255, 0.1);
 }
 
 /* Liquid Glass — dark mode cards (themed blue-slate) */
@@ -198,7 +217,7 @@ textarea:disabled,
 }
 
 .dark .liquid-card::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -219,6 +238,38 @@ textarea:disabled,
     0 14px 40px rgba(80, 110, 255, 0.15);
 }
 
+/* Button shimmer — single shine sweep on hover */
+@keyframes btn-shimmer {
+  from { transform: translateX(-150%); }
+  to   { transform: translateX(350%); }
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: 40%;
+  background: linear-gradient(
+    105deg,
+    transparent,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent
+  );
+  transform: translateX(-150%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.btn-shine:hover::before {
+  animation: btn-shimmer 0.65s ease forwards;
+}
+
 /* Hero stagger animation — CSS-only for instant LCP */
 @keyframes hero-fade-up {
   from {
@@ -235,12 +286,24 @@ textarea:disabled,
   animation: hero-fade-up 0.5s ease-out both;
 }
 
-.hero-stagger > *:nth-child(1) { animation-delay: 0s; }
-.hero-stagger > *:nth-child(2) { animation-delay: 0.08s; }
-.hero-stagger > *:nth-child(3) { animation-delay: 0.16s; }
-.hero-stagger > *:nth-child(4) { animation-delay: 0.24s; }
-.hero-stagger > *:nth-child(5) { animation-delay: 0.32s; }
-.hero-stagger > *:nth-child(6) { animation-delay: 0.4s; }
+.hero-stagger > *:nth-child(1) {
+  animation-delay: 0s;
+}
+.hero-stagger > *:nth-child(2) {
+  animation-delay: 0.08s;
+}
+.hero-stagger > *:nth-child(3) {
+  animation-delay: 0.16s;
+}
+.hero-stagger > *:nth-child(4) {
+  animation-delay: 0.24s;
+}
+.hero-stagger > *:nth-child(5) {
+  animation-delay: 0.32s;
+}
+.hero-stagger > *:nth-child(6) {
+  animation-delay: 0.4s;
+}
 
 .glass {
   background-color: color-mix(
@@ -251,7 +314,6 @@ textarea:disabled,
   backdrop-filter: blur(12px);
   border: 1px solid color-mix(in oklch, var(--color-border) 50%, transparent);
 }
-
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);

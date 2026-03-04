@@ -32,7 +32,9 @@ export function ProjectsSection() {
       : sortedProjects.filter((p) => p.category === selectedCategory)
   const categoryCounts = categories.reduce<Record<ProjectCategory, number>>(
     (acc, category) => {
-      acc[category] = sortedProjects.filter((p) => p.category === category).length
+      acc[category] = sortedProjects.filter(
+        (p) => p.category === category
+      ).length
       return acc
     },
     {

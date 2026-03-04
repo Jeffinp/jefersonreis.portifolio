@@ -20,7 +20,7 @@ export function SkillCard({ skill }: SkillCardProps) {
       aria-label={skill.name}
     >
       {iconSrc && (
-        <div className="liquid-card bg-card/80 border-border/60 shadow-background/40 flex h-14 w-14 items-center justify-center rounded-xl border shadow-[0_10px_24px_-16px] transition-all duration-200 group-hover:-translate-y-0.5 group-hover:border-primary/40 group-hover:shadow-primary/30 group-focus-visible:-translate-y-0.5 group-focus-visible:border-primary/50 group-focus-visible:ring-2 group-focus-visible:ring-primary/40">
+        <div className="liquid-card bg-card/80 border-border/60 shadow-background/40 group-hover:border-primary/40 group-hover:shadow-primary/30 group-focus-visible:border-primary/50 group-focus-visible:ring-primary/40 flex h-14 w-14 items-center justify-center rounded-xl border shadow-[0_10px_24px_-16px] transition-all duration-200 group-hover:-translate-y-0.5 group-focus-visible:-translate-y-0.5 group-focus-visible:ring-2">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={iconSrc}

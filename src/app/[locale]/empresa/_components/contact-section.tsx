@@ -1,10 +1,10 @@
 'use client'
 
-import { useState, FormEvent } from 'react'
+import { useState, useEffect, useRef, FormEvent } from 'react'
 import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { SectionWrapper, SectionHeader } from '@/components/common'
-import { AuroraBackground } from '@/components/ui/aurora-background'
+import { Warp } from '@paper-design/shaders-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -15,6 +15,19 @@ export function ContactSection() {
   const t = useTranslations('contact')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [visible, setVisible] = useState(false)
+  const sectionRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      (entries) => setVisible(entries[0]?.isIntersecting ?? false),
+      { threshold: 0 }
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -57,117 +70,132 @@ export function ContactSection() {
   }
 
   return (
-    <AuroraBackground className="rounded-t-[2.5rem] sm:rounded-t-[3rem]">
-    <SectionWrapper id="contact">
-      <SectionHeader
-        subtitle={t('subtitle')}
-        title={t('title')}
-        description={t('description')}
-      />
+    <div ref={sectionRef} className="bg-background relative overflow-hidden rounded-t-[2.5rem] sm:rounded-t-[3rem]">
+      <div className="pointer-events-none absolute inset-0 opacity-0 dark:opacity-70">
+        <Warp
+          width="100%"
+          height="100%"
+          colors={['#020617', '#0f1e4a', '#020617', '#1e3a8a', '#0a1628', '#1d4ed8', '#030a1a']}
+          proportion={0.42}
+          softness={1}
+          distortion={0.2}
+          swirl={0.7}
+          swirlIterations={10}
+          shape="checks"
+          shapeScale={0.1}
+          speed={visible ? 0.5 : 0}
+        />
+      </div>
+      <SectionWrapper id="contact" className="relative z-10">
+        <SectionHeader
+          subtitle={t('subtitle')}
+          title={t('title')}
+          description={t('description')}
+        />
 
-      <div className="grid gap-8 lg:grid-cols-2">
-        {/* Contact Info */}
-        <div className="space-y-6">
-          <div>
-            <h3 className="mb-4 text-xl font-semibold">{t('infoTitle')}</h3>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <Mail className="text-primary h-5 w-5" />
-                <a
-                  href="mailto:jefersonreisalmeida8356@gmail.com"
-                  className="hover:text-primary transition-colors hover:underline"
-                >
-                  jefersonreisalmeida8356@gmail.com
-                </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone className="text-primary h-5 w-5" />
-                <span>+55 (71) 98439-3235</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <MapPin className="text-primary h-5 w-5" />
-                <span>Camaçari, Bahia</span>
+        <div className="grid gap-8 lg:grid-cols-2">
+          {/* Contact Info */}
+          <div className="space-y-6">
+            <div>
+              <h3 className="mb-4 text-xl font-semibold">{t('infoTitle')}</h3>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <Mail className="text-primary h-5 w-5" />
+                  <a
+                    href="mailto:jefersonreisalmeida8356@gmail.com"
+                    className="hover:text-primary transition-colors hover:underline"
+                  >
+                    jefersonreisalmeida8356@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Phone className="text-primary h-5 w-5" />
+                  <span>+55 (71) 98439-3235</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <MapPin className="text-primary h-5 w-5" />
+                  <span>Camaçari, Bahia</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Contact Form */}
-        <div>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <Label htmlFor="name">{t('form.name')}</Label>
-              <Input
-                id="name"
-                name="name"
-                placeholder={t('form.namePlaceholder')}
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-            <div>
-              <Label htmlFor="email">{t('form.email')}</Label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                placeholder={t('form.emailPlaceholder')}
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-            <div>
-              <Label htmlFor="subject">{t('form.subject')}</Label>
-              <Input
-                id="subject"
-                name="subject"
-                placeholder={t('form.subjectPlaceholder')}
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-            <div>
-              <Label htmlFor="message">{t('form.message')}</Label>
-              <Textarea
-                id="message"
-                name="message"
-                placeholder={t('form.messagePlaceholder')}
-                rows={5}
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-
-            {status === 'success' && (
-              <div className="flex items-center gap-2 rounded-md bg-green-500/10 p-3 text-sm text-green-600 dark:text-green-400">
-                <CheckCircle2 className="h-4 w-4" />
-                {t('form.success')}
+          {/* Contact Form */}
+          <div>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <Label htmlFor="name">{t('form.name')}</Label>
+                <Input
+                  id="name"
+                  name="name"
+                  placeholder={t('form.namePlaceholder')}
+                  required
+                  disabled={isSubmitting}
+                />
               </div>
-            )}
-
-            {status === 'error' && (
-              <div className="bg-destructive/10 text-destructive rounded-md p-3 text-sm">
-                {t('form.error')}
+              <div>
+                <Label htmlFor="email">{t('form.email')}</Label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder={t('form.emailPlaceholder')}
+                  required
+                  disabled={isSubmitting}
+                />
               </div>
-            )}
+              <div>
+                <Label htmlFor="subject">{t('form.subject')}</Label>
+                <Input
+                  id="subject"
+                  name="subject"
+                  placeholder={t('form.subjectPlaceholder')}
+                  required
+                  disabled={isSubmitting}
+                />
+              </div>
+              <div>
+                <Label htmlFor="message">{t('form.message')}</Label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  placeholder={t('form.messagePlaceholder')}
+                  rows={5}
+                  required
+                  disabled={isSubmitting}
+                />
+              </div>
 
-            <Button type="submit" className="w-full" disabled={isSubmitting}>
-              {isSubmitting ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  {t('form.submitting')}
-                </>
-              ) : (
-                <>
-                  <Send className="mr-2 h-4 w-4" />
-                  {t('form.submit')}
-                </>
+              {status === 'success' && (
+                <div className="flex items-center gap-2 rounded-md bg-green-500/10 p-3 text-sm text-green-600 dark:text-green-400">
+                  <CheckCircle2 className="h-4 w-4" />
+                  {t('form.success')}
+                </div>
               )}
-            </Button>
-          </form>
+
+              {status === 'error' && (
+                <div className="bg-destructive/10 text-destructive rounded-md p-3 text-sm">
+                  {t('form.error')}
+                </div>
+              )}
+
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    {t('form.submitting')}
+                  </>
+                ) : (
+                  <>
+                    <Send className="mr-2 h-4 w-4" />
+                    {t('form.submit')}
+                  </>
+                )}
+              </Button>
+            </form>
+          </div>
         </div>
-      </div>
-    </SectionWrapper>
-    </AuroraBackground>
+      </SectionWrapper>
+    </div>
   )
 }

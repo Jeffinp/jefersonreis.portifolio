@@ -52,7 +52,7 @@ export function Footer() {
 
   return (
     <footer className="border-border relative border-t">
-      <div className="from-primary/35 via-primary/10 to-transparent absolute top-0 left-0 h-px w-full bg-gradient-to-r" />
+      <div className="from-primary/35 via-primary/10 absolute top-0 left-0 h-px w-full bg-gradient-to-r to-transparent" />
 
       <div className="container-width py-14">
         <div className="grid gap-10 md:grid-cols-[1.15fr_0.9fr_1fr]">

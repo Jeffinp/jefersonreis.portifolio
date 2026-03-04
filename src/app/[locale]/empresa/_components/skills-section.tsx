@@ -11,7 +11,7 @@ export function SkillsSection() {
   return (
     <SectionWrapper
       id="skills"
-      className="relative z-20 -mt-8 rounded-t-[2.5rem] border-t border-border/50 bg-background pt-16 shadow-none dark:dot-grid dark:shadow-[0_-16px_40px_rgba(0,0,0,0.35)] sm:-mt-10 sm:rounded-t-[3rem] sm:pt-20"
+      className="border-border/50 bg-background dark:dot-grid relative z-20 -mt-8 rounded-t-[2.5rem] border-t pt-16 shadow-none sm:-mt-10 sm:rounded-t-[3rem] sm:pt-20 dark:shadow-[0_-16px_40px_rgba(0,0,0,0.35)]"
     >
       <SectionHeader
         subtitle={t('subtitle')}

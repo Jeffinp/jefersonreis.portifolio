@@ -14,9 +14,7 @@ export function HeroSection() {
       <div className="container-width flex min-h-[calc(100vh-8rem)] items-center">
         {/* CSS stagger animation — no JS dependency for LCP */}
         <div className="hero-stagger mx-auto max-w-4xl text-center">
-          <p className="text-muted-foreground mb-4 text-lg">
-            {t('greeting')}
-          </p>
+          <p className="text-muted-foreground mb-4 text-lg">{t('greeting')}</p>
 
           <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
             {t('name')}
@@ -31,13 +29,13 @@ export function HeroSection() {
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button size="lg" asChild>
+            <Button size="lg" className="btn-shine" asChild>
               <a href="#projects">
                 {t('cta.primary')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </a>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+            <Button size="lg" variant="outline" className="btn-shine" asChild>
               <a
                 href="/assets/pdf/Jeferson-Reis-CTO-2026.pdf"
                 download="Jeferson-Reis-CT-2026.pdf"
