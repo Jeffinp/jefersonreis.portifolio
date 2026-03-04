@@ -11,11 +11,10 @@ import type { Project } from '@/types'
 
 interface ProjectCardProps {
   project: Project
-  onClick?: () => void
   onDetails?: (project: Project, trigger: HTMLButtonElement) => void
 }
 
-export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
+export function ProjectCard({ project, onDetails }: ProjectCardProps) {
   const t = useTranslations('projects')
   const tc = useTranslations('common')
   const [imageFailed, setImageFailed] = useState(false)
@@ -28,8 +27,7 @@ export function ProjectCard({ project, onClick, onDetails }: ProjectCardProps) {
   return (
     <div className="h-full transform-gpu will-change-transform transition-transform duration-300 ease-out motion-safe:hover:-translate-y-1.5 motion-reduce:transform-none motion-reduce:transition-none">
       <Card
-        className="liquid-card group border-border/70 bg-card/95 hover:border-primary/40 h-full cursor-pointer overflow-hidden transition-colors duration-300 hover:shadow-[0_14px_34px_-24px_rgba(59,130,246,0.45)]"
-        onClick={onClick}
+        className="liquid-card group border-border/70 bg-card/95 hover:border-primary/40 h-full overflow-hidden transition-colors duration-300 hover:shadow-[0_14px_34px_-24px_rgba(59,130,246,0.45)]"
       >
         {/* Thumbnail */}
         <div className="relative aspect-video overflow-hidden">
