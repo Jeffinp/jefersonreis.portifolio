@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
+import { Sora, Plus_Jakarta_Sans } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
-import { ThemeProvider } from '@/components/providers'
+import { ThemeProvider, LenisProvider } from '@/components/providers'
 import { Analytics } from '@/components/analytics'
 import {
   WhatsAppFloatingButton,
@@ -63,6 +64,19 @@ interface LocaleLayoutProps {
   params: Promise<{ locale: string }>
 }
 
+const sora = Sora({
+  subsets: ['latin'],
+  variable: '--font-heading',
+  display: 'swap',
+  weight: ['600', '700', '800'],
+})
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+})
+
 const isValidLocale = (locale: string): locale is Locale =>
   locales.includes(locale as Locale)
 
@@ -88,12 +102,14 @@ export default async function LocaleLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body className="min-h-screen">
+    <html lang={locale} suppressHydrationWarning className={`${sora.variable} ${jakarta.variable}`}>
+      <body className="min-h-screen font-sans antialiased">
         <ThemeProvider>
-          <NextIntlClientProvider messages={messages}>
-            {children}
-          </NextIntlClientProvider>
+          <LenisProvider>
+            <NextIntlClientProvider messages={messages}>
+              {children}
+            </NextIntlClientProvider>
+          </LenisProvider>
         </ThemeProvider>
         <WhatsAppFloatingButton />
         <DiscordFloatingButton />

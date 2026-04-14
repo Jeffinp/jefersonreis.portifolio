@@ -17,10 +17,11 @@ export function SkillCard({ skill }: SkillCardProps) {
     <div
       className="group relative inline-flex w-20 flex-col items-center gap-2 outline-none"
       tabIndex={0}
-      aria-label={skill.name}
+      aria-label={`${skill.name}${skill.yearsOfExperience ? ` — ${skill.yearsOfExperience}+ anos` : ''}`}
+      title={`${skill.name}${skill.yearsOfExperience ? ` — ${skill.yearsOfExperience}+ anos` : ''}`}
     >
       {iconSrc && (
-        <div className="liquid-card bg-card/80 border-border/60 shadow-background/40 group-hover:border-primary/40 group-hover:shadow-primary/30 group-focus-visible:border-primary/50 group-focus-visible:ring-primary/40 flex h-14 w-14 items-center justify-center rounded-xl border shadow-[0_10px_24px_-16px] transition-all duration-200 group-hover:-translate-y-0.5 group-focus-visible:-translate-y-0.5 group-focus-visible:ring-2">
+        <div className="liquid-card bg-card/80 border-border/60 shadow-background/40 group-hover:border-primary/40 group-hover:shadow-primary/20 group-focus-visible:border-primary/50 group-focus-visible:ring-primary/40 flex h-14 w-14 items-center justify-center rounded-xl border shadow-[0_10px_24px_-16px] transition-all duration-200 group-hover:-translate-y-1 group-hover:scale-105 group-focus-visible:-translate-y-1 group-focus-visible:ring-2">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={iconSrc}
@@ -33,18 +34,8 @@ export function SkillCard({ skill }: SkillCardProps) {
         </div>
       )}
 
-      <div className="text-muted-foreground text-center text-[11px] leading-none">
+      <div className="text-muted-foreground text-center text-[11px] leading-tight font-medium transition-colors group-hover:text-foreground">
         {skill.name}
-      </div>
-
-      <div className="bg-popover text-popover-foreground pointer-events-none absolute -top-14 left-1/2 z-20 -translate-x-1/2 rounded-md px-3 py-1.5 text-xs whitespace-nowrap opacity-0 shadow-md transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100">
-        <span className="font-semibold">{skill.name}</span>
-        {skill.yearsOfExperience && (
-          <span className="text-muted-foreground ml-1">
-            ({skill.yearsOfExperience}+ anos)
-          </span>
-        )}
-        <div className="bg-popover absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45" />
       </div>
     </div>
   )

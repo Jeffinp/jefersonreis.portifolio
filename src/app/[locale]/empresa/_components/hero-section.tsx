@@ -54,13 +54,14 @@ export function HeroSection() {
         onMouseLeave={handleMouseLeave}
       >
         <div className="hero-stagger mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-
           {/* Text — left, counter-parallax */}
           <motion.div
             className="text-center lg:text-left"
             style={{ x: textX, y: textY }}
           >
-            <p className="text-muted-foreground mb-4 text-lg">{t('greeting')}</p>
+            <p className="text-muted-foreground mb-4 text-lg">
+              {t('greeting')}
+            </p>
 
             <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               {t('name')}
@@ -98,8 +99,12 @@ export function HeroSection() {
                 const [value, ...rest] = label.split(' ')
                 return (
                   <div key={key} className="text-center lg:text-left">
-                    <div className="text-primary text-3xl font-bold">{value}</div>
-                    <div className="text-muted-foreground text-sm">{rest.join(' ')}</div>
+                    <div className="text-primary text-3xl font-bold">
+                      {value}
+                    </div>
+                    <div className="text-muted-foreground text-sm">
+                      {rest.join(' ')}
+                    </div>
                   </div>
                 )
               })}
@@ -110,12 +115,18 @@ export function HeroSection() {
           <div className="flex justify-center" style={{ perspective: '900px' }}>
             <motion.div
               className="relative"
-              style={{ x: photoX, y: photoY, rotateX, rotateY, transformStyle: 'preserve-3d' }}
+              style={{
+                x: photoX,
+                y: photoY,
+                rotateX,
+                rotateY,
+                transformStyle: 'preserve-3d',
+              }}
               whileHover={{ scale: 1.02 }}
               transition={{ scale: { duration: 0.3 } }}
             >
               {/* Glow — moves with photo */}
-              <div className="absolute inset-0 -z-10 scale-110 rounded-3xl bg-primary/25 blur-3xl dark:bg-primary/20" />
+              <div className="bg-primary/25 dark:bg-primary/20 absolute inset-0 -z-10 scale-110 rounded-3xl blur-3xl" />
 
               <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
                 <Image
@@ -133,14 +144,13 @@ export function HeroSection() {
                     background: useTransform(
                       [smoothX, smoothY],
                       ([x, y]: number[]) =>
-                        `radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(255,255,255,0.08) 0%, transparent 60%)`
+                        `radial-gradient(circle at ${(x ?? 0.5) * 100}% ${(y ?? 0.5) * 100}%, rgba(255,255,255,0.08) 0%, transparent 60%)`
                     ),
                   }}
                 />
               </div>
             </motion.div>
           </div>
-
         </div>
       </div>
 

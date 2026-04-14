@@ -52,7 +52,7 @@ export function Footer() {
 
   return (
     <footer className="border-border relative border-t">
-      <div className="from-primary/35 via-primary/10 absolute top-0 left-0 h-px w-full bg-gradient-to-r to-transparent" />
+      <div className="from-transparent via-primary/30 absolute top-0 left-0 h-px w-full bg-gradient-to-r to-transparent" />
 
       <div className="container-width py-14">
         <div className="grid gap-10 md:grid-cols-[1.15fr_0.9fr_1fr]">
@@ -91,14 +91,6 @@ export function Footer() {
               {isPt ? 'Links Rápidos' : 'Quick Links'}
             </h3>
             <ul className="space-y-2.5 text-sm">
-              <li>
-                <Link
-                  href="#about"
-                  className="text-muted-foreground hover:text-primary inline-flex transition-colors"
-                >
-                  {tNav('about')}
-                </Link>
-              </li>
               <li>
                 <Link
                   href="#projects"

@@ -104,28 +104,32 @@ export function ContactSection() {
           description={t('description')}
         />
 
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-12 lg:grid-cols-2">
           {/* Contact Info */}
-          <div className="space-y-6">
+          <div className="space-y-8">
             <div>
-              <h3 className="mb-4 text-xl font-semibold">{t('infoTitle')}</h3>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <Mail className="text-primary h-5 w-5" />
-                  <a
-                    href="mailto:jefersonreisalmeida8356@gmail.com"
-                    className="hover:text-primary transition-colors hover:underline"
-                  >
-                    jefersonreisalmeida8356@gmail.com
-                  </a>
+              <h3 className="mb-6 text-xl font-bold">{t('infoTitle')}</h3>
+              <div className="space-y-5">
+                <a
+                  href="mailto:jefersonreisalmeida8356@gmail.com"
+                  className="border-border/50 hover:border-primary/30 hover:bg-primary/5 flex items-center gap-4 rounded-xl border p-4 transition-all"
+                >
+                  <div className="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg">
+                    <Mail className="text-primary h-5 w-5" />
+                  </div>
+                  <span className="text-sm">jefersonreisalmeida8356@gmail.com</span>
+                </a>
+                <div className="border-border/50 flex items-center gap-4 rounded-xl border p-4">
+                  <div className="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg">
+                    <Phone className="text-primary h-5 w-5" />
+                  </div>
+                  <span className="text-sm">+55 (71) 98439-3235</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="text-primary h-5 w-5" />
-                  <span>+55 (71) 98439-3235</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <MapPin className="text-primary h-5 w-5" />
-                  <span>Camaçari, Bahia</span>
+                <div className="border-border/50 flex items-center gap-4 rounded-xl border p-4">
+                  <div className="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg">
+                    <MapPin className="text-primary h-5 w-5" />
+                  </div>
+                  <span className="text-sm">Camaçari, Bahia</span>
                 </div>
               </div>
             </div>

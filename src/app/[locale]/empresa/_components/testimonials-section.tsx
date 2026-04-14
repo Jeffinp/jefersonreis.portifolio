@@ -60,26 +60,26 @@ export function TestimonialsSection() {
       >
         {testimonials.map((testimonial) => (
           <motion.div key={testimonial.id} variants={staggerItem}>
-            <Card className="liquid-card card-glow h-full">
-              <CardContent className="flex h-full flex-col justify-between p-6">
-                <div className="space-y-4">
+            <Card className="liquid-card card-glow h-full transition-transform duration-300 hover:-translate-y-1">
+              <CardContent className="flex h-full flex-col justify-between p-7">
+                <div className="space-y-5">
                   <div className="flex items-start justify-between">
-                    <Quote className="text-primary/20 h-8 w-8 shrink-0" />
+                    <Quote className="text-primary/25 h-7 w-7 shrink-0" />
                     <StarRating rating={testimonial.rating} />
                   </div>
 
-                  <p className="text-foreground/80 leading-relaxed italic">
+                  <p className="text-foreground/85 text-[15px] leading-[1.7]">
                     &ldquo;{testimonial.content}&rdquo;
                   </p>
                 </div>
 
-                <div className="border-border mt-5 border-t pt-4">
-                  <p className="text-sm font-semibold">{testimonial.name}</p>
+                <div className="border-border/40 mt-6 border-t pt-4">
+                  <p className="text-sm font-bold">{testimonial.name}</p>
                   <p className="text-muted-foreground text-xs">
                     {testimonial.role}
                   </p>
                   {testimonial.date && (
-                    <p className="text-muted-foreground/60 mt-1 text-xs">
+                    <p className="text-muted-foreground/50 mt-1 text-[11px]">
                       {formatDate(testimonial.date)}
                     </p>
                   )}

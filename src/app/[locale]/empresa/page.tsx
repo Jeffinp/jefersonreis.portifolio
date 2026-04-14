@@ -2,6 +2,7 @@ import { setRequestLocale } from 'next-intl/server'
 import type { Metadata } from 'next'
 import { Header, Footer } from '@/components/layout'
 import { SchemaOrg } from '@/components/seo'
+import { StackingSections } from '@/components/common'
 import { HeroSection } from './_components/hero-section'
 import { SkillsSection } from './_components/skills-section'
 import { ProjectsSection } from './_components/projects-section'
@@ -42,9 +43,11 @@ export default async function EmpresaPage({ params }: EmpresaPageProps) {
       <Header />
       <main className="min-h-screen">
         <HeroSection />
-        <SkillsSection />
-        <ProjectsSection />
-        <TestimonialsSection />
+        <StackingSections>
+          <SkillsSection />
+          <ProjectsSection />
+          <TestimonialsSection />
+        </StackingSections>
         <ContactSection />
       </main>
       <Footer />

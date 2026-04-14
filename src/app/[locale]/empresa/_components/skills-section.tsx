@@ -11,7 +11,7 @@ export function SkillsSection() {
   return (
     <SectionWrapper
       id="skills"
-      className="border-border/50 bg-background dark:dot-grid relative z-20 -mt-8 rounded-t-[2.5rem] border-t pt-16 shadow-none sm:-mt-10 sm:rounded-t-[3rem] sm:pt-20 dark:shadow-[0_-16px_40px_rgba(0,0,0,0.35)]"
+      className="bg-background dark:dot-grid relative"
     >
       <SectionHeader
         subtitle={t('subtitle')}
@@ -29,13 +29,15 @@ export function SkillsSection() {
             <div key={group.category}>
               <div className="mb-6 flex items-center gap-3">
                 {IconComponent && (
-                  <IconComponent className="text-primary h-6 w-6" />
+                  <div className="bg-primary/10 flex h-8 w-8 items-center justify-center rounded-lg">
+                    <IconComponent className="text-primary h-4 w-4" />
+                  </div>
                 )}
-                <h3 className="text-lg font-semibold">{group.label}</h3>
-                <span className="text-muted-foreground text-xs font-medium">
+                <h3 className="text-base font-bold">{group.label}</h3>
+                <span className="bg-muted text-muted-foreground rounded-full px-2 py-0.5 text-[11px] font-medium">
                   {group.skills.length}
                 </span>
-                <div className="bg-border/60 h-px flex-1" />
+                <div className="bg-border/40 h-px flex-1" />
               </div>
 
               <div className="flex flex-wrap items-start gap-x-4 gap-y-6">

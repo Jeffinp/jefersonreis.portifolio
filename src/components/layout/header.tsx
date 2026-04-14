@@ -11,7 +11,6 @@ import { cn } from '@/lib/utils'
 
 const navigation = [
   { name: 'home', href: '#home' },
-  { name: 'about', href: '#about' },
   { name: 'skills', href: '#skills' },
   { name: 'projects', href: '#projects' },
   { name: 'contact', href: '#contact' },
@@ -44,8 +43,9 @@ export function Header() {
               key={item.name}
               href={item.href}
               className={cn(
-                'hover:text-primary text-sm font-medium transition-colors',
-                'text-muted-foreground'
+                'hover:text-foreground relative text-sm font-medium transition-colors',
+                'text-muted-foreground',
+                'after:bg-primary after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full'
               )}
             >
               {t(item.name)}
