@@ -15,7 +15,7 @@ const siteName =
   'Jeferson Reis | Desenvolvedor Full-Stack'
 const siteDescription =
   process.env['NEXT_PUBLIC_SITE_DESCRIPTION'] ||
-  'Portfólio profissional de Jeferson Reis - Desenvolvedor Full Stack'
+  'Desenvolvedor Full Stack com 9+ anos de experiência em React, Next.js e Node.js.'
 const contactEmail =
   process.env['NEXT_PUBLIC_CONTACT_EMAIL'] ||
   'jefersonreisalmeida8356@gmail.com'

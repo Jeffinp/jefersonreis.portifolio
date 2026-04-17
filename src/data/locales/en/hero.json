@@ -2,11 +2,11 @@
   "empresa": {
     "greeting": "Hi, I'm",
     "name": "Jeferson Reis",
-    "role": "Full Stack Developer",
-    "description": "Specialized in creating modern, scalable, and high-performance web solutions. I transform ideas into digital products that delight users.",
+    "role": "Full-Stack Developer",
+    "description": "I build modern, scalable web applications with React, Next.js, and Node.js. Focused on performance, clean architecture, and code that lasts.",
     "cta": {
-      "primary": "View Projects",
-      "secondary": "Download Resume"
+      "primary": "See projects",
+      "secondary": "Download resume"
     },
     "stats": {
       "experience": "9+ Years",

@@ -13,9 +13,9 @@ interface EmpresaPageProps {
 }
 
 export const metadata: Metadata = {
-  title: 'Portfolio Técnico - Jeferson Reis | Full Stack Developer',
+  title: 'Jeferson Reis — Desenvolvedor Full Stack',
   description:
-    'Portfolio técnico com projetos em React, Next.js, TypeScript e Node.js. Desenvolvedor Full Stack com 5+ anos de experiência em desenvolvimento web moderno.',
+    'Desenvolvedor Full Stack com 9+ anos de experiência. Projetos em React, Next.js, TypeScript e Node.js. Base em Camaçari, BA — trabalho remoto.',
   keywords: [
     'portfolio desenvolvedor',
     'full stack developer',
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
     'projetos web',
   ],
   openGraph: {
-    title: 'Portfolio Técnico - Jeferson Reis',
+    title: 'Jeferson Reis — Desenvolvedor Full Stack',
     description:
-      'Desenvolvedor Full Stack especializado em React, Next.js e Node.js',
+      'Desenvolvedor Full Stack com 9+ anos de experiência em React, Next.js e Node.js.',
     type: 'profile',
   },
 }

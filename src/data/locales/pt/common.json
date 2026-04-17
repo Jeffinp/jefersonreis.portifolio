@@ -37,45 +37,45 @@
     "openMenu": "Abrir menu",
     "details": "Detalhes",
     "demo": "Demo",
-    "code": "Code"
+    "code": "Código"
   },
   "skills": {
-    "subtitle": "Minhas Habilidades",
-    "title": "Tecnologias & Ferramentas",
-    "description": "Stack de tecnologias que domino"
+    "subtitle": "Stack",
+    "title": "Ferramentas do dia a dia",
+    "description": "Tecnologias que uso no fluxo de trabalho"
   },
   "projects": {
-    "subtitle": "Meu Trabalho",
-    "title": "Projetos em Destaque",
-    "description": "Alguns dos projetos que desenvolvi recentemente",
+    "subtitle": "Trabalhos",
+    "title": "Projetos selecionados",
+    "description": "Recortes do que construí recentemente",
     "all": "Todos",
-    "empty": "Nenhum projeto encontrado nesta categoria.",
+    "empty": "Nenhum projeto nesta categoria.",
     "featured": "Destaque",
     "noImage": "Sem imagem disponível"
   },
   "testimonials": {
     "subtitle": "Depoimentos",
-    "title": "O que dizem sobre meu trabalho",
-    "description": "{count} clientes atendidos com nota média de {rating}/5"
+    "title": "O que clientes dizem",
+    "description": "{count} clientes atendidos · nota média {rating}/5"
   },
   "contact": {
-    "subtitle": "Entre em Contato",
-    "title": "Vamos Trabalhar Juntos",
-    "description": "Tem um projeto em mente? Adoraria ouvir sobre ele!",
-    "infoTitle": "Informações de Contato",
+    "subtitle": "Contato",
+    "title": "Vamos conversar",
+    "description": "Tem um projeto em mente ou vaga em aberto? Me conta os detalhes.",
+    "infoTitle": "Canais diretos",
     "form": {
       "name": "Nome *",
       "namePlaceholder": "Seu nome",
       "email": "Email *",
       "emailPlaceholder": "seu@email.com",
       "subject": "Assunto *",
-      "subjectPlaceholder": "Sobre o que você quer falar?",
+      "subjectPlaceholder": "Ex: Nova landing page, vaga frontend, consultoria",
       "message": "Mensagem *",
-      "messagePlaceholder": "Sua mensagem...",
-      "submit": "Enviar Mensagem",
+      "messagePlaceholder": "Conte o contexto, prazo e o que você espera",
+      "submit": "Enviar mensagem",
       "submitting": "Enviando...",
-      "success": "Mensagem enviada com sucesso!",
-      "error": "Erro ao enviar mensagem. Tente novamente."
+      "success": "Mensagem recebida. Respondo em até 24h.",
+      "error": "Não consegui enviar. Tente de novo ou me chame direto: jefersonreisalmeida8356@gmail.com"
     }
   }
 }
