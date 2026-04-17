@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { trackFormStart, trackFormSubmit } from '@/lib/utils/tracking'
+import { useReducedMotion } from '@/hooks/ui/use-reduced-motion'
 
 export function ContactSection() {
   const t = useTranslations('contact')
@@ -17,6 +18,7 @@ export function ContactSection() {
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [visible, setVisible] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
+  const reduced = useReducedMotion()
 
   useEffect(() => {
     const el = sectionRef.current
@@ -74,7 +76,10 @@ export function ContactSection() {
       ref={sectionRef}
       className="bg-background relative overflow-hidden rounded-t-[2.5rem] sm:rounded-t-[3rem]"
     >
-      <div className="pointer-events-none absolute inset-0 opacity-0 dark:opacity-70">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-0 dark:opacity-70"
+      >
         <Warp
           width="100%"
           height="100%"
@@ -94,7 +99,7 @@ export function ContactSection() {
           swirlIterations={10}
           shape="checks"
           shapeScale={0.1}
-          speed={visible ? 0.5 : 0}
+          speed={reduced ? 0 : visible ? 0.5 : 0}
         />
       </div>
       <SectionWrapper id="contact" className="relative z-10">
@@ -112,21 +117,32 @@ export function ContactSection() {
               <div className="space-y-5">
                 <a
                   href="mailto:jefersonreisalmeida8356@gmail.com"
-                  className="border-border/50 hover:border-primary/30 hover:bg-primary/5 flex items-center gap-4 rounded-xl border p-4 transition-all"
+                  className="border-border/50 hover:border-primary/30 hover:bg-primary/5 focus-visible:ring-ring flex items-center gap-4 rounded-xl border p-4 transition-all focus-visible:ring-2 focus-visible:outline-none"
                 >
-                  <div className="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg">
+                  <div
+                    aria-hidden="true"
+                    className="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg"
+                  >
                     <Mail className="text-primary h-5 w-5" />
                   </div>
-                  <span className="text-sm">jefersonreisalmeida8356@gmail.com</span>
+                  <span className="text-sm">
+                    jefersonreisalmeida8356@gmail.com
+                  </span>
                 </a>
                 <div className="border-border/50 flex items-center gap-4 rounded-xl border p-4">
-                  <div className="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg">
+                  <div
+                    aria-hidden="true"
+                    className="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg"
+                  >
                     <Phone className="text-primary h-5 w-5" />
                   </div>
                   <span className="text-sm">+55 (71) 98439-3235</span>
                 </div>
                 <div className="border-border/50 flex items-center gap-4 rounded-xl border p-4">
-                  <div className="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg">
+                  <div
+                    aria-hidden="true"
+                    className="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg"
+                  >
                     <MapPin className="text-primary h-5 w-5" />
                   </div>
                   <span className="text-sm">Camaçari, Bahia</span>
@@ -181,28 +197,36 @@ export function ContactSection() {
                 />
               </div>
 
-              {status === 'success' && (
-                <div className="flex items-center gap-2 rounded-md bg-green-500/10 p-3 text-sm text-green-600 dark:text-green-400">
-                  <CheckCircle2 className="h-4 w-4" />
-                  {t('form.success')}
-                </div>
-              )}
+              {/* Região viva: anunciada ao leitor de tela quando o status muda */}
+              <div role="status" aria-live="polite" className="min-h-0">
+                {status === 'success' && (
+                  <div className="flex items-center gap-2 rounded-md bg-green-500/10 p-3 text-sm text-green-600 dark:text-green-400">
+                    <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
+                    {t('form.success')}
+                  </div>
+                )}
+              </div>
 
-              {status === 'error' && (
-                <div className="bg-destructive/10 text-destructive rounded-md p-3 text-sm">
-                  {t('form.error')}
-                </div>
-              )}
+              <div role="alert" aria-live="assertive" className="min-h-0">
+                {status === 'error' && (
+                  <div className="bg-destructive/10 text-destructive rounded-md p-3 text-sm">
+                    {t('form.error')}
+                  </div>
+                )}
+              </div>
 
               <Button type="submit" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? (
                   <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    <Loader2
+                      className="mr-2 h-4 w-4 animate-spin motion-reduce:animate-none"
+                      aria-hidden="true"
+                    />
                     {t('form.submitting')}
                   </>
                 ) : (
                   <>
-                    <Send className="mr-2 h-4 w-4" />
+                    <Send className="mr-2 h-4 w-4" aria-hidden="true" />
                     {t('form.submit')}
                   </>
                 )}

@@ -40,7 +40,7 @@ export default async function EmpresaPage({ params }: EmpresaPageProps) {
     <>
       <SchemaOrg type="person" />
       <Header />
-      <main className="min-h-screen">
+      <main id="main" className="min-h-screen">
         <HeroSection />
         <SkillsSection />
         <ProjectsSection />

@@ -102,8 +102,18 @@ export default async function LocaleLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale} suppressHydrationWarning className={`${sora.variable} ${jakarta.variable}`}>
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      className={`${sora.variable} ${jakarta.variable}`}
+    >
       <body className="min-h-screen font-sans antialiased">
+        <a
+          href="#main"
+          className="bg-primary text-primary-foreground focus-visible:ring-ring sr-only rounded-md px-4 py-2 text-sm font-medium focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+        >
+          {locale === 'pt' ? 'Pular para o conteúdo' : 'Skip to main content'}
+        </a>
         <ThemeProvider>
           <LenisProvider>
             <NextIntlClientProvider messages={messages}>

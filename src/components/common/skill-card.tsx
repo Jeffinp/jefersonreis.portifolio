@@ -15,17 +15,15 @@ export function SkillCard({ skill }: SkillCardProps) {
 
   return (
     <div
-      className="group relative inline-flex w-20 flex-col items-center gap-2 outline-none"
-      tabIndex={0}
-      aria-label={`${skill.name}${skill.yearsOfExperience ? ` — ${skill.yearsOfExperience}+ anos` : ''}`}
+      className="group relative inline-flex w-20 flex-col items-center gap-2"
       title={`${skill.name}${skill.yearsOfExperience ? ` — ${skill.yearsOfExperience}+ anos` : ''}`}
     >
       {iconSrc && (
-        <div className="liquid-card bg-card/80 border-border/60 shadow-background/40 group-hover:border-primary/40 group-hover:shadow-primary/20 group-focus-visible:border-primary/50 group-focus-visible:ring-primary/40 flex h-14 w-14 items-center justify-center rounded-xl border shadow-[0_10px_24px_-16px] transition-all duration-200 group-hover:-translate-y-1 group-hover:scale-105 group-focus-visible:-translate-y-1 group-focus-visible:ring-2">
+        <div className="liquid-card bg-card/80 border-border/60 shadow-background/40 group-hover:border-primary/40 group-hover:shadow-primary/20 flex h-14 w-14 items-center justify-center rounded-xl border shadow-[0_10px_24px_-16px] transition-all duration-200 group-hover:-translate-y-1 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={iconSrc}
-            alt={skill.name}
+            alt=""
             width={48}
             height={48}
             className="h-9 w-9 object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]"
@@ -34,8 +32,11 @@ export function SkillCard({ skill }: SkillCardProps) {
         </div>
       )}
 
-      <div className="text-muted-foreground text-center text-[11px] leading-tight font-medium transition-colors group-hover:text-foreground">
+      <div className="text-muted-foreground group-hover:text-foreground text-center text-[11px] leading-tight font-medium transition-colors">
         {skill.name}
+        {skill.yearsOfExperience ? (
+          <span className="sr-only"> — {skill.yearsOfExperience}+ anos</span>
+        ) : null}
       </div>
     </div>
   )

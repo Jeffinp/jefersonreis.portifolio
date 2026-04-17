@@ -55,7 +55,9 @@
       "WebFetch(domain:jb.desishub.com)",
       "WebFetch(domain:www.winterwind.com)",
       "WebFetch(domain:easings.net)",
-      "WebFetch(domain:blog.maximeheckel.com)"
+      "WebFetch(domain:blog.maximeheckel.com)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(npx eslint *)"
     ],
     "deny": [],
     "ask": []

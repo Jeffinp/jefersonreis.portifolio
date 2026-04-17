@@ -5,6 +5,7 @@ import type { ReactNode } from 'react'
 import { useEffect, useRef, useState } from 'react'
 import { NeuroNoise } from '@paper-design/shaders-react'
 import { cn } from '@/lib/utils'
+import { useReducedMotion } from '@/hooks/ui/use-reduced-motion'
 
 interface AuroraBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactNode
@@ -19,6 +20,7 @@ export const AuroraBackground = ({
 }: AuroraBackgroundProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(true)
+  const reduced = useReducedMotion()
 
   useEffect(() => {
     const el = containerRef.current
@@ -31,6 +33,9 @@ export const AuroraBackground = ({
     return () => io.disconnect()
   }, [])
 
+  // WCAG 2.3.3/2.2.2: congela shader quando o usuário pediu reduzir movimento
+  const effectiveSpeed = reduced ? 0 : visible ? speed : 0
+
   return (
     <div
       ref={containerRef}
@@ -40,13 +45,16 @@ export const AuroraBackground = ({
       )}
       {...props}
     >
-      {/* Shader — dark mode only, pauses when off-screen */}
-      <div className="pointer-events-none absolute inset-0 hidden dark:block">
+      {/* Shader — dark mode only, pauses when off-screen or user prefers reduced motion */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 hidden dark:block"
+      >
         <NeuroNoise
           colorFront="#1d4ed8"
           colorMid="#0a0f2e"
           colorBack="#020617"
-          speed={visible ? speed : 0}
+          speed={effectiveSpeed}
           brightness={0.7}
           contrast={1.6}
           scale={0.6}

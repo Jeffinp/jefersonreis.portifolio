@@ -4,7 +4,8 @@
     "about": "About",
     "projects": "Projects",
     "skills": "Skills",
-    "contact": "Contact"
+    "contact": "Contact",
+    "mainNav": "Main navigation"
   },
   "theme": {
     "light": "Light mode",
@@ -35,6 +36,7 @@
     "viewMore": "View more",
     "viewLess": "View less",
     "openMenu": "Open menu",
+    "closeMenu": "Close menu",
     "details": "Details",
     "demo": "Demo",
     "code": "Code"

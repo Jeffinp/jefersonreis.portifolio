@@ -114,21 +114,36 @@ export function Carousel({
         </>
       )}
 
-      {/* Dots */}
+      {/* Dots — hit area ≥24×24 (WCAG 2.5.8) via padding transparente */}
       {showDots && scrollSnaps.length > 1 && (
-        <div className="mt-8 flex justify-center gap-2.5">
-          {scrollSnaps.map((_, index) => (
-            <button
-              key={index}
-              className={`h-2.5 w-2.5 rounded-full transition-all ${
-                index === selectedIndex
-                  ? 'bg-primary w-7'
-                  : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-              }`}
-              onClick={() => scrollTo(index)}
-              aria-label={`Ir para slide ${index + 1}`}
-            />
-          ))}
+        <div
+          className="mt-8 flex justify-center gap-1"
+          role="tablist"
+          aria-label="Paginação dos projetos"
+        >
+          {scrollSnaps.map((_, index) => {
+            const isActive = index === selectedIndex
+            return (
+              <button
+                key={index}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                aria-label={`Ir para slide ${index + 1}`}
+                onClick={() => scrollTo(index)}
+                className="focus-visible:ring-ring group inline-flex h-6 w-6 items-center justify-center rounded-full focus-visible:ring-2 focus-visible:outline-none"
+              >
+                <span
+                  aria-hidden="true"
+                  className={`block h-2.5 rounded-full transition-all ${
+                    isActive
+                      ? 'bg-primary w-7'
+                      : 'bg-muted-foreground/30 group-hover:bg-muted-foreground/50 w-2.5'
+                  }`}
+                />
+              </button>
+            )
+          })}
         </div>
       )}
     </div>

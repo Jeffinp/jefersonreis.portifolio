@@ -4,7 +4,8 @@
     "about": "Sobre",
     "projects": "Projetos",
     "skills": "Habilidades",
-    "contact": "Contato"
+    "contact": "Contato",
+    "mainNav": "Navegação principal"
   },
   "theme": {
     "light": "Modo claro",
@@ -35,6 +36,7 @@
     "viewMore": "Ver mais",
     "viewLess": "Ver menos",
     "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
     "details": "Detalhes",
     "demo": "Demo",
     "code": "Código"

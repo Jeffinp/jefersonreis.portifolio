@@ -29,7 +29,10 @@ export function SkillsSection() {
             <div key={group.category}>
               <div className="mb-6 flex items-center gap-3">
                 {IconComponent && (
-                  <div className="bg-primary/10 flex h-8 w-8 items-center justify-center rounded-lg">
+                  <div
+                    aria-hidden="true"
+                    className="bg-primary/10 flex h-8 w-8 items-center justify-center rounded-lg"
+                  >
                     <IconComponent className="text-primary h-4 w-4" />
                   </div>
                 )}

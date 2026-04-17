@@ -43,7 +43,10 @@ export function ProjectCard({ project, onDetails }: ProjectCardProps) {
             </>
           ) : (
             <div className="from-muted/80 to-muted/40 flex h-full w-full flex-col items-center justify-center gap-2 bg-gradient-to-br">
-              <ImageOff className="text-muted-foreground/45 h-10 w-10" />
+              <ImageOff
+                aria-hidden="true"
+                className="text-muted-foreground/45 h-10 w-10"
+              />
               <span className="text-muted-foreground/60 text-xs font-medium">
                 {t('noImage')}
               </span>
@@ -95,7 +98,7 @@ export function ProjectCard({ project, onDetails }: ProjectCardProps) {
                 onDetails(project, e.currentTarget as HTMLButtonElement)
               }}
             >
-              <Info className="mr-2 h-4 w-4" />
+              <Info className="mr-2 h-4 w-4" aria-hidden="true" />
               {tc('details')}
             </Button>
           )}
@@ -112,7 +115,7 @@ export function ProjectCard({ project, onDetails }: ProjectCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <ExternalLink className="mr-2 h-4 w-4" />
+                <ExternalLink className="mr-2 h-4 w-4" aria-hidden="true" />
                 {tc('demo')}
               </a>
             </Button>
@@ -129,7 +132,7 @@ export function ProjectCard({ project, onDetails }: ProjectCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Github className="mr-2 h-4 w-4" />
+                <Github className="mr-2 h-4 w-4" aria-hidden="true" />
                 {tc('code')}
               </a>
             </Button>

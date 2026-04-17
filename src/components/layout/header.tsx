@@ -23,12 +23,19 @@ export function Header() {
 
   return (
     <header className="border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 fixed top-0 z-50 w-full border-b backdrop-blur dark:border-white/8 dark:bg-white/4 dark:shadow-[inset_0_-1px_0_0_rgba(255,255,255,0.05),0_4px_24px_rgba(0,0,0,0.2)] dark:backdrop-blur-xl dark:backdrop-saturate-[1.8]">
-      <nav className="container-width flex h-16 items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2">
+      <nav
+        aria-label={t('mainNav')}
+        className="container-width flex h-16 items-center justify-between"
+      >
+        {/* Logo — hit target aumentado para ≥44×44 */}
+        <Link
+          href="/"
+          aria-label="Home"
+          className="focus-visible:ring-ring flex h-11 w-11 items-center justify-center rounded-full focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+        >
           <Image
             src="/assets/icon/apple-icon.png"
-            alt="Jeferson Reis"
+            alt=""
             width={64}
             height={64}
             className="h-9 w-9 rounded-full object-cover"
@@ -37,21 +44,22 @@ export function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden items-center gap-6 md:flex">
+        <ul className="hidden items-center gap-6 md:flex">
           {navigation.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className={cn(
-                'hover:text-foreground relative text-sm font-medium transition-colors',
-                'text-muted-foreground',
-                'after:bg-primary after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full'
-              )}
-            >
-              {t(item.name)}
-            </a>
+            <li key={item.name}>
+              <a
+                href={item.href}
+                className={cn(
+                  'hover:text-foreground focus-visible:text-foreground focus-visible:ring-ring relative text-sm font-medium transition-colors focus-visible:rounded focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none',
+                  'text-muted-foreground',
+                  'after:bg-primary after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full'
+                )}
+              >
+                {t(item.name)}
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
 
         {/* Actions */}
         <div className="flex items-center gap-2">
@@ -61,14 +69,17 @@ export function Header() {
           {/* Mobile menu button */}
           <button
             type="button"
-            className="text-muted-foreground hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center rounded-md p-2 md:hidden"
+            className="text-muted-foreground hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring inline-flex items-center justify-center rounded-md p-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none md:hidden"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-haspopup="menu"
+            aria-label={mobileMenuOpen ? tc('closeMenu') : tc('openMenu')}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            <span className="sr-only">{tc('openMenu')}</span>
             {mobileMenuOpen ? (
-              <X className="h-6 w-6" />
+              <X className="h-6 w-6" aria-hidden="true" />
             ) : (
-              <Menu className="h-6 w-6" />
+              <Menu className="h-6 w-6" aria-hidden="true" />
             )}
           </button>
         </div>
@@ -76,19 +87,25 @@ export function Header() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="border-border border-t md:hidden">
-          <div className="space-y-1 px-4 pt-2 pb-3">
+        <div
+          id="mobile-menu"
+          role="menu"
+          className="border-border border-t md:hidden"
+        >
+          <ul className="space-y-1 px-4 pt-2 pb-3">
             {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-muted-foreground hover:bg-accent hover:text-accent-foreground block rounded-md px-3 py-2 text-base font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t(item.name)}
-              </a>
+              <li key={item.name}>
+                <a
+                  role="menuitem"
+                  href={item.href}
+                  className="text-muted-foreground hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring block rounded-md px-3 py-2 text-base font-medium focus-visible:ring-2 focus-visible:outline-none"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {t(item.name)}
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       )}
     </header>

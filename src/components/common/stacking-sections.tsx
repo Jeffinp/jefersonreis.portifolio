@@ -8,6 +8,7 @@ import {
   type MotionValue,
 } from 'framer-motion'
 import { useContainerHeight } from '@/hooks/ui/use-container-height'
+import { useReducedMotion } from '@/hooks/ui/use-reduced-motion'
 
 interface StackingSectionsProps {
   children: ReactNode
@@ -17,11 +18,18 @@ export function StackingSections({ children }: StackingSectionsProps) {
   const items = Children.toArray(children)
   const count = items.length
   const containerRef = useRef<HTMLDivElement>(null)
+  const reduced = useReducedMotion()
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end'],
   })
+
+  // WCAG 2.3.3: em reduced-motion, exibe as seções empilhadas verticalmente
+  // sem scale/parallax/sticky — mantém a ordem lógica e a usabilidade.
+  if (reduced) {
+    return <div>{items}</div>
+  }
 
   return (
     <div ref={containerRef} style={{ height: `${count * 100}vh` }}>
@@ -82,7 +90,11 @@ function StackingCard({
 
   // Scale: cards mais antigos encolhem mais (0.05 por nível)
   const targetScale = 1 - (total - 1 - index) * 0.05
-  const scale = useTransform(globalProgress, [sliceStart, sliceEnd], [1, targetScale])
+  const scale = useTransform(
+    globalProgress,
+    [sliceStart, sliceEnd],
+    [1, targetScale]
+  )
 
   // Border-radius aumenta quando o card é empurrado para trás
   const borderRadius = useTransform(
@@ -90,7 +102,6 @@ function StackingCard({
     [sliceStart, sliceEnd],
     [isFirst ? 0 : 16, isLast ? (isFirst ? 0 : 16) : 28]
   )
-
 
   // Conteúdo sobe conforme o card entra + scroll interno para overflow
   // O innerY já cobre de 0 a -overflow durante a fatia de scroll deste card
@@ -106,10 +117,7 @@ function StackingCard({
   const topOffset = index * 25
 
   return (
-    <div
-      className="sticky top-0 h-screen"
-      style={{ zIndex: index + 1 }}
-    >
+    <div className="sticky top-0 h-screen" style={{ zIndex: index + 1 }}>
       <motion.div
         className="h-full w-full origin-top overflow-hidden"
         style={{
@@ -122,8 +130,8 @@ function StackingCard({
         <div
           className={
             !isFirst
-              ? 'h-full rounded-t-[2rem] bg-background shadow-[0_1px_2px_rgba(0,0,0,0.15),0_8px_16px_rgba(0,0,0,0.1),0_24px_48px_rgba(0,0,0,0.08)] dark:shadow-[0_1px_2px_rgba(0,0,0,0.4),0_8px_16px_rgba(0,0,0,0.3),0_24px_48px_rgba(0,0,0,0.2)]'
-              : 'h-full bg-background'
+              ? 'bg-background h-full rounded-t-[2rem] shadow-[0_1px_2px_rgba(0,0,0,0.15),0_8px_16px_rgba(0,0,0,0.1),0_24px_48px_rgba(0,0,0,0.08)] dark:shadow-[0_1px_2px_rgba(0,0,0,0.4),0_8px_16px_rgba(0,0,0,0.3),0_24px_48px_rgba(0,0,0,0.2)]'
+              : 'bg-background h-full'
           }
           style={{ paddingTop: !isFirst ? topOffset : 0 }}
         >
