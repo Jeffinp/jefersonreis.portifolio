@@ -982,6 +982,7 @@ export const projects: Project[] = [
       'Cargo Workspaces',
       'LLVM',
     ],
+    githubUrl: 'https://github.com/Jeffinp/OSjeff',
     teamSize: 1,
     endDate: '2025',
     challenges: [
