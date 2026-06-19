@@ -930,6 +930,260 @@ export const projects: Project[] = [
       'Cluster Docker com Master + Réplica em stormnet isolada subindo em um único comando',
     ],
   },
+
+  // ==========================================
+  // SYSTEMS ENGINEERING — OSJEFF (BARE-METAL OS)
+  // ==========================================
+
+  {
+    id: 'osjeff',
+    slug: 'osjeff',
+    title: 'OSjeff',
+    description:
+      'Sistema operacional x86_64 escrito do zero em Rust — bootloader, kernel, scheduler preemptivo e interface gráfica própria, sem Linux por baixo',
+    longDescription:
+      'O OSjeff é um sistema operacional bare-metal para arquitetura x86_64, construído do zero em Rust nightly e Assembly, rodando sem nenhuma dependência de Linux ou de qualquer SO subjacente — apenas o bootloader (BIOS/UEFI) e o kernel próprio.\n\nO kernel implementa um scheduler preemptivo real: a troca de contexto é forçada no handler do timer PIT a 250Hz, salvando e restaurando todos os registradores via funções naked em Assembly (iretq) — uma thread em loop infinito sem yield só cede a CPU porque o timer a preempta. A gestão de memória usa um heap allocator thread-safe que implementa a trait GlobalAlloc do Rust, habilitando Vec, String e Box no kernel sem libc, com free-list e coalescência automática de blocos livres.\n\nA camada gráfica usa um compositor com damage tracking: em vez de redesenhar a tela inteira a cada frame, mantém cache da camada estática (wallpaper + janelas paradas), calcula o retângulo de dano e blita apenas a região afetada na VRAM — custo O(janela), não O(tela). Renderiza a 1024×768 em 32 bits com double buffering.\n\nO sistema traz drivers próprios (teclado e mouse PS/2 por IRQ, disco ATA-PIO, NIC NE2000 com stack IPv4/ICMP que responde ping, RTC), filesystem OJFS para salvar/carregar arquivos, copy/paste entre apps e 4 aplicativos nativos (Terminal, Editor de texto, Gerenciador de Tarefas e Calculadora). Toda a lógica pura (parser, editor, geometria de janelas, heap, filesystem) vive em uma biblioteca no_std testável no host, com 152 testes e ~98% de cobertura.',
+    category: 'system',
+    status: 'completed',
+    featured: true,
+    order: 14,
+    role: 'Criador e Engenheiro de Sistemas',
+    images: [],
+    tags: [
+      { id: 'rust', label: 'Rust', color: 'bg-orange-700' },
+      { id: 'assembly', label: 'Assembly x86_64', color: 'bg-gray-700' },
+      { id: 'bare-metal', label: 'Bare-Metal', color: 'bg-red-700' },
+      { id: 'qemu', label: 'QEMU', color: 'bg-purple-600' },
+      { id: 'no-std', label: 'no_std', color: 'bg-emerald-600' },
+    ],
+    technologies: [
+      'Rust (nightly)',
+      'Assembly x86_64',
+      'Bootloader (BIOS/UEFI)',
+      'x86_64-unknown-none',
+      'QEMU',
+      'Cargo Workspaces',
+      'LLVM',
+    ],
+    teamSize: 1,
+    endDate: '2025',
+    challenges: [
+      'Scheduler preemptivo real: troca de contexto forçada no ISR do timer PIT (250Hz) com funções naked em Assembly salvando todos os registradores via iretq',
+      'Heap allocator thread-safe implementando GlobalAlloc para habilitar Vec/String/Box no kernel bare-metal sem libc, com free-list e coalescência',
+      'Compositor por damage tracking: redesenho apenas do retângulo afetado (O(janela)) ao invés da tela inteira, com double buffering em 1024×768 / 32 bits',
+      'Drivers de hardware do zero: teclado/mouse PS/2 por IRQ, disco ATA-PIO, NIC NE2000 com stack IPv4/ICMP e RTC, todos sobre IDT e PIC 8259 remapeado',
+    ],
+    results: [
+      'SO bare-metal funcional bootando em PC real e QEMU, sem nenhuma dependência de Linux',
+      'Lógica pura isolada em biblioteca no_std testável no host com 152 testes e ~98% de cobertura',
+      '4 aplicativos nativos (Terminal, Editor, Gerenciador de Tarefas, Calculadora) com copy/paste e filesystem OJFS',
+      'Stack de rede própria respondendo ping (ARP gratuito + IPv4 + ICMP)',
+    ],
+  },
+
+  // ==========================================
+  // LEGAL-TECH — TRIBUNA (SAAS DE PETIÇÕES COM IA)
+  // ==========================================
+
+  {
+    id: 'tribuna',
+    slug: 'tribuna',
+    title: 'Tribuna',
+    description:
+      'SaaS jurídico que gera petições com IA em minutos — Next.js, FastAPI, OpenAI, Stripe e exportação DOCX pronta para protocolo',
+    longDescription:
+      'O Tribuna é um SaaS para escritórios de advocacia que automatiza a geração de petições com IA, do template à exportação em DOCX em segundos, liberando horas de trabalho repetitivo para o advogado focar em estratégia e clientes.\n\nO frontend Next.js entrega uma experiência dark/light com design system próprio, enquanto o backend FastAPI assíncrono orquestra a geração via OpenAI, gerenciamento de documentos, prazos e casos em um único painel. A persistência usa PostgreSQL com Redis para cache e filas, e tarefas pesadas (geração e renderização de documentos) são processadas de forma assíncrona com Celery.\n\nA monetização é feita via Stripe com assinaturas recorrentes. A plataforma cobre múltiplos tipos de petições, oferece painel do cliente e exporta o documento final em DOCX já formatado e pronto para protocolo — fechando o ciclo do advogado sem sair do sistema.',
+    category: 'web',
+    status: 'in-progress',
+    featured: true,
+    order: 15,
+    role: 'Arquiteto e Desenvolvedor Full Stack',
+    images: [],
+    tags: [
+      { id: 'nextjs', label: 'Next.js', color: 'bg-black' },
+      { id: 'fastapi', label: 'FastAPI', color: 'bg-green-600' },
+      { id: 'openai', label: 'OpenAI', color: 'bg-purple-700' },
+      { id: 'postgresql', label: 'PostgreSQL', color: 'bg-blue-700' },
+      { id: 'stripe', label: 'Stripe', color: 'bg-indigo-600' },
+    ],
+    technologies: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'FastAPI',
+      'Python 3.11',
+      'PostgreSQL',
+      'Redis',
+      'Celery',
+      'OpenAI',
+      'Stripe',
+    ],
+    liveUrl: 'https://tribuna.legal/pt',
+    teamSize: 1,
+    endDate: '2025',
+    challenges: [
+      'Geração de petições com IA consistente o suficiente para uso jurídico real, a partir de templates parametrizados',
+      'Backend assíncrono com FastAPI + Celery + Redis para processar geração e renderização de DOCX sem travar a requisição',
+      'Exportação DOCX fiel à formatação forense, pronta para protocolo direto',
+      'Assinaturas recorrentes com Stripe e controle de acesso por plano',
+    ],
+    results: [
+      'Geração automática de múltiplos tipos de petições a partir de templates com IA',
+      'Exportação DOCX formatada pronta para protocolo em segundos',
+      'Backend assíncrono escalável (FastAPI + Celery + Redis) com PostgreSQL',
+      'Monetização via Stripe com assinaturas recorrentes e painel do cliente',
+    ],
+  },
+
+  // ==========================================
+  // FINTECH/AUTOMATION — DJF ERP (FAMILY OFFICE)
+  // ==========================================
+
+  {
+    id: 'djf-erp',
+    slug: 'djf-erp',
+    title: 'DJF ERP',
+    description:
+      'Automação financeira para Family Office — ingestão de corretoras, análise com agentes de IA (Gemini + Claude) e relatórios via Telegram',
+    longDescription:
+      'O DJF ERP é um sistema de automação financeira para Family Office que transforma extratos de corretoras em inteligência consolidada, com análise por IA e relatórios entregues via Telegram — sem planilha manual.\n\nO núcleo de dados é um PostgreSQL com schemas isolados (raw_data para ingestão bruta e analytics_views para visões analíticas), alimentado por um pipeline de ETL financeiro mensal. A orquestração usa 5 workflows n8n que cuidam de ingestão de CSVs, normalização, categorização e disparo de relatórios.\n\nA camada de inteligência combina 3 agentes de IA: um classificador (Gemini) que categoriza transações, um analista (Claude) que gera insights mensais e um reporter que entrega os relatórios. Toda a infraestrutura roda em Docker Compose, e a interface de consumo é um bot Telegram, mantendo o fluxo simples para o usuário final do Family Office.',
+    category: 'web',
+    status: 'in-progress',
+    featured: false,
+    role: 'Arquiteto e Desenvolvedor',
+    images: [],
+    tags: [
+      { id: 'postgresql', label: 'PostgreSQL', color: 'bg-blue-700' },
+      { id: 'n8n', label: 'n8n', color: 'bg-emerald-600' },
+      { id: 'python', label: 'Python', color: 'bg-blue-700' },
+      { id: 'gemini', label: 'Gemini', color: 'bg-sky-600' },
+      { id: 'claude', label: 'Claude', color: 'bg-orange-600' },
+    ],
+    technologies: [
+      'PostgreSQL 16',
+      'n8n',
+      'Python 3.11',
+      'Docker Compose',
+      'Gemini 2.5',
+      'Claude Sonnet',
+      'Telegram Bot API',
+    ],
+    teamSize: 1,
+    endDate: '2025',
+    challenges: [
+      'Pipeline de ETL financeiro mensal ingerindo CSVs de múltiplas corretoras com formatos heterogêneos',
+      'Schemas isolados no PostgreSQL (raw_data vs analytics_views) separando dado bruto de visão analítica',
+      'Orquestração de 3 agentes de IA (Gemini + Claude) para classificar transações e gerar insights',
+      'Entrega de relatórios via bot Telegram mantendo a experiência simples para o Family Office',
+    ],
+    results: [
+      'Automação completa do fluxo financeiro mensal, eliminando consolidação manual em planilha',
+      '5 workflows n8n cobrindo ingestão, normalização, categorização e relatórios',
+      'Análise por IA com classificação de transações e insights mensais',
+      'Relatórios consolidados entregues automaticamente via Telegram',
+    ],
+  },
+
+  // ==========================================
+  // EDTECH — MENTORCURSOS (MULTI-MOODLE)
+  // ==========================================
+
+  {
+    id: 'mentorcursos',
+    slug: 'mentorcursos',
+    title: 'MentorCursos',
+    description:
+      'Painel SaaS de gestão centralizada para múltiplas instâncias Moodle — Next.js, Supabase, PostgreSQL e integração com WhatsApp/e-mail',
+    longDescription:
+      'O MentorCursos é um SaaS para gestores educacionais que centraliza o controle de múltiplas instâncias Moodle em um único painel — alunos, cursos e certificados de várias plataformas vistos e geridos de um só lugar.\n\nConstruído com Next.js (App Router), React e TypeScript, consome a Moodle REST API de cada instância e consolida os dados em Supabase/PostgreSQL. O dashboard traz estatísticas e gráficos (Recharts), CRUD de usuários e cursos, e gestão de certificados.\n\nProcessamentos em background são orquestrados com Inngest, e a comunicação com alunos integra WhatsApp e e-mail, fechando o ciclo de gestão e engajamento sem o gestor precisar entrar em cada Moodle individualmente.',
+    category: 'web',
+    status: 'in-progress',
+    featured: false,
+    role: 'Desenvolvedor Full Stack',
+    images: [],
+    tags: [
+      { id: 'nextjs', label: 'Next.js', color: 'bg-black' },
+      { id: 'typescript', label: 'TypeScript', color: 'bg-blue-600' },
+      { id: 'supabase', label: 'Supabase', color: 'bg-emerald-600' },
+      { id: 'postgresql', label: 'PostgreSQL', color: 'bg-blue-700' },
+      { id: 'inngest', label: 'Inngest', color: 'bg-violet-600' },
+    ],
+    technologies: [
+      'Next.js 16',
+      'React 19',
+      'TypeScript 5',
+      'Tailwind CSS 4',
+      'Supabase',
+      'PostgreSQL',
+      'Inngest',
+      'Recharts',
+      'Moodle REST API',
+    ],
+    teamSize: 1,
+    endDate: '2025',
+    challenges: [
+      'Integração com a Moodle REST API de múltiplas instâncias com consolidação dos dados em um painel único',
+      'Sincronização e processamento em background com Inngest sem bloquear a UI',
+      'Gestão centralizada de usuários, cursos e certificados de plataformas distintas',
+      'Integração de comunicação com alunos via WhatsApp e e-mail',
+    ],
+    results: [
+      'Painel único consolidando alunos, cursos e certificados de várias instâncias Moodle',
+      'Dashboard com estatísticas e gráficos (Recharts) e CRUD completo',
+      'Processamento em background orquestrado com Inngest',
+      'Canais de comunicação integrados (WhatsApp e e-mail)',
+    ],
+  },
+
+  // ==========================================
+  // AUTOMATION/CRM — FUNIL COMERCIAL WHATSAPP + IA
+  // ==========================================
+
+  {
+    id: 'funil-comercial-ia',
+    slug: 'funil-comercial-ia',
+    title: 'Funil Comercial WhatsApp com IA',
+    description:
+      'Automação de funil comercial via WhatsApp que classifica leads com IA e os move pelo funil sem intervenção manual — n8n, Evolution API e OpenAI',
+    longDescription:
+      'Sistema de automação de funil comercial via WhatsApp que recebe mensagens, classifica leads com IA e move cada lead pelo funil de vendas sem intervenção manual, do primeiro contato até o pós-call.\n\nO orquestrador é o n8n (self-hosted atrás de Traefik). As mensagens chegam por webhook da Evolution API (WhatsApp); áudios são baixados e transcritos com Whisper, e o conteúdo é classificado em 10 status do funil (lead, em andamento, negociação, call agendada, conversão, recusou, etc.) por um modelo GPT-4o-mini com prompt rico em nuances reais do português brasileiro — gírias, abreviações e horários em linguagem natural. O estado de cada lead é persistido com histórico cronológico.\n\nO diferencial é a arquitetura tolerante a falhas com workflows paralelos: um Shadow Trigger move leads parados por timeout, um fluxo de Confirmação Pós-Call pergunta automaticamente à equipe se a reunião aconteceu, um Health Check proativo detecta silêncio anormal (>6h sem atualização) e alerta antes que uma falha silenciosa passe despercebida, e um Monitor verifica o estado das conexões. PostgreSQL sustenta o backend de n8n e Evolution.',
+    category: 'web',
+    status: 'completed',
+    featured: false,
+    role: 'Arquiteto e Desenvolvedor de Automação',
+    images: [],
+    tags: [
+      { id: 'n8n', label: 'n8n', color: 'bg-emerald-600' },
+      { id: 'evolution-api', label: 'Evolution API', color: 'bg-green-600' },
+      { id: 'openai', label: 'OpenAI', color: 'bg-purple-700' },
+      { id: 'whatsapp', label: 'WhatsApp', color: 'bg-green-500' },
+      { id: 'postgresql', label: 'PostgreSQL', color: 'bg-blue-700' },
+    ],
+    technologies: [
+      'n8n',
+      'Evolution API (WhatsApp)',
+      'OpenAI (Whisper + GPT-4o-mini)',
+      'Google Sheets API',
+      'PostgreSQL',
+      'Traefik',
+      'Docker',
+    ],
+    teamSize: 1,
+    endDate: '2025',
+    challenges: [
+      'Classificação de leads em 10 status do funil com IA capaz de entender nuances reais do português (gírias, abreviações, horários em linguagem natural)',
+      'Transcrição de áudios de WhatsApp com Whisper antes da classificação',
+      'Arquitetura tolerante a falhas com workflows paralelos (timeout de leads, confirmação pós-call, monitor de conexões)',
+      'Health check proativo detectando falhas silenciosas (>6h sem atualização) antes que comprometam o funil',
+    ],
+    results: [
+      'Funil comercial movido automaticamente pela IA, do primeiro contato ao pós-call',
+      'Classificação em 10 status com GPT-4o-mini e transcrição de áudios via Whisper',
+      'Workflows paralelos resilientes: timeout, confirmação pós-call, health check e monitor de conexões',
+      'Detecção proativa de falhas silenciosas evitando perda de leads',
+    ],
+  },
 ]
 
 /**
