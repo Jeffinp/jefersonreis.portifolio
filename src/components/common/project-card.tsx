@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ExternalLink, Github, Info, ImageOff } from 'lucide-react'
+import { ExternalLink, Info, ImageOff } from 'lucide-react'
+import { FaGithub } from 'react-icons/fa'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
@@ -132,7 +133,7 @@ export function ProjectCard({ project, onDetails }: ProjectCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Github className="mr-2 h-4 w-4" aria-hidden="true" />
+                <FaGithub className="mr-2 h-4 w-4" aria-hidden="true" />
                 {tc('code')}
               </a>
             </Button>

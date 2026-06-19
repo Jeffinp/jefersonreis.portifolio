@@ -3,15 +3,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  X,
-  ExternalLink,
-  Github,
-  Zap,
-  Trophy,
-  Calendar,
-  Users,
-} from 'lucide-react'
+import { X, ExternalLink, Zap, Trophy, Calendar, Users } from 'lucide-react'
+import { FaGithub } from 'react-icons/fa'
 import type { Project } from '@/types'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -318,7 +311,7 @@ export function ProjectModal({
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <Github className="mr-2 h-4 w-4" />
+                            <FaGithub className="mr-2 h-4 w-4" />
                             Ver Código
                           </a>
                         </Button>

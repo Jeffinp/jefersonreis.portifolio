@@ -1,8 +1,15 @@
 'use client'
 
 import Link from 'next/link'
-import { Github, Linkedin, Mail, Instagram } from 'lucide-react'
-import { FaWhatsapp, FaDiscord, FaTwitter } from 'react-icons/fa'
+import { Mail } from 'lucide-react'
+import {
+  FaWhatsapp,
+  FaDiscord,
+  FaTwitter,
+  FaGithub,
+  FaLinkedin,
+  FaInstagram,
+} from 'react-icons/fa'
 import { useLocale, useTranslations } from 'next-intl'
 import { siteConfig } from '@/lib/config/site'
 
@@ -10,17 +17,17 @@ const socialLinks = [
   {
     name: 'GitHub',
     href: siteConfig.social.github,
-    icon: Github,
+    icon: FaGithub,
   },
   {
     name: 'LinkedIn',
     href: siteConfig.social.linkedin,
-    icon: Linkedin,
+    icon: FaLinkedin,
   },
   {
     name: 'Instagram',
     href: siteConfig.social.instagram,
-    icon: Instagram,
+    icon: FaInstagram,
   },
   {
     name: 'Twitter',
