@@ -948,7 +948,24 @@ export const projects: Project[] = [
     featured: true,
     order: 14,
     role: 'Criador e Engenheiro de Sistemas',
-    images: [],
+    thumbnail: {
+      url: '/assets/images/projects/system/project-osjeff/desktop.png',
+      alt: 'OSjeff — Desktop com janelas, dock e apps nativos',
+    },
+    images: [
+      {
+        url: '/assets/images/projects/system/project-osjeff/demo.gif',
+        alt: 'Demonstração do OSjeff em execução — animações de janelas e apps',
+      },
+      {
+        url: '/assets/images/projects/system/project-osjeff/desktop.png',
+        alt: 'Desktop do OSjeff com compositor, dock e wallpaper',
+      },
+      {
+        url: '/assets/images/projects/system/project-osjeff/taskmanager.png',
+        alt: 'Gerenciador de Tarefas mostrando threads reais com CPU accounting',
+      },
+    ],
     tags: [
       { id: 'rust', label: 'Rust', color: 'bg-orange-700' },
       { id: 'assembly', label: 'Assembly x86_64', color: 'bg-gray-700' },
